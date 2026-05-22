@@ -30,8 +30,8 @@
     "petitioner_name_he": "אורי אלמקייס, התנועה למען איכות השלטון בישראל, ועותרים נוספים",
     "petitioner_name_en": "Ori Elmakayes, Movement for Quality Government in Israel, and additional civic petitioners",
     "respondent": "Senior-Appointments-Committee",
-    "respondent_decision_he": "החלטת הוועדה לבחירת בכירי השירות הציבורי (ועדת גרוניס) לאשר את מועמדותו של רומן גופמן לראשות המוסד, חרף פרשת אורי אלמקייס (שימוש בקטין בגיל 17 בפעולת השפעה ערבית של אגף המודיעין שגופמן פיקד עליו)",
-    "respondent_decision_en": "The Senior Appointments Advisory Committee's (Gronis Committee) decision to clear Roman Gofman's candidacy for Director of the Mossad, despite the Ori Elmakayes affair (use of a 17-year-old minor in an Arabic-language influence operation by the IDF intelligence unit Gofman commanded)",
+    "respondent_decision_he": "החלטת הוועדה לבחירת בכירי השירות הציבורי (ועדת גרוניס) לאשר את מועמדותו של רומן גופמן לראשות המוסד, על בסיס הליך בדיקה שבית המשפט מצא בדיעבד כי לא בחן את כל החומרים הרלוונטיים הקשורים לפרשת אורי אלמקייס (פרשה שכללה קטין, שהחקירה בעניינה הסתיימה לבסוף בסגירת התיק)",
+    "respondent_decision_en": "The Senior Appointments Advisory Committee's (Gronis Committee) decision to clear Roman Gofman's candidacy for Director of the Mossad, on the basis of a vetting process that the Court later found had not considered all relevant materials regarding the Elmakayes affair (a matter involving a minor that was investigated and ultimately resulted in the charges being dropped)",
     "doctrine_invoked": [
       "procedural_review",
       "reasonableness"
@@ -210,7 +210,7 @@
     "predicate_ag_opinion": null,
     "respondent_body": null,
     "compliance_state": "contested",
-    "defiance_signals": "Multiple cabinet ministers publicly urged defiance of the ruling immediately after release. No formal cabinet act of defiance was taken. The ruling is now the leading authority cited against any future attempt to alter the AG-termination mechanism by cabinet resolution rather than primary legislation.",
+    "defiance_signals": "Several cabinet ministers publicly criticized the ruling and called for non-compliance, as reported in mainstream Israeli press (see secondary_urls). No formal cabinet act of defiance was taken. The ruling is now the leading authority cited against any future attempt to alter the AG-termination mechanism by cabinet resolution rather than primary legislation.",
     "tags": [
       "attorney-general",
       "gatekeeper",
@@ -362,7 +362,7 @@
     "predicate_ag_opinion": "AG Gali Baharav-Miara filed a brief siding with petitioners",
     "respondent_body": null,
     "compliance_state": "complied",
-    "defiance_signals": "Coalition leaders publicly criticized the ruling; Justice Minister Levin called it 'the opposite of the spirit of unity.' No direct re-enactment of the amendment was attempted. The legislative reform agenda pivoted to Judicial Selection Committee restructuring (March 2025).",
+    "defiance_signals": "Coalition leaders publicly criticized the ruling; Justice Minister Levin called it 'the opposite of the spirit of unity' (as reported in Times of Israel and Israeli Hebrew press cited in secondary_urls). No direct re-enactment of the amendment was attempted. Subsequent legislative activity addressed Judicial Selection Committee restructuring (March 2025).",
     "tags": [
       "constitutional-revolution",
       "basic-law-amendment",

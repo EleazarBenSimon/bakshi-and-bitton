@@ -180,7 +180,12 @@
     },
     "defiance_signals": {
       "type": ["string", "null"],
-      "description": "Free-text note on any government refusal to comply, public statements of intent to defy, or legislative work-arounds. Cite sources in the notes field."
+      "description": "Free-text note on any government refusal to comply, public statements of intent to defy, or legislative work-arounds. When this field contains specific claims about named individuals, defiance_signals_sources MUST be populated. Editorial language (qualifiers like 'controversial', 'shocking', 'expansive') is grounds for PR rejection — see METHODOLOGY §4."
+    },
+    "defiance_signals_sources": {
+      "type": "array",
+      "items": { "type": "string", "format": "uri" },
+      "description": "URLs supporting specific claims in defiance_signals. Required when defiance_signals references specific public statements, named officials, or specific legislative actions. May reference URLs already in secondary_urls."
     },
     "tags": {
       "type": "array",

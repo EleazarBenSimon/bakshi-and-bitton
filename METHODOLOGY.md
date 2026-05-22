@@ -87,3 +87,18 @@ Changing this methodology requires:
 3. An explicit accept by the project maintainer with a note explaining why the change preserves the project's data-only character
 
 Methodology changes are not made silently or through ordinary commit history. They are the project's foundational covenant with users.
+
+## 10. Legal posture
+
+The project's data-only methodology is also its primary legal defense. Under Israeli law, this project's published material relies on two well-established defenses to defamation claims:
+
+- **Defamation Law, 1965, §15(2)** — publication of judicial proceedings and other public-record material. Every entry in this dataset cites the official ruling text on supreme.court.gov.il. Where a fact about a ruling is included, the source is the ruling itself, not the project's characterization.
+
+- **Defamation Law, 1965, §15(4)** — good-faith reporting on a matter of public concern, with reasonable care. The methodology rules in §1-8 of this document operationalize "reasonable care": scope discipline, no interpretation in metadata, no characterization of justices, wire-service-grade summaries, and a contributor-review process that gates every entry.
+
+This posture is not legal advice and does not replace consultation with a qualified Israeli attorney when one is needed. It is, however, the operational standard against which contributions are evaluated. Contributions that depart from this posture — by introducing characterization, opinion, or unverified claims — undermine the project's defense and will be rejected on those grounds alone.
+
+The project additionally relies on:
+
+- **Copyright Law, 2007, §6** — state-produced works including court rulings are not subject to copyright. Linking to and excerpting from rulings is unrestricted under Israeli copyright law.
+- **Privacy Protection Law, 1981 (amended 2024, Amendment 13 effective 14 August 2025)** — the journalism, research, and public-information exceptions apply to the dataset's coverage of public officials acting in their public roles. Data-subject requests for correction can be submitted via the contact in [SECURITY.md](SECURITY.md) and via GitHub Issues per [CONTRIBUTING.md](CONTRIBUTING.md).
