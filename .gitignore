@@ -1,0 +1,23 @@
+# Dependencies
+node_modules/
+package-lock.json
+
+# Build output
+_site/
+.cache/
+dist/
+
+# Editor / OS
+.DS_Store
+.vscode/
+.idea/
+*.swp
+*~
+
+# Local config
+.env
+.env.local
+
+# Logs
+*.log
+npm-debug.log*

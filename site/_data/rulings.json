@@ -1,0 +1,489 @@
+[
+  {
+    "case_id": "בג\"ץ — עתירות מאוחדות נגד מינוי גופמן",
+    "case_id_slug": "gofman-mossad-2026-05",
+    "case_name_he": "אלמקייס ואח' נ' ראש הממשלה ואח' (עתירות נגד מינוי רומן גופמן לראש המוסד)",
+    "case_name_en": "Elmakayes et al. v. Prime Minister et al. (petitions against the appointment of Roman Gofman as Mossad Director)",
+    "ruling_date": "2026-05-19",
+    "filing_date": null,
+    "panel": [
+      {
+        "name_he": "דפנה ברק-ארז",
+        "name_en": "Daphne Barak-Erez",
+        "role": "Justice",
+        "slug": "barak-erez"
+      },
+      {
+        "name_he": "עופר גרוסקופף",
+        "name_en": "Ofer Grosskopf",
+        "role": "Justice",
+        "slug": "grosskopf"
+      },
+      {
+        "name_he": "אלכס שטיין",
+        "name_en": "Alex Stein",
+        "role": "Justice",
+        "slug": "stein"
+      }
+    ],
+    "petitioner_type": "NGO",
+    "petitioner_name_he": "אורי אלמקייס, התנועה למען איכות השלטון בישראל, ועותרים נוספים",
+    "petitioner_name_en": "Ori Elmakayes, Movement for Quality Government in Israel, and additional civic petitioners",
+    "respondent": "Senior-Appointments-Committee",
+    "respondent_decision_he": "החלטת הוועדה לבחירת בכירי השירות הציבורי (ועדת גרוניס) לאשר את מועמדותו של רומן גופמן לראשות המוסד, חרף פרשת אורי אלמקייס (שימוש בקטין בגיל 17 בפעולת השפעה ערבית של אגף המודיעין שגופמן פיקד עליו)",
+    "respondent_decision_en": "The Senior Appointments Advisory Committee's (Gronis Committee) decision to clear Roman Gofman's candidacy for Director of the Mossad, despite the Ori Elmakayes affair (use of a 17-year-old minor in an Arabic-language influence operation by the IDF intelligence unit Gofman commanded)",
+    "doctrine_invoked": [
+      "procedural_review",
+      "reasonableness"
+    ],
+    "outcome": "remanded",
+    "vote_majority": 3,
+    "vote_minority": 0,
+    "majority_authors": [],
+    "minority_authors": [],
+    "official_url": "https://www.haaretz.com/israel-news/israel-politics/2026-05-20/ty-article/.premium/israels-top-court-orders-panel-to-reconvene-over-spy-agency-chief-appointment/0000019e-41df-d55f-a5bf-43dfcc7e0000",
+    "secondary_urls": [
+      "https://www.timesofisrael.com/court-says-committees-vetting-of-mossad-chief-appointment-deficient-asks-for-review/",
+      "https://www.jpost.com/israel-news/politics-and-diplomacy/article-896721",
+      "https://www.haaretz.co.il/news/law/2026-05-19/ty-article/0000019e-40a1-dab3-adfe-d8f5b38e0000"
+    ],
+    "summary_he": "בית המשפט העליון פה אחד (3-0) קבע כי בדיקת מועמדותו של רומן גופמן על ידי ועדת גרוניס \"לקתה בחסר\", משום שהוועדה לא קיבלה את כל המסמכים הרלוונטיים ולא שמעה ישירות את אורי אלמקייס ואת הקצין שחקר את הפרשה. המינוי עצמו לא בוטל; הוועדה הונחתה להתכנס מחדש לפני המשך תהליך המינוי.",
+    "summary_en": "The Supreme Court unanimously (3-0) held that the Gronis Committee's vetting of Roman Gofman's candidacy was 'deficient' because the committee did not receive all relevant documents and did not directly hear from Ori Elmakayes or from the IDF officer who investigated the affair. The appointment itself was not annulled; the committee was directed to reconvene before the appointment process can proceed.",
+    "predicate_ag_opinion": null,
+    "respondent_body": "Senior Appointments Advisory Committee (Gronis Committee)",
+    "compliance_state": "pending",
+    "defiance_signals": "Committee directed to update the court by May 21, 2026 (12:00) on whether it would reconvene, and to file completion notice by May 26, 2026. As of last reporting, the appointment is paused pending the revised vetting.",
+    "tags": [
+      "mossad",
+      "security-appointment",
+      "appointments-committee",
+      "elmakayes",
+      "post-oct7"
+    ],
+    "notes": "Per curiam-style joint decision; no separate authoring justice identified in available reporting. The official case number(s) were not published in coverage at time of writing. The ruling's procedural-review logic mirrors Justice Amit's dissent in the December 2025 Zini/Shin Bet ruling — there it was a minority position, here unanimous."
+  },
+  {
+    "case_id": "בג\"ץ 427/10/25 ובג\"ץ 453/10/25 (מאוחדות)",
+    "case_id_slug": "427-10-25-zini",
+    "case_name_he": "התנועה למען איכות השלטון בישראל ואח' נ' ממשלת ישראל ואח'",
+    "case_name_en": "Movement for Quality Government in Israel et al. v. Government of Israel et al.",
+    "ruling_date": "2025-12-28",
+    "filing_date": "2025-06-08",
+    "panel": [
+      {
+        "name_he": "יצחק עמית",
+        "name_en": "Yitzhak Amit",
+        "role": "President",
+        "slug": "amit"
+      },
+      {
+        "name_he": "נעם סולברג",
+        "name_en": "Noam Sohlberg",
+        "role": "Deputy President",
+        "slug": "sohlberg"
+      },
+      {
+        "name_he": "דוד מינץ",
+        "name_en": "David Mintz",
+        "role": "Justice",
+        "slug": "mintz"
+      }
+    ],
+    "petitioner_type": "NGO",
+    "petitioner_name_he": "התנועה למען איכות השלטון בישראל (עו\"ד אליעד שרגא); ארבעה ראשי שב\"כ לשעבר — נדב ארגמן, עמי איילון, כרמי גילון, ונוסף — ועותרים נוספים (7 עתירות בסך הכל)",
+    "petitioner_name_en": "Movement for Quality Government in Israel (Atty. Eliad Shraga); four former Shin Bet directors — Nadav Argaman, Ami Ayalon, Carmi Gillon, and one additional — and additional petitioners (7 petitions in total)",
+    "respondent": "Government",
+    "respondent_decision_he": "אישור הממשלה (30 בספטמבר 2025) למינוי תא\"ל דוד זיני לראש השב\"כ, על פי הליך הפשרה בין נתניהו ליועמ\"שית, חרף חוות-דעת היועמ\"שית ממאי 2025 לפיה כל מינוי בהובלת נתניהו \"בלתי-תקף ובלתי-חוקי\" עקב ניגוד-עניינים הנובע מחקירות השב\"כ נגד מקורבי ראש הממשלה (פרשת קטארגייט)",
+    "respondent_decision_en": "Cabinet approval (30 September 2025) of Maj. Gen. David Zini as Director of the Shin Bet, under the Netanyahu-AG compromise procedure, despite the Attorney General's prior May 2025 opinion that any Netanyahu-led appointment was 'invalid and unlawful' due to a conflict of interest stemming from Shin Bet investigations of Netanyahu's aides (the Qatargate matters)",
+    "doctrine_invoked": [
+      "conflict_of_interest",
+      "reasonableness"
+    ],
+    "outcome": "dismissed",
+    "vote_majority": 2,
+    "vote_minority": 1,
+    "majority_authors": [
+      "sohlberg",
+      "mintz"
+    ],
+    "minority_authors": [
+      "amit"
+    ],
+    "official_url": "https://supremedecisions.court.gov.il/Home/Download?path=NetVerdicts/2025/12/28/2025-10-427-13-2&fileName=05b2a0af994d458db9dd0b81568028ff&type=4",
+    "secondary_urls": [
+      "https://www.timesofisrael.com/high-court-rejects-petitions-against-shin-bet-chiefs-appointment/",
+      "https://www.haaretz.co.il/news/law/2025-12-28/ty-article/.premium/0000019b-6406-d1ec-a59f-f5cec7850000",
+      "https://www.idi.org.il/articles/59956"
+    ],
+    "summary_he": "בית המשפט העליון, ברוב של 2-1, דחה שבע עתירות נגד מינויו של דוד זיני לראשות השב\"כ. השופטים סולברג ומינץ קבעו כי משעה שהיועמ\"שית וראש הממשלה הגיעו להסכמה על מנגנון מינוי שיושם על-ידי ועדת גרוניס, התערבות שיפוטית מוצדקת רק במקרים חריגים שלא מתקיימים כאן. הנשיא עמית בדעת מיעוט סבר כי יש להחזיר את התיק לוועדת גרוניס לבחינת ניגוד-העניינים של ראש הממשלה עצמו.",
+    "summary_en": "The Supreme Court, by a 2-1 majority, dismissed seven petitions against the appointment of David Zini as Director of the Shin Bet. Justices Sohlberg and Mintz held that once the Attorney General and Prime Minister had agreed on an appointment mechanism that was then applied by the Gronis Committee, judicial intervention was warranted only in exceptional cases not present here. President Amit, in dissent, would have remanded the matter to the Gronis Committee to examine the Prime Minister's own conflict of interest.",
+    "predicate_ag_opinion": "AG Baharav-Miara, May 2025: Netanyahu-driven appointment of Shin Bet director is 'invalid and unlawful' due to conflict of interest stemming from Shin Bet investigations of his aides",
+    "respondent_body": "Senior Appointments Advisory Committee (Gronis Committee)",
+    "compliance_state": "n/a",
+    "defiance_signals": null,
+    "tags": [
+      "shin-bet",
+      "security-appointment",
+      "appointments-committee",
+      "qatargate",
+      "conflict-of-interest"
+    ],
+    "notes": "Important counter-example to the pattern of Court-vs-government rulings: here the Court DECLINED to intervene. President Amit's dissent is now cited as the conceptual baseline for the unanimous Gofman/Mossad ruling six months later (May 2026), which applied a similar 'committee must examine the full record' logic to similar facts. Zini took office as Shin Bet chief on 5 October 2025 (interim) and remained in post after the December ruling."
+  },
+  {
+    "case_id": "בג\"ץ 18225-06-25",
+    "case_id_slug": "18225-06-25-baharav-miara",
+    "case_name_he": "גילון ואח' נ' ממשלת ישראל ואח' (עתירות נגד החלטות ממשלה 3125 ו-3306)",
+    "case_name_en": "Gillon et al. v. Government of Israel et al. (petitions against Cabinet Resolutions 3125 and 3306)",
+    "ruling_date": "2025-12-14",
+    "filing_date": "2025-06-09",
+    "panel": [
+      {
+        "name_he": "יצחק עמית",
+        "name_en": "Yitzhak Amit",
+        "role": "President",
+        "slug": "amit"
+      },
+      {
+        "name_he": "נעם סולברג",
+        "name_en": "Noam Sohlberg",
+        "role": "Deputy President",
+        "slug": "sohlberg"
+      },
+      {
+        "name_he": "ח'אלד כבוב",
+        "name_en": "Khaled Kabub",
+        "role": "Justice",
+        "slug": "kabub"
+      },
+      {
+        "name_he": "דוד מינץ",
+        "name_en": "David Mintz",
+        "role": "Justice",
+        "slug": "mintz"
+      },
+      {
+        "name_he": "אלכס שטיין",
+        "name_en": "Alex Stein",
+        "role": "Justice",
+        "slug": "stein"
+      },
+      {
+        "name_he": "עופר גרוסקופף",
+        "name_en": "Ofer Grosskopf",
+        "role": "Justice",
+        "slug": "grosskopf"
+      },
+      {
+        "name_he": "גילה כנפי-שטייניץ",
+        "name_en": "Gila Canfy-Steinitz",
+        "role": "Justice",
+        "slug": "canfy-steinitz"
+      }
+    ],
+    "petitioner_type": "NGO",
+    "petitioner_name_he": "כרמי גילון (ראש שב\"כ לשעבר), התנועה למען איכות השלטון בישראל, לשכת עורכי-הדין, ועותרים נוספים (4 עתירות מאוחדות)",
+    "petitioner_name_en": "Carmi Gillon (former Shin Bet director), Movement for Quality Government in Israel, Israel Bar Association, and additional petitioners (4 consolidated dockets)",
+    "respondent": "Cabinet",
+    "respondent_decision_he": "החלטת ממשלה 3125 (8 ביוני 2025) שביטלה את חובת ההיוועצות בוועדה הציבורית-מקצועית טרם פיטורי היועמ\"ש; והחלטת ממשלה 3306 (4 באוגוסט 2025) שבה הצביעה הממשלה פה אחד על פיטורי היועמ\"שית גלי בהרב-מיארה — הצבעה ראשונה מסוגה בתולדות מדינת ישראל",
+    "respondent_decision_en": "Cabinet Resolution 3125 (8 June 2025), which removed the requirement to consult the public-professional committee before terminating an Attorney General's tenure; and Cabinet Resolution 3306 (4 August 2025), in which the cabinet voted unanimously to fire Attorney General Gali Baharav-Miara — the first such vote in Israeli history",
+    "doctrine_invoked": [
+      "procedural_review",
+      "conflict_of_interest"
+    ],
+    "outcome": "struck_down",
+    "vote_majority": 7,
+    "vote_minority": 0,
+    "majority_authors": [
+      "amit"
+    ],
+    "minority_authors": [],
+    "official_url": "https://supremedecisions.court.gov.il/Home/Download?path=NetVerdicts%2F2025%2F12%2F14%2F2025-6-18225-46-2&fileName=c679628666624044834964934086f82c&type=4",
+    "secondary_urls": [
+      "https://img.mako.co.il/2025/12/14/bagaz.pdf",
+      "https://www.timesofisrael.com/high-court-annuls-firing-of-attorney-general-cabinet-ministers-urge-defiance-of-ruling/",
+      "https://www.jpost.com/israel-news/politics-and-diplomacy/article-880258",
+      "https://www.haaretz.co.il/news/law/2025-12-14/ty-article/0000019b-1bfe-d93d-a5fb-3bff03ee0000"
+    ],
+    "summary_he": "הרכב מורחב של שבעה שופטים פה אחד ביטל את שתי החלטות הממשלה — את התיקון מיוני 2025 שביטל את חובת ההיוועצות בוועדה הציבורית-מקצועית, ואת ההצבעה מאוגוסט 2025 על פיטורי היועמ\"שית. בית המשפט קבע כי השינוי הפרוצדורלי וההצבעה התקבלו בחיפזון, ללא בסיס עובדתי או משפטי הולם, ללא היוועצות בגופים מקצועיים, וללא שקילת חלופות. בהרב-מיארה נותרת בתפקידה.",
+    "summary_en": "An expanded seven-justice panel unanimously struck down both cabinet decisions — the June 2025 amendment removing the requirement to consult the public-professional committee, and the August 2025 vote to fire the Attorney General. The Court held that the procedural change and the dismissal vote were adopted hastily, without a proper factual or legal basis, without consulting professional bodies, and without considering alternatives. Baharav-Miara remains in office.",
+    "predicate_ag_opinion": null,
+    "respondent_body": null,
+    "compliance_state": "contested",
+    "defiance_signals": "Multiple cabinet ministers publicly urged defiance of the ruling immediately after release. No formal cabinet act of defiance was taken. The ruling is now the leading authority cited against any future attempt to alter the AG-termination mechanism by cabinet resolution rather than primary legislation.",
+    "tags": [
+      "attorney-general",
+      "gatekeeper",
+      "cabinet-resolution",
+      "first-of-kind",
+      "expanded-panel"
+    ],
+    "notes": "First time in Israeli history a cabinet voted to fire an AG. The High Court immediately froze the dismissal in August 2025; the December 2025 ruling made the freeze permanent and voided both underlying resolutions. President Amit authored the lead opinion."
+  },
+  {
+    "case_id": "בג\"ץ 5658/23",
+    "case_id_slug": "5658-23",
+    "case_name_he": "התנועה למען איכות השלטון בישראל ואח' נ' הכנסת ואח'",
+    "case_name_en": "Movement for Quality Government in Israel et al. v. The Knesset et al.",
+    "ruling_date": "2024-01-01",
+    "filing_date": null,
+    "panel": [
+      {
+        "name_he": "אסתר חיות",
+        "name_en": "Esther Hayut",
+        "role": "Retired Justice",
+        "slug": "hayut"
+      },
+      {
+        "name_he": "עוזי פוגלמן",
+        "name_en": "Uzi Vogelman",
+        "role": "Deputy President",
+        "slug": "vogelman"
+      },
+      {
+        "name_he": "יצחק עמית",
+        "name_en": "Yitzhak Amit",
+        "role": "Justice",
+        "slug": "amit"
+      },
+      {
+        "name_he": "נעם סולברג",
+        "name_en": "Noam Sohlberg",
+        "role": "Justice",
+        "slug": "sohlberg"
+      },
+      {
+        "name_he": "דפנה ברק-ארז",
+        "name_en": "Daphne Barak-Erez",
+        "role": "Justice",
+        "slug": "barak-erez"
+      },
+      {
+        "name_he": "ענת ברון",
+        "name_en": "Anat Baron",
+        "role": "Retired Justice",
+        "slug": "baron"
+      },
+      {
+        "name_he": "דוד מינץ",
+        "name_en": "David Mintz",
+        "role": "Justice",
+        "slug": "mintz"
+      },
+      {
+        "name_he": "יוסף אלרון",
+        "name_en": "Yosef Elron",
+        "role": "Justice",
+        "slug": "elron"
+      },
+      {
+        "name_he": "יעל וילנר",
+        "name_en": "Yael Willner",
+        "role": "Justice",
+        "slug": "willner"
+      },
+      {
+        "name_he": "עופר גרוסקופף",
+        "name_en": "Ofer Grosskopf",
+        "role": "Justice",
+        "slug": "grosskopf"
+      },
+      {
+        "name_he": "אלכס שטיין",
+        "name_en": "Alex Stein",
+        "role": "Justice",
+        "slug": "stein"
+      },
+      {
+        "name_he": "גילה כנפי-שטייניץ",
+        "name_en": "Gila Canfy-Steinitz",
+        "role": "Justice",
+        "slug": "canfy-steinitz"
+      },
+      {
+        "name_he": "ח'אלד כבוב",
+        "name_en": "Khaled Kabub",
+        "role": "Justice",
+        "slug": "kabub"
+      },
+      {
+        "name_he": "יחיאל כשר",
+        "name_en": "Yechiel Kasher",
+        "role": "Justice",
+        "slug": "kasher"
+      },
+      {
+        "name_he": "רות רונן",
+        "name_en": "Ruth Ronen",
+        "role": "Justice",
+        "slug": "ronen"
+      }
+    ],
+    "petitioner_type": "NGO",
+    "petitioner_name_he": "התנועה למען איכות השלטון בישראל (ועתירות נוספות מאוחדות)",
+    "petitioner_name_en": "Movement for Quality Government in Israel (with additional consolidated petitions including the Israel Bar Association)",
+    "respondent": "Knesset",
+    "respondent_decision_he": "תיקון מס' 3 לחוק-יסוד: השפיטה (חוק-יסוד: השפיטה (תיקון מס' 3)), אשר ביטל את עילת הסבירות לגבי החלטות הממשלה, ראש הממשלה והשרים",
+    "respondent_decision_en": "Amendment No. 3 to Basic Law: The Judiciary, which removed the reasonableness ground of judicial review from decisions of the government, the Prime Minister, and the ministers",
+    "doctrine_invoked": [
+      "constituent_authority_limits",
+      "basic_law_judiciary"
+    ],
+    "outcome": "struck_down",
+    "vote_majority": 8,
+    "vote_minority": 7,
+    "majority_authors": [
+      "hayut",
+      "vogelman",
+      "amit",
+      "barak-erez",
+      "baron",
+      "grosskopf",
+      "kabub",
+      "ronen"
+    ],
+    "minority_authors": [
+      "sohlberg",
+      "mintz",
+      "elron",
+      "willner",
+      "stein",
+      "canfy-steinitz",
+      "kasher"
+    ],
+    "official_url": "https://supremedecisions.court.gov.il/Home/Download?path=HebrewVerdicts%2F23%2F580%2F056%2Fv31&fileName=23056580.V31&type=2",
+    "secondary_urls": [
+      "https://versa.cardozo.yu.edu/opinions/movement-quality-government-v-knesset",
+      "https://versa.cardozo.yu.edu/viewpoints/translation-official-abstract-movement-quality-government-v-knesset",
+      "https://commons.wikimedia.org/wiki/File:HCJ_5658-23_Movement_for_Quality_Government_in_Israel_v._Knesset_(2024)_(Isr.)_(Hebrew).pdf"
+    ],
+    "summary_he": "בית המשפט העליון, בהרכב מלא של 15 שופטים, ביטל ברוב של 8-7 את תיקון מס' 3 לחוק-יסוד: השפיטה, וקבע כי התיקון פוגע במידה קיצונית במאפייני הליבה של מדינת ישראל כמדינה יהודית ודמוקרטית. בהחלטה נפרדת ברוב של 12-3 קבע בית המשפט עקרונית את סמכותו לבחון תיקונים לחוקי-יסוד החורגים מסמכותה המכוננת של הכנסת.",
+    "summary_en": "The Supreme Court, sitting as an en banc panel of 15 justices, by an 8-7 majority struck down Amendment No. 3 to Basic Law: The Judiciary, holding that the amendment caused an extreme injury to the core characteristics of the State of Israel as a Jewish and democratic state. In a separate 12-3 holding, the Court established in principle its authority to review Basic Law amendments that exceed the Knesset's constituent authority.",
+    "predicate_ag_opinion": "AG Gali Baharav-Miara filed a brief siding with petitioners",
+    "respondent_body": null,
+    "compliance_state": "complied",
+    "defiance_signals": "Coalition leaders publicly criticized the ruling; Justice Minister Levin called it 'the opposite of the spirit of unity.' No direct re-enactment of the amendment was attempted. The legislative reform agenda pivoted to Judicial Selection Committee restructuring (March 2025).",
+    "tags": [
+      "constitutional-revolution",
+      "basic-law-amendment",
+      "reasonableness",
+      "en-banc",
+      "post-oct7",
+      "headliner"
+    ],
+    "notes": "First instance in Israeli history of the Supreme Court striking down an amendment to a Basic Law. Justices Hayut and Baron had retired in October 2023 (Hayut Oct 16, Baron Oct 12) but participated in the ruling within the statutory three-month post-retirement window per §15(d) Basic Law: The Judiciary and §10A Courts Law. The 12-3 holding on the principle of reviewing Basic Laws was decided concurrently with the 8-7 holding on this specific amendment. Justices Willner, Stein, and Canfy-Steinitz accepted the review-power principle but voted against application by reading the amendment narrowly to preserve 'reasonableness-balancing' per HCJ 389/80 Dapei Zahav."
+  },
+  {
+    "case_id": "בג\"ץ 8948/22",
+    "case_id_slug": "8948-22-deri",
+    "case_name_he": "התנועה למען איכות השלטון בישראל ואח' נ' ראש הממשלה ואח'",
+    "case_name_en": "Movement for Quality Government in Israel et al. v. Prime Minister et al.",
+    "ruling_date": "2023-01-18",
+    "filing_date": null,
+    "panel": [
+      {
+        "name_he": "אסתר חיות",
+        "name_en": "Esther Hayut",
+        "role": "President",
+        "slug": "hayut"
+      },
+      {
+        "name_he": "עוזי פוגלמן",
+        "name_en": "Uzi Vogelman",
+        "role": "Deputy President",
+        "slug": "vogelman"
+      },
+      {
+        "name_he": "יצחק עמית",
+        "name_en": "Yitzhak Amit",
+        "role": "Justice",
+        "slug": "amit"
+      },
+      {
+        "name_he": "נעם סולברג",
+        "name_en": "Noam Sohlberg",
+        "role": "Justice",
+        "slug": "sohlberg"
+      },
+      {
+        "name_he": "דפנה ברק-ארז",
+        "name_en": "Daphne Barak-Erez",
+        "role": "Justice",
+        "slug": "barak-erez"
+      },
+      {
+        "name_he": "ענת ברון",
+        "name_en": "Anat Baron",
+        "role": "Justice",
+        "slug": "baron"
+      },
+      {
+        "name_he": "יוסף אלרון",
+        "name_en": "Yosef Elron",
+        "role": "Justice",
+        "slug": "elron"
+      },
+      {
+        "name_he": "עופר גרוסקופף",
+        "name_en": "Ofer Grosskopf",
+        "role": "Justice",
+        "slug": "grosskopf"
+      },
+      {
+        "name_he": "אלכס שטיין",
+        "name_en": "Alex Stein",
+        "role": "Justice",
+        "slug": "stein"
+      },
+      {
+        "name_he": "ח'אלד כבוב",
+        "name_en": "Khaled Kabub",
+        "role": "Justice",
+        "slug": "kabub"
+      },
+      {
+        "name_he": "רות רונן",
+        "name_en": "Ruth Ronen",
+        "role": "Justice",
+        "slug": "ronen"
+      }
+    ],
+    "petitioner_type": "NGO",
+    "petitioner_name_he": "התנועה למען איכות השלטון בישראל (ועתירות נוספות)",
+    "petitioner_name_en": "Movement for Quality Government in Israel (with additional petitions)",
+    "respondent": "Prime Minister",
+    "respondent_decision_he": "מינוי אריה דרעי (יו\"ר ש\"ס) לתפקיד שר הפנים ושר הבריאות בממשלת נתניהו השישית, חרף הרשעתו בעבירות מס והצהרתו במסגרת הסדר הטיעון כי יפרוש מהחיים הציבוריים",
+    "respondent_decision_en": "Appointment of Aryeh Deri (Shas chairman) as Minister of the Interior and Minister of Health in the sixth Netanyahu government, despite his tax-fraud conviction and his sworn representation during plea-bargain proceedings that he would retire from public life",
+    "doctrine_invoked": [
+      "reasonableness"
+    ],
+    "outcome": "struck_down",
+    "vote_majority": 10,
+    "vote_minority": 1,
+    "majority_authors": [
+      "hayut"
+    ],
+    "minority_authors": [
+      "elron"
+    ],
+    "official_url": "https://supremedecisions.court.gov.il/Home/Download?path=HebrewVerdicts%2F22%2F480%2F089%2Fp14&fileName=22089480.P14&type=2",
+    "secondary_urls": [
+      "https://img.mako.co.il/2023/01/18/begaz_deri_full.pdf",
+      "https://www.timesofisrael.com/in-bombshell-ruling-high-court-nixes-shas-head-deri-from-serving-as-minister/"
+    ],
+    "summary_he": "בית המשפט העליון, בהרכב מורחב של 11 שופטים, ביטל ברוב של 10-1 את מינויו של אריה דרעי לשר הפנים ושר הבריאות. בית המשפט קבע כי בנסיבות המקרה — לרבות הרשעת דרעי בעבירות מס והצהרתו לבית המשפט במסגרת הסדר טיעון כי יפרוש מהחיים הציבוריים — המינוי חרג ממתחם הסבירות באופן קיצוני.",
+    "summary_en": "The Supreme Court, sitting as an expanded 11-justice panel, struck down the appointment of Aryeh Deri as Minister of Interior and Minister of Health by a 10-1 majority. The Court held that the appointment exceeded the boundaries of reasonableness in an extreme manner given the circumstances, including Deri's tax-fraud conviction and his sworn court representation during plea-bargain proceedings that he would retire from public life.",
+    "predicate_ag_opinion": null,
+    "respondent_body": null,
+    "compliance_state": "complied",
+    "defiance_signals": "Coalition leaders criticized the ruling; PM Netanyahu publicly stated he was 'pained' by the decision but removed Deri from the cabinet. Subsequent attempts (2024-2025) to legislate around the ruling via amendment to Basic Law: Government were not advanced.",
+    "tags": [
+      "appointment-block",
+      "reasonableness",
+      "minister-appointment",
+      "deri",
+      "expanded-panel"
+    ],
+    "notes": "Single dissent by Justice Yosef Elron. Justice Hayut wrote the lead opinion. The ruling was a major precedent on reasonableness review of cabinet appointments and is frequently cited as a paradigm example in the 'how often does the Court intervene on reasonableness' literature."
+  }
+]

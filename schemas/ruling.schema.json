@@ -1,0 +1,195 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://github.com/EleazarBenSimon/court-observatory/schemas/ruling.schema.json",
+  "title": "Court Observatory — Ruling",
+  "description": "Structured factual record of a single Israeli Supreme Court ruling within the project's scope (see METHODOLOGY.md §1).",
+  "type": "object",
+  "required": [
+    "case_id",
+    "case_id_slug",
+    "case_name_he",
+    "case_name_en",
+    "ruling_date",
+    "panel",
+    "petitioner_type",
+    "respondent",
+    "outcome",
+    "official_url",
+    "summary_he",
+    "summary_en"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "case_id": {
+      "type": "string",
+      "description": "Official Hebrew case identifier as printed in the ruling, e.g. 'בג\"ץ 5658/23'. Use the exact string the court uses."
+    },
+    "case_id_slug": {
+      "type": "string",
+      "pattern": "^[a-z0-9-]+$",
+      "description": "URL-safe filename slug, e.g. '5658-23'. Must match the filename (without .json)."
+    },
+    "case_name_he": {
+      "type": "string",
+      "description": "Hebrew case style: petitioner v. respondent."
+    },
+    "case_name_en": {
+      "type": "string",
+      "description": "English case style: petitioner v. respondent."
+    },
+    "ruling_date": {
+      "type": "string",
+      "format": "date",
+      "description": "Date the final judgment was issued, ISO 8601."
+    },
+    "filing_date": {
+      "type": ["string", "null"],
+      "format": "date",
+      "description": "Date the lead petition was filed. Null if not findable."
+    },
+    "panel": {
+      "type": "array",
+      "minItems": 1,
+      "description": "Justices on the panel that decided this ruling.",
+      "items": {
+        "type": "object",
+        "required": ["name_he", "name_en"],
+        "additionalProperties": false,
+        "properties": {
+          "name_he": { "type": "string", "description": "Justice's name in Hebrew." },
+          "name_en": { "type": "string", "description": "Justice's name in English." },
+          "role": {
+            "type": "string",
+            "enum": ["President", "Acting President", "Deputy President", "Justice", "Retired Justice"],
+            "description": "Court role at the time of this ruling. Use 'Retired Justice' for participation within the statutory post-retirement window."
+          },
+          "slug": {
+            "type": "string",
+            "pattern": "^[a-z0-9-]+$",
+            "description": "Stable identifier for joining with data/justices/<slug>.json."
+          }
+        }
+      }
+    },
+    "petitioner_type": {
+      "type": "string",
+      "enum": ["NGO", "Individual", "State", "MK", "Party", "Local-Authority", "Other"],
+      "description": "Category of the lead petitioner."
+    },
+    "petitioner_name_he": {
+      "type": ["string", "null"],
+      "description": "Hebrew name of the lead petitioner (NGO, individual, party, etc.). Use 'בעילום שם' for anonymous if applicable."
+    },
+    "petitioner_name_en": {
+      "type": ["string", "null"],
+      "description": "English transliteration or translation of the lead petitioner's name."
+    },
+    "respondent": {
+      "type": "string",
+      "enum": ["Government", "Prime Minister", "Minister", "Cabinet", "Senior-Appointments-Committee", "Knesset", "Local-Authority", "Other"],
+      "description": "Identity of the primary respondent whose decision is challenged."
+    },
+    "respondent_decision_he": {
+      "type": ["string", "null"],
+      "description": "Hebrew description of the specific government decision being challenged."
+    },
+    "respondent_decision_en": {
+      "type": ["string", "null"],
+      "description": "English description of the specific government decision being challenged."
+    },
+    "doctrine_invoked": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "reasonableness",
+          "proportionality",
+          "basic_law_human_dignity_and_liberty",
+          "basic_law_freedom_of_occupation",
+          "basic_law_judiciary",
+          "basic_law_government",
+          "conflict_of_interest",
+          "procedural_review",
+          "ultra_vires",
+          "natural_justice",
+          "constituent_authority_limits",
+          "other"
+        ]
+      },
+      "description": "Doctrines explicitly named by the ruling. Do not infer doctrines the ruling did not name. See METHODOLOGY §2."
+    },
+    "outcome": {
+      "type": "string",
+      "enum": ["struck_down", "partially_struck", "remanded", "restricted", "upheld", "dismissed", "modified"],
+      "description": "Disposition of the petition. 'upheld' means the petition was granted; 'dismissed' means denied."
+    },
+    "vote_majority": {
+      "type": ["integer", "null"],
+      "minimum": 1,
+      "description": "Number of justices in the majority/winning position. Null if not findable or if the ruling was unanimous (use vote_majority equal to panel size)."
+    },
+    "vote_minority": {
+      "type": ["integer", "null"],
+      "minimum": 0,
+      "description": "Number of justices in dissent or alternative position. Zero for unanimous."
+    },
+    "majority_authors": {
+      "type": "array",
+      "items": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+      "description": "Slugs of justices who authored opinions in the majority. Empty if no separate opinions identified."
+    },
+    "minority_authors": {
+      "type": "array",
+      "items": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+      "description": "Slugs of justices who authored dissenting opinions."
+    },
+    "official_url": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL of the official ruling text. Strongly prefer supremedecisions.court.gov.il. See METHODOLOGY §5."
+    },
+    "secondary_urls": {
+      "type": "array",
+      "items": { "type": "string", "format": "uri" },
+      "description": "Optional: Versa/Cardozo translations, IDI articles, authoritative archives. Do not include news commentary."
+    },
+    "summary_he": {
+      "type": "string",
+      "minLength": 20,
+      "maxLength": 600,
+      "description": "Factual one-to-two-sentence Hebrew summary. See METHODOLOGY §4 — no editorializing."
+    },
+    "summary_en": {
+      "type": "string",
+      "minLength": 20,
+      "maxLength": 600,
+      "description": "Factual one-to-two-sentence English summary. See METHODOLOGY §4."
+    },
+    "predicate_ag_opinion": {
+      "type": ["string", "null"],
+      "description": "If the cabinet/government acted against a prior Attorney General opinion, brief reference to that opinion (date + topic). Null otherwise."
+    },
+    "respondent_body": {
+      "type": ["string", "null"],
+      "description": "Specific statutory or executive body whose action is being reviewed (e.g. 'Senior Appointments Advisory Committee', 'Gronis Committee'). Distinct from broader respondent category."
+    },
+    "compliance_state": {
+      "type": "string",
+      "enum": ["pending", "complied", "contested", "n/a"],
+      "description": "Has the government complied with the ruling? 'pending' = compliance in progress; 'complied' = effective; 'contested' = ruling stands but defiance signals exist; 'n/a' = no compliance question (petition dismissed)."
+    },
+    "defiance_signals": {
+      "type": ["string", "null"],
+      "description": "Free-text note on any government refusal to comply, public statements of intent to defy, or legislative work-arounds. Cite sources in the notes field."
+    },
+    "tags": {
+      "type": "array",
+      "items": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+      "description": "Optional editorial tags for cross-cutting filtering. Examples: 'appointment-block', 'security-sector', 'religion-state', 'post-oct7'."
+    },
+    "notes": {
+      "type": ["string", "null"],
+      "description": "Free-text notes on disputed facts, source conflicts, or contextual information that doesn't belong in summary fields. See METHODOLOGY §7."
+    }
+  }
+}

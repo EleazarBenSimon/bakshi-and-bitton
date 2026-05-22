@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Court Observatory · Justices</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<div id="root"></div>
+<script src="assets/app.js"></script>
+<script>
+(async function () {
+  const { t, el, fetchJSON, justice_name, renderHeader, renderFooter, lang } = window.CO;
+  const root = document.getElementById("root");
+  document.documentElement.lang = lang;
+  root.append(renderHeader("justices"));
+
+  const main = el("main", {});
+  main.append(el("h1", {}, t.nav_justices));
+
+  let justices;
+  try {
+    justices = await fetchJSON("_data/justices.json");
+  } catch (e) {
+    main.append(el("p", {}, `Error: ${e.message}`));
+    root.append(main);
+    return;
+  }
+
+  main.append(el("p", { style: "color:var(--text-muted);font-size:14px" },
+    lang === "he"
+      ? `${justices.length} שופטים מופיעים במאגר. הספירה מבוססת אך ורק על הופעות פאנל בפסיקות שכלולות במאגר זה — לא היסטוריית כהונה מלאה.`
+      : `${justices.length} justices appear in this dataset. Counts reflect panel appearances within rulings tracked here — not full tenure history.`
+  ));
+
+  const table = el("table", {},
+    el("thead", {},
+      el("tr", {},
+        el("th", {}, lang === "he" ? "שופט/ת" : "Justice"),
+        el("th", { style: "text-align:center" }, t.col_appearances),
+        el("th", { style: "text-align:center" }, t.col_authored_majority),
+        el("th", { style: "text-align:center" }, t.col_authored_minority),
+      )
+    ),
+    el("tbody", {})
+  );
+
+  const tbody = table.querySelector("tbody");
+  for (const j of justices) {
+    const tr = el("tr", {},
+      el("td", {}, el("a", { href: `justice.html?slug=${j.slug}` }, justice_name(j))),
+      el("td", { class: "vote", style: "text-align:center" }, String(j.panel_count)),
+      el("td", { class: "vote", style: "text-align:center" }, String(j.majority_authored)),
+      el("td", { class: "vote", style: "text-align:center" }, String(j.minority_authored)),
+    );
+    tbody.append(tr);
+  }
+
+  main.append(table);
+
+  root.append(main);
+  root.append(renderFooter());
+})();
+</script>
+</body>
+</html>

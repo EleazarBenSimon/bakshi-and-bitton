@@ -1,0 +1,48 @@
+{
+  "case_id": "בג\"ץ 427/10/25 ובג\"ץ 453/10/25 (מאוחדות)",
+  "case_id_slug": "427-10-25-zini",
+  "case_name_he": "התנועה למען איכות השלטון בישראל ואח' נ' ממשלת ישראל ואח'",
+  "case_name_en": "Movement for Quality Government in Israel et al. v. Government of Israel et al.",
+  "ruling_date": "2025-12-28",
+  "filing_date": "2025-06-08",
+  "panel": [
+    { "name_he": "יצחק עמית", "name_en": "Yitzhak Amit", "role": "President", "slug": "amit" },
+    { "name_he": "נעם סולברג", "name_en": "Noam Sohlberg", "role": "Deputy President", "slug": "sohlberg" },
+    { "name_he": "דוד מינץ", "name_en": "David Mintz", "role": "Justice", "slug": "mintz" }
+  ],
+  "petitioner_type": "NGO",
+  "petitioner_name_he": "התנועה למען איכות השלטון בישראל (עו\"ד אליעד שרגא); ארבעה ראשי שב\"כ לשעבר — נדב ארגמן, עמי איילון, כרמי גילון, ונוסף — ועותרים נוספים (7 עתירות בסך הכל)",
+  "petitioner_name_en": "Movement for Quality Government in Israel (Atty. Eliad Shraga); four former Shin Bet directors — Nadav Argaman, Ami Ayalon, Carmi Gillon, and one additional — and additional petitioners (7 petitions in total)",
+  "respondent": "Government",
+  "respondent_decision_he": "אישור הממשלה (30 בספטמבר 2025) למינוי תא\"ל דוד זיני לראש השב\"כ, על פי הליך הפשרה בין נתניהו ליועמ\"שית, חרף חוות-דעת היועמ\"שית ממאי 2025 לפיה כל מינוי בהובלת נתניהו \"בלתי-תקף ובלתי-חוקי\" עקב ניגוד-עניינים הנובע מחקירות השב\"כ נגד מקורבי ראש הממשלה (פרשת קטארגייט)",
+  "respondent_decision_en": "Cabinet approval (30 September 2025) of Maj. Gen. David Zini as Director of the Shin Bet, under the Netanyahu-AG compromise procedure, despite the Attorney General's prior May 2025 opinion that any Netanyahu-led appointment was 'invalid and unlawful' due to a conflict of interest stemming from Shin Bet investigations of Netanyahu's aides (the Qatargate matters)",
+  "doctrine_invoked": [
+    "conflict_of_interest",
+    "reasonableness"
+  ],
+  "outcome": "dismissed",
+  "vote_majority": 2,
+  "vote_minority": 1,
+  "majority_authors": ["sohlberg", "mintz"],
+  "minority_authors": ["amit"],
+  "official_url": "https://supremedecisions.court.gov.il/Home/Download?path=NetVerdicts/2025/12/28/2025-10-427-13-2&fileName=05b2a0af994d458db9dd0b81568028ff&type=4",
+  "secondary_urls": [
+    "https://www.timesofisrael.com/high-court-rejects-petitions-against-shin-bet-chiefs-appointment/",
+    "https://www.haaretz.co.il/news/law/2025-12-28/ty-article/.premium/0000019b-6406-d1ec-a59f-f5cec7850000",
+    "https://www.idi.org.il/articles/59956"
+  ],
+  "summary_he": "בית המשפט העליון, ברוב של 2-1, דחה שבע עתירות נגד מינויו של דוד זיני לראשות השב\"כ. השופטים סולברג ומינץ קבעו כי משעה שהיועמ\"שית וראש הממשלה הגיעו להסכמה על מנגנון מינוי שיושם על-ידי ועדת גרוניס, התערבות שיפוטית מוצדקת רק במקרים חריגים שלא מתקיימים כאן. הנשיא עמית בדעת מיעוט סבר כי יש להחזיר את התיק לוועדת גרוניס לבחינת ניגוד-העניינים של ראש הממשלה עצמו.",
+  "summary_en": "The Supreme Court, by a 2-1 majority, dismissed seven petitions against the appointment of David Zini as Director of the Shin Bet. Justices Sohlberg and Mintz held that once the Attorney General and Prime Minister had agreed on an appointment mechanism that was then applied by the Gronis Committee, judicial intervention was warranted only in exceptional cases not present here. President Amit, in dissent, would have remanded the matter to the Gronis Committee to examine the Prime Minister's own conflict of interest.",
+  "predicate_ag_opinion": "AG Baharav-Miara, May 2025: Netanyahu-driven appointment of Shin Bet director is 'invalid and unlawful' due to conflict of interest stemming from Shin Bet investigations of his aides",
+  "respondent_body": "Senior Appointments Advisory Committee (Gronis Committee)",
+  "compliance_state": "n/a",
+  "defiance_signals": null,
+  "tags": [
+    "shin-bet",
+    "security-appointment",
+    "appointments-committee",
+    "qatargate",
+    "conflict-of-interest"
+  ],
+  "notes": "Important counter-example to the pattern of Court-vs-government rulings: here the Court DECLINED to intervene. President Amit's dissent is now cited as the conceptual baseline for the unanimous Gofman/Mossad ruling six months later (May 2026), which applied a similar 'committee must examine the full record' logic to similar facts. Zini took office as Shin Bet chief on 5 October 2025 (interim) and remained in post after the December ruling."
+}

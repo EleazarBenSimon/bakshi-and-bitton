@@ -1,0 +1,54 @@
+{
+  "case_id": "בג\"ץ 8948/22",
+  "case_id_slug": "8948-22-deri",
+  "case_name_he": "התנועה למען איכות השלטון בישראל ואח' נ' ראש הממשלה ואח'",
+  "case_name_en": "Movement for Quality Government in Israel et al. v. Prime Minister et al.",
+  "ruling_date": "2023-01-18",
+  "filing_date": null,
+  "panel": [
+    { "name_he": "אסתר חיות", "name_en": "Esther Hayut", "role": "President", "slug": "hayut" },
+    { "name_he": "עוזי פוגלמן", "name_en": "Uzi Vogelman", "role": "Deputy President", "slug": "vogelman" },
+    { "name_he": "יצחק עמית", "name_en": "Yitzhak Amit", "role": "Justice", "slug": "amit" },
+    { "name_he": "נעם סולברג", "name_en": "Noam Sohlberg", "role": "Justice", "slug": "sohlberg" },
+    { "name_he": "דפנה ברק-ארז", "name_en": "Daphne Barak-Erez", "role": "Justice", "slug": "barak-erez" },
+    { "name_he": "ענת ברון", "name_en": "Anat Baron", "role": "Justice", "slug": "baron" },
+    { "name_he": "יוסף אלרון", "name_en": "Yosef Elron", "role": "Justice", "slug": "elron" },
+    { "name_he": "עופר גרוסקופף", "name_en": "Ofer Grosskopf", "role": "Justice", "slug": "grosskopf" },
+    { "name_he": "אלכס שטיין", "name_en": "Alex Stein", "role": "Justice", "slug": "stein" },
+    { "name_he": "ח'אלד כבוב", "name_en": "Khaled Kabub", "role": "Justice", "slug": "kabub" },
+    { "name_he": "רות רונן", "name_en": "Ruth Ronen", "role": "Justice", "slug": "ronen" }
+  ],
+  "petitioner_type": "NGO",
+  "petitioner_name_he": "התנועה למען איכות השלטון בישראל (ועתירות נוספות)",
+  "petitioner_name_en": "Movement for Quality Government in Israel (with additional petitions)",
+  "respondent": "Prime Minister",
+  "respondent_decision_he": "מינוי אריה דרעי (יו\"ר ש\"ס) לתפקיד שר הפנים ושר הבריאות בממשלת נתניהו השישית, חרף הרשעתו בעבירות מס והצהרתו במסגרת הסדר הטיעון כי יפרוש מהחיים הציבוריים",
+  "respondent_decision_en": "Appointment of Aryeh Deri (Shas chairman) as Minister of the Interior and Minister of Health in the sixth Netanyahu government, despite his tax-fraud conviction and his sworn representation during plea-bargain proceedings that he would retire from public life",
+  "doctrine_invoked": [
+    "reasonableness"
+  ],
+  "outcome": "struck_down",
+  "vote_majority": 10,
+  "vote_minority": 1,
+  "majority_authors": ["hayut"],
+  "minority_authors": ["elron"],
+  "official_url": "https://supremedecisions.court.gov.il/Home/Download?path=HebrewVerdicts%2F22%2F480%2F089%2Fp14&fileName=22089480.P14&type=2",
+  "secondary_urls": [
+    "https://img.mako.co.il/2023/01/18/begaz_deri_full.pdf",
+    "https://www.timesofisrael.com/in-bombshell-ruling-high-court-nixes-shas-head-deri-from-serving-as-minister/"
+  ],
+  "summary_he": "בית המשפט העליון, בהרכב מורחב של 11 שופטים, ביטל ברוב של 10-1 את מינויו של אריה דרעי לשר הפנים ושר הבריאות. בית המשפט קבע כי בנסיבות המקרה — לרבות הרשעת דרעי בעבירות מס והצהרתו לבית המשפט במסגרת הסדר טיעון כי יפרוש מהחיים הציבוריים — המינוי חרג ממתחם הסבירות באופן קיצוני.",
+  "summary_en": "The Supreme Court, sitting as an expanded 11-justice panel, struck down the appointment of Aryeh Deri as Minister of Interior and Minister of Health by a 10-1 majority. The Court held that the appointment exceeded the boundaries of reasonableness in an extreme manner given the circumstances, including Deri's tax-fraud conviction and his sworn court representation during plea-bargain proceedings that he would retire from public life.",
+  "predicate_ag_opinion": null,
+  "respondent_body": null,
+  "compliance_state": "complied",
+  "defiance_signals": "Coalition leaders criticized the ruling; PM Netanyahu publicly stated he was 'pained' by the decision but removed Deri from the cabinet. Subsequent attempts (2024-2025) to legislate around the ruling via amendment to Basic Law: Government were not advanced.",
+  "tags": [
+    "appointment-block",
+    "reasonableness",
+    "minister-appointment",
+    "deri",
+    "expanded-panel"
+  ],
+  "notes": "Single dissent by Justice Yosef Elron. Justice Hayut wrote the lead opinion. The ruling was a major precedent on reasonableness review of cabinet appointments and is frequently cited as a paradigm example in the 'how often does the Court intervene on reasonableness' literature."
+}

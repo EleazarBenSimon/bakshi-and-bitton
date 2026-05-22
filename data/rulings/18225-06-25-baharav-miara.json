@@ -1,0 +1,53 @@
+{
+  "case_id": "בג\"ץ 18225-06-25",
+  "case_id_slug": "18225-06-25-baharav-miara",
+  "case_name_he": "גילון ואח' נ' ממשלת ישראל ואח' (עתירות נגד החלטות ממשלה 3125 ו-3306)",
+  "case_name_en": "Gillon et al. v. Government of Israel et al. (petitions against Cabinet Resolutions 3125 and 3306)",
+  "ruling_date": "2025-12-14",
+  "filing_date": "2025-06-09",
+  "panel": [
+    { "name_he": "יצחק עמית", "name_en": "Yitzhak Amit", "role": "President", "slug": "amit" },
+    { "name_he": "נעם סולברג", "name_en": "Noam Sohlberg", "role": "Deputy President", "slug": "sohlberg" },
+    { "name_he": "ח'אלד כבוב", "name_en": "Khaled Kabub", "role": "Justice", "slug": "kabub" },
+    { "name_he": "דוד מינץ", "name_en": "David Mintz", "role": "Justice", "slug": "mintz" },
+    { "name_he": "אלכס שטיין", "name_en": "Alex Stein", "role": "Justice", "slug": "stein" },
+    { "name_he": "עופר גרוסקופף", "name_en": "Ofer Grosskopf", "role": "Justice", "slug": "grosskopf" },
+    { "name_he": "גילה כנפי-שטייניץ", "name_en": "Gila Canfy-Steinitz", "role": "Justice", "slug": "canfy-steinitz" }
+  ],
+  "petitioner_type": "NGO",
+  "petitioner_name_he": "כרמי גילון (ראש שב\"כ לשעבר), התנועה למען איכות השלטון בישראל, לשכת עורכי-הדין, ועותרים נוספים (4 עתירות מאוחדות)",
+  "petitioner_name_en": "Carmi Gillon (former Shin Bet director), Movement for Quality Government in Israel, Israel Bar Association, and additional petitioners (4 consolidated dockets)",
+  "respondent": "Cabinet",
+  "respondent_decision_he": "החלטת ממשלה 3125 (8 ביוני 2025) שביטלה את חובת ההיוועצות בוועדה הציבורית-מקצועית טרם פיטורי היועמ\"ש; והחלטת ממשלה 3306 (4 באוגוסט 2025) שבה הצביעה הממשלה פה אחד על פיטורי היועמ\"שית גלי בהרב-מיארה — הצבעה ראשונה מסוגה בתולדות מדינת ישראל",
+  "respondent_decision_en": "Cabinet Resolution 3125 (8 June 2025), which removed the requirement to consult the public-professional committee before terminating an Attorney General's tenure; and Cabinet Resolution 3306 (4 August 2025), in which the cabinet voted unanimously to fire Attorney General Gali Baharav-Miara — the first such vote in Israeli history",
+  "doctrine_invoked": [
+    "procedural_review",
+    "conflict_of_interest"
+  ],
+  "outcome": "struck_down",
+  "vote_majority": 7,
+  "vote_minority": 0,
+  "majority_authors": ["amit"],
+  "minority_authors": [],
+  "official_url": "https://supremedecisions.court.gov.il/Home/Download?path=NetVerdicts%2F2025%2F12%2F14%2F2025-6-18225-46-2&fileName=c679628666624044834964934086f82c&type=4",
+  "secondary_urls": [
+    "https://img.mako.co.il/2025/12/14/bagaz.pdf",
+    "https://www.timesofisrael.com/high-court-annuls-firing-of-attorney-general-cabinet-ministers-urge-defiance-of-ruling/",
+    "https://www.jpost.com/israel-news/politics-and-diplomacy/article-880258",
+    "https://www.haaretz.co.il/news/law/2025-12-14/ty-article/0000019b-1bfe-d93d-a5fb-3bff03ee0000"
+  ],
+  "summary_he": "הרכב מורחב של שבעה שופטים פה אחד ביטל את שתי החלטות הממשלה — את התיקון מיוני 2025 שביטל את חובת ההיוועצות בוועדה הציבורית-מקצועית, ואת ההצבעה מאוגוסט 2025 על פיטורי היועמ\"שית. בית המשפט קבע כי השינוי הפרוצדורלי וההצבעה התקבלו בחיפזון, ללא בסיס עובדתי או משפטי הולם, ללא היוועצות בגופים מקצועיים, וללא שקילת חלופות. בהרב-מיארה נותרת בתפקידה.",
+  "summary_en": "An expanded seven-justice panel unanimously struck down both cabinet decisions — the June 2025 amendment removing the requirement to consult the public-professional committee, and the August 2025 vote to fire the Attorney General. The Court held that the procedural change and the dismissal vote were adopted hastily, without a proper factual or legal basis, without consulting professional bodies, and without considering alternatives. Baharav-Miara remains in office.",
+  "predicate_ag_opinion": null,
+  "respondent_body": null,
+  "compliance_state": "contested",
+  "defiance_signals": "Multiple cabinet ministers publicly urged defiance of the ruling immediately after release. No formal cabinet act of defiance was taken. The ruling is now the leading authority cited against any future attempt to alter the AG-termination mechanism by cabinet resolution rather than primary legislation.",
+  "tags": [
+    "attorney-general",
+    "gatekeeper",
+    "cabinet-resolution",
+    "first-of-kind",
+    "expanded-panel"
+  ],
+  "notes": "First time in Israeli history a cabinet voted to fire an AG. The High Court immediately froze the dismissal in August 2025; the December 2025 ruling made the freeze permanent and voided both underlying resolutions. President Amit authored the lead opinion."
+}

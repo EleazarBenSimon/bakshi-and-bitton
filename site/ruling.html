@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Court Observatory · Ruling</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<div id="root"></div>
+<script src="assets/app.js"></script>
+<script>
+(async function () {
+  const { t, el, fetchJSON, ruling_name, role_label, renderHeader, renderFooter, lang } = window.CO;
+  const root = document.getElementById("root");
+  document.documentElement.lang = lang;
+  root.append(renderHeader("rulings"));
+
+  const main = el("main", {});
+
+  const id = new URLSearchParams(location.search).get("id");
+  if (!id) {
+    main.append(el("p", {}, "No ruling ID specified."));
+    root.append(main);
+    return;
+  }
+
+  let rulings;
+  try {
+    rulings = await fetchJSON("_data/rulings.json");
+  } catch (e) {
+    main.append(el("p", {}, `Error: ${e.message}`));
+    root.append(main);
+    return;
+  }
+
+  const r = rulings.find((x) => x.case_id_slug === id);
+  if (!r) {
+    main.append(el("p", {}, `Ruling not found: ${id}`));
+    root.append(main);
+    return;
+  }
+
+  main.append(el("p", {}, el("a", { href: "index.html" }, "← " + t.nav_rulings)));
+  main.append(el("h1", {}, r.case_id));
+  main.append(el("p", { style: "color:var(--text-muted);font-size:15px;margin-top:-8px" }, ruling_name(r)));
+
+  const summary = lang === "he" ? r.summary_he : r.summary_en;
+  main.append(el("p", { style: "font-size:16px;line-height:1.6" }, summary));
+
+  if (r.official_url) {
+    main.append(el("p", {}, el("a", { class: "source-link", href: r.official_url, target: "_blank", rel: "noopener" }, "→ " + t.label_official_url)));
+  }
+
+  const grid = el("dl", { class: "ruling-detail-grid" });
+
+  const addField = (label, value) => {
+    if (value == null || value === "" || (Array.isArray(value) && value.length === 0)) return;
+    grid.append(el("dt", {}, label));
+    if (typeof value === "string" || typeof value === "number") {
+      grid.append(el("dd", {}, String(value)));
+    } else if (value instanceof Node) {
+      grid.append(el("dd", {}, value));
+    } else {
+      grid.append(el("dd", {}, JSON.stringify(value)));
+    }
+  };
+
+  addField(t.label_ruling_date, r.ruling_date);
+  if (r.filing_date) addField(t.label_filing_date, r.filing_date);
+  addField(t.label_petitioner_type, r.petitioner_type);
+  addField(t.label_petitioner, lang === "he" ? r.petitioner_name_he : r.petitioner_name_en);
+  addField(t.label_respondent, r.respondent);
+  if (r.respondent_body) addField(t.label_respondent_body, r.respondent_body);
+  addField(t.label_respondent_decision, lang === "he" ? r.respondent_decision_he : r.respondent_decision_en);
+  addField(t.label_doctrine_invoked, (r.doctrine_invoked || []).join(", "));
+  addField(t.label_outcome, el("span", { class: `outcome-pill outcome-${r.outcome}` }, r.outcome.replace(/_/g, " ")));
+  if (r.vote_majority != null) {
+    addField(t.label_vote, `${r.vote_majority}–${r.vote_minority ?? 0}`);
+  }
+  if (r.predicate_ag_opinion) addField(t.label_predicate_ag, r.predicate_ag_opinion);
+  if (r.compliance_state) addField(t.label_compliance, r.compliance_state);
+  if (r.defiance_signals) addField(t.label_defiance, r.defiance_signals);
+  if ((r.tags || []).length) addField(t.label_tags, (r.tags || []).join(", "));
+
+  main.append(grid);
+
+  // Panel
+  main.append(el("h2", {}, t.label_panel));
+  const ul = el("ul", { class: "panel-list" });
+  for (const j of r.panel || []) {
+    const isMajAuthor = (r.majority_authors || []).includes(j.slug);
+    const isMinAuthor = (r.minority_authors || []).includes(j.slug);
+    const klass = isMajAuthor ? "author-majority" : isMinAuthor ? "author-minority" : "";
+    const li = el("li", { class: klass },
+      j.slug ? el("a", { href: `justice.html?slug=${j.slug}` }, (lang === "he" ? j.name_he : j.name_en)) : (lang === "he" ? j.name_he : j.name_en),
+      j.role ? el("span", { style: "color:var(--text-muted);font-size:11px;margin-inline-start:6px" }, role_label(j.role)) : null,
+    );
+    ul.append(li);
+  }
+  main.append(ul);
+
+  if (r.majority_authors?.length || r.minority_authors?.length) {
+    main.append(el("p", { style: "font-size:13px;color:var(--text-muted);margin-top:8px" },
+      `· ${t.label_majority_authors}: ${(r.majority_authors || []).join(", ") || "—"}`,
+      el("br"),
+      `· ${t.label_minority_authors}: ${(r.minority_authors || []).join(", ") || "—"}`,
+    ));
+  }
+
+  // Secondary sources
+  if ((r.secondary_urls || []).length) {
+    main.append(el("h2", {}, t.label_secondary_sources));
+    const ul2 = el("ul", {});
+    for (const u of r.secondary_urls) {
+      ul2.append(el("li", {}, el("a", { href: u, target: "_blank", rel: "noopener" }, u)));
+    }
+    main.append(ul2);
+  }
+
+  // Notes
+  if (r.notes) {
+    main.append(el("h2", {}, t.label_notes));
+    main.append(el("div", { class: "notes-box" }, r.notes));
+  }
+
+  root.append(main);
+  root.append(renderFooter());
+})();
+</script>
+</body>
+</html>

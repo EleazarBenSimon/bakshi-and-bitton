@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Court Observatory · Justice</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<div id="root"></div>
+<script src="assets/app.js"></script>
+<script>
+(async function () {
+  const { t, el, fetchJSON, justice_name, role_label, renderHeader, renderFooter, lang } = window.CO;
+  const root = document.getElementById("root");
+  document.documentElement.lang = lang;
+  root.append(renderHeader("justices"));
+
+  const main = el("main", {});
+
+  const slug = new URLSearchParams(location.search).get("slug");
+  if (!slug) {
+    main.append(el("p", {}, "No justice slug specified."));
+    root.append(main);
+    return;
+  }
+
+  let justices;
+  try {
+    justices = await fetchJSON("_data/justices.json");
+  } catch (e) {
+    main.append(el("p", {}, `Error: ${e.message}`));
+    root.append(main);
+    return;
+  }
+
+  const j = justices.find((x) => x.slug === slug);
+  if (!j) {
+    main.append(el("p", {}, `Justice not found: ${slug}`));
+    root.append(main);
+    return;
+  }
+
+  main.append(el("p", {}, el("a", { href: "justices.html" }, "← " + t.nav_justices)));
+  main.append(el("h1", {}, justice_name(j)));
+  main.append(el("p", { style: "color:var(--text-muted);font-size:14px" },
+    lang === "he"
+      ? `${j.panel_count} הופעות במאגר · ${j.majority_authored} חיברו דעת רוב · ${j.minority_authored} חיברו דעת מיעוט`
+      : `${j.panel_count} appearances in this dataset · ${j.majority_authored} majority opinions authored · ${j.minority_authored} dissents authored`
+  ));
+
+  main.append(el("h2", {}, lang === "he" ? "הופעות בהרכבי פאנל" : "Panel appearances"));
+
+  const table = el("table", {},
+    el("thead", {},
+      el("tr", {},
+        el("th", {}, t.col_date),
+        el("th", {}, t.col_case),
+        el("th", {}, t.col_outcome),
+        el("th", {}, t.col_role),
+        el("th", {}, lang === "he" ? "כתב דעת" : "Authored"),
+      )
+    ),
+    el("tbody", {})
+  );
+
+  const tbody = table.querySelector("tbody");
+  for (const a of j.appearances) {
+    const authored = a.authored_majority
+      ? (lang === "he" ? "דעת רוב" : "Majority")
+      : a.authored_minority
+      ? (lang === "he" ? "דעת מיעוט" : "Minority")
+      : "—";
+    const tr = el("tr", {},
+      el("td", { class: "vote" }, a.ruling_date || "—"),
+      el("td", {}, el("a", { href: `ruling.html?id=${a.case_id_slug}` }, a.case_id)),
+      el("td", {}, el("span", { class: `outcome-pill outcome-${a.outcome}` }, (a.outcome || "").replace(/_/g, " "))),
+      el("td", { style: "font-size:13px" }, role_label(a.role || "Justice")),
+      el("td", { style: "font-size:13px" }, authored),
+    );
+    tbody.append(tr);
+  }
+
+  main.append(table);
+
+  main.append(el("div", { class: "notice", style: "margin-top:24px" },
+    lang === "he"
+      ? "מאגר זה אינו רושם או מאפיין שופטים. הנתונים כאן הם הופעות פאנל וחיבור חוות-דעת — עובדות פרוצדורליות בלבד."
+      : "This dataset does not characterize justices. The data here is panel appearances and opinion authorship — procedural facts only."
+  ));
+
+  root.append(main);
+  root.append(renderFooter());
+})();
+</script>
+</body>
+</html>
