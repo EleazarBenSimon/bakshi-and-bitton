@@ -2,9 +2,11 @@
 
 ## Reporting a vulnerability or sensitive data issue
 
-If you discover a security vulnerability, a data-integrity bug that could be exploited, or a data-subject privacy concern, please **do not open a public issue**. Instead, contact the maintainer privately:
+If you discover a security vulnerability, a data-integrity bug that could be exploited, a data-subject privacy concern, or a factual correction request, please contact the maintainer privately:
 
 **Email**: `eleazarbensimon@gmail.com`
+
+Public Issues are currently disabled on this repository to keep moderation manageable. All correction and privacy requests should be sent via email; we aim to respond within 7 business days.
 
 Please include in your report:
 

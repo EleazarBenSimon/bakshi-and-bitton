@@ -15,7 +15,10 @@ We welcome contributions of new ruling entries, corrections to existing entries,
 
 ## Submitting a correction
 
-Open an issue describing the disputed field, the source supporting your proposed change, and the source the current entry relies on. If sources conflict, see METHODOLOGY §7.
+**Issues are currently disabled on this repository.** To report a factual correction, either:
+
+1. Open a pull request with the corrected field value and a source link in the PR description, OR
+2. Email the maintainer per [SECURITY.md](SECURITY.md) describing the disputed field, the source supporting your proposed change, and the source the current entry relies on. If sources conflict, see METHODOLOGY §7.
 
 ## Style for the `summary_he` and `summary_en` fields
 
@@ -34,9 +37,9 @@ When in doubt: write the summary the way a wire-service reporter would write the
 
 ## Disputed and contested entries
 
-If you believe an existing entry contains a disputed fact, please:
+If you believe an existing entry contains a disputed fact, please email the maintainer per [SECURITY.md](SECURITY.md) (Issues are currently disabled). In your email:
 
-1. Open an issue (not a PR) describing the dispute
+1. Describe the dispute and the field involved
 2. Cite the conflicting sources
 3. Suggest one of: (a) update the field with notes about the dispute, (b) remove the disputed fact and leave the field null, (c) keep the field as is
 

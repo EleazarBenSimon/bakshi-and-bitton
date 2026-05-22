@@ -39,6 +39,10 @@ See [CONTRIBUTING.md](CONTRIBUTING.md). Pull requests adding new rulings are rev
 
 MIT. See [LICENSE](LICENSE).
 
+## Disclaimer
+
+**This project is not a legal source.** Every entry links to the official Israeli Supreme Court ruling at [supreme.court.gov.il](https://supreme.court.gov.il), which is the authoritative text. The structured data here is a research and journalism aid; for any legal use, consult the official ruling text and a qualified Israeli attorney.
+
 ## Languages
 
 Hebrew (RTL) is the primary interface language. English is provided in parallel for international citation and academic use.
