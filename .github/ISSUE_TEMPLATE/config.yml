@@ -1,11 +1,11 @@
 blank_issues_enabled: false
 contact_links:
   - name: 📧 Factual corrections (data-subject requests, errors)
-    url: https://github.com/EleazarBenSimon/court-observatory/blob/main/SECURITY.md
+    url: https://github.com/EleazarBenSimon/bakshi-and-bitton/blob/main/SECURITY.md
     about: Issues are currently disabled. Please email the maintainer per SECURITY.md.
   - name: 📝 New ruling submission
-    url: https://github.com/EleazarBenSimon/court-observatory/blob/main/CONTRIBUTING.md
+    url: https://github.com/EleazarBenSimon/bakshi-and-bitton/blob/main/CONTRIBUTING.md
     about: Open a Pull Request following the CONTRIBUTING guide.
   - name: 📜 Methodology questions
-    url: https://github.com/EleazarBenSimon/court-observatory/blob/main/METHODOLOGY.md
+    url: https://github.com/EleazarBenSimon/bakshi-and-bitton/blob/main/METHODOLOGY.md
     about: Read the METHODOLOGY document first; methodology changes follow §9.

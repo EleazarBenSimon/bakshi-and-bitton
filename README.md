@@ -1,4 +1,4 @@
-# Court Observatory (מצפה המשפט)
+# Bakshi&Bitton (בקשי וביטון)
 
 A public, data-driven monitor of recent Israeli Supreme Court (HCJ) rulings that intervene in government decisions and appointments.
 

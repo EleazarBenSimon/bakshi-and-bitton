@@ -1,9 +1,9 @@
-// Court Observatory — V0 client-side rendering
+// Bakshi&Bitton — V0 client-side rendering
 // Loads JSON data and renders pages. No framework, no build step.
 
 const i18n = {
   he: {
-    site_title: "מצפה המשפט",
+    site_title: "בקשי וביטון",
     site_subtitle: "פסיקות בית המשפט העליון בעניין החלטות ממשלה ומינויים",
     nav_rulings: "פסיקות",
     nav_justices: "שופטים",
@@ -56,7 +56,7 @@ const i18n = {
     role_RJ: "שופט/ת בדימוס (בחלון סטטוטורי)",
   },
   en: {
-    site_title: "Court Observatory",
+    site_title: "Bakshi&Bitton",
     site_subtitle: "Israeli Supreme Court rulings on government decisions and appointments",
     nav_rulings: "Rulings",
     nav_justices: "Justices",
@@ -111,13 +111,13 @@ const i18n = {
 };
 
 function getLang() {
-  const stored = localStorage.getItem("court-observatory-lang");
+  const stored = localStorage.getItem("bakshi-and-bitton-lang");
   if (stored === "he" || stored === "en") return stored;
   return "he";
 }
 
 function setLang(lang) {
-  localStorage.setItem("court-observatory-lang", lang);
+  localStorage.setItem("bakshi-and-bitton-lang", lang);
   document.documentElement.lang = lang;
   location.reload();
 }
@@ -186,10 +186,10 @@ function renderHeader(active) {
 
 function renderFooter() {
   return el("footer", {},
-    "Court Observatory · ",
-    el("a", { href: "https://github.com/EleazarBenSimon/court-observatory" }, "github.com/EleazarBenSimon/court-observatory"),
+    "Bakshi&Bitton · ",
+    el("a", { href: "https://github.com/EleazarBenSimon/bakshi-and-bitton" }, "github.com/EleazarBenSimon/bakshi-and-bitton"),
     " · MIT License · ",
-    el("a", { href: "https://github.com/EleazarBenSimon/court-observatory/blob/main/METHODOLOGY.md" }, t.nav_methodology)
+    el("a", { href: "https://github.com/EleazarBenSimon/bakshi-and-bitton/blob/main/METHODOLOGY.md" }, t.nav_methodology)
   );
 }
 
