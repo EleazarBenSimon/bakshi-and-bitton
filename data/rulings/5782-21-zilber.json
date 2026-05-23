@@ -1,0 +1,45 @@
+{
+  "case_id": "בג\"ץ 5782/21",
+  "case_id_slug": "5782-21-zilber",
+  "case_name_he": "זילבר ואח' נ' שר האוצר",
+  "case_name_en": "Zilber et al. v. Minister of Finance",
+  "ruling_date": "2022-01-12",
+  "filing_date": null,
+  "panel": [
+    { "name_he": "עוזי פוגלמן", "name_en": "Uzi Vogelman", "role": "Justice", "slug": "vogelman" },
+    { "name_he": "עופר גרוסקופף", "name_en": "Ofer Grosskopf", "role": "Justice", "slug": "grosskopf" },
+    { "name_he": "אלכס שטיין", "name_en": "Alex Stein", "role": "Justice", "slug": "stein" }
+  ],
+  "petitioner_type": "Individual",
+  "petitioner_name_he": "לאה זילבר ואחרים",
+  "petitioner_name_en": "Leah Zilber and others",
+  "respondent": "Minister",
+  "respondent_decision_he": "החלטת שר האוצר אביגדור ליברמן לבטל באמצע שנת התקציב את סבסוד המעונות לילדי אברכים הלומדים במסגרת תורתם אומנותם, ללא תקופת מעבר",
+  "respondent_decision_en": "Decision of Finance Minister Avigdor Lieberman to cancel mid-budget-year the subsidies for daycare of children of yeshiva students engaged in full-time religious study, without a transition period",
+  "doctrine_invoked": [
+    "reasonableness"
+  ],
+  "outcome": "partially_struck",
+  "vote_majority": 3,
+  "vote_minority": 0,
+  "majority_authors": ["stein"],
+  "minority_authors": [],
+  "official_url": "https://supremedecisions.court.gov.il/Home/Download?path=HebrewVerdicts%5C21%5C820%5C057%5Cf24&fileName=21057820.F24&type=4",
+  "secondary_urls": [
+    "https://he.wikipedia.org/wiki/בג%22ץ_זילבר_נגד_שר_האוצר"
+  ],
+  "summary_he": "בית המשפט העליון, פה אחד, הורה להחזיר את הקריטריונים הקודמים לסבסוד מעונות לילדי אברכים עד תום שנת הלימודים. בית המשפט קבע כי הפסקת תמיכה רווחתית ארוכת-שנים באמצע שנה, ללא תקופת מעבר, אינה סבירה לאור אינטרס ההסתמכות של האזרחים.",
+  "summary_en": "The Supreme Court, unanimously, ordered the prior criteria for daycare subsidies for yeshiva-student families to be reinstated through the end of the academic year. The Court held that terminating a long-standing welfare support mid-year, without a transition period, was unreasonable in light of citizens' legitimate reliance interests.",
+  "predicate_ag_opinion": null,
+  "respondent_body": null,
+  "compliance_state": "complied",
+  "defiance_signals": null,
+  "tags": [
+    "reasonableness",
+    "ministerial-decision",
+    "welfare-policy",
+    "transition-period",
+    "reliance-interest"
+  ],
+  "notes": "Justice Stein wrote the majority opinion. The ruling is frequently cited in the literature on ministerial-decision-review by reasonableness; appears in the IDI catalog of decade-window reasonableness interventions."
+}

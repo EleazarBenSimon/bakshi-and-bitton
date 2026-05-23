@@ -1,0 +1,48 @@
+{
+  "case_id": "בג\"ץ 3132/15",
+  "case_id_slug": "3132-15-yesh-atid-litzman",
+  "case_name_he": "סיעת יש עתיד נ' ראש הממשלה",
+  "case_name_en": "Yesh Atid Party v. Prime Minister",
+  "ruling_date": "2015-08-23",
+  "filing_date": null,
+  "panel": [
+    { "name_he": "מרים נאור", "name_en": "Miriam Naor", "role": "President", "slug": "naor" },
+    { "name_he": "אליקים רובינשטיין", "name_en": "Elyakim Rubinstein", "role": "Deputy President", "slug": "rubinstein" },
+    { "name_he": "סלים ג'ובראן", "name_en": "Salim Joubran", "role": "Justice", "slug": "joubran" },
+    { "name_he": "חנן מלצר", "name_en": "Hanan Melcer", "role": "Justice", "slug": "melcer" },
+    { "name_he": "ניל הנדל", "name_en": "Neal Hendel", "role": "Justice", "slug": "hendel" }
+  ],
+  "petitioner_type": "Party",
+  "petitioner_name_he": "סיעת יש עתיד (יאיר לפיד)",
+  "petitioner_name_en": "Yesh Atid Party (Yair Lapid)",
+  "respondent": "Prime Minister",
+  "respondent_decision_he": "ההסדר שיזם ראש הממשלה נתניהו למינוי יעקב ליצמן כסגן שר הבריאות בעל סמכויות שר מלאות, תוך השארת תיק הבריאות עצמו ללא שר, כעקיפה של הוראות חוק יסוד: הממשלה",
+  "respondent_decision_en": "The arrangement initiated by PM Netanyahu to appoint Yaakov Litzman as Deputy Minister of Health with full ministerial authority, while leaving the Health Minister portfolio itself vacant, as a workaround to the provisions of Basic Law: The Government",
+  "doctrine_invoked": [
+    "reasonableness",
+    "basic_law_government"
+  ],
+  "outcome": "struck_down",
+  "vote_majority": 5,
+  "vote_minority": 0,
+  "majority_authors": ["naor"],
+  "minority_authors": [],
+  "official_url": "https://versa.cardozo.yu.edu/sites/default/files/upload/opinions/Yeshi%20Atid%20Party%20v.%20Prime%20Minister.pdf",
+  "secondary_urls": [
+    "https://versa.cardozo.yu.edu/opinions/yesh-atid-party-v-prime-minister"
+  ],
+  "summary_he": "בית המשפט העליון, פה אחד, קבע כי ההסדר של \"סגן שר במעמד שר\" - שבו סגן שר מנהל בפועל משרד שלם בהיעדר שר ממונה - אינו מתיישב עם מבנה חוק יסוד: הממשלה. בית המשפט הורה לסיים את ההסדר תוך 60 ימים והגדיר אותו כבלתי-סביר בנסיבות.",
+  "summary_en": "The Supreme Court, unanimously, held that the 'deputy-minister-with-minister-authority' arrangement — in which a deputy minister effectively runs an entire ministry in the absence of an appointed minister — is inconsistent with the structure of Basic Law: The Government. The Court ordered the arrangement terminated within 60 days and characterized it as unreasonable in the circumstances.",
+  "predicate_ag_opinion": null,
+  "respondent_body": null,
+  "compliance_state": "complied",
+  "defiance_signals": "The original arrangement was terminated. Subsequent variants were attempted; later phases of the ruling (April 2016) struck down extensions as unreasonable.",
+  "tags": [
+    "reasonableness",
+    "ministerial-appointment",
+    "basic-law-government",
+    "coalition-arrangement",
+    "haredi-politics"
+  ],
+  "notes": "President Naor wrote the lead opinion. The ruling established that creative coalition arrangements which evade the formal structure of Basic Law: The Government can be struck down on reasonableness grounds even where each individual appointment is formally lawful."
+}

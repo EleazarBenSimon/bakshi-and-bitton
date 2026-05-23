@@ -1,0 +1,45 @@
+{
+  "case_id": "בג\"ץ 1892/14",
+  "case_id_slug": "1892-14-acri-prison-space",
+  "case_name_he": "האגודה לזכויות האזרח בישראל ואח' נ' השר לביטחון פנים",
+  "case_name_en": "Association for Civil Rights in Israel et al. v. Minister of Public Security",
+  "ruling_date": "2017-06-13",
+  "filing_date": null,
+  "panel": [
+    { "name_he": "אליקים רובינשטיין", "name_en": "Elyakim Rubinstein", "role": "Deputy President", "slug": "rubinstein" },
+    { "name_he": "אורי שוהם", "name_en": "Uri Shoham", "role": "Justice", "slug": "shoham" },
+    { "name_he": "חנן מלצר", "name_en": "Hanan Melcer", "role": "Justice", "slug": "melcer" }
+  ],
+  "petitioner_type": "NGO",
+  "petitioner_name_he": "האגודה לזכויות האזרח בישראל ואירגוני זכויות-אדם נוספים",
+  "petitioner_name_en": "Association for Civil Rights in Israel and additional human-rights NGOs",
+  "respondent": "Minister",
+  "respondent_decision_he": "המחדל המתמשך של השר לביטחון פנים ושירות בתי-הסוהר ביישום התקנה הקובעת מינימום של 4 מ\"ר שטח מחיה לאסיר, חרף קביעת התקנה ושטח מחיה בפועל של כ-3.1 מ\"ר במשך עשרות שנים",
+  "respondent_decision_en": "The prolonged failure of the Minister of Public Security and the Israel Prison Service to implement the regulation establishing a minimum 4 m² of living space per prisoner, despite the regulation being on the books and the actual living space being approximately 3.1 m² for two decades",
+  "doctrine_invoked": [
+    "reasonableness"
+  ],
+  "outcome": "struck_down",
+  "vote_majority": 3,
+  "vote_minority": 0,
+  "majority_authors": ["rubinstein"],
+  "minority_authors": [],
+  "official_url": "https://supremedecisions.court.gov.il/Home/Download?path=HebrewVerdicts%5C14%5C920%5C018%5Ct28&fileName=14018920_t28.txt&type=2",
+  "secondary_urls": [
+    "https://versa.cardozo.yu.edu/opinions/association-civil-rights-israel-v-minister-public-security"
+  ],
+  "summary_he": "בית המשפט העליון, פה אחד, הוציא צו על-תנאי המחייב את משרד הביטחון הפנים ושב\"ס ליישם את התקן המינימלי של 4 מ\"ר שטח מחיה לאסיר תוך 18 חודשים. בית המשפט קבע כי המחדל המנהלי המתמשך, חרף קיומה של התקנה, חורג ממתחם הסבירות.",
+  "summary_en": "The Supreme Court, unanimously, issued a mandatory order requiring the Ministry of Public Security and the Israel Prison Service to implement the minimum 4 m² living space per prisoner within 18 months. The Court held that the prolonged administrative failure, despite the existence of the regulation, exceeded the boundaries of reasonableness.",
+  "predicate_ag_opinion": null,
+  "respondent_body": null,
+  "compliance_state": "contested",
+  "defiance_signals": "The 18-month deadline came and went without full implementation; subsequent petitions extended the timeline. The ruling remains one of the most-cited examples of reasonableness review applied to sustained ministerial inaction.",
+  "tags": [
+    "reasonableness",
+    "administrative-failure",
+    "prison-conditions",
+    "ngo-petitioner",
+    "mandatory-order"
+  ],
+  "notes": "Deputy President Rubinstein wrote the lead opinion. Frequently cited as a paradigmatic example of reasonableness review applied not to a discrete decision but to sustained administrative non-implementation of a regulation."
+}

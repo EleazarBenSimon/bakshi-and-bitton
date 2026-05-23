@@ -485,5 +485,264 @@
       "expanded-panel"
     ],
     "notes": "Single dissent by Justice Yosef Elron. Justice Hayut wrote the lead opinion. The ruling was a major precedent on reasonableness review of cabinet appointments and is frequently cited as a paradigm example in the 'how often does the Court intervene on reasonableness' literature."
+  },
+  {
+    "case_id": "בג\"ץ 5782/21",
+    "case_id_slug": "5782-21-zilber",
+    "case_name_he": "זילבר ואח' נ' שר האוצר",
+    "case_name_en": "Zilber et al. v. Minister of Finance",
+    "ruling_date": "2022-01-12",
+    "filing_date": null,
+    "panel": [
+      {
+        "name_he": "עוזי פוגלמן",
+        "name_en": "Uzi Vogelman",
+        "role": "Justice",
+        "slug": "vogelman"
+      },
+      {
+        "name_he": "עופר גרוסקופף",
+        "name_en": "Ofer Grosskopf",
+        "role": "Justice",
+        "slug": "grosskopf"
+      },
+      {
+        "name_he": "אלכס שטיין",
+        "name_en": "Alex Stein",
+        "role": "Justice",
+        "slug": "stein"
+      }
+    ],
+    "petitioner_type": "Individual",
+    "petitioner_name_he": "לאה זילבר ואחרים",
+    "petitioner_name_en": "Leah Zilber and others",
+    "respondent": "Minister",
+    "respondent_decision_he": "החלטת שר האוצר אביגדור ליברמן לבטל באמצע שנת התקציב את סבסוד המעונות לילדי אברכים הלומדים במסגרת תורתם אומנותם, ללא תקופת מעבר",
+    "respondent_decision_en": "Decision of Finance Minister Avigdor Lieberman to cancel mid-budget-year the subsidies for daycare of children of yeshiva students engaged in full-time religious study, without a transition period",
+    "doctrine_invoked": [
+      "reasonableness"
+    ],
+    "outcome": "partially_struck",
+    "vote_majority": 3,
+    "vote_minority": 0,
+    "majority_authors": [
+      "stein"
+    ],
+    "minority_authors": [],
+    "official_url": "https://supremedecisions.court.gov.il/Home/Download?path=HebrewVerdicts%5C21%5C820%5C057%5Cf24&fileName=21057820.F24&type=4",
+    "secondary_urls": [
+      "https://he.wikipedia.org/wiki/בג%22ץ_זילבר_נגד_שר_האוצר"
+    ],
+    "summary_he": "בית המשפט העליון, פה אחד, הורה להחזיר את הקריטריונים הקודמים לסבסוד מעונות לילדי אברכים עד תום שנת הלימודים. בית המשפט קבע כי הפסקת תמיכה רווחתית ארוכת-שנים באמצע שנה, ללא תקופת מעבר, אינה סבירה לאור אינטרס ההסתמכות של האזרחים.",
+    "summary_en": "The Supreme Court, unanimously, ordered the prior criteria for daycare subsidies for yeshiva-student families to be reinstated through the end of the academic year. The Court held that terminating a long-standing welfare support mid-year, without a transition period, was unreasonable in light of citizens' legitimate reliance interests.",
+    "predicate_ag_opinion": null,
+    "respondent_body": null,
+    "compliance_state": "complied",
+    "defiance_signals": null,
+    "tags": [
+      "reasonableness",
+      "ministerial-decision",
+      "welfare-policy",
+      "transition-period",
+      "reliance-interest"
+    ],
+    "notes": "Justice Stein wrote the majority opinion. The ruling is frequently cited in the literature on ministerial-decision-review by reasonableness; appears in the IDI catalog of decade-window reasonableness interventions."
+  },
+  {
+    "case_id": "בג\"ץ 1892/14",
+    "case_id_slug": "1892-14-acri-prison-space",
+    "case_name_he": "האגודה לזכויות האזרח בישראל ואח' נ' השר לביטחון פנים",
+    "case_name_en": "Association for Civil Rights in Israel et al. v. Minister of Public Security",
+    "ruling_date": "2017-06-13",
+    "filing_date": null,
+    "panel": [
+      {
+        "name_he": "אליקים רובינשטיין",
+        "name_en": "Elyakim Rubinstein",
+        "role": "Deputy President",
+        "slug": "rubinstein"
+      },
+      {
+        "name_he": "אורי שוהם",
+        "name_en": "Uri Shoham",
+        "role": "Justice",
+        "slug": "shoham"
+      },
+      {
+        "name_he": "חנן מלצר",
+        "name_en": "Hanan Melcer",
+        "role": "Justice",
+        "slug": "melcer"
+      }
+    ],
+    "petitioner_type": "NGO",
+    "petitioner_name_he": "האגודה לזכויות האזרח בישראל ואירגוני זכויות-אדם נוספים",
+    "petitioner_name_en": "Association for Civil Rights in Israel and additional human-rights NGOs",
+    "respondent": "Minister",
+    "respondent_decision_he": "המחדל המתמשך של השר לביטחון פנים ושירות בתי-הסוהר ביישום התקנה הקובעת מינימום של 4 מ\"ר שטח מחיה לאסיר, חרף קביעת התקנה ושטח מחיה בפועל של כ-3.1 מ\"ר במשך עשרות שנים",
+    "respondent_decision_en": "The prolonged failure of the Minister of Public Security and the Israel Prison Service to implement the regulation establishing a minimum 4 m² of living space per prisoner, despite the regulation being on the books and the actual living space being approximately 3.1 m² for two decades",
+    "doctrine_invoked": [
+      "reasonableness"
+    ],
+    "outcome": "struck_down",
+    "vote_majority": 3,
+    "vote_minority": 0,
+    "majority_authors": [
+      "rubinstein"
+    ],
+    "minority_authors": [],
+    "official_url": "https://supremedecisions.court.gov.il/Home/Download?path=HebrewVerdicts%5C14%5C920%5C018%5Ct28&fileName=14018920_t28.txt&type=2",
+    "secondary_urls": [
+      "https://versa.cardozo.yu.edu/opinions/association-civil-rights-israel-v-minister-public-security"
+    ],
+    "summary_he": "בית המשפט העליון, פה אחד, הוציא צו על-תנאי המחייב את משרד הביטחון הפנים ושב\"ס ליישם את התקן המינימלי של 4 מ\"ר שטח מחיה לאסיר תוך 18 חודשים. בית המשפט קבע כי המחדל המנהלי המתמשך, חרף קיומה של התקנה, חורג ממתחם הסבירות.",
+    "summary_en": "The Supreme Court, unanimously, issued a mandatory order requiring the Ministry of Public Security and the Israel Prison Service to implement the minimum 4 m² living space per prisoner within 18 months. The Court held that the prolonged administrative failure, despite the existence of the regulation, exceeded the boundaries of reasonableness.",
+    "predicate_ag_opinion": null,
+    "respondent_body": null,
+    "compliance_state": "contested",
+    "defiance_signals": "The 18-month deadline came and went without full implementation; subsequent petitions extended the timeline. The ruling remains one of the most-cited examples of reasonableness review applied to sustained ministerial inaction.",
+    "tags": [
+      "reasonableness",
+      "administrative-failure",
+      "prison-conditions",
+      "ngo-petitioner",
+      "mandatory-order"
+    ],
+    "notes": "Deputy President Rubinstein wrote the lead opinion. Frequently cited as a paradigmatic example of reasonableness review applied not to a discrete decision but to sustained administrative non-implementation of a regulation."
+  },
+  {
+    "case_id": "בג\"ץ 3132/15",
+    "case_id_slug": "3132-15-yesh-atid-litzman",
+    "case_name_he": "סיעת יש עתיד נ' ראש הממשלה",
+    "case_name_en": "Yesh Atid Party v. Prime Minister",
+    "ruling_date": "2015-08-23",
+    "filing_date": null,
+    "panel": [
+      {
+        "name_he": "מרים נאור",
+        "name_en": "Miriam Naor",
+        "role": "President",
+        "slug": "naor"
+      },
+      {
+        "name_he": "אליקים רובינשטיין",
+        "name_en": "Elyakim Rubinstein",
+        "role": "Deputy President",
+        "slug": "rubinstein"
+      },
+      {
+        "name_he": "סלים ג'ובראן",
+        "name_en": "Salim Joubran",
+        "role": "Justice",
+        "slug": "joubran"
+      },
+      {
+        "name_he": "חנן מלצר",
+        "name_en": "Hanan Melcer",
+        "role": "Justice",
+        "slug": "melcer"
+      },
+      {
+        "name_he": "ניל הנדל",
+        "name_en": "Neal Hendel",
+        "role": "Justice",
+        "slug": "hendel"
+      }
+    ],
+    "petitioner_type": "Party",
+    "petitioner_name_he": "סיעת יש עתיד (יאיר לפיד)",
+    "petitioner_name_en": "Yesh Atid Party (Yair Lapid)",
+    "respondent": "Prime Minister",
+    "respondent_decision_he": "ההסדר שיזם ראש הממשלה נתניהו למינוי יעקב ליצמן כסגן שר הבריאות בעל סמכויות שר מלאות, תוך השארת תיק הבריאות עצמו ללא שר, כעקיפה של הוראות חוק יסוד: הממשלה",
+    "respondent_decision_en": "The arrangement initiated by PM Netanyahu to appoint Yaakov Litzman as Deputy Minister of Health with full ministerial authority, while leaving the Health Minister portfolio itself vacant, as a workaround to the provisions of Basic Law: The Government",
+    "doctrine_invoked": [
+      "reasonableness",
+      "basic_law_government"
+    ],
+    "outcome": "struck_down",
+    "vote_majority": 5,
+    "vote_minority": 0,
+    "majority_authors": [
+      "naor"
+    ],
+    "minority_authors": [],
+    "official_url": "https://versa.cardozo.yu.edu/sites/default/files/upload/opinions/Yeshi%20Atid%20Party%20v.%20Prime%20Minister.pdf",
+    "secondary_urls": [
+      "https://versa.cardozo.yu.edu/opinions/yesh-atid-party-v-prime-minister"
+    ],
+    "summary_he": "בית המשפט העליון, פה אחד, קבע כי ההסדר של \"סגן שר במעמד שר\" - שבו סגן שר מנהל בפועל משרד שלם בהיעדר שר ממונה - אינו מתיישב עם מבנה חוק יסוד: הממשלה. בית המשפט הורה לסיים את ההסדר תוך 60 ימים והגדיר אותו כבלתי-סביר בנסיבות.",
+    "summary_en": "The Supreme Court, unanimously, held that the 'deputy-minister-with-minister-authority' arrangement — in which a deputy minister effectively runs an entire ministry in the absence of an appointed minister — is inconsistent with the structure of Basic Law: The Government. The Court ordered the arrangement terminated within 60 days and characterized it as unreasonable in the circumstances.",
+    "predicate_ag_opinion": null,
+    "respondent_body": null,
+    "compliance_state": "complied",
+    "defiance_signals": "The original arrangement was terminated. Subsequent variants were attempted; later phases of the ruling (April 2016) struck down extensions as unreasonable.",
+    "tags": [
+      "reasonableness",
+      "ministerial-appointment",
+      "basic-law-government",
+      "coalition-arrangement",
+      "haredi-politics"
+    ],
+    "notes": "President Naor wrote the lead opinion. The ruling established that creative coalition arrangements which evade the formal structure of Basic Law: The Government can be struck down on reasonableness grounds even where each individual appointment is formally lawful."
+  },
+  {
+    "case_id": "עע\"ם 662/11",
+    "case_id_slug": "662-11-sela-kfar-vradim-mikveh",
+    "case_name_he": "סלע ואח' נ' ראש המועצה המקומית כפר ורדים סיון יחיאלי",
+    "case_name_en": "Sela et al. v. Head of Kfar Vradim Local Council Sivan Yehieli",
+    "ruling_date": "2014-09-09",
+    "filing_date": null,
+    "panel": [
+      {
+        "name_he": "אסתר חיות",
+        "name_en": "Esther Hayut",
+        "role": "Justice",
+        "slug": "hayut"
+      },
+      {
+        "name_he": "ניל הנדל",
+        "name_en": "Neal Hendel",
+        "role": "Justice",
+        "slug": "hendel"
+      },
+      {
+        "name_he": "עוזי פוגלמן",
+        "name_en": "Uzi Vogelman",
+        "role": "Justice",
+        "slug": "vogelman"
+      }
+    ],
+    "petitioner_type": "Individual",
+    "petitioner_name_he": "יהודית סלע ותשעה תושבים נוספים מכפר ורדים",
+    "petitioner_name_en": "Yehudit Sela and nine other residents of Kfar Vradim",
+    "respondent": "Local-Authority",
+    "respondent_decision_he": "החלטת המועצה המקומית כפר ורדים לבטל התחייבות קודמת לבניית מקווה ליישוב, חרף קיומו של מימון, שטח, וצורך דתי משמעותי של תושבים שומרי מצוות",
+    "respondent_decision_en": "Decision of the Kfar Vradim Local Council to rescind a prior commitment to construct a mikveh (women's ritual bath) in the community, despite the existence of funding, available land, and substantial religious need among observant residents",
+    "doctrine_invoked": [
+      "reasonableness"
+    ],
+    "outcome": "struck_down",
+    "vote_majority": 3,
+    "vote_minority": 0,
+    "majority_authors": [
+      "vogelman"
+    ],
+    "minority_authors": [],
+    "official_url": "https://versa.cardozo.yu.edu/opinions/sela-v-yehieli",
+    "secondary_urls": [],
+    "summary_he": "בית המשפט העליון, בהרכב שלושה שופטים, פה אחד הפך את פסק-הדין של בית המשפט המחוזי וקבע כי הסירוב של המועצה המקומית לבנות מקווה אינו עומד במבחן הסבירות. בית המשפט הורה למועצה לקדם את הבנייה. בהרכב הסירוב נמצא כי שיקולי תקציב שוקלל באופן בלתי-סביר אל מול הצורך הדתי המהותי של התושבים.",
+    "summary_en": "The Supreme Court, sitting as a three-justice panel, unanimously reversed the district court ruling and held that the Local Council's refusal to construct a mikveh failed the reasonableness test. The Court ordered the Council to proceed with construction. The Court found that budgetary considerations had been disproportionately weighted against the substantial religious need of observant residents.",
+    "predicate_ag_opinion": null,
+    "respondent_body": "Kfar Vradim Local Council",
+    "compliance_state": "complied",
+    "defiance_signals": null,
+    "tags": [
+      "reasonableness",
+      "local-authority",
+      "religion-and-state",
+      "religious-services",
+      "borderline-scope"
+    ],
+    "notes": "Justice Vogelman wrote the lead opinion. Borderline-scope entry: this is a local-authority decision rather than a ministerial or cabinet decision. Included because it is uniformly cited in the IDI/INSS/Cohen-Eliya literature as part of the reasonableness-review corpus and because Israeli local government, like national government, is elected. Heard as an administrative appeal (עע\"ם) by the Supreme Court."
   }
 ]

@@ -1,5 +1,115 @@
 [
   {
+    "slug": "grosskopf",
+    "name_he": "עופר גרוסקופף",
+    "name_en": "Ofer Grosskopf",
+    "appearances": [
+      {
+        "case_id_slug": "gofman-mossad-2026-05",
+        "case_id": "בג\"ץ — עתירות מאוחדות נגד מינוי גופמן",
+        "ruling_date": "2026-05-19",
+        "role": "Justice",
+        "outcome": "remanded",
+        "authored_majority": false,
+        "authored_minority": false
+      },
+      {
+        "case_id_slug": "18225-06-25-baharav-miara",
+        "case_id": "בג\"ץ 18225-06-25",
+        "ruling_date": "2025-12-14",
+        "role": "Justice",
+        "outcome": "struck_down",
+        "authored_majority": false,
+        "authored_minority": false
+      },
+      {
+        "case_id_slug": "5658-23",
+        "case_id": "בג\"ץ 5658/23",
+        "ruling_date": "2024-01-01",
+        "role": "Justice",
+        "outcome": "struck_down",
+        "authored_majority": true,
+        "authored_minority": false
+      },
+      {
+        "case_id_slug": "8948-22-deri",
+        "case_id": "בג\"ץ 8948/22",
+        "ruling_date": "2023-01-18",
+        "role": "Justice",
+        "outcome": "struck_down",
+        "authored_majority": false,
+        "authored_minority": false
+      },
+      {
+        "case_id_slug": "5782-21-zilber",
+        "case_id": "בג\"ץ 5782/21",
+        "ruling_date": "2022-01-12",
+        "role": "Justice",
+        "outcome": "partially_struck",
+        "authored_majority": false,
+        "authored_minority": false
+      }
+    ],
+    "panel_count": 5,
+    "majority_authored": 1,
+    "minority_authored": 0
+  },
+  {
+    "slug": "stein",
+    "name_he": "אלכס שטיין",
+    "name_en": "Alex Stein",
+    "appearances": [
+      {
+        "case_id_slug": "gofman-mossad-2026-05",
+        "case_id": "בג\"ץ — עתירות מאוחדות נגד מינוי גופמן",
+        "ruling_date": "2026-05-19",
+        "role": "Justice",
+        "outcome": "remanded",
+        "authored_majority": false,
+        "authored_minority": false
+      },
+      {
+        "case_id_slug": "18225-06-25-baharav-miara",
+        "case_id": "בג\"ץ 18225-06-25",
+        "ruling_date": "2025-12-14",
+        "role": "Justice",
+        "outcome": "struck_down",
+        "authored_majority": false,
+        "authored_minority": false
+      },
+      {
+        "case_id_slug": "5658-23",
+        "case_id": "בג\"ץ 5658/23",
+        "ruling_date": "2024-01-01",
+        "role": "Justice",
+        "outcome": "struck_down",
+        "authored_majority": false,
+        "authored_minority": true
+      },
+      {
+        "case_id_slug": "8948-22-deri",
+        "case_id": "בג\"ץ 8948/22",
+        "ruling_date": "2023-01-18",
+        "role": "Justice",
+        "outcome": "struck_down",
+        "authored_majority": false,
+        "authored_minority": false
+      },
+      {
+        "case_id_slug": "5782-21-zilber",
+        "case_id": "בג\"ץ 5782/21",
+        "ruling_date": "2022-01-12",
+        "role": "Justice",
+        "outcome": "partially_struck",
+        "authored_majority": true,
+        "authored_minority": false
+      }
+    ],
+    "panel_count": 5,
+    "majority_authored": 1,
+    "minority_authored": 1
+  },
+  {
     "slug": "amit",
     "name_he": "יצחק עמית",
     "name_en": "Yitzhak Amit",
@@ -44,52 +154,6 @@
     "panel_count": 4,
     "majority_authored": 2,
     "minority_authored": 1
-  },
-  {
-    "slug": "grosskopf",
-    "name_he": "עופר גרוסקופף",
-    "name_en": "Ofer Grosskopf",
-    "appearances": [
-      {
-        "case_id_slug": "gofman-mossad-2026-05",
-        "case_id": "בג\"ץ — עתירות מאוחדות נגד מינוי גופמן",
-        "ruling_date": "2026-05-19",
-        "role": "Justice",
-        "outcome": "remanded",
-        "authored_majority": false,
-        "authored_minority": false
-      },
-      {
-        "case_id_slug": "18225-06-25-baharav-miara",
-        "case_id": "בג\"ץ 18225-06-25",
-        "ruling_date": "2025-12-14",
-        "role": "Justice",
-        "outcome": "struck_down",
-        "authored_majority": false,
-        "authored_minority": false
-      },
-      {
-        "case_id_slug": "5658-23",
-        "case_id": "בג\"ץ 5658/23",
-        "ruling_date": "2024-01-01",
-        "role": "Justice",
-        "outcome": "struck_down",
-        "authored_majority": true,
-        "authored_minority": false
-      },
-      {
-        "case_id_slug": "8948-22-deri",
-        "case_id": "בג\"ץ 8948/22",
-        "ruling_date": "2023-01-18",
-        "role": "Justice",
-        "outcome": "struck_down",
-        "authored_majority": false,
-        "authored_minority": false
-      }
-    ],
-    "panel_count": 4,
-    "majority_authored": 1,
-    "minority_authored": 0
   },
   {
     "slug": "sohlberg",
@@ -138,50 +202,50 @@
     "minority_authored": 1
   },
   {
-    "slug": "stein",
-    "name_he": "אלכס שטיין",
-    "name_en": "Alex Stein",
+    "slug": "vogelman",
+    "name_he": "עוזי פוגלמן",
+    "name_en": "Uzi Vogelman",
     "appearances": [
-      {
-        "case_id_slug": "gofman-mossad-2026-05",
-        "case_id": "בג\"ץ — עתירות מאוחדות נגד מינוי גופמן",
-        "ruling_date": "2026-05-19",
-        "role": "Justice",
-        "outcome": "remanded",
-        "authored_majority": false,
-        "authored_minority": false
-      },
-      {
-        "case_id_slug": "18225-06-25-baharav-miara",
-        "case_id": "בג\"ץ 18225-06-25",
-        "ruling_date": "2025-12-14",
-        "role": "Justice",
-        "outcome": "struck_down",
-        "authored_majority": false,
-        "authored_minority": false
-      },
       {
         "case_id_slug": "5658-23",
         "case_id": "בג\"ץ 5658/23",
         "ruling_date": "2024-01-01",
-        "role": "Justice",
+        "role": "Deputy President",
         "outcome": "struck_down",
-        "authored_majority": false,
-        "authored_minority": true
+        "authored_majority": true,
+        "authored_minority": false
       },
       {
         "case_id_slug": "8948-22-deri",
         "case_id": "בג\"ץ 8948/22",
         "ruling_date": "2023-01-18",
-        "role": "Justice",
+        "role": "Deputy President",
         "outcome": "struck_down",
         "authored_majority": false,
+        "authored_minority": false
+      },
+      {
+        "case_id_slug": "5782-21-zilber",
+        "case_id": "בג\"ץ 5782/21",
+        "ruling_date": "2022-01-12",
+        "role": "Justice",
+        "outcome": "partially_struck",
+        "authored_majority": false,
+        "authored_minority": false
+      },
+      {
+        "case_id_slug": "662-11-sela-kfar-vradim-mikveh",
+        "case_id": "עע\"ם 662/11",
+        "ruling_date": "2014-09-09",
+        "role": "Justice",
+        "outcome": "struck_down",
+        "authored_majority": true,
         "authored_minority": false
       }
     ],
     "panel_count": 4,
-    "majority_authored": 0,
-    "minority_authored": 1
+    "majority_authored": 2,
+    "minority_authored": 0
   },
   {
     "slug": "barak-erez",
@@ -218,6 +282,43 @@
     ],
     "panel_count": 3,
     "majority_authored": 1,
+    "minority_authored": 0
+  },
+  {
+    "slug": "hayut",
+    "name_he": "אסתר חיות",
+    "name_en": "Esther Hayut",
+    "appearances": [
+      {
+        "case_id_slug": "5658-23",
+        "case_id": "בג\"ץ 5658/23",
+        "ruling_date": "2024-01-01",
+        "role": "Retired Justice",
+        "outcome": "struck_down",
+        "authored_majority": true,
+        "authored_minority": false
+      },
+      {
+        "case_id_slug": "8948-22-deri",
+        "case_id": "בג\"ץ 8948/22",
+        "ruling_date": "2023-01-18",
+        "role": "President",
+        "outcome": "struck_down",
+        "authored_majority": true,
+        "authored_minority": false
+      },
+      {
+        "case_id_slug": "662-11-sela-kfar-vradim-mikveh",
+        "case_id": "עע\"ם 662/11",
+        "ruling_date": "2014-09-09",
+        "role": "Justice",
+        "outcome": "struck_down",
+        "authored_majority": false,
+        "authored_minority": false
+      }
+    ],
+    "panel_count": 3,
+    "majority_authored": 2,
     "minority_authored": 0
   },
   {
@@ -379,31 +480,59 @@
     "minority_authored": 2
   },
   {
-    "slug": "hayut",
-    "name_he": "אסתר חיות",
-    "name_en": "Esther Hayut",
+    "slug": "hendel",
+    "name_he": "ניל הנדל",
+    "name_en": "Neal Hendel",
     "appearances": [
       {
-        "case_id_slug": "5658-23",
-        "case_id": "בג\"ץ 5658/23",
-        "ruling_date": "2024-01-01",
-        "role": "Retired Justice",
+        "case_id_slug": "3132-15-yesh-atid-litzman",
+        "case_id": "בג\"ץ 3132/15",
+        "ruling_date": "2015-08-23",
+        "role": "Justice",
         "outcome": "struck_down",
-        "authored_majority": true,
+        "authored_majority": false,
         "authored_minority": false
       },
       {
-        "case_id_slug": "8948-22-deri",
-        "case_id": "בג\"ץ 8948/22",
-        "ruling_date": "2023-01-18",
-        "role": "President",
+        "case_id_slug": "662-11-sela-kfar-vradim-mikveh",
+        "case_id": "עע\"ם 662/11",
+        "ruling_date": "2014-09-09",
+        "role": "Justice",
         "outcome": "struck_down",
-        "authored_majority": true,
+        "authored_majority": false,
         "authored_minority": false
       }
     ],
     "panel_count": 2,
-    "majority_authored": 2,
+    "majority_authored": 0,
+    "minority_authored": 0
+  },
+  {
+    "slug": "melcer",
+    "name_he": "חנן מלצר",
+    "name_en": "Hanan Melcer",
+    "appearances": [
+      {
+        "case_id_slug": "1892-14-acri-prison-space",
+        "case_id": "בג\"ץ 1892/14",
+        "ruling_date": "2017-06-13",
+        "role": "Justice",
+        "outcome": "struck_down",
+        "authored_majority": false,
+        "authored_minority": false
+      },
+      {
+        "case_id_slug": "3132-15-yesh-atid-litzman",
+        "case_id": "בג\"ץ 3132/15",
+        "ruling_date": "2015-08-23",
+        "role": "Justice",
+        "outcome": "struck_down",
+        "authored_majority": false,
+        "authored_minority": false
+      }
+    ],
+    "panel_count": 2,
+    "majority_authored": 0,
     "minority_authored": 0
   },
   {
@@ -435,23 +564,23 @@
     "minority_authored": 0
   },
   {
-    "slug": "vogelman",
-    "name_he": "עוזי פוגלמן",
-    "name_en": "Uzi Vogelman",
+    "slug": "rubinstein",
+    "name_he": "אליקים רובינשטיין",
+    "name_en": "Elyakim Rubinstein",
     "appearances": [
       {
-        "case_id_slug": "5658-23",
-        "case_id": "בג\"ץ 5658/23",
-        "ruling_date": "2024-01-01",
+        "case_id_slug": "1892-14-acri-prison-space",
+        "case_id": "בג\"ץ 1892/14",
+        "ruling_date": "2017-06-13",
         "role": "Deputy President",
         "outcome": "struck_down",
         "authored_majority": true,
         "authored_minority": false
       },
       {
-        "case_id_slug": "8948-22-deri",
-        "case_id": "בג\"ץ 8948/22",
-        "ruling_date": "2023-01-18",
+        "case_id_slug": "3132-15-yesh-atid-litzman",
+        "case_id": "בג\"ץ 3132/15",
+        "ruling_date": "2015-08-23",
         "role": "Deputy President",
         "outcome": "struck_down",
         "authored_majority": false,
@@ -460,6 +589,25 @@
     ],
     "panel_count": 2,
     "majority_authored": 1,
+    "minority_authored": 0
+  },
+  {
+    "slug": "joubran",
+    "name_he": "סלים ג'ובראן",
+    "name_en": "Salim Joubran",
+    "appearances": [
+      {
+        "case_id_slug": "3132-15-yesh-atid-litzman",
+        "case_id": "בג\"ץ 3132/15",
+        "ruling_date": "2015-08-23",
+        "role": "Justice",
+        "outcome": "struck_down",
+        "authored_majority": false,
+        "authored_minority": false
+      }
+    ],
+    "panel_count": 1,
+    "majority_authored": 0,
     "minority_authored": 0
   },
   {
@@ -480,6 +628,44 @@
     "panel_count": 1,
     "majority_authored": 0,
     "minority_authored": 1
+  },
+  {
+    "slug": "naor",
+    "name_he": "מרים נאור",
+    "name_en": "Miriam Naor",
+    "appearances": [
+      {
+        "case_id_slug": "3132-15-yesh-atid-litzman",
+        "case_id": "בג\"ץ 3132/15",
+        "ruling_date": "2015-08-23",
+        "role": "President",
+        "outcome": "struck_down",
+        "authored_majority": true,
+        "authored_minority": false
+      }
+    ],
+    "panel_count": 1,
+    "majority_authored": 1,
+    "minority_authored": 0
+  },
+  {
+    "slug": "shoham",
+    "name_he": "אורי שוהם",
+    "name_en": "Uri Shoham",
+    "appearances": [
+      {
+        "case_id_slug": "1892-14-acri-prison-space",
+        "case_id": "בג\"ץ 1892/14",
+        "ruling_date": "2017-06-13",
+        "role": "Justice",
+        "outcome": "struck_down",
+        "authored_majority": false,
+        "authored_minority": false
+      }
+    ],
+    "panel_count": 1,
+    "majority_authored": 0,
+    "minority_authored": 0
   },
   {
     "slug": "willner",

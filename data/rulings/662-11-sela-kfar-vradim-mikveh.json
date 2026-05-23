@@ -1,0 +1,43 @@
+{
+  "case_id": "עע\"ם 662/11",
+  "case_id_slug": "662-11-sela-kfar-vradim-mikveh",
+  "case_name_he": "סלע ואח' נ' ראש המועצה המקומית כפר ורדים סיון יחיאלי",
+  "case_name_en": "Sela et al. v. Head of Kfar Vradim Local Council Sivan Yehieli",
+  "ruling_date": "2014-09-09",
+  "filing_date": null,
+  "panel": [
+    { "name_he": "אסתר חיות", "name_en": "Esther Hayut", "role": "Justice", "slug": "hayut" },
+    { "name_he": "ניל הנדל", "name_en": "Neal Hendel", "role": "Justice", "slug": "hendel" },
+    { "name_he": "עוזי פוגלמן", "name_en": "Uzi Vogelman", "role": "Justice", "slug": "vogelman" }
+  ],
+  "petitioner_type": "Individual",
+  "petitioner_name_he": "יהודית סלע ותשעה תושבים נוספים מכפר ורדים",
+  "petitioner_name_en": "Yehudit Sela and nine other residents of Kfar Vradim",
+  "respondent": "Local-Authority",
+  "respondent_decision_he": "החלטת המועצה המקומית כפר ורדים לבטל התחייבות קודמת לבניית מקווה ליישוב, חרף קיומו של מימון, שטח, וצורך דתי משמעותי של תושבים שומרי מצוות",
+  "respondent_decision_en": "Decision of the Kfar Vradim Local Council to rescind a prior commitment to construct a mikveh (women's ritual bath) in the community, despite the existence of funding, available land, and substantial religious need among observant residents",
+  "doctrine_invoked": [
+    "reasonableness"
+  ],
+  "outcome": "struck_down",
+  "vote_majority": 3,
+  "vote_minority": 0,
+  "majority_authors": ["vogelman"],
+  "minority_authors": [],
+  "official_url": "https://versa.cardozo.yu.edu/opinions/sela-v-yehieli",
+  "secondary_urls": [],
+  "summary_he": "בית המשפט העליון, בהרכב שלושה שופטים, פה אחד הפך את פסק-הדין של בית המשפט המחוזי וקבע כי הסירוב של המועצה המקומית לבנות מקווה אינו עומד במבחן הסבירות. בית המשפט הורה למועצה לקדם את הבנייה. בהרכב הסירוב נמצא כי שיקולי תקציב שוקלל באופן בלתי-סביר אל מול הצורך הדתי המהותי של התושבים.",
+  "summary_en": "The Supreme Court, sitting as a three-justice panel, unanimously reversed the district court ruling and held that the Local Council's refusal to construct a mikveh failed the reasonableness test. The Court ordered the Council to proceed with construction. The Court found that budgetary considerations had been disproportionately weighted against the substantial religious need of observant residents.",
+  "predicate_ag_opinion": null,
+  "respondent_body": "Kfar Vradim Local Council",
+  "compliance_state": "complied",
+  "defiance_signals": null,
+  "tags": [
+    "reasonableness",
+    "local-authority",
+    "religion-and-state",
+    "religious-services",
+    "borderline-scope"
+  ],
+  "notes": "Justice Vogelman wrote the lead opinion. Borderline-scope entry: this is a local-authority decision rather than a ministerial or cabinet decision. Included because it is uniformly cited in the IDI/INSS/Cohen-Eliya literature as part of the reasonableness-review corpus and because Israeli local government, like national government, is elected. Heard as an administrative appeal (עע\"ם) by the Supreme Court."
+}
