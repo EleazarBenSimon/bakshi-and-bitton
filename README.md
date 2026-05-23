@@ -1,4 +1,4 @@
-# Bakshi&Bitton (בקשי וביטון)
+# Bakshi&Bitton
 
 A documentary preservation project of the ongoing process by which the Israeli Supreme Court has been deformed from a guardian of law into an instrument that constrains the elected institutions of the State of Israel against the will of the public.
 
