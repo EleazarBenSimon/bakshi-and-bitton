@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bakshi&Bitton · Reading</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<div id="root"></div>
+<script src="assets/app.js"></script>
+<script>
+(async function () {
+  const { t, el, fetchJSON, renderHeader, renderFooter, lang } = window.CO;
+  const root = document.getElementById("root");
+  document.documentElement.lang = lang;
+
+  root.append(renderHeader("reading"));
+
+  const main = el("main", {});
+
+  const params = new URLSearchParams(location.search);
+  const slug = params.get("slug");
+
+  if (!slug) {
+    main.append(el("p", {}, t.content_no_slug));
+    main.append(
+      el("p", {}, el("a", { href: "reading.html" }, "← " + t.reading_title))
+    );
+    root.append(main);
+    return;
+  }
+
+  let content = {};
+  try {
+    content = await fetchJSON("_data/content.json");
+  } catch (e) {
+    main.append(el("p", {}, `Error: ${e.message}`));
+    root.append(main);
+    return;
+  }
+
+  let piece = null;
+  let category = null;
+  for (const cat of Object.keys(content)) {
+    for (const it of content[cat]) {
+      if (it.slug === slug) {
+        piece = it;
+        category = cat;
+        break;
+      }
+    }
+    if (piece) break;
+  }
+
+  if (!piece) {
+    main.append(el("h1", {}, t.content_not_found));
+    main.append(el("p", {}, t.content_not_found_detail));
+    main.append(
+      el("p", {}, el("a", { href: "reading.html" }, "← " + t.reading_title))
+    );
+    root.append(main);
+    return;
+  }
+
+  // Breadcrumb / back link
+  const breadcrumb = el("p", { class: "breadcrumb" });
+  breadcrumb.append(
+    el("a", { href: "reading.html" }, t.reading_title)
+  );
+  breadcrumb.append(" / ");
+  const categoryLabel = {
+    essays: t.cat_essays,
+    explainers: t.cat_explainers,
+    patterns: t.cat_patterns,
+  };
+  breadcrumb.append(categoryLabel[category] || category);
+  main.append(breadcrumb);
+
+  // Article meta header
+  const article = el("article", { class: "content-article", dir: "auto" });
+  const header = el("header", { class: "article-header" });
+  header.append(el("h1", {}, piece.title));
+  if (piece.summary) {
+    header.append(el("p", { class: "article-summary" }, piece.summary));
+  }
+  const metaLine = el("p", { class: "article-meta" });
+  if (piece.date) metaLine.append(piece.date);
+  if (piece.date && piece.contributor) metaLine.append(" · ");
+  if (piece.contributor) metaLine.append(piece.contributor);
+  header.append(metaLine);
+  article.append(header);
+
+  // Article body — rendered HTML from markdown
+  const body = el("div", { class: "article-body", html: piece.body_html });
+  article.append(body);
+
+  main.append(article);
+
+  // Footer: link back to reading list
+  main.append(
+    el("p", { class: "article-back" },
+      el("a", { href: "reading.html" }, "← " + t.reading_title)
+    )
+  );
+
+  root.append(main);
+  root.append(renderFooter());
+})();
+</script>
+</body>
+</html>

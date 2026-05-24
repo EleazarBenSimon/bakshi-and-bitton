@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bakshi&Bitton · קריאה / Reading</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<div id="root"></div>
+<script src="assets/app.js"></script>
+<script>
+(async function () {
+  const { t, el, fetchJSON, renderHeader, renderFooter, lang } = window.CO;
+  const root = document.getElementById("root");
+  document.documentElement.lang = lang;
+
+  root.append(renderHeader("reading"));
+
+  const main = el("main", {});
+
+  main.append(el("h1", {}, t.reading_title));
+  main.append(el("p", { class: "page-intro" }, t.reading_intro));
+
+  let content = {};
+  try {
+    content = await fetchJSON("_data/content.json");
+  } catch (e) {
+    main.append(el("p", {}, `Error: ${e.message}`));
+    root.append(main);
+    return;
+  }
+
+  const categoryOrder = ["essays", "explainers", "patterns"];
+  const categoryLabel = {
+    essays: t.cat_essays,
+    explainers: t.cat_explainers,
+    patterns: t.cat_patterns,
+  };
+  const categoryDescription = {
+    essays: t.cat_essays_desc,
+    explainers: t.cat_explainers_desc,
+    patterns: t.cat_patterns_desc,
+  };
+
+  for (const cat of categoryOrder) {
+    const items = content[cat] || [];
+    if (!items.length) continue;
+    const section = el("section", { class: "reading-section" });
+    section.append(el("h2", {}, categoryLabel[cat]));
+    if (categoryDescription[cat]) {
+      section.append(el("p", { class: "section-desc" }, categoryDescription[cat]));
+    }
+    const list = el("ul", { class: "reading-list" });
+    for (const item of items) {
+      const li = el("li", { class: "reading-item" });
+      li.append(
+        el("a", { href: `content.html?slug=${encodeURIComponent(item.slug)}`, class: "reading-title" }, item.title)
+      );
+      if (item.summary) {
+        li.append(el("p", { class: "reading-summary", dir: "auto" }, item.summary));
+      }
+      const meta = el("p", { class: "reading-meta" });
+      if (item.date) meta.append(item.date);
+      if (item.date && item.contributor) meta.append(" · ");
+      if (item.contributor) meta.append(item.contributor);
+      li.append(meta);
+      list.append(li);
+    }
+    section.append(list);
+    main.append(section);
+  }
+
+  root.append(main);
+  root.append(renderFooter());
+})();
+</script>
+</body>
+</html>
