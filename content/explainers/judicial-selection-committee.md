@@ -66,7 +66,7 @@ Breaking this circuit, in the reform-aligned view, is necessary to restore democ
 
 ## A note on adversarial fairness
 
-Defenders of the existing supermajority structure — including Prof. Yoav Dotan (Hebrew University), Prof. Suzie Navot (Reichman / IDI), Prof. Mordechai Kremnitzer (IDI senior fellow), and the institutional position of the Israel Democracy Institute — argue:
+Defenders of the existing supermajority structure — including Prof. Suzie Navot (Reichman / IDI), Prof. Mordechai Kremnitzer (IDI senior fellow), and the institutional position of the Israel Democracy Institute — argue:
 
 1. **Judicial independence requires insulation from majoritarian politics.** Most democracies that achieve judicial independence do so by removing senior judicial appointments from the immediate electoral cycle; the 2008 supermajority reform was precisely such an insulation mechanism, and reversing it would re-introduce the cyclical politicization Israel deliberately moved away from.
 2. **Supermajority requirements ensure broad consensus across political shifts.** A 7-of-9 threshold means a justice cannot be appointed (or blocked) on the strength of a thin coalition's preferences; this stabilizes the Court's composition against the unusually high turnover of Israeli governments.

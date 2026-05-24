@@ -61,7 +61,7 @@ The 2023 reform sought to reverse this, at least at the cabinet/PM/minister leve
 
 ## A note on adversarial fairness
 
-Defenders of the expanded reasonableness doctrine — among them Justice Daphne Barak-Erez (a sitting member of the Court who has written academically on judicial review before her appointment), Prof. Yoav Dotan (Hebrew University), and Prof. Suzie Navot (Reichman / IDI) — advance several arguments worth engaging directly.
+Defenders of the expanded reasonableness doctrine — among them Justice Daphne Barak-Erez (a sitting member of the Court who has written academically on judicial review before her appointment), Prof. Aeyal Gross (Tel Aviv University), and Prof. Suzie Navot (Reichman / IDI) — advance several arguments worth engaging directly. Gross's [*An Unreasonable Amendment: The Constitutional Capture in Israel*](https://verfassungsblog.de/an-unreasonable-amendment/) (Verfassungsblog, July 2023) is one of the more developed academic defenses of the doctrine against the 2023 reform bill.
 
 **The structural argument**: Israel lacks the institutional checks present in other democracies — no second legislative chamber, no federalism, no entrenched written constitution — and so the Court's review role is structurally necessary as the "only real check" (a phrase used in the HCJ 5658/23 majority opinion). Under this account, dismantling reasonableness leaves no operative restraint on cabinet decisions between elections.
 
