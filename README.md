@@ -37,10 +37,6 @@ This project rests on, and exists to advance:
 - **Morality** — the conduct of the project must reflect the principles it seeks to restore
 - **Pursuit of justice for all citizens** — not the narrow interests of any political camp, but a sustainable peace and stability in which the State of Israel can serve all of its people
 
-## Why "Bakshi&Bitton"
-
-The project is named in honor of **Adv. Dr. Aviad Bakshi** and **Prof. Raphael Bitton** — two Supreme Court candidates whose nominations were blocked by a Judicial Selection Committee majority that does not represent the public's elected coalition. Their elevation was prevented because they are, in the words of those who blocked them, "two of the chief architects of the 2023 judicial overhaul plan" — meaning, they sought to restore proper limits to a Court that had stepped beyond them. The name is a deliberate tribute to people whose work to repair the system was suppressed by the very system that needs repair.
-
 ## How the data is structured
 
 - `data/rulings/<case-id>.json` — one file per ruling, conforming to `schemas/ruling.schema.json`

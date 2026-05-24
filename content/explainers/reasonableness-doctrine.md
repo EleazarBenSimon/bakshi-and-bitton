@@ -63,7 +63,7 @@ The 2023 reform sought to reverse this, at least at the cabinet/PM/minister leve
 
 Defenders of the expanded reasonableness doctrine make two main arguments. First, that Israel lacks the institutional checks present in other democracies — no second legislative chamber, no federalism, no entrenched written constitution — and so the Court's review role is structurally necessary as the "only real check" (a phrase used in the HCJ 5658/23 majority opinion). Second, that reasonableness fills gaps that other doctrines (proportionality, ultra vires) do not cover, particularly around appointments and discretionary administrative actions.
 
-The counter-position — articulated by Cohen-Eliya, Bakshi, Koppel, and others — is that the expansion has no parallel in any other Western democracy; that it amounts to judicial substitution of judgment for the elected executive's; and that the doctrine's "balancing" form is so elastic that it cannot be defined or constrained in advance.
+The counter-position — articulated by Cohen-Eliya, Koppel, and others — is that the expansion has no parallel in any other Western democracy; that it amounts to judicial substitution of judgment for the elected executive's; and that the doctrine's "balancing" form is so elastic that it cannot be defined or constrained in advance.
 
 This explainer documents the doctrine and the debate; it does not adjudicate which position is correct.
 

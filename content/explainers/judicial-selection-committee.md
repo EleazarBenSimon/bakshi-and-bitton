@@ -71,7 +71,7 @@ Defenders of the existing supermajority structure argue that:
 2. Supermajority requirements ensure broad consensus across political shifts
 3. Removing the Bar reps (in the 2025 law) reduces professional input in favor of pure politics
 
-The reform-aligned position, articulated by Cohen-Eliya, Bakshi, Koppel, and Rothman, holds that:
+The reform-aligned position, articulated by Cohen-Eliya, Koppel, and Rothman, holds that:
 1. Independence from politics is not the same as immunity from democratic legitimacy
 2. The supermajority "consensus" requirement in practice gives the sitting Court an over-representative voice in its own succession
 3. Bar Association representation gives outsized weight to a professional guild whose interests do not necessarily align with broader public preferences

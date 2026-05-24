@@ -68,7 +68,7 @@ Defenders of the constituent-authority framework — Barak himself, Daphne Barak
 2. The Knesset's own legislative practice — passing Basic Laws under more demanding procedural rules, citing them as constitutional norms in subsequent debates — implies self-understanding as constituent assembly
 3. The basic-structure doctrine extended in 2024 has parallels (India, Bangladesh, Slovakia) and is necessary to prevent constitutional abuse via simple-majority Basic Law amendments
 
-The reform-aligned position, articulated by Cohen-Eliya, Ben Shemesh, Bakshi, and Kontorovich, holds:
+The reform-aligned position, articulated by Cohen-Eliya, Ben Shemesh, and Kontorovich, holds:
 
 1. The 1992 Basic Laws passed with **tiny majorities** (Basic Law: Human Dignity and Liberty cleared with just 32 of 120 MKs present) — inconsistent with the claim that the Knesset self-understood itself as enacting a constitution
 2. The Bank Mizrahi framework is **judicial self-assertion** — the Court declaring its own authority without explicit textual or democratic mandate

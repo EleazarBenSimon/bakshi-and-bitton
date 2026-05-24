@@ -11,7 +11,7 @@ summary: A narrative essay tracing the historical arc from the 1995 Bank Mizrahi
 
 This essay traces the constitutional-doctrinal arc of the Israeli Supreme Court from a foundational 1995 ruling to a peak moment in January 2024 — a thirty-year period during which the Court substantially expanded its own authority over Israel's elected institutions. The empirical record is drawn from this project's documentary core (`data/rulings/`) and from sources cited throughout.
 
-The interpretive frame is Prof. Moshe Cohen-Eliya's juristocracy thesis as articulated in [*Israel's Juristocracy*](https://lawliberty.org/israels-juristocracy/) (Law & Liberty, March 2024) and in the broader work of the constitutional-conservatism scholars he is most closely associated with (Iddo Porat, Aviad Bakshi, Moshe Koppel, Yaakov Ben Shemesh). The opposing view, anchored in Ran Hirschl's *Towards Juristocracy* (Harvard, 2004) and in defenders of the constitutional-revolution architecture, is engaged in adversarial fairness.
+The interpretive frame is Prof. Moshe Cohen-Eliya's juristocracy thesis as articulated in [*Israel's Juristocracy*](https://lawliberty.org/israels-juristocracy/) (Law & Liberty, March 2024) and in the broader work of the constitutional-conservatism scholars he is most closely associated with (Iddo Porat, Moshe Koppel, Yaakov Ben Shemesh). The opposing view, anchored in Ran Hirschl's *Towards Juristocracy* (Harvard, 2004) and in defenders of the constitutional-revolution architecture, is engaged in adversarial fairness.
 
 This is a documentary essay. It traces what happened, with citations. It does not attempt to settle the question of whether the developments documented were normatively good or bad. That question is properly decided in democratic deliberation; what this essay provides is the structured record of what is to be deliberated.
 
@@ -134,7 +134,7 @@ Ran Hirschl, in *Towards Juristocracy* (Harvard, 2004), articulated the comparat
 
 Crucially, Hirschl's own work is **descriptive-critical, not prescriptive-restorationist**. He identifies the pattern without endorsing the political conclusion that the pattern should be reversed. As of mid-2026, Hirschl has not publicly endorsed the 2023-2024 Israeli reform effort despite his theoretical framework being its most-cited intellectual foundation. He has remained, in the public discourse, unaligned with either side of the political fight that uses his theory.
 
-This is significant for the project: the theoretical framework can hold both for those who argue the documented trajectory should be reversed (Cohen-Eliya, Bakshi, Koppel, Ben Shemesh) and for those who treat it as a stable feature of Israeli democracy that should be defended (Hayut, Barak-Erez, Dotan). The documentary record this essay traces is the same in both cases.
+This is significant for the project: the theoretical framework can hold both for those who argue the documented trajectory should be reversed (Cohen-Eliya, Koppel, Ben Shemesh) and for those who treat it as a stable feature of Israeli democracy that should be defended (Hayut, Barak-Erez, Dotan). The documentary record this essay traces is the same in both cases.
 
 ## Where the documentary record goes next
 
