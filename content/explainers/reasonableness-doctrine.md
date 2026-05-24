@@ -61,7 +61,15 @@ The 2023 reform sought to reverse this, at least at the cabinet/PM/minister leve
 
 ## A note on adversarial fairness
 
-Defenders of the expanded reasonableness doctrine make two main arguments. First, that Israel lacks the institutional checks present in other democracies — no second legislative chamber, no federalism, no entrenched written constitution — and so the Court's review role is structurally necessary as the "only real check" (a phrase used in the HCJ 5658/23 majority opinion). Second, that reasonableness fills gaps that other doctrines (proportionality, ultra vires) do not cover, particularly around appointments and discretionary administrative actions.
+Defenders of the expanded reasonableness doctrine — among them Justice Daphne Barak-Erez (a sitting member of the Court who has written academically on judicial review before her appointment), Prof. Yoav Dotan (Hebrew University), and Prof. Suzie Navot (Reichman / IDI) — advance several arguments worth engaging directly.
+
+**The structural argument**: Israel lacks the institutional checks present in other democracies — no second legislative chamber, no federalism, no entrenched written constitution — and so the Court's review role is structurally necessary as the "only real check" (a phrase used in the HCJ 5658/23 majority opinion). Under this account, dismantling reasonableness leaves no operative restraint on cabinet decisions between elections.
+
+**The empirical-restraint argument**: per the [Israel Democracy Institute](https://en.idi.org.il/articles/50000), the Court has struck down approximately 1.6 ministerial or cabinet decisions per year on reasonableness grounds — the same figure Cohen-Eliya cites as "16 cases" in the decade. The defenders read this number the opposite way: not as evidence of outsized cultural effect, but as evidence of judicial restraint within a doctrine that *could* be used much more broadly. The cultural-deterrence claim, on this reading, attributes effects to the doctrine that ordinary democratic accountability would produce anyway.
+
+**The gap-filling argument**: reasonableness covers cases — particularly around appointments, discretionary administrative actions, and decisions touching minority rights — that other doctrines (proportionality, ultra vires) do not reach. Removing it without replacement creates immunity zones the prior law explicitly avoided.
+
+**The case-law-incrementalism argument**: the "balancing" form of reasonableness developed case-by-case over four decades through ordinary judicial reasoning, not by single act. Defenders treat the doctrine's elasticity as the normal evolution of common-law review, not as overreach.
 
 The counter-position — articulated by Cohen-Eliya, Koppel, and others — is that the expansion has no parallel in any other Western democracy; that it amounts to judicial substitution of judgment for the elected executive's; and that the doctrine's "balancing" form is so elastic that it cannot be defined or constrained in advance.
 

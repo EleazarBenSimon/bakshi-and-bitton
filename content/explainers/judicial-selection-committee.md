@@ -66,10 +66,13 @@ Breaking this circuit, in the reform-aligned view, is necessary to restore democ
 
 ## A note on adversarial fairness
 
-Defenders of the existing supermajority structure argue that:
-1. Judicial independence requires insulation from majoritarian politics
-2. Supermajority requirements ensure broad consensus across political shifts
-3. Removing the Bar reps (in the 2025 law) reduces professional input in favor of pure politics
+Defenders of the existing supermajority structure — including Prof. Yoav Dotan (Hebrew University), Prof. Suzie Navot (Reichman / IDI), Prof. Mordechai Kremnitzer (IDI senior fellow), and the institutional position of the Israel Democracy Institute — argue:
+
+1. **Judicial independence requires insulation from majoritarian politics.** Most democracies that achieve judicial independence do so by removing senior judicial appointments from the immediate electoral cycle; the 2008 supermajority reform was precisely such an insulation mechanism, and reversing it would re-introduce the cyclical politicization Israel deliberately moved away from.
+2. **Supermajority requirements ensure broad consensus across political shifts.** A 7-of-9 threshold means a justice cannot be appointed (or blocked) on the strength of a thin coalition's preferences; this stabilizes the Court's composition against the unusually high turnover of Israeli governments.
+3. **The "sitting-Court veto" framing overstates the empirical record.** Defenders note that in the years since 2008, the Committee has appointed justices across the ideological spectrum, including appointees viewed as conservative (Sohlberg, Mintz, Elron). The supermajority gate has not, in practice, perpetuated a single ideological bloc.
+4. **Removing the Bar reps** (in the 2025 law) **reduces professional input in favor of pure politics** — the Bar's institutional position is meant to weight the professional-competence consideration above ideological alignment, and political-only selection would erode that.
+5. **Comparative-constitutional argument**: most consolidated democracies use supermajority or counter-majoritarian mechanisms for senior judicial appointments. Israel's 2008 model is structurally closer to the international consensus than to outlier majoritarian designs.
 
 The reform-aligned position, articulated by Cohen-Eliya, Koppel, and Rothman, holds that:
 1. Independence from politics is not the same as immunity from democratic legitimacy

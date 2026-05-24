@@ -132,7 +132,9 @@ Cohen-Eliya's juristocracy framing, drawing on Hirschl, holds that this trajecto
 
 Ran Hirschl, in *Towards Juristocracy* (Harvard, 2004), articulated the comparative-constitutional framework that Cohen-Eliya later applied to Israel: hegemonic preservation, the transfer of authority from elected to judicial institutions, the structural logic of declining groups using courts to lock in their interests.
 
-Crucially, Hirschl's own work is **descriptive-critical, not prescriptive-restorationist**. He identifies the pattern without endorsing the political conclusion that the pattern should be reversed. As of mid-2026, Hirschl has not publicly endorsed the 2023-2024 Israeli reform effort despite his theoretical framework being its most-cited intellectual foundation. He has remained, in the public discourse, unaligned with either side of the political fight that uses his theory.
+Hirschl died on **May 19, 2026** at the University of Toronto. This essay's engagement with his work is documentary and posthumous; the framework he developed remains under active scholarly use across the Israeli legal-academic spectrum, and this essay does not enlist him for any position he did not himself adopt in life.
+
+Crucially, Hirschl's own work is **descriptive-critical, not prescriptive-restorationist**. He identified the pattern without endorsing the political conclusion that the pattern should be reversed. Throughout his career, including in the period leading up to his death, Hirschl did not publicly endorse the 2023-2024 Israeli reform effort despite his theoretical framework being its most-cited intellectual foundation. He remained, in the public discourse, unaligned with either side of the political fight that uses his theory.
 
 This is significant for the project: the theoretical framework can hold both for those who argue the documented trajectory should be reversed (Cohen-Eliya, Koppel, Ben Shemesh) and for those who treat it as a stable feature of Israeli democracy that should be defended (Hayut, Barak-Erez, Dotan). The documentary record this essay traces is the same in both cases.
 
