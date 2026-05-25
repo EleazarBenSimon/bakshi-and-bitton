@@ -336,7 +336,7 @@ function curveEras() {
 function renderCurve(rulings) {
   const NS = "http://www.w3.org/2000/svg";
   const W = 1040, H = 500;
-  const M = { top: 88, right: 96, bottom: 80, left: 160 };
+  const M = { top: 88, right: 48, bottom: 80, left: 96 };
   const innerW = W - M.left - M.right;
   const innerH = H - M.top - M.bottom;
   const YR_MIN = 1975, YR_MAX = 2027;
@@ -452,22 +452,11 @@ function renderCurve(rulings) {
     }
   }
 
-  // ── severity gridlines + y-axis labels ───────────────────────────
-  const sevLabels = [
-    [1, t.sev_1], [2, t.sev_2], [3, t.sev_3], [4, t.sev_4], [5, t.sev_5],
-  ];
-  for (const [s, label] of sevLabels) {
-    const y = yOf(s);
-    svg.append(svgEl("line", {
-      x1: M.left, x2: M.left + innerW, y1: y, y2: y,
-      stroke: "#e8e8e8", "stroke-width": "1",
-    }));
-    svg.append(svgEl("text", {
-      x: M.left - 10, y: y + 4,
-      "text-anchor": "end",
-      "font-size": "10.5", fill: "#666",
-    }, label));
-  }
+  // Severity y-axis intentionally removed — dots now sit on the curve
+  // at their cumulative contribution height (see dot block below). Outcome
+  // severity is re-encoded as dot RADIUS instead of dot Y-position, so the
+  // chart has a single coherent y-axis (cumulative engagement) and dots
+  // visibly cause the curve they sit on.
 
   // ── decade gridlines + x-axis labels ─────────────────────────────
   const decadeYears = [1980, 1990, 2000, 2010, 2020, 2026];
@@ -504,10 +493,14 @@ function renderCurve(rulings) {
   function yCum(c) { return M.top + innerH - (c / Math.max(1, cumTotal)) * innerH * CUM_HEADROOM; }
 
   // Build (year, cumulative) sequence including a (YR_MIN, 0) anchor.
+  // Also build per-case cumulative lookup so dots can be placed ON the
+  // curve at their contribution point.
   const cumXY = [{ x: xOf(YR_MIN), y: yCum(0) }];
+  const cumByCase = {};
   let cum = 0;
   for (const p of points) {
     cum += 1;
+    cumByCase[p.r.case_id_slug] = cum;
     cumXY.push({ x: xOf(p.yd), y: yCum(cum) });
   }
   cumXY.push({ x: xOf(YR_MAX), y: yCum(cum) });
@@ -546,39 +539,45 @@ function renderCurve(rulings) {
     "stroke-linejoin": "round",
   }));
 
-  // ── right-side y-axis: cumulative engagement count ───────────────
-  const rightAxisX = M.left + innerW;
-  svg.append(svgEl("line", {
-    x1: rightAxisX, x2: rightAxisX, y1: M.top, y2: M.top + innerH,
-    stroke: "#b03a3a", "stroke-width": "1", opacity: "0.4",
-  }));
+  // ── left-side y-axis: cumulative engagement count ────────────────
+  // Cumulative is the only y-axis now (severity axis removed). Tick
+  // labels and gridlines extend across the chart so dots/curve can be
+  // read off the same scale.
+  const leftAxisX = M.left;
   const cumTicks = cumTotal <= 25
     ? [0, 5, 10, 15, 20].filter((c) => c <= cumTotal)
     : [0, Math.round(cumTotal / 4), Math.round(cumTotal / 2), Math.round(3 * cumTotal / 4), cumTotal];
   for (const c of cumTicks) {
     const y = yCum(c);
     svg.append(svgEl("line", {
-      x1: rightAxisX - 4, x2: rightAxisX + 4, y1: y, y2: y,
-      stroke: "#b03a3a", "stroke-width": "1", opacity: "0.6",
+      x1: leftAxisX, x2: leftAxisX + innerW, y1: y, y2: y,
+      stroke: "#e8e8e8", "stroke-width": "1",
+    }));
+    svg.append(svgEl("line", {
+      x1: leftAxisX - 5, x2: leftAxisX, y1: y, y2: y,
+      stroke: "#888", "stroke-width": "1",
     }));
     svg.append(svgEl("text", {
-      x: rightAxisX + 8, y: y + 4,
-      "text-anchor": "start", "font-size": "10.5",
-      fill: "#7a2828", "font-weight": "600",
+      x: leftAxisX - 9, y: y + 4,
+      "text-anchor": "end", "font-size": "11",
+      fill: "#555", "font-weight": "600",
     }, String(c)));
   }
   svg.append(svgEl("text", {
-    x: rightAxisX + 8, y: M.top - 12,
-    "text-anchor": "start", "font-size": "10",
+    x: leftAxisX - 9, y: M.top - 14,
+    "text-anchor": "end", "font-size": "10.5",
     fill: "#7a2828", "font-weight": "700",
     "letter-spacing": "0.3",
   }, t.cum_axis_label));
 
-  // ── dots ─────────────────────────────────────────────────────────
+  // ── dots (positioned ON the cumulative curve) ───────────────────
+  // Each dot sits at (year, cumulative-count-when-added), so it visibly
+  // *causes* the curve's climb at that point. Severity is re-encoded as
+  // dot RADIUS (sev 5 strikes are biggest, sev 1 dismissals smallest).
   for (const p of points) {
-    const x = xOf(p.yd), y = yOf(p.sev);
+    const x = xOf(p.yd), y = yCum(cumByCase[p.r.case_id_slug]);
     const color = DOT_COLOR_BY_OUTCOME[p.r.outcome] || "#666";
-    const radius = p.sev >= 4 ? 8 : (p.sev >= 3 ? 7 : 6);
+    const radius = 4 + p.sev;
     const a = svgEl("a", { href: `ruling.html?id=${p.r.case_id_slug}` });
 
     if (p.sev >= 4) {
@@ -608,9 +607,12 @@ function renderCurve(rulings) {
   for (const p of points) {
     const ann = annotations[p.r.case_id_slug];
     if (!ann) continue;
-    const x = xOf(p.yd), y = yOf(p.sev);
-    const above = ann.side === "above";
-    const radius = p.sev >= 4 ? 8 : (p.sev >= 3 ? 7 : 6);
+    const x = xOf(p.yd), y = yCum(cumByCase[p.r.case_id_slug]);
+    // For dots high on the curve, push label below; for dots low, push
+    // label above. Ignores the per-annotation `side` setting — those
+    // were tuned for the old severity-based dot positions.
+    const above = y > M.top + innerH * 0.5;
+    const radius = 4 + p.sev;
 
     // estimate text box dimensions
     const text = ann.text;
@@ -871,11 +873,15 @@ function renderCurveSection(rulings) {
   // M.left=160, M.right=96, innerW=784. Era boundaries (1976→1995→2005.5
   // →2020.5→2026) map to SVG x ≈ 160 → 460 → 620 → 846 → 944. Each era
   // zoom includes a small buffer for context + the right-axis labels.
+  // viewBoxes match desktop chart with margins M.left=96, M.right=48,
+  // innerW=896. Era boundaries (1976→2005.5→2020.5→2026) map to SVG x
+  // ≈ 96 → 622 → 880 → 992. Each zoom includes a small left margin
+  // for the cumulative-axis tick labels.
   const ZOOMS = [
     { id: "all",  label: t.zoom_all,    viewBox: "0 0 1040 500" },
     { id: "era1", label: "1976–2005",  viewBox: "0 0 700 500" },
-    { id: "era2", label: "2006–2020",  viewBox: "560 0 360 500" },
-    { id: "era3", label: "2021–2026",  viewBox: "790 0 250 500" },
+    { id: "era2", label: "2006–2020",  viewBox: "540 0 360 500" },
+    { id: "era3", label: "2021–2026",  viewBox: "820 0 220 500" },
   ];
   const zoomBar = el("div", { class: "curve-zoom-bar", "aria-label": t.zoom_hint });
   zoomBar.append(el("span", { class: "curve-zoom-label" }, t.zoom_hint));
