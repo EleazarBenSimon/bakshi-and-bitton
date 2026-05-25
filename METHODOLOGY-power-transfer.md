@@ -281,7 +281,9 @@ codings become the visual face of the project. Specifically:
 The project's `MODERATION.md` workflow governs disputes about
 codings.
 
-## 9. What this methodology does not claim
+## 9. What this methodology does and does not claim
+
+### 9.1 What it does not claim
 
 - It does **not** claim that every act of judicial review is
   illegitimate. The Court has core review functions that are
@@ -297,6 +299,42 @@ codings.
   illegitimate. A struck statute can be the right outcome on the
   merits *and* still represent a competence acquisition by the
   Court — these are independent questions.
+- It does **not** claim that Israel is necessarily an outlier on
+  the *volume* of judicial review compared to other democracies.
+  Some democracies do have similarly active courts.
+
+### 9.2 What it does claim — and the role of volume here
+
+The index measures **competence acquired by the Court from
+elected institutions over time**. Volume alone is institutional
+design; democratic-authorization basis is legitimacy. **The
+project's substantive concern is the conjunction of the two:**
+substantial competence acquired *without* a corresponding act of
+democratic authorization.
+
+The Knesset is, in Israel's constitutional architecture, the
+highest authority — and it derives that authority from the
+electorate. Competence transferred from the Knesset (and from
+Knesset-accountable executive actors) to the Court is therefore
+competence transferred *away* from the chain of electoral
+accountability. When such a transfer happens through Court-internal
+interpretive moves rather than through a deliberate constitutional
+founding moment, an explicit legislative grant, or a referendum,
+that's the conjunction the project documents.
+
+A country with high judicial-review volume whose review power was
+explicitly granted by a constitutional convention or a referendum
+is not making the same move. A country with moderate judicial-
+review volume whose review power was self-asserted by the court is
+making a smaller version of the same move. The relevant axis is
+the *combination* — volume × (1 − authorization).
+
+If a comparative panel is ever added to this project, it must
+present both dimensions together. A panel that compared only the
+volume axis would invite the misreading that the project is
+upset about *amount* of judicial review rather than its
+*authorization basis*. The current methodology version does not
+publish such a panel for that reason.
 
 ## 10. Version
 
