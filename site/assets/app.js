@@ -68,9 +68,9 @@ const i18n = {
     role_Justice: "שופט/ת",
     role_RJ: "שופט/ת בדימוס (בחלון סטטוטורי)",
     curve_title: "העקומה: 1976–2026",
-    curve_subtitle: "העקומה האדומה מצטברת: היא עולה ב-1 בכל פעם שבית המשפט העליון התערב במהותו של תיק נגד רשות נבחרת — בין אם הביטול היה פורמלי ('התערבות') ובין אם היה הליכי ('מעורבות'). הציר האנכי שמשמאל מציין את חריפות הפסיקה הבודדת; הציר שמימין — את הסך המצטבר של מקרי המעורבות עד אותה שנה. לחיצה על נקודה פותחת את הפסיקה.",
-    curve_caption: "מה רואים: נורמליזציה הדרגתית של התערבות שיפוטית בתחומים שמעולם לא הוסמכה על-ידי הציבור או הכנסת. כמעט שטוחה לאורך 30 שנה, מתחילה לטפס לאחר 2006, ומאיצה אנכית ב-2021–2026. השכבה השנייה ('קריאה') תדון בפרשנות.",
-    cum_axis_label: "סך מצטבר",
+    curve_subtitle: "העקומה האדומה מצטברת ומשוקללת: בכל פסיקה היא עולה לפי סוג ההתפשטות של בית המשפט בה (רכישה +3, הרחבה +1, יישום שגרתי 0). 'רכישה' = פעם ראשונה שבית המשפט מתערב בצירוף (רשות נבחרת × תחום מדיניות) חדש. 'הרחבה' = יישום שיפוטי לתחום-משנה חדש בצירוף שכבר נכבש. 'יישום' = הפעלה שגרתית של דוקטרינה מבוססת. גודל הנקודה מבטא את חריפות התוצאה הדיספוזיטיבית. ראו METHODOLOGY-power-transfer.md לפירוט.",
+    curve_caption: "מה רואים: נורמליזציה הדרגתית של ההתפשטות השיפוטית לתחומים שמעולם לא ניתנה לבית המשפט סמכות מפורשת מאת הציבור או נציגיו. נקודות שלא מעלות את העקומה הן 'יישומים' — שגרתיות בתוך תחום שכבר נכבש; נקודות שמעלות אנכית את העקומה הן 'רכישות' של תחום שלם חדש. השכבה השנייה ('קריאה') תדון בפרשנות.",
+    cum_axis_label: "מדד הסמכות (מצטבר)",
     curve_aria: "תרשים פיזור של פסיקות בית המשפט העליון לפי שנה ועוצמת התערבות, 1976–2026",
     sev_1: "דחיית עתירה",
     sev_2: "הצהרתי / מצומצם",
@@ -155,9 +155,9 @@ const i18n = {
     role_Justice: "Justice",
     role_RJ: "Retired Justice (statutory post-retirement window)",
     curve_title: "The curve: 1976–2026",
-    curve_subtitle: "The red curve is cumulative: it climbs by +1 every time the Court substantively engaged with an elected-branch matter — whether the override was formal ('intervention') or procedural ('involvement'). The left axis marks individual-ruling severity; the right axis traces the running total of judicial engagement reaching into elected-branch territory. Click any dot to open the ruling.",
-    curve_caption: "What you see: the gradual normalization of judicial intervention in domains the public and Knesset never authorized. Almost flat for 30 years, beginning to climb after 2006, near-vertical 2021–2026. The site's second layer ('Reading') discusses interpretation.",
-    cum_axis_label: "Cumulative",
+    curve_subtitle: "The red curve is cumulative and weighted: each ruling adds height according to the kind of competence reach it represents (acquisition +3, extension +1, routine application 0). 'Acquisition' = first ruling in a (target-branch × policy-domain) cell. 'Extension' = application to a meaningfully new sub-domain within an already-claimed cell. 'Application' = routine use of settled doctrine. Dot size encodes individual-ruling disposition severity. See METHODOLOGY-power-transfer.md for full criteria.",
+    curve_caption: "What you see: the gradual normalization of judicial reach into domains never expressly authorized by the public or its elected representatives. Dots that do NOT raise the curve are 'applications' — routine use within already-claimed territory; dots that raise the curve sharply are 'acquisitions' of entirely new domains. The site's second layer ('Reading') discusses interpretation.",
+    cum_axis_label: "Authority index (cumulative)",
     curve_aria: "Scatter plot of Israeli Supreme Court rulings by year and intervention severity, 1976–2026",
     sev_1: "Petition dismissed",
     sev_2: "Declarative / restricted",
@@ -488,18 +488,38 @@ function renderCurve(rulings) {
   // y-axis on the RIGHT shows the cumulative engagement count; on the
   // LEFT it remains outcome severity for the dots. Two y-meanings, one
   // chart: dots tell the case-level story, curve tells the process story.
+  // Weights per METHODOLOGY-power-transfer.md §4. Rulings without a
+  // competence_class (legacy/unclassified) fall through to weight 1 so
+  // the curve degrades gracefully if a new ruling is added before being
+  // coded against the methodology.
+  const WEIGHT_BY_COMPETENCE_CLASS = {
+    acquisition: 3,
+    extension:   1,
+    application: 0,
+    ratification: 0,
+  };
+  function weightOf(r) {
+    if (r.competence_class && r.competence_class in WEIGHT_BY_COMPETENCE_CLASS) {
+      return WEIGHT_BY_COMPETENCE_CLASS[r.competence_class];
+    }
+    return 1; // legacy fallback for un-coded rulings
+  }
+
   const CUM_HEADROOM = 0.92;
-  const cumTotal = points.length;
+  // Pre-compute total weight so dots and ticks share the same y-scale.
+  let cumTotal = 0;
+  for (const p of points) cumTotal += weightOf(p.r);
   function yCum(c) { return M.top + innerH - (c / Math.max(1, cumTotal)) * innerH * CUM_HEADROOM; }
 
-  // Build (year, cumulative) sequence including a (YR_MIN, 0) anchor.
-  // Also build per-case cumulative lookup so dots can be placed ON the
-  // curve at their contribution point.
+  // Build (year, cumulative-weight) sequence with a (YR_MIN, 0) anchor.
+  // Each ruling adds its competence-class weight (acquisition=3, etc.).
+  // Application/ratification rulings don't move the curve but still
+  // appear as dots — visibly NOT adding height, which is the point.
   const cumXY = [{ x: xOf(YR_MIN), y: yCum(0) }];
   const cumByCase = {};
   let cum = 0;
   for (const p of points) {
-    cum += 1;
+    cum += weightOf(p.r);
     cumByCase[p.r.case_id_slug] = cum;
     cumXY.push({ x: xOf(p.yd), y: yCum(cum) });
   }
@@ -552,9 +572,13 @@ function renderCurve(rulings) {
   // labels and gridlines extend across the chart so dots/curve can be
   // read off the same scale.
   const leftAxisX = M.left;
-  const cumTicks = cumTotal <= 25
-    ? [0, 5, 10, 15, 20].filter((c) => c <= cumTotal)
-    : [0, Math.round(cumTotal / 4), Math.round(cumTotal / 2), Math.round(3 * cumTotal / 4), cumTotal];
+  // Tick spacing chosen to give ~5 labels at "round" values regardless
+  // of the dataset's weighted total (currently 46; will grow with
+  // additions). Stepping by 10 keeps the axis legible for totals up to
+  // a few hundred without recomputing.
+  const tickStep = cumTotal <= 25 ? 5 : (cumTotal <= 80 ? 10 : 20);
+  const cumTicks = [];
+  for (let c = 0; c <= cumTotal; c += tickStep) cumTicks.push(c);
   for (const c of cumTicks) {
     const y = yCum(c);
     svg.append(svgEl("line", {

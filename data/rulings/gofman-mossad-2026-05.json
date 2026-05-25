@@ -6,9 +6,24 @@
   "ruling_date": "2026-05-19",
   "filing_date": null,
   "panel": [
-    { "name_he": "דפנה ברק-ארז", "name_en": "Daphne Barak-Erez", "role": "Justice", "slug": "barak-erez" },
-    { "name_he": "עופר גרוסקופף", "name_en": "Ofer Grosskopf", "role": "Justice", "slug": "grosskopf" },
-    { "name_he": "אלכס שטיין", "name_en": "Alex Stein", "role": "Justice", "slug": "stein" }
+    {
+      "name_he": "דפנה ברק-ארז",
+      "name_en": "Daphne Barak-Erez",
+      "role": "Justice",
+      "slug": "barak-erez"
+    },
+    {
+      "name_he": "עופר גרוסקופף",
+      "name_en": "Ofer Grosskopf",
+      "role": "Justice",
+      "slug": "grosskopf"
+    },
+    {
+      "name_he": "אלכס שטיין",
+      "name_en": "Alex Stein",
+      "role": "Justice",
+      "slug": "stein"
+    }
   ],
   "petitioner_type": "NGO",
   "petitioner_name_he": "אורי אלמקייס, התנועה למען איכות השלטון בישראל, ועותרים נוספים",
@@ -37,6 +52,10 @@
   "respondent_body": "Senior Appointments Advisory Committee (Gronis Committee)",
   "compliance_state": "pending",
   "defiance_signals": "Committee directed to update the court by May 21, 2026 (12:00) on whether it would reconvene, and to file completion notice by May 26, 2026. As of last reporting, the appointment is paused pending the revised vetting.",
+  "target_branch": "executive",
+  "domain": "intelligence-and-security-appointments",
+  "competence_class": "extension",
+  "adversarial_view": null,
   "tags": [
     "mossad",
     "security-appointment",
@@ -44,9 +63,5 @@
     "elmakayes",
     "post-oct7"
   ],
-  "target_branch": "executive",
-  "domain": "intelligence-and-security-appointments",
-  "competence_class": "acquisition",
-  "adversarial_view": null,
   "notes": "Per curiam-style joint decision; no separate authoring justice identified in available reporting. The official case number(s) were not published in coverage at time of writing. The ruling's procedural-review logic mirrors Justice Amit's dissent in the December 2025 Zini/Shin Bet ruling — there it was a minority position, here unanimous."
 }

@@ -6,15 +6,60 @@
   "ruling_date": "2013-09-16",
   "filing_date": null,
   "panel": [
-    { "name_he": "אשר גרוניס", "name_en": "Asher Grunis", "role": "President", "slug": "grunis" },
-    { "name_he": "מרים נאור", "name_en": "Miriam Naor", "role": "Deputy President", "slug": "naor" },
-    { "name_he": "לא אומת", "name_en": "Justice (unverified)", "role": "Justice", "slug": "unverified-3" },
-    { "name_he": "לא אומת", "name_en": "Justice (unverified)", "role": "Justice", "slug": "unverified-4" },
-    { "name_he": "לא אומת", "name_en": "Justice (unverified)", "role": "Justice", "slug": "unverified-5" },
-    { "name_he": "לא אומת", "name_en": "Justice (unverified)", "role": "Justice", "slug": "unverified-6" },
-    { "name_he": "לא אומת", "name_en": "Justice (unverified)", "role": "Justice", "slug": "unverified-7" },
-    { "name_he": "לא אומת", "name_en": "Justice (unverified)", "role": "Justice", "slug": "unverified-8" },
-    { "name_he": "לא אומת", "name_en": "Justice (unverified)", "role": "Justice", "slug": "unverified-9" }
+    {
+      "name_he": "אשר גרוניס",
+      "name_en": "Asher Grunis",
+      "role": "President",
+      "slug": "grunis"
+    },
+    {
+      "name_he": "מרים נאור",
+      "name_en": "Miriam Naor",
+      "role": "Deputy President",
+      "slug": "naor"
+    },
+    {
+      "name_he": "לא אומת",
+      "name_en": "Justice (unverified)",
+      "role": "Justice",
+      "slug": "unverified-3"
+    },
+    {
+      "name_he": "לא אומת",
+      "name_en": "Justice (unverified)",
+      "role": "Justice",
+      "slug": "unverified-4"
+    },
+    {
+      "name_he": "לא אומת",
+      "name_en": "Justice (unverified)",
+      "role": "Justice",
+      "slug": "unverified-5"
+    },
+    {
+      "name_he": "לא אומת",
+      "name_en": "Justice (unverified)",
+      "role": "Justice",
+      "slug": "unverified-6"
+    },
+    {
+      "name_he": "לא אומת",
+      "name_en": "Justice (unverified)",
+      "role": "Justice",
+      "slug": "unverified-7"
+    },
+    {
+      "name_he": "לא אומת",
+      "name_en": "Justice (unverified)",
+      "role": "Justice",
+      "slug": "unverified-8"
+    },
+    {
+      "name_he": "לא אומת",
+      "name_en": "Justice (unverified)",
+      "role": "Justice",
+      "slug": "unverified-9"
+    }
   ],
   "petitioner_type": "Individual",
   "petitioner_name_he": "אדם ואח' (מבקשי מקלט, יחד עם ארגוני זכויות אדם)",
@@ -41,6 +86,10 @@
   "respondent_body": null,
   "compliance_state": "complied",
   "defiance_signals": "Knesset re-legislated a modified detention scheme (Amendment 4) shortly afterwards, itself the subject of further HCJ challenges culminating in HCJ 8425/13 Eitan (2014)",
+  "target_branch": "legislature",
+  "domain": "asylum-immigration",
+  "competence_class": "acquisition",
+  "adversarial_view": null,
   "tags": [
     "asylum-seekers",
     "detention",

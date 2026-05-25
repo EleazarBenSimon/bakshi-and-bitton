@@ -6,9 +6,24 @@
   "ruling_date": "2025-12-28",
   "filing_date": "2025-06-08",
   "panel": [
-    { "name_he": "יצחק עמית", "name_en": "Yitzhak Amit", "role": "President", "slug": "amit" },
-    { "name_he": "נעם סולברג", "name_en": "Noam Sohlberg", "role": "Deputy President", "slug": "sohlberg" },
-    { "name_he": "דוד מינץ", "name_en": "David Mintz", "role": "Justice", "slug": "mintz" }
+    {
+      "name_he": "יצחק עמית",
+      "name_en": "Yitzhak Amit",
+      "role": "President",
+      "slug": "amit"
+    },
+    {
+      "name_he": "נעם סולברג",
+      "name_en": "Noam Sohlberg",
+      "role": "Deputy President",
+      "slug": "sohlberg"
+    },
+    {
+      "name_he": "דוד מינץ",
+      "name_en": "David Mintz",
+      "role": "Justice",
+      "slug": "mintz"
+    }
   ],
   "petitioner_type": "NGO",
   "petitioner_name_he": "התנועה למען איכות השלטון בישראל (עו\"ד אליעד שרגא); ארבעה ראשי שב\"כ לשעבר — נדב ארגמן, עמי איילון, כרמי גילון, ונוסף — ועותרים נוספים (7 עתירות בסך הכל)",
@@ -23,8 +38,13 @@
   "outcome": "dismissed",
   "vote_majority": 2,
   "vote_minority": 1,
-  "majority_authors": ["sohlberg", "mintz"],
-  "minority_authors": ["amit"],
+  "majority_authors": [
+    "sohlberg",
+    "mintz"
+  ],
+  "minority_authors": [
+    "amit"
+  ],
   "official_url": "https://supremedecisions.court.gov.il/Home/Download?path=NetVerdicts/2025/12/28/2025-10-427-13-2&fileName=05b2a0af994d458db9dd0b81568028ff&type=4",
   "secondary_urls": [
     "https://www.timesofisrael.com/high-court-rejects-petitions-against-shin-bet-chiefs-appointment/",
@@ -37,6 +57,10 @@
   "respondent_body": "Senior Appointments Advisory Committee (Gronis Committee)",
   "compliance_state": "n/a",
   "defiance_signals": null,
+  "target_branch": "executive",
+  "domain": "intelligence-and-security-appointments",
+  "competence_class": "acquisition",
+  "adversarial_view": null,
   "tags": [
     "shin-bet",
     "security-appointment",

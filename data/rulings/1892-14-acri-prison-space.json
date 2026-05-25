@@ -6,9 +6,24 @@
   "ruling_date": "2017-06-13",
   "filing_date": null,
   "panel": [
-    { "name_he": "אליקים רובינשטיין", "name_en": "Elyakim Rubinstein", "role": "Deputy President", "slug": "rubinstein" },
-    { "name_he": "אורי שוהם", "name_en": "Uri Shoham", "role": "Justice", "slug": "shoham" },
-    { "name_he": "חנן מלצר", "name_en": "Hanan Melcer", "role": "Justice", "slug": "melcer" }
+    {
+      "name_he": "אליקים רובינשטיין",
+      "name_en": "Elyakim Rubinstein",
+      "role": "Deputy President",
+      "slug": "rubinstein"
+    },
+    {
+      "name_he": "אורי שוהם",
+      "name_en": "Uri Shoham",
+      "role": "Justice",
+      "slug": "shoham"
+    },
+    {
+      "name_he": "חנן מלצר",
+      "name_en": "Hanan Melcer",
+      "role": "Justice",
+      "slug": "melcer"
+    }
   ],
   "petitioner_type": "NGO",
   "petitioner_name_he": "האגודה לזכויות האזרח בישראל ואירגוני זכויות-אדם נוספים",
@@ -22,7 +37,9 @@
   "outcome": "struck_down",
   "vote_majority": 3,
   "vote_minority": 0,
-  "majority_authors": ["rubinstein"],
+  "majority_authors": [
+    "rubinstein"
+  ],
   "minority_authors": [],
   "official_url": "https://supremedecisions.court.gov.il/Home/Download?path=HebrewVerdicts%5C14%5C920%5C018%5Ct28&fileName=14018920_t28.txt&type=2",
   "secondary_urls": [
@@ -34,6 +51,10 @@
   "respondent_body": null,
   "compliance_state": "contested",
   "defiance_signals": "The 18-month deadline came and went without full implementation; subsequent petitions extended the timeline. The ruling remains one of the most-cited examples of reasonableness review applied to sustained ministerial inaction.",
+  "target_branch": "executive",
+  "domain": "prison-conditions",
+  "competence_class": "acquisition",
+  "adversarial_view": null,
   "tags": [
     "reasonableness",
     "administrative-failure",

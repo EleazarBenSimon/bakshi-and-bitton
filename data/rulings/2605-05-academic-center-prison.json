@@ -6,15 +6,60 @@
   "ruling_date": "2009-11-19",
   "filing_date": null,
   "panel": [
-    { "name_he": "דורית ביניש", "name_en": "Dorit Beinisch", "role": "President", "slug": "beinisch" },
-    { "name_he": "לא אומת", "name_en": "Justice (unverified)", "role": "Justice", "slug": "unverified-2" },
-    { "name_he": "לא אומת", "name_en": "Justice (unverified)", "role": "Justice", "slug": "unverified-3" },
-    { "name_he": "לא אומת", "name_en": "Justice (unverified)", "role": "Justice", "slug": "unverified-4" },
-    { "name_he": "לא אומת", "name_en": "Justice (unverified)", "role": "Justice", "slug": "unverified-5" },
-    { "name_he": "לא אומת", "name_en": "Justice (unverified)", "role": "Justice", "slug": "unverified-6" },
-    { "name_he": "לא אומת", "name_en": "Justice (unverified)", "role": "Justice", "slug": "unverified-7" },
-    { "name_he": "לא אומת", "name_en": "Justice (unverified)", "role": "Justice", "slug": "unverified-8" },
-    { "name_he": "לא אומת", "name_en": "Justice (unverified)", "role": "Justice", "slug": "unverified-9" }
+    {
+      "name_he": "דורית ביניש",
+      "name_en": "Dorit Beinisch",
+      "role": "President",
+      "slug": "beinisch"
+    },
+    {
+      "name_he": "לא אומת",
+      "name_en": "Justice (unverified)",
+      "role": "Justice",
+      "slug": "unverified-2"
+    },
+    {
+      "name_he": "לא אומת",
+      "name_en": "Justice (unverified)",
+      "role": "Justice",
+      "slug": "unverified-3"
+    },
+    {
+      "name_he": "לא אומת",
+      "name_en": "Justice (unverified)",
+      "role": "Justice",
+      "slug": "unverified-4"
+    },
+    {
+      "name_he": "לא אומת",
+      "name_en": "Justice (unverified)",
+      "role": "Justice",
+      "slug": "unverified-5"
+    },
+    {
+      "name_he": "לא אומת",
+      "name_en": "Justice (unverified)",
+      "role": "Justice",
+      "slug": "unverified-6"
+    },
+    {
+      "name_he": "לא אומת",
+      "name_en": "Justice (unverified)",
+      "role": "Justice",
+      "slug": "unverified-7"
+    },
+    {
+      "name_he": "לא אומת",
+      "name_en": "Justice (unverified)",
+      "role": "Justice",
+      "slug": "unverified-8"
+    },
+    {
+      "name_he": "לא אומת",
+      "name_en": "Justice (unverified)",
+      "role": "Justice",
+      "slug": "unverified-9"
+    }
   ],
   "petitioner_type": "NGO",
   "petitioner_name_he": "המרכז האקדמי למשפט ולעסקים ואח'",
@@ -29,7 +74,9 @@
   "outcome": "struck_down",
   "vote_majority": null,
   "vote_minority": null,
-  "majority_authors": ["beinisch"],
+  "majority_authors": [
+    "beinisch"
+  ],
   "minority_authors": [],
   "official_url": "https://versa.cardozo.yu.edu/opinions/academic-center-law-and-business-v-minister-finance",
   "secondary_urls": [
@@ -41,6 +88,10 @@
   "respondent_body": null,
   "compliance_state": "complied",
   "defiance_signals": null,
+  "target_branch": "legislature",
+  "domain": "privatization-of-sovereign-functions",
+  "competence_class": "acquisition",
+  "adversarial_view": null,
   "tags": [
     "privatization",
     "sovereign-function",

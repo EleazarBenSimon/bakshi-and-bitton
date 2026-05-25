@@ -63,6 +63,10 @@
     "https://www.timesofisrael.com/liveblog_entry/judicial-selection-committee-finally-convenes-to-elect-supreme-court-chief-levin-absent/",
     "https://en.idi.org.il/articles/55973"
   ],
+  "target_branch": "executive",
+  "domain": "judicial-appointments",
+  "competence_class": "acquisition",
+  "adversarial_view": null,
   "tags": [
     "judicial-selection-committee",
     "appointment-block",

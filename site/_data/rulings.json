@@ -53,6 +53,10 @@
     "respondent_body": "Senior Appointments Advisory Committee (Gronis Committee)",
     "compliance_state": "pending",
     "defiance_signals": "Committee directed to update the court by May 21, 2026 (12:00) on whether it would reconvene, and to file completion notice by May 26, 2026. As of last reporting, the appointment is paused pending the revised vetting.",
+    "target_branch": "executive",
+    "domain": "intelligence-and-security-appointments",
+    "competence_class": "extension",
+    "adversarial_view": null,
     "tags": [
       "mossad",
       "security-appointment",
@@ -121,6 +125,10 @@
     "respondent_body": "Senior Appointments Advisory Committee (Gronis Committee)",
     "compliance_state": "n/a",
     "defiance_signals": null,
+    "target_branch": "executive",
+    "domain": "intelligence-and-security-appointments",
+    "competence_class": "acquisition",
+    "adversarial_view": null,
     "tags": [
       "shin-bet",
       "security-appointment",
@@ -211,6 +219,10 @@
     "respondent_body": null,
     "compliance_state": "contested",
     "defiance_signals": "Several cabinet ministers publicly criticized the ruling and called for non-compliance, as reported in mainstream Israeli press (see secondary_urls). No formal cabinet act of defiance was taken. The ruling is now the leading authority cited against any future attempt to alter the AG-termination mechanism by cabinet resolution rather than primary legislation.",
+    "target_branch": "executive",
+    "domain": "senior-executive-appointments",
+    "competence_class": "extension",
+    "adversarial_view": null,
     "tags": [
       "attorney-general",
       "gatekeeper",
@@ -285,6 +297,10 @@
       "https://www.timesofisrael.com/liveblog_entry/judicial-selection-committee-finally-convenes-to-elect-supreme-court-chief-levin-absent/",
       "https://en.idi.org.il/articles/55973"
     ],
+    "target_branch": "executive",
+    "domain": "judicial-appointments",
+    "competence_class": "acquisition",
+    "adversarial_view": null,
     "tags": [
       "judicial-selection-committee",
       "appointment-block",
@@ -404,6 +420,10 @@
     "respondent_body": null,
     "compliance_state": "complied",
     "defiance_signals": null,
+    "target_branch": "basic_law",
+    "domain": "basic-law-amendment",
+    "competence_class": "application",
+    "adversarial_view": null,
     "tags": [
       "constituent-authority",
       "basic-law-amendment",
@@ -557,6 +577,10 @@
     "respondent_body": null,
     "compliance_state": "complied",
     "defiance_signals": "Coalition leaders publicly criticized the ruling; Justice Minister Levin called it 'the opposite of the spirit of unity' (as reported in Times of Israel and Israeli Hebrew press cited in secondary_urls). No direct re-enactment of the amendment was attempted. Subsequent legislative activity addressed Judicial Selection Committee restructuring (March 2025).",
+    "target_branch": "basic_law",
+    "domain": "basic-law-amendment",
+    "competence_class": "acquisition",
+    "adversarial_view": null,
     "tags": [
       "constitutional-revolution",
       "basic-law-amendment",
@@ -671,6 +695,10 @@
     "respondent_body": null,
     "compliance_state": "complied",
     "defiance_signals": "Coalition leaders criticized the ruling; PM Netanyahu publicly stated he was 'pained' by the decision but removed Deri from the cabinet. Subsequent attempts (2024-2025) to legislate around the ruling via amendment to Basic Law: Government were not advanced.",
+    "target_branch": "executive",
+    "domain": "cabinet-composition",
+    "competence_class": "extension",
+    "adversarial_view": null,
     "tags": [
       "appointment-block",
       "reasonableness",
@@ -733,6 +761,10 @@
     "respondent_body": null,
     "compliance_state": "complied",
     "defiance_signals": null,
+    "target_branch": "executive",
+    "domain": "religion-state",
+    "competence_class": "application",
+    "adversarial_view": null,
     "tags": [
       "reasonableness",
       "ministerial-decision",
@@ -852,6 +884,10 @@
       "doctrine-anchor",
       "warning-of-voidness"
     ],
+    "target_branch": "basic_law",
+    "domain": "basic-law-amendment",
+    "competence_class": "acquisition",
+    "adversarial_view": null,
     "notes": "Doctrinal anchor case. Establishes the tripartite test (abuse of constituent power, generality, compatibility with the constitutional fabric) subsequently invoked in HCJ 5658/23 (reasonableness amendment, January 2024) and HCJ 5119/23 (incapacitation amendment, January 2024). Disposition is a 'warning of voidness' (התראת בטלות) — not a strike — the Court declined to void the amendments but signaled future similar amendments would be void under the abuse-of-constituent-power test. Vote: 6-3, uniform across doctrine and disposition. Majority: Hayut (lead), Hendel, Amit, Barak-Erez, Baron, Karra. Dissent: Sohlberg, Mintz, Elron. Internal divergence within the 6-justice majority (Hayut's analytical framework for identifying abuse-of-constituent-power vs. Barak-Erez's framework) did not produce a separate vote tally. The petitioner is recorded as 'Party' to reflect Shafir's status as a former Knesset Member; consolidated petitions included NGO co-petitioners. An earlier draft of this record encoded the panel and vote incorrectly (7-2 with Melcer, Vogelman, Willner listed) per a research brief that omitted Justice Elron's dissent and confused the panel composition with an unrelated sibling-era ruling; corrected against arnontl.com legal-firm analysis, afiklaw.com docket header, and Verfassungsblog summary."
   },
   {
@@ -948,6 +984,10 @@
     "respondent_body": null,
     "compliance_state": "complied",
     "defiance_signals": null,
+    "target_branch": "legislature",
+    "domain": "settlements-and-land",
+    "competence_class": "acquisition",
+    "adversarial_view": null,
     "tags": [
       "settlements",
       "property-rights",
@@ -1010,6 +1050,10 @@
     "respondent_body": null,
     "compliance_state": "contested",
     "defiance_signals": "The 18-month deadline came and went without full implementation; subsequent petitions extended the timeline. The ruling remains one of the most-cited examples of reasonableness review applied to sustained ministerial inaction.",
+    "target_branch": "executive",
+    "domain": "prison-conditions",
+    "competence_class": "acquisition",
+    "adversarial_view": null,
     "tags": [
       "reasonableness",
       "administrative-failure",
@@ -1085,6 +1129,10 @@
     "respondent_body": null,
     "compliance_state": "complied",
     "defiance_signals": null,
+    "target_branch": "executive",
+    "domain": "economic-regulation",
+    "competence_class": "acquisition",
+    "adversarial_view": null,
     "tags": [
       "gas-framework",
       "executive-action",
@@ -1161,6 +1209,10 @@
     "respondent_body": null,
     "compliance_state": "complied",
     "defiance_signals": "The original arrangement was terminated. Subsequent variants were attempted; later phases of the ruling (April 2016) struck down extensions as unreasonable.",
+    "target_branch": "executive",
+    "domain": "cabinet-composition",
+    "competence_class": "acquisition",
+    "adversarial_view": null,
     "tags": [
       "reasonableness",
       "ministerial-appointment",
@@ -1260,6 +1312,10 @@
     "respondent_body": null,
     "compliance_state": "complied",
     "defiance_signals": null,
+    "target_branch": "legislature",
+    "domain": "asylum-immigration",
+    "competence_class": "application",
+    "adversarial_view": null,
     "tags": [
       "asylum-seekers",
       "holot",
@@ -1320,6 +1376,10 @@
     "respondent_body": "Kfar Vradim Local Council",
     "compliance_state": "complied",
     "defiance_signals": null,
+    "target_branch": "executive",
+    "domain": "religion-state",
+    "competence_class": "extension",
+    "adversarial_view": null,
     "tags": [
       "reasonableness",
       "local-authority",
@@ -1417,6 +1477,10 @@
     "respondent_body": null,
     "compliance_state": "complied",
     "defiance_signals": "Knesset re-legislated a modified detention scheme (Amendment 4) shortly afterwards, itself the subject of further HCJ challenges culminating in HCJ 8425/13 Eitan (2014)",
+    "target_branch": "legislature",
+    "domain": "asylum-immigration",
+    "competence_class": "acquisition",
+    "adversarial_view": null,
     "tags": [
       "asylum-seekers",
       "detention",
@@ -1519,6 +1583,10 @@
     "respondent_body": null,
     "compliance_state": "complied",
     "defiance_signals": null,
+    "target_branch": "legislature",
+    "domain": "conscription-and-equality",
+    "competence_class": "acquisition",
+    "adversarial_view": null,
     "tags": [
       "tal-law",
       "haredi-conscription",
@@ -1618,6 +1686,10 @@
     "respondent_body": null,
     "compliance_state": "complied",
     "defiance_signals": null,
+    "target_branch": "legislature",
+    "domain": "privatization-of-sovereign-functions",
+    "competence_class": "acquisition",
+    "adversarial_view": null,
     "tags": [
       "privatization",
       "sovereign-function",
@@ -1724,6 +1796,10 @@
       "basic-law-strike",
       "headliner"
     ],
+    "target_branch": "legislature",
+    "domain": "civil-tort-and-state-liability",
+    "competence_class": "acquisition",
+    "adversarial_view": null,
     "notes": "Nine-justice panel, unanimous outcome verified per Versa/Cardozo and ICRC casebook. Lead opinion by Barak verified; eight other panel seats marked 'unverified' placeholder pending checking against printed judgment. One of the last major Knesset-statute strikes during the Barak presidency (Barak retired September 2006; this judgment issued shortly thereafter under his authorship on a case argued before retirement)."
   },
   {
@@ -1825,6 +1901,10 @@
     "respondent_body": null,
     "compliance_state": "n/a",
     "defiance_signals": null,
+    "target_branch": "legislature",
+    "domain": "basic-law-amendment",
+    "competence_class": "acquisition",
+    "adversarial_view": null,
     "tags": [
       "constitutional-revolution",
       "basic-law-supremacy",
@@ -1896,6 +1976,10 @@
       "doctrinal-foundation",
       "headliner"
     ],
+    "target_branch": "executive",
+    "domain": "administrative-review-general",
+    "competence_class": "acquisition",
+    "adversarial_view": null,
     "notes": "Pre-digital era ruling — no supremedecisions.court.gov.il URL exists for this 1976 judgment. The official_url field points to the Cardozo Versa topic page on judicial reasonableness, which is the closest authoritative English-language secondary source; no full Versa translation of Dakka itself appears to exist. Canonical Hebrew citation: פ\"ד ל(2) 94. Methodology trade-offs: (1) Schema 'outcome' set to 'declarative' since the petition was formally denied but the ruling's significance arises from Justice Shamgar's articulation of reasonableness as an independent ground in the reasoning. (2) Exact ruling-date day/month not verified from the pre-digital record; 1976-01-01 is a placeholder year-only date drawn from the volume reference (P\"D 30(2), 1976). (3) Two additional panel members are recorded as 'unverified' placeholders; only the lead-opinion author (Shamgar) is documented from available open sources. The other two seats on the standard 3-justice HCJ panel of the period (court president at the time was Yoel Sussman; deputy president Haim Cohn) must be filled in from the printed P\"D before publication. (4) CORRECTION 2026-05-25: an earlier version of this record incorrectly named Aharon Barak as the lead-opinion author. Barak was Attorney General 1975-1978 and only joined the Supreme Court in late 1978, so he could not have been on this 1976 panel. The original error conflated Dakka (1976) with HCJ 389/80 Dapei Zahav (1980), where Justice Barak — by then on the Court — articulated his four-prong reasonableness analysis. Three independent Hebrew sources (Hebrew Wikipedia 'עילת הסבירות', HaMichlol encyclopedia, Versa/Cardozo topic essays) attribute the Dakka lead opinion to Shamgar. Flag for source-link verification of the other 2 panelists before any external citation."
   }
 ]

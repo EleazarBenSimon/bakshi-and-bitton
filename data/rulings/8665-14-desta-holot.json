@@ -6,15 +6,60 @@
   "ruling_date": "2015-08-11",
   "filing_date": null,
   "panel": [
-    { "name_he": "מרים נאור", "name_en": "Miriam Naor", "role": "President", "slug": "naor" },
-    { "name_he": "לא אומת", "name_en": "Justice (unverified)", "role": "Justice", "slug": "unverified-2" },
-    { "name_he": "לא אומת", "name_en": "Justice (unverified)", "role": "Justice", "slug": "unverified-3" },
-    { "name_he": "לא אומת", "name_en": "Justice (unverified)", "role": "Justice", "slug": "unverified-4" },
-    { "name_he": "לא אומת", "name_en": "Justice (unverified)", "role": "Justice", "slug": "unverified-5" },
-    { "name_he": "לא אומת", "name_en": "Justice (unverified)", "role": "Justice", "slug": "unverified-6" },
-    { "name_he": "לא אומת", "name_en": "Justice (unverified)", "role": "Justice", "slug": "unverified-7" },
-    { "name_he": "לא אומת", "name_en": "Justice (unverified)", "role": "Justice", "slug": "unverified-8" },
-    { "name_he": "לא אומת", "name_en": "Justice (unverified)", "role": "Justice", "slug": "unverified-9" }
+    {
+      "name_he": "מרים נאור",
+      "name_en": "Miriam Naor",
+      "role": "President",
+      "slug": "naor"
+    },
+    {
+      "name_he": "לא אומת",
+      "name_en": "Justice (unverified)",
+      "role": "Justice",
+      "slug": "unverified-2"
+    },
+    {
+      "name_he": "לא אומת",
+      "name_en": "Justice (unverified)",
+      "role": "Justice",
+      "slug": "unverified-3"
+    },
+    {
+      "name_he": "לא אומת",
+      "name_en": "Justice (unverified)",
+      "role": "Justice",
+      "slug": "unverified-4"
+    },
+    {
+      "name_he": "לא אומת",
+      "name_en": "Justice (unverified)",
+      "role": "Justice",
+      "slug": "unverified-5"
+    },
+    {
+      "name_he": "לא אומת",
+      "name_en": "Justice (unverified)",
+      "role": "Justice",
+      "slug": "unverified-6"
+    },
+    {
+      "name_he": "לא אומת",
+      "name_en": "Justice (unverified)",
+      "role": "Justice",
+      "slug": "unverified-7"
+    },
+    {
+      "name_he": "לא אומת",
+      "name_en": "Justice (unverified)",
+      "role": "Justice",
+      "slug": "unverified-8"
+    },
+    {
+      "name_he": "לא אומת",
+      "name_en": "Justice (unverified)",
+      "role": "Justice",
+      "slug": "unverified-9"
+    }
   ],
   "petitioner_type": "Individual",
   "petitioner_name_he": "דסטה ואח' (מבקשי מקלט המוחזקים במתקן 'חולות', יחד עם ארגוני זכויות אדם)",
@@ -29,7 +74,9 @@
   "outcome": "partially_struck",
   "vote_majority": null,
   "vote_minority": null,
-  "majority_authors": ["naor"],
+  "majority_authors": [
+    "naor"
+  ],
   "minority_authors": [],
   "official_url": "https://versa.cardozo.yu.edu/opinions/desta-v-knesset",
   "secondary_urls": [
@@ -41,6 +88,10 @@
   "respondent_body": null,
   "compliance_state": "complied",
   "defiance_signals": null,
+  "target_branch": "legislature",
+  "domain": "asylum-immigration",
+  "competence_class": "application",
+  "adversarial_view": null,
   "tags": [
     "asylum-seekers",
     "holot",

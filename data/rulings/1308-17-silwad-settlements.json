@@ -6,15 +6,60 @@
   "ruling_date": "2020-06-09",
   "filing_date": null,
   "panel": [
-    { "name_he": "אסתר חיות", "name_en": "Esther Hayut", "role": "President", "slug": "hayut" },
-    { "name_he": "נעם סולברג", "name_en": "Noam Sohlberg", "role": "Justice", "slug": "sohlberg" },
-    { "name_he": "לא אומת", "name_en": "Justice (unverified)", "role": "Justice", "slug": "unverified-3" },
-    { "name_he": "לא אומת", "name_en": "Justice (unverified)", "role": "Justice", "slug": "unverified-4" },
-    { "name_he": "לא אומת", "name_en": "Justice (unverified)", "role": "Justice", "slug": "unverified-5" },
-    { "name_he": "לא אומת", "name_en": "Justice (unverified)", "role": "Justice", "slug": "unverified-6" },
-    { "name_he": "לא אומת", "name_en": "Justice (unverified)", "role": "Justice", "slug": "unverified-7" },
-    { "name_he": "לא אומת", "name_en": "Justice (unverified)", "role": "Justice", "slug": "unverified-8" },
-    { "name_he": "לא אומת", "name_en": "Justice (unverified)", "role": "Justice", "slug": "unverified-9" }
+    {
+      "name_he": "אסתר חיות",
+      "name_en": "Esther Hayut",
+      "role": "President",
+      "slug": "hayut"
+    },
+    {
+      "name_he": "נעם סולברג",
+      "name_en": "Noam Sohlberg",
+      "role": "Justice",
+      "slug": "sohlberg"
+    },
+    {
+      "name_he": "לא אומת",
+      "name_en": "Justice (unverified)",
+      "role": "Justice",
+      "slug": "unverified-3"
+    },
+    {
+      "name_he": "לא אומת",
+      "name_en": "Justice (unverified)",
+      "role": "Justice",
+      "slug": "unverified-4"
+    },
+    {
+      "name_he": "לא אומת",
+      "name_en": "Justice (unverified)",
+      "role": "Justice",
+      "slug": "unverified-5"
+    },
+    {
+      "name_he": "לא אומת",
+      "name_en": "Justice (unverified)",
+      "role": "Justice",
+      "slug": "unverified-6"
+    },
+    {
+      "name_he": "לא אומת",
+      "name_en": "Justice (unverified)",
+      "role": "Justice",
+      "slug": "unverified-7"
+    },
+    {
+      "name_he": "לא אומת",
+      "name_en": "Justice (unverified)",
+      "role": "Justice",
+      "slug": "unverified-8"
+    },
+    {
+      "name_he": "לא אומת",
+      "name_en": "Justice (unverified)",
+      "role": "Justice",
+      "slug": "unverified-9"
+    }
   ],
   "petitioner_type": "Local-Authority",
   "petitioner_name_he": "מועצה מקומית סילוואד ואח' (עתירות מאוחדות, ובכללן עתירות של ארגוני זכויות אדם)",
@@ -30,8 +75,12 @@
   "outcome": "struck_down",
   "vote_majority": 8,
   "vote_minority": 1,
-  "majority_authors": ["hayut"],
-  "minority_authors": ["sohlberg"],
+  "majority_authors": [
+    "hayut"
+  ],
+  "minority_authors": [
+    "sohlberg"
+  ],
   "official_url": "https://www.adalah.org/en/content/view/10035",
   "secondary_urls": [
     "https://www.loc.gov/item/global-legal-monitor/2020-07-14/israel-supreme-court-voids-law-legalizing-settlements-built-on-unauthorized-and-privately-owned-land-in-west-bank/",
@@ -43,6 +92,10 @@
   "respondent_body": null,
   "compliance_state": "complied",
   "defiance_signals": null,
+  "target_branch": "legislature",
+  "domain": "settlements-and-land",
+  "competence_class": "acquisition",
+  "adversarial_view": null,
   "tags": [
     "settlements",
     "property-rights",

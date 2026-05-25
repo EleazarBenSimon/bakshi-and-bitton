@@ -6,9 +6,24 @@
   "ruling_date": "2014-09-09",
   "filing_date": null,
   "panel": [
-    { "name_he": "אסתר חיות", "name_en": "Esther Hayut", "role": "Justice", "slug": "hayut" },
-    { "name_he": "ניל הנדל", "name_en": "Neal Hendel", "role": "Justice", "slug": "hendel" },
-    { "name_he": "עוזי פוגלמן", "name_en": "Uzi Vogelman", "role": "Justice", "slug": "vogelman" }
+    {
+      "name_he": "אסתר חיות",
+      "name_en": "Esther Hayut",
+      "role": "Justice",
+      "slug": "hayut"
+    },
+    {
+      "name_he": "ניל הנדל",
+      "name_en": "Neal Hendel",
+      "role": "Justice",
+      "slug": "hendel"
+    },
+    {
+      "name_he": "עוזי פוגלמן",
+      "name_en": "Uzi Vogelman",
+      "role": "Justice",
+      "slug": "vogelman"
+    }
   ],
   "petitioner_type": "Individual",
   "petitioner_name_he": "יהודית סלע ותשעה תושבים נוספים מכפר ורדים",
@@ -22,7 +37,9 @@
   "outcome": "struck_down",
   "vote_majority": 3,
   "vote_minority": 0,
-  "majority_authors": ["vogelman"],
+  "majority_authors": [
+    "vogelman"
+  ],
   "minority_authors": [],
   "official_url": "https://versa.cardozo.yu.edu/opinions/sela-v-yehieli",
   "secondary_urls": [],
@@ -32,6 +49,10 @@
   "respondent_body": "Kfar Vradim Local Council",
   "compliance_state": "complied",
   "defiance_signals": null,
+  "target_branch": "executive",
+  "domain": "religion-state",
+  "competence_class": "extension",
+  "adversarial_view": null,
   "tags": [
     "reasonableness",
     "local-authority",

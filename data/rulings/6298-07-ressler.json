@@ -6,15 +6,60 @@
   "ruling_date": "2012-02-21",
   "filing_date": null,
   "panel": [
-    { "name_he": "דורית ביניש", "name_en": "Dorit Beinisch", "role": "President", "slug": "beinisch" },
-    { "name_he": "אשר גרוניס", "name_en": "Asher Grunis", "role": "Deputy President", "slug": "grunis" },
-    { "name_he": "מרים נאור", "name_en": "Miriam Naor", "role": "Justice", "slug": "naor" },
-    { "name_he": "אדמונד לוי", "name_en": "Edmond Levy", "role": "Justice", "slug": "levy" },
-    { "name_he": "לא אומת", "name_en": "Justice (unverified)", "role": "Justice", "slug": "unverified-5" },
-    { "name_he": "לא אומת", "name_en": "Justice (unverified)", "role": "Justice", "slug": "unverified-6" },
-    { "name_he": "לא אומת", "name_en": "Justice (unverified)", "role": "Justice", "slug": "unverified-7" },
-    { "name_he": "לא אומת", "name_en": "Justice (unverified)", "role": "Justice", "slug": "unverified-8" },
-    { "name_he": "לא אומת", "name_en": "Justice (unverified)", "role": "Justice", "slug": "unverified-9" }
+    {
+      "name_he": "דורית ביניש",
+      "name_en": "Dorit Beinisch",
+      "role": "President",
+      "slug": "beinisch"
+    },
+    {
+      "name_he": "אשר גרוניס",
+      "name_en": "Asher Grunis",
+      "role": "Deputy President",
+      "slug": "grunis"
+    },
+    {
+      "name_he": "מרים נאור",
+      "name_en": "Miriam Naor",
+      "role": "Justice",
+      "slug": "naor"
+    },
+    {
+      "name_he": "אדמונד לוי",
+      "name_en": "Edmond Levy",
+      "role": "Justice",
+      "slug": "levy"
+    },
+    {
+      "name_he": "לא אומת",
+      "name_en": "Justice (unverified)",
+      "role": "Justice",
+      "slug": "unverified-5"
+    },
+    {
+      "name_he": "לא אומת",
+      "name_en": "Justice (unverified)",
+      "role": "Justice",
+      "slug": "unverified-6"
+    },
+    {
+      "name_he": "לא אומת",
+      "name_en": "Justice (unverified)",
+      "role": "Justice",
+      "slug": "unverified-7"
+    },
+    {
+      "name_he": "לא אומת",
+      "name_en": "Justice (unverified)",
+      "role": "Justice",
+      "slug": "unverified-8"
+    },
+    {
+      "name_he": "לא אומת",
+      "name_en": "Justice (unverified)",
+      "role": "Justice",
+      "slug": "unverified-9"
+    }
   ],
   "petitioner_type": "Individual",
   "petitioner_name_he": "יהודה רסלר ואח' (עתירות מאוחדות)",
@@ -30,8 +75,12 @@
   "outcome": "struck_down",
   "vote_majority": 6,
   "vote_minority": 3,
-  "majority_authors": ["beinisch"],
-  "minority_authors": ["grunis"],
+  "majority_authors": [
+    "beinisch"
+  ],
+  "minority_authors": [
+    "grunis"
+  ],
   "official_url": "https://versa.cardozo.yu.edu/opinions/ressler-v-knesset",
   "secondary_urls": [
     "https://en.idi.org.il/articles/9858"
@@ -42,6 +91,10 @@
   "respondent_body": null,
   "compliance_state": "complied",
   "defiance_signals": null,
+  "target_branch": "legislature",
+  "domain": "conscription-and-equality",
+  "competence_class": "acquisition",
+  "adversarial_view": null,
   "tags": [
     "tal-law",
     "haredi-conscription",

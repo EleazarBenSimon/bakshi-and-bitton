@@ -6,11 +6,36 @@
   "ruling_date": "2016-03-27",
   "filing_date": null,
   "panel": [
-    { "name_he": "מרים נאור", "name_en": "Miriam Naor", "role": "President", "slug": "naor" },
-    { "name_he": "לא אומת", "name_en": "Justice (unverified)", "role": "Justice", "slug": "unverified-2" },
-    { "name_he": "לא אומת", "name_en": "Justice (unverified)", "role": "Justice", "slug": "unverified-3" },
-    { "name_he": "לא אומת", "name_en": "Justice (unverified)", "role": "Justice", "slug": "unverified-4" },
-    { "name_he": "לא אומת", "name_en": "Justice (unverified)", "role": "Justice", "slug": "unverified-5" }
+    {
+      "name_he": "מרים נאור",
+      "name_en": "Miriam Naor",
+      "role": "President",
+      "slug": "naor"
+    },
+    {
+      "name_he": "לא אומת",
+      "name_en": "Justice (unverified)",
+      "role": "Justice",
+      "slug": "unverified-2"
+    },
+    {
+      "name_he": "לא אומת",
+      "name_en": "Justice (unverified)",
+      "role": "Justice",
+      "slug": "unverified-3"
+    },
+    {
+      "name_he": "לא אומת",
+      "name_en": "Justice (unverified)",
+      "role": "Justice",
+      "slug": "unverified-4"
+    },
+    {
+      "name_he": "לא אומת",
+      "name_en": "Justice (unverified)",
+      "role": "Justice",
+      "slug": "unverified-5"
+    }
   ],
   "petitioner_type": "NGO",
   "petitioner_name_he": "התנועה למען איכות השלטון בישראל ואח' (עתירות מאוחדות)",
@@ -25,7 +50,9 @@
   "outcome": "partially_struck",
   "vote_majority": null,
   "vote_minority": null,
-  "majority_authors": ["naor"],
+  "majority_authors": [
+    "naor"
+  ],
   "minority_authors": [],
   "official_url": "https://link.springer.com/chapter/10.1007/978-3-030-56247-2_10",
   "secondary_urls": [
@@ -37,6 +64,10 @@
   "respondent_body": null,
   "compliance_state": "complied",
   "defiance_signals": null,
+  "target_branch": "executive",
+  "domain": "economic-regulation",
+  "competence_class": "acquisition",
+  "adversarial_view": null,
   "tags": [
     "gas-framework",
     "executive-action",

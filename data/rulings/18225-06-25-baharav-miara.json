@@ -6,13 +6,48 @@
   "ruling_date": "2025-12-14",
   "filing_date": "2025-06-09",
   "panel": [
-    { "name_he": "יצחק עמית", "name_en": "Yitzhak Amit", "role": "President", "slug": "amit" },
-    { "name_he": "נעם סולברג", "name_en": "Noam Sohlberg", "role": "Deputy President", "slug": "sohlberg" },
-    { "name_he": "ח'אלד כבוב", "name_en": "Khaled Kabub", "role": "Justice", "slug": "kabub" },
-    { "name_he": "דוד מינץ", "name_en": "David Mintz", "role": "Justice", "slug": "mintz" },
-    { "name_he": "אלכס שטיין", "name_en": "Alex Stein", "role": "Justice", "slug": "stein" },
-    { "name_he": "עופר גרוסקופף", "name_en": "Ofer Grosskopf", "role": "Justice", "slug": "grosskopf" },
-    { "name_he": "גילה כנפי-שטייניץ", "name_en": "Gila Canfy-Steinitz", "role": "Justice", "slug": "canfy-steinitz" }
+    {
+      "name_he": "יצחק עמית",
+      "name_en": "Yitzhak Amit",
+      "role": "President",
+      "slug": "amit"
+    },
+    {
+      "name_he": "נעם סולברג",
+      "name_en": "Noam Sohlberg",
+      "role": "Deputy President",
+      "slug": "sohlberg"
+    },
+    {
+      "name_he": "ח'אלד כבוב",
+      "name_en": "Khaled Kabub",
+      "role": "Justice",
+      "slug": "kabub"
+    },
+    {
+      "name_he": "דוד מינץ",
+      "name_en": "David Mintz",
+      "role": "Justice",
+      "slug": "mintz"
+    },
+    {
+      "name_he": "אלכס שטיין",
+      "name_en": "Alex Stein",
+      "role": "Justice",
+      "slug": "stein"
+    },
+    {
+      "name_he": "עופר גרוסקופף",
+      "name_en": "Ofer Grosskopf",
+      "role": "Justice",
+      "slug": "grosskopf"
+    },
+    {
+      "name_he": "גילה כנפי-שטייניץ",
+      "name_en": "Gila Canfy-Steinitz",
+      "role": "Justice",
+      "slug": "canfy-steinitz"
+    }
   ],
   "petitioner_type": "NGO",
   "petitioner_name_he": "כרמי גילון (ראש שב\"כ לשעבר), התנועה למען איכות השלטון בישראל, לשכת עורכי-הדין, ועותרים נוספים (4 עתירות מאוחדות)",
@@ -27,7 +62,9 @@
   "outcome": "struck_down",
   "vote_majority": 7,
   "vote_minority": 0,
-  "majority_authors": ["amit"],
+  "majority_authors": [
+    "amit"
+  ],
   "minority_authors": [],
   "official_url": "https://supremedecisions.court.gov.il/Home/Download?path=NetVerdicts%2F2025%2F12%2F14%2F2025-6-18225-46-2&fileName=c679628666624044834964934086f82c&type=4",
   "secondary_urls": [
@@ -42,6 +79,10 @@
   "respondent_body": null,
   "compliance_state": "contested",
   "defiance_signals": "Several cabinet ministers publicly criticized the ruling and called for non-compliance, as reported in mainstream Israeli press (see secondary_urls). No formal cabinet act of defiance was taken. The ruling is now the leading authority cited against any future attempt to alter the AG-termination mechanism by cabinet resolution rather than primary legislation.",
+  "target_branch": "executive",
+  "domain": "senior-executive-appointments",
+  "competence_class": "extension",
+  "adversarial_view": null,
   "tags": [
     "attorney-general",
     "gatekeeper",

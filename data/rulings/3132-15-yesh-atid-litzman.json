@@ -6,11 +6,36 @@
   "ruling_date": "2015-08-23",
   "filing_date": null,
   "panel": [
-    { "name_he": "מרים נאור", "name_en": "Miriam Naor", "role": "President", "slug": "naor" },
-    { "name_he": "אליקים רובינשטיין", "name_en": "Elyakim Rubinstein", "role": "Deputy President", "slug": "rubinstein" },
-    { "name_he": "סלים ג'ובראן", "name_en": "Salim Joubran", "role": "Justice", "slug": "joubran" },
-    { "name_he": "חנן מלצר", "name_en": "Hanan Melcer", "role": "Justice", "slug": "melcer" },
-    { "name_he": "ניל הנדל", "name_en": "Neal Hendel", "role": "Justice", "slug": "hendel" }
+    {
+      "name_he": "מרים נאור",
+      "name_en": "Miriam Naor",
+      "role": "President",
+      "slug": "naor"
+    },
+    {
+      "name_he": "אליקים רובינשטיין",
+      "name_en": "Elyakim Rubinstein",
+      "role": "Deputy President",
+      "slug": "rubinstein"
+    },
+    {
+      "name_he": "סלים ג'ובראן",
+      "name_en": "Salim Joubran",
+      "role": "Justice",
+      "slug": "joubran"
+    },
+    {
+      "name_he": "חנן מלצר",
+      "name_en": "Hanan Melcer",
+      "role": "Justice",
+      "slug": "melcer"
+    },
+    {
+      "name_he": "ניל הנדל",
+      "name_en": "Neal Hendel",
+      "role": "Justice",
+      "slug": "hendel"
+    }
   ],
   "petitioner_type": "Party",
   "petitioner_name_he": "סיעת יש עתיד (יאיר לפיד)",
@@ -25,7 +50,9 @@
   "outcome": "struck_down",
   "vote_majority": 5,
   "vote_minority": 0,
-  "majority_authors": ["naor"],
+  "majority_authors": [
+    "naor"
+  ],
   "minority_authors": [],
   "official_url": "https://supremedecisions.court.gov.il/Home/Download?path=HebrewVerdicts%5C15/320/031/c22&fileName=15031320.c22&type=4",
   "secondary_urls": [
@@ -38,6 +65,10 @@
   "respondent_body": null,
   "compliance_state": "complied",
   "defiance_signals": "The original arrangement was terminated. Subsequent variants were attempted; later phases of the ruling (April 2016) struck down extensions as unreasonable.",
+  "target_branch": "executive",
+  "domain": "cabinet-composition",
+  "competence_class": "acquisition",
+  "adversarial_view": null,
   "tags": [
     "reasonableness",
     "ministerial-appointment",
