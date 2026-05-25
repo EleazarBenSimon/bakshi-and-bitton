@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bakshi&Bitton · ציטוט והפצה / Cite & Share</title>
+<link rel="stylesheet" href="assets/style.css">
+<link rel="alternate" type="application/rss+xml" title="Bakshi&Bitton — new rulings" href="feed.xml">
+</head>
+<body>
+<div id="root"></div>
+<script src="assets/app.js"></script>
+<script>
+(async function () {
+  const { t, el, renderHeader, renderFooter, lang } = window.CO;
+  const root = document.getElementById("root");
+  document.documentElement.lang = lang;
+
+  root.append(renderHeader("cite"));
+
+  const main = el("main", {});
+
+  if (lang === "he") {
+    main.innerHTML = `
+      <h1>ציטוט והפצה</h1>
+      <p class="page-intro">פרויקט בקשי וביטון מתפרסם כדי שייעשה בו שימוש: לציטוט במחקר, לעבודת מודעות, לכתיבה עיתונאית, להגנה משפטית. הדף הזה מאגד את הפורמטים והכלים שמקלים את השימוש.</p>
+
+      <h2>ציטוט אקדמי של הפרויקט כולו</h2>
+
+      <h3>BibTeX</h3>
+      <pre><code>@misc{bakshibitton2026,
+  title  = {Bakshi\\&Bitton: A Documentary Database of Israeli Supreme Court
+            Interventions in Elected-Branch Decisions and Appointments},
+  author = {{Eleazar Ben Simon}},
+  year   = {2026},
+  url    = {https://eleazarbensimon.github.io/bakshi-and-bitton/},
+  note   = {Accessed: YYYY-MM-DD}
+}</code></pre>
+
+      <h3>שיקגו (Author-Date)</h3>
+      <p style="font-family: serif; font-size: 15px;">
+      Ben Simon, Eleazar. 2026. <em>Bakshi&Bitton: A Documentary Database of Israeli Supreme Court Interventions in Elected-Branch Decisions and Appointments</em>. https://eleazarbensimon.github.io/bakshi-and-bitton/ (accessed YYYY-MM-DD).
+      </p>
+
+      <h3>APA</h3>
+      <p style="font-family: serif; font-size: 15px;">
+      Ben Simon, E. (2026). <em>Bakshi&Bitton: A documentary database of Israeli Supreme Court interventions in elected-branch decisions and appointments</em>. Retrieved YYYY-MM-DD from https://eleazarbensimon.github.io/bakshi-and-bitton/
+      </p>
+
+      <h2>ציטוט פסיקה ספציפית מהמאגר</h2>
+      <p>השכבה התיעודית של הפרויקט מקושרת תמיד למקור הרשמי. בעת הציטוט, צטטו את פסק-הדין הרשמי ישירות וצרפו את הפניית הפרויקט כמקור משני:</p>
+      <pre><code>בג"ץ 5658/23 התנועה למען איכות השלטון נ' הכנסת (1.1.2024).
+מתועד גם ב: Bakshi&Bitton, &lt;https://eleazarbensimon.github.io/bakshi-and-bitton/ruling.html?slug=5658-23&gt;</code></pre>
+
+      <h2>ציטוט מאמר/הסבר משכבת התוכן</h2>
+      <p>פריט תוכן (מאמר, הסבר, מסמך דפוסים) מצוטט עם שם הפריט, תאריך וכתובת:</p>
+      <pre><code>בקשי וביטון, "מבנק מזרחי לבג"ץ 5658/23: רישום תיעודי של שלושים שנות מסלול דוקטרינלי," 2026-05-23,
+&lt;https://eleazarbensimon.github.io/bakshi-and-bitton/content.html?slug=from-bank-mizrahi-to-hcj-5658-23&gt;</code></pre>
+
+      <hr style="margin: 32px 0; border: none; border-top: 1px solid var(--border);">
+
+      <h1>הפצה ושיתוף</h1>
+
+      <h2>קישורים קבועים (Permalinks)</h2>
+      <ul>
+        <li><strong>דף הבית:</strong> <code>https://eleazarbensimon.github.io/bakshi-and-bitton/</code></li>
+        <li><strong>פסיקה ספציפית:</strong> <code>.../ruling.html?slug=&lt;case-id-slug&gt;</code></li>
+        <li><strong>פרופיל שופט/ת:</strong> <code>.../justice.html?slug=&lt;justice-slug&gt;</code></li>
+        <li><strong>מאמר/הסבר:</strong> <code>.../content.html?slug=&lt;piece-slug&gt;</code></li>
+        <li><strong>מאגר נתונים (JSON):</strong> <code>.../_data/rulings.json</code></li>
+        <li><strong>מאגר נתונים (CSV):</strong> <code><a href="_data/rulings.csv">.../_data/rulings.csv</a></code></li>
+        <li><strong>הזנת RSS:</strong> <code><a href="feed.xml">.../feed.xml</a></code></li>
+      </ul>
+
+      <h2>הורדה לעיון לא-מקוון</h2>
+      <p>כל עמוד באתר ניתן להדפסה כ-PDF דרך הדפדפן (Cmd/Ctrl + P → "שמור כ-PDF"). גיליון הסגנון מותאם להדפסה — ה-PDF יוצא נקי, ללא תפריטים, עם כתובות מלאות ליד כל קישור.</p>
+
+      <h2>הורדת מאגר הנתונים</h2>
+      <p>שתי גרסאות:</p>
+      <ul>
+        <li><strong>JSON</strong> (מובנה, מתאים לעיבוד תכנותי): <a href="_data/rulings.json">rulings.json</a></li>
+        <li><strong>CSV</strong> (שטוח, מתאים ל-Excel / Google Sheets / R / pandas): <a href="_data/rulings.csv">rulings.csv</a></li>
+      </ul>
+      <p>שני הקבצים מתעדכנים אוטומטית עם כל הוספת פסיקה חדשה.</p>
+
+      <h2>שיתוף ברשתות חברתיות</h2>
+      <p>נוסחים מוכנים לשיתוף:</p>
+      <p style="background:var(--accent-soft);padding:12px 16px;border-radius:6px;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:13px;">
+      בקשי וביטון — מאגר תיעודי של פסיקות בית המשפט העליון בעניין החלטות ממשלה ומינויים. מקור מובְנה, מקושר למקור הרשמי, פתוח לשימוש: https://eleazarbensimon.github.io/bakshi-and-bitton/
+      </p>
+
+      <h2>בקשת ייחוס</h2>
+      <p>הפרויקט פתוח לשימוש חופשי תחת רישיון MIT (תוכן וקוד). בעת ציטוט, נבקש (לא דרישה משפטית — בקשה הוגנת):</p>
+      <ul>
+        <li>לקשר חזרה לכתובת מקור (אתר הפרויקט או הפסיקה הספציפית)</li>
+        <li>לציין את שם הפרויקט ("בקשי וביטון" / "Bakshi&Bitton") כשמתאים</li>
+        <li>בשימוש מסחרי או מוסדי — לעדכן את צוות הפרויקט (eleazarbensimon@gmail.com) כדי שנוכל ללמוד איך הפרויקט משרת בפועל</li>
+      </ul>
+    `;
+  } else {
+    main.innerHTML = `
+      <h1>Cite & Share</h1>
+      <p class="page-intro">Bakshi&Bitton is published so it will be used: for academic citation, awareness work, journalism, legal defense. This page collects the formats and tools that make using it easy.</p>
+
+      <h2>Academic citation of the project as a whole</h2>
+
+      <h3>BibTeX</h3>
+      <pre><code>@misc{bakshibitton2026,
+  title  = {Bakshi\\&Bitton: A Documentary Database of Israeli Supreme Court
+            Interventions in Elected-Branch Decisions and Appointments},
+  author = {{Eleazar Ben Simon}},
+  year   = {2026},
+  url    = {https://eleazarbensimon.github.io/bakshi-and-bitton/},
+  note   = {Accessed: YYYY-MM-DD}
+}</code></pre>
+
+      <h3>Chicago (Author-Date)</h3>
+      <p style="font-family: serif; font-size: 15px;">
+      Ben Simon, Eleazar. 2026. <em>Bakshi&Bitton: A Documentary Database of Israeli Supreme Court Interventions in Elected-Branch Decisions and Appointments</em>. https://eleazarbensimon.github.io/bakshi-and-bitton/ (accessed YYYY-MM-DD).
+      </p>
+
+      <h3>APA</h3>
+      <p style="font-family: serif; font-size: 15px;">
+      Ben Simon, E. (2026). <em>Bakshi&Bitton: A documentary database of Israeli Supreme Court interventions in elected-branch decisions and appointments</em>. Retrieved YYYY-MM-DD from https://eleazarbensimon.github.io/bakshi-and-bitton/
+      </p>
+
+      <h2>Citing a specific ruling from the database</h2>
+      <p>The documentary layer always links to the official source. When citing, cite the official ruling directly and add the project as a secondary reference:</p>
+      <pre><code>HCJ 5658/23 Movement for Quality Government v. The Knesset (Jan. 1, 2024).
+Also documented at: Bakshi&Bitton, &lt;https://eleazarbensimon.github.io/bakshi-and-bitton/ruling.html?slug=5658-23&gt;</code></pre>
+
+      <h2>Citing an essay / explainer from the content layer</h2>
+      <p>A content piece (essay, explainer, pattern document) is cited with its title, date, and URL:</p>
+      <pre><code>Bakshi&Bitton, "From Bank Mizrahi to HCJ 5658/23: A Documentary Record of Thirty Years of Doctrinal Arc," May 23, 2026,
+&lt;https://eleazarbensimon.github.io/bakshi-and-bitton/content.html?slug=from-bank-mizrahi-to-hcj-5658-23&gt;</code></pre>
+
+      <hr style="margin: 32px 0; border: none; border-top: 1px solid var(--border);">
+
+      <h1>Distribute & Share</h1>
+
+      <h2>Permalinks</h2>
+      <ul>
+        <li><strong>Home:</strong> <code>https://eleazarbensimon.github.io/bakshi-and-bitton/</code></li>
+        <li><strong>Specific ruling:</strong> <code>.../ruling.html?slug=&lt;case-id-slug&gt;</code></li>
+        <li><strong>Justice profile:</strong> <code>.../justice.html?slug=&lt;justice-slug&gt;</code></li>
+        <li><strong>Essay / explainer:</strong> <code>.../content.html?slug=&lt;piece-slug&gt;</code></li>
+        <li><strong>Data (JSON):</strong> <code>.../_data/rulings.json</code></li>
+        <li><strong>Data (CSV):</strong> <code><a href="_data/rulings.csv">.../_data/rulings.csv</a></code></li>
+        <li><strong>RSS feed:</strong> <code><a href="feed.xml">.../feed.xml</a></code></li>
+      </ul>
+
+      <h2>Download for offline reading</h2>
+      <p>Any page on the site can be printed to PDF via the browser (Cmd/Ctrl + P → "Save as PDF"). The print stylesheet is tuned for clean output — no menus, full URLs printed next to each link.</p>
+
+      <h2>Download the database</h2>
+      <p>Two formats:</p>
+      <ul>
+        <li><strong>JSON</strong> (structured, suitable for programmatic processing): <a href="_data/rulings.json">rulings.json</a></li>
+        <li><strong>CSV</strong> (flat, suitable for Excel / Google Sheets / R / pandas): <a href="_data/rulings.csv">rulings.csv</a></li>
+      </ul>
+      <p>Both files regenerate automatically with every ruling addition.</p>
+
+      <h2>Social-media share snippet</h2>
+      <p>Ready text:</p>
+      <p style="background:var(--accent-soft);padding:12px 16px;border-radius:6px;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:13px;">
+      Bakshi&Bitton — documentary database of Israeli Supreme Court rulings on government decisions and appointments. Structured, source-linked, open to use: https://eleazarbensimon.github.io/bakshi-and-bitton/
+      </p>
+
+      <h2>Attribution request</h2>
+      <p>The project is openly licensed under MIT (code and content). When citing, please (a fair request — not a legal demand):</p>
+      <ul>
+        <li>Link back to the source URL (project home or specific ruling)</li>
+        <li>Name the project ("Bakshi&Bitton") when appropriate</li>
+        <li>For commercial or institutional use, let the project team know (eleazarbensimon@gmail.com) so we can learn how the project is actually serving</li>
+      </ul>
+    `;
+  }
+
+  root.append(main);
+  root.append(renderFooter());
+})();
+</script>
+</body>
+</html>

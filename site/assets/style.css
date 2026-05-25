@@ -399,3 +399,90 @@ footer {
   .article-body { font-size: 15px; }
   .reading-item { padding: 12px 14px; }
 }
+
+/* ─── Print stylesheet ────────────────────────────────────────────
+   Goal: any page renders cleanly when the user does "Print → Save
+   as PDF" in their browser. Strip the chrome (header, nav, footer,
+   buttons), tighten typography, expose URLs after links, force
+   single-column layout. */
+
+@media print {
+  /* Hide UI chrome */
+  header, footer, nav, .lang-toggle,
+  .filters, .reading-meta,
+  .article-back, .breadcrumb,
+  button { display: none !important; }
+
+  /* Maximize readable content area */
+  body {
+    background: #fff !important;
+    color: #000 !important;
+    font-size: 11pt !important;
+    line-height: 1.5 !important;
+  }
+  main {
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  .content-article {
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    max-width: 100% !important;
+  }
+
+  /* Print all link URLs after the link text */
+  a[href^="http"]::after,
+  a[href^="/"]::after {
+    content: " <" attr(href) ">";
+    font-size: 9pt;
+    color: #444;
+    word-break: break-all;
+  }
+  /* Don't print URL for in-page anchors */
+  a[href^="#"]::after { content: ""; }
+
+  /* Tables and headings get clean spacing */
+  h1 { font-size: 18pt; margin-top: 0; }
+  h2 { font-size: 14pt; page-break-after: avoid; }
+  h3 { font-size: 12pt; page-break-after: avoid; }
+  blockquote {
+    background: transparent !important;
+    border-inline-start: 3px solid #000 !important;
+    page-break-inside: avoid;
+  }
+  table { page-break-inside: avoid; }
+  pre, code { background: transparent !important; border: 1px solid #ccc !important; }
+
+  /* Rulings table on the homepage — print-friendly */
+  table {
+    font-size: 10pt !important;
+    border: 1px solid #000;
+  }
+  thead { background: #eee !important; }
+  th, td { padding: 4px 6px !important; }
+
+  /* Outcome pills look weird with white-on-color in print; flatten */
+  .outcome-pill {
+    background: transparent !important;
+    color: #000 !important;
+    border: 1px solid #000 !important;
+    padding: 0 4px !important;
+  }
+  .panel-list li {
+    background: transparent !important;
+    border: 1px solid #ccc !important;
+  }
+
+  /* Print footer with project + retrieval URL */
+  .article-article::after,
+  .content-article::after {
+    content: "—— Bakshi&Bitton · https://eleazarbensimon.github.io/bakshi-and-bitton/  ——";
+    display: block;
+    margin-top: 24pt;
+    text-align: center;
+    font-size: 9pt;
+    color: #555;
+  }
+}

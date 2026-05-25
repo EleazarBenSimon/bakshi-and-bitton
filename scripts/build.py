@@ -7,6 +7,8 @@ Generates:
   - site/_data/justices.json   — derived array of justice records (panel appearances)
   - site/_data/content.json    — informative content layer (explainers / patterns / essays)
                                   with markdown converted to HTML for rendering
+  - site/_data/rulings.csv     — flat CSV export for researchers / spreadsheet users
+  - site/feed.xml              — RSS 2.0 feed (one item per ruling, newest first)
 
 Run from repo root after adding or modifying a ruling or a content piece:
     python3 scripts/build.py
@@ -15,11 +17,14 @@ Dependencies:
     - markdown (for content/*.md → HTML conversion). Install: pip3 install --user markdown
 """
 
+import csv
 import json
 import re
 import sys
 from collections import defaultdict
+from datetime import datetime, timezone
 from pathlib import Path
+from xml.sax.saxutils import escape as xml_escape
 
 try:
     import markdown as md
@@ -32,7 +37,11 @@ REPO_ROOT = Path(__file__).resolve().parent.parent
 RULINGS_DIR = REPO_ROOT / "data" / "rulings"
 JUSTICES_DIR = REPO_ROOT / "data" / "justices"
 CONTENT_DIR = REPO_ROOT / "content"
-OUT_DIR = REPO_ROOT / "site" / "_data"
+SITE_DIR = REPO_ROOT / "site"
+OUT_DIR = SITE_DIR / "_data"
+
+# Public-facing canonical URL (used for RSS GUID + cite formats)
+SITE_BASE_URL = "https://eleazarbensimon.github.io/bakshi-and-bitton"
 
 # Categories shown in the Reading section, in display order.
 CONTENT_CATEGORIES = ["essays", "explainers", "patterns"]
@@ -220,6 +229,119 @@ def build_content(out_dir: Path) -> dict:
     return out
 
 
+def build_csv(out_dir: Path, rulings: list) -> Path:
+    """
+    Generate a flat CSV export of the documentary core.
+    Designed for researchers / journalists who want to load into Excel,
+    Google Sheets, R, pandas, etc.
+    """
+    out = out_dir / "rulings.csv"
+    fieldnames = [
+        "case_id", "case_id_slug", "case_name_he", "case_name_en",
+        "ruling_date", "filing_date",
+        "panel_size", "petitioner_type", "petitioner_name_en", "petitioner_name_he",
+        "respondent",
+        "doctrine_invoked", "outcome",
+        "vote_majority", "vote_minority",
+        "majority_authors", "minority_authors",
+        "official_url",
+        "summary_en", "summary_he",
+        "compliance_state",
+    ]
+    with open(out, "w", encoding="utf-8", newline="") as f:
+        w = csv.DictWriter(f, fieldnames=fieldnames, quoting=csv.QUOTE_ALL)
+        w.writeheader()
+        for r in rulings:
+            w.writerow({
+                "case_id": r.get("case_id", ""),
+                "case_id_slug": r.get("case_id_slug", ""),
+                "case_name_he": r.get("case_name_he", ""),
+                "case_name_en": r.get("case_name_en", ""),
+                "ruling_date": r.get("ruling_date", ""),
+                "filing_date": r.get("filing_date") or "",
+                "panel_size": len(r.get("panel", [])),
+                "petitioner_type": r.get("petitioner_type", ""),
+                "petitioner_name_en": r.get("petitioner_name_en", ""),
+                "petitioner_name_he": r.get("petitioner_name_he", ""),
+                "respondent": r.get("respondent", ""),
+                "doctrine_invoked": "; ".join(r.get("doctrine_invoked", []) or []),
+                "outcome": r.get("outcome", ""),
+                "vote_majority": r.get("vote_majority", "") or "",
+                "vote_minority": r.get("vote_minority", "") or "",
+                "majority_authors": "; ".join(r.get("majority_authors", []) or []),
+                "minority_authors": "; ".join(r.get("minority_authors", []) or []),
+                "official_url": r.get("official_url", ""),
+                "summary_en": r.get("summary_en", "").replace("\n", " "),
+                "summary_he": r.get("summary_he", "").replace("\n", " "),
+                "compliance_state": r.get("compliance_state") or "",
+            })
+    return out
+
+
+def build_rss(site_dir: Path, rulings: list) -> Path:
+    """
+    Generate RSS 2.0 feed at site/feed.xml.
+    One <item> per ruling, sorted newest-first.
+    Subscribers get a feed entry for every new documentary-core addition.
+    """
+    out = site_dir / "feed.xml"
+
+    def rfc822(date_str: str) -> str:
+        # ruling_date is YYYY-MM-DD; assume midnight UTC for RSS pubDate
+        try:
+            dt = datetime.strptime(date_str, "%Y-%m-%d").replace(tzinfo=timezone.utc)
+            return dt.strftime("%a, %d %b %Y %H:%M:%S +0000")
+        except Exception:
+            return ""
+
+    now_rfc822 = datetime.now(timezone.utc).strftime("%a, %d %b %Y %H:%M:%S +0000")
+
+    items_xml = []
+    for r in rulings:
+        title_he = r.get("case_name_he", r.get("case_id", "?"))
+        case_id = r.get("case_id", "?")
+        slug = r.get("case_id_slug", "")
+        outcome = r.get("outcome", "")
+        summary_he = (r.get("summary_he") or "")[:600]
+
+        link = f"{SITE_BASE_URL}/ruling.html?slug={slug}"
+
+        title_combined = f"{case_id} — {title_he} ({outcome})"
+        desc_html = (
+            f"<p><strong>תוצאה:</strong> {xml_escape(outcome)}</p>"
+            f"<p>{xml_escape(summary_he)}</p>"
+            f'<p><a href="{xml_escape(r.get("official_url",""))}">פסק הדין הרשמי</a></p>'
+        )
+
+        items_xml.append(
+            "    <item>\n"
+            f"      <title>{xml_escape(title_combined)}</title>\n"
+            f"      <link>{xml_escape(link)}</link>\n"
+            f"      <guid isPermaLink=\"true\">{xml_escape(link)}</guid>\n"
+            f"      <pubDate>{rfc822(r.get('ruling_date',''))}</pubDate>\n"
+            f"      <description><![CDATA[{desc_html}]]></description>\n"
+            "    </item>"
+        )
+
+    rss = (
+        '<?xml version="1.0" encoding="UTF-8"?>\n'
+        '<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">\n'
+        '  <channel>\n'
+        f'    <title>Bakshi&amp;Bitton · בקשי וביטון</title>\n'
+        f'    <link>{SITE_BASE_URL}/</link>\n'
+        f'    <atom:link href="{SITE_BASE_URL}/feed.xml" rel="self" type="application/rss+xml"/>\n'
+        '    <description>פסיקות בית המשפט העליון בעניין החלטות ממשלה ומינויים — תיעוד מובנה, מקושר למקור הרשמי.</description>\n'
+        '    <language>he</language>\n'
+        f'    <lastBuildDate>{now_rfc822}</lastBuildDate>\n'
+        f'    <pubDate>{now_rfc822}</pubDate>\n'
+        + "\n".join(items_xml) + "\n"
+        '  </channel>\n'
+        '</rss>\n'
+    )
+    out.write_text(rss, encoding="utf-8")
+    return out
+
+
 def main() -> int:
     OUT_DIR.mkdir(parents=True, exist_ok=True)
 
@@ -233,6 +355,12 @@ def main() -> int:
     total_pieces = sum(len(v) for v in content_out.values())
     by_cat = ", ".join(f"{len(v)} {k}" for k, v in content_out.items())
     print(f"✓ wrote {OUT_DIR/'content.json'} ({total_pieces} pieces — {by_cat})")
+
+    csv_path = build_csv(OUT_DIR, rulings)
+    print(f"✓ wrote {csv_path}")
+
+    rss_path = build_rss(SITE_DIR, rulings)
+    print(f"✓ wrote {rss_path} ({len(rulings)} feed items)")
 
     return 0
 

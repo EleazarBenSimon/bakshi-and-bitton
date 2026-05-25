@@ -8,6 +8,7 @@ const i18n = {
     nav_rulings: "פסיקות",
     nav_reading: "קריאה",
     nav_justices: "שופטים",
+    nav_cite: "ציטוט והפצה",
     nav_about: "אודות",
     nav_methodology: "מתודולוגיה",
     reading_title: "קריאה",
@@ -73,6 +74,7 @@ const i18n = {
     nav_rulings: "Rulings",
     nav_reading: "Reading",
     nav_justices: "Justices",
+    nav_cite: "Cite & Share",
     nav_about: "About",
     nav_methodology: "Methodology",
     reading_title: "Reading",
@@ -201,6 +203,7 @@ function renderHeader(active) {
         el("a", { href: "index.html", style: active === "rulings" ? "font-weight:600;color:var(--accent)" : "" }, t.nav_rulings),
         el("a", { href: "reading.html", style: active === "reading" ? "font-weight:600;color:var(--accent)" : "" }, t.nav_reading),
         el("a", { href: "justices.html", style: active === "justices" ? "font-weight:600;color:var(--accent)" : "" }, t.nav_justices),
+        el("a", { href: "cite.html", style: active === "cite" ? "font-weight:600;color:var(--accent)" : "" }, t.nav_cite),
         el("a", { href: "about.html", style: active === "about" ? "font-weight:600;color:var(--accent)" : "" }, t.nav_about),
       ),
       el("button", { class: "lang-toggle", onClick: () => setLang(lang === "he" ? "en" : "he") }, lang === "he" ? "EN" : "עברית")
