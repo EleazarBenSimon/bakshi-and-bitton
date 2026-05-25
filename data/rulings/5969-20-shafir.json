@@ -7,14 +7,14 @@
   "filing_date": null,
   "panel": [
     { "name_he": "אסתר חיות", "name_en": "Esther Hayut", "role": "President", "slug": "hayut" },
-    { "name_he": "חנן מלצר", "name_en": "Hanan Melcer", "role": "Deputy President", "slug": "melcer" },
     { "name_he": "ניל הנדל", "name_en": "Neal Hendel", "role": "Justice", "slug": "hendel" },
-    { "name_he": "עוזי פוגלמן", "name_en": "Uzi Vogelman", "role": "Justice", "slug": "vogelman" },
     { "name_he": "יצחק עמית", "name_en": "Yitzhak Amit", "role": "Justice", "slug": "amit" },
     { "name_he": "נעם סולברג", "name_en": "Noam Sohlberg", "role": "Justice", "slug": "sohlberg" },
+    { "name_he": "דפנה ברק-ארז", "name_en": "Daphne Barak-Erez", "role": "Justice", "slug": "barak-erez" },
     { "name_he": "ענת ברון", "name_en": "Anat Baron", "role": "Justice", "slug": "baron" },
+    { "name_he": "ג'ורג' קרא", "name_en": "George Karra", "role": "Justice", "slug": "karra" },
     { "name_he": "דוד מינץ", "name_en": "David Mintz", "role": "Justice", "slug": "mintz" },
-    { "name_he": "יעל וילנר", "name_en": "Yael Willner", "role": "Justice", "slug": "willner" }
+    { "name_he": "יוסף אלרון", "name_en": "Yosef Elron", "role": "Justice", "slug": "elron" }
   ],
   "petitioner_type": "Party",
   "petitioner_name_he": "סתיו שפיר (לשעבר ח\"כ) ואח' (עתירות מאוחדות, ובכללן עתירות של ארגוני חברה אזרחית)",
@@ -23,22 +23,24 @@
   "respondent_decision_he": "תיקון זמני לחוק-יסוד: משק המדינה ולחוק-יסוד: הכנסת, אשר דחה את המועד הקבוע בחוק לאישור חוק התקציב לשנת 2020 והוסיף הוצאה תקציבית מיוחדת, וזאת כפתרון לחילוקי דעות קואליציוניים על תקציב המדינה",
   "respondent_decision_en": "Temporary amendments to Basic Law: The State Economy and Basic Law: The Knesset that postponed the statutory deadline for passing the 2020 budget law and added a special budgetary expense, enacted as a resolution to a coalition dispute over the state budget",
   "doctrine_invoked": [
+    "abuse_of_constituent_power",
     "constituent_authority_limits",
     "basic_law_government"
   ],
-  "outcome": "struck_down",
-  "vote_majority": 7,
-  "vote_minority": 2,
-  "majority_authors": ["hayut"],
-  "minority_authors": ["sohlberg", "mintz"],
+  "outcome": "warning_of_voidness",
+  "vote_majority": 6,
+  "vote_minority": 3,
+  "majority_authors": ["hayut", "hendel", "amit", "barak-erez", "baron", "karra"],
+  "minority_authors": ["sohlberg", "mintz", "elron"],
   "official_url": "https://supremedecisions.court.gov.il/Home/Download?path=HebrewVerdicts%5C20%5C690%5C059%5Cv16&fileName=20059690.V16&type=2",
   "secondary_urls": [
     "https://verfassungsblog.de/saving-the-constitution-from-politics/",
     "https://he.afiklaw.com/caselaw/12401",
+    "https://arnontl.com/he/news/%D7%91%D7%99%D7%A7%D7%95%D7%A8%D7%AA-%D7%A9%D7%99%D7%A4%D7%95%D7%98%D7%99%D7%AA-%D7%A2%D7%9C-%D7%97%D7%95%D7%A7%D7%99-%D7%99%D7%A1%D7%95%D7%93/",
     "https://versa.cardozo.yu.edu/topics/constitutional-amendment"
   ],
-  "summary_he": "בית המשפט העליון, בהרכב מורחב של תשעה שופטים, ביטל את התיקון הזמני לחוק-יסוד: משק המדינה ולחוק-יסוד: הכנסת, אשר דחה את המועד לאישור חוק התקציב לשנת 2020. הנשיאה חיות כתבה את חוות הדעת המובילה ברוב וקבעה כי מדובר בשימוש לרעה של הכנסת בסמכותה המכוננת לצורך פתרון בעיות פוליטיות-קואליציוניות זמניות. השופטים סולברג ומינץ חלקו בדעת מיעוט על היקף הדוקטרינה. פסק הדין גיבש את מבחני 'השימוש לרעה בסמכות מכוננת', 'הכלליות' ו'ההתאמה למרקם החוקתי', אשר יושמו בהמשך בבג\"ץ 5658/23 ובבג\"ץ 5119/23.",
-  "summary_en": "The Supreme Court, sitting as a nine-justice expanded panel, struck down a temporary amendment to Basic Law: The State Economy and Basic Law: The Knesset that postponed the deadline for the 2020 budget law. President Hayut wrote the lead majority opinion holding that the Knesset had abused its constituent authority by using a Basic-Law amendment to resolve a coalition dispute. Justices Sohlberg and Mintz dissented on doctrinal scope. The judgment established the tests of abuse of constituent power, generality, and compatibility with the constitutional fabric.",
+  "summary_he": "בית המשפט העליון, בהרכב מורחב של תשעה שופטים, הוציא 'התראת בטלות' ביחס לתיקון הזמני לחוק-יסוד: משק המדינה ולחוק-יסוד: הכנסת — קרי, נמנע מלבטל את התיקון אך קבע כי תיקונים דומים בעתיד ייפסלו. הנשיאה חיות כתבה את חוות הדעת המובילה ברוב של שישה שופטים. השופטים סולברג, מינץ ואלרון חלקו במיעוט. פסק הדין גיבש את מבחני 'השימוש לרעה בסמכות מכוננת', 'הכלליות' ו'ההתאמה למרקם החוקתי', אשר יושמו בהמשך בבג\"ץ 5658/23 ובבג\"ץ 5119/23.",
+  "summary_en": "The Supreme Court, sitting as a nine-justice expanded panel, issued a 'warning of voidness' (התראת בטלות) regarding the temporary amendments to Basic Law: The State Economy and Basic Law: The Knesset — declining to strike the amendments but signaling that future similar amendments would be void. President Hayut wrote the lead opinion for the six-justice majority. Justices Sohlberg, Mintz, and Elron dissented. The judgment established the tests of abuse of constituent power, generality, and compatibility with the constitutional fabric.",
   "predicate_ag_opinion": null,
   "respondent_body": null,
   "compliance_state": "complied",
@@ -47,7 +49,8 @@
     "constituent-authority",
     "basic-law-amendment",
     "abuse-of-constituent-power",
-    "doctrine-anchor"
+    "doctrine-anchor",
+    "warning-of-voidness"
   ],
-  "notes": "Doctrinal anchor case. Establishes the tripartite test (abuse of constituent power, generality, compatibility with the constitutional fabric) subsequently invoked in HCJ 5658/23 (reasonableness amendment, January 2024) and HCJ 5119/23 (incapacitation amendment, January 2024). Vote breakdown of 7-2 reflects the user-supplied brief identifying Sohlberg and Mintz as the only dissenters; some secondary commentary reports the split as 6-3 on certain holdings, reflecting separate concurring/dissenting opinions on doctrinal sub-issues. Petitioner type recorded as 'Party' to reflect the lead petitioner's status as a former Knesset Member; consolidated petitions included NGO co-petitioners."
+  "notes": "Doctrinal anchor case. Establishes the tripartite test (abuse of constituent power, generality, compatibility with the constitutional fabric) subsequently invoked in HCJ 5658/23 (reasonableness amendment, January 2024) and HCJ 5119/23 (incapacitation amendment, January 2024). Disposition is a 'warning of voidness' (התראת בטלות) — not a strike — the Court declined to void the amendments but signaled future similar amendments would be void under the abuse-of-constituent-power test. Vote: 6-3, uniform across doctrine and disposition. Majority: Hayut (lead), Hendel, Amit, Barak-Erez, Baron, Karra. Dissent: Sohlberg, Mintz, Elron. Internal divergence within the 6-justice majority (Hayut's analytical framework for identifying abuse-of-constituent-power vs. Barak-Erez's framework) did not produce a separate vote tally. The petitioner is recorded as 'Party' to reflect Shafir's status as a former Knesset Member; consolidated petitions included NGO co-petitioners. An earlier draft of this record encoded the panel and vote incorrectly (7-2 with Melcer, Vogelman, Willner listed) per a research brief that omitted Justice Elron's dissent and confused the panel composition with an unrelated sibling-era ruling; corrected against arnontl.com legal-firm analysis, afiklaw.com docket header, and Verfassungsblog summary."
 }

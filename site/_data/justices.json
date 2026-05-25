@@ -27,7 +27,7 @@
         "case_id": "בג\"ץ 8987/22",
         "ruling_date": "2024-09-12",
         "role": "Justice",
-        "outcome": "upheld",
+        "outcome": "mandatory_order",
         "authored_majority": false,
         "authored_minority": false
       },
@@ -100,7 +100,7 @@
         "case_id": "בג\"ץ 8987/22",
         "ruling_date": "2024-09-12",
         "role": "Justice",
-        "outcome": "upheld",
+        "outcome": "mandatory_order",
         "authored_majority": false,
         "authored_minority": false
       },
@@ -200,13 +200,13 @@
         "case_id": "בג\"ץ 5969/20",
         "ruling_date": "2021-05-23",
         "role": "Justice",
-        "outcome": "struck_down",
-        "authored_majority": false,
+        "outcome": "warning_of_voidness",
+        "authored_majority": true,
         "authored_minority": false
       }
     ],
     "panel_count": 6,
-    "majority_authored": 2,
+    "majority_authored": 3,
     "minority_authored": 1
   },
   {
@@ -264,7 +264,7 @@
         "case_id": "בג\"ץ 5969/20",
         "ruling_date": "2021-05-23",
         "role": "Justice",
-        "outcome": "struck_down",
+        "outcome": "warning_of_voidness",
         "authored_majority": false,
         "authored_minority": true
       }
@@ -274,15 +274,24 @@
     "minority_authored": 3
   },
   {
-    "slug": "vogelman",
-    "name_he": "עוזי פוגלמן",
-    "name_en": "Uzi Vogelman",
+    "slug": "barak-erez",
+    "name_he": "דפנה ברק-ארז",
+    "name_en": "Daphne Barak-Erez",
     "appearances": [
+      {
+        "case_id_slug": "gofman-mossad-2026-05",
+        "case_id": "בג\"ץ — עתירות מאוחדות נגד מינוי גופמן",
+        "ruling_date": "2026-05-19",
+        "role": "Justice",
+        "outcome": "remanded",
+        "authored_majority": false,
+        "authored_minority": false
+      },
       {
         "case_id_slug": "5119-23-incapacitation",
         "case_id": "בג\"ץ 5119/23",
         "ruling_date": "2024-01-03",
-        "role": "Deputy President",
+        "role": "Justice",
         "outcome": "partially_struck",
         "authored_majority": false,
         "authored_minority": false
@@ -291,7 +300,7 @@
         "case_id_slug": "5658-23",
         "case_id": "בג\"ץ 5658/23",
         "ruling_date": "2024-01-01",
-        "role": "Deputy President",
+        "role": "Justice",
         "outcome": "struck_down",
         "authored_majority": true,
         "authored_minority": false
@@ -300,17 +309,8 @@
         "case_id_slug": "8948-22-deri",
         "case_id": "בג\"ץ 8948/22",
         "ruling_date": "2023-01-18",
-        "role": "Deputy President",
-        "outcome": "struck_down",
-        "authored_majority": false,
-        "authored_minority": false
-      },
-      {
-        "case_id_slug": "5782-21-zilber",
-        "case_id": "בג\"ץ 5782/21",
-        "ruling_date": "2022-01-12",
         "role": "Justice",
-        "outcome": "partially_struck",
+        "outcome": "struck_down",
         "authored_majority": false,
         "authored_minority": false
       },
@@ -319,21 +319,12 @@
         "case_id": "בג\"ץ 5969/20",
         "ruling_date": "2021-05-23",
         "role": "Justice",
-        "outcome": "struck_down",
-        "authored_majority": false,
-        "authored_minority": false
-      },
-      {
-        "case_id_slug": "662-11-sela-kfar-vradim-mikveh",
-        "case_id": "עע\"ם 662/11",
-        "ruling_date": "2014-09-09",
-        "role": "Justice",
-        "outcome": "struck_down",
+        "outcome": "warning_of_voidness",
         "authored_majority": true,
         "authored_minority": false
       }
     ],
-    "panel_count": 6,
+    "panel_count": 5,
     "majority_authored": 2,
     "minority_authored": 0
   },
@@ -374,7 +365,7 @@
         "case_id": "בג\"ץ 5969/20",
         "ruling_date": "2021-05-23",
         "role": "President",
-        "outcome": "struck_down",
+        "outcome": "warning_of_voidness",
         "authored_majority": true,
         "authored_minority": false
       },
@@ -438,7 +429,7 @@
         "case_id": "בג\"ץ 5969/20",
         "ruling_date": "2021-05-23",
         "role": "Justice",
-        "outcome": "struck_down",
+        "outcome": "warning_of_voidness",
         "authored_majority": false,
         "authored_minority": true
       }
@@ -448,24 +439,15 @@
     "minority_authored": 3
   },
   {
-    "slug": "barak-erez",
-    "name_he": "דפנה ברק-ארז",
-    "name_en": "Daphne Barak-Erez",
+    "slug": "vogelman",
+    "name_he": "עוזי פוגלמן",
+    "name_en": "Uzi Vogelman",
     "appearances": [
-      {
-        "case_id_slug": "gofman-mossad-2026-05",
-        "case_id": "בג\"ץ — עתירות מאוחדות נגד מינוי גופמן",
-        "ruling_date": "2026-05-19",
-        "role": "Justice",
-        "outcome": "remanded",
-        "authored_majority": false,
-        "authored_minority": false
-      },
       {
         "case_id_slug": "5119-23-incapacitation",
         "case_id": "בג\"ץ 5119/23",
         "ruling_date": "2024-01-03",
-        "role": "Justice",
+        "role": "Deputy President",
         "outcome": "partially_struck",
         "authored_majority": false,
         "authored_minority": false
@@ -474,7 +456,7 @@
         "case_id_slug": "5658-23",
         "case_id": "בג\"ץ 5658/23",
         "ruling_date": "2024-01-01",
-        "role": "Justice",
+        "role": "Deputy President",
         "outcome": "struck_down",
         "authored_majority": true,
         "authored_minority": false
@@ -483,14 +465,32 @@
         "case_id_slug": "8948-22-deri",
         "case_id": "בג\"ץ 8948/22",
         "ruling_date": "2023-01-18",
-        "role": "Justice",
+        "role": "Deputy President",
         "outcome": "struck_down",
         "authored_majority": false,
         "authored_minority": false
+      },
+      {
+        "case_id_slug": "5782-21-zilber",
+        "case_id": "בג\"ץ 5782/21",
+        "ruling_date": "2022-01-12",
+        "role": "Justice",
+        "outcome": "partially_struck",
+        "authored_majority": false,
+        "authored_minority": false
+      },
+      {
+        "case_id_slug": "662-11-sela-kfar-vradim-mikveh",
+        "case_id": "עע\"ם 662/11",
+        "ruling_date": "2014-09-09",
+        "role": "Justice",
+        "outcome": "struck_down",
+        "authored_majority": true,
+        "authored_minority": false
       }
     ],
-    "panel_count": 4,
-    "majority_authored": 1,
+    "panel_count": 5,
+    "majority_authored": 2,
     "minority_authored": 0
   },
   {
@@ -530,38 +530,20 @@
         "case_id": "בג\"ץ 5969/20",
         "ruling_date": "2021-05-23",
         "role": "Justice",
-        "outcome": "struck_down",
-        "authored_majority": false,
+        "outcome": "warning_of_voidness",
+        "authored_majority": true,
         "authored_minority": false
       }
     ],
     "panel_count": 4,
-    "majority_authored": 1,
+    "majority_authored": 2,
     "minority_authored": 0
   },
   {
-    "slug": "willner",
-    "name_he": "יעל וילנר",
-    "name_en": "Yael Willner",
+    "slug": "elron",
+    "name_he": "יוסף אלרון",
+    "name_en": "Yosef Elron",
     "appearances": [
-      {
-        "case_id_slug": "8987-22-levin-jsc",
-        "case_id": "בג\"ץ 8987/22",
-        "ruling_date": "2024-09-12",
-        "role": "Justice",
-        "outcome": "upheld",
-        "authored_majority": false,
-        "authored_minority": false
-      },
-      {
-        "case_id_slug": "5119-23-incapacitation",
-        "case_id": "בג\"ץ 5119/23",
-        "ruling_date": "2024-01-03",
-        "role": "Justice",
-        "outcome": "partially_struck",
-        "authored_majority": false,
-        "authored_minority": true
-      },
       {
         "case_id_slug": "5658-23",
         "case_id": "בג\"ץ 5658/23",
@@ -572,18 +554,27 @@
         "authored_minority": true
       },
       {
+        "case_id_slug": "8948-22-deri",
+        "case_id": "בג\"ץ 8948/22",
+        "ruling_date": "2023-01-18",
+        "role": "Justice",
+        "outcome": "struck_down",
+        "authored_majority": false,
+        "authored_minority": true
+      },
+      {
         "case_id_slug": "5969-20-shafir",
         "case_id": "בג\"ץ 5969/20",
         "ruling_date": "2021-05-23",
         "role": "Justice",
-        "outcome": "struck_down",
+        "outcome": "warning_of_voidness",
         "authored_majority": false,
-        "authored_minority": false
+        "authored_minority": true
       }
     ],
-    "panel_count": 4,
+    "panel_count": 3,
     "majority_authored": 0,
-    "minority_authored": 2
+    "minority_authored": 3
   },
   {
     "slug": "hendel",
@@ -595,8 +586,8 @@
         "case_id": "בג\"ץ 5969/20",
         "ruling_date": "2021-05-23",
         "role": "Justice",
-        "outcome": "struck_down",
-        "authored_majority": false,
+        "outcome": "warning_of_voidness",
+        "authored_majority": true,
         "authored_minority": false
       },
       {
@@ -619,7 +610,7 @@
       }
     ],
     "panel_count": 3,
-    "majority_authored": 0,
+    "majority_authored": 1,
     "minority_authored": 0
   },
   {
@@ -660,41 +651,41 @@
     "minority_authored": 0
   },
   {
-    "slug": "melcer",
-    "name_he": "חנן מלצר",
-    "name_en": "Hanan Melcer",
+    "slug": "willner",
+    "name_he": "יעל וילנר",
+    "name_en": "Yael Willner",
     "appearances": [
       {
-        "case_id_slug": "5969-20-shafir",
-        "case_id": "בג\"ץ 5969/20",
-        "ruling_date": "2021-05-23",
-        "role": "Deputy President",
-        "outcome": "struck_down",
+        "case_id_slug": "8987-22-levin-jsc",
+        "case_id": "בג\"ץ 8987/22",
+        "ruling_date": "2024-09-12",
+        "role": "Justice",
+        "outcome": "mandatory_order",
         "authored_majority": false,
         "authored_minority": false
       },
       {
-        "case_id_slug": "1892-14-acri-prison-space",
-        "case_id": "בג\"ץ 1892/14",
-        "ruling_date": "2017-06-13",
+        "case_id_slug": "5119-23-incapacitation",
+        "case_id": "בג\"ץ 5119/23",
+        "ruling_date": "2024-01-03",
         "role": "Justice",
-        "outcome": "struck_down",
+        "outcome": "partially_struck",
         "authored_majority": false,
-        "authored_minority": false
+        "authored_minority": true
       },
       {
-        "case_id_slug": "3132-15-yesh-atid-litzman",
-        "case_id": "בג\"ץ 3132/15",
-        "ruling_date": "2015-08-23",
+        "case_id_slug": "5658-23",
+        "case_id": "בג\"ץ 5658/23",
+        "ruling_date": "2024-01-01",
         "role": "Justice",
         "outcome": "struck_down",
         "authored_majority": false,
-        "authored_minority": false
+        "authored_minority": true
       }
     ],
     "panel_count": 3,
     "majority_authored": 0,
-    "minority_authored": 0
+    "minority_authored": 2
   },
   {
     "slug": "barak",
@@ -706,7 +697,7 @@
         "case_id": "ע\"א 6821/93",
         "ruling_date": "1995-11-09",
         "role": "President",
-        "outcome": "dismissed",
+        "outcome": "declarative",
         "authored_majority": true,
         "authored_minority": false
       },
@@ -715,7 +706,7 @@
         "case_id": "בג\"ץ 156/75",
         "ruling_date": "1976-01-01",
         "role": "Justice",
-        "outcome": "dismissed",
+        "outcome": "declarative",
         "authored_majority": true,
         "authored_minority": false
       }
@@ -753,34 +744,6 @@
     "minority_authored": 1
   },
   {
-    "slug": "elron",
-    "name_he": "יוסף אלרון",
-    "name_en": "Yosef Elron",
-    "appearances": [
-      {
-        "case_id_slug": "5658-23",
-        "case_id": "בג\"ץ 5658/23",
-        "ruling_date": "2024-01-01",
-        "role": "Justice",
-        "outcome": "struck_down",
-        "authored_majority": false,
-        "authored_minority": true
-      },
-      {
-        "case_id_slug": "8948-22-deri",
-        "case_id": "בג\"ץ 8948/22",
-        "ruling_date": "2023-01-18",
-        "role": "Justice",
-        "outcome": "struck_down",
-        "authored_majority": false,
-        "authored_minority": true
-      }
-    ],
-    "panel_count": 2,
-    "majority_authored": 0,
-    "minority_authored": 2
-  },
-  {
     "slug": "kasher",
     "name_he": "יחיאל כשר",
     "name_en": "Yechiel Kasher",
@@ -807,6 +770,34 @@
     "panel_count": 2,
     "majority_authored": 0,
     "minority_authored": 2
+  },
+  {
+    "slug": "melcer",
+    "name_he": "חנן מלצר",
+    "name_en": "Hanan Melcer",
+    "appearances": [
+      {
+        "case_id_slug": "1892-14-acri-prison-space",
+        "case_id": "בג\"ץ 1892/14",
+        "ruling_date": "2017-06-13",
+        "role": "Justice",
+        "outcome": "struck_down",
+        "authored_majority": false,
+        "authored_minority": false
+      },
+      {
+        "case_id_slug": "3132-15-yesh-atid-litzman",
+        "case_id": "בג\"ץ 3132/15",
+        "ruling_date": "2015-08-23",
+        "role": "Justice",
+        "outcome": "struck_down",
+        "authored_majority": false,
+        "authored_minority": false
+      }
+    ],
+    "panel_count": 2,
+    "majority_authored": 0,
+    "minority_authored": 0
   },
   {
     "slug": "ronen",
@@ -874,7 +865,7 @@
         "case_id": "ע\"א 6821/93",
         "ruling_date": "1995-11-09",
         "role": "Justice",
-        "outcome": "dismissed",
+        "outcome": "declarative",
         "authored_majority": true,
         "authored_minority": false
       }
@@ -893,7 +884,7 @@
         "case_id": "ע\"א 6821/93",
         "ruling_date": "1995-11-09",
         "role": "Justice",
-        "outcome": "dismissed",
+        "outcome": "declarative",
         "authored_majority": true,
         "authored_minority": false
       }
@@ -912,7 +903,7 @@
         "case_id": "ע\"א 6821/93",
         "ruling_date": "1995-11-09",
         "role": "Justice",
-        "outcome": "dismissed",
+        "outcome": "declarative",
         "authored_majority": true,
         "authored_minority": false
       }
@@ -931,7 +922,7 @@
         "case_id": "ע\"א 6821/93",
         "ruling_date": "1995-11-09",
         "role": "Justice",
-        "outcome": "dismissed",
+        "outcome": "declarative",
         "authored_majority": true,
         "authored_minority": false
       }
@@ -960,6 +951,25 @@
     "minority_authored": 0
   },
   {
+    "slug": "karra",
+    "name_he": "ג'ורג' קרא",
+    "name_en": "George Karra",
+    "appearances": [
+      {
+        "case_id_slug": "5969-20-shafir",
+        "case_id": "בג\"ץ 5969/20",
+        "ruling_date": "2021-05-23",
+        "role": "Justice",
+        "outcome": "warning_of_voidness",
+        "authored_majority": true,
+        "authored_minority": false
+      }
+    ],
+    "panel_count": 1,
+    "majority_authored": 1,
+    "minority_authored": 0
+  },
+  {
     "slug": "levin",
     "name_he": "שלמה לוין",
     "name_en": "Shlomo Levin",
@@ -969,7 +979,7 @@
         "case_id": "ע\"א 6821/93",
         "ruling_date": "1995-11-09",
         "role": "Deputy President",
-        "outcome": "dismissed",
+        "outcome": "declarative",
         "authored_majority": true,
         "authored_minority": false
       }
@@ -988,7 +998,7 @@
         "case_id": "ע\"א 6821/93",
         "ruling_date": "1995-11-09",
         "role": "Justice",
-        "outcome": "dismissed",
+        "outcome": "declarative",
         "authored_majority": true,
         "authored_minority": false
       }
@@ -1026,7 +1036,7 @@
         "case_id": "ע\"א 6821/93",
         "ruling_date": "1995-11-09",
         "role": "Justice",
-        "outcome": "dismissed",
+        "outcome": "declarative",
         "authored_majority": true,
         "authored_minority": false
       }
@@ -1064,7 +1074,7 @@
         "case_id": "ע\"א 6821/93",
         "ruling_date": "1995-11-09",
         "role": "Justice",
-        "outcome": "dismissed",
+        "outcome": "declarative",
         "authored_majority": true,
         "authored_minority": false
       }
@@ -1083,7 +1093,7 @@
         "case_id": "בג\"ץ 156/75",
         "ruling_date": "1976-01-01",
         "role": "Justice",
-        "outcome": "dismissed",
+        "outcome": "declarative",
         "authored_majority": false,
         "authored_minority": false
       }
@@ -1102,7 +1112,7 @@
         "case_id": "בג\"ץ 156/75",
         "ruling_date": "1976-01-01",
         "role": "Justice",
-        "outcome": "dismissed",
+        "outcome": "declarative",
         "authored_majority": false,
         "authored_minority": false
       }

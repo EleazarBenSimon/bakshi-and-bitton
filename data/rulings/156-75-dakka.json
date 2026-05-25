@@ -6,9 +6,24 @@
   "ruling_date": "1976-01-01",
   "filing_date": null,
   "panel": [
-    { "name_he": "אהרן ברק", "name_en": "Aharon Barak", "role": "Justice", "slug": "barak" },
-    { "name_he": "לא אומת", "name_en": "Panel member (unverified)", "role": "Justice", "slug": "unverified-2" },
-    { "name_he": "לא אומת", "name_en": "Panel member (unverified)", "role": "Justice", "slug": "unverified-3" }
+    {
+      "name_he": "אהרן ברק",
+      "name_en": "Aharon Barak",
+      "role": "Justice",
+      "slug": "barak"
+    },
+    {
+      "name_he": "לא אומת",
+      "name_en": "Panel member (unverified)",
+      "role": "Justice",
+      "slug": "unverified-2"
+    },
+    {
+      "name_he": "לא אומת",
+      "name_en": "Panel member (unverified)",
+      "role": "Justice",
+      "slug": "unverified-3"
+    }
   ],
   "petitioner_type": "Individual",
   "petitioner_name_he": "דקה",
@@ -19,10 +34,12 @@
   "doctrine_invoked": [
     "reasonableness"
   ],
-  "outcome": "dismissed",
+  "outcome": "declarative",
   "vote_majority": 3,
   "vote_minority": 0,
-  "majority_authors": ["barak"],
+  "majority_authors": [
+    "barak"
+  ],
   "minority_authors": [],
   "official_url": "https://versa.cardozo.yu.edu/topics/judicial-reasonableness",
   "secondary_urls": [

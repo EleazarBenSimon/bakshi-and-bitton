@@ -86,8 +86,8 @@
     },
     "respondent": {
       "type": "string",
-      "enum": ["Government", "Prime Minister", "Minister", "Cabinet", "Senior-Appointments-Committee", "Knesset", "Local-Authority", "Other"],
-      "description": "Identity of the primary respondent whose decision is challenged."
+      "enum": ["Government", "Prime Minister", "Minister", "Cabinet", "Senior-Appointments-Committee", "Knesset", "Local-Authority", "Statute", "Other"],
+      "description": "Identity of the primary respondent whose decision is challenged. Use 'Statute' when the challenge is to primary legislation itself (e.g. via private commercial litigation that becomes a constitutional vehicle) rather than to an executive decision."
     },
     "respondent_decision_he": {
       "type": ["string", "null"],
@@ -113,6 +113,10 @@
           "ultra_vires",
           "natural_justice",
           "constituent_authority_limits",
+          "abuse_of_constituent_power",
+          "constitutional_supremacy",
+          "separation_of_powers",
+          "judicial_independence",
           "other"
         ]
       },
@@ -120,8 +124,8 @@
     },
     "outcome": {
       "type": "string",
-      "enum": ["struck_down", "partially_struck", "remanded", "restricted", "upheld", "dismissed", "modified"],
-      "description": "Disposition of the petition. 'upheld' means the petition was granted; 'dismissed' means denied."
+      "enum": ["struck_down", "partially_struck", "remanded", "restricted", "upheld", "dismissed", "modified", "declarative", "mandatory_order", "warning_of_voidness"],
+      "description": "Disposition of the petition. 'upheld' = petition granted; 'dismissed' = denied; 'declarative' = petition formally dismissed/upheld but the ruling's main contribution is a doctrinal pronouncement (Mizrahi 1995, Dakka 1976); 'mandatory_order' = court compelled the respondent to act (typical for ministerial-inaction petitions); 'warning_of_voidness' = התראת בטלות, where the Court declines to strike the challenged measure but signals that future similar measures will be void under the doctrinal test articulated (Shafir 2021 is the canonical example)."
     },
     "vote_majority": {
       "type": ["integer", "null"],

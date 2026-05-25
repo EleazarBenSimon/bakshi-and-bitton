@@ -6,9 +6,24 @@
   "ruling_date": "2024-09-12",
   "filing_date": null,
   "panel": [
-    { "name_he": "יעל וילנר", "name_en": "Yael Willner", "role": "Justice", "slug": "willner" },
-    { "name_he": "עופר גרוסקופף", "name_en": "Ofer Grosskopf", "role": "Justice", "slug": "grosskopf" },
-    { "name_he": "אלכס שטיין", "name_en": "Alex Stein", "role": "Justice", "slug": "stein" }
+    {
+      "name_he": "יעל וילנר",
+      "name_en": "Yael Willner",
+      "role": "Justice",
+      "slug": "willner"
+    },
+    {
+      "name_he": "עופר גרוסקופף",
+      "name_en": "Ofer Grosskopf",
+      "role": "Justice",
+      "slug": "grosskopf"
+    },
+    {
+      "name_he": "אלכס שטיין",
+      "name_en": "Alex Stein",
+      "role": "Justice",
+      "slug": "stein"
+    }
   ],
   "petitioner_type": "NGO",
   "petitioner_name_he": "התנועה למען איכות השלטון בישראל (ועותרים נוספים בעתירות המאוחדות)",
@@ -18,9 +33,11 @@
   "respondent_decision_en": "Justice Minister Yariv Levin's refusal to convene the Judicial Selection Committee for the purpose of electing a permanent President of the Supreme Court and for the purpose of appointing Supreme Court and District Court justices, and his refusal to publish in the official gazette (Reshumot) the list of candidates for the President position, over an extended period following the retirement of President Esther Hayut in October 2023",
   "doctrine_invoked": [
     "ultra_vires",
-    "reasonableness"
+    "reasonableness",
+    "separation_of_powers",
+    "judicial_independence"
   ],
-  "outcome": "upheld",
+  "outcome": "mandatory_order",
   "vote_majority": 3,
   "vote_minority": 0,
   "majority_authors": [],
