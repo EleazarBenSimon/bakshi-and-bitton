@@ -79,6 +79,8 @@ const i18n = {
     era_1: "תקופת היסוד",
     era_2: "גל ראשון של פסילות",
     era_3: "תקופת העקיפה החוקתית",
+    zoom_all: "תצוגה מלאה",
+    zoom_hint: "מעבר בין תקופות לתצוגה מפורטת:",
     ann_dakka: "1976 · המצאת עילת הסבירות",
     ann_mizrahi: "1995 · הטענה לסמכות פסילת חוק-יסוד",
     ann_adalah: "2006 · פסילת חוק ראשונה לאחר מזרחי",
@@ -163,6 +165,8 @@ const i18n = {
     era_1: "Foundational doctrine",
     era_2: "First wave of strikes",
     era_3: "Constitutional override era",
+    zoom_all: "Full view",
+    zoom_hint: "Zoom into a specific era for detail:",
     ann_dakka: "1976 · Reasonableness invented",
     ann_mizrahi: "1995 · Claim to strike Basic Laws",
     ann_adalah: "2006 · First post-Mizrahi statute strike",
@@ -382,7 +386,7 @@ function renderCurve(rulings) {
 
   const svg = svgEl("svg", {
     viewBox: `0 0 ${W} ${H}`,
-    class: "curve curve-desktop",
+    class: "curve",
     role: "img",
     "aria-label": t.curve_aria,
   });
@@ -536,6 +540,9 @@ function renderCurve(rulings) {
   }
 
   // ── annotation callouts (boxed, with leader lines) ───────────────
+  // Each annotation is wrapped in a <g class="annotation" data-x="…">
+  // so the zoom-bar handler can hide callouts whose anchor falls
+  // outside the active viewBox (keeps zoomed eras visually clean).
   for (const p of points) {
     const ann = annotations[p.r.case_id_slug];
     if (!ann) continue;
@@ -566,35 +573,40 @@ function renderCurve(rulings) {
     // leader line
     const leadFromY = above ? y - radius - 2 : y + radius + 2;
     const leadToY   = above ? boxY + boxH    : boxY;
-    svg.append(svgEl("line", {
+
+    const annEra = p.yd < 2005.5 ? "era1" : (p.yd < 2020.5 ? "era2" : "era3");
+    const g = svgEl("g", {
+      class: "annotation",
+      "data-x": String(Math.round(x)),
+      "data-era": annEra,
+    });
+    g.append(svgEl("line", {
       x1: x, x2: x, y1: leadFromY, y2: leadToY,
       stroke: "#b03a3a", "stroke-width": "1.2", opacity: "0.7",
     }));
-
-    // callout box
-    svg.append(svgEl("rect", {
+    g.append(svgEl("rect", {
       x: boxX, y: boxY, width: boxW, height: boxH,
       rx: "4", ry: "4",
       fill: "#ffffff",
       stroke: "#b03a3a", "stroke-width": "1.2",
       filter: "url(#dotShadow)",
     }));
-    svg.append(svgEl("text", {
+    g.append(svgEl("text", {
       x: boxX + boxW / 2, y: boxY + boxH / 2 + 4,
       "text-anchor": "middle",
       "font-size": "11.5", "font-weight": "600",
       fill: "#7a2828",
     }, text));
+    svg.append(g);
   }
 
   return svg;
 }
 
-// ─── Mobile (vertical) variant of the curve ───────────────────────
-// Time flows top-to-bottom; severity flows left-to-right. Era bands
-// become horizontal strips. Annotations sit beside their dots.
+// ─── (Vertical-orientation variant removed — replaced by viewBox-based
+// era zooming. Kept the function name reserved for future revisits.)
 
-function renderCurveMobile(rulings) {
+function renderCurveMobile_DEPRECATED(rulings) {
   const W = 380, H = 1100;
   const M = { top: 24, right: 14, bottom: 28, left: 78 };
   const innerW = W - M.left - M.right;
@@ -784,23 +796,57 @@ function renderCurveSection(rulings) {
   const wrap = el("section", { class: "curve-section" });
   wrap.append(el("h2", { class: "curve-h2" }, t.curve_title));
   wrap.append(el("p", { class: "curve-subtitle" }, t.curve_subtitle));
+
+  const svg = renderCurve(rulings);
   const svgWrap = el("div", { class: "curve-wrap" });
-
-  const mql = window.matchMedia("(max-width: 720px)");
-  function renderInto() {
-    svgWrap.replaceChildren();
-    svgWrap.append(mql.matches ? renderCurveMobile(rulings) : renderCurve(rulings));
-  }
-  renderInto();
-  if (typeof mql.addEventListener === "function") {
-    mql.addEventListener("change", renderInto);
-  } else if (typeof mql.addListener === "function") {
-    mql.addListener(renderInto);
-  }
-
+  svgWrap.append(svg);
   wrap.append(svgWrap);
+
+  // Era zoom controls — change the SVG viewBox to focus on a slice.
+  // Same chart, but text/dots grow as the viewBox shrinks → higher
+  // legibility on phones; useful on desktop too for close inspection.
+  const ZOOMS = [
+    { id: "all",  label: t.zoom_all,    viewBox: "0 0 1040 500" },
+    { id: "era1", label: "1976–2005",  viewBox: "0 0 720 500" },
+    { id: "era2", label: "2006–2020",  viewBox: "540 0 380 500" },
+    { id: "era3", label: "2021–2026",  viewBox: "760 0 280 500" },
+  ];
+  const zoomBar = el("div", { class: "curve-zoom-bar", "aria-label": t.zoom_hint });
+  zoomBar.append(el("span", { class: "curve-zoom-label" }, t.zoom_hint));
+  const buttons = [];
+  for (const z of ZOOMS) {
+    // dir="ltr" on year-range buttons so "1976–2005" doesn't reverse to
+    // "2005–1976" in the Hebrew RTL layout. The "Full view" / "תצוגה מלאה"
+    // label is intrinsically directional so dir="auto" handles it.
+    const isYearRange = z.id !== "all";
+    const btn = el("button", {
+      class: "curve-zoom-btn",
+      "data-zoom": z.id,
+      dir: isYearRange ? "ltr" : "auto",
+    }, z.label);
+    btn.addEventListener("click", () => {
+      svg.setAttribute("viewBox", z.viewBox);
+      // Show only annotations whose tagged era matches the active zoom
+      // (or all annotations when zoom is "all"). Era is set in renderCurve
+      // from each ruling's year, so the filter is robust to boundary cases
+      // where a dot sits inside a neighboring era's viewBox margin.
+      for (const g of svg.querySelectorAll(".annotation")) {
+        const annEra = g.getAttribute("data-era");
+        const inView = z.id === "all" || annEra === z.id;
+        g.style.display = inView ? "" : "none";
+      }
+      for (const b of buttons) {
+        b.classList.toggle("active", b === btn);
+      }
+    });
+    buttons.push(btn);
+    zoomBar.append(btn);
+  }
+  buttons[0].classList.add("active");
+  wrap.append(zoomBar);
+
   wrap.append(el("p", { class: "curve-caption" }, t.curve_caption));
   return wrap;
 }
 
-window.CO = { lang, t, el, fetchJSON, ruling_name, justice_name, role_label, renderHeader, renderFooter, renderCurve, renderCurveMobile, renderCurveSection };
+window.CO = { lang, t, el, fetchJSON, ruling_name, justice_name, role_label, renderHeader, renderFooter, renderCurve, renderCurveSection };

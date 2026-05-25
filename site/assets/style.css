@@ -449,12 +449,50 @@ footer {
   height: auto;
   display: block;
 }
-.curve-desktop {
-  min-width: 720px;
+
+/* Era zoom controls */
+.curve-zoom-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  margin: 6px 0 14px;
 }
-.curve-mobile {
-  min-width: 0;
-  max-width: 100%;
+.curve-zoom-label {
+  font-size: 12.5px;
+  color: var(--text-muted);
+  margin-inline-end: 4px;
+}
+.curve-zoom-btn {
+  font-size: 12.5px;
+  padding: 7px 13px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  border-radius: 4px;
+  cursor: pointer;
+  color: var(--text);
+  font-family: inherit;
+  font-weight: 500;
+  min-height: 36px;
+  transition: background 0.12s, color 0.12s, border-color 0.12s;
+}
+.curve-zoom-btn:hover {
+  background: var(--accent-soft);
+}
+.curve-zoom-btn.active {
+  background: var(--accent);
+  color: white;
+  border-color: var(--accent);
+}
+@media (max-width: 720px) {
+  .curve-zoom-label { display: none; }
+  .curve-zoom-bar { gap: 4px; justify-content: stretch; }
+  .curve-zoom-btn {
+    font-size: 12px;
+    padding: 8px 10px;
+    flex: 1 1 0;
+    min-width: 70px;
+  }
 }
 .curve circle {
   cursor: pointer;
