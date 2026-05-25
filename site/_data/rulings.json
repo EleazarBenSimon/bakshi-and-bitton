@@ -1164,16 +1164,16 @@
   {
     "case_id": "בג\"ץ 156/75",
     "case_id_slug": "156-75-dakka",
-    "case_name_he": "דקה נ' שר התחבורה",
-    "case_name_en": "Dakka v. Minister of Transportation",
+    "case_name_he": "פאוזי דקה נ' שר התחבורה",
+    "case_name_en": "Fawzi Dakka v. Minister of Transportation",
     "ruling_date": "1976-01-01",
     "filing_date": null,
     "panel": [
       {
-        "name_he": "אהרן ברק",
-        "name_en": "Aharon Barak",
+        "name_he": "מאיר שמגר",
+        "name_en": "Meir Shamgar",
         "role": "Justice",
-        "slug": "barak"
+        "slug": "shamgar"
       },
       {
         "name_he": "לא אומת",
@@ -1189,8 +1189,8 @@
       }
     ],
     "petitioner_type": "Individual",
-    "petitioner_name_he": "דקה",
-    "petitioner_name_en": "Dakka",
+    "petitioner_name_he": "פאוזי דקה",
+    "petitioner_name_en": "Fawzi Dakka",
     "respondent": "Minister",
     "respondent_decision_he": "החלטה מנהלית של שר התחבורה הנוגעת לרישוי בתחום התחבורה, אשר העותר טען כי איננה סבירה",
     "respondent_decision_en": "Administrative decision by the Minister of Transportation in a transport-licensing matter, which the petitioner challenged as unreasonable",
@@ -1201,15 +1201,16 @@
     "vote_majority": 3,
     "vote_minority": 0,
     "majority_authors": [
-      "barak"
+      "shamgar"
     ],
     "minority_authors": [],
     "official_url": "https://versa.cardozo.yu.edu/topics/judicial-reasonableness",
     "secondary_urls": [
-      "https://he.wikipedia.org/wiki/%D7%A2%D7%99%D7%9C%D7%AA_%D7%90%D7%99-%D7%94%D7%A1%D7%91%D7%99%D7%A8%D7%95%D7%AA"
+      "https://he.wikipedia.org/wiki/%D7%A2%D7%99%D7%9C%D7%AA_%D7%94%D7%A1%D7%91%D7%99%D7%A8%D7%95%D7%AA",
+      "https://www.hamichlol.org.il/%D7%A2%D7%99%D7%9C%D7%AA_%D7%94%D7%A1%D7%91%D7%99%D7%A8%D7%95%D7%AA"
     ],
-    "summary_he": "בית המשפט העליון, בשבתו כבג\"ץ ובהרכב של שלושה שופטים, דחה את העתירה פה אחד. בחוות-הדעת המובילה, שכתב השופט אהרן ברק, נוסחה לראשונה עילת אי-הסבירות כעילה עצמאית לביקורת שיפוטית על החלטות מנהליות, ולא רק כאינדיקציה לפגמים אחרים. פורסם בפ\"ד ל(2) 94.",
-    "summary_en": "The Supreme Court, sitting as the High Court of Justice in a three-justice panel, unanimously dismissed the petition. In the lead opinion, authored by Justice Aharon Barak, the reasonableness ground was articulated for the first time as an independent ground of judicial review over administrative decisions, rather than merely as an indicator of other defects. Reported at P\"D 30(2) 94.",
+    "summary_he": "בית המשפט העליון, בשבתו כבג\"ץ ובהרכב של שלושה שופטים, דחה את העתירה פה אחד. בחוות-הדעת המובילה, שכתב השופט מאיר שמגר, נוסחה לראשונה עילת אי-הסבירות כעילה עצמאית לביקורת שיפוטית על החלטות מנהליות, ולא רק כאינדיקציה לפגמים אחרים. ההלכה הורחבה מאוחר יותר על-ידי השופט אהרן ברק בבג\"ץ 389/80 דפי זהב נ' רשות השידור (1980). פורסם בפ\"ד ל(2) 94.",
+    "summary_en": "The Supreme Court, sitting as the High Court of Justice in a three-justice panel, unanimously dismissed the petition. In the lead opinion, authored by Justice Meir Shamgar, the reasonableness ground was articulated for the first time as an independent ground of judicial review over administrative decisions, rather than merely as an indicator of other defects. The doctrine was later expanded by Justice Aharon Barak in HCJ 389/80 Dapei Zahav v. Broadcasting Authority (1980). Reported at P\"D 30(2) 94.",
     "predicate_ag_opinion": null,
     "respondent_body": null,
     "compliance_state": "n/a",
@@ -1218,9 +1219,9 @@
       "reasonableness",
       "administrative-review",
       "pre-digital",
-      "barak-doctrine",
+      "doctrinal-foundation",
       "headliner"
     ],
-    "notes": "Pre-digital era ruling — no supremedecisions.court.gov.il URL exists for this 1976 judgment. The official_url field points to the Cardozo Versa topic page on judicial reasonableness, which is the closest authoritative English-language secondary source; no full Versa translation of Dakka itself appears to exist. Canonical Hebrew citation: פ\"ד ל(2) 94. Methodology trade-offs: (1) Schema 'outcome' enum has no 'declarative' value; 'dismissed' is used because the petition itself was denied, with the doctrinal significance arising from Justice Barak's articulation of reasonableness as an independent ground in the reasoning. (2) Exact ruling-date day/month not verified from the pre-digital record; 1976-01-01 is a placeholder year-only date drawn from the user-provided context (P\"D 30(2), 1976). (3) Two additional panel members are recorded as 'unverified' placeholders; only Justice Barak (lead-opinion author) is documented from the user-provided context. The other two seats on the standard 3-justice HCJ panel of the period must be filled in from the printed P\"D before publication. Flag for source-link verification before any external citation."
+    "notes": "Pre-digital era ruling — no supremedecisions.court.gov.il URL exists for this 1976 judgment. The official_url field points to the Cardozo Versa topic page on judicial reasonableness, which is the closest authoritative English-language secondary source; no full Versa translation of Dakka itself appears to exist. Canonical Hebrew citation: פ\"ד ל(2) 94. Methodology trade-offs: (1) Schema 'outcome' set to 'declarative' since the petition was formally denied but the ruling's significance arises from Justice Shamgar's articulation of reasonableness as an independent ground in the reasoning. (2) Exact ruling-date day/month not verified from the pre-digital record; 1976-01-01 is a placeholder year-only date drawn from the volume reference (P\"D 30(2), 1976). (3) Two additional panel members are recorded as 'unverified' placeholders; only the lead-opinion author (Shamgar) is documented from available open sources. The other two seats on the standard 3-justice HCJ panel of the period (court president at the time was Yoel Sussman; deputy president Haim Cohn) must be filled in from the printed P\"D before publication. (4) CORRECTION 2026-05-25: an earlier version of this record incorrectly named Aharon Barak as the lead-opinion author. Barak was Attorney General 1975-1978 and only joined the Supreme Court in late 1978, so he could not have been on this 1976 panel. The original error conflated Dakka (1976) with HCJ 389/80 Dapei Zahav (1980), where Justice Barak — by then on the Court — articulated his four-prong reasonableness analysis. Three independent Hebrew sources (Hebrew Wikipedia 'עילת הסבירות', HaMichlol encyclopedia, Versa/Cardozo topic essays) attribute the Dakka lead opinion to Shamgar. Flag for source-link verification of the other 2 panelists before any external citation."
   }
 ]
