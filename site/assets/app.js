@@ -517,10 +517,18 @@ function renderCurve(rulings) {
       const p1 = pts[i];
       const p2 = pts[i + 1];
       const p3 = pts[Math.min(pts.length - 1, i + 2)];
-      const cp1x = p1.x + (p2.x - p0.x) * t / 6;
-      const cp1y = Math.min(p1.y, Math.max(p2.y, p1.y + (p2.y - p0.y) * t / 6));
-      const cp2x = p2.x - (p3.x - p1.x) * t / 6;
-      const cp2y = Math.max(p2.y, Math.min(p1.y, p2.y - (p3.y - p1.y) * t / 6));
+      // Bezier control points, clamped into the [p1,p2] bounding box so
+      // the curve is monotonic in x (no backward dips) and monotonic in
+      // y (no overshoots above p2 or below p1 on a cumulative curve).
+      // Without these clamps, near-boundary segments and segments where
+      // adjacent data points are at very different x-distances cause
+      // wild tangent estimates and the curve loops away from the dots.
+      const clampX = (v) => Math.max(p1.x, Math.min(p2.x, v));
+      const clampY = (v) => Math.max(p2.y, Math.min(p1.y, v));
+      const cp1x = clampX(p1.x + (p2.x - p0.x) * t / 6);
+      const cp1y = clampY(p1.y + (p2.y - p0.y) * t / 6);
+      const cp2x = clampX(p2.x - (p3.x - p1.x) * t / 6);
+      const cp2y = clampY(p2.y - (p3.y - p1.y) * t / 6);
       d += ` C ${cp1x} ${cp1y}, ${cp2x} ${cp2y}, ${p2.x} ${p2.y}`;
     }
     return d;
