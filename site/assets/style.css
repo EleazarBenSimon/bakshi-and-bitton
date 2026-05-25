@@ -123,6 +123,19 @@ a { color: var(--accent); }
   margin-top: 2px;
 }
 
+.table-scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--surface);
+}
+.table-scroll > table {
+  border: none;
+  border-radius: 0;
+}
+
 table {
   width: 100%;
   border-collapse: collapse;
@@ -227,6 +240,10 @@ footer {
   .ruling-detail-grid dt { padding-top: 8px; }
   table { font-size: 13px; }
   th, td { padding: 8px; }
+  /* Prevent any element from forcing the body wider than the viewport on mobile */
+  html, body { overflow-x: hidden; }
+  main { max-width: 100vw; overflow-x: hidden; }
+  .table-scroll table { min-width: 640px; }
 }
 
 /* ─── Reading section (informative content layer) ─────────────────── */
@@ -430,8 +447,14 @@ footer {
 .curve {
   width: 100%;
   height: auto;
-  min-width: 720px;
   display: block;
+}
+.curve-desktop {
+  min-width: 720px;
+}
+.curve-mobile {
+  min-width: 0;
+  max-width: 100%;
 }
 .curve circle {
   cursor: pointer;

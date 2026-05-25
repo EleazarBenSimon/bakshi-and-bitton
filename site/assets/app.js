@@ -290,6 +290,43 @@ const DOT_COLOR_BY_OUTCOME = {
   upheld: "#2a6a2a",
 };
 
+const CURVE_NS = "http://www.w3.org/2000/svg";
+
+function curveSvgEl(tag, attrs = {}, ...children) {
+  const e = document.createElementNS(CURVE_NS, tag);
+  for (const [k, v] of Object.entries(attrs)) e.setAttribute(k, v);
+  for (const c of children.flat()) {
+    if (c == null) continue;
+    e.append(typeof c === "string" ? document.createTextNode(c) : c);
+  }
+  return e;
+}
+
+function curveYearDecimal(d) {
+  const yr = parseInt(d.slice(0, 4), 10);
+  const mo = parseInt(d.slice(5, 7), 10) || 1;
+  return yr + (mo - 1) / 12;
+}
+
+function curveAnnotationsMap() {
+  return {
+    "156-75-dakka":                t.ann_dakka,
+    "6821-93-bank-mizrahi":        t.ann_mizrahi,
+    "8276-05-adalah-civil-wrongs": t.ann_adalah,
+    "5969-20-shafir":              t.ann_shafir,
+    "5658-23":                     t.ann_5658,
+    "gofman-mossad-2026-05":       t.ann_gofman,
+  };
+}
+
+function curveEras() {
+  return [
+    { start: 1975, end: 2005.5, label: t.era_1, fill: "rgba(90,122,154,0.05)",  stripe: "#5a7a9a" },
+    { start: 2005.5, end: 2020.5, label: t.era_2, fill: "rgba(196,125,39,0.07)", stripe: "#c47d27" },
+    { start: 2020.5, end: 2027, label: t.era_3, fill: "rgba(176,58,58,0.10)",   stripe: "#b03a3a" },
+  ];
+}
+
 function renderCurve(rulings) {
   const NS = "http://www.w3.org/2000/svg";
   const W = 1040, H = 500;
@@ -345,7 +382,7 @@ function renderCurve(rulings) {
 
   const svg = svgEl("svg", {
     viewBox: `0 0 ${W} ${H}`,
-    class: "curve",
+    class: "curve curve-desktop",
     role: "img",
     "aria-label": t.curve_aria,
   });
@@ -553,15 +590,217 @@ function renderCurve(rulings) {
   return svg;
 }
 
+// ─── Mobile (vertical) variant of the curve ───────────────────────
+// Time flows top-to-bottom; severity flows left-to-right. Era bands
+// become horizontal strips. Annotations sit beside their dots.
+
+function renderCurveMobile(rulings) {
+  const W = 380, H = 1100;
+  const M = { top: 24, right: 14, bottom: 28, left: 78 };
+  const innerW = W - M.left - M.right;
+  const innerH = H - M.top - M.bottom;
+  const YR_MIN = 1975, YR_MAX = 2027;
+  const SEV_AXIS_MAX = 5.6;
+
+  function xOf(sev) { return M.left + (sev / SEV_AXIS_MAX) * innerW; }
+  function yOf(yd)  { return M.top  + ((yd - YR_MIN) / (YR_MAX - YR_MIN)) * innerH; }
+
+  const points = rulings.map((r) => ({
+    r,
+    yd: curveYearDecimal(r.ruling_date),
+    sev: SEVERITY_BY_OUTCOME[r.outcome] ?? 1,
+  })).sort((a, b) => a.yd - b.yd);
+
+  let envMax = 0;
+  const envelope = points.map((p) => {
+    envMax = Math.max(envMax, p.sev);
+    return { yd: p.yd, sev: envMax };
+  });
+
+  const annotations = curveAnnotationsMap();
+  const eras = curveEras();
+
+  const svg = curveSvgEl("svg", {
+    viewBox: `0 0 ${W} ${H}`,
+    class: "curve curve-mobile",
+    role: "img",
+    "aria-label": t.curve_aria,
+  });
+
+  // defs
+  const defs = curveSvgEl("defs");
+  const envGrad = curveSvgEl("linearGradient", { id: "envFillV", x1: "0", y1: "0", x2: "1", y2: "0" });
+  envGrad.append(curveSvgEl("stop", { offset: "0%",  "stop-color": "#b03a3a", "stop-opacity": "0.02" }));
+  envGrad.append(curveSvgEl("stop", { offset: "100%", "stop-color": "#b03a3a", "stop-opacity": "0.30" }));
+  defs.append(envGrad);
+  const shadow = curveSvgEl("filter", { id: "dotShadowV", x: "-60%", y: "-60%", width: "220%", height: "220%" });
+  shadow.append(curveSvgEl("feGaussianBlur", { in: "SourceAlpha", stdDeviation: "1.4" }));
+  shadow.append(curveSvgEl("feOffset", { dx: "0", dy: "1.2", result: "off" }));
+  shadow.append(curveSvgEl("feComponentTransfer", {},
+    curveSvgEl("feFuncA", { type: "linear", slope: "0.4" })
+  ));
+  const sMerge = curveSvgEl("feMerge");
+  sMerge.append(curveSvgEl("feMergeNode"));
+  sMerge.append(curveSvgEl("feMergeNode", { in: "SourceGraphic" }));
+  shadow.append(sMerge);
+  defs.append(shadow);
+  svg.append(defs);
+
+  // Era horizontal bands + side stripes
+  for (const era of eras) {
+    const y1 = yOf(era.start);
+    const y2 = yOf(era.end);
+    svg.append(curveSvgEl("rect", {
+      x: M.left, y: y1, width: innerW, height: y2 - y1,
+      fill: era.fill,
+    }));
+    svg.append(curveSvgEl("rect", {
+      x: M.left - 20, y: y1 + 3, width: 4, height: y2 - y1 - 6,
+      fill: era.stripe, opacity: "0.75", rx: "2",
+    }));
+    const labelY = (y1 + y2) / 2;
+    svg.append(curveSvgEl("text", {
+      x: M.left - 30, y: labelY,
+      "text-anchor": "middle",
+      "font-size": "10", "font-weight": "700",
+      "letter-spacing": "0.4",
+      fill: era.stripe,
+      transform: `rotate(-90 ${M.left - 30} ${labelY})`,
+    }, era.label.toUpperCase()));
+  }
+
+  // Decade year labels + horizontal gridlines
+  const decadeYears = [1980, 1990, 2000, 2010, 2020, 2026];
+  for (const yr of decadeYears) {
+    const y = yOf(yr);
+    svg.append(curveSvgEl("line", {
+      x1: M.left, x2: M.left + innerW, y1: y, y2: y,
+      stroke: "#e8e8e8", "stroke-width": "1", "stroke-dasharray": "1 4",
+    }));
+    svg.append(curveSvgEl("text", {
+      x: M.left - 4, y: y + 4,
+      "text-anchor": "end",
+      "font-size": "11", "font-weight": "500", fill: "#555",
+    }, String(yr)));
+  }
+
+  // Y-axis line (time axis on left of chart area)
+  svg.append(curveSvgEl("line", {
+    x1: M.left, x2: M.left, y1: M.top, y2: M.top + innerH,
+    stroke: "#888", "stroke-width": "1.2",
+  }));
+
+  // Envelope (filled area to the LEFT of running-max severity, then line)
+  if (envelope.length) {
+    let dArea = `M ${xOf(0)} ${yOf(YR_MIN)} L ${xOf(envelope[0].sev)} ${yOf(YR_MIN)} L ${xOf(envelope[0].sev)} ${yOf(envelope[0].yd)}`;
+    for (let i = 1; i < envelope.length; i++) {
+      const prev = envelope[i - 1], cur = envelope[i];
+      dArea += ` L ${xOf(prev.sev)} ${yOf(cur.yd)} L ${xOf(cur.sev)} ${yOf(cur.yd)}`;
+    }
+    const lastSev = envelope[envelope.length - 1].sev;
+    dArea += ` L ${xOf(lastSev)} ${yOf(YR_MAX)} L ${xOf(0)} ${yOf(YR_MAX)} Z`;
+    svg.append(curveSvgEl("path", { d: dArea, fill: "url(#envFillV)" }));
+
+    let dLine = `M ${xOf(envelope[0].sev)} ${yOf(YR_MIN)} L ${xOf(envelope[0].sev)} ${yOf(envelope[0].yd)}`;
+    for (let i = 1; i < envelope.length; i++) {
+      const prev = envelope[i - 1], cur = envelope[i];
+      dLine += ` L ${xOf(prev.sev)} ${yOf(cur.yd)} L ${xOf(cur.sev)} ${yOf(cur.yd)}`;
+    }
+    dLine += ` L ${xOf(lastSev)} ${yOf(YR_MAX)}`;
+    svg.append(curveSvgEl("path", {
+      d: dLine, fill: "none",
+      stroke: "#b03a3a", "stroke-width": "2",
+      opacity: "0.85",
+      "stroke-linejoin": "round",
+    }));
+  }
+
+  // Dots
+  for (const p of points) {
+    const x = xOf(p.sev), y = yOf(p.yd);
+    const color = DOT_COLOR_BY_OUTCOME[p.r.outcome] || "#666";
+    const radius = p.sev >= 4 ? 6 : (p.sev >= 3 ? 5.5 : 5);
+    const a = curveSvgEl("a", { href: `ruling.html?id=${p.r.case_id_slug}` });
+    const circle = curveSvgEl("circle", {
+      cx: x, cy: y, r: String(radius),
+      fill: color, "fill-opacity": "0.97",
+      stroke: "#fff", "stroke-width": "1.8",
+      filter: "url(#dotShadowV)",
+    });
+    circle.append(curveSvgEl("title", {}, `${p.r.ruling_date} · ${p.r.case_id} · ${p.r.outcome.replace(/_/g, " ")}`));
+    a.append(circle);
+    svg.append(a);
+  }
+
+  // Annotation callouts beside the dot (alternating sides)
+  // High-sev dots are on the right → label goes LEFT.
+  // Low-sev dots are toward the left → label goes RIGHT.
+  for (const p of points) {
+    const ann = annotations[p.r.case_id_slug];
+    if (!ann) continue;
+    const x = xOf(p.sev), y = yOf(p.yd);
+    const radius = p.sev >= 4 ? 6 : (p.sev >= 3 ? 5.5 : 5);
+    const placeRight = p.sev <= 3;
+
+    const text = ann;
+    const charW = 5.8;
+    const padX = 7;
+    const boxW = Math.min(Math.round(text.length * charW + padX * 2), innerW - 30);
+    const boxH = 22;
+    const boxY = y - boxH / 2;
+
+    let boxX = placeRight ? (x + radius + 8) : (x - radius - 8 - boxW);
+    const rightLimit = M.left + innerW - 2;
+    const leftLimit  = M.left + 2;
+    if (boxX + boxW > rightLimit) boxX = rightLimit - boxW;
+    if (boxX < leftLimit) boxX = leftLimit;
+
+    const leadFromX = placeRight ? (x + radius + 1) : (x - radius - 1);
+    const leadToX   = placeRight ? boxX : (boxX + boxW);
+    svg.append(curveSvgEl("line", {
+      x1: leadFromX, x2: leadToX, y1: y, y2: y,
+      stroke: "#b03a3a", "stroke-width": "1.1", opacity: "0.7",
+    }));
+
+    svg.append(curveSvgEl("rect", {
+      x: boxX, y: boxY, width: boxW, height: boxH,
+      rx: "4", ry: "4",
+      fill: "#ffffff",
+      stroke: "#b03a3a", "stroke-width": "1.1",
+      filter: "url(#dotShadowV)",
+    }));
+    svg.append(curveSvgEl("text", {
+      x: boxX + boxW / 2, y: boxY + boxH / 2 + 4,
+      "text-anchor": "middle",
+      "font-size": "10", "font-weight": "600",
+      fill: "#7a2828",
+    }, text));
+  }
+
+  return svg;
+}
+
 function renderCurveSection(rulings) {
   const wrap = el("section", { class: "curve-section" });
   wrap.append(el("h2", { class: "curve-h2" }, t.curve_title));
   wrap.append(el("p", { class: "curve-subtitle" }, t.curve_subtitle));
   const svgWrap = el("div", { class: "curve-wrap" });
-  svgWrap.append(renderCurve(rulings));
+
+  const mql = window.matchMedia("(max-width: 720px)");
+  function renderInto() {
+    svgWrap.replaceChildren();
+    svgWrap.append(mql.matches ? renderCurveMobile(rulings) : renderCurve(rulings));
+  }
+  renderInto();
+  if (typeof mql.addEventListener === "function") {
+    mql.addEventListener("change", renderInto);
+  } else if (typeof mql.addListener === "function") {
+    mql.addListener(renderInto);
+  }
+
   wrap.append(svgWrap);
   wrap.append(el("p", { class: "curve-caption" }, t.curve_caption));
   return wrap;
 }
 
-window.CO = { lang, t, el, fetchJSON, ruling_name, justice_name, role_label, renderHeader, renderFooter, renderCurve, renderCurveSection };
+window.CO = { lang, t, el, fetchJSON, ruling_name, justice_name, role_label, renderHeader, renderFooter, renderCurve, renderCurveMobile, renderCurveSection };
