@@ -52,5 +52,9 @@
     "doctrine-anchor",
     "warning-of-voidness"
   ],
+  "target_branch": "basic_law",
+  "domain": "basic-law-amendment",
+  "competence_class": "acquisition",
+  "adversarial_view": null,
   "notes": "Doctrinal anchor case. Establishes the tripartite test (abuse of constituent power, generality, compatibility with the constitutional fabric) subsequently invoked in HCJ 5658/23 (reasonableness amendment, January 2024) and HCJ 5119/23 (incapacitation amendment, January 2024). Disposition is a 'warning of voidness' (התראת בטלות) — not a strike — the Court declined to void the amendments but signaled future similar amendments would be void under the abuse-of-constituent-power test. Vote: 6-3, uniform across doctrine and disposition. Majority: Hayut (lead), Hendel, Amit, Barak-Erez, Baron, Karra. Dissent: Sohlberg, Mintz, Elron. Internal divergence within the 6-justice majority (Hayut's analytical framework for identifying abuse-of-constituent-power vs. Barak-Erez's framework) did not produce a separate vote tally. The petitioner is recorded as 'Party' to reflect Shafir's status as a former Knesset Member; consolidated petitions included NGO co-petitioners. An earlier draft of this record encoded the panel and vote incorrectly (7-2 with Melcer, Vogelman, Willner listed) per a research brief that omitted Justice Elron's dissent and confused the panel composition with an unrelated sibling-era ruling; corrected against arnontl.com legal-firm analysis, afiklaw.com docket header, and Verfassungsblog summary."
 }

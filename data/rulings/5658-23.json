@@ -49,6 +49,10 @@
   "respondent_body": null,
   "compliance_state": "complied",
   "defiance_signals": "Coalition leaders publicly criticized the ruling; Justice Minister Levin called it 'the opposite of the spirit of unity' (as reported in Times of Israel and Israeli Hebrew press cited in secondary_urls). No direct re-enactment of the amendment was attempted. Subsequent legislative activity addressed Judicial Selection Committee restructuring (March 2025).",
+  "target_branch": "basic_law",
+  "domain": "basic-law-amendment",
+  "competence_class": "acquisition",
+  "adversarial_view": null,
   "tags": [
     "constitutional-revolution",
     "basic-law-amendment",

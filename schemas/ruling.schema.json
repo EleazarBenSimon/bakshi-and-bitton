@@ -196,6 +196,43 @@
       "items": { "type": "string", "pattern": "^[a-z0-9-]+$" },
       "description": "Optional editorial tags for cross-cutting filtering. Examples: 'appointment-block', 'security-sector', 'religion-state', 'post-oct7'."
     },
+    "target_branch": {
+      "type": ["string", "null"],
+      "enum": ["executive", "legislature", "basic_law", "mixed", null],
+      "description": "Power-transfer index axis (see METHODOLOGY-power-transfer.md §3.1). The operative target of the petition: 'executive' = ministerial/government/cabinet/AG decision; 'legislature' = primary Knesset legislation; 'basic_law' = a Basic Law amendment itself; 'mixed' = substantive challenge to more than one branch. Null permitted for legacy records pending classification."
+    },
+    "domain": {
+      "type": ["string", "null"],
+      "enum": [
+        "religion-state",
+        "asylum-immigration",
+        "settlements-and-land",
+        "senior-executive-appointments",
+        "cabinet-composition",
+        "civil-tort-and-state-liability",
+        "privatization-of-sovereign-functions",
+        "conscription-and-equality",
+        "economic-regulation",
+        "intelligence-and-security-appointments",
+        "prison-conditions",
+        "criminal-procedure",
+        "judicial-appointments",
+        "basic-law-amendment",
+        "administrative-review-general",
+        "local-government",
+        null
+      ],
+      "description": "Power-transfer index axis (see METHODOLOGY-power-transfer.md §3.2). Closed vocabulary; additions require a methodology version bump. Null permitted for legacy records pending classification."
+    },
+    "competence_class": {
+      "type": ["string", "null"],
+      "enum": ["acquisition", "extension", "application", "ratification", null],
+      "description": "Power-transfer index classification (see METHODOLOGY-power-transfer.md §4). 'acquisition' = first ruling in this (target_branch × domain) cell (weight +3); 'extension' = meaningful sub-domain or doctrinal frontier within an already-claimed cell (weight +1); 'application' = routine application of settled doctrine (weight 0); 'ratification' = petition dismissed, no new doctrine (weight 0). Null permitted for legacy records pending classification. 'acquisition' codings require three independent secondary sources cited in notes."
+    },
+    "adversarial_view": {
+      "type": ["string", "null"],
+      "description": "Optional contributor-cited counter-classification or counter-interpretation. Used when a reasonable, source-supported alternative reading exists for this ruling's competence_class, doctrine_invoked, or material framing. Must include source URLs. See METHODOLOGY-power-transfer.md §8."
+    },
     "notes": {
       "type": ["string", "null"],
       "description": "Free-text notes on disputed facts, source conflicts, or contextual information that doesn't belong in summary fields. See METHODOLOGY §7."

@@ -97,6 +97,10 @@
   "respondent_body": null,
   "compliance_state": "n/a",
   "defiance_signals": null,
+  "target_branch": "legislature",
+  "domain": "basic-law-amendment",
+  "competence_class": "acquisition",
+  "adversarial_view": null,
   "tags": [
     "constitutional-revolution",
     "basic-law-supremacy",
