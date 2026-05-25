@@ -1,0 +1,54 @@
+{
+  "case_id": "ע\"א 6821/93",
+  "case_id_slug": "6821-93-bank-mizrahi",
+  "case_name_he": "בנק המזרחי המאוחד בע\"מ נ' מגדל כפר שיתופי",
+  "case_name_en": "United Mizrahi Bank Ltd. v. Migdal Cooperative Village",
+  "ruling_date": "1995-11-09",
+  "filing_date": null,
+  "panel": [
+    { "name_he": "אהרן ברק", "name_en": "Aharon Barak", "role": "President", "slug": "barak" },
+    { "name_he": "שלמה לוין", "name_en": "Shlomo Levin", "role": "Deputy President", "slug": "levin" },
+    { "name_he": "מישאל חשין", "name_en": "Mishael Cheshin", "role": "Justice", "slug": "cheshin" },
+    { "name_he": "תאודור אור", "name_en": "Theodor Or", "role": "Justice", "slug": "or" },
+    { "name_he": "אליעזר גולדברג", "name_en": "Eliezer Goldberg", "role": "Justice", "slug": "goldberg" },
+    { "name_he": "גבריאל בך", "name_en": "Gavriel Bach", "role": "Justice", "slug": "bach" },
+    { "name_he": "יעקב מלץ", "name_en": "Yaakov Maltz", "role": "Justice", "slug": "maltz" },
+    { "name_he": "צבי טל", "name_en": "Tzvi Tal", "role": "Justice", "slug": "tal" },
+    { "name_he": "דליה דורנר", "name_en": "Dalia Dorner", "role": "Justice", "slug": "dorner" }
+  ],
+  "petitioner_type": "Individual",
+  "petitioner_name_he": "בנק המזרחי המאוחד בע\"מ",
+  "petitioner_name_en": "United Mizrahi Bank Ltd.",
+  "respondent": "Other",
+  "respondent_decision_he": "חוק ההסדרים במגזר החקלאי המשפחתי, התשנ\"ב-1992, אשר הסדיר את חובות החקלאים ופגע, לטענת הבנקים, בזכות הקניין המוגנת בחוק-יסוד: כבוד האדם וחירותו",
+  "respondent_decision_en": "The Family Agricultural Sector (Arrangements) Law, 5752-1992, which restructured agricultural debts and, according to the banks, infringed the right to property protected under Basic Law: Human Dignity and Liberty",
+  "doctrine_invoked": [
+    "constituent_authority_limits",
+    "basic_law_human_dignity_and_liberty"
+  ],
+  "outcome": "dismissed",
+  "vote_majority": 9,
+  "vote_minority": 0,
+  "majority_authors": ["barak", "levin", "cheshin", "or", "goldberg", "bach", "maltz", "tal", "dorner"],
+  "minority_authors": [],
+  "official_url": "https://versa.cardozo.yu.edu/opinions/united-mizrahi-bank-v-migdal-cooperative-village",
+  "secondary_urls": [
+    "https://versa.cardozo.yu.edu/sites/default/files/upload/opinions/United%20Mizrahi%20Bank%20v.%20Migdal%20Cooperative%20Village.pdf",
+    "https://he.wikipedia.org/wiki/%D7%A4%D7%A1%D7%A7_%D7%93%D7%99%D7%9F_%D7%91%D7%A0%D7%A7_%D7%94%D7%9E%D7%96%D7%A8%D7%97%D7%99"
+  ],
+  "summary_he": "בית המשפט העליון, בהרכב מורחב של תשעה שופטים, דחה פה אחד את ערעור הבנקים והותיר על כנו את חוק ההסדרים במגזר החקלאי המשפחתי. ברוב דעות קבע בית המשפט כי חוקי-היסוד הם בעלי מעמד חוקתי-עליון וכי לבית המשפט סמכות לבקר חקיקה ראשית הסותרת אותם. הנשיא ברק ניסח את 'תורת הסמכות המכוננת' של הכנסת, ואילו השופט חשין חלק על הביסוס לעליונות חוקי-היסוד. פורסם בפ\"ד מט(4) 221.",
+  "summary_en": "The Supreme Court, sitting as an expanded nine-justice panel, unanimously dismissed the banks' appeal and left in place the Family Agricultural Sector (Arrangements) Law. By a majority, the Court held that the Basic Laws have supreme constitutional status and that the Court has authority to review primary legislation conflicting with them. President Barak articulated the 'constituent authority' theory of the Knesset; Justice Cheshin dissented from the doctrinal basis for Basic Law supremacy. Reported at P\"D 49(4) 221.",
+  "predicate_ag_opinion": null,
+  "respondent_body": null,
+  "compliance_state": "n/a",
+  "defiance_signals": null,
+  "tags": [
+    "constitutional-revolution",
+    "basic-law-supremacy",
+    "judicial-review",
+    "en-banc",
+    "pre-digital",
+    "headliner"
+  ],
+  "notes": "Pre-digital era ruling — no supremedecisions.court.gov.il URL exists for this 1995 judgment. The official_url field points to the Cardozo Versa English translation, which is the closest authoritative full-text source. Canonical Hebrew citation: פ\"ד מט(4) 221. Methodology trade-offs: (1) schema 'outcome' enum has no 'declarative' value; 'dismissed' is used because the disposition of the bank's appeal was denial, even though the ruling's lasting significance is the doctrinal assertion of judicial review over primary legislation. (2) Schema 'respondent' enum has no 'Statute' or 'Legislation' value; 'Other' is used because the challenge was effectively to a Knesset statute rather than to an individual official's decision (Knesset is listed but here the formal party-structure was inter-private appeal raising a constitutional question). (3) Schema 'doctrine_invoked' enum has no 'constitutional_supremacy' value; 'constituent_authority_limits' is used as the closest match for the Barak constituent-authority doctrine, paired with 'basic_law_human_dignity_and_liberty' (the right-of-property predicate). (4) All nine justices joined the disposition; doctrinal split on the source of Basic Law supremacy is recorded in summary and noted here, not encoded as majority/minority because the schema treats vote splits at the disposition level. Cheshin concurred in result while disputing the constitutional-supremacy reasoning."
+}

@@ -221,6 +221,198 @@
     "notes": "First time in Israeli history a cabinet voted to fire an AG. The High Court immediately froze the dismissal in August 2025; the December 2025 ruling made the freeze permanent and voided both underlying resolutions. President Amit authored the lead opinion."
   },
   {
+    "case_id": "בג\"ץ 8987/22",
+    "case_id_slug": "8987-22-levin-jsc",
+    "case_name_he": "התנועה למען איכות השלטון בישראל ואח' נ' שר המשפטים ואח' (עתירות מאוחדות: בג\"ץ 99/23, בג\"ץ 179/23, בג\"ץ 1711/24, בג\"ץ 896/24)",
+    "case_name_en": "Movement for Quality Government in Israel et al. v. Minister of Justice et al. (consolidated petitions: HCJ 99/23, HCJ 179/23, HCJ 1711/24, HCJ 896/24)",
+    "ruling_date": "2024-09-12",
+    "filing_date": null,
+    "panel": [
+      {
+        "name_he": "יעל וילנר",
+        "name_en": "Yael Willner",
+        "role": "Justice",
+        "slug": "willner"
+      },
+      {
+        "name_he": "עופר גרוסקופף",
+        "name_en": "Ofer Grosskopf",
+        "role": "Justice",
+        "slug": "grosskopf"
+      },
+      {
+        "name_he": "אלכס שטיין",
+        "name_en": "Alex Stein",
+        "role": "Justice",
+        "slug": "stein"
+      }
+    ],
+    "petitioner_type": "NGO",
+    "petitioner_name_he": "התנועה למען איכות השלטון בישראל (ועותרים נוספים בעתירות המאוחדות)",
+    "petitioner_name_en": "Movement for Quality Government in Israel (with additional petitioners across the consolidated dockets)",
+    "respondent": "Minister",
+    "respondent_decision_he": "סירובו של שר המשפטים יריב לוין לכנס את הוועדה לבחירת שופטים לשם בחירת נשיא קבוע לבית המשפט העליון ולמינוי שופטים לבית המשפט העליון ולבתי המשפט המחוזיים, וכן סירובו לפרסם ברשומות את רשימת המועמדים לתפקיד הנשיא, במשך פרק זמן ממושך לאחר פרישת הנשיאה אסתר חיות באוקטובר 2023",
+    "respondent_decision_en": "Justice Minister Yariv Levin's refusal to convene the Judicial Selection Committee for the purpose of electing a permanent President of the Supreme Court and for the purpose of appointing Supreme Court and District Court justices, and his refusal to publish in the official gazette (Reshumot) the list of candidates for the President position, over an extended period following the retirement of President Esther Hayut in October 2023",
+    "doctrine_invoked": [
+      "ultra_vires",
+      "reasonableness"
+    ],
+    "outcome": "upheld",
+    "vote_majority": 3,
+    "vote_minority": 0,
+    "majority_authors": [],
+    "minority_authors": [],
+    "official_url": "https://supremedecisions.court.gov.il/Home/Download?path=NetVerdicts/2025/1/2/2022-0-8987-62-2&fileName=4ffc7b6d16c8431d90ce364e5395ba33&type=2",
+    "secondary_urls": [
+      "https://en.idi.org.il/articles/55973",
+      "https://en.idi.org.il/articles/55929",
+      "https://www.jpost.com/breaking-news/article-816565",
+      "https://www.timesofisrael.com/high-court-orders-levin-to-convence-judicial-selection-committee-on-sunday/",
+      "https://www.timesofisrael.com/liveblog_entry/high-court-orders-levin-to-hold-judicial-selection-committee-vote-for-a-new-supreme-court-president/",
+      "https://www.timesofisrael.com/liveblog_entry/judicial-selection-committee-finally-convenes-to-elect-supreme-court-chief-levin-absent/",
+      "https://mqg.org.il/en/conditional-order-issued-against-justice-minister-levin-following-mqg-petition/"
+    ],
+    "summary_he": "הרכב של שלושה שופטים (וילנר, גרוסקופף, שטיין) הוציא פה אחד צו מוחלט המחייב את שר המשפטים יריב לוין לכנס את הוועדה לבחירת שופטים לבחירת נשיא קבוע לבית המשפט העליון, ולפרסם ברשומות את רשימת המועמדים לתפקיד תוך 14 ימים. בית המשפט קבע כי סעיף 7(א) לחוק בתי המשפט מטיל על השר חובה לפעול לשם מינוי שופטים, וכי מדיניות השר להתנות את כינוס הוועדה בהשגת הסכמה רחבה מאיינת את תכלית החוק.",
+    "summary_en": "A three-justice panel (Willner, Grosskopf, Stein) unanimously issued an absolute order requiring Justice Minister Yariv Levin to convene the Judicial Selection Committee to elect a permanent President of the Supreme Court, and to publish in the official gazette the list of candidates within 14 days. The Court held that section 7(a) of the Courts Law imposes a duty on the Minister to act for the appointment of justices, and that the Minister's policy of conditioning the convening of the Committee on broad consensus negated the purpose of the statute.",
+    "predicate_ag_opinion": null,
+    "respondent_body": "Judicial Selection Committee",
+    "compliance_state": "complied",
+    "defiance_signals": "Following the September 12, 2024 mandatory order, Levin did not publish the candidate list or convene the Committee for a presidential vote within the 14-day window. On December 12, 2024, the High Court held a follow-up hearing on a petition to find Levin in contempt; the panel (including Acting President Amit) declined to hold Levin in contempt, characterizing contempt as reserved for extreme circumstances and noting some procedural steps had been taken, but ordered that a vote on a permanent Supreme Court president be held in the Committee by January 16, 2025. The Committee convened and elected Justice Yitzhak Amit as President on January 26, 2025; Levin was absent from that session. Sources: https://www.timesofisrael.com/liveblog_entry/high-court-orders-levin-to-hold-judicial-selection-committee-vote-for-a-new-supreme-court-president/ ; https://www.timesofisrael.com/liveblog_entry/judicial-selection-committee-finally-convenes-to-elect-supreme-court-chief-levin-absent/",
+    "defiance_signals_sources": [
+      "https://www.timesofisrael.com/liveblog_entry/high-court-orders-levin-to-hold-judicial-selection-committee-vote-for-a-new-supreme-court-president/",
+      "https://www.timesofisrael.com/liveblog_entry/judicial-selection-committee-finally-convenes-to-elect-supreme-court-chief-levin-absent/",
+      "https://en.idi.org.il/articles/55973"
+    ],
+    "tags": [
+      "judicial-selection-committee",
+      "appointment-block",
+      "ministerial-duty",
+      "supreme-court-president",
+      "consolidated-petitions"
+    ],
+    "notes": "Structural decision: entered as a SINGLE ruling keyed to the primary mandatory order of September 12, 2024 (HCJ 8987/22 leads a cluster of consolidated petitions including HCJ 99/23, HCJ 179/23, HCJ 1711/24, HCJ 896/24). The December 12, 2024 follow-up ruling — which declined to hold Levin in contempt but issued an additional deadline — is documented in defiance_signals rather than as a separate ruling, because (a) it is procedurally subordinate to the September 12 mandatory order (a compliance-enforcement step within the same proceeding rather than an independent disposition on the merits), and (b) it would not be analytically parallel to the project's other 'Court declined' entry (Zini, 427/10/25), where the Court declined to intervene on the merits of an appointment; here the Court declined a remedial tool while reaffirming the underlying mandatory order. Panel composition varied across sittings in the cluster: the September 12, 2024 absolute order was issued by Willner, Grosskopf, and Stein; the December 12, 2024 follow-up panel included Acting President Yitzhak Amit and additional justices. Vote was unanimous on substance across all sittings. Compliance was achieved on January 26, 2025, when the Committee convened and elected Justice Amit as President; Levin did not attend that session. The official URL points to a court document filed January 2, 2025 within the case file (NetVerdicts/2025/1/2/2022-0-8987-62-2), which appears to be a procedural record in the 8987/22 docket. Doctrine: 'ultra_vires' is used here for the Court's finding that the Minister failed to exercise a mandatory statutory power under section 7(a) of the Courts Law (closest mapping in the controlled vocabulary to ministerial-duty-to-exercise-statutory-authority); 'reasonableness' captures the Court's secondary analysis of the Minister's stated policy of conditioning convening on broad consensus. Separation-of-powers and judicial-independence framings discussed in the underlying petitions are not separately enumerable in the project's doctrine vocabulary."
+  },
+  {
+    "case_id": "בג\"ץ 5119/23",
+    "case_id_slug": "5119-23-incapacitation",
+    "case_name_he": "התנועה למען איכות השלטון בישראל ואח' נ' הכנסת ואח'",
+    "case_name_en": "Movement for Quality Government in Israel et al. v. The Knesset et al.",
+    "ruling_date": "2024-01-03",
+    "filing_date": null,
+    "panel": [
+      {
+        "name_he": "אסתר חיות",
+        "name_en": "Esther Hayut",
+        "role": "Retired Justice",
+        "slug": "hayut"
+      },
+      {
+        "name_he": "עוזי פוגלמן",
+        "name_en": "Uzi Vogelman",
+        "role": "Deputy President",
+        "slug": "vogelman"
+      },
+      {
+        "name_he": "יצחק עמית",
+        "name_en": "Yitzhak Amit",
+        "role": "Justice",
+        "slug": "amit"
+      },
+      {
+        "name_he": "נעם סולברג",
+        "name_en": "Noam Sohlberg",
+        "role": "Justice",
+        "slug": "sohlberg"
+      },
+      {
+        "name_he": "דפנה ברק-ארז",
+        "name_en": "Daphne Barak-Erez",
+        "role": "Justice",
+        "slug": "barak-erez"
+      },
+      {
+        "name_he": "ענת ברון",
+        "name_en": "Anat Baron",
+        "role": "Retired Justice",
+        "slug": "baron"
+      },
+      {
+        "name_he": "דוד מינץ",
+        "name_en": "David Mintz",
+        "role": "Justice",
+        "slug": "mintz"
+      },
+      {
+        "name_he": "יעל וילנר",
+        "name_en": "Yael Willner",
+        "role": "Justice",
+        "slug": "willner"
+      },
+      {
+        "name_he": "עופר גרוסקופף",
+        "name_en": "Ofer Grosskopf",
+        "role": "Justice",
+        "slug": "grosskopf"
+      },
+      {
+        "name_he": "אלכס שטיין",
+        "name_en": "Alex Stein",
+        "role": "Justice",
+        "slug": "stein"
+      },
+      {
+        "name_he": "יחיאל כשר",
+        "name_en": "Yechiel Kasher",
+        "role": "Justice",
+        "slug": "kasher"
+      }
+    ],
+    "petitioner_type": "NGO",
+    "petitioner_name_he": "התנועה למען איכות השלטון בישראל (ועתירות נוספות מאוחדות)",
+    "petitioner_name_en": "Movement for Quality Government in Israel (with additional consolidated petitions)",
+    "respondent": "Knesset",
+    "respondent_decision_he": "תיקון מס' 12 לחוק-יסוד: הממשלה (\"חוק ההתנערות\" / חוק אי-ההכשירות), אשר צמצם את עילות ההכרזה על ראש ממשלה כמנוע מלמלא את תפקידו, וקבע כי הכרזה כאמור תיעשה בידי הממשלה או הכנסת ברוב מיוחד ועל בסיס עילות בריאותיות-נפשיות בלבד",
+    "respondent_decision_en": "Amendment No. 12 to Basic Law: The Government (the 'Incapacitation Law'), which narrowed the grounds for declaring a sitting Prime Minister unfit to discharge his duties and provided that such a declaration could be made only by the government or by the Knesset by a special majority and only on grounds of mental or physical incapacity",
+    "doctrine_invoked": [
+      "constituent_authority_limits",
+      "basic_law_government"
+    ],
+    "outcome": "partially_struck",
+    "vote_majority": 6,
+    "vote_minority": 5,
+    "majority_authors": [
+      "hayut"
+    ],
+    "minority_authors": [
+      "sohlberg",
+      "mintz",
+      "willner",
+      "stein",
+      "kasher"
+    ],
+    "official_url": "https://supremedecisions.court.gov.il/Home/Download?path=HebrewVerdicts/23/190/051/m17&fileName=23051190.M17&type=2",
+    "secondary_urls": [
+      "https://en.idi.org.il/articles/52335",
+      "https://www.lawfaremedia.org/article/the-hcj-strikes-back-israel-s-supreme-court-pulls-the-plug-on-judicial-reform",
+      "https://versa.cardozo.yu.edu/opinions/movement-quality-government-israel-v-knesset"
+    ],
+    "summary_he": "בית המשפט העליון, בהרכב מורחב של אחד-עשר שופטים, ברוב של 6-5, קבע כי תיקון מס' 12 לחוק-יסוד: הממשלה (חוק ההתנערות) מהווה שימוש לרעה בסמכות המכוננת של הכנסת, מאחר שהוא נחקק לתכלית אישית הנוגעת לראש הממשלה המכהן. במקום לבטל את התיקון, פירש בית המשפט את התיקון כך שתחולתו תידחה עד לאחר הבחירות הבאות לכנסת. השופטים סולברג, מינץ, וילנר, שטיין וכשר חלקו בדעת מיעוט. פסק הדין יישם את מבחני בג\"ץ 5969/20 שפיר, ובפרט את מבחן 'החקיקה האישית'.",
+    "summary_en": "The Supreme Court, sitting as an eleven-justice expanded panel, by a 6-5 majority held that Amendment No. 12 to Basic Law: The Government (the Incapacitation Law) constituted an abuse of the Knesset's constituent authority because it was enacted for a personal purpose relating to the incumbent Prime Minister. Rather than striking the amendment down, the Court interpreted it so that its application is deferred until after the next Knesset elections. Justices Sohlberg, Mintz, Willner, Stein, and Kasher dissented. The judgment applied the tests of HCJ 5969/20 Shafir.",
+    "predicate_ag_opinion": "AG Gali Baharav-Miara filed a brief siding with petitioners",
+    "respondent_body": null,
+    "compliance_state": "complied",
+    "defiance_signals": null,
+    "tags": [
+      "constituent-authority",
+      "basic-law-amendment",
+      "abuse-of-constituent-power",
+      "personal-legislation",
+      "incapacitation",
+      "post-oct7"
+    ],
+    "notes": "Decided the same day as HCJ 5658/23 (reasonableness amendment). Justices Hayut and Baron participated within the statutory three-month post-retirement window per §15(d) Basic Law: The Judiciary and §10A Courts Law (both retired October 2023). The remedy of delayed-effect interpretation (rather than outright striking) was novel; it represents a 'partial strike' in operational terms. Doctrinally builds on HCJ 5969/20 Shafir's 'abuse of constituent power' framework, importing the 'personal legislation' refinement first articulated in the same line. Panel composition reflects the eleven-justice expanded bench specified for the incapacitation petitions, distinct from the fifteen-justice en banc panel convened for HCJ 5658/23."
+  },
+  {
     "case_id": "בג\"ץ 5658/23",
     "case_id_slug": "5658-23",
     "case_name_he": "התנועה למען איכות השלטון בישראל ואח' נ' הכנסת ואח'",
@@ -549,6 +741,109 @@
     "notes": "Justice Stein wrote the majority opinion. The ruling is frequently cited in the literature on ministerial-decision-review by reasonableness; appears in the IDI catalog of decade-window reasonableness interventions."
   },
   {
+    "case_id": "בג\"ץ 5969/20",
+    "case_id_slug": "5969-20-shafir",
+    "case_name_he": "סתיו שפיר ואח' נ' הכנסת ואח'",
+    "case_name_en": "Stav Shafir et al. v. The Knesset et al.",
+    "ruling_date": "2021-05-23",
+    "filing_date": null,
+    "panel": [
+      {
+        "name_he": "אסתר חיות",
+        "name_en": "Esther Hayut",
+        "role": "President",
+        "slug": "hayut"
+      },
+      {
+        "name_he": "חנן מלצר",
+        "name_en": "Hanan Melcer",
+        "role": "Deputy President",
+        "slug": "melcer"
+      },
+      {
+        "name_he": "ניל הנדל",
+        "name_en": "Neal Hendel",
+        "role": "Justice",
+        "slug": "hendel"
+      },
+      {
+        "name_he": "עוזי פוגלמן",
+        "name_en": "Uzi Vogelman",
+        "role": "Justice",
+        "slug": "vogelman"
+      },
+      {
+        "name_he": "יצחק עמית",
+        "name_en": "Yitzhak Amit",
+        "role": "Justice",
+        "slug": "amit"
+      },
+      {
+        "name_he": "נעם סולברג",
+        "name_en": "Noam Sohlberg",
+        "role": "Justice",
+        "slug": "sohlberg"
+      },
+      {
+        "name_he": "ענת ברון",
+        "name_en": "Anat Baron",
+        "role": "Justice",
+        "slug": "baron"
+      },
+      {
+        "name_he": "דוד מינץ",
+        "name_en": "David Mintz",
+        "role": "Justice",
+        "slug": "mintz"
+      },
+      {
+        "name_he": "יעל וילנר",
+        "name_en": "Yael Willner",
+        "role": "Justice",
+        "slug": "willner"
+      }
+    ],
+    "petitioner_type": "Party",
+    "petitioner_name_he": "סתיו שפיר (לשעבר ח\"כ) ואח' (עתירות מאוחדות, ובכללן עתירות של ארגוני חברה אזרחית)",
+    "petitioner_name_en": "Stav Shafir (former MK) and others (consolidated petitions, including civil-society NGO co-petitioners)",
+    "respondent": "Knesset",
+    "respondent_decision_he": "תיקון זמני לחוק-יסוד: משק המדינה ולחוק-יסוד: הכנסת, אשר דחה את המועד הקבוע בחוק לאישור חוק התקציב לשנת 2020 והוסיף הוצאה תקציבית מיוחדת, וזאת כפתרון לחילוקי דעות קואליציוניים על תקציב המדינה",
+    "respondent_decision_en": "Temporary amendments to Basic Law: The State Economy and Basic Law: The Knesset that postponed the statutory deadline for passing the 2020 budget law and added a special budgetary expense, enacted as a resolution to a coalition dispute over the state budget",
+    "doctrine_invoked": [
+      "constituent_authority_limits",
+      "basic_law_government"
+    ],
+    "outcome": "struck_down",
+    "vote_majority": 7,
+    "vote_minority": 2,
+    "majority_authors": [
+      "hayut"
+    ],
+    "minority_authors": [
+      "sohlberg",
+      "mintz"
+    ],
+    "official_url": "https://supremedecisions.court.gov.il/Home/Download?path=HebrewVerdicts%5C20%5C690%5C059%5Cv16&fileName=20059690.V16&type=2",
+    "secondary_urls": [
+      "https://verfassungsblog.de/saving-the-constitution-from-politics/",
+      "https://he.afiklaw.com/caselaw/12401",
+      "https://versa.cardozo.yu.edu/topics/constitutional-amendment"
+    ],
+    "summary_he": "בית המשפט העליון, בהרכב מורחב של תשעה שופטים, ביטל את התיקון הזמני לחוק-יסוד: משק המדינה ולחוק-יסוד: הכנסת, אשר דחה את המועד לאישור חוק התקציב לשנת 2020. הנשיאה חיות כתבה את חוות הדעת המובילה ברוב וקבעה כי מדובר בשימוש לרעה של הכנסת בסמכותה המכוננת לצורך פתרון בעיות פוליטיות-קואליציוניות זמניות. השופטים סולברג ומינץ חלקו בדעת מיעוט על היקף הדוקטרינה. פסק הדין גיבש את מבחני 'השימוש לרעה בסמכות מכוננת', 'הכלליות' ו'ההתאמה למרקם החוקתי', אשר יושמו בהמשך בבג\"ץ 5658/23 ובבג\"ץ 5119/23.",
+    "summary_en": "The Supreme Court, sitting as a nine-justice expanded panel, struck down a temporary amendment to Basic Law: The State Economy and Basic Law: The Knesset that postponed the deadline for the 2020 budget law. President Hayut wrote the lead majority opinion holding that the Knesset had abused its constituent authority by using a Basic-Law amendment to resolve a coalition dispute. Justices Sohlberg and Mintz dissented on doctrinal scope. The judgment established the tests of abuse of constituent power, generality, and compatibility with the constitutional fabric.",
+    "predicate_ag_opinion": null,
+    "respondent_body": null,
+    "compliance_state": "complied",
+    "defiance_signals": null,
+    "tags": [
+      "constituent-authority",
+      "basic-law-amendment",
+      "abuse-of-constituent-power",
+      "doctrine-anchor"
+    ],
+    "notes": "Doctrinal anchor case. Establishes the tripartite test (abuse of constituent power, generality, compatibility with the constitutional fabric) subsequently invoked in HCJ 5658/23 (reasonableness amendment, January 2024) and HCJ 5119/23 (incapacitation amendment, January 2024). Vote breakdown of 7-2 reflects the user-supplied brief identifying Sohlberg and Mintz as the only dissenters; some secondary commentary reports the split as 6-3 on certain holdings, reflecting separate concurring/dissenting opinions on doctrinal sub-issues. Petitioner type recorded as 'Party' to reflect the lead petitioner's status as a former Knesset Member; consolidated petitions included NGO co-petitioners."
+  },
+  {
     "case_id": "בג\"ץ 1892/14",
     "case_id_slug": "1892-14-acri-prison-space",
     "case_name_he": "האגודה לזכויות האזרח בישראל ואח' נ' השר לביטחון פנים",
@@ -745,5 +1040,176 @@
       "borderline-scope"
     ],
     "notes": "Justice Vogelman wrote the lead opinion. Borderline-scope entry: this is a local-authority decision rather than a ministerial or cabinet decision. Included because it is uniformly cited in the IDI/INSS/Cohen-Eliya literature as part of the reasonableness-review corpus and because Israeli local government, like national government, is elected. Heard as an administrative appeal (עע\"ם) by the Supreme Court."
+  },
+  {
+    "case_id": "ע\"א 6821/93",
+    "case_id_slug": "6821-93-bank-mizrahi",
+    "case_name_he": "בנק המזרחי המאוחד בע\"מ נ' מגדל כפר שיתופי",
+    "case_name_en": "United Mizrahi Bank Ltd. v. Migdal Cooperative Village",
+    "ruling_date": "1995-11-09",
+    "filing_date": null,
+    "panel": [
+      {
+        "name_he": "אהרן ברק",
+        "name_en": "Aharon Barak",
+        "role": "President",
+        "slug": "barak"
+      },
+      {
+        "name_he": "שלמה לוין",
+        "name_en": "Shlomo Levin",
+        "role": "Deputy President",
+        "slug": "levin"
+      },
+      {
+        "name_he": "מישאל חשין",
+        "name_en": "Mishael Cheshin",
+        "role": "Justice",
+        "slug": "cheshin"
+      },
+      {
+        "name_he": "תאודור אור",
+        "name_en": "Theodor Or",
+        "role": "Justice",
+        "slug": "or"
+      },
+      {
+        "name_he": "אליעזר גולדברג",
+        "name_en": "Eliezer Goldberg",
+        "role": "Justice",
+        "slug": "goldberg"
+      },
+      {
+        "name_he": "גבריאל בך",
+        "name_en": "Gavriel Bach",
+        "role": "Justice",
+        "slug": "bach"
+      },
+      {
+        "name_he": "יעקב מלץ",
+        "name_en": "Yaakov Maltz",
+        "role": "Justice",
+        "slug": "maltz"
+      },
+      {
+        "name_he": "צבי טל",
+        "name_en": "Tzvi Tal",
+        "role": "Justice",
+        "slug": "tal"
+      },
+      {
+        "name_he": "דליה דורנר",
+        "name_en": "Dalia Dorner",
+        "role": "Justice",
+        "slug": "dorner"
+      }
+    ],
+    "petitioner_type": "Individual",
+    "petitioner_name_he": "בנק המזרחי המאוחד בע\"מ",
+    "petitioner_name_en": "United Mizrahi Bank Ltd.",
+    "respondent": "Other",
+    "respondent_decision_he": "חוק ההסדרים במגזר החקלאי המשפחתי, התשנ\"ב-1992, אשר הסדיר את חובות החקלאים ופגע, לטענת הבנקים, בזכות הקניין המוגנת בחוק-יסוד: כבוד האדם וחירותו",
+    "respondent_decision_en": "The Family Agricultural Sector (Arrangements) Law, 5752-1992, which restructured agricultural debts and, according to the banks, infringed the right to property protected under Basic Law: Human Dignity and Liberty",
+    "doctrine_invoked": [
+      "constituent_authority_limits",
+      "basic_law_human_dignity_and_liberty"
+    ],
+    "outcome": "dismissed",
+    "vote_majority": 9,
+    "vote_minority": 0,
+    "majority_authors": [
+      "barak",
+      "levin",
+      "cheshin",
+      "or",
+      "goldberg",
+      "bach",
+      "maltz",
+      "tal",
+      "dorner"
+    ],
+    "minority_authors": [],
+    "official_url": "https://versa.cardozo.yu.edu/opinions/united-mizrahi-bank-v-migdal-cooperative-village",
+    "secondary_urls": [
+      "https://versa.cardozo.yu.edu/sites/default/files/upload/opinions/United%20Mizrahi%20Bank%20v.%20Migdal%20Cooperative%20Village.pdf",
+      "https://he.wikipedia.org/wiki/%D7%A4%D7%A1%D7%A7_%D7%93%D7%99%D7%9F_%D7%91%D7%A0%D7%A7_%D7%94%D7%9E%D7%96%D7%A8%D7%97%D7%99"
+    ],
+    "summary_he": "בית המשפט העליון, בהרכב מורחב של תשעה שופטים, דחה פה אחד את ערעור הבנקים והותיר על כנו את חוק ההסדרים במגזר החקלאי המשפחתי. ברוב דעות קבע בית המשפט כי חוקי-היסוד הם בעלי מעמד חוקתי-עליון וכי לבית המשפט סמכות לבקר חקיקה ראשית הסותרת אותם. הנשיא ברק ניסח את 'תורת הסמכות המכוננת' של הכנסת, ואילו השופט חשין חלק על הביסוס לעליונות חוקי-היסוד. פורסם בפ\"ד מט(4) 221.",
+    "summary_en": "The Supreme Court, sitting as an expanded nine-justice panel, unanimously dismissed the banks' appeal and left in place the Family Agricultural Sector (Arrangements) Law. By a majority, the Court held that the Basic Laws have supreme constitutional status and that the Court has authority to review primary legislation conflicting with them. President Barak articulated the 'constituent authority' theory of the Knesset; Justice Cheshin dissented from the doctrinal basis for Basic Law supremacy. Reported at P\"D 49(4) 221.",
+    "predicate_ag_opinion": null,
+    "respondent_body": null,
+    "compliance_state": "n/a",
+    "defiance_signals": null,
+    "tags": [
+      "constitutional-revolution",
+      "basic-law-supremacy",
+      "judicial-review",
+      "en-banc",
+      "pre-digital",
+      "headliner"
+    ],
+    "notes": "Pre-digital era ruling — no supremedecisions.court.gov.il URL exists for this 1995 judgment. The official_url field points to the Cardozo Versa English translation, which is the closest authoritative full-text source. Canonical Hebrew citation: פ\"ד מט(4) 221. Methodology trade-offs: (1) schema 'outcome' enum has no 'declarative' value; 'dismissed' is used because the disposition of the bank's appeal was denial, even though the ruling's lasting significance is the doctrinal assertion of judicial review over primary legislation. (2) Schema 'respondent' enum has no 'Statute' or 'Legislation' value; 'Other' is used because the challenge was effectively to a Knesset statute rather than to an individual official's decision (Knesset is listed but here the formal party-structure was inter-private appeal raising a constitutional question). (3) Schema 'doctrine_invoked' enum has no 'constitutional_supremacy' value; 'constituent_authority_limits' is used as the closest match for the Barak constituent-authority doctrine, paired with 'basic_law_human_dignity_and_liberty' (the right-of-property predicate). (4) All nine justices joined the disposition; doctrinal split on the source of Basic Law supremacy is recorded in summary and noted here, not encoded as majority/minority because the schema treats vote splits at the disposition level. Cheshin concurred in result while disputing the constitutional-supremacy reasoning."
+  },
+  {
+    "case_id": "בג\"ץ 156/75",
+    "case_id_slug": "156-75-dakka",
+    "case_name_he": "דקה נ' שר התחבורה",
+    "case_name_en": "Dakka v. Minister of Transportation",
+    "ruling_date": "1976-01-01",
+    "filing_date": null,
+    "panel": [
+      {
+        "name_he": "אהרן ברק",
+        "name_en": "Aharon Barak",
+        "role": "Justice",
+        "slug": "barak"
+      },
+      {
+        "name_he": "לא אומת",
+        "name_en": "Panel member (unverified)",
+        "role": "Justice",
+        "slug": "unverified-2"
+      },
+      {
+        "name_he": "לא אומת",
+        "name_en": "Panel member (unverified)",
+        "role": "Justice",
+        "slug": "unverified-3"
+      }
+    ],
+    "petitioner_type": "Individual",
+    "petitioner_name_he": "דקה",
+    "petitioner_name_en": "Dakka",
+    "respondent": "Minister",
+    "respondent_decision_he": "החלטה מנהלית של שר התחבורה הנוגעת לרישוי בתחום התחבורה, אשר העותר טען כי איננה סבירה",
+    "respondent_decision_en": "Administrative decision by the Minister of Transportation in a transport-licensing matter, which the petitioner challenged as unreasonable",
+    "doctrine_invoked": [
+      "reasonableness"
+    ],
+    "outcome": "dismissed",
+    "vote_majority": 3,
+    "vote_minority": 0,
+    "majority_authors": [
+      "barak"
+    ],
+    "minority_authors": [],
+    "official_url": "https://versa.cardozo.yu.edu/topics/judicial-reasonableness",
+    "secondary_urls": [
+      "https://he.wikipedia.org/wiki/%D7%A2%D7%99%D7%9C%D7%AA_%D7%90%D7%99-%D7%94%D7%A1%D7%91%D7%99%D7%A8%D7%95%D7%AA"
+    ],
+    "summary_he": "בית המשפט העליון, בשבתו כבג\"ץ ובהרכב של שלושה שופטים, דחה את העתירה פה אחד. בחוות-הדעת המובילה, שכתב השופט אהרן ברק, נוסחה לראשונה עילת אי-הסבירות כעילה עצמאית לביקורת שיפוטית על החלטות מנהליות, ולא רק כאינדיקציה לפגמים אחרים. פורסם בפ\"ד ל(2) 94.",
+    "summary_en": "The Supreme Court, sitting as the High Court of Justice in a three-justice panel, unanimously dismissed the petition. In the lead opinion, authored by Justice Aharon Barak, the reasonableness ground was articulated for the first time as an independent ground of judicial review over administrative decisions, rather than merely as an indicator of other defects. Reported at P\"D 30(2) 94.",
+    "predicate_ag_opinion": null,
+    "respondent_body": null,
+    "compliance_state": "n/a",
+    "defiance_signals": null,
+    "tags": [
+      "reasonableness",
+      "administrative-review",
+      "pre-digital",
+      "barak-doctrine",
+      "headliner"
+    ],
+    "notes": "Pre-digital era ruling — no supremedecisions.court.gov.il URL exists for this 1976 judgment. The official_url field points to the Cardozo Versa topic page on judicial reasonableness, which is the closest authoritative English-language secondary source; no full Versa translation of Dakka itself appears to exist. Canonical Hebrew citation: פ\"ד ל(2) 94. Methodology trade-offs: (1) Schema 'outcome' enum has no 'declarative' value; 'dismissed' is used because the petition itself was denied, with the doctrinal significance arising from Justice Barak's articulation of reasonableness as an independent ground in the reasoning. (2) Exact ruling-date day/month not verified from the pre-digital record; 1976-01-01 is a placeholder year-only date drawn from the user-provided context (P\"D 30(2), 1976). (3) Two additional panel members are recorded as 'unverified' placeholders; only Justice Barak (lead-opinion author) is documented from the user-provided context. The other two seats on the standard 3-justice HCJ panel of the period must be filled in from the printed P\"D before publication. Flag for source-link verification before any external citation."
   }
 ]
