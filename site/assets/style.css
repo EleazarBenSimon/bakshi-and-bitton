@@ -446,6 +446,7 @@ footer {
 }
 .curve {
   width: 100%;
+  aspect-ratio: 1040 / 500;
   height: auto;
   display: block;
 }

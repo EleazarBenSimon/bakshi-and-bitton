@@ -68,8 +68,9 @@ const i18n = {
     role_Justice: "שופט/ת",
     role_RJ: "שופט/ת בדימוס (בחלון סטטוטורי)",
     curve_title: "העקומה: 1976–2026",
-    curve_subtitle: "מדוקטרינה שקטה לפסילת חוקים תכופה לפסילת חוקי-יסוד עצמם. גובה כל נקודה הוא עוצמת ההתערבות של בית המשפט בהחלטת הרשות. השטח האדום מציין את עוצמת ההתערבות החריפה ביותר שהושגה עד אותה נקודת זמן. לחיצה על נקודה פותחת את הפסיקה.",
-    curve_caption: "מה רואים: שלושה דורות, שלוש שכבות. 1976–2005: בנייה דוקטרינרית בלבד. 2006–2022: פסילה תכופה של חוקי הכנסת. 2023–2026: פסילה של חוקי-יסוד עצמם — צעד שלא נעשה באף דמוקרטיה אחרת. השכבה השנייה של האתר ('קריאה') תדון בפרשנות.",
+    curve_subtitle: "העקומה האדומה מצטברת: היא עולה ב-1 בכל פעם שבית המשפט העליון התערב במהותו של תיק נגד רשות נבחרת — בין אם הביטול היה פורמלי ('התערבות') ובין אם היה הליכי ('מעורבות'). הציר האנכי שמשמאל מציין את חריפות הפסיקה הבודדת; הציר שמימין — את הסך המצטבר של מקרי המעורבות עד אותה שנה. לחיצה על נקודה פותחת את הפסיקה.",
+    curve_caption: "מה רואים: נורמליזציה הדרגתית של התערבות שיפוטית בתחומים שמעולם לא הוסמכה על-ידי הציבור או הכנסת. כמעט שטוחה לאורך 30 שנה, מתחילה לטפס לאחר 2006, ומאיצה אנכית ב-2021–2026. השכבה השנייה ('קריאה') תדון בפרשנות.",
+    cum_axis_label: "סך מצטבר",
     curve_aria: "תרשים פיזור של פסיקות בית המשפט העליון לפי שנה ועוצמת התערבות, 1976–2026",
     sev_1: "דחיית עתירה",
     sev_2: "הצהרתי / מצומצם",
@@ -154,8 +155,9 @@ const i18n = {
     role_Justice: "Justice",
     role_RJ: "Retired Justice (statutory post-retirement window)",
     curve_title: "The curve: 1976–2026",
-    curve_subtitle: "From quiet doctrine to frequent statute strikes to striking Basic Laws themselves. Each dot's height is the severity of the Court's intervention; the red area traces the highest severity reached up to that point in time. Click any dot to open the ruling.",
-    curve_caption: "What you see: three eras, three layers. 1976–2005: doctrinal groundwork only. 2006–2022: frequent strike-downs of Knesset statutes. 2023–2026: strike-downs of Basic Laws themselves — a step taken in no other democracy. The site's second layer ('Reading') discusses interpretation.",
+    curve_subtitle: "The red curve is cumulative: it climbs by +1 every time the Court substantively engaged with an elected-branch matter — whether the override was formal ('intervention') or procedural ('involvement'). The left axis marks individual-ruling severity; the right axis traces the running total of judicial engagement reaching into elected-branch territory. Click any dot to open the ruling.",
+    curve_caption: "What you see: the gradual normalization of judicial intervention in domains the public and Knesset never authorized. Almost flat for 30 years, beginning to climb after 2006, near-vertical 2021–2026. The site's second layer ('Reading') discusses interpretation.",
+    cum_axis_label: "Cumulative",
     curve_aria: "Scatter plot of Israeli Supreme Court rulings by year and intervention severity, 1976–2026",
     sev_1: "Petition dismissed",
     sev_2: "Declarative / restricted",
@@ -334,7 +336,7 @@ function curveEras() {
 function renderCurve(rulings) {
   const NS = "http://www.w3.org/2000/svg";
   const W = 1040, H = 500;
-  const M = { top: 88, right: 64, bottom: 80, left: 160 };
+  const M = { top: 88, right: 96, bottom: 80, left: 160 };
   const innerW = W - M.left - M.right;
   const innerH = H - M.top - M.bottom;
   const YR_MIN = 1975, YR_MAX = 2027;
@@ -491,26 +493,86 @@ function renderCurve(rulings) {
     stroke: "#888", "stroke-width": "1.2",
   }));
 
-  // ── running-max envelope: filled area + line ─────────────────────
-  if (envelope.length) {
-    let dArea = `M ${xOf(envelope[0].yd)} ${yOf(0)} L ${xOf(envelope[0].yd)} ${yOf(envelope[0].sev)}`;
-    let dLine = `M ${xOf(envelope[0].yd)} ${yOf(envelope[0].sev)}`;
-    for (let i = 1; i < envelope.length; i++) {
-      const prev = envelope[i - 1], cur = envelope[i];
-      dArea += ` L ${xOf(cur.yd)} ${yOf(prev.sev)} L ${xOf(cur.yd)} ${yOf(cur.sev)}`;
-      dLine += ` L ${xOf(cur.yd)} ${yOf(prev.sev)} L ${xOf(cur.yd)} ${yOf(cur.sev)}`;
-    }
-    const lastSev = envelope[envelope.length - 1].sev;
-    dArea += ` L ${xOf(YR_MAX)} ${yOf(lastSev)} L ${xOf(YR_MAX)} ${yOf(0)} Z`;
-    dLine += ` L ${xOf(YR_MAX)} ${yOf(lastSev)}`;
-    svg.append(svgEl("path", { d: dArea, fill: "url(#envFill)" }));
-    svg.append(svgEl("path", {
-      d: dLine, fill: "none",
-      stroke: "#b03a3a", "stroke-width": "2.25",
-      opacity: "0.85",
-      "stroke-linejoin": "round",
-    }));
+  // ── cumulative-engagement curve (smooth, monotonic) ──────────────
+  // For each ruling, the curve climbs by +1 — capturing both formal
+  // intervention (override) and involvement (process-insertion). The
+  // y-axis on the RIGHT shows the cumulative engagement count; on the
+  // LEFT it remains outcome severity for the dots. Two y-meanings, one
+  // chart: dots tell the case-level story, curve tells the process story.
+  const CUM_HEADROOM = 0.92;
+  const cumTotal = points.length;
+  function yCum(c) { return M.top + innerH - (c / Math.max(1, cumTotal)) * innerH * CUM_HEADROOM; }
+
+  // Build (year, cumulative) sequence including a (YR_MIN, 0) anchor.
+  const cumXY = [{ x: xOf(YR_MIN), y: yCum(0) }];
+  let cum = 0;
+  for (const p of points) {
+    cum += 1;
+    cumXY.push({ x: xOf(p.yd), y: yCum(cum) });
   }
+  cumXY.push({ x: xOf(YR_MAX), y: yCum(cum) });
+
+  // Catmull-Rom-to-Bezier path (tension 0.5) — smooth, passes through
+  // every data point. Cumulative values are monotonic non-decreasing,
+  // so the spline never dips backwards visually.
+  function catmullRomPath(pts) {
+    if (pts.length < 2) return "";
+    let d = `M ${pts[0].x} ${pts[0].y}`;
+    const t = 0.5;
+    for (let i = 0; i < pts.length - 1; i++) {
+      const p0 = pts[Math.max(0, i - 1)];
+      const p1 = pts[i];
+      const p2 = pts[i + 1];
+      const p3 = pts[Math.min(pts.length - 1, i + 2)];
+      const cp1x = p1.x + (p2.x - p0.x) * t / 6;
+      const cp1y = Math.min(p1.y, Math.max(p2.y, p1.y + (p2.y - p0.y) * t / 6));
+      const cp2x = p2.x - (p3.x - p1.x) * t / 6;
+      const cp2y = Math.max(p2.y, Math.min(p1.y, p2.y - (p3.y - p1.y) * t / 6));
+      d += ` C ${cp1x} ${cp1y}, ${cp2x} ${cp2y}, ${p2.x} ${p2.y}`;
+    }
+    return d;
+  }
+
+  const curveLine = catmullRomPath(cumXY);
+  const baselineY = yCum(0);
+  const curveArea = curveLine + ` L ${cumXY[cumXY.length - 1].x} ${baselineY} L ${cumXY[0].x} ${baselineY} Z`;
+
+  svg.append(svgEl("path", { d: curveArea, fill: "url(#envFill)" }));
+  svg.append(svgEl("path", {
+    d: curveLine, fill: "none",
+    stroke: "#b03a3a", "stroke-width": "2.8",
+    opacity: "0.92",
+    "stroke-linecap": "round",
+    "stroke-linejoin": "round",
+  }));
+
+  // ── right-side y-axis: cumulative engagement count ───────────────
+  const rightAxisX = M.left + innerW;
+  svg.append(svgEl("line", {
+    x1: rightAxisX, x2: rightAxisX, y1: M.top, y2: M.top + innerH,
+    stroke: "#b03a3a", "stroke-width": "1", opacity: "0.4",
+  }));
+  const cumTicks = cumTotal <= 25
+    ? [0, 5, 10, 15, 20].filter((c) => c <= cumTotal)
+    : [0, Math.round(cumTotal / 4), Math.round(cumTotal / 2), Math.round(3 * cumTotal / 4), cumTotal];
+  for (const c of cumTicks) {
+    const y = yCum(c);
+    svg.append(svgEl("line", {
+      x1: rightAxisX - 4, x2: rightAxisX + 4, y1: y, y2: y,
+      stroke: "#b03a3a", "stroke-width": "1", opacity: "0.6",
+    }));
+    svg.append(svgEl("text", {
+      x: rightAxisX + 8, y: y + 4,
+      "text-anchor": "start", "font-size": "10.5",
+      fill: "#7a2828", "font-weight": "600",
+    }, String(c)));
+  }
+  svg.append(svgEl("text", {
+    x: rightAxisX + 8, y: M.top - 12,
+    "text-anchor": "start", "font-size": "10",
+    fill: "#7a2828", "font-weight": "700",
+    "letter-spacing": "0.3",
+  }, t.cum_axis_label));
 
   // ── dots ─────────────────────────────────────────────────────────
   for (const p of points) {
@@ -805,11 +867,15 @@ function renderCurveSection(rulings) {
   // Era zoom controls — change the SVG viewBox to focus on a slice.
   // Same chart, but text/dots grow as the viewBox shrinks → higher
   // legibility on phones; useful on desktop too for close inspection.
+  // viewBox values match the desktop chart's geometry with margins
+  // M.left=160, M.right=96, innerW=784. Era boundaries (1976→1995→2005.5
+  // →2020.5→2026) map to SVG x ≈ 160 → 460 → 620 → 846 → 944. Each era
+  // zoom includes a small buffer for context + the right-axis labels.
   const ZOOMS = [
     { id: "all",  label: t.zoom_all,    viewBox: "0 0 1040 500" },
-    { id: "era1", label: "1976–2005",  viewBox: "0 0 720 500" },
-    { id: "era2", label: "2006–2020",  viewBox: "540 0 380 500" },
-    { id: "era3", label: "2021–2026",  viewBox: "760 0 280 500" },
+    { id: "era1", label: "1976–2005",  viewBox: "0 0 700 500" },
+    { id: "era2", label: "2006–2020",  viewBox: "560 0 360 500" },
+    { id: "era3", label: "2021–2026",  viewBox: "790 0 250 500" },
   ];
   const zoomBar = el("div", { class: "curve-zoom-bar", "aria-label": t.zoom_hint });
   zoomBar.append(el("span", { class: "curve-zoom-label" }, t.zoom_hint));
