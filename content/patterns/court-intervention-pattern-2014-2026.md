@@ -1,129 +1,171 @@
 ---
-title: "Pattern: Israeli Supreme Court interventions in elected-branch decisions, 2014-2026"
+title: "Pattern: Israeli Supreme Court interventions in elected-branch decisions, 1976-2026"
 contributor: "@EleazarBenSimon"
-date: 2026-05-23
-summary: An empirical pattern analysis drawn directly from the 9 rulings in this project's documentary core. The data shows the Court intervening against the elected branch in 8 of 9 documented cases, across a range of doctrines, with NGO petitioners driving the majority of cases.
+date: 2026-05-25
+summary: An empirical pattern analysis drawn from the 14 rulings in this project's documentary core. The data spans 50 years and three doctrinal layers — foundational power-assertion (1976-1995), abuse-of-constituent-power crystallization (2021-2024), and active intervention (2014-2026). 13 of 14 cases either struck the challenged measure or asserted new Court authority over it; 1 declined.
 ---
 
-# Pattern: Israeli Supreme Court Interventions in Elected-Branch Decisions, 2014-2026
+# Pattern: Israeli Supreme Court Interventions in Elected-Branch Decisions, 1976-2026
 
-This document is a structured pattern analysis drawn from the documentary core of this project. It surveys the 9 Supreme Court rulings cataloged in `data/rulings/` and identifies recurring features.
+This document is a structured pattern analysis drawn from the documentary core of this project. It surveys the 14 Supreme Court rulings cataloged in `data/rulings/` and identifies recurring features.
 
 This is empirical: every quantitative claim below cites the specific case-IDs in the documentary core. Readers can verify each count by examining the JSON entries directly.
 
 ## The documentary core, summarized
 
-The 9 cataloged rulings, in chronological order:
+The 14 cataloged rulings, in chronological order:
 
-| # | Case | Date | Court action | Doctrine | Petitioner |
+| # | Case | Date | Disposition | Doctrine | Petitioner |
 |---|---|---|---|---|---|
-| 1 | [Sela v. Yehieli (Kfar Vradim mikveh)](../../data/rulings/662-11-sela-kfar-vradim-mikveh.json) | 2014-09-09 | Struck down | Reasonableness | Individuals |
-| 2 | [Yesh Atid v. PM (Litzman)](../../data/rulings/3132-15-yesh-atid-litzman.json) | 2015-08-23 | Struck down | Reasonableness; Basic Law: Government | Party |
-| 3 | [ACRI v. Min. Public Security](../../data/rulings/1892-14-acri-prison-space.json) | 2017-06-13 | Struck down (mandatory order) | Reasonableness | NGO |
-| 4 | [Zilber v. Min. Finance](../../data/rulings/5782-21-zilber.json) | 2022-01-12 | Partially struck | Reasonableness | Individual |
-| 5 | [Deri (HCJ 8948/22)](../../data/rulings/8948-22-deri.json) | 2023-01-18 | Struck down | Reasonableness | NGO |
-| 6 | [HCJ 5658/23 (reasonableness amendment)](../../data/rulings/5658-23.json) | 2024-01-01 | Struck down | Constituent authority limits; Basic Law: The Judiciary | NGO |
-| 7 | [Baharav-Miara dismissal](../../data/rulings/18225-06-25-baharav-miara.json) | 2025-12-14 | Struck down | Procedural review; conflict of interest | NGO |
-| 8 | [Zini / Shin Bet](../../data/rulings/427-10-25-zini.json) | 2025-12-28 | Dismissed (Court declined to intervene) | Conflict of interest; reasonableness | NGO |
-| 9 | [Gofman / Mossad](../../data/rulings/gofman-mossad-2026-05.json) | 2026-05-19 | Remanded | Procedural review; reasonableness | Individual + NGO |
+| 1 | [Dakka v. Min. Transportation](../../data/rulings/156-75-dakka.json) | 1976 | Declarative (denied; doctrine established) | Reasonableness (foundation) | Individual |
+| 2 | [Bank Mizrahi v. Migdal](../../data/rulings/6821-93-bank-mizrahi.json) | 1995-11-09 | Declarative (statute upheld; judicial-review power asserted) | Constitutional supremacy | Individual (commercial) |
+| 3 | [Sela v. Yehieli (Kfar Vradim mikveh)](../../data/rulings/662-11-sela-kfar-vradim-mikveh.json) | 2014-09-09 | Struck down | Reasonableness | Individuals |
+| 4 | [Yesh Atid v. PM (Litzman)](../../data/rulings/3132-15-yesh-atid-litzman.json) | 2015-08-23 | Struck down | Reasonableness; Basic Law: Government | Party |
+| 5 | [ACRI v. Min. Public Security](../../data/rulings/1892-14-acri-prison-space.json) | 2017-06-13 | Struck down (mandatory order) | Reasonableness | NGO |
+| 6 | [Shafir v. Knesset](../../data/rulings/5969-20-shafir.json) | 2021-05-23 | Warning of voidness | Abuse of constituent power | Party |
+| 7 | [Zilber v. Min. Finance](../../data/rulings/5782-21-zilber.json) | 2022-01-12 | Partially struck | Reasonableness | Individual |
+| 8 | [Deri (HCJ 8948/22)](../../data/rulings/8948-22-deri.json) | 2023-01-18 | Struck down | Reasonableness | NGO |
+| 9 | [HCJ 5658/23 (reasonableness amendment)](../../data/rulings/5658-23.json) | 2024-01-01 | Struck down | Constituent authority limits; Basic Law: Judiciary | NGO |
+| 10 | [HCJ 5119/23 (incapacitation law)](../../data/rulings/5119-23-incapacitation.json) | 2024-01-03 | Partially struck | Abuse of constituent power | NGO |
+| 11 | [MQG v. Min. Justice (Levin / Judicial Selection Committee)](../../data/rulings/8987-22-levin-jsc.json) | 2024-09-12 | Mandatory order | Ultra vires; separation of powers | NGO |
+| 12 | [Baharav-Miara dismissal](../../data/rulings/18225-06-25-baharav-miara.json) | 2025-12-14 | Struck down | Procedural review; conflict of interest | NGO |
+| 13 | [Zini / Shin Bet](../../data/rulings/427-10-25-zini.json) | 2025-12-28 | Dismissed (Court declined to intervene) | Conflict of interest; reasonableness | NGO |
+| 14 | [Gofman / Mossad](../../data/rulings/gofman-mossad-2026-05.json) | 2026-05-19 | Remanded | Procedural review; reasonableness | Individual + NGO |
 
-## Pattern 1: Direction of intervention
+## Pattern 1: Direction of disposition
 
-Of the 9 documented rulings, **8 are interventions against the elected branch** (struck down, partially struck, remanded, or mandatory order issued). **1** (Zini) is a case where the Court declined to intervene.
+Grouped by the Court's action, the 14 documented rulings break down as:
 
-| Outcome | Count |
+| Category | Count | Cases |
+|---|---|---|
+| **Active intervention** (struck / partially struck / remanded / mandatory order) | 10 | Sela, Litzman, ACRI, Zilber, Deri, HCJ 5658/23, HCJ 5119/23, Levin/JSC, Baharav-Miara, Gofman |
+| **Doctrinal power-assertion without immediate strike** (declarative or warning-of-voidness) | 3 | Dakka 1976 (reasonableness established), Bank Mizrahi 1995 (constitutional-supremacy + judicial-review-of-legislation asserted), Shafir 2021 (abuse-of-constituent-power test articulated) |
+| **Court declined to intervene** (dismissed) | 1 | Zini |
+
+Out of 14 cataloged rulings, **13 either struck the challenged measure or asserted new Court authority over its class of measures.** The single exception (Zini) was itself contested within the Court — 2-1, with the current President Amit dissenting; the unanimous Gofman remand six months later applied analytically similar logic to a comparable security-service appointment.
+
+**Caveat on this pattern**: The documentary core is a non-random selection of high-profile rulings, not a representative sample. The Court rules on thousands of petitions per year, most of which never produce the kind of intervention documented here. What the 13:1 ratio shows is not the Court's overall intervention rate; it shows **the shape of high-profile cases that reach the documentary surface** — that when the Court engages with an elected-branch decision of consequence, asserting authority over it (whether by striking, compelling, or expanding doctrine) is the default outcome.
+
+## Pattern 2: Three doctrinal layers
+
+The dataset spans 50 years across three identifiable doctrinal layers:
+
+### Layer A — Foundational power-assertion (1976-1995)
+
+| Case | What was asserted |
 |---|---|
-| Struck down or partially struck | 5 (#1, 2, 4, 5, 6, 7) — Sela, Litzman, Zilber, Deri, HCJ 5658/23, Baharav-Miara dismissal |
-| Mandatory order (functionally a strike-down against administrative non-implementation) | 1 (#3 — ACRI prison-space) |
-| Remanded | 1 (#9 — Gofman) |
-| Dismissed (Court declined to intervene) | 1 (#8 — Zini) |
+| Dakka 1976 | Reasonableness as standalone ground of administrative review (later expanded into the "balancing" form that drives most of Layer C) |
+| Bank Mizrahi 1995 | Basic Laws as constitutional rank; judicial power to invalidate primary legislation that conflicts with them — both asserted in obiter dicta in a private commercial-banking appeal |
 
-The 8:1 ratio is striking. It is consistent with what Cohen-Eliya in [*Israel's Juristocracy*](https://lawliberty.org/israels-juristocracy/) identifies as the operational signature of the post-Barak Court: an institution that intervenes routinely in the elected branch's decisions on appointments, regulations, and structural matters.
+In neither case did the immediate disposition strike anything. The doctrinal architecture asserted in these rulings is what makes Layers B and C possible.
 
-**Important caveat on this pattern**: This documentary core is a small, non-random selection of high-profile rulings, not a representative sample of all Supreme Court rulings. The Court rules on thousands of petitions per year, most of which never reach the level of intervention documented here. The 8:1 ratio reflects the **shape of high-profile cases**, not the Court's overall intervention rate.
+### Layer B — Abuse-of-constituent-power crystallization (2021-2024)
 
-What the ratio does show: when the elected branch's most consequential decisions (Basic Law amendments, ministerial appointments, AG dismissal, security-service chiefs) are brought before the Court, **intervention is the default outcome.**
+| Case | Step in the doctrinal arc |
+|---|---|
+| Shafir 2021 | Tripartite test established (abuse of constituent power, generality, compatibility with constitutional fabric); warning of voidness issued |
+| HCJ 5658/23 (Jan 2024) | First operative use to strike a Basic Law amendment — the reasonableness amendment, 8-7 en banc |
+| HCJ 5119/23 (Jan 2024) | Second operative use, same day; the incapacitation amendment held to apply only from next Knesset (6-5 partial strike via delayed-effect interpretation) |
 
-## Pattern 2: Doctrinal distribution
+Layer B is the project's most concentrated doctrinal cluster: a single test articulated in Shafir was used twice on the same day in January 2024 against the most consequential Basic Law amendments the Knesset had passed in that legislative cycle.
 
-Doctrines invoked across the 9 rulings:
+### Layer C — Active intervention in elected-branch decisions (2014-2026)
+
+The other 8 cases in the dataset: Sela, Litzman, ACRI, Zilber, Deri, Levin/JSC, Baharav-Miara, Zini, Gofman. These apply doctrines from Layers A and B to specific government decisions and appointments.
+
+## Pattern 3: Doctrinal distribution
+
+Doctrines invoked across the 14 rulings:
 
 | Doctrine | Count | Cases |
 |---|---|---|
-| Reasonableness | 6 | Sela, Litzman, ACRI, Zilber, Deri, Gofman |
-| Procedural review | 2 | Baharav-Miara dismissal, Gofman |
-| Conflict of interest | 2 | Baharav-Miara dismissal, Zini |
-| Constituent authority limits | 1 | HCJ 5658/23 |
-| Basic Law: The Judiciary | 1 | HCJ 5658/23 |
-| Basic Law: Government | 1 | Litzman |
+| Reasonableness | 8 | Dakka (foundation), Sela, Litzman, ACRI, Zilber, Deri, Gofman, Levin/JSC |
+| Abuse of constituent power | 3 | Shafir (foundation), HCJ 5658/23, HCJ 5119/23 |
+| Constituent authority limits | 4 | Shafir, HCJ 5658/23, HCJ 5119/23, Bank Mizrahi (obliquely) |
+| Procedural review | 2 | Baharav-Miara, Gofman |
+| Conflict of interest | 2 | Baharav-Miara, Zini |
+| Basic Law: Government | 2 | Litzman, Shafir |
+| Basic Law: Judiciary | 1 | HCJ 5658/23 |
+| Constitutional supremacy | 1 | Bank Mizrahi |
+| Ultra vires | 1 | Levin/JSC |
+| Separation of powers | 1 | Levin/JSC |
+| Judicial independence | 1 | Levin/JSC |
 
-**Reasonableness is the most-used doctrine** — 6 of 9 documented cases. This is consistent with Cohen-Eliya's empirical observation that reasonableness has been the most-used ground for review of executive decisions since the 1980s.
+**Reasonableness remains the most-used doctrine** — invoked in 8 of 14 cases, spanning from its 1976 foundation in Dakka through the 2026 Gofman remand. The 2024 reasonableness amendment (struck in HCJ 5658/23) would have eliminated reasonableness review for cabinet/PM/minister decisions. Had it stood, four of the rulings in this documentary core (Litzman, Deri, Zilber, Levin/JSC) might not have proceeded on their current grounds. The Court's decision to strike that amendment — preserving its most-used doctrine — is itself a documented pattern.
 
-The 2024 reasonableness amendment (struck in HCJ 5658/23) would have eliminated reasonableness review for cabinet/PM/minister decisions. Had the amendment stood, three of the rulings in this documentary core (Litzman, Deri, Zilber) might not have been possible under their current grounds. The court's decision to strike that amendment — preserving its own most-used doctrine — is itself a documented pattern.
+**Abuse of constituent power is the second-most-used doctrinal cluster** post-2021 — 3 of 14 cases in 5 years. All three cluster in the Shafir → HCJ 5658/23 → HCJ 5119/23 arc.
 
-## Pattern 3: Petitioner type
+## Pattern 4: Petitioner type
 
-Who brings the petitions that result in these rulings:
+Who brings the petitions:
 
 | Petitioner type | Count | Cases |
 |---|---|---|
-| NGO | 5 | ACRI (#3), Deri (#5, MQG), HCJ 5658/23 (#6, MQG + Israeli Bar Assn), Baharav-Miara (#7, MQG + Bar + others), Zini (#8, MQG + 4 ex-Shin Bet chiefs) |
-| Individual | 3 | Sela (#1), Zilber (#4), Gofman (#9, Elmakayes + NGOs) |
-| Party | 1 | Yesh Atid (#2, Litzman) |
+| NGO | 7 | ACRI (#5), Deri (#8, MQG), HCJ 5658/23 (#9, MQG + Bar Assn), HCJ 5119/23 (#10, MQG), Levin/JSC (#11, MQG), Baharav-Miara (#12, MQG + Bar + others), Zini (#13, MQG + 4 ex-Shin Bet chiefs) |
+| Individual | 4 | Dakka (#1), Bank Mizrahi (#2, commercial), Sela (#3), Zilber (#7), Gofman (#14, Elmakayes + NGOs) |
+| Party | 3 | Litzman (#4, Yesh Atid), Shafir (#6, former MK + NGOs) |
 
-The **Movement for Quality Government** (התנועה למען איכות השלטון) appears as the lead or major co-petitioner in **4 of 9 cases** (#5, #6, #7, #8) — Deri, HCJ 5658/23, Baharav-Miara dismissal, and Zini.
+(Note: Gofman appears in both NGO and Individual categories — petition was individual + NGO co-petitioners; counted once as Individual+NGO.)
 
-This concentration matters: a small number of NGOs drive a disproportionate share of the petitions that result in elected-branch intervention. This is not a hidden fact — MQG's role is public — but it is structurally significant. The Court is intervening on what is, in effect, a recurring small set of repeat-player petitioners.
+The **Movement for Quality Government** (התנועה למען איכות השלטון) appears as the lead or major co-petitioner in **6 of 14 cases** (#8, #9, #10, #11, #12, #13) — Deri, HCJ 5658/23, HCJ 5119/23, Levin/JSC, Baharav-Miara, and Zini.
 
-## Pattern 4: Time distribution
+This concentration is structurally significant: a single repeat-player NGO drives the petition flow on the cases that most directly contest the elected branch's appointment and Basic-Law-amendment authority. This is public information — MQG's role is openly stated — but the empirical density of its presence in the post-2022 cluster (5 of 7 post-2022 cases in this dataset, or 71%) is itself a pattern.
 
-Rulings by year:
+## Pattern 5: Time distribution
 
-| Period | Count |
-|---|---|
-| 2014-2017 | 3 (#1 Sela 2014; #2 Litzman 2015; #3 ACRI 2017) |
-| 2018-2021 | 0 |
-| 2022-2026 | 6 (#4 Zilber 2022; #5 Deri 2023; #6 HCJ 5658/23 2024; #7 Baharav-Miara 2025; #8 Zini 2025; #9 Gofman 2026) |
+Rulings by period:
 
-**Two-thirds of the documented rulings come from 2022-2026** — the period of the current Netanyahu coalition government, the 2023 reform package, the post-October-7 crisis, and the post-Jan-2024 acceleration of intervention. The four-year gap (2018-2021) likely reflects the project's selection focus on high-profile interventions and the political quiet of those years' coalition compositions; it is not a claim that the Court did not intervene during that period.
+| Period | Count | Cases |
+|---|---|---|
+| 1976 | 1 | Dakka (reasonableness foundation) |
+| 1995 | 1 | Bank Mizrahi (judicial-review foundation) |
+| 1996-2013 | 0 | — |
+| 2014-2017 | 3 | Sela 2014; Litzman 2015; ACRI 2017 |
+| 2018-2020 | 0 | — |
+| 2021-2022 | 2 | Shafir 2021; Zilber 2022 |
+| 2023-2026 | 7 | Deri 2023; HCJ 5658/23 Jan 2024; HCJ 5119/23 Jan 2024; Levin/JSC Sep 2024; Baharav-Miara Dec 2025; Zini Dec 2025; Gofman May 2026 |
 
-What the time distribution does show: the **post-2022 period is dense with documented interventions**. This is consistent with Cohen-Eliya's framing that the post-Hayut Court accelerated its interventionist posture in response to the reform effort — striking down the reasonableness amendment, blocking high-profile appointments (Zini partially; Gofman), and asserting new authorities (review of Basic Law amendments).
+**Half of all 14 documented rulings — 7 of 14 — come from the 2023-2026 window** (3 years and 5 months). This includes two same-day Basic-Law-amendment rulings (5658/23 and 5119/23 on January 1-3, 2024), a mandatory-order against a sitting minister (Levin/JSC), the dismissal of an AG (Baharav-Miara), and three security-service-appointment rulings (Zini, Gofman, plus the appointment-cluster Court declined on).
 
-## Pattern 5: What the elected branch was attempting to do
+The blank stretches (1996-2013, 2018-2020) likely reflect the project's selection focus on high-profile rulings and the political composition of those years' coalitions; they are not claims that the Court did not intervene during those periods.
 
-The decisions challenged in these 9 rulings, by type:
+What the time distribution does show: the **post-2022 period is unusually dense with documented interventions**, and the doctrinal arc cataloged here (Layer A → Layer B → Layer C) reaches its operational peak in this period.
+
+## Pattern 6: What the elected branch was attempting
+
+Decision types challenged in these 14 rulings:
 
 | Decision type | Cases | Count |
 |---|---|---|
-| Ministerial appointment | Litzman (#2); Deri (#5); Zini (#8) — Court declined; Gofman (#9) | 4 |
-| AG dismissal | Baharav-Miara (#7) | 1 |
-| Basic Law amendment | HCJ 5658/23 (#6) | 1 |
-| Policy / regulation | Zilber daycare cancellation (#4) | 1 |
-| Administrative action / inaction | ACRI prison-space (#3) | 1 |
-| Local-authority decision | Sela mikveh (#1) | 1 |
+| Ministerial appointment | Litzman, Deri, Zini, Gofman | 4 |
+| Basic Law amendment | HCJ 5658/23, HCJ 5119/23, Shafir | 3 |
+| Primary legislation (statute) | Bank Mizrahi | 1 |
+| AG dismissal | Baharav-Miara | 1 |
+| Ministerial inaction (failure to convene Selection Committee) | Levin/JSC | 1 |
+| Policy / regulation | Zilber daycare cancellation | 1 |
+| Administrative action / inaction | ACRI prison-space | 1 |
+| Administrative reasonableness (transportation) | Dakka | 1 |
+| Local-authority decision | Sela mikveh | 1 |
 
-**Appointments are the most-challenged decision type** — 4 of 9 cases. This is consistent with the "Selection Committee battles" pattern that has dominated 2025-2026 politics: the elected branch attempts a high-profile appointment (Deri to Interior; Zini to Shin Bet; Gofman to Mossad; or dismissal of Baharav-Miara) and the Court intervenes (or in Zini's case, declines to).
+**Appointments are the most-challenged decision type** — 4 of 14 cases. Adding the AG-dismissal and the Selection-Committee inaction case, **6 of 14 cases concern judicial-or-AG-related personnel decisions** — the structural mechanisms by which the legal-establishment composition is renewed.
 
-The pattern across the appointment cases is itself worth noting:
-- **Deri (2023)**: Court struck (10-1) based on plea-bargain representations and prior conviction
-- **Zini (Dec 2025)**: Court declined (2-1), with the current Court President Amit in dissent
-- **Gofman (May 2026)**: Court remanded (3-0, unanimous) on procedural grounds
-
-The doctrinal grounds shift across these cases (reasonableness → conflict of interest → procedural review of the appointments committee), but the underlying conflict — the elected branch's preferred appointee versus the Court's view of what is allowable — remains constant.
+**Basic Law amendments are the second-most-challenged decision type** — 3 of 14, all concentrated in the Layer B cluster (Shafir → 5658/23 → 5119/23). This is novel: prior to Shafir 2021, the Court had never operatively voided or warned-of-voidness a Basic Law amendment. Three such rulings in 32 months.
 
 ## What the data shows together
 
 Taking these patterns together, the documentary core supports several observations:
 
-1. **Intervention is the default outcome** when the Court accepts a case challenging an elected-branch decision: 8 of 9 documented cases. The exception (Zini) is itself contested within the Court (Amit's dissent foreshadowed the unanimous Gofman ruling six months later, using similar logic).
+1. **The Court's authority is self-asserted in obiter and operationalized later.** The foundational power-assertions (Dakka 1976, Bank Mizrahi 1995, Shafir 2021) did not strike anything; they articulated tests later used to strike. Each layer was built before it was used.
 
-2. **Reasonableness remains the operational core** of the Court's doctrinal toolkit, despite the 2023 attempt to amend it out of existence for cabinet-level decisions. The Court's 2024 striking of the amendment preserved its most-used doctrine.
+2. **The active-intervention default is robust.** In 13 of 14 documented cases the Court either struck the challenged measure or asserted new authority over its class. The single dismissal (Zini) was internally contested 2-1.
 
-3. **A small set of repeat petitioners** drives a disproportionate share of high-profile interventions. The Movement for Quality Government is the lead repeat-player; the Israeli Bar Association is a frequent co-petitioner.
+3. **Reasonableness is the operational core, and the Court protected it.** Reasonableness appears in 8 of 14 cases across all three layers. The 2024 strike of the reasonableness amendment preserved the Court's most-used doctrine.
 
-4. **Appointments and structural decisions** are the most-contested category. The post-2022 period has produced an unusually dense cluster of Court interventions in appointment decisions specifically.
+4. **A small set of repeat NGOs drives the high-profile petitions.** MQG appears in 6 of 14 cases (5 of 7 post-2022); the Israeli Bar Association is a frequent co-petitioner. The pattern is a small number of repeat-player petitioners producing a disproportionate share of the cases that reach this dataset.
 
-5. **The doctrinal mix expanded after January 2024**. Pre-2024 cases use reasonableness predominantly. Post-2024 cases see the introduction of "constituent authority limits" (HCJ 5658/23), procedural review (Gofman), and conflict-of-interest doctrines (Zini, Baharav-Miara) as new pillars of intervention.
+5. **Appointments and structural-personnel decisions are the dominant contested category.** Counting ministerial appointments (4) + AG dismissal (1) + Selection-Committee inaction (1) yields 6 of 14 — the cases that contest the renewal mechanism of the legal establishment specifically.
+
+6. **The doctrinal expansion of Basic-Law-amendment review is concentrated in a narrow window.** Three operative rulings in 32 months (Shafir May 2021; HCJ 5658/23 and 5119/23 same-day in January 2024).
 
 ## What the data does NOT show
 
@@ -140,6 +182,6 @@ These questions are legitimate and are debated extensively elsewhere — includi
 
 - [Moshe Cohen-Eliya, "Israel's Juristocracy"](https://lawliberty.org/israels-juristocracy/) — the framing this project's editorial layer engages
 - [Israel Democracy Institute — Doing Away with the Standard of Extreme Unreasonableness](https://en.idi.org.il/articles/50000) — the IDI's empirical analysis
-- [Ran Hirschl, *Towards Juristocracy*](https://www.hup.harvard.edu/books/9780674025479) — the theoretical anchor, acknowledged in adversarial fairness; Hirschl's framework is critical-empirical rather than reform-prescriptive
-- [Yehonatan Givati & Aharon Garber — empirical work on public confidence in the Supreme Court](https://en.idi.org.il/) (cited by Cohen-Eliya; primary paper to be located)
-- See also the explainers in `../explainers/`
+- [Ran Hirschl, *Towards Juristocracy*](https://www.hup.harvard.edu/books/9780674025479) — the comparative-empirical theoretical anchor; Hirschl's framework is critical-empirical rather than reform-prescriptive (and Hirschl himself, who died May 19 2026, did not endorse the 2023-2024 Israeli reform effort)
+- [Verfassungsblog — Saving the Constitution from Politics (on Shafir)](https://verfassungsblog.de/saving-the-constitution-from-politics/)
+- See also the explainers in `../explainers/` (reasonableness doctrine, constituent authority, judicial selection committee) and the historical essay `../essays/from-bank-mizrahi-to-hcj-5658-23.md`

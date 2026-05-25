@@ -37,7 +37,7 @@ For three years, the implications of the 1992 Basic Laws remained latent. Then c
 
 ## 1995: The doctrinal foundation (Bank Mizrahi)
 
-In [**CA 6821/93 United Mizrahi Bank v. Migdal Cooperative Village**](https://versa.cardozo.yu.edu/opinions/united-mizrahi-bank-v-migdal-cooperative-village) (9 November 1995), a nine-justice panel of the Supreme Court — hearing what was nominally a civil appeal about agricultural debt — articulated the doctrine that would define the next three decades.
+In [**CA 6821/93 United Mizrahi Bank v. Migdal Cooperative Village**](../../data/rulings/6821-93-bank-mizrahi.json) ([Cardozo Versa English translation](https://versa.cardozo.yu.edu/opinions/united-mizrahi-bank-v-migdal-cooperative-village), 9 November 1995), a nine-justice panel of the Supreme Court — hearing what was nominally a civil appeal about agricultural debt — articulated the doctrine that would define the next three decades. The ruling is documented in the project's core at `data/rulings/6821-93-bank-mizrahi.json`.
 
 Justice Aharon Barak's lead opinion held that:
 
@@ -62,7 +62,7 @@ The defenders' counter, articulated by Barak himself and by sympathetic scholars
 
 Between 1995 and roughly 2018, the Bank Mizrahi framework was applied incrementally. The Israel Democracy Institute's empirical work (Amir Fuchs and colleagues) counted approximately **22 laws or legal provisions invalidated** under the framework through 2020. The pace was modest — averaging less than one strikedown per year — but each instance entrenched the framework further.
 
-Equally consequential, however, was the **parallel doctrinal expansion** of administrative review. Under Barak's tenure (1995-2006) and his successors, the Supreme Court substantially broadened:
+Equally consequential, however, was the **parallel doctrinal expansion** of administrative review. The reasonableness doctrine itself had been crystallized two decades earlier in [**HCJ 156/75 Dakka v. Minister of Transportation**](../../data/rulings/156-75-dakka.json) (1976) — an opinion authored by Aharon Barak as a junior justice that established reasonableness as a standalone ground of review, separate from ultra vires. Under Barak's later tenure as President (1995-2006) and his successors, the Supreme Court substantially broadened:
 
 - **Standing** — the threshold question of who can bring a petition. Under Barak, the traditional standing requirements were largely eliminated; any citizen could petition on matters of public interest.
 - **Justiciability** — the question of which issues are appropriate for court review at all. Many issues that had previously been treated as political (and therefore not justiciable) became subject to review.
@@ -98,6 +98,8 @@ The structural significance is twofold:
 
 First, the Court extended its review authority from ordinary legislation (since Bank Mizrahi 1995) to **Basic Law amendments themselves**. The democratic-authorization argument for this extension is substantially weaker than for ordinary legislation, because Basic Laws are the closest thing Israel has to a constitution — and amending them through democratic process is the way constitutional change is supposed to happen in any democracy.
 
+The doctrinal mechanism for this extension did not appear *de novo* in January 2024. It was crystallized in [**HCJ 5969/20 Shafir v. Knesset**](../../data/rulings/5969-20-shafir.json) (May 2021), where President Hayut wrote the lead opinion for a six-justice majority articulating a tripartite test — abuse of constituent power, generality, and compatibility with the constitutional fabric — and issuing a "warning of voidness" (התראת בטלות) against the challenged temporary Basic Law amendment without striking it. Shafir thus prepared the doctrinal architecture; HCJ 5658/23 and the same-day [**HCJ 5119/23 (incapacitation law)**](../../data/rulings/5119-23-incapacitation.json) operationalized it.
+
 Second, the Court **preserved its own most-used doctrinal tool** (reasonableness review of cabinet decisions). The pattern document in `../patterns/court-intervention-pattern-2014-2026.md` shows that reasonableness was the doctrine in 6 of 9 documented cases — making its preservation existentially significant for the Court's continued intervention capacity.
 
 ## 2025-2026: The post-2024 acceleration
@@ -118,10 +120,12 @@ The Court's intervention rate in high-profile appointment decisions during this 
 
 ## Synthesis: what the thirty years show
 
-Taken together, the period from 1995 to 2026 documents a recognizable trajectory:
+Taken together, the period from 1976 to 2026 documents a recognizable trajectory:
 
-1. **A self-asserted doctrinal foundation** (Bank Mizrahi 1995) treating the Court as the enforcer of constitutional norms the Knesset is held not to have democratically debated as such
-2. **A two-decade entrenchment** during which the Bank Mizrahi framework was applied incrementally and parallel doctrinal expansions (standing, justiciability, reasonableness, AG authority) accumulated
+1. **A pre-foundational reasonableness doctrine** (Dakka 1976) establishing reasonableness as standalone ground of administrative review
+2. **A self-asserted constitutional-review foundation** (Bank Mizrahi 1995) treating the Court as the enforcer of constitutional norms the Knesset is held not to have democratically debated as such
+3. **A two-decade entrenchment** during which the Bank Mizrahi framework was applied incrementally and parallel doctrinal expansions (standing, justiciability, reasonableness, AG authority) accumulated
+4. **A doctrinal preparation for Basic-Law-amendment review** (Shafir 2021) crystallizing the abuse-of-constituent-power test in a warning of voidness
 3. **A failed reform attempt** (2022-2024) to roll back portions of the framework
 4. **A peak doctrinal moment** (January 2024) in which the Court not only blocked the reform but extended its review authority to constitutional amendments themselves
 5. **A post-2024 acceleration** in which the Court has continued to intervene in high-profile elected-branch appointment decisions while the reform agenda pivots to Committee restructuring
