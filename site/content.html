@@ -18,6 +18,13 @@
 
   root.append(renderHeader("reading"));
 
+  // ─── Reading-progress bar (sticky under header) ──────────────────
+  const progressTrack = el("div", { class: "reading-progress", role: "progressbar",
+    "aria-label": t.reading_progress_aria, "aria-valuemin": "0", "aria-valuemax": "100" });
+  const progressFill = el("div", { class: "reading-progress-fill" });
+  progressTrack.append(progressFill);
+  root.append(progressTrack);
+
   const main = el("main", {});
 
   const params = new URLSearchParams(location.search);
@@ -45,11 +52,7 @@
   let category = null;
   for (const cat of Object.keys(content)) {
     for (const it of content[cat]) {
-      if (it.slug === slug) {
-        piece = it;
-        category = cat;
-        break;
-      }
+      if (it.slug === slug) { piece = it; category = cat; break; }
     }
     if (piece) break;
   }
@@ -64,49 +67,301 @@
     return;
   }
 
-  // Breadcrumb / back link
-  const breadcrumb = el("p", { class: "breadcrumb" });
-  breadcrumb.append(
-    el("a", { href: "reading.html" }, t.reading_title)
-  );
-  breadcrumb.append(" / ");
+  // ─── Breadcrumb ───────────────────────────────────────────────────
   const categoryLabel = {
     essays: t.cat_essays,
     explainers: t.cat_explainers,
     patterns: t.cat_patterns,
   };
+  const categoryBadge = {
+    essays: t.cat_badge_essays,
+    explainers: t.cat_badge_explainers,
+    patterns: t.cat_badge_patterns,
+  };
+  const breadcrumb = el("p", { class: "breadcrumb" });
+  breadcrumb.append(el("a", { href: "reading.html" }, t.reading_title));
+  breadcrumb.append(" / ");
   breadcrumb.append(categoryLabel[category] || category);
   main.append(breadcrumb);
 
-  // Article meta header
+  // ─── Two-column layout: article + sticky TOC sidebar ─────────────
+  const layout = el("div", { class: "content-layout" });
   const article = el("article", { class: "content-article", dir: "auto" });
+
+  // Article header — title, category badge, summary as call-out, meta
   const header = el("header", { class: "article-header" });
-  header.append(el("h1", {}, piece.title));
+  const badge = el("span", { class: `article-badge article-badge--${category}` },
+    categoryBadge[category] || category);
+  header.append(badge);
+  header.append(el("h1", { class: "article-title" }, piece.title));
+
   if (piece.summary) {
-    header.append(el("p", { class: "article-summary" }, piece.summary));
+    const ca = el("aside", { class: "quick-answer", "aria-label": t.quick_answer_aria });
+    ca.append(el("div", { class: "quick-answer-label" }, t.quick_answer));
+    ca.append(el("p", { class: "quick-answer-body", dir: "auto" }, piece.summary));
+    header.append(ca);
   }
+
   const metaLine = el("p", { class: "article-meta" });
-  if (piece.date) metaLine.append(piece.date);
-  if (piece.date && piece.contributor) metaLine.append(" · ");
-  if (piece.contributor) metaLine.append(piece.contributor);
+  if (piece.reading_minutes) {
+    metaLine.append(el("span", { class: "meta-time" },
+      (() => {
+        const ns = "http://www.w3.org/2000/svg";
+        const svg = document.createElementNS(ns, "svg");
+        svg.setAttribute("viewBox", "0 0 24 24");
+        svg.setAttribute("class", "meta-icon");
+        svg.setAttribute("aria-hidden", "true");
+        svg.innerHTML = '<circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M12 7v5l3 2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>';
+        return svg;
+      })()
+    ));
+    metaLine.append(el("span", {}, t.read_time(piece.reading_minutes)));
+    metaLine.append(el("span", { class: "meta-dot" }, "·"));
+  }
+  if (piece.date) {
+    metaLine.append(el("span", {}, piece.date));
+  }
+  if (piece.contributor) {
+    metaLine.append(el("span", { class: "meta-dot" }, "·"));
+    metaLine.append(el("span", {}, piece.contributor));
+  }
   header.append(metaLine);
   article.append(header);
 
-  // Article body — rendered HTML from markdown
+  // Mobile TOC toggle (visible only on small screens via CSS)
+  const mobileTocBtn = el("button", { class: "toc-mobile-toggle" }, t.toc_toggle, " ▾");
+  article.append(mobileTocBtn);
+
+  // Article body — rendered HTML
   const body = el("div", { class: "article-body", html: piece.body_html });
   article.append(body);
 
-  main.append(article);
+  // ─── Build TOC from h2/h3 in the body ────────────────────────────
+  const headings = body.querySelectorAll("h2, h3");
+  const tocSidebar = el("aside", { class: "toc-sidebar", "aria-label": t.toc_title });
+  const tocTitle = el("div", { class: "toc-title" }, t.toc_title);
+  tocSidebar.append(tocTitle);
+  const tocList = el("ol", { class: "toc-list" });
 
-  // Footer: link back to reading list
-  main.append(
-    el("p", { class: "article-back" },
-      el("a", { href: "reading.html" }, "← " + t.reading_title)
-    )
-  );
+  function slugify(s) {
+    return s.toLowerCase().trim()
+      .replace(/[֐-׿]/g, (c) => c) // keep Hebrew chars as-is
+      .replace(/[^\w֐-׿\s-]/g, "")
+      .replace(/\s+/g, "-")
+      .slice(0, 80);
+  }
+
+  let h2Index = 0;
+  for (const h of headings) {
+    const text = h.textContent.trim();
+    if (!text) continue;
+    let id = h.id;
+    if (!id) {
+      id = "h-" + (slugify(text) || ("section-" + h2Index));
+      let n = 1;
+      while (document.getElementById(id)) {
+        id = "h-" + slugify(text) + "-" + (++n);
+      }
+      h.id = id;
+    }
+    const item = el("li", { class: `toc-item toc-item--${h.tagName.toLowerCase()}` });
+    const link = el("a", { href: `#${id}`, class: "toc-link" }, text);
+    item.append(link);
+    tocList.append(item);
+    if (h.tagName === "H2") h2Index++;
+  }
+  tocSidebar.append(tocList);
+
+  // Hide TOC entirely if there are too few headings to be useful
+  if (headings.length < 2) {
+    tocSidebar.style.display = "none";
+    mobileTocBtn.style.display = "none";
+  }
+
+  layout.append(article);
+  layout.append(tocSidebar);
+  main.append(layout);
+
+  // Mobile TOC behavior — toggle sidebar visibility
+  let tocOpenMobile = false;
+  mobileTocBtn.addEventListener("click", () => {
+    tocOpenMobile = !tocOpenMobile;
+    tocSidebar.classList.toggle("toc-sidebar--open", tocOpenMobile);
+    mobileTocBtn.classList.toggle("active", tocOpenMobile);
+  });
+
+  // Auto-close mobile TOC after clicking a link
+  tocList.addEventListener("click", () => {
+    if (tocOpenMobile) {
+      tocOpenMobile = false;
+      tocSidebar.classList.remove("toc-sidebar--open");
+      mobileTocBtn.classList.remove("active");
+    }
+  });
+
+  // ─── Share + Print bar (under article) ───────────────────────────
+  const shareBar = el("div", { class: "share-bar", "aria-label": t.share_label });
+  shareBar.append(el("span", { class: "share-label" }, t.share_label + ":"));
+
+  function shareSvg(d) {
+    const ns = "http://www.w3.org/2000/svg";
+    const svg = document.createElementNS(ns, "svg");
+    svg.setAttribute("viewBox", "0 0 24 24");
+    svg.setAttribute("class", "share-icon");
+    svg.setAttribute("aria-hidden", "true");
+    svg.innerHTML = `<path d="${d}" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>`;
+    return svg;
+  }
+
+  const shareUrl = location.href;
+  const xBtn = el("a", {
+    class: "share-btn",
+    href: `https://x.com/intent/post?text=${encodeURIComponent(piece.title)}&url=${encodeURIComponent(shareUrl)}`,
+    target: "_blank", rel: "noopener noreferrer",
+  });
+  xBtn.append(shareSvg("M4 4l16 16 M20 4L4 20"));
+  xBtn.append(el("span", {}, t.share_x));
+  shareBar.append(xBtn);
+
+  const copyBtn = el("button", { class: "share-btn share-btn--copy" });
+  copyBtn.append(shareSvg("M9 4h9v14 M4 8h11v12H4z"));
+  const copyLabel = el("span", {}, t.share_copy);
+  copyBtn.append(copyLabel);
+  copyBtn.addEventListener("click", async () => {
+    try {
+      await navigator.clipboard.writeText(shareUrl);
+      copyLabel.textContent = t.copied;
+      copyBtn.classList.add("copied");
+      setTimeout(() => {
+        copyLabel.textContent = t.share_copy;
+        copyBtn.classList.remove("copied");
+      }, 2000);
+    } catch (e) {
+      copyLabel.textContent = "Error";
+    }
+  });
+  shareBar.append(copyBtn);
+
+  const printBtn = el("button", { class: "share-btn" });
+  printBtn.append(shareSvg("M7 9V4h10v5 M5 9h14v7H5z M7 14v6h10v-6"));
+  printBtn.append(el("span", {}, t.share_print));
+  printBtn.addEventListener("click", () => window.print());
+  shareBar.append(printBtn);
+
+  article.append(shareBar);
+
+  // ─── "Read next" — related pieces ────────────────────────────────
+  const allPieces = [];
+  for (const cat of Object.keys(content)) {
+    for (const it of content[cat]) {
+      if (it.slug !== slug) allPieces.push({ ...it, _category: cat });
+    }
+  }
+  // Prefer same category first, then others
+  allPieces.sort((a, b) => {
+    if (a._category === category && b._category !== category) return -1;
+    if (a._category !== category && b._category === category) return 1;
+    return 0;
+  });
+  const next = allPieces.slice(0, 3);
+  if (next.length) {
+    const nextSection = el("section", { class: "read-next" });
+    nextSection.append(el("h2", { class: "read-next-title" }, t.read_next));
+    const nextGrid = el("div", { class: "read-next-grid" });
+    for (const p of next) {
+      const card = el("a", {
+        class: `read-next-card read-next-card--${p._category}`,
+        href: `content.html?slug=${encodeURIComponent(p.slug)}`,
+      });
+      card.append(el("span", { class: `card-badge card-badge--${p._category}` },
+        categoryBadge[p._category] || p._category));
+      card.append(el("h3", { class: "read-next-card-title" }, p.title));
+      if (p.reading_minutes) {
+        card.append(el("p", { class: "read-next-card-meta" },
+          t.read_time(p.reading_minutes)));
+      }
+      nextGrid.append(card);
+    }
+    nextSection.append(nextGrid);
+    main.append(nextSection);
+  }
+
+  // ─── Back-to-top floating button ─────────────────────────────────
+  const totop = el("button", { class: "back-to-top",
+    "aria-label": t.back_to_top, title: t.back_to_top }, "↑");
+  totop.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
+  document.body.append(totop);
 
   root.append(main);
   root.append(renderFooter());
+
+  // ─── Behaviors: scroll progress, TOC highlight, fade-in ──────────
+  function updateProgress() {
+    const r = body.getBoundingClientRect();
+    const total = r.height - window.innerHeight;
+    const scrolled = -r.top;
+    const pct = Math.max(0, Math.min(100, (scrolled / Math.max(1, total)) * 100));
+    progressFill.style.width = pct + "%";
+    progressTrack.setAttribute("aria-valuenow", String(Math.round(pct)));
+    totop.classList.toggle("visible", scrolled > 400);
+  }
+  window.addEventListener("scroll", updateProgress, { passive: true });
+  updateProgress();
+
+  // Highlight currently-visible TOC item
+  if ("IntersectionObserver" in window && headings.length > 1) {
+    const tocLinks = new Map();
+    for (const link of tocList.querySelectorAll(".toc-link")) {
+      const id = decodeURIComponent(link.getAttribute("href").slice(1));
+      tocLinks.set(id, link);
+    }
+    const observed = new Set();
+    const io = new IntersectionObserver((entries) => {
+      for (const ent of entries) {
+        const id = ent.target.id;
+        const link = tocLinks.get(id);
+        if (!link) continue;
+        if (ent.isIntersecting) observed.add(id);
+        else observed.delete(id);
+      }
+      // Highlight first heading that's currently in view
+      for (const link of tocLinks.values()) link.classList.remove("active");
+      const firstVisible = [...tocLinks.entries()].find(([id]) => observed.has(id));
+      if (firstVisible) firstVisible[1].classList.add("active");
+    }, { rootMargin: "-80px 0px -60% 0px" });
+    for (const h of headings) io.observe(h);
+  }
+
+  // Scroll-triggered fade-in for paragraphs / list items / blockquotes
+  if ("IntersectionObserver" in window) {
+    const animateables = body.querySelectorAll("h2, h3, p, ul, ol, blockquote, table, hr, pre");
+    const io2 = new IntersectionObserver((entries) => {
+      for (const ent of entries) {
+        if (ent.isIntersecting) {
+          ent.target.classList.add("in-view");
+          io2.unobserve(ent.target);
+        }
+      }
+    }, { threshold: 0.04, rootMargin: "0px 0px -20px 0px" });
+    for (const el of animateables) {
+      el.classList.add("will-fade");
+      io2.observe(el);
+    }
+  }
+
+  // Smooth scroll for in-page anchor clicks
+  document.addEventListener("click", (e) => {
+    const a = e.target.closest("a");
+    if (!a) return;
+    const href = a.getAttribute("href");
+    if (!href || !href.startsWith("#")) return;
+    const id = decodeURIComponent(href.slice(1));
+    const target = document.getElementById(id);
+    if (!target) return;
+    e.preventDefault();
+    target.scrollIntoView({ behavior: "smooth", block: "start" });
+    history.replaceState(null, "", href);
+  });
 })();
 </script>
 </body>

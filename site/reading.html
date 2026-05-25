@@ -18,10 +18,13 @@
 
   root.append(renderHeader("reading"));
 
-  const main = el("main", {});
+  const main = el("main", { class: "reading-page" });
 
-  main.append(el("h1", {}, t.reading_title));
-  main.append(el("p", { class: "page-intro" }, t.reading_intro));
+  // ─── Hero header ─────────────────────────────────────────────────
+  const hero = el("header", { class: "reading-hero" });
+  hero.append(el("h1", { class: "reading-hero-title" }, t.reading_title));
+  hero.append(el("p", { class: "reading-hero-intro" }, t.reading_intro));
+  main.append(hero);
 
   let content = {};
   try {
@@ -38,38 +41,143 @@
     explainers: t.cat_explainers,
     patterns: t.cat_patterns,
   };
-  const categoryDescription = {
-    essays: t.cat_essays_desc,
-    explainers: t.cat_explainers_desc,
-    patterns: t.cat_patterns_desc,
+  const categoryBadge = {
+    essays: t.cat_badge_essays,
+    explainers: t.cat_badge_explainers,
+    patterns: t.cat_badge_patterns,
   };
 
+  // Tiny inline SVG icons (no external deps) that hint at category type
+  function categoryIcon(cat) {
+    const svgNS = "http://www.w3.org/2000/svg";
+    const svg = document.createElementNS(svgNS, "svg");
+    svg.setAttribute("viewBox", "0 0 32 32");
+    svg.setAttribute("class", "card-icon-svg");
+    svg.setAttribute("aria-hidden", "true");
+    const paths = {
+      essays: "M8 4h13l4 4v20H8z M21 4v4h4",
+      explainers: "M16 4c4 0 7 3 7 7 0 3-1.5 5-3 6.5-1 1-1.5 2-1.5 3.5H13.5c0-1.5-.5-2.5-1.5-3.5C10.5 16 9 14 9 11c0-4 3-7 7-7z M13 25h6 M14 28h4",
+      patterns: "M5 26V10 M5 26h22 M9 22V14 M14 22V8 M19 22V12 M24 22V16",
+    };
+    const p = document.createElementNS(svgNS, "path");
+    p.setAttribute("d", paths[cat] || paths.essays);
+    p.setAttribute("fill", "none");
+    p.setAttribute("stroke", "currentColor");
+    p.setAttribute("stroke-width", "1.8");
+    p.setAttribute("stroke-linejoin", "round");
+    p.setAttribute("stroke-linecap", "round");
+    svg.append(p);
+    return svg;
+  }
+
+  // ─── Category filter pills ───────────────────────────────────────
+  const filterBar = el("div", { class: "reading-filter" });
+  filterBar.append(el("span", { class: "reading-filter-label" }, t.filter_category));
+  const allCategoriesBtn = el("button", {
+    class: "reading-filter-pill active",
+    "data-cat": "all",
+  }, t.filter_all_categories);
+  filterBar.append(allCategoriesBtn);
+  for (const cat of categoryOrder) {
+    if (!(content[cat] || []).length) continue;
+    const btn = el("button", {
+      class: `reading-filter-pill reading-filter-pill--${cat}`,
+      "data-cat": cat,
+    }, categoryLabel[cat]);
+    filterBar.append(btn);
+  }
+  main.append(filterBar);
+
+  // ─── Card grid (all pieces, with data-cat for filtering) ─────────
+  const grid = el("div", { class: "reading-grid" });
+  const cards = [];
   for (const cat of categoryOrder) {
     const items = content[cat] || [];
-    if (!items.length) continue;
-    const section = el("section", { class: "reading-section" });
-    section.append(el("h2", {}, categoryLabel[cat]));
-    if (categoryDescription[cat]) {
-      section.append(el("p", { class: "section-desc" }, categoryDescription[cat]));
-    }
-    const list = el("ul", { class: "reading-list" });
     for (const item of items) {
-      const li = el("li", { class: "reading-item" });
-      li.append(
-        el("a", { href: `content.html?slug=${encodeURIComponent(item.slug)}`, class: "reading-title" }, item.title)
-      );
+      const card = el("a", {
+        class: `reading-card reading-card--${cat}`,
+        href: `content.html?slug=${encodeURIComponent(item.slug)}`,
+        "data-cat": cat,
+      });
+
+      const badge = el("span", { class: `card-badge card-badge--${cat}` });
+      badge.append(categoryIcon(cat));
+      badge.append(el("span", {}, categoryBadge[cat]));
+      card.append(badge);
+
+      card.append(el("h3", { class: "card-title" }, item.title));
       if (item.summary) {
-        li.append(el("p", { class: "reading-summary", dir: "auto" }, item.summary));
+        card.append(el("p", { class: "card-summary", dir: "auto" }, item.summary));
       }
-      const meta = el("p", { class: "reading-meta" });
-      if (item.date) meta.append(item.date);
-      if (item.date && item.contributor) meta.append(" · ");
-      if (item.contributor) meta.append(item.contributor);
-      li.append(meta);
-      list.append(li);
+
+      const meta = el("div", { class: "card-meta" });
+      if (item.reading_minutes) {
+        meta.append(el("span", { class: "card-meta-time" },
+          // Clock SVG icon inline
+          (() => {
+            const ns = "http://www.w3.org/2000/svg";
+            const svg = document.createElementNS(ns, "svg");
+            svg.setAttribute("viewBox", "0 0 24 24");
+            svg.setAttribute("class", "card-meta-icon");
+            svg.setAttribute("aria-hidden", "true");
+            const c = document.createElementNS(ns, "circle");
+            c.setAttribute("cx", "12"); c.setAttribute("cy", "12"); c.setAttribute("r", "9");
+            c.setAttribute("fill", "none"); c.setAttribute("stroke", "currentColor"); c.setAttribute("stroke-width", "1.6");
+            const h = document.createElementNS(ns, "path");
+            h.setAttribute("d", "M12 7v5l3 2");
+            h.setAttribute("fill", "none"); h.setAttribute("stroke", "currentColor");
+            h.setAttribute("stroke-width", "1.6"); h.setAttribute("stroke-linecap", "round");
+            svg.append(c); svg.append(h); return svg;
+          })()
+        ));
+        meta.append(el("span", {}, t.read_time(item.reading_minutes)));
+      }
+      if (item.date) {
+        meta.append(el("span", { class: "card-meta-sep" }, "·"));
+        meta.append(el("span", {}, item.date));
+      }
+      card.append(meta);
+
+      grid.append(card);
+      cards.push({ card, cat });
     }
-    section.append(list);
-    main.append(section);
+  }
+  main.append(grid);
+
+  // Empty-state placeholder
+  const empty = el("p", { class: "reading-empty", style: "display:none" }, t.no_match_filter);
+  main.append(empty);
+
+  // ─── Filter behavior ─────────────────────────────────────────────
+  const pills = filterBar.querySelectorAll(".reading-filter-pill");
+  for (const pill of pills) {
+    pill.addEventListener("click", () => {
+      const cat = pill.dataset.cat;
+      for (const p of pills) p.classList.toggle("active", p === pill);
+      let visible = 0;
+      for (const c of cards) {
+        const show = cat === "all" || c.cat === cat;
+        c.card.style.display = show ? "" : "none";
+        if (show) visible++;
+      }
+      empty.style.display = visible === 0 ? "" : "none";
+    });
+  }
+
+  // ─── Scroll-triggered fade-in for cards ──────────────────────────
+  if ("IntersectionObserver" in window) {
+    const io = new IntersectionObserver((entries) => {
+      for (const ent of entries) {
+        if (ent.isIntersecting) {
+          ent.target.classList.add("in-view");
+          io.unobserve(ent.target);
+        }
+      }
+    }, { threshold: 0.1, rootMargin: "0px 0px -40px 0px" });
+    for (const c of cards) {
+      c.card.classList.add("will-animate");
+      io.observe(c.card);
+    }
   }
 
   root.append(main);

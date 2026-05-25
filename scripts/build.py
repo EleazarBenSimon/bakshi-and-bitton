@@ -211,8 +211,28 @@ def build_content(out_dir: Path) -> dict:
         for f in sorted(cat_dir.glob("*.md")):
             text = f.read_text(encoding="utf-8")
             meta, body = parse_frontmatter(text)
+            # Strip the markdown's leading `# Title` line if it duplicates
+            # the frontmatter title — the article view renders the title
+            # in a header band, so having an identical H1 at the top of
+            # the body is visual noise.
+            title_meta = meta.get("title", "").strip()
+            if title_meta:
+                body_lines = body.lstrip().splitlines()
+                if body_lines and body_lines[0].startswith("# "):
+                    first_h1 = body_lines[0][2:].strip()
+                    if first_h1 == title_meta:
+                        body = "\n".join(body_lines[1:]).lstrip()
             html = markdown_to_html(body)
             html = relativize_internal_links(html)
+            # Word count from the markdown body (before HTML conversion) is
+            # a reasonable proxy. Strip markdown link/image markup so URLs
+            # don't inflate the count. Estimated reading time uses 200 wpm.
+            stripped = re.sub(r"!\[[^\]]*\]\([^)]+\)", "", body)
+            stripped = re.sub(r"\[([^\]]+)\]\([^)]+\)", r"\1", stripped)
+            stripped = re.sub(r"[`*_#>~|\-]+", " ", stripped)
+            words = [w for w in stripped.split() if w and not w.startswith("http")]
+            word_count = len(words)
+            reading_minutes = max(1, round(word_count / 200))
             out[category].append({
                 "slug": f.stem,
                 "category": category,
@@ -220,6 +240,8 @@ def build_content(out_dir: Path) -> dict:
                 "contributor": meta.get("contributor", ""),
                 "date": meta.get("date", ""),
                 "summary": meta.get("summary", ""),
+                "word_count": word_count,
+                "reading_minutes": reading_minutes,
                 "body_html": html,
             })
 

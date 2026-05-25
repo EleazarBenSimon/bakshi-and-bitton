@@ -604,3 +604,645 @@ html[lang="he"] .curve { direction: ltr; }
     color: #555;
   }
 }
+
+/* ════════════════════════════════════════════════════════════════════
+   READING SECTION — content layer (essays / explainers / patterns)
+   Designed for non-technical readers. Heavy use of progressive
+   disclosure, scroll-triggered animation, sticky TOC, and category-
+   coded visual hierarchy. All vanilla CSS — no framework.
+   ════════════════════════════════════════════════════════════════════ */
+
+:root {
+  --c-essays:    #2a4a7f;
+  --c-essays-soft: #e8eef7;
+  --c-explainers:    #c47d27;
+  --c-explainers-soft: #fbf2e4;
+  --c-patterns:  #4a7a4a;
+  --c-patterns-soft: #e8f0e8;
+  --c-quick-answer-bg: #fdf7e8;
+  --c-quick-answer-border: #c8a64c;
+}
+
+/* ─── Reading index hero ──────────────────────────────────────────── */
+
+.reading-page { padding-top: 8px; }
+
+.reading-hero {
+  margin: 8px 0 28px;
+}
+.reading-hero-title {
+  font-size: 36px;
+  font-weight: 700;
+  margin: 0 0 12px;
+  letter-spacing: -0.5px;
+}
+.reading-hero-intro {
+  font-size: 16px;
+  line-height: 1.65;
+  color: var(--text-muted);
+  max-width: 760px;
+  margin: 0;
+}
+
+/* ─── Category-filter pills ──────────────────────────────────────── */
+
+.reading-filter {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 24px;
+}
+.reading-filter-label {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-inline-end: 6px;
+}
+.reading-filter-pill {
+  font: inherit;
+  font-size: 13.5px;
+  font-weight: 500;
+  padding: 7px 14px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  cursor: pointer;
+  color: var(--text);
+  transition: all 0.15s ease;
+}
+.reading-filter-pill:hover {
+  background: var(--accent-soft);
+  border-color: var(--accent);
+}
+.reading-filter-pill.active {
+  background: var(--accent);
+  color: white;
+  border-color: var(--accent);
+}
+.reading-filter-pill--essays.active { background: var(--c-essays); border-color: var(--c-essays); }
+.reading-filter-pill--explainers.active { background: var(--c-explainers); border-color: var(--c-explainers); }
+.reading-filter-pill--patterns.active { background: var(--c-patterns); border-color: var(--c-patterns); }
+
+/* ─── Reading card grid ──────────────────────────────────────────── */
+
+.reading-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+  gap: 18px;
+  margin: 0;
+}
+
+.reading-card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 22px 22px 18px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  text-decoration: none;
+  color: var(--text);
+  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+  position: relative;
+  overflow: hidden;
+}
+/* Subtle top-border accent strip per category */
+.reading-card::before {
+  content: "";
+  position: absolute;
+  top: 0; inset-inline-start: 0;
+  width: 100%; height: 3px;
+  background: var(--accent);
+  opacity: 0.85;
+  transition: opacity 0.18s ease;
+}
+.reading-card--essays::before     { background: var(--c-essays); }
+.reading-card--explainers::before { background: var(--c-explainers); }
+.reading-card--patterns::before   { background: var(--c-patterns); }
+
+.reading-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+  border-color: var(--accent);
+}
+.reading-card:hover::before {
+  opacity: 1;
+  height: 4px;
+}
+
+.card-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  align-self: flex-start;
+  padding: 4px 10px 4px 8px;
+  border-radius: 14px;
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+.card-badge--essays     { background: var(--c-essays-soft);     color: var(--c-essays); }
+.card-badge--explainers { background: var(--c-explainers-soft); color: var(--c-explainers); }
+.card-badge--patterns   { background: var(--c-patterns-soft);   color: var(--c-patterns); }
+
+.card-icon-svg {
+  width: 14px; height: 14px;
+}
+
+.card-title {
+  font-size: 17.5px;
+  font-weight: 600;
+  line-height: 1.4;
+  margin: 0;
+  color: var(--text);
+  letter-spacing: -0.1px;
+}
+
+.card-summary {
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--text-muted);
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.card-meta {
+  margin-top: auto;
+  padding-top: 6px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  font-size: 12.5px;
+  color: var(--text-muted);
+}
+.card-meta-time {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+.card-meta-icon {
+  width: 13px; height: 13px;
+}
+.card-meta-sep {
+  color: #bbb;
+  margin: 0 2px;
+}
+
+.reading-empty {
+  text-align: center;
+  color: var(--text-muted);
+  padding: 40px 0;
+  font-size: 15px;
+}
+
+/* Card fade-in animation (set by JS via IntersectionObserver) */
+.will-animate {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.will-animate.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ─── Reading-progress bar (sticky top, content.html) ────────────── */
+
+.reading-progress {
+  position: sticky;
+  top: 0;
+  height: 3px;
+  background: transparent;
+  z-index: 50;
+  margin-top: -1px;
+}
+.reading-progress-fill {
+  height: 100%;
+  width: 0;
+  background: linear-gradient(90deg, var(--accent) 0%, #b03a3a 100%);
+  transition: width 0.06s linear;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+html[dir="rtl"] .reading-progress-fill,
+html[lang="he"] .reading-progress-fill {
+  margin-inline-end: auto;
+  margin-inline-start: 0;
+}
+
+/* ─── Content article two-column layout ──────────────────────────── */
+
+.content-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 230px;
+  gap: 32px;
+  align-items: start;
+  margin-top: 12px;
+}
+
+.content-layout > .content-article {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 36px 42px 32px;
+  max-width: none;
+  min-width: 0;
+}
+
+@media (max-width: 980px) {
+  .content-layout { grid-template-columns: 1fr; }
+  .content-layout > .content-article { padding: 24px 22px; }
+}
+
+/* ─── Article header: badge + title + quick-answer + meta ────────── */
+
+.article-badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 14px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  margin-bottom: 12px;
+}
+.article-badge--essays     { background: var(--c-essays-soft);     color: var(--c-essays); }
+.article-badge--explainers { background: var(--c-explainers-soft); color: var(--c-explainers); }
+.article-badge--patterns   { background: var(--c-patterns-soft);   color: var(--c-patterns); }
+
+.article-title {
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 1.25;
+  margin: 0 0 14px;
+  letter-spacing: -0.3px;
+  color: var(--text);
+}
+
+.quick-answer {
+  background: var(--c-quick-answer-bg);
+  border-inline-start: 4px solid var(--c-quick-answer-border);
+  border-radius: 6px;
+  padding: 14px 18px;
+  margin: 14px 0 18px;
+}
+.quick-answer-label {
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  color: #8a6d24;
+  margin-bottom: 6px;
+}
+.quick-answer-body {
+  font-size: 15.5px;
+  line-height: 1.55;
+  margin: 0;
+  color: #2a2618;
+}
+
+.article-meta {
+  margin: 6px 0 28px;
+  font-size: 13.5px;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.meta-time {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+.meta-icon { width: 14px; height: 14px; }
+.meta-dot {
+  color: #ccc;
+  margin: 0 2px;
+}
+
+/* ─── Article body typography ────────────────────────────────────── */
+
+.content-article .article-body {
+  font-size: 17px;
+  line-height: 1.78;
+  color: #232323;
+}
+.content-article .article-body p {
+  margin: 14px 0;
+}
+.content-article .article-body h2 {
+  font-size: 22px;
+  font-weight: 700;
+  margin: 36px 0 14px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--border);
+  letter-spacing: -0.2px;
+  scroll-margin-top: 24px;
+}
+.content-article .article-body h3 {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 24px 0 10px;
+  scroll-margin-top: 24px;
+}
+.content-article .article-body blockquote {
+  background: var(--c-essays-soft);
+  border-inline-start: 4px solid var(--c-essays);
+  font-style: italic;
+  padding: 14px 20px;
+  margin: 20px 0;
+  border-radius: 6px;
+  color: #2a2a2a;
+  font-size: 15.5px;
+}
+.content-article .article-body ul,
+.content-article .article-body ol {
+  padding-inline-start: 28px;
+}
+.content-article .article-body li { margin: 6px 0; }
+.content-article .article-body a {
+  color: var(--accent);
+  text-decoration: none;
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 100% 1px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  padding-bottom: 1px;
+  transition: opacity 0.15s;
+}
+.content-article .article-body a:hover { opacity: 0.7; }
+.content-article .article-body hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 40px auto;
+  width: 50%;
+}
+
+/* Scroll-triggered fade for body elements */
+.will-fade {
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+.will-fade.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ─── Sticky TOC sidebar ─────────────────────────────────────────── */
+
+.toc-sidebar {
+  position: sticky;
+  top: 24px;
+  align-self: start;
+  font-size: 13.5px;
+  padding: 14px 0;
+  max-height: calc(100vh - 60px);
+  overflow-y: auto;
+}
+.toc-title {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+  padding-inline-start: 8px;
+}
+.toc-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border-inline-start: 1px solid var(--border);
+}
+.toc-item {
+  margin: 0;
+}
+.toc-link {
+  display: block;
+  padding: 6px 10px;
+  color: var(--text-muted);
+  text-decoration: none;
+  border-inline-start: 2px solid transparent;
+  margin-inline-start: -1px;
+  font-size: 13.5px;
+  line-height: 1.4;
+  transition: color 0.15s, border-color 0.15s, background 0.15s;
+}
+.toc-link:hover {
+  color: var(--accent);
+}
+.toc-link.active {
+  color: var(--accent);
+  font-weight: 600;
+  border-inline-start-color: var(--accent);
+  background: var(--accent-soft);
+}
+.toc-item--h3 .toc-link {
+  font-size: 12.5px;
+  padding-inline-start: 22px;
+  color: #888;
+}
+
+.toc-mobile-toggle {
+  display: none;
+  font: inherit;
+  font-size: 13.5px;
+  font-weight: 600;
+  background: var(--accent-soft);
+  color: var(--accent);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 8px 14px;
+  margin-bottom: 18px;
+  cursor: pointer;
+  width: 100%;
+  text-align: start;
+}
+.toc-mobile-toggle.active { background: var(--accent); color: white; }
+
+@media (max-width: 980px) {
+  .toc-sidebar {
+    position: static;
+    max-height: 0;
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+    transition: max-height 0.3s ease;
+  }
+  .toc-sidebar--open {
+    max-height: 50vh;
+    overflow-y: auto;
+    padding: 14px 0 18px;
+    margin-bottom: 12px;
+  }
+  .toc-mobile-toggle { display: block; }
+}
+
+/* ─── Share + Print bar (end of article) ─────────────────────────── */
+
+.share-bar {
+  margin-top: 36px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+.share-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-muted);
+  margin-inline-end: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+.share-btn {
+  font: inherit;
+  font-size: 13px;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 14px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  color: var(--text);
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+.share-btn:hover {
+  background: var(--accent-soft);
+  border-color: var(--accent);
+  color: var(--accent);
+}
+.share-btn.copied {
+  background: #d4e3d4;
+  border-color: var(--outcome-upheld);
+  color: var(--outcome-upheld);
+}
+.share-icon { width: 15px; height: 15px; }
+
+/* ─── "Read next" related-pieces section ─────────────────────────── */
+
+.read-next {
+  margin: 44px 0 12px;
+}
+.read-next-title {
+  font-size: 19px;
+  font-weight: 700;
+  margin: 0 0 16px;
+  letter-spacing: -0.1px;
+}
+.read-next-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 14px;
+}
+.read-next-card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 18px 18px 14px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  text-decoration: none;
+  color: var(--text);
+  transition: transform 0.18s, border-color 0.18s, box-shadow 0.18s;
+}
+.read-next-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent);
+  box-shadow: 0 4px 14px rgba(0,0,0,0.06);
+}
+.read-next-card-title {
+  font-size: 15.5px;
+  font-weight: 600;
+  margin: 0;
+  line-height: 1.4;
+  color: var(--text);
+}
+.read-next-card-meta {
+  margin: 0;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+/* ─── Floating back-to-top button ────────────────────────────────── */
+
+.back-to-top {
+  position: fixed;
+  bottom: 24px;
+  inset-inline-end: 24px;
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: white;
+  border: none;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transform: translateY(20px);
+  pointer-events: none;
+  transition: opacity 0.25s, transform 0.25s, background 0.15s;
+  z-index: 40;
+}
+.back-to-top.visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+.back-to-top:hover { background: #1f3a66; }
+
+/* ─── Hebrew typography tweaks ───────────────────────────────────── */
+
+html[lang="he"] body {
+  font-family: "Open Sans Hebrew", "Arial Hebrew", "David", -apple-system,
+               BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+}
+html[lang="he"] .content-article .article-body {
+  font-size: 17px;
+  line-height: 1.8;
+}
+
+/* ─── Mobile refinements ─────────────────────────────────────────── */
+
+@media (max-width: 600px) {
+  .reading-hero-title { font-size: 28px; }
+  .article-title { font-size: 24px; }
+  .content-article .article-body { font-size: 16px; line-height: 1.75; }
+  .quick-answer-body { font-size: 15px; }
+  .reading-grid { grid-template-columns: 1fr; gap: 14px; }
+  .reading-card { padding: 18px 18px 14px; }
+  .card-title { font-size: 16.5px; }
+  .read-next-grid { grid-template-columns: 1fr; }
+  .back-to-top { bottom: 16px; inset-inline-end: 16px; width: 40px; height: 40px; }
+  .share-bar { gap: 6px; }
+  .share-btn { padding: 6px 11px; font-size: 12.5px; }
+}
+
+/* ─── Print: hide chrome and decorative bits ─────────────────────── */
+
+@media print {
+  .reading-progress, .back-to-top, .share-bar, .read-next,
+  .toc-sidebar, .toc-mobile-toggle, .reading-filter,
+  .article-badge { display: none !important; }
+  .content-layout { grid-template-columns: 1fr; }
+  .will-fade, .will-animate { opacity: 1 !important; transform: none !important; }
+}
