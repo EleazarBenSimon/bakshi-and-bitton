@@ -855,6 +855,109 @@
     "notes": "Doctrinal anchor case. Establishes the tripartite test (abuse of constituent power, generality, compatibility with the constitutional fabric) subsequently invoked in HCJ 5658/23 (reasonableness amendment, January 2024) and HCJ 5119/23 (incapacitation amendment, January 2024). Disposition is a 'warning of voidness' (התראת בטלות) — not a strike — the Court declined to void the amendments but signaled future similar amendments would be void under the abuse-of-constituent-power test. Vote: 6-3, uniform across doctrine and disposition. Majority: Hayut (lead), Hendel, Amit, Barak-Erez, Baron, Karra. Dissent: Sohlberg, Mintz, Elron. Internal divergence within the 6-justice majority (Hayut's analytical framework for identifying abuse-of-constituent-power vs. Barak-Erez's framework) did not produce a separate vote tally. The petitioner is recorded as 'Party' to reflect Shafir's status as a former Knesset Member; consolidated petitions included NGO co-petitioners. An earlier draft of this record encoded the panel and vote incorrectly (7-2 with Melcer, Vogelman, Willner listed) per a research brief that omitted Justice Elron's dissent and confused the panel composition with an unrelated sibling-era ruling; corrected against arnontl.com legal-firm analysis, afiklaw.com docket header, and Verfassungsblog summary."
   },
   {
+    "case_id": "בג\"ץ 1308/17",
+    "case_id_slug": "1308-17-silwad-settlements",
+    "case_name_he": "מועצה מקומית סילוואד ואח' נ' הכנסת ואח'",
+    "case_name_en": "Silwad Municipality et al. v. The Knesset et al.",
+    "ruling_date": "2020-06-09",
+    "filing_date": null,
+    "panel": [
+      {
+        "name_he": "אסתר חיות",
+        "name_en": "Esther Hayut",
+        "role": "President",
+        "slug": "hayut"
+      },
+      {
+        "name_he": "נעם סולברג",
+        "name_en": "Noam Sohlberg",
+        "role": "Justice",
+        "slug": "sohlberg"
+      },
+      {
+        "name_he": "לא אומת",
+        "name_en": "Justice (unverified)",
+        "role": "Justice",
+        "slug": "unverified-3"
+      },
+      {
+        "name_he": "לא אומת",
+        "name_en": "Justice (unverified)",
+        "role": "Justice",
+        "slug": "unverified-4"
+      },
+      {
+        "name_he": "לא אומת",
+        "name_en": "Justice (unverified)",
+        "role": "Justice",
+        "slug": "unverified-5"
+      },
+      {
+        "name_he": "לא אומת",
+        "name_en": "Justice (unverified)",
+        "role": "Justice",
+        "slug": "unverified-6"
+      },
+      {
+        "name_he": "לא אומת",
+        "name_en": "Justice (unverified)",
+        "role": "Justice",
+        "slug": "unverified-7"
+      },
+      {
+        "name_he": "לא אומת",
+        "name_en": "Justice (unverified)",
+        "role": "Justice",
+        "slug": "unverified-8"
+      },
+      {
+        "name_he": "לא אומת",
+        "name_en": "Justice (unverified)",
+        "role": "Justice",
+        "slug": "unverified-9"
+      }
+    ],
+    "petitioner_type": "Local-Authority",
+    "petitioner_name_he": "מועצה מקומית סילוואד ואח' (עתירות מאוחדות, ובכללן עתירות של ארגוני זכויות אדם)",
+    "petitioner_name_en": "Silwad Municipality and others (consolidated petitions, including human-rights organizations)",
+    "respondent": "Knesset",
+    "respondent_decision_he": "חוק להסדרת ההתיישבות ביהודה ושומרון, התשע\"ז-2017 ('חוק ההסדרה'), שאפשר הפקעה רטרואקטיבית של קרקעות פלסטיניות פרטיות לטובת הסדרת התיישבות ישראלית שהוקמה עליהן",
+    "respondent_decision_en": "The Regularization of Settlement in Judea and Samaria Law, 5777-2017 ('Settlements Regularization Law'), which permitted retroactive expropriation of privately-owned Palestinian land to regularize Israeli settlement constructed on it",
+    "doctrine_invoked": [
+      "basic_law_human_dignity_and_liberty",
+      "proportionality",
+      "constitutional_supremacy"
+    ],
+    "outcome": "struck_down",
+    "vote_majority": 8,
+    "vote_minority": 1,
+    "majority_authors": [
+      "hayut"
+    ],
+    "minority_authors": [
+      "sohlberg"
+    ],
+    "official_url": "https://www.adalah.org/en/content/view/10035",
+    "secondary_urls": [
+      "https://www.loc.gov/item/global-legal-monitor/2020-07-14/israel-supreme-court-voids-law-legalizing-settlements-built-on-unauthorized-and-privately-owned-land-in-west-bank/",
+      "https://www.iconnectblog.com/silwad-municipality-v-the-knesset-the-invalidation-of-the-settlement-regularization-law-and-its-aftermath/"
+    ],
+    "summary_he": "בית המשפט העליון בהרכב של תשעה שופטים פסל ברוב של 8-1 את חוק ההסדרה, אשר אפשר הפקעה רטרואקטיבית של קרקעות פלסטיניות פרטיות לצורך הסדרת התיישבות ישראלית. חוות הדעת המובילה נכתבה על-ידי הנשיאה חיות, וקבעה כי החוק פוגע באופן בלתי-מידתי בזכות לקניין ובכבוד האדם של בעלי הקרקעות. השופט סולברג חלק במיעוט.",
+    "summary_en": "The Supreme Court, sitting as a nine-justice panel, struck down the Settlements Regularization Law by an 8-1 vote. The lead opinion, authored by President Hayut, held that the law disproportionately violated the property rights and dignity of Palestinian landowners whose private land was retroactively expropriated to legalize Israeli settlement built on it. Justice Sohlberg dissented.",
+    "predicate_ag_opinion": "Attorney General refused to defend the statute; Knesset legal counsel argued on its behalf",
+    "respondent_body": null,
+    "compliance_state": "complied",
+    "defiance_signals": null,
+    "tags": [
+      "settlements",
+      "property-rights",
+      "ag-non-defense",
+      "basic-law-strike",
+      "headliner"
+    ],
+    "notes": "Settlements Regularization Law strike. Petitioners included the Silwad municipality (consolidated with petitions by Adalah and ACRI). Panel size of nine and vote of 8-1 verified across LoC, Adalah and I·CONnect summaries. Hayut (lead majority) and Sohlberg (sole dissent) verified; seven other panel seats marked 'unverified' placeholder pending checking against the printed judgment. Importantly: the Attorney General declined to defend the statute — Knesset legal counsel argued on its behalf, an unusual procedural posture that itself became a doctrinal anchor. Earlier identification of this case as HCJ 1877/14 was a data error; the correct lead docket is HCJ 1308/17 (Silwad Municipality)."
+  },
+  {
     "case_id": "בג\"ץ 1892/14",
     "case_id_slug": "1892-14-acri-prison-space",
     "case_name_he": "האגודה לזכויות האזרח בישראל ואח' נ' השר לביטחון פנים",
@@ -915,6 +1018,81 @@
       "mandatory-order"
     ],
     "notes": "Deputy President Rubinstein wrote the lead opinion. Frequently cited as a paradigmatic example of reasonableness review applied not to a discrete decision but to sustained administrative non-implementation of a regulation."
+  },
+  {
+    "case_id": "בג\"ץ 4374/15",
+    "case_id_slug": "4374-15-mqg-gas-framework",
+    "case_name_he": "התנועה למען איכות השלטון בישראל ואח' נ' ראש הממשלה ואח'",
+    "case_name_en": "Movement for Quality Government in Israel et al. v. The Prime Minister et al.",
+    "ruling_date": "2016-03-27",
+    "filing_date": null,
+    "panel": [
+      {
+        "name_he": "מרים נאור",
+        "name_en": "Miriam Naor",
+        "role": "President",
+        "slug": "naor"
+      },
+      {
+        "name_he": "לא אומת",
+        "name_en": "Justice (unverified)",
+        "role": "Justice",
+        "slug": "unverified-2"
+      },
+      {
+        "name_he": "לא אומת",
+        "name_en": "Justice (unverified)",
+        "role": "Justice",
+        "slug": "unverified-3"
+      },
+      {
+        "name_he": "לא אומת",
+        "name_en": "Justice (unverified)",
+        "role": "Justice",
+        "slug": "unverified-4"
+      },
+      {
+        "name_he": "לא אומת",
+        "name_en": "Justice (unverified)",
+        "role": "Justice",
+        "slug": "unverified-5"
+      }
+    ],
+    "petitioner_type": "NGO",
+    "petitioner_name_he": "התנועה למען איכות השלטון בישראל ואח' (עתירות מאוחדות)",
+    "petitioner_name_en": "Movement for Quality Government in Israel et al. (consolidated petitions)",
+    "respondent": "Prime Minister",
+    "respondent_decision_he": "החלטת ממשלה לאמץ את 'מתווה הגז' המסדיר את פיתוח שדות הגז הטבעי הימיים, ובכלל זה 'סעיף היציבות' שהבטיח לחברות המפעילות יציבות רגולטורית למשך עשור",
+    "respondent_decision_en": "Government decision to adopt the natural-gas framework regulating offshore gas-field development, including a 'stability clause' guaranteeing the operating companies regulatory stability for a decade",
+    "doctrine_invoked": [
+      "ultra_vires",
+      "separation_of_powers"
+    ],
+    "outcome": "partially_struck",
+    "vote_majority": null,
+    "vote_minority": null,
+    "majority_authors": [
+      "naor"
+    ],
+    "minority_authors": [],
+    "official_url": "https://link.springer.com/chapter/10.1007/978-3-030-56247-2_10",
+    "secondary_urls": [
+      "https://tlcp.law.uiowa.edu/sites/tlcp.law.uiowa.edu/files/2024-08/5._bendor.pdf"
+    ],
+    "summary_he": "בית המשפט העליון פסל את 'סעיף היציבות' במתווה הגז של הממשלה, אשר הבטיח לחברות המפעילות שדות גז ימיים יציבות רגולטורית למשך עשור. בית המשפט קבע כי הסעיף חורג מסמכות הממשלה לכבול את הריבון העתידי-החקיקתי בהתחייבות שאינה מעוגנת בחקיקה, ובפועל בוטל המתווה כולו. הנשיאה נאור כתבה את חוות הדעת המובילה.",
+    "summary_en": "The Supreme Court struck down the 'stability clause' in the government's natural-gas framework, which had guaranteed offshore-gas operators regulatory stability for a decade. The Court held that the clause exceeded the government's authority to bind the future legislative sovereign by a commitment not anchored in statute, effectively voiding the framework as a whole. President Naor authored the lead opinion.",
+    "predicate_ag_opinion": null,
+    "respondent_body": null,
+    "compliance_state": "complied",
+    "defiance_signals": null,
+    "tags": [
+      "gas-framework",
+      "executive-action",
+      "ultra-vires",
+      "doctrine-anchor",
+      "headliner"
+    ],
+    "notes": "Lead opinion by Naor and partial-strike outcome (stability clause voided, broader framework rendered inoperative) verified per Springer chapter and Bendor analysis (Iowa Transnational Law & Contemporary Problems). Panel size, exact vote tally and full panel composition require checking against printed judgment; four other panel seats marked 'unverified' placeholder. The case is doctrinally significant for the limit on executive ability to bind future legislatures by non-statutory framework commitments."
   },
   {
     "case_id": "בג\"ץ 3132/15",
@@ -993,6 +1171,105 @@
     "notes": "President Naor wrote the lead opinion. The ruling established that creative coalition arrangements which evade the formal structure of Basic Law: The Government can be struck down on reasonableness grounds even where each individual appointment is formally lawful."
   },
   {
+    "case_id": "בג\"ץ 8665/14",
+    "case_id_slug": "8665-14-desta-holot",
+    "case_name_he": "דסטה ואח' נ' הכנסת ואח'",
+    "case_name_en": "Desta et al. v. The Knesset et al.",
+    "ruling_date": "2015-08-11",
+    "filing_date": null,
+    "panel": [
+      {
+        "name_he": "מרים נאור",
+        "name_en": "Miriam Naor",
+        "role": "President",
+        "slug": "naor"
+      },
+      {
+        "name_he": "לא אומת",
+        "name_en": "Justice (unverified)",
+        "role": "Justice",
+        "slug": "unverified-2"
+      },
+      {
+        "name_he": "לא אומת",
+        "name_en": "Justice (unverified)",
+        "role": "Justice",
+        "slug": "unverified-3"
+      },
+      {
+        "name_he": "לא אומת",
+        "name_en": "Justice (unverified)",
+        "role": "Justice",
+        "slug": "unverified-4"
+      },
+      {
+        "name_he": "לא אומת",
+        "name_en": "Justice (unverified)",
+        "role": "Justice",
+        "slug": "unverified-5"
+      },
+      {
+        "name_he": "לא אומת",
+        "name_en": "Justice (unverified)",
+        "role": "Justice",
+        "slug": "unverified-6"
+      },
+      {
+        "name_he": "לא אומת",
+        "name_en": "Justice (unverified)",
+        "role": "Justice",
+        "slug": "unverified-7"
+      },
+      {
+        "name_he": "לא אומת",
+        "name_en": "Justice (unverified)",
+        "role": "Justice",
+        "slug": "unverified-8"
+      },
+      {
+        "name_he": "לא אומת",
+        "name_en": "Justice (unverified)",
+        "role": "Justice",
+        "slug": "unverified-9"
+      }
+    ],
+    "petitioner_type": "Individual",
+    "petitioner_name_he": "דסטה ואח' (מבקשי מקלט המוחזקים במתקן 'חולות', יחד עם ארגוני זכויות אדם)",
+    "petitioner_name_en": "Desta et al. (asylum seekers held at Holot Residence Center, together with human-rights organizations)",
+    "respondent": "Knesset",
+    "respondent_decision_he": "תיקון מס' 5 לחוק למניעת הסתננות, אשר הסדיר שהייה במתקן 'חולות' לתקופה של עד 20 חודשים ללא צורך בהליך שיפוטי קונקרטי",
+    "respondent_decision_en": "Amendment No. 5 to the Prevention of Infiltration Law, which regulated residence at the Holot Center for up to 20 months without a concrete judicial proceeding",
+    "doctrine_invoked": [
+      "basic_law_human_dignity_and_liberty",
+      "proportionality"
+    ],
+    "outcome": "partially_struck",
+    "vote_majority": null,
+    "vote_minority": null,
+    "majority_authors": [
+      "naor"
+    ],
+    "minority_authors": [],
+    "official_url": "https://versa.cardozo.yu.edu/opinions/desta-v-knesset",
+    "secondary_urls": [
+      "http://hotline.org.il/wp-content/uploads/2013/12/Decision-11-August-2015-Summary-ENG.pdf"
+    ],
+    "summary_he": "בית המשפט העליון בהרכב של תשעה שופטים, בראשות הנשיאה נאור, ביטל חלקית את תיקון מס' 5 לחוק למניעת הסתננות. בית המשפט קבע כי תקופת השהייה במתקן 'חולות' של עד 20 חודשים אינה מידתית, וצמצם אותה ל-12 חודשים. הוורתה הוצאה לשחרור עצורים החורגים מהתקופה החדשה תוך 15 ימים. הכנסת חויבה לתקן את החוק בהתאם.",
+    "summary_en": "The Supreme Court, sitting as a nine-justice panel led by President Naor, partially struck down Amendment No. 5 to the Prevention of Infiltration Law. The Court held that the 20-month residence cap at the Holot Center was disproportionate and shortened it to 12 months. Detainees beyond the new cap were ordered released within 15 days, and the Knesset was required to amend the law accordingly.",
+    "predicate_ag_opinion": null,
+    "respondent_body": null,
+    "compliance_state": "complied",
+    "defiance_signals": null,
+    "tags": [
+      "asylum-seekers",
+      "holot",
+      "anti-infiltration",
+      "basic-law-strike",
+      "headliner"
+    ],
+    "notes": "Third in the Anti-Infiltration litigation sequence (Adam 2013 → Eitan 2014 → Desta 2015). Naor (presiding) verified per Hotline summary and Versa/Cardozo. Exact vote tally and full panel composition require checking against the printed judgment; eight panel seats marked 'unverified' placeholder. The 12-month cap was further challenged in subsequent litigation."
+  },
+  {
     "case_id": "עע\"ם 662/11",
     "case_id_slug": "662-11-sela-kfar-vradim-mikveh",
     "case_name_he": "סלע ואח' נ' ראש המועצה המקומית כפר ורדים סיון יחיאלי",
@@ -1051,6 +1328,403 @@
       "borderline-scope"
     ],
     "notes": "Justice Vogelman wrote the lead opinion. Borderline-scope entry: this is a local-authority decision rather than a ministerial or cabinet decision. Included because it is uniformly cited in the IDI/INSS/Cohen-Eliya literature as part of the reasonableness-review corpus and because Israeli local government, like national government, is elected. Heard as an administrative appeal (עע\"ם) by the Supreme Court."
+  },
+  {
+    "case_id": "בג\"ץ 7146/12",
+    "case_id_slug": "7146-12-adam-infiltration",
+    "case_name_he": "אדם ואח' נ' הכנסת ואח'",
+    "case_name_en": "Adam et al. v. The Knesset et al.",
+    "ruling_date": "2013-09-16",
+    "filing_date": null,
+    "panel": [
+      {
+        "name_he": "אשר גרוניס",
+        "name_en": "Asher Grunis",
+        "role": "President",
+        "slug": "grunis"
+      },
+      {
+        "name_he": "מרים נאור",
+        "name_en": "Miriam Naor",
+        "role": "Deputy President",
+        "slug": "naor"
+      },
+      {
+        "name_he": "לא אומת",
+        "name_en": "Justice (unverified)",
+        "role": "Justice",
+        "slug": "unverified-3"
+      },
+      {
+        "name_he": "לא אומת",
+        "name_en": "Justice (unverified)",
+        "role": "Justice",
+        "slug": "unverified-4"
+      },
+      {
+        "name_he": "לא אומת",
+        "name_en": "Justice (unverified)",
+        "role": "Justice",
+        "slug": "unverified-5"
+      },
+      {
+        "name_he": "לא אומת",
+        "name_en": "Justice (unverified)",
+        "role": "Justice",
+        "slug": "unverified-6"
+      },
+      {
+        "name_he": "לא אומת",
+        "name_en": "Justice (unverified)",
+        "role": "Justice",
+        "slug": "unverified-7"
+      },
+      {
+        "name_he": "לא אומת",
+        "name_en": "Justice (unverified)",
+        "role": "Justice",
+        "slug": "unverified-8"
+      },
+      {
+        "name_he": "לא אומת",
+        "name_en": "Justice (unverified)",
+        "role": "Justice",
+        "slug": "unverified-9"
+      }
+    ],
+    "petitioner_type": "Individual",
+    "petitioner_name_he": "אדם ואח' (מבקשי מקלט, יחד עם ארגוני זכויות אדם)",
+    "petitioner_name_en": "Adam et al. (asylum seekers, together with human-rights organizations)",
+    "respondent": "Knesset",
+    "respondent_decision_he": "תיקון מס' 3 לחוק למניעת הסתננות, אשר אפשר החזקה במשמורת של מסתננים לתקופה של עד שלוש שנים ללא הליך משפטי קונקרטי",
+    "respondent_decision_en": "Amendment No. 3 to the Prevention of Infiltration Law, which authorized detention of infiltrators for up to three years without a concrete judicial proceeding",
+    "doctrine_invoked": [
+      "basic_law_human_dignity_and_liberty",
+      "proportionality"
+    ],
+    "outcome": "struck_down",
+    "vote_majority": 9,
+    "vote_minority": 0,
+    "majority_authors": [],
+    "minority_authors": [],
+    "official_url": "https://versa.cardozo.yu.edu/opinions/adam-v-knesset-summary",
+    "secondary_urls": [
+      "https://www.refworld.org/jurisprudence/caselaw/isrsc/2013/he/54092"
+    ],
+    "summary_he": "בית המשפט העליון בהרכב של תשעה שופטים פסל פה אחד את תיקון מס' 3 לחוק למניעת הסתננות, אשר אפשר החזקה במשמורת של מבקשי מקלט עד שלוש שנים ללא הליך שיפוטי קונקרטי. בית המשפט קבע כי המעצר הממושך מהווה פגיעה בלתי-מידתית בזכות לחירות ולכבוד על-פי חוק-יסוד: כבוד האדם וחירותו, וחייב את שחרור המוחזקים בתוך 90 ימים.",
+    "summary_en": "The Supreme Court, sitting as a nine-justice panel, unanimously struck down Amendment No. 3 to the Prevention of Infiltration Law, which had authorized the detention of asylum seekers for up to three years without a concrete judicial proceeding. The Court held that prolonged detention was a disproportionate violation of the rights to liberty and dignity under Basic Law: Human Dignity and Liberty, and ordered release of detainees within 90 days.",
+    "predicate_ag_opinion": null,
+    "respondent_body": null,
+    "compliance_state": "complied",
+    "defiance_signals": "Knesset re-legislated a modified detention scheme (Amendment 4) shortly afterwards, itself the subject of further HCJ challenges culminating in HCJ 8425/13 Eitan (2014)",
+    "tags": [
+      "asylum-seekers",
+      "detention",
+      "anti-infiltration",
+      "basic-law-strike",
+      "headliner"
+    ],
+    "notes": "Nine-justice panel, unanimous outcome verified per Versa/Cardozo. Lead opinion attribution and individual majority/dissent author tallies require checking against printed judgment — currently no author slugs in majority_authors. Grunis (then-President) and Naor (then-Deputy President) named on panel per public records of the period; seven other seats marked 'unverified' placeholder. The Knesset re-legislated a modified scheme within months, beginning a litigation sequence (Eitan 2014, Desta 2015) on successive amendments."
+  },
+  {
+    "case_id": "בג\"ץ 6298/07",
+    "case_id_slug": "6298-07-ressler",
+    "case_name_he": "יהודה רסלר ואח' נ' הכנסת",
+    "case_name_en": "Yehuda Ressler et al. v. The Knesset",
+    "ruling_date": "2012-02-21",
+    "filing_date": null,
+    "panel": [
+      {
+        "name_he": "דורית ביניש",
+        "name_en": "Dorit Beinisch",
+        "role": "President",
+        "slug": "beinisch"
+      },
+      {
+        "name_he": "אשר גרוניס",
+        "name_en": "Asher Grunis",
+        "role": "Deputy President",
+        "slug": "grunis"
+      },
+      {
+        "name_he": "מרים נאור",
+        "name_en": "Miriam Naor",
+        "role": "Justice",
+        "slug": "naor"
+      },
+      {
+        "name_he": "אדמונד לוי",
+        "name_en": "Edmond Levy",
+        "role": "Justice",
+        "slug": "levy"
+      },
+      {
+        "name_he": "לא אומת",
+        "name_en": "Justice (unverified)",
+        "role": "Justice",
+        "slug": "unverified-5"
+      },
+      {
+        "name_he": "לא אומת",
+        "name_en": "Justice (unverified)",
+        "role": "Justice",
+        "slug": "unverified-6"
+      },
+      {
+        "name_he": "לא אומת",
+        "name_en": "Justice (unverified)",
+        "role": "Justice",
+        "slug": "unverified-7"
+      },
+      {
+        "name_he": "לא אומת",
+        "name_en": "Justice (unverified)",
+        "role": "Justice",
+        "slug": "unverified-8"
+      },
+      {
+        "name_he": "לא אומת",
+        "name_en": "Justice (unverified)",
+        "role": "Justice",
+        "slug": "unverified-9"
+      }
+    ],
+    "petitioner_type": "Individual",
+    "petitioner_name_he": "יהודה רסלר ואח' (עתירות מאוחדות)",
+    "petitioner_name_en": "Yehuda Ressler et al. (consolidated petitions)",
+    "respondent": "Knesset",
+    "respondent_decision_he": "חוק דחיית שירות לתלמידי ישיבות שתורתם אומנותם, התשס\"ב-2002 ('חוק טל'), המסדיר את דחיית שירות החובה של תלמידי ישיבות חרדים",
+    "respondent_decision_en": "The Deferment of Service for Yeshiva Students Whose Vocation Is Torah Study Law, 5762-2002 ('Tal Law'), which regulated the deferment of compulsory military service for Haredi yeshiva students",
+    "doctrine_invoked": [
+      "basic_law_human_dignity_and_liberty",
+      "proportionality",
+      "constitutional_supremacy"
+    ],
+    "outcome": "struck_down",
+    "vote_majority": 6,
+    "vote_minority": 3,
+    "majority_authors": [
+      "beinisch"
+    ],
+    "minority_authors": [
+      "grunis"
+    ],
+    "official_url": "https://versa.cardozo.yu.edu/opinions/ressler-v-knesset",
+    "secondary_urls": [
+      "https://en.idi.org.il/articles/9858"
+    ],
+    "summary_he": "בית המשפט העליון בהרכב של תשעה שופטים פסל ברוב של 6-3 את חוק טל בקובעו כי הוא מהווה הפרה בלתי-מידתית של עיקרון השוויון על-פי חוק-יסוד: כבוד האדם וחירותו. חוות הדעת המובילה נכתבה על-ידי הנשיאה ביניש; המשנה לנשיא גרוניס חלק במיעוט. זוהי הביטול הראשון של חוק מרכזי של הכנסת בתחום מדיניות חברתית.",
+    "summary_en": "The Supreme Court, sitting as a nine-justice panel, struck down the Tal Law by a 6-3 vote, holding that it was a disproportionate violation of the equality principle under Basic Law: Human Dignity and Liberty. President Beinisch authored the lead majority opinion; Deputy President Grunis dissented. This was the first Supreme Court annulment of a major Knesset social-policy statute.",
+    "predicate_ag_opinion": null,
+    "respondent_body": null,
+    "compliance_state": "complied",
+    "defiance_signals": null,
+    "tags": [
+      "tal-law",
+      "haredi-conscription",
+      "basic-law-strike",
+      "doctrine-anchor",
+      "headliner"
+    ],
+    "notes": "Panel composition: nine justices total per Versa/Cardozo. Lead majority author (Beinisch) and lead dissent (Grunis) verified; four other panel members (Naor, Levy) named in secondary sources; remaining five seats are placeholder 'unverified' pending checking against the printed judgment. Vote 6-3 verified across IDI summary and Versa. The Knesset subsequently re-legislated multiple replacement frameworks (2014 amendment, 2017 framework), most of which were also subjected to further HCJ challenges (compliance state recorded as 'complied' refers to the immediate post-2012 cessation of the struck statute)."
+  },
+  {
+    "case_id": "בג\"ץ 2605/05",
+    "case_id_slug": "2605-05-academic-center-prison",
+    "case_name_he": "המרכז האקדמי למשפט ולעסקים ואח' נ' שר האוצר ואח'",
+    "case_name_en": "Academic Center of Law and Business et al. v. Minister of Finance et al.",
+    "ruling_date": "2009-11-19",
+    "filing_date": null,
+    "panel": [
+      {
+        "name_he": "דורית ביניש",
+        "name_en": "Dorit Beinisch",
+        "role": "President",
+        "slug": "beinisch"
+      },
+      {
+        "name_he": "לא אומת",
+        "name_en": "Justice (unverified)",
+        "role": "Justice",
+        "slug": "unverified-2"
+      },
+      {
+        "name_he": "לא אומת",
+        "name_en": "Justice (unverified)",
+        "role": "Justice",
+        "slug": "unverified-3"
+      },
+      {
+        "name_he": "לא אומת",
+        "name_en": "Justice (unverified)",
+        "role": "Justice",
+        "slug": "unverified-4"
+      },
+      {
+        "name_he": "לא אומת",
+        "name_en": "Justice (unverified)",
+        "role": "Justice",
+        "slug": "unverified-5"
+      },
+      {
+        "name_he": "לא אומת",
+        "name_en": "Justice (unverified)",
+        "role": "Justice",
+        "slug": "unverified-6"
+      },
+      {
+        "name_he": "לא אומת",
+        "name_en": "Justice (unverified)",
+        "role": "Justice",
+        "slug": "unverified-7"
+      },
+      {
+        "name_he": "לא אומת",
+        "name_en": "Justice (unverified)",
+        "role": "Justice",
+        "slug": "unverified-8"
+      },
+      {
+        "name_he": "לא אומת",
+        "name_en": "Justice (unverified)",
+        "role": "Justice",
+        "slug": "unverified-9"
+      }
+    ],
+    "petitioner_type": "NGO",
+    "petitioner_name_he": "המרכז האקדמי למשפט ולעסקים ואח'",
+    "petitioner_name_en": "Academic Center of Law and Business et al.",
+    "respondent": "Knesset",
+    "respondent_decision_he": "תיקון מס' 28 לפקודת בתי הסוהר, אשר אפשר הקמת בית סוהר פרטי המופעל על-ידי תאגיד מסחרי",
+    "respondent_decision_en": "Amendment No. 28 to the Prisons Ordinance, which authorized the establishment of a privately-operated prison run by a commercial corporation",
+    "doctrine_invoked": [
+      "basic_law_human_dignity_and_liberty",
+      "proportionality"
+    ],
+    "outcome": "struck_down",
+    "vote_majority": null,
+    "vote_minority": null,
+    "majority_authors": [
+      "beinisch"
+    ],
+    "minority_authors": [],
+    "official_url": "https://versa.cardozo.yu.edu/opinions/academic-center-law-and-business-v-minister-finance",
+    "secondary_urls": [
+      "https://www.loc.gov/item/global-legal-monitor/2009-11-27/israel-unconstitutionality-of-privatization-of-prisons/"
+    ],
+    "summary_he": "בית המשפט העליון פסל את תיקון מס' 28 לפקודת בתי הסוהר, אשר אפשר הקמת בית סוהר פרטי. חוות הדעת המובילה, שכתבה הנשיאה ביניש, קבעה כי הפרטת תפקיד שלטוני-ליבה של השליטה הכפויה על אסירים מהווה הפרה של זכות הכבוד והחירות לפי חוק-יסוד: כבוד האדם וחירותו. זוהי פסיקה ראשונה הקובעת מגבלה חוקתית על הפרטת תפקידי ליבה ריבוניים.",
+    "summary_en": "The Supreme Court struck down Amendment No. 28 to the Prisons Ordinance, which had authorized a privately-operated prison. The lead opinion, by President Beinisch, held that privatizing the core sovereign function of coercive control over prisoners violated the rights to dignity and liberty under Basic Law: Human Dignity and Liberty. This was the first ruling articulating a constitutional limit on the privatization of core sovereign functions.",
+    "predicate_ag_opinion": null,
+    "respondent_body": null,
+    "compliance_state": "complied",
+    "defiance_signals": null,
+    "tags": [
+      "privatization",
+      "sovereign-function",
+      "basic-law-strike",
+      "doctrine-anchor",
+      "headliner"
+    ],
+    "notes": "Lead opinion (Beinisch) and outcome (struck) verified per Versa/Cardozo and LoC summaries. Full panel composition and exact vote tally require checking against printed judgment; eight panel seats currently marked 'unverified' placeholder. The opinion was on a nine-justice expanded panel. Privatization-of-core-sovereign-function reasoning has been cited in later petitions (e.g. against private detention facilities for asylum seekers and against various outsourcing arrangements)."
+  },
+  {
+    "case_id": "בג\"ץ 8276/05",
+    "case_id_slug": "8276-05-adalah-civil-wrongs",
+    "case_name_he": "עדאלה — המרכז המשפטי לזכויות המיעוט הערבי בישראל ואח' נ' שר הביטחון",
+    "case_name_en": "Adalah — The Legal Center for Arab Minority Rights in Israel et al. v. Minister of Defense",
+    "ruling_date": "2006-12-12",
+    "filing_date": null,
+    "panel": [
+      {
+        "name_he": "אהרן ברק",
+        "name_en": "Aharon Barak",
+        "role": "President",
+        "slug": "barak"
+      },
+      {
+        "name_he": "לא אומת",
+        "name_en": "Justice (unverified)",
+        "role": "Justice",
+        "slug": "unverified-2"
+      },
+      {
+        "name_he": "לא אומת",
+        "name_en": "Justice (unverified)",
+        "role": "Justice",
+        "slug": "unverified-3"
+      },
+      {
+        "name_he": "לא אומת",
+        "name_en": "Justice (unverified)",
+        "role": "Justice",
+        "slug": "unverified-4"
+      },
+      {
+        "name_he": "לא אומת",
+        "name_en": "Justice (unverified)",
+        "role": "Justice",
+        "slug": "unverified-5"
+      },
+      {
+        "name_he": "לא אומת",
+        "name_en": "Justice (unverified)",
+        "role": "Justice",
+        "slug": "unverified-6"
+      },
+      {
+        "name_he": "לא אומת",
+        "name_en": "Justice (unverified)",
+        "role": "Justice",
+        "slug": "unverified-7"
+      },
+      {
+        "name_he": "לא אומת",
+        "name_en": "Justice (unverified)",
+        "role": "Justice",
+        "slug": "unverified-8"
+      },
+      {
+        "name_he": "לא אומת",
+        "name_en": "Justice (unverified)",
+        "role": "Justice",
+        "slug": "unverified-9"
+      }
+    ],
+    "petitioner_type": "NGO",
+    "petitioner_name_he": "עדאלה — המרכז המשפטי לזכויות המיעוט הערבי בישראל ואח'",
+    "petitioner_name_en": "Adalah — The Legal Center for Arab Minority Rights in Israel et al.",
+    "respondent": "Knesset",
+    "respondent_decision_he": "תיקון מס' 7 לחוק הנזיקים האזרחיים (אחריות המדינה), אשר פטר את המדינה מאחריות לנזקים שנגרמו ב'אזור עימות' בשטחים",
+    "respondent_decision_en": "Amendment No. 7 to the Civil Wrongs (Liability of the State) Law, which exempted the state from liability for damage caused in 'conflict zones' in the Territories",
+    "doctrine_invoked": [
+      "basic_law_human_dignity_and_liberty",
+      "proportionality"
+    ],
+    "outcome": "struck_down",
+    "vote_majority": 9,
+    "vote_minority": 0,
+    "majority_authors": [
+      "barak"
+    ],
+    "minority_authors": [],
+    "official_url": "https://versa.cardozo.yu.edu/opinions/adalah-legal-center-arab-minority-rights-israel-v-minister-defense",
+    "secondary_urls": [
+      "https://ihl-databases.icrc.org/en/national-practice/high-court-adalah-et-al-v-minister-interior-et-al-hcj-705203-supreme-court-14-may"
+    ],
+    "summary_he": "בית המשפט העליון בהרכב של תשעה שופטים, בראשות הנשיא ברק, פסל פה אחד את תיקון מס' 7 לחוק הנזיקים האזרחיים (אחריות המדינה), אשר פטר את המדינה מאחריות לנזקים אזרחיים שנגרמו ב'אזור עימות'. בית המשפט קבע כי הפטור הסיטוני פוגע באופן בלתי-מידתי בזכויות לחיים, לכבוד ולקניין של נפגעים אזרחיים על-פי חוק-יסוד: כבוד האדם וחירותו.",
+    "summary_en": "The Supreme Court, sitting as a nine-justice panel led by President Barak, unanimously struck down Amendment No. 7 to the Civil Wrongs (Liability of the State) Law, which had exempted the state from liability for civil damage caused in 'conflict zones'. The Court held that the blanket exemption disproportionately violated the rights to life, dignity, and property of civilian victims under Basic Law: Human Dignity and Liberty.",
+    "predicate_ag_opinion": null,
+    "respondent_body": null,
+    "compliance_state": "complied",
+    "defiance_signals": null,
+    "tags": [
+      "civil-wrongs",
+      "state-immunity",
+      "barak-court",
+      "basic-law-strike",
+      "headliner"
+    ],
+    "notes": "Nine-justice panel, unanimous outcome verified per Versa/Cardozo and ICRC casebook. Lead opinion by Barak verified; eight other panel seats marked 'unverified' placeholder pending checking against printed judgment. One of the last major Knesset-statute strikes during the Barak presidency (Barak retired September 2006; this judgment issued shortly thereafter under his authorship on a case argued before retirement)."
   },
   {
     "case_id": "ע\"א 6821/93",

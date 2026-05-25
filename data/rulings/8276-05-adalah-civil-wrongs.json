@@ -1,0 +1,52 @@
+{
+  "case_id": "בג\"ץ 8276/05",
+  "case_id_slug": "8276-05-adalah-civil-wrongs",
+  "case_name_he": "עדאלה — המרכז המשפטי לזכויות המיעוט הערבי בישראל ואח' נ' שר הביטחון",
+  "case_name_en": "Adalah — The Legal Center for Arab Minority Rights in Israel et al. v. Minister of Defense",
+  "ruling_date": "2006-12-12",
+  "filing_date": null,
+  "panel": [
+    { "name_he": "אהרן ברק", "name_en": "Aharon Barak", "role": "President", "slug": "barak" },
+    { "name_he": "לא אומת", "name_en": "Justice (unverified)", "role": "Justice", "slug": "unverified-2" },
+    { "name_he": "לא אומת", "name_en": "Justice (unverified)", "role": "Justice", "slug": "unverified-3" },
+    { "name_he": "לא אומת", "name_en": "Justice (unverified)", "role": "Justice", "slug": "unverified-4" },
+    { "name_he": "לא אומת", "name_en": "Justice (unverified)", "role": "Justice", "slug": "unverified-5" },
+    { "name_he": "לא אומת", "name_en": "Justice (unverified)", "role": "Justice", "slug": "unverified-6" },
+    { "name_he": "לא אומת", "name_en": "Justice (unverified)", "role": "Justice", "slug": "unverified-7" },
+    { "name_he": "לא אומת", "name_en": "Justice (unverified)", "role": "Justice", "slug": "unverified-8" },
+    { "name_he": "לא אומת", "name_en": "Justice (unverified)", "role": "Justice", "slug": "unverified-9" }
+  ],
+  "petitioner_type": "NGO",
+  "petitioner_name_he": "עדאלה — המרכז המשפטי לזכויות המיעוט הערבי בישראל ואח'",
+  "petitioner_name_en": "Adalah — The Legal Center for Arab Minority Rights in Israel et al.",
+  "respondent": "Knesset",
+  "respondent_decision_he": "תיקון מס' 7 לחוק הנזיקים האזרחיים (אחריות המדינה), אשר פטר את המדינה מאחריות לנזקים שנגרמו ב'אזור עימות' בשטחים",
+  "respondent_decision_en": "Amendment No. 7 to the Civil Wrongs (Liability of the State) Law, which exempted the state from liability for damage caused in 'conflict zones' in the Territories",
+  "doctrine_invoked": [
+    "basic_law_human_dignity_and_liberty",
+    "proportionality"
+  ],
+  "outcome": "struck_down",
+  "vote_majority": 9,
+  "vote_minority": 0,
+  "majority_authors": ["barak"],
+  "minority_authors": [],
+  "official_url": "https://versa.cardozo.yu.edu/opinions/adalah-legal-center-arab-minority-rights-israel-v-minister-defense",
+  "secondary_urls": [
+    "https://ihl-databases.icrc.org/en/national-practice/high-court-adalah-et-al-v-minister-interior-et-al-hcj-705203-supreme-court-14-may"
+  ],
+  "summary_he": "בית המשפט העליון בהרכב של תשעה שופטים, בראשות הנשיא ברק, פסל פה אחד את תיקון מס' 7 לחוק הנזיקים האזרחיים (אחריות המדינה), אשר פטר את המדינה מאחריות לנזקים אזרחיים שנגרמו ב'אזור עימות'. בית המשפט קבע כי הפטור הסיטוני פוגע באופן בלתי-מידתי בזכויות לחיים, לכבוד ולקניין של נפגעים אזרחיים על-פי חוק-יסוד: כבוד האדם וחירותו.",
+  "summary_en": "The Supreme Court, sitting as a nine-justice panel led by President Barak, unanimously struck down Amendment No. 7 to the Civil Wrongs (Liability of the State) Law, which had exempted the state from liability for civil damage caused in 'conflict zones'. The Court held that the blanket exemption disproportionately violated the rights to life, dignity, and property of civilian victims under Basic Law: Human Dignity and Liberty.",
+  "predicate_ag_opinion": null,
+  "respondent_body": null,
+  "compliance_state": "complied",
+  "defiance_signals": null,
+  "tags": [
+    "civil-wrongs",
+    "state-immunity",
+    "barak-court",
+    "basic-law-strike",
+    "headliner"
+  ],
+  "notes": "Nine-justice panel, unanimous outcome verified per Versa/Cardozo and ICRC casebook. Lead opinion by Barak verified; eight other panel seats marked 'unverified' placeholder pending checking against printed judgment. One of the last major Knesset-statute strikes during the Barak presidency (Barak retired September 2006; this judgment issued shortly thereafter under his authorship on a case argued before retirement)."
+}

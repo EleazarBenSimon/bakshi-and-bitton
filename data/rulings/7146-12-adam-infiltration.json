@@ -1,0 +1,52 @@
+{
+  "case_id": "בג\"ץ 7146/12",
+  "case_id_slug": "7146-12-adam-infiltration",
+  "case_name_he": "אדם ואח' נ' הכנסת ואח'",
+  "case_name_en": "Adam et al. v. The Knesset et al.",
+  "ruling_date": "2013-09-16",
+  "filing_date": null,
+  "panel": [
+    { "name_he": "אשר גרוניס", "name_en": "Asher Grunis", "role": "President", "slug": "grunis" },
+    { "name_he": "מרים נאור", "name_en": "Miriam Naor", "role": "Deputy President", "slug": "naor" },
+    { "name_he": "לא אומת", "name_en": "Justice (unverified)", "role": "Justice", "slug": "unverified-3" },
+    { "name_he": "לא אומת", "name_en": "Justice (unverified)", "role": "Justice", "slug": "unverified-4" },
+    { "name_he": "לא אומת", "name_en": "Justice (unverified)", "role": "Justice", "slug": "unverified-5" },
+    { "name_he": "לא אומת", "name_en": "Justice (unverified)", "role": "Justice", "slug": "unverified-6" },
+    { "name_he": "לא אומת", "name_en": "Justice (unverified)", "role": "Justice", "slug": "unverified-7" },
+    { "name_he": "לא אומת", "name_en": "Justice (unverified)", "role": "Justice", "slug": "unverified-8" },
+    { "name_he": "לא אומת", "name_en": "Justice (unverified)", "role": "Justice", "slug": "unverified-9" }
+  ],
+  "petitioner_type": "Individual",
+  "petitioner_name_he": "אדם ואח' (מבקשי מקלט, יחד עם ארגוני זכויות אדם)",
+  "petitioner_name_en": "Adam et al. (asylum seekers, together with human-rights organizations)",
+  "respondent": "Knesset",
+  "respondent_decision_he": "תיקון מס' 3 לחוק למניעת הסתננות, אשר אפשר החזקה במשמורת של מסתננים לתקופה של עד שלוש שנים ללא הליך משפטי קונקרטי",
+  "respondent_decision_en": "Amendment No. 3 to the Prevention of Infiltration Law, which authorized detention of infiltrators for up to three years without a concrete judicial proceeding",
+  "doctrine_invoked": [
+    "basic_law_human_dignity_and_liberty",
+    "proportionality"
+  ],
+  "outcome": "struck_down",
+  "vote_majority": 9,
+  "vote_minority": 0,
+  "majority_authors": [],
+  "minority_authors": [],
+  "official_url": "https://versa.cardozo.yu.edu/opinions/adam-v-knesset-summary",
+  "secondary_urls": [
+    "https://www.refworld.org/jurisprudence/caselaw/isrsc/2013/he/54092"
+  ],
+  "summary_he": "בית המשפט העליון בהרכב של תשעה שופטים פסל פה אחד את תיקון מס' 3 לחוק למניעת הסתננות, אשר אפשר החזקה במשמורת של מבקשי מקלט עד שלוש שנים ללא הליך שיפוטי קונקרטי. בית המשפט קבע כי המעצר הממושך מהווה פגיעה בלתי-מידתית בזכות לחירות ולכבוד על-פי חוק-יסוד: כבוד האדם וחירותו, וחייב את שחרור המוחזקים בתוך 90 ימים.",
+  "summary_en": "The Supreme Court, sitting as a nine-justice panel, unanimously struck down Amendment No. 3 to the Prevention of Infiltration Law, which had authorized the detention of asylum seekers for up to three years without a concrete judicial proceeding. The Court held that prolonged detention was a disproportionate violation of the rights to liberty and dignity under Basic Law: Human Dignity and Liberty, and ordered release of detainees within 90 days.",
+  "predicate_ag_opinion": null,
+  "respondent_body": null,
+  "compliance_state": "complied",
+  "defiance_signals": "Knesset re-legislated a modified detention scheme (Amendment 4) shortly afterwards, itself the subject of further HCJ challenges culminating in HCJ 8425/13 Eitan (2014)",
+  "tags": [
+    "asylum-seekers",
+    "detention",
+    "anti-infiltration",
+    "basic-law-strike",
+    "headliner"
+  ],
+  "notes": "Nine-justice panel, unanimous outcome verified per Versa/Cardozo. Lead opinion attribution and individual majority/dissent author tallies require checking against printed judgment — currently no author slugs in majority_authors. Grunis (then-President) and Naor (then-Deputy President) named on panel per public records of the period; seven other seats marked 'unverified' placeholder. The Knesset re-legislated a modified scheme within months, beginning a litigation sequence (Eitan 2014, Desta 2015) on successive amendments."
+}

@@ -1,0 +1,54 @@
+{
+  "case_id": "בג\"ץ 1308/17",
+  "case_id_slug": "1308-17-silwad-settlements",
+  "case_name_he": "מועצה מקומית סילוואד ואח' נ' הכנסת ואח'",
+  "case_name_en": "Silwad Municipality et al. v. The Knesset et al.",
+  "ruling_date": "2020-06-09",
+  "filing_date": null,
+  "panel": [
+    { "name_he": "אסתר חיות", "name_en": "Esther Hayut", "role": "President", "slug": "hayut" },
+    { "name_he": "נעם סולברג", "name_en": "Noam Sohlberg", "role": "Justice", "slug": "sohlberg" },
+    { "name_he": "לא אומת", "name_en": "Justice (unverified)", "role": "Justice", "slug": "unverified-3" },
+    { "name_he": "לא אומת", "name_en": "Justice (unverified)", "role": "Justice", "slug": "unverified-4" },
+    { "name_he": "לא אומת", "name_en": "Justice (unverified)", "role": "Justice", "slug": "unverified-5" },
+    { "name_he": "לא אומת", "name_en": "Justice (unverified)", "role": "Justice", "slug": "unverified-6" },
+    { "name_he": "לא אומת", "name_en": "Justice (unverified)", "role": "Justice", "slug": "unverified-7" },
+    { "name_he": "לא אומת", "name_en": "Justice (unverified)", "role": "Justice", "slug": "unverified-8" },
+    { "name_he": "לא אומת", "name_en": "Justice (unverified)", "role": "Justice", "slug": "unverified-9" }
+  ],
+  "petitioner_type": "Local-Authority",
+  "petitioner_name_he": "מועצה מקומית סילוואד ואח' (עתירות מאוחדות, ובכללן עתירות של ארגוני זכויות אדם)",
+  "petitioner_name_en": "Silwad Municipality and others (consolidated petitions, including human-rights organizations)",
+  "respondent": "Knesset",
+  "respondent_decision_he": "חוק להסדרת ההתיישבות ביהודה ושומרון, התשע\"ז-2017 ('חוק ההסדרה'), שאפשר הפקעה רטרואקטיבית של קרקעות פלסטיניות פרטיות לטובת הסדרת התיישבות ישראלית שהוקמה עליהן",
+  "respondent_decision_en": "The Regularization of Settlement in Judea and Samaria Law, 5777-2017 ('Settlements Regularization Law'), which permitted retroactive expropriation of privately-owned Palestinian land to regularize Israeli settlement constructed on it",
+  "doctrine_invoked": [
+    "basic_law_human_dignity_and_liberty",
+    "proportionality",
+    "constitutional_supremacy"
+  ],
+  "outcome": "struck_down",
+  "vote_majority": 8,
+  "vote_minority": 1,
+  "majority_authors": ["hayut"],
+  "minority_authors": ["sohlberg"],
+  "official_url": "https://www.adalah.org/en/content/view/10035",
+  "secondary_urls": [
+    "https://www.loc.gov/item/global-legal-monitor/2020-07-14/israel-supreme-court-voids-law-legalizing-settlements-built-on-unauthorized-and-privately-owned-land-in-west-bank/",
+    "https://www.iconnectblog.com/silwad-municipality-v-the-knesset-the-invalidation-of-the-settlement-regularization-law-and-its-aftermath/"
+  ],
+  "summary_he": "בית המשפט העליון בהרכב של תשעה שופטים פסל ברוב של 8-1 את חוק ההסדרה, אשר אפשר הפקעה רטרואקטיבית של קרקעות פלסטיניות פרטיות לצורך הסדרת התיישבות ישראלית. חוות הדעת המובילה נכתבה על-ידי הנשיאה חיות, וקבעה כי החוק פוגע באופן בלתי-מידתי בזכות לקניין ובכבוד האדם של בעלי הקרקעות. השופט סולברג חלק במיעוט.",
+  "summary_en": "The Supreme Court, sitting as a nine-justice panel, struck down the Settlements Regularization Law by an 8-1 vote. The lead opinion, authored by President Hayut, held that the law disproportionately violated the property rights and dignity of Palestinian landowners whose private land was retroactively expropriated to legalize Israeli settlement built on it. Justice Sohlberg dissented.",
+  "predicate_ag_opinion": "Attorney General refused to defend the statute; Knesset legal counsel argued on its behalf",
+  "respondent_body": null,
+  "compliance_state": "complied",
+  "defiance_signals": null,
+  "tags": [
+    "settlements",
+    "property-rights",
+    "ag-non-defense",
+    "basic-law-strike",
+    "headliner"
+  ],
+  "notes": "Settlements Regularization Law strike. Petitioners included the Silwad municipality (consolidated with petitions by Adalah and ACRI). Panel size of nine and vote of 8-1 verified across LoC, Adalah and I·CONnect summaries. Hayut (lead majority) and Sohlberg (sole dissent) verified; seven other panel seats marked 'unverified' placeholder pending checking against the printed judgment. Importantly: the Attorney General declined to defend the statute — Knesset legal counsel argued on its behalf, an unusual procedural posture that itself became a doctrinal anchor. Earlier identification of this case as HCJ 1877/14 was a data error; the correct lead docket is HCJ 1308/17 (Silwad Municipality)."
+}

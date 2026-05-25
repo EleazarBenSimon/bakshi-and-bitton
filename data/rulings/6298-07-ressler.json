@@ -1,0 +1,53 @@
+{
+  "case_id": "בג\"ץ 6298/07",
+  "case_id_slug": "6298-07-ressler",
+  "case_name_he": "יהודה רסלר ואח' נ' הכנסת",
+  "case_name_en": "Yehuda Ressler et al. v. The Knesset",
+  "ruling_date": "2012-02-21",
+  "filing_date": null,
+  "panel": [
+    { "name_he": "דורית ביניש", "name_en": "Dorit Beinisch", "role": "President", "slug": "beinisch" },
+    { "name_he": "אשר גרוניס", "name_en": "Asher Grunis", "role": "Deputy President", "slug": "grunis" },
+    { "name_he": "מרים נאור", "name_en": "Miriam Naor", "role": "Justice", "slug": "naor" },
+    { "name_he": "אדמונד לוי", "name_en": "Edmond Levy", "role": "Justice", "slug": "levy" },
+    { "name_he": "לא אומת", "name_en": "Justice (unverified)", "role": "Justice", "slug": "unverified-5" },
+    { "name_he": "לא אומת", "name_en": "Justice (unverified)", "role": "Justice", "slug": "unverified-6" },
+    { "name_he": "לא אומת", "name_en": "Justice (unverified)", "role": "Justice", "slug": "unverified-7" },
+    { "name_he": "לא אומת", "name_en": "Justice (unverified)", "role": "Justice", "slug": "unverified-8" },
+    { "name_he": "לא אומת", "name_en": "Justice (unverified)", "role": "Justice", "slug": "unverified-9" }
+  ],
+  "petitioner_type": "Individual",
+  "petitioner_name_he": "יהודה רסלר ואח' (עתירות מאוחדות)",
+  "petitioner_name_en": "Yehuda Ressler et al. (consolidated petitions)",
+  "respondent": "Knesset",
+  "respondent_decision_he": "חוק דחיית שירות לתלמידי ישיבות שתורתם אומנותם, התשס\"ב-2002 ('חוק טל'), המסדיר את דחיית שירות החובה של תלמידי ישיבות חרדים",
+  "respondent_decision_en": "The Deferment of Service for Yeshiva Students Whose Vocation Is Torah Study Law, 5762-2002 ('Tal Law'), which regulated the deferment of compulsory military service for Haredi yeshiva students",
+  "doctrine_invoked": [
+    "basic_law_human_dignity_and_liberty",
+    "proportionality",
+    "constitutional_supremacy"
+  ],
+  "outcome": "struck_down",
+  "vote_majority": 6,
+  "vote_minority": 3,
+  "majority_authors": ["beinisch"],
+  "minority_authors": ["grunis"],
+  "official_url": "https://versa.cardozo.yu.edu/opinions/ressler-v-knesset",
+  "secondary_urls": [
+    "https://en.idi.org.il/articles/9858"
+  ],
+  "summary_he": "בית המשפט העליון בהרכב של תשעה שופטים פסל ברוב של 6-3 את חוק טל בקובעו כי הוא מהווה הפרה בלתי-מידתית של עיקרון השוויון על-פי חוק-יסוד: כבוד האדם וחירותו. חוות הדעת המובילה נכתבה על-ידי הנשיאה ביניש; המשנה לנשיא גרוניס חלק במיעוט. זוהי הביטול הראשון של חוק מרכזי של הכנסת בתחום מדיניות חברתית.",
+  "summary_en": "The Supreme Court, sitting as a nine-justice panel, struck down the Tal Law by a 6-3 vote, holding that it was a disproportionate violation of the equality principle under Basic Law: Human Dignity and Liberty. President Beinisch authored the lead majority opinion; Deputy President Grunis dissented. This was the first Supreme Court annulment of a major Knesset social-policy statute.",
+  "predicate_ag_opinion": null,
+  "respondent_body": null,
+  "compliance_state": "complied",
+  "defiance_signals": null,
+  "tags": [
+    "tal-law",
+    "haredi-conscription",
+    "basic-law-strike",
+    "doctrine-anchor",
+    "headliner"
+  ],
+  "notes": "Panel composition: nine justices total per Versa/Cardozo. Lead majority author (Beinisch) and lead dissent (Grunis) verified; four other panel members (Naor, Levy) named in secondary sources; remaining five seats are placeholder 'unverified' pending checking against the printed judgment. Vote 6-3 verified across IDI summary and Versa. The Knesset subsequently re-legislated multiple replacement frameworks (2014 amendment, 2017 framework), most of which were also subjected to further HCJ challenges (compliance state recorded as 'complied' refers to the immediate post-2012 cessation of the struck statute)."
+}

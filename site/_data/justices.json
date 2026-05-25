@@ -73,6 +73,79 @@
     "minority_authored": 0
   },
   {
+    "slug": "sohlberg",
+    "name_he": "נעם סולברג",
+    "name_en": "Noam Sohlberg",
+    "appearances": [
+      {
+        "case_id_slug": "427-10-25-zini",
+        "case_id": "בג\"ץ 427/10/25 ובג\"ץ 453/10/25 (מאוחדות)",
+        "ruling_date": "2025-12-28",
+        "role": "Deputy President",
+        "outcome": "dismissed",
+        "authored_majority": true,
+        "authored_minority": false
+      },
+      {
+        "case_id_slug": "18225-06-25-baharav-miara",
+        "case_id": "בג\"ץ 18225-06-25",
+        "ruling_date": "2025-12-14",
+        "role": "Deputy President",
+        "outcome": "struck_down",
+        "authored_majority": false,
+        "authored_minority": false
+      },
+      {
+        "case_id_slug": "5119-23-incapacitation",
+        "case_id": "בג\"ץ 5119/23",
+        "ruling_date": "2024-01-03",
+        "role": "Justice",
+        "outcome": "partially_struck",
+        "authored_majority": false,
+        "authored_minority": true
+      },
+      {
+        "case_id_slug": "5658-23",
+        "case_id": "בג\"ץ 5658/23",
+        "ruling_date": "2024-01-01",
+        "role": "Justice",
+        "outcome": "struck_down",
+        "authored_majority": false,
+        "authored_minority": true
+      },
+      {
+        "case_id_slug": "8948-22-deri",
+        "case_id": "בג\"ץ 8948/22",
+        "ruling_date": "2023-01-18",
+        "role": "Justice",
+        "outcome": "struck_down",
+        "authored_majority": false,
+        "authored_minority": false
+      },
+      {
+        "case_id_slug": "5969-20-shafir",
+        "case_id": "בג\"ץ 5969/20",
+        "ruling_date": "2021-05-23",
+        "role": "Justice",
+        "outcome": "warning_of_voidness",
+        "authored_majority": false,
+        "authored_minority": true
+      },
+      {
+        "case_id_slug": "1308-17-silwad-settlements",
+        "case_id": "בג\"ץ 1308/17",
+        "ruling_date": "2020-06-09",
+        "role": "Justice",
+        "outcome": "struck_down",
+        "authored_majority": false,
+        "authored_minority": true
+      }
+    ],
+    "panel_count": 7,
+    "majority_authored": 1,
+    "minority_authored": 4
+  },
+  {
     "slug": "stein",
     "name_he": "אלכס שטיין",
     "name_en": "Alex Stein",
@@ -146,6 +219,152 @@
     "minority_authored": 2
   },
   {
+    "slug": "unverified-3",
+    "name_he": "לא אומת",
+    "name_en": "Justice (unverified)",
+    "appearances": [
+      {
+        "case_id_slug": "1308-17-silwad-settlements",
+        "case_id": "בג\"ץ 1308/17",
+        "ruling_date": "2020-06-09",
+        "role": "Justice",
+        "outcome": "struck_down",
+        "authored_majority": false,
+        "authored_minority": false
+      },
+      {
+        "case_id_slug": "4374-15-mqg-gas-framework",
+        "case_id": "בג\"ץ 4374/15",
+        "ruling_date": "2016-03-27",
+        "role": "Justice",
+        "outcome": "partially_struck",
+        "authored_majority": false,
+        "authored_minority": false
+      },
+      {
+        "case_id_slug": "8665-14-desta-holot",
+        "case_id": "בג\"ץ 8665/14",
+        "ruling_date": "2015-08-11",
+        "role": "Justice",
+        "outcome": "partially_struck",
+        "authored_majority": false,
+        "authored_minority": false
+      },
+      {
+        "case_id_slug": "7146-12-adam-infiltration",
+        "case_id": "בג\"ץ 7146/12",
+        "ruling_date": "2013-09-16",
+        "role": "Justice",
+        "outcome": "struck_down",
+        "authored_majority": false,
+        "authored_minority": false
+      },
+      {
+        "case_id_slug": "2605-05-academic-center-prison",
+        "case_id": "בג\"ץ 2605/05",
+        "ruling_date": "2009-11-19",
+        "role": "Justice",
+        "outcome": "struck_down",
+        "authored_majority": false,
+        "authored_minority": false
+      },
+      {
+        "case_id_slug": "8276-05-adalah-civil-wrongs",
+        "case_id": "בג\"ץ 8276/05",
+        "ruling_date": "2006-12-12",
+        "role": "Justice",
+        "outcome": "struck_down",
+        "authored_majority": false,
+        "authored_minority": false
+      },
+      {
+        "case_id_slug": "156-75-dakka",
+        "case_id": "בג\"ץ 156/75",
+        "ruling_date": "1976-01-01",
+        "role": "Justice",
+        "outcome": "declarative",
+        "authored_majority": false,
+        "authored_minority": false
+      }
+    ],
+    "panel_count": 7,
+    "majority_authored": 0,
+    "minority_authored": 0
+  },
+  {
+    "slug": "unverified-5",
+    "name_he": "לא אומת",
+    "name_en": "Justice (unverified)",
+    "appearances": [
+      {
+        "case_id_slug": "1308-17-silwad-settlements",
+        "case_id": "בג\"ץ 1308/17",
+        "ruling_date": "2020-06-09",
+        "role": "Justice",
+        "outcome": "struck_down",
+        "authored_majority": false,
+        "authored_minority": false
+      },
+      {
+        "case_id_slug": "4374-15-mqg-gas-framework",
+        "case_id": "בג\"ץ 4374/15",
+        "ruling_date": "2016-03-27",
+        "role": "Justice",
+        "outcome": "partially_struck",
+        "authored_majority": false,
+        "authored_minority": false
+      },
+      {
+        "case_id_slug": "8665-14-desta-holot",
+        "case_id": "בג\"ץ 8665/14",
+        "ruling_date": "2015-08-11",
+        "role": "Justice",
+        "outcome": "partially_struck",
+        "authored_majority": false,
+        "authored_minority": false
+      },
+      {
+        "case_id_slug": "7146-12-adam-infiltration",
+        "case_id": "בג\"ץ 7146/12",
+        "ruling_date": "2013-09-16",
+        "role": "Justice",
+        "outcome": "struck_down",
+        "authored_majority": false,
+        "authored_minority": false
+      },
+      {
+        "case_id_slug": "6298-07-ressler",
+        "case_id": "בג\"ץ 6298/07",
+        "ruling_date": "2012-02-21",
+        "role": "Justice",
+        "outcome": "struck_down",
+        "authored_majority": false,
+        "authored_minority": false
+      },
+      {
+        "case_id_slug": "2605-05-academic-center-prison",
+        "case_id": "בג\"ץ 2605/05",
+        "ruling_date": "2009-11-19",
+        "role": "Justice",
+        "outcome": "struck_down",
+        "authored_majority": false,
+        "authored_minority": false
+      },
+      {
+        "case_id_slug": "8276-05-adalah-civil-wrongs",
+        "case_id": "בג\"ץ 8276/05",
+        "ruling_date": "2006-12-12",
+        "role": "Justice",
+        "outcome": "struck_down",
+        "authored_majority": false,
+        "authored_minority": false
+      }
+    ],
+    "panel_count": 7,
+    "majority_authored": 0,
+    "minority_authored": 0
+  },
+  {
     "slug": "amit",
     "name_he": "יצחק עמית",
     "name_en": "Yitzhak Amit",
@@ -210,68 +429,388 @@
     "minority_authored": 1
   },
   {
-    "slug": "sohlberg",
-    "name_he": "נעם סולברג",
-    "name_en": "Noam Sohlberg",
+    "slug": "hayut",
+    "name_he": "אסתר חיות",
+    "name_en": "Esther Hayut",
     "appearances": [
-      {
-        "case_id_slug": "427-10-25-zini",
-        "case_id": "בג\"ץ 427/10/25 ובג\"ץ 453/10/25 (מאוחדות)",
-        "ruling_date": "2025-12-28",
-        "role": "Deputy President",
-        "outcome": "dismissed",
-        "authored_majority": true,
-        "authored_minority": false
-      },
-      {
-        "case_id_slug": "18225-06-25-baharav-miara",
-        "case_id": "בג\"ץ 18225-06-25",
-        "ruling_date": "2025-12-14",
-        "role": "Deputy President",
-        "outcome": "struck_down",
-        "authored_majority": false,
-        "authored_minority": false
-      },
       {
         "case_id_slug": "5119-23-incapacitation",
         "case_id": "בג\"ץ 5119/23",
         "ruling_date": "2024-01-03",
-        "role": "Justice",
+        "role": "Retired Justice",
         "outcome": "partially_struck",
-        "authored_majority": false,
-        "authored_minority": true
+        "authored_majority": true,
+        "authored_minority": false
       },
       {
         "case_id_slug": "5658-23",
         "case_id": "בג\"ץ 5658/23",
         "ruling_date": "2024-01-01",
-        "role": "Justice",
+        "role": "Retired Justice",
         "outcome": "struck_down",
-        "authored_majority": false,
-        "authored_minority": true
+        "authored_majority": true,
+        "authored_minority": false
       },
       {
         "case_id_slug": "8948-22-deri",
         "case_id": "בג\"ץ 8948/22",
         "ruling_date": "2023-01-18",
-        "role": "Justice",
+        "role": "President",
         "outcome": "struck_down",
-        "authored_majority": false,
+        "authored_majority": true,
         "authored_minority": false
       },
       {
         "case_id_slug": "5969-20-shafir",
         "case_id": "בג\"ץ 5969/20",
         "ruling_date": "2021-05-23",
-        "role": "Justice",
+        "role": "President",
         "outcome": "warning_of_voidness",
+        "authored_majority": true,
+        "authored_minority": false
+      },
+      {
+        "case_id_slug": "1308-17-silwad-settlements",
+        "case_id": "בג\"ץ 1308/17",
+        "ruling_date": "2020-06-09",
+        "role": "President",
+        "outcome": "struck_down",
+        "authored_majority": true,
+        "authored_minority": false
+      },
+      {
+        "case_id_slug": "662-11-sela-kfar-vradim-mikveh",
+        "case_id": "עע\"ם 662/11",
+        "ruling_date": "2014-09-09",
+        "role": "Justice",
+        "outcome": "struck_down",
         "authored_majority": false,
-        "authored_minority": true
+        "authored_minority": false
       }
     ],
     "panel_count": 6,
-    "majority_authored": 1,
-    "minority_authored": 3
+    "majority_authored": 5,
+    "minority_authored": 0
+  },
+  {
+    "slug": "unverified-4",
+    "name_he": "לא אומת",
+    "name_en": "Justice (unverified)",
+    "appearances": [
+      {
+        "case_id_slug": "1308-17-silwad-settlements",
+        "case_id": "בג\"ץ 1308/17",
+        "ruling_date": "2020-06-09",
+        "role": "Justice",
+        "outcome": "struck_down",
+        "authored_majority": false,
+        "authored_minority": false
+      },
+      {
+        "case_id_slug": "4374-15-mqg-gas-framework",
+        "case_id": "בג\"ץ 4374/15",
+        "ruling_date": "2016-03-27",
+        "role": "Justice",
+        "outcome": "partially_struck",
+        "authored_majority": false,
+        "authored_minority": false
+      },
+      {
+        "case_id_slug": "8665-14-desta-holot",
+        "case_id": "בג\"ץ 8665/14",
+        "ruling_date": "2015-08-11",
+        "role": "Justice",
+        "outcome": "partially_struck",
+        "authored_majority": false,
+        "authored_minority": false
+      },
+      {
+        "case_id_slug": "7146-12-adam-infiltration",
+        "case_id": "בג\"ץ 7146/12",
+        "ruling_date": "2013-09-16",
+        "role": "Justice",
+        "outcome": "struck_down",
+        "authored_majority": false,
+        "authored_minority": false
+      },
+      {
+        "case_id_slug": "2605-05-academic-center-prison",
+        "case_id": "בג\"ץ 2605/05",
+        "ruling_date": "2009-11-19",
+        "role": "Justice",
+        "outcome": "struck_down",
+        "authored_majority": false,
+        "authored_minority": false
+      },
+      {
+        "case_id_slug": "8276-05-adalah-civil-wrongs",
+        "case_id": "בג\"ץ 8276/05",
+        "ruling_date": "2006-12-12",
+        "role": "Justice",
+        "outcome": "struck_down",
+        "authored_majority": false,
+        "authored_minority": false
+      }
+    ],
+    "panel_count": 6,
+    "majority_authored": 0,
+    "minority_authored": 0
+  },
+  {
+    "slug": "unverified-6",
+    "name_he": "לא אומת",
+    "name_en": "Justice (unverified)",
+    "appearances": [
+      {
+        "case_id_slug": "1308-17-silwad-settlements",
+        "case_id": "בג\"ץ 1308/17",
+        "ruling_date": "2020-06-09",
+        "role": "Justice",
+        "outcome": "struck_down",
+        "authored_majority": false,
+        "authored_minority": false
+      },
+      {
+        "case_id_slug": "8665-14-desta-holot",
+        "case_id": "בג\"ץ 8665/14",
+        "ruling_date": "2015-08-11",
+        "role": "Justice",
+        "outcome": "partially_struck",
+        "authored_majority": false,
+        "authored_minority": false
+      },
+      {
+        "case_id_slug": "7146-12-adam-infiltration",
+        "case_id": "בג\"ץ 7146/12",
+        "ruling_date": "2013-09-16",
+        "role": "Justice",
+        "outcome": "struck_down",
+        "authored_majority": false,
+        "authored_minority": false
+      },
+      {
+        "case_id_slug": "6298-07-ressler",
+        "case_id": "בג\"ץ 6298/07",
+        "ruling_date": "2012-02-21",
+        "role": "Justice",
+        "outcome": "struck_down",
+        "authored_majority": false,
+        "authored_minority": false
+      },
+      {
+        "case_id_slug": "2605-05-academic-center-prison",
+        "case_id": "בג\"ץ 2605/05",
+        "ruling_date": "2009-11-19",
+        "role": "Justice",
+        "outcome": "struck_down",
+        "authored_majority": false,
+        "authored_minority": false
+      },
+      {
+        "case_id_slug": "8276-05-adalah-civil-wrongs",
+        "case_id": "בג\"ץ 8276/05",
+        "ruling_date": "2006-12-12",
+        "role": "Justice",
+        "outcome": "struck_down",
+        "authored_majority": false,
+        "authored_minority": false
+      }
+    ],
+    "panel_count": 6,
+    "majority_authored": 0,
+    "minority_authored": 0
+  },
+  {
+    "slug": "unverified-7",
+    "name_he": "לא אומת",
+    "name_en": "Justice (unverified)",
+    "appearances": [
+      {
+        "case_id_slug": "1308-17-silwad-settlements",
+        "case_id": "בג\"ץ 1308/17",
+        "ruling_date": "2020-06-09",
+        "role": "Justice",
+        "outcome": "struck_down",
+        "authored_majority": false,
+        "authored_minority": false
+      },
+      {
+        "case_id_slug": "8665-14-desta-holot",
+        "case_id": "בג\"ץ 8665/14",
+        "ruling_date": "2015-08-11",
+        "role": "Justice",
+        "outcome": "partially_struck",
+        "authored_majority": false,
+        "authored_minority": false
+      },
+      {
+        "case_id_slug": "7146-12-adam-infiltration",
+        "case_id": "בג\"ץ 7146/12",
+        "ruling_date": "2013-09-16",
+        "role": "Justice",
+        "outcome": "struck_down",
+        "authored_majority": false,
+        "authored_minority": false
+      },
+      {
+        "case_id_slug": "6298-07-ressler",
+        "case_id": "בג\"ץ 6298/07",
+        "ruling_date": "2012-02-21",
+        "role": "Justice",
+        "outcome": "struck_down",
+        "authored_majority": false,
+        "authored_minority": false
+      },
+      {
+        "case_id_slug": "2605-05-academic-center-prison",
+        "case_id": "בג\"ץ 2605/05",
+        "ruling_date": "2009-11-19",
+        "role": "Justice",
+        "outcome": "struck_down",
+        "authored_majority": false,
+        "authored_minority": false
+      },
+      {
+        "case_id_slug": "8276-05-adalah-civil-wrongs",
+        "case_id": "בג\"ץ 8276/05",
+        "ruling_date": "2006-12-12",
+        "role": "Justice",
+        "outcome": "struck_down",
+        "authored_majority": false,
+        "authored_minority": false
+      }
+    ],
+    "panel_count": 6,
+    "majority_authored": 0,
+    "minority_authored": 0
+  },
+  {
+    "slug": "unverified-8",
+    "name_he": "לא אומת",
+    "name_en": "Justice (unverified)",
+    "appearances": [
+      {
+        "case_id_slug": "1308-17-silwad-settlements",
+        "case_id": "בג\"ץ 1308/17",
+        "ruling_date": "2020-06-09",
+        "role": "Justice",
+        "outcome": "struck_down",
+        "authored_majority": false,
+        "authored_minority": false
+      },
+      {
+        "case_id_slug": "8665-14-desta-holot",
+        "case_id": "בג\"ץ 8665/14",
+        "ruling_date": "2015-08-11",
+        "role": "Justice",
+        "outcome": "partially_struck",
+        "authored_majority": false,
+        "authored_minority": false
+      },
+      {
+        "case_id_slug": "7146-12-adam-infiltration",
+        "case_id": "בג\"ץ 7146/12",
+        "ruling_date": "2013-09-16",
+        "role": "Justice",
+        "outcome": "struck_down",
+        "authored_majority": false,
+        "authored_minority": false
+      },
+      {
+        "case_id_slug": "6298-07-ressler",
+        "case_id": "בג\"ץ 6298/07",
+        "ruling_date": "2012-02-21",
+        "role": "Justice",
+        "outcome": "struck_down",
+        "authored_majority": false,
+        "authored_minority": false
+      },
+      {
+        "case_id_slug": "2605-05-academic-center-prison",
+        "case_id": "בג\"ץ 2605/05",
+        "ruling_date": "2009-11-19",
+        "role": "Justice",
+        "outcome": "struck_down",
+        "authored_majority": false,
+        "authored_minority": false
+      },
+      {
+        "case_id_slug": "8276-05-adalah-civil-wrongs",
+        "case_id": "בג\"ץ 8276/05",
+        "ruling_date": "2006-12-12",
+        "role": "Justice",
+        "outcome": "struck_down",
+        "authored_majority": false,
+        "authored_minority": false
+      }
+    ],
+    "panel_count": 6,
+    "majority_authored": 0,
+    "minority_authored": 0
+  },
+  {
+    "slug": "unverified-9",
+    "name_he": "לא אומת",
+    "name_en": "Justice (unverified)",
+    "appearances": [
+      {
+        "case_id_slug": "1308-17-silwad-settlements",
+        "case_id": "בג\"ץ 1308/17",
+        "ruling_date": "2020-06-09",
+        "role": "Justice",
+        "outcome": "struck_down",
+        "authored_majority": false,
+        "authored_minority": false
+      },
+      {
+        "case_id_slug": "8665-14-desta-holot",
+        "case_id": "בג\"ץ 8665/14",
+        "ruling_date": "2015-08-11",
+        "role": "Justice",
+        "outcome": "partially_struck",
+        "authored_majority": false,
+        "authored_minority": false
+      },
+      {
+        "case_id_slug": "7146-12-adam-infiltration",
+        "case_id": "בג\"ץ 7146/12",
+        "ruling_date": "2013-09-16",
+        "role": "Justice",
+        "outcome": "struck_down",
+        "authored_majority": false,
+        "authored_minority": false
+      },
+      {
+        "case_id_slug": "6298-07-ressler",
+        "case_id": "בג\"ץ 6298/07",
+        "ruling_date": "2012-02-21",
+        "role": "Justice",
+        "outcome": "struck_down",
+        "authored_majority": false,
+        "authored_minority": false
+      },
+      {
+        "case_id_slug": "2605-05-academic-center-prison",
+        "case_id": "בג\"ץ 2605/05",
+        "ruling_date": "2009-11-19",
+        "role": "Justice",
+        "outcome": "struck_down",
+        "authored_majority": false,
+        "authored_minority": false
+      },
+      {
+        "case_id_slug": "8276-05-adalah-civil-wrongs",
+        "case_id": "בג\"ץ 8276/05",
+        "ruling_date": "2006-12-12",
+        "role": "Justice",
+        "outcome": "struck_down",
+        "authored_majority": false,
+        "authored_minority": false
+      }
+    ],
+    "panel_count": 6,
+    "majority_authored": 0,
+    "minority_authored": 0
   },
   {
     "slug": "barak-erez",
@@ -329,61 +868,6 @@
     "minority_authored": 0
   },
   {
-    "slug": "hayut",
-    "name_he": "אסתר חיות",
-    "name_en": "Esther Hayut",
-    "appearances": [
-      {
-        "case_id_slug": "5119-23-incapacitation",
-        "case_id": "בג\"ץ 5119/23",
-        "ruling_date": "2024-01-03",
-        "role": "Retired Justice",
-        "outcome": "partially_struck",
-        "authored_majority": true,
-        "authored_minority": false
-      },
-      {
-        "case_id_slug": "5658-23",
-        "case_id": "בג\"ץ 5658/23",
-        "ruling_date": "2024-01-01",
-        "role": "Retired Justice",
-        "outcome": "struck_down",
-        "authored_majority": true,
-        "authored_minority": false
-      },
-      {
-        "case_id_slug": "8948-22-deri",
-        "case_id": "בג\"ץ 8948/22",
-        "ruling_date": "2023-01-18",
-        "role": "President",
-        "outcome": "struck_down",
-        "authored_majority": true,
-        "authored_minority": false
-      },
-      {
-        "case_id_slug": "5969-20-shafir",
-        "case_id": "בג\"ץ 5969/20",
-        "ruling_date": "2021-05-23",
-        "role": "President",
-        "outcome": "warning_of_voidness",
-        "authored_majority": true,
-        "authored_minority": false
-      },
-      {
-        "case_id_slug": "662-11-sela-kfar-vradim-mikveh",
-        "case_id": "עע\"ם 662/11",
-        "ruling_date": "2014-09-09",
-        "role": "Justice",
-        "outcome": "struck_down",
-        "authored_majority": false,
-        "authored_minority": false
-      }
-    ],
-    "panel_count": 5,
-    "majority_authored": 4,
-    "minority_authored": 0
-  },
-  {
     "slug": "mintz",
     "name_he": "דוד מינץ",
     "name_en": "David Mintz",
@@ -437,6 +921,116 @@
     "panel_count": 5,
     "majority_authored": 1,
     "minority_authored": 3
+  },
+  {
+    "slug": "naor",
+    "name_he": "מרים נאור",
+    "name_en": "Miriam Naor",
+    "appearances": [
+      {
+        "case_id_slug": "4374-15-mqg-gas-framework",
+        "case_id": "בג\"ץ 4374/15",
+        "ruling_date": "2016-03-27",
+        "role": "President",
+        "outcome": "partially_struck",
+        "authored_majority": true,
+        "authored_minority": false
+      },
+      {
+        "case_id_slug": "3132-15-yesh-atid-litzman",
+        "case_id": "בג\"ץ 3132/15",
+        "ruling_date": "2015-08-23",
+        "role": "President",
+        "outcome": "struck_down",
+        "authored_majority": true,
+        "authored_minority": false
+      },
+      {
+        "case_id_slug": "8665-14-desta-holot",
+        "case_id": "בג\"ץ 8665/14",
+        "ruling_date": "2015-08-11",
+        "role": "President",
+        "outcome": "partially_struck",
+        "authored_majority": true,
+        "authored_minority": false
+      },
+      {
+        "case_id_slug": "7146-12-adam-infiltration",
+        "case_id": "בג\"ץ 7146/12",
+        "ruling_date": "2013-09-16",
+        "role": "Deputy President",
+        "outcome": "struck_down",
+        "authored_majority": false,
+        "authored_minority": false
+      },
+      {
+        "case_id_slug": "6298-07-ressler",
+        "case_id": "בג\"ץ 6298/07",
+        "ruling_date": "2012-02-21",
+        "role": "Justice",
+        "outcome": "struck_down",
+        "authored_majority": false,
+        "authored_minority": false
+      }
+    ],
+    "panel_count": 5,
+    "majority_authored": 3,
+    "minority_authored": 0
+  },
+  {
+    "slug": "unverified-2",
+    "name_he": "לא אומת",
+    "name_en": "Justice (unverified)",
+    "appearances": [
+      {
+        "case_id_slug": "4374-15-mqg-gas-framework",
+        "case_id": "בג\"ץ 4374/15",
+        "ruling_date": "2016-03-27",
+        "role": "Justice",
+        "outcome": "partially_struck",
+        "authored_majority": false,
+        "authored_minority": false
+      },
+      {
+        "case_id_slug": "8665-14-desta-holot",
+        "case_id": "בג\"ץ 8665/14",
+        "ruling_date": "2015-08-11",
+        "role": "Justice",
+        "outcome": "partially_struck",
+        "authored_majority": false,
+        "authored_minority": false
+      },
+      {
+        "case_id_slug": "2605-05-academic-center-prison",
+        "case_id": "בג\"ץ 2605/05",
+        "ruling_date": "2009-11-19",
+        "role": "Justice",
+        "outcome": "struck_down",
+        "authored_majority": false,
+        "authored_minority": false
+      },
+      {
+        "case_id_slug": "8276-05-adalah-civil-wrongs",
+        "case_id": "בג\"ץ 8276/05",
+        "ruling_date": "2006-12-12",
+        "role": "Justice",
+        "outcome": "struck_down",
+        "authored_majority": false,
+        "authored_minority": false
+      },
+      {
+        "case_id_slug": "156-75-dakka",
+        "case_id": "בג\"ץ 156/75",
+        "ruling_date": "1976-01-01",
+        "role": "Justice",
+        "outcome": "declarative",
+        "authored_majority": false,
+        "authored_minority": false
+      }
+    ],
+    "panel_count": 5,
+    "majority_authored": 0,
+    "minority_authored": 0
   },
   {
     "slug": "vogelman",
@@ -688,6 +1282,62 @@
     "minority_authored": 2
   },
   {
+    "slug": "barak",
+    "name_he": "אהרן ברק",
+    "name_en": "Aharon Barak",
+    "appearances": [
+      {
+        "case_id_slug": "8276-05-adalah-civil-wrongs",
+        "case_id": "בג\"ץ 8276/05",
+        "ruling_date": "2006-12-12",
+        "role": "President",
+        "outcome": "struck_down",
+        "authored_majority": true,
+        "authored_minority": false
+      },
+      {
+        "case_id_slug": "6821-93-bank-mizrahi",
+        "case_id": "ע\"א 6821/93",
+        "ruling_date": "1995-11-09",
+        "role": "President",
+        "outcome": "declarative",
+        "authored_majority": true,
+        "authored_minority": false
+      }
+    ],
+    "panel_count": 2,
+    "majority_authored": 2,
+    "minority_authored": 0
+  },
+  {
+    "slug": "beinisch",
+    "name_he": "דורית ביניש",
+    "name_en": "Dorit Beinisch",
+    "appearances": [
+      {
+        "case_id_slug": "6298-07-ressler",
+        "case_id": "בג\"ץ 6298/07",
+        "ruling_date": "2012-02-21",
+        "role": "President",
+        "outcome": "struck_down",
+        "authored_majority": true,
+        "authored_minority": false
+      },
+      {
+        "case_id_slug": "2605-05-academic-center-prison",
+        "case_id": "בג\"ץ 2605/05",
+        "ruling_date": "2009-11-19",
+        "role": "President",
+        "outcome": "struck_down",
+        "authored_majority": true,
+        "authored_minority": false
+      }
+    ],
+    "panel_count": 2,
+    "majority_authored": 2,
+    "minority_authored": 0
+  },
+  {
     "slug": "canfy-steinitz",
     "name_he": "גילה כנפי-שטייניץ",
     "name_en": "Gila Canfy-Steinitz",
@@ -706,6 +1356,34 @@
         "case_id": "בג\"ץ 5658/23",
         "ruling_date": "2024-01-01",
         "role": "Justice",
+        "outcome": "struck_down",
+        "authored_majority": false,
+        "authored_minority": true
+      }
+    ],
+    "panel_count": 2,
+    "majority_authored": 0,
+    "minority_authored": 1
+  },
+  {
+    "slug": "grunis",
+    "name_he": "אשר גרוניס",
+    "name_en": "Asher Grunis",
+    "appearances": [
+      {
+        "case_id_slug": "7146-12-adam-infiltration",
+        "case_id": "בג\"ץ 7146/12",
+        "ruling_date": "2013-09-16",
+        "role": "President",
+        "outcome": "struck_down",
+        "authored_majority": false,
+        "authored_minority": false
+      },
+      {
+        "case_id_slug": "6298-07-ressler",
+        "case_id": "בג\"ץ 6298/07",
+        "ruling_date": "2012-02-21",
+        "role": "Deputy President",
         "outcome": "struck_down",
         "authored_majority": false,
         "authored_minority": true
@@ -847,25 +1525,6 @@
     "minority_authored": 0
   },
   {
-    "slug": "barak",
-    "name_he": "אהרן ברק",
-    "name_en": "Aharon Barak",
-    "appearances": [
-      {
-        "case_id_slug": "6821-93-bank-mizrahi",
-        "case_id": "ע\"א 6821/93",
-        "ruling_date": "1995-11-09",
-        "role": "President",
-        "outcome": "declarative",
-        "authored_majority": true,
-        "authored_minority": false
-      }
-    ],
-    "panel_count": 1,
-    "majority_authored": 1,
-    "minority_authored": 0
-  },
-  {
     "slug": "cheshin",
     "name_he": "מישאל חשין",
     "name_en": "Mishael Cheshin",
@@ -980,6 +1639,25 @@
     "minority_authored": 0
   },
   {
+    "slug": "levy",
+    "name_he": "אדמונד לוי",
+    "name_en": "Edmond Levy",
+    "appearances": [
+      {
+        "case_id_slug": "6298-07-ressler",
+        "case_id": "בג\"ץ 6298/07",
+        "ruling_date": "2012-02-21",
+        "role": "Justice",
+        "outcome": "struck_down",
+        "authored_majority": false,
+        "authored_minority": false
+      }
+    ],
+    "panel_count": 1,
+    "majority_authored": 0,
+    "minority_authored": 0
+  },
+  {
     "slug": "maltz",
     "name_he": "יעקב מלץ",
     "name_en": "Yaakov Maltz",
@@ -990,25 +1668,6 @@
         "ruling_date": "1995-11-09",
         "role": "Justice",
         "outcome": "declarative",
-        "authored_majority": true,
-        "authored_minority": false
-      }
-    ],
-    "panel_count": 1,
-    "majority_authored": 1,
-    "minority_authored": 0
-  },
-  {
-    "slug": "naor",
-    "name_he": "מרים נאור",
-    "name_en": "Miriam Naor",
-    "appearances": [
-      {
-        "case_id_slug": "3132-15-yesh-atid-litzman",
-        "case_id": "בג\"ץ 3132/15",
-        "ruling_date": "2015-08-23",
-        "role": "President",
-        "outcome": "struck_down",
         "authored_majority": true,
         "authored_minority": false
       }
@@ -1091,44 +1750,6 @@
     ],
     "panel_count": 1,
     "majority_authored": 1,
-    "minority_authored": 0
-  },
-  {
-    "slug": "unverified-2",
-    "name_he": "לא אומת",
-    "name_en": "Panel member (unverified)",
-    "appearances": [
-      {
-        "case_id_slug": "156-75-dakka",
-        "case_id": "בג\"ץ 156/75",
-        "ruling_date": "1976-01-01",
-        "role": "Justice",
-        "outcome": "declarative",
-        "authored_majority": false,
-        "authored_minority": false
-      }
-    ],
-    "panel_count": 1,
-    "majority_authored": 0,
-    "minority_authored": 0
-  },
-  {
-    "slug": "unverified-3",
-    "name_he": "לא אומת",
-    "name_en": "Panel member (unverified)",
-    "appearances": [
-      {
-        "case_id_slug": "156-75-dakka",
-        "case_id": "בג\"ץ 156/75",
-        "ruling_date": "1976-01-01",
-        "role": "Justice",
-        "outcome": "declarative",
-        "authored_majority": false,
-        "authored_minority": false
-      }
-    ],
-    "panel_count": 1,
-    "majority_authored": 0,
     "minority_authored": 0
   }
 ]

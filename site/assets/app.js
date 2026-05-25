@@ -68,18 +68,22 @@ const i18n = {
     role_Justice: "שופט/ת",
     role_RJ: "שופט/ת בדימוס (בחלון סטטוטורי)",
     curve_title: "העקומה: 1976–2026",
-    curve_subtitle: "מדוקטרינה שקטה אל מחוץ-לסטנדרט הדמוקרטי. ציר זמן של 14 פסיקות. גובה כל נקודה — עוצמת ההתערבות בהחלטת הרשות. הקו המקווקו הוא ההתערבות החריפה ביותר עד אותה נקודת זמן. לחיצה על נקודה פותחת את הפסיקה.",
-    curve_caption: "מה רואים: חמישה עשורים של עליה כמעט בלתי-מורגשת, ופריצה אנכית ב-2023–2026. הסעיף השני ('קריאה') ידון בפרשנות.",
-    curve_aria: "תרשים פיזור של 14 פסיקות בית המשפט העליון לפי שנה ועוצמת התערבות, 1976–2026",
+    curve_subtitle: "מדוקטרינה שקטה לפסילת חוקים תכופה לפסילת חוקי-יסוד עצמם. גובה כל נקודה הוא עוצמת ההתערבות של בית המשפט בהחלטת הרשות. השטח האדום מציין את עוצמת ההתערבות החריפה ביותר שהושגה עד אותה נקודת זמן. לחיצה על נקודה פותחת את הפסיקה.",
+    curve_caption: "מה רואים: שלושה דורות, שלוש שכבות. 1976–2005: בנייה דוקטרינרית בלבד. 2006–2022: פסילה תכופה של חוקי הכנסת. 2023–2026: פסילה של חוקי-יסוד עצמם — צעד שלא נעשה באף דמוקרטיה אחרת. השכבה השנייה של האתר ('קריאה') תדון בפרשנות.",
+    curve_aria: "תרשים פיזור של פסיקות בית המשפט העליון לפי שנה ועוצמת התערבות, 1976–2026",
     sev_1: "דחיית עתירה",
     sev_2: "הצהרתי / מצומצם",
     sev_3: "השבה לדיון",
-    sev_4: "ביטול חלקי / צו עשה / התראת בטלות",
+    sev_4: "ביטול חלקי / צו עשה",
     sev_5: "ביטול חוק או החלטה",
+    era_1: "תקופת היסוד",
+    era_2: "גל ראשון של פסילות",
+    era_3: "תקופת העקיפה החוקתית",
     ann_dakka: "1976 · המצאת עילת הסבירות",
     ann_mizrahi: "1995 · הטענה לסמכות פסילת חוק-יסוד",
+    ann_adalah: "2006 · פסילת חוק ראשונה לאחר מזרחי",
     ann_shafir: "2021 · התראת-בטלות ראשונה",
-    ann_5658: "2024 · פסילת תיקון עילת הסבירות",
+    ann_5658: "2024 · פסילת תיקון לחוק-יסוד",
     ann_gofman: "2026 · צו להחזיר מינוי במוסד",
   },
   en: {
@@ -148,18 +152,22 @@ const i18n = {
     role_Justice: "Justice",
     role_RJ: "Retired Justice (statutory post-retirement window)",
     curve_title: "The curve: 1976–2026",
-    curve_subtitle: "From quiet doctrine to constitutional outlier. A timeline of 14 rulings. Each dot's height is the severity of the Court's intervention; the dashed envelope traces the highest severity reached up to that point. Click any dot to open the ruling.",
-    curve_caption: "What you see: an almost-imperceptible climb over five decades and a vertical break in 2023–2026. The Reading section discusses interpretation.",
-    curve_aria: "Scatter plot of 14 Israeli Supreme Court rulings by year and intervention severity, 1976–2026",
+    curve_subtitle: "From quiet doctrine to frequent statute strikes to striking Basic Laws themselves. Each dot's height is the severity of the Court's intervention; the red area traces the highest severity reached up to that point in time. Click any dot to open the ruling.",
+    curve_caption: "What you see: three eras, three layers. 1976–2005: doctrinal groundwork only. 2006–2022: frequent strike-downs of Knesset statutes. 2023–2026: strike-downs of Basic Laws themselves — a step taken in no other democracy. The site's second layer ('Reading') discusses interpretation.",
+    curve_aria: "Scatter plot of Israeli Supreme Court rulings by year and intervention severity, 1976–2026",
     sev_1: "Petition dismissed",
     sev_2: "Declarative / restricted",
     sev_3: "Remanded",
-    sev_4: "Partial strike / mandatory order / warning of voidness",
+    sev_4: "Partial strike / mandatory / warning",
     sev_5: "Statute or decision struck",
+    era_1: "Foundational doctrine",
+    era_2: "First wave of strikes",
+    era_3: "Constitutional override era",
     ann_dakka: "1976 · Reasonableness invented",
     ann_mizrahi: "1995 · Claim to strike Basic Laws",
+    ann_adalah: "2006 · First post-Mizrahi statute strike",
     ann_shafir: "2021 · First warning of voidness",
-    ann_5658: "2024 · Reasonableness amendment struck",
+    ann_5658: "2024 · Basic Law amendment struck",
     ann_gofman: "2026 · PM ordered to remand Mossad appointment",
   },
 };
@@ -284,12 +292,12 @@ const DOT_COLOR_BY_OUTCOME = {
 
 function renderCurve(rulings) {
   const NS = "http://www.w3.org/2000/svg";
-  const W = 920, H = 380;
-  const M = { top: 44, right: 32, bottom: 70, left: 60 };
+  const W = 1040, H = 500;
+  const M = { top: 88, right: 64, bottom: 80, left: 160 };
   const innerW = W - M.left - M.right;
   const innerH = H - M.top - M.bottom;
   const YR_MIN = 1975, YR_MAX = 2027;
-  const SEV_AXIS_MAX = 5.5;
+  const SEV_AXIS_MAX = 5.6;
 
   function svgEl(tag, attrs = {}, ...children) {
     const e = document.createElementNS(NS, tag);
@@ -321,12 +329,19 @@ function renderCurve(rulings) {
   });
 
   const annotations = {
-    "156-75-dakka":           { text: t.ann_dakka,   side: "below", align: "middle", dy: 0 },
-    "6821-93-bank-mizrahi":   { text: t.ann_mizrahi, side: "above", align: "middle", dy: 0 },
-    "5969-20-shafir":         { text: t.ann_shafir,  side: "below", align: "middle", dy: 0 },
-    "5658-23":                { text: t.ann_5658,    side: "above", align: "end",    dy: -8 },
-    "gofman-mossad-2026-05":  { text: t.ann_gofman,  side: "below", align: "start",  dy: 14 },
+    "156-75-dakka":              { text: t.ann_dakka,   side: "below", align: "middle", dy: 8 },
+    "6821-93-bank-mizrahi":      { text: t.ann_mizrahi, side: "above", align: "middle", dy: 0 },
+    "8276-05-adalah-civil-wrongs": { text: t.ann_adalah, side: "below", align: "start",  dy: 6 },
+    "5969-20-shafir":            { text: t.ann_shafir,  side: "below", align: "middle", dy: 16 },
+    "5658-23":                   { text: t.ann_5658,    side: "above", align: "end",    dy: -10 },
+    "gofman-mossad-2026-05":     { text: t.ann_gofman,  side: "below", align: "start",  dy: 18 },
   };
+
+  const eras = [
+    { start: 1975, end: 2005.5, label: t.era_1, fill: "rgba(90,122,154,0.05)",  stripe: "#5a7a9a" },
+    { start: 2005.5, end: 2020.5, label: t.era_2, fill: "rgba(196,125,39,0.07)", stripe: "#c47d27" },
+    { start: 2020.5, end: 2027, label: t.era_3, fill: "rgba(176,58,58,0.10)",   stripe: "#b03a3a" },
+  ];
 
   const svg = svgEl("svg", {
     viewBox: `0 0 ${W} ${H}`,
@@ -335,7 +350,66 @@ function renderCurve(rulings) {
     "aria-label": t.curve_aria,
   });
 
-  // Severity gridlines + y-axis labels
+  // ── defs: gradients & filters ────────────────────────────────────
+  const defs = svgEl("defs");
+
+  const envGrad = svgEl("linearGradient", { id: "envFill", x1: "0", y1: "0", x2: "0", y2: "1" });
+  envGrad.append(svgEl("stop", { offset: "0%",  "stop-color": "#b03a3a", "stop-opacity": "0.28" }));
+  envGrad.append(svgEl("stop", { offset: "100%", "stop-color": "#b03a3a", "stop-opacity": "0.02" }));
+  defs.append(envGrad);
+
+  const shadow = svgEl("filter", { id: "dotShadow", x: "-60%", y: "-60%", width: "220%", height: "220%" });
+  shadow.append(svgEl("feGaussianBlur",  { in: "SourceAlpha", stdDeviation: "1.6" }));
+  shadow.append(svgEl("feOffset",        { dx: "0", dy: "1.5", result: "off" }));
+  shadow.append(svgEl("feComponentTransfer",
+    {},
+    svgEl("feFuncA", { type: "linear", slope: "0.4" })
+  ));
+  const sMerge = svgEl("feMerge");
+  sMerge.append(svgEl("feMergeNode"));
+  sMerge.append(svgEl("feMergeNode", { in: "SourceGraphic" }));
+  shadow.append(sMerge);
+  defs.append(shadow);
+
+  const glow = svgEl("filter", { id: "dotGlow", x: "-80%", y: "-80%", width: "260%", height: "260%" });
+  glow.append(svgEl("feGaussianBlur", { in: "SourceGraphic", stdDeviation: "3", result: "blur" }));
+  const gMerge = svgEl("feMerge");
+  gMerge.append(svgEl("feMergeNode", { in: "blur" }));
+  gMerge.append(svgEl("feMergeNode", { in: "SourceGraphic" }));
+  glow.append(gMerge);
+  defs.append(glow);
+
+  svg.append(defs);
+
+  // ── era backgrounds + headers ────────────────────────────────────
+  for (let i = 0; i < eras.length; i++) {
+    const era = eras[i];
+    const x1 = xOf(era.start);
+    const x2 = xOf(era.end);
+    svg.append(svgEl("rect", {
+      x: x1, y: M.top, width: x2 - x1, height: innerH,
+      fill: era.fill,
+    }));
+    svg.append(svgEl("rect", {
+      x: x1 + 1, y: M.top - 26, width: x2 - x1 - 2, height: 4,
+      fill: era.stripe, opacity: "0.7", rx: "2",
+    }));
+    svg.append(svgEl("text", {
+      x: (x1 + x2) / 2, y: M.top - 34,
+      "text-anchor": "middle",
+      "font-size": "11.5", "font-weight": "700",
+      "letter-spacing": "0.6",
+      fill: era.stripe,
+    }, era.label.toUpperCase()));
+    if (i < eras.length - 1) {
+      svg.append(svgEl("line", {
+        x1: x2, x2: x2, y1: M.top - 18, y2: M.top + innerH,
+        stroke: "#d0d0d0", "stroke-width": "1", "stroke-dasharray": "3 3",
+      }));
+    }
+  }
+
+  // ── severity gridlines + y-axis labels ───────────────────────────
   const sevLabels = [
     [1, t.sev_1], [2, t.sev_2], [3, t.sev_3], [4, t.sev_4], [5, t.sev_5],
   ];
@@ -343,88 +417,137 @@ function renderCurve(rulings) {
     const y = yOf(s);
     svg.append(svgEl("line", {
       x1: M.left, x2: M.left + innerW, y1: y, y2: y,
-      stroke: "#f0f0f0", "stroke-width": "1",
+      stroke: "#e8e8e8", "stroke-width": "1",
     }));
     svg.append(svgEl("text", {
-      x: M.left - 8, y: y + 4,
+      x: M.left - 10, y: y + 4,
       "text-anchor": "end",
-      "font-size": "10", fill: "#777",
+      "font-size": "10.5", fill: "#666",
     }, label));
   }
 
-  // Decade gridlines + x-axis labels
+  // ── decade gridlines + x-axis labels ─────────────────────────────
   const decadeYears = [1980, 1990, 2000, 2010, 2020, 2026];
   for (const yr of decadeYears) {
     const x = xOf(yr);
     svg.append(svgEl("line", {
       x1: x, x2: x, y1: M.top, y2: M.top + innerH,
-      stroke: "#f3f3f3", "stroke-width": "1",
+      stroke: "#e8e8e8", "stroke-width": "1", "stroke-dasharray": "1 4",
     }));
     svg.append(svgEl("text", {
-      x: x, y: M.top + innerH + 20,
-      "text-anchor": "middle", "font-size": "12", fill: "#777",
+      x: x, y: M.top + innerH + 22,
+      "text-anchor": "middle", "font-size": "12.5", "font-weight": "500", fill: "#555",
     }, String(yr)));
   }
 
-  // Axes
+  // axes
   svg.append(svgEl("line", {
     x1: M.left, x2: M.left + innerW, y1: M.top + innerH, y2: M.top + innerH,
-    stroke: "#999", "stroke-width": "1",
+    stroke: "#888", "stroke-width": "1.2",
   }));
   svg.append(svgEl("line", {
     x1: M.left, x2: M.left, y1: M.top, y2: M.top + innerH,
-    stroke: "#999", "stroke-width": "1",
+    stroke: "#888", "stroke-width": "1.2",
   }));
 
-  // Running-max envelope (stepped line)
+  // ── running-max envelope: filled area + line ─────────────────────
   if (envelope.length) {
-    let d = `M ${xOf(envelope[0].yd)} ${yOf(0)} L ${xOf(envelope[0].yd)} ${yOf(envelope[0].sev)}`;
+    let dArea = `M ${xOf(envelope[0].yd)} ${yOf(0)} L ${xOf(envelope[0].yd)} ${yOf(envelope[0].sev)}`;
+    let dLine = `M ${xOf(envelope[0].yd)} ${yOf(envelope[0].sev)}`;
     for (let i = 1; i < envelope.length; i++) {
       const prev = envelope[i - 1], cur = envelope[i];
-      d += ` L ${xOf(cur.yd)} ${yOf(prev.sev)} L ${xOf(cur.yd)} ${yOf(cur.sev)}`;
+      dArea += ` L ${xOf(cur.yd)} ${yOf(prev.sev)} L ${xOf(cur.yd)} ${yOf(cur.sev)}`;
+      dLine += ` L ${xOf(cur.yd)} ${yOf(prev.sev)} L ${xOf(cur.yd)} ${yOf(cur.sev)}`;
     }
-    d += ` L ${xOf(YR_MAX)} ${yOf(envelope[envelope.length - 1].sev)}`;
+    const lastSev = envelope[envelope.length - 1].sev;
+    dArea += ` L ${xOf(YR_MAX)} ${yOf(lastSev)} L ${xOf(YR_MAX)} ${yOf(0)} Z`;
+    dLine += ` L ${xOf(YR_MAX)} ${yOf(lastSev)}`;
+    svg.append(svgEl("path", { d: dArea, fill: "url(#envFill)" }));
     svg.append(svgEl("path", {
-      d, fill: "none",
-      stroke: "#555", "stroke-width": "1.5",
-      "stroke-dasharray": "5 4", opacity: "0.6",
+      d: dLine, fill: "none",
+      stroke: "#b03a3a", "stroke-width": "2.25",
+      opacity: "0.85",
+      "stroke-linejoin": "round",
     }));
   }
 
-  // Dots — each is a link to the ruling page
+  // ── dots ─────────────────────────────────────────────────────────
   for (const p of points) {
     const x = xOf(p.yd), y = yOf(p.sev);
     const color = DOT_COLOR_BY_OUTCOME[p.r.outcome] || "#666";
-    const r = p.sev >= 4 ? 7 : (p.sev >= 3 ? 6 : 5);
+    const radius = p.sev >= 4 ? 8 : (p.sev >= 3 ? 7 : 6);
     const a = svgEl("a", { href: `ruling.html?id=${p.r.case_id_slug}` });
+
+    if (p.sev >= 4) {
+      const halo = svgEl("circle", {
+        cx: x, cy: y, r: String(radius + 5),
+        fill: color, "fill-opacity": "0.18",
+        filter: "url(#dotGlow)",
+      });
+      a.append(halo);
+    }
+
     const circle = svgEl("circle", {
-      cx: x, cy: y, r: String(r),
-      fill: color, "fill-opacity": "0.85",
-      stroke: "#fff", "stroke-width": "1.5",
+      cx: x, cy: y, r: String(radius),
+      fill: color, "fill-opacity": "0.97",
+      stroke: "#fff", "stroke-width": "2.2",
+      filter: "url(#dotShadow)",
     });
     circle.append(svgEl("title", {}, `${p.r.ruling_date} · ${p.r.case_id} · ${p.r.outcome.replace(/_/g, " ")}`));
     a.append(circle);
     svg.append(a);
+  }
 
+  // ── annotation callouts (boxed, with leader lines) ───────────────
+  for (const p of points) {
     const ann = annotations[p.r.case_id_slug];
-    if (ann) {
-      const above = ann.side === "above";
-      const baseLabelY = above ? y - 14 : y + 22;
-      const labelY = baseLabelY + (ann.dy || 0);
-      svg.append(svgEl("line", {
-        x1: x, x2: x,
-        y1: above ? y - r - 1 : y + r + 1,
-        y2: above ? labelY + 4 : labelY - 10,
-        stroke: "#b03a3a", "stroke-width": "1", opacity: "0.55",
-      }));
-      const labelX = ann.align === "end" ? x - 6 : (ann.align === "start" ? x + 6 : x);
-      svg.append(svgEl("text", {
-        x: labelX, y: labelY,
-        "text-anchor": ann.align || "middle",
-        "font-size": "10.5", "font-weight": "600",
-        fill: "#b03a3a",
-      }, ann.text));
-    }
+    if (!ann) continue;
+    const x = xOf(p.yd), y = yOf(p.sev);
+    const above = ann.side === "above";
+    const radius = p.sev >= 4 ? 8 : (p.sev >= 3 ? 7 : 6);
+
+    // estimate text box dimensions
+    const text = ann.text;
+    const charW = 6.8;
+    const padX = 9, padY = 5;
+    const boxW = Math.round(text.length * charW + padX * 2);
+    const boxH = 22;
+
+    let boxX;
+    if (ann.align === "end")       boxX = x - boxW + 6;
+    else if (ann.align === "start") boxX = x - 6;
+    else                            boxX = x - boxW / 2;
+    // clamp inside chart area so callouts never overflow
+    const rightLimit = M.left + innerW - 2;
+    const leftLimit  = M.left + 2;
+    if (boxX + boxW > rightLimit) boxX = rightLimit - boxW;
+    if (boxX < leftLimit) boxX = leftLimit;
+
+    const baseBoxY = above ? y - 32 : y + 14;
+    const boxY = baseBoxY + (ann.dy || 0);
+
+    // leader line
+    const leadFromY = above ? y - radius - 2 : y + radius + 2;
+    const leadToY   = above ? boxY + boxH    : boxY;
+    svg.append(svgEl("line", {
+      x1: x, x2: x, y1: leadFromY, y2: leadToY,
+      stroke: "#b03a3a", "stroke-width": "1.2", opacity: "0.7",
+    }));
+
+    // callout box
+    svg.append(svgEl("rect", {
+      x: boxX, y: boxY, width: boxW, height: boxH,
+      rx: "4", ry: "4",
+      fill: "#ffffff",
+      stroke: "#b03a3a", "stroke-width": "1.2",
+      filter: "url(#dotShadow)",
+    }));
+    svg.append(svgEl("text", {
+      x: boxX + boxW / 2, y: boxY + boxH / 2 + 4,
+      "text-anchor": "middle",
+      "font-size": "11.5", "font-weight": "600",
+      fill: "#7a2828",
+    }, text));
   }
 
   return svg;

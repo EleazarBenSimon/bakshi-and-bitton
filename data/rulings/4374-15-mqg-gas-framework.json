@@ -1,0 +1,48 @@
+{
+  "case_id": "בג\"ץ 4374/15",
+  "case_id_slug": "4374-15-mqg-gas-framework",
+  "case_name_he": "התנועה למען איכות השלטון בישראל ואח' נ' ראש הממשלה ואח'",
+  "case_name_en": "Movement for Quality Government in Israel et al. v. The Prime Minister et al.",
+  "ruling_date": "2016-03-27",
+  "filing_date": null,
+  "panel": [
+    { "name_he": "מרים נאור", "name_en": "Miriam Naor", "role": "President", "slug": "naor" },
+    { "name_he": "לא אומת", "name_en": "Justice (unverified)", "role": "Justice", "slug": "unverified-2" },
+    { "name_he": "לא אומת", "name_en": "Justice (unverified)", "role": "Justice", "slug": "unverified-3" },
+    { "name_he": "לא אומת", "name_en": "Justice (unverified)", "role": "Justice", "slug": "unverified-4" },
+    { "name_he": "לא אומת", "name_en": "Justice (unverified)", "role": "Justice", "slug": "unverified-5" }
+  ],
+  "petitioner_type": "NGO",
+  "petitioner_name_he": "התנועה למען איכות השלטון בישראל ואח' (עתירות מאוחדות)",
+  "petitioner_name_en": "Movement for Quality Government in Israel et al. (consolidated petitions)",
+  "respondent": "Prime Minister",
+  "respondent_decision_he": "החלטת ממשלה לאמץ את 'מתווה הגז' המסדיר את פיתוח שדות הגז הטבעי הימיים, ובכלל זה 'סעיף היציבות' שהבטיח לחברות המפעילות יציבות רגולטורית למשך עשור",
+  "respondent_decision_en": "Government decision to adopt the natural-gas framework regulating offshore gas-field development, including a 'stability clause' guaranteeing the operating companies regulatory stability for a decade",
+  "doctrine_invoked": [
+    "ultra_vires",
+    "separation_of_powers"
+  ],
+  "outcome": "partially_struck",
+  "vote_majority": null,
+  "vote_minority": null,
+  "majority_authors": ["naor"],
+  "minority_authors": [],
+  "official_url": "https://link.springer.com/chapter/10.1007/978-3-030-56247-2_10",
+  "secondary_urls": [
+    "https://tlcp.law.uiowa.edu/sites/tlcp.law.uiowa.edu/files/2024-08/5._bendor.pdf"
+  ],
+  "summary_he": "בית המשפט העליון פסל את 'סעיף היציבות' במתווה הגז של הממשלה, אשר הבטיח לחברות המפעילות שדות גז ימיים יציבות רגולטורית למשך עשור. בית המשפט קבע כי הסעיף חורג מסמכות הממשלה לכבול את הריבון העתידי-החקיקתי בהתחייבות שאינה מעוגנת בחקיקה, ובפועל בוטל המתווה כולו. הנשיאה נאור כתבה את חוות הדעת המובילה.",
+  "summary_en": "The Supreme Court struck down the 'stability clause' in the government's natural-gas framework, which had guaranteed offshore-gas operators regulatory stability for a decade. The Court held that the clause exceeded the government's authority to bind the future legislative sovereign by a commitment not anchored in statute, effectively voiding the framework as a whole. President Naor authored the lead opinion.",
+  "predicate_ag_opinion": null,
+  "respondent_body": null,
+  "compliance_state": "complied",
+  "defiance_signals": null,
+  "tags": [
+    "gas-framework",
+    "executive-action",
+    "ultra-vires",
+    "doctrine-anchor",
+    "headliner"
+  ],
+  "notes": "Lead opinion by Naor and partial-strike outcome (stability clause voided, broader framework rendered inoperative) verified per Springer chapter and Bendor analysis (Iowa Transnational Law & Contemporary Problems). Panel size, exact vote tally and full panel composition require checking against printed judgment; four other panel seats marked 'unverified' placeholder. The case is doctrinally significant for the limit on executive ability to bind future legislatures by non-statutory framework commitments."
+}

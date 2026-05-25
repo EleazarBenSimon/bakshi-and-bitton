@@ -1,0 +1,52 @@
+{
+  "case_id": "בג\"ץ 2605/05",
+  "case_id_slug": "2605-05-academic-center-prison",
+  "case_name_he": "המרכז האקדמי למשפט ולעסקים ואח' נ' שר האוצר ואח'",
+  "case_name_en": "Academic Center of Law and Business et al. v. Minister of Finance et al.",
+  "ruling_date": "2009-11-19",
+  "filing_date": null,
+  "panel": [
+    { "name_he": "דורית ביניש", "name_en": "Dorit Beinisch", "role": "President", "slug": "beinisch" },
+    { "name_he": "לא אומת", "name_en": "Justice (unverified)", "role": "Justice", "slug": "unverified-2" },
+    { "name_he": "לא אומת", "name_en": "Justice (unverified)", "role": "Justice", "slug": "unverified-3" },
+    { "name_he": "לא אומת", "name_en": "Justice (unverified)", "role": "Justice", "slug": "unverified-4" },
+    { "name_he": "לא אומת", "name_en": "Justice (unverified)", "role": "Justice", "slug": "unverified-5" },
+    { "name_he": "לא אומת", "name_en": "Justice (unverified)", "role": "Justice", "slug": "unverified-6" },
+    { "name_he": "לא אומת", "name_en": "Justice (unverified)", "role": "Justice", "slug": "unverified-7" },
+    { "name_he": "לא אומת", "name_en": "Justice (unverified)", "role": "Justice", "slug": "unverified-8" },
+    { "name_he": "לא אומת", "name_en": "Justice (unverified)", "role": "Justice", "slug": "unverified-9" }
+  ],
+  "petitioner_type": "NGO",
+  "petitioner_name_he": "המרכז האקדמי למשפט ולעסקים ואח'",
+  "petitioner_name_en": "Academic Center of Law and Business et al.",
+  "respondent": "Knesset",
+  "respondent_decision_he": "תיקון מס' 28 לפקודת בתי הסוהר, אשר אפשר הקמת בית סוהר פרטי המופעל על-ידי תאגיד מסחרי",
+  "respondent_decision_en": "Amendment No. 28 to the Prisons Ordinance, which authorized the establishment of a privately-operated prison run by a commercial corporation",
+  "doctrine_invoked": [
+    "basic_law_human_dignity_and_liberty",
+    "proportionality"
+  ],
+  "outcome": "struck_down",
+  "vote_majority": null,
+  "vote_minority": null,
+  "majority_authors": ["beinisch"],
+  "minority_authors": [],
+  "official_url": "https://versa.cardozo.yu.edu/opinions/academic-center-law-and-business-v-minister-finance",
+  "secondary_urls": [
+    "https://www.loc.gov/item/global-legal-monitor/2009-11-27/israel-unconstitutionality-of-privatization-of-prisons/"
+  ],
+  "summary_he": "בית המשפט העליון פסל את תיקון מס' 28 לפקודת בתי הסוהר, אשר אפשר הקמת בית סוהר פרטי. חוות הדעת המובילה, שכתבה הנשיאה ביניש, קבעה כי הפרטת תפקיד שלטוני-ליבה של השליטה הכפויה על אסירים מהווה הפרה של זכות הכבוד והחירות לפי חוק-יסוד: כבוד האדם וחירותו. זוהי פסיקה ראשונה הקובעת מגבלה חוקתית על הפרטת תפקידי ליבה ריבוניים.",
+  "summary_en": "The Supreme Court struck down Amendment No. 28 to the Prisons Ordinance, which had authorized a privately-operated prison. The lead opinion, by President Beinisch, held that privatizing the core sovereign function of coercive control over prisoners violated the rights to dignity and liberty under Basic Law: Human Dignity and Liberty. This was the first ruling articulating a constitutional limit on the privatization of core sovereign functions.",
+  "predicate_ag_opinion": null,
+  "respondent_body": null,
+  "compliance_state": "complied",
+  "defiance_signals": null,
+  "tags": [
+    "privatization",
+    "sovereign-function",
+    "basic-law-strike",
+    "doctrine-anchor",
+    "headliner"
+  ],
+  "notes": "Lead opinion (Beinisch) and outcome (struck) verified per Versa/Cardozo and LoC summaries. Full panel composition and exact vote tally require checking against printed judgment; eight panel seats currently marked 'unverified' placeholder. The opinion was on a nine-justice expanded panel. Privatization-of-core-sovereign-function reasoning has been cited in later petitions (e.g. against private detention facilities for asylum seekers and against various outsourcing arrangements)."
+}
