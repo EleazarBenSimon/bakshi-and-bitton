@@ -12,7 +12,7 @@
 <script src="assets/app.js"></script>
 <script>
 (async function () {
-  const { t, el, fetchJSON, ruling_name, renderHeader, renderFooter, lang } = window.CO;
+  const { t, el, fetchJSON, ruling_name, renderHeader, renderFooter, renderCurveSection, lang } = window.CO;
   const root = document.getElementById("root");
   document.documentElement.lang = lang;
 
@@ -31,6 +31,9 @@
     root.append(main);
     return;
   }
+
+  // Intervention-severity curve (hero visual)
+  main.append(renderCurveSection(rulings));
 
   // Filters
   const filtersDiv = el("div", { class: "filters" });
