@@ -1,8 +1,12 @@
 ---
 title: Constituent Authority and Basic Laws (סמכות מכוננת וחוקי-יסוד)
+title_he: "סמכות מכוננת וחוקי-יסוד"
+title_en: "Constituent Authority and Basic Laws"
 contributor: "@EleazarBenSimon"
 date: 2026-05-23
 summary: What it means for the Knesset to act in two roles — as legislator and as constituent assembly — and how the doctrinal extension of judicial review to Basic Law amendments was established in 1995 and applied for the first time in 2024.
+summary_he: "מה משמעות פעולתה של הכנסת בשני תפקידים — כמחוקקת וכרשות מכוננת — וכיצד נקבעה ב-1995 ההרחבה הדוקטרינרית של ביקורת שיפוטית לתיקוני חוקי-יסוד, ויושמה לראשונה ב-2024."
+summary_en: What it means for the Knesset to act in two roles — as legislator and as constituent assembly — and how the doctrinal extension of judicial review to Basic Law amendments was established in 1995 and applied for the first time in 2024.
 ---
 
 # Constituent Authority and Basic Laws (סמכות מכוננת וחוקי-יסוד)

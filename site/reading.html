@@ -105,9 +105,15 @@
       badge.append(el("span", {}, categoryBadge[cat]));
       card.append(badge);
 
-      card.append(el("h3", { class: "card-title" }, item.title));
-      if (item.summary) {
-        card.append(el("p", { class: "card-summary", dir: "auto" }, item.summary));
+      const localizedTitle = lang === "he"
+        ? (item.title_he || item.title)
+        : (item.title_en || item.title);
+      const localizedSummary = lang === "he"
+        ? (item.summary_he || item.summary)
+        : (item.summary_en || item.summary);
+      card.append(el("h3", { class: "card-title", dir: "auto" }, localizedTitle));
+      if (localizedSummary) {
+        card.append(el("p", { class: "card-summary", dir: "auto" }, localizedSummary));
       }
 
       const meta = el("div", { class: "card-meta" });

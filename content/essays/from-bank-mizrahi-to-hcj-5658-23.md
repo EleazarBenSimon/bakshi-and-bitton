@@ -1,8 +1,12 @@
 ---
 title: "From Bank Mizrahi to HCJ 5658/23 — A Documentary Record of Thirty Years of Judicial Expansion"
+title_he: "ממזרחי לבג״ץ 5658/23 — תיעוד שלושה עשורים של התפשטות שיפוטית"
+title_en: "From Bank Mizrahi to HCJ 5658/23 — A Documentary Record of Thirty Years of Judicial Expansion"
 contributor: "@EleazarBenSimon"
 date: 2026-05-23
 summary: A narrative essay tracing the historical arc from the 1995 Bank Mizrahi ruling — in which the Israeli Supreme Court declared its own authority to strike down ordinary legislation — to the January 2024 HCJ 5658/23 ruling, in which the Court extended that authority to Basic Law amendments themselves. The essay draws on Cohen-Eliya's juristocracy thesis as the primary interpretive frame, acknowledges Hirschl's hegemonic-preservation theory in adversarial fairness, and traces the empirical record through the documentary core of this project.
+summary_he: "מסה נרטיבית המתחקה אחר הקשת ההיסטורית — מפסק דין בנק המזרחי (1995), שבו הצהיר בית המשפט העליון על סמכותו לבטל חקיקה רגילה, ועד לבג״ץ 5658/23 (ינואר 2024), שבו הרחיב בית המשפט את סמכותו לתיקוני חוקי-יסוד עצמם. המסה מאמצת את תזת היוריסטוקרטיה של כהן-אליה כמסגרת פרשנית מרכזית, מכירה בתזת השימור ההגמוני של הירשל בסעיף ההוגנות האדברסרית, ומתבססת על התיעוד האמפירי שבליבה התיעודית של הפרויקט."
+summary_en: A narrative essay tracing the historical arc from the 1995 Bank Mizrahi ruling — in which the Israeli Supreme Court declared its own authority to strike down ordinary legislation — to the January 2024 HCJ 5658/23 ruling, in which the Court extended that authority to Basic Law amendments themselves. The essay draws on Cohen-Eliya's juristocracy thesis as the primary interpretive frame, acknowledges Hirschl's hegemonic-preservation theory in adversarial fairness, and traces the empirical record through the documentary core of this project.
 ---
 
 # From Bank Mizrahi to HCJ 5658/23 — A Documentary Record of Thirty Years of Judicial Expansion

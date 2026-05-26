@@ -1,8 +1,12 @@
 ---
 title: The Reasonableness Doctrine (עילת הסבירות)
+title_he: "עילת הסבירות"
+title_en: "The Reasonableness Doctrine"
 contributor: "@EleazarBenSimon"
 date: 2026-05-23
 summary: What "reasonableness" means as a ground for judicial review of executive decisions, how the doctrine expanded under Aharon Barak, and why it became the central battleground of the 2023 reform.
+summary_he: "מהי 'סבירות' כעילה לביקורת שיפוטית על החלטות הרשות המבצעת, כיצד הורחבה הדוקטרינה תחת אהרן ברק, ומדוע הפכה לזירת ההתגוששות המרכזית של רפורמת 2023."
+summary_en: What "reasonableness" means as a ground for judicial review of executive decisions, how the doctrine expanded under Aharon Barak, and why it became the central battleground of the 2023 reform.
 ---
 
 # The Reasonableness Doctrine (עילת הסבירות)

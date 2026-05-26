@@ -93,12 +93,19 @@
   const badge = el("span", { class: `article-badge article-badge--${category}` },
     categoryBadge[category] || category);
   header.append(badge);
-  header.append(el("h1", { class: "article-title" }, piece.title));
+  const localizedTitle = lang === "he"
+    ? (piece.title_he || piece.title)
+    : (piece.title_en || piece.title);
+  const localizedSummary = lang === "he"
+    ? (piece.summary_he || piece.summary)
+    : (piece.summary_en || piece.summary);
+  header.append(el("h1", { class: "article-title", dir: "auto" }, localizedTitle));
+  document.title = `Bakshi&Bitton · ${localizedTitle}`;
 
-  if (piece.summary) {
+  if (localizedSummary) {
     const ca = el("aside", { class: "quick-answer", "aria-label": t.quick_answer_aria });
     ca.append(el("div", { class: "quick-answer-label" }, t.quick_answer));
-    ca.append(el("p", { class: "quick-answer-body", dir: "auto" }, piece.summary));
+    ca.append(el("p", { class: "quick-answer-body", dir: "auto" }, localizedSummary));
     header.append(ca);
   }
 
@@ -275,7 +282,10 @@
       });
       card.append(el("span", { class: `card-badge card-badge--${p._category}` },
         categoryBadge[p._category] || p._category));
-      card.append(el("h3", { class: "read-next-card-title" }, p.title));
+      const nextLocalizedTitle = lang === "he"
+        ? (p.title_he || p.title)
+        : (p.title_en || p.title);
+      card.append(el("h3", { class: "read-next-card-title", dir: "auto" }, nextLocalizedTitle));
       if (p.reading_minutes) {
         card.append(el("p", { class: "read-next-card-meta" },
           t.read_time(p.reading_minutes)));

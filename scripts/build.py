@@ -233,13 +233,23 @@ def build_content(out_dir: Path) -> dict:
             words = [w for w in stripped.split() if w and not w.startswith("http")]
             word_count = len(words)
             reading_minutes = max(1, round(word_count / 200))
+            # Bilingual fields: title_he/title_en + summary_he/summary_en
+            # take precedence; fall back to the language-agnostic field if
+            # only one was authored. This keeps single-language pieces
+            # working until their counterpart language is added.
+            primary_title = meta.get("title", f.stem)
+            primary_summary = meta.get("summary", "")
             out[category].append({
                 "slug": f.stem,
                 "category": category,
-                "title": meta.get("title", f.stem),
+                "title": primary_title,
+                "title_he": meta.get("title_he", primary_title),
+                "title_en": meta.get("title_en", primary_title),
                 "contributor": meta.get("contributor", ""),
                 "date": meta.get("date", ""),
-                "summary": meta.get("summary", ""),
+                "summary": primary_summary,
+                "summary_he": meta.get("summary_he", primary_summary),
+                "summary_en": meta.get("summary_en", primary_summary),
                 "word_count": word_count,
                 "reading_minutes": reading_minutes,
                 "body_html": html,

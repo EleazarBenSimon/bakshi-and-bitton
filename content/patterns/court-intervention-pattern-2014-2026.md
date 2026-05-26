@@ -1,8 +1,12 @@
 ---
 title: "Pattern: Israeli Supreme Court interventions in elected-branch decisions, 1976-2026"
+title_he: "דפוס: התערבויות בית המשפט העליון בהחלטות הרשויות הנבחרות, 1976–2026"
+title_en: "Pattern: Israeli Supreme Court interventions in elected-branch decisions, 1976-2026"
 contributor: "@EleazarBenSimon"
 date: 2026-05-25
 summary: An empirical pattern analysis drawn from the 14 rulings in this project's documentary core. The data spans 50 years and three doctrinal layers — foundational power-assertion (1976-1995), abuse-of-constituent-power crystallization (2021-2024), and active intervention (2014-2026). 13 of 14 cases either struck the challenged measure or asserted new Court authority over it; 1 declined.
+summary_he: "ניתוח דפוסים אמפירי המבוסס על 14 הפסיקות שבליבה התיעודית של הפרויקט. הנתונים פרושים על-פני 50 שנה ושלוש שכבות דוקטרינריות — הצהרת סמכות יסודית (1995-1976), גיבוש דוקטרינת השימוש לרעה בסמכות מכוננת (2024-2021), והתערבות אקטיבית (2026-2014). ב-13 מתוך 14 המקרים בית המשפט ביטל את הפעולה שעמדה לביקורת או הצהיר על סמכות חדשה לגביה; באחד נמנע."
+summary_en: An empirical pattern analysis drawn from the 14 rulings in this project's documentary core. The data spans 50 years and three doctrinal layers — foundational power-assertion (1976-1995), abuse-of-constituent-power crystallization (2021-2024), and active intervention (2014-2026). 13 of 14 cases either struck the challenged measure or asserted new Court authority over it; 1 declined.
 ---
 
 # Pattern: Israeli Supreme Court Interventions in Elected-Branch Decisions, 1976-2026

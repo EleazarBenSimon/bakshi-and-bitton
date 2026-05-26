@@ -1,8 +1,12 @@
 ---
 title: The Judicial Selection Committee (הוועדה לבחירת שופטים)
+title_he: "הוועדה לבחירת שופטים"
+title_en: "The Judicial Selection Committee"
 contributor: "@EleazarBenSimon"
 date: 2026-05-23
 summary: How Israel's Judicial Selection Committee is structured, the supermajority rule that effectively gives the sitting Court a veto over its successors, and why this body became the central focus of post-Jan-2024 reform efforts.
+summary_he: "כיצד בנויה הוועדה הישראלית לבחירת שופטים, מהו כלל הרוב המיוחס שנותן הלכה למעשה לבית המשפט היושב על המדוכה זכות וטו על יורשיו, ומדוע הפך מוסד זה למוקד המרכזי של מאמצי הרפורמה לאחר ינואר 2024."
+summary_en: How Israel's Judicial Selection Committee is structured, the supermajority rule that effectively gives the sitting Court a veto over its successors, and why this body became the central focus of post-Jan-2024 reform efforts.
 ---
 
 # The Judicial Selection Committee (הוועדה לבחירת שופטים)
