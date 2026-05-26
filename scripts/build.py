@@ -204,41 +204,71 @@ def build_content(out_dir: Path) -> dict:
         )
         return out
 
+    def _strip_dup_h1(body_text: str, *titles: str) -> str:
+        """Strip the leading `# Title` line if it duplicates any of the
+        candidate titles (canonical / he / en). Keeps the body uncluttered."""
+        lines = body_text.lstrip().splitlines()
+        if lines and lines[0].startswith("# "):
+            first_h1 = lines[0][2:].strip()
+            if any(first_h1 == (tt or "").strip() for tt in titles):
+                return "\n".join(lines[1:]).lstrip()
+        return body_text
+
+    def _words_of(b: str) -> int:
+        """Word count proxy from raw markdown — strip links/images."""
+        stripped = re.sub(r"!\[[^\]]*\]\([^)]+\)", "", b)
+        stripped = re.sub(r"\[([^\]]+)\]\([^)]+\)", r"\1", stripped)
+        stripped = re.sub(r"[`*_#>~|\-]+", " ", stripped)
+        return len([w for w in stripped.split() if w and not w.startswith("http")])
+
     for category in CONTENT_CATEGORIES:
         cat_dir = CONTENT_DIR / category
         if not cat_dir.exists():
             continue
         for f in sorted(cat_dir.glob("*.md")):
+            # Skip language-overlay files; they're loaded by name from
+            # their canonical sibling (foo.he.md, foo.en.md). Path.stem
+            # of "foo.he.md" is "foo.he" — so endswith catches them.
+            if f.stem.endswith(".he") or f.stem.endswith(".en"):
+                continue
             text = f.read_text(encoding="utf-8")
-            meta, body = parse_frontmatter(text)
-            # Strip the markdown's leading `# Title` line if it duplicates
-            # the frontmatter title — the article view renders the title
-            # in a header band, so having an identical H1 at the top of
-            # the body is visual noise.
+            meta, canonical_body = parse_frontmatter(text)
+
+            # Per-language body overlays: when `slug.he.md` or `slug.en.md`
+            # exists alongside the canonical `slug.md`, its body replaces
+            # the canonical body for that language only. Frontmatter on
+            # the overlay file is ignored — all metadata lives on the
+            # canonical. Falls back to the canonical body if no overlay.
+            def _load_overlay(suffix: str) -> str:
+                overlay = cat_dir / f"{f.stem}.{suffix}.md"
+                if overlay.exists():
+                    _m, overlay_body = parse_frontmatter(overlay.read_text(encoding="utf-8"))
+                    return overlay_body
+                return canonical_body
+
+            body_he_raw = _load_overlay("he")
+            body_en_raw = _load_overlay("en")
+
             title_meta = meta.get("title", "").strip()
-            if title_meta:
-                body_lines = body.lstrip().splitlines()
-                if body_lines and body_lines[0].startswith("# "):
-                    first_h1 = body_lines[0][2:].strip()
-                    if first_h1 == title_meta:
-                        body = "\n".join(body_lines[1:]).lstrip()
-            html = markdown_to_html(body)
-            html = relativize_internal_links(html)
-            # Word count from the markdown body (before HTML conversion) is
-            # a reasonable proxy. Strip markdown link/image markup so URLs
-            # don't inflate the count. Estimated reading time uses 200 wpm.
-            stripped = re.sub(r"!\[[^\]]*\]\([^)]+\)", "", body)
-            stripped = re.sub(r"\[([^\]]+)\]\([^)]+\)", r"\1", stripped)
-            stripped = re.sub(r"[`*_#>~|\-]+", " ", stripped)
-            words = [w for w in stripped.split() if w and not w.startswith("http")]
-            word_count = len(words)
-            reading_minutes = max(1, round(word_count / 200))
-            # Bilingual fields: title_he/title_en + summary_he/summary_en
-            # take precedence; fall back to the language-agnostic field if
-            # only one was authored. This keeps single-language pieces
-            # working until their counterpart language is added.
-            primary_title = meta.get("title", f.stem)
+            title_he   = meta.get("title_he", title_meta).strip()
+            title_en   = meta.get("title_en", title_meta).strip()
+
+            body_he_raw = _strip_dup_h1(body_he_raw, title_meta, title_he, title_en)
+            body_en_raw = _strip_dup_h1(body_en_raw, title_meta, title_he, title_en)
+
+            html_he = relativize_internal_links(markdown_to_html(body_he_raw))
+            html_en = relativize_internal_links(markdown_to_html(body_en_raw))
+
+            words_he = _words_of(body_he_raw)
+            words_en = _words_of(body_en_raw)
+            mins_he  = max(1, round(words_he / 200))
+            mins_en  = max(1, round(words_en / 200))
+
+            primary_title   = meta.get("title", f.stem)
             primary_summary = meta.get("summary", "")
+            # Legacy fields (body_html, word_count, reading_minutes) keep
+            # the English/canonical values for back-compat with any
+            # older consumers; bilingual readers use the *_he / *_en pair.
             out[category].append({
                 "slug": f.stem,
                 "category": category,
@@ -250,9 +280,15 @@ def build_content(out_dir: Path) -> dict:
                 "summary": primary_summary,
                 "summary_he": meta.get("summary_he", primary_summary),
                 "summary_en": meta.get("summary_en", primary_summary),
-                "word_count": word_count,
-                "reading_minutes": reading_minutes,
-                "body_html": html,
+                "word_count": words_en,
+                "reading_minutes": mins_en,
+                "word_count_he": words_he,
+                "word_count_en": words_en,
+                "reading_minutes_he": mins_he,
+                "reading_minutes_en": mins_en,
+                "body_html": html_en,
+                "body_html_he": html_he,
+                "body_html_en": html_en,
             })
 
     (out_dir / "content.json").write_text(

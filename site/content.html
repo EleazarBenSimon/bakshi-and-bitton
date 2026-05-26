@@ -109,8 +109,11 @@
     header.append(ca);
   }
 
+  const localizedReadingMinutes = lang === "he"
+    ? (piece.reading_minutes_he || piece.reading_minutes)
+    : (piece.reading_minutes_en || piece.reading_minutes);
   const metaLine = el("p", { class: "article-meta" });
-  if (piece.reading_minutes) {
+  if (localizedReadingMinutes) {
     metaLine.append(el("span", { class: "meta-time" },
       (() => {
         const ns = "http://www.w3.org/2000/svg";
@@ -122,7 +125,7 @@
         return svg;
       })()
     ));
-    metaLine.append(el("span", {}, t.read_time(piece.reading_minutes)));
+    metaLine.append(el("span", {}, t.read_time(localizedReadingMinutes)));
     metaLine.append(el("span", { class: "meta-dot" }, "·"));
   }
   if (piece.date) {
@@ -139,8 +142,12 @@
   const mobileTocBtn = el("button", { class: "toc-mobile-toggle" }, t.toc_toggle, " ▾");
   article.append(mobileTocBtn);
 
-  // Article body — rendered HTML
-  const body = el("div", { class: "article-body", html: piece.body_html });
+  // Article body — language-specific HTML; falls back to canonical body
+  // if a language-overlay file hasn't been authored yet.
+  const localizedBodyHtml = lang === "he"
+    ? (piece.body_html_he || piece.body_html)
+    : (piece.body_html_en || piece.body_html);
+  const body = el("div", { class: "article-body", html: localizedBodyHtml });
   article.append(body);
 
   // ─── Build TOC from h2/h3 in the body ────────────────────────────
@@ -286,9 +293,12 @@
         ? (p.title_he || p.title)
         : (p.title_en || p.title);
       card.append(el("h3", { class: "read-next-card-title", dir: "auto" }, nextLocalizedTitle));
-      if (p.reading_minutes) {
+      const nextMinutes = lang === "he"
+        ? (p.reading_minutes_he || p.reading_minutes)
+        : (p.reading_minutes_en || p.reading_minutes);
+      if (nextMinutes) {
         card.append(el("p", { class: "read-next-card-meta" },
-          t.read_time(p.reading_minutes)));
+          t.read_time(nextMinutes)));
       }
       nextGrid.append(card);
     }

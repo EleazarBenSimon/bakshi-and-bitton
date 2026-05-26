@@ -117,7 +117,10 @@
       }
 
       const meta = el("div", { class: "card-meta" });
-      if (item.reading_minutes) {
+      const localizedMinutes = lang === "he"
+        ? (item.reading_minutes_he || item.reading_minutes)
+        : (item.reading_minutes_en || item.reading_minutes);
+      if (localizedMinutes) {
         meta.append(el("span", { class: "card-meta-time" },
           // Clock SVG icon inline
           (() => {
@@ -136,7 +139,7 @@
             svg.append(c); svg.append(h); return svg;
           })()
         ));
-        meta.append(el("span", {}, t.read_time(item.reading_minutes)));
+        meta.append(el("span", {}, t.read_time(localizedMinutes)));
       }
       if (item.date) {
         meta.append(el("span", { class: "card-meta-sep" }, "·"));

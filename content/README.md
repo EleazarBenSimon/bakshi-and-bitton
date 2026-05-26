@@ -57,6 +57,55 @@ Briefly:
 4. Open a pull request; a moderator will review against the discipline rules
 5. Moderator approval is required before merge — see [../MODERATION.md](../MODERATION.md)
 
+## Bilingual content (Hebrew + English)
+
+The project is fully bilingual on the front end (a language toggle in
+the site header switches every page between Hebrew and English).
+Content pieces can supply bilingual material at two levels:
+
+### 1. Title and summary (always bilingual)
+
+Add both fields to the canonical file's frontmatter:
+
+```yaml
+---
+title_he: "כותרת בעברית"
+title_en: "Title in English"
+summary_he: "תקציר בעברית..."
+summary_en: "Summary in English..."
+---
+```
+
+If only one language is supplied, the canonical `title` and `summary`
+are used as a fallback for the missing language. Cards on the Reading
+index and headers on the article view will switch with the language
+toggle.
+
+### 2. Article body (optional per-language overlay)
+
+The canonical `slug.md` holds the metadata and the default body. To
+provide a translated body for a specific language, add an *overlay*
+file next to it:
+
+- `slug.md`        — canonical (frontmatter + default body)
+- `slug.he.md`     — optional Hebrew-language body overlay
+- `slug.en.md`     — optional English-language body overlay
+
+Overlay files are pure markdown — any frontmatter in them is ignored
+by the build (all metadata lives on the canonical). When a reader has
+the language toggle set to Hebrew, the site loads `slug.he.md`'s body
+if present; otherwise it falls back to the canonical body. Same for
+English.
+
+This lets you add a translation without modifying the original, and
+lets pieces remain single-language indefinitely if no translator is
+available.
+
+A piece that has both `slug.he.md` and `slug.en.md` is fully
+bilingual. A piece with neither overlay shows the canonical body in
+both languages (acceptable when the body is already neutral or
+when a translation hasn't been authored yet).
+
 ## What this directory is NOT for
 
 - **Opinion pieces** that are not source-linked
