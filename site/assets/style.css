@@ -1237,6 +1237,321 @@ html[lang="he"] .content-article .article-body {
   .share-btn { padding: 6px 11px; font-size: 12.5px; }
 }
 
+/* ────── Featured "visual story" hero card on reading.html ─────── */
+
+.featured-card {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 0;
+  margin: 0 0 28px;
+  background: linear-gradient(135deg, var(--c-essays-soft) 0%, #f8f1e4 100%);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  text-decoration: none;
+  color: var(--text);
+  overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+  position: relative;
+}
+.featured-card::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 4px;
+  background: linear-gradient(90deg, var(--c-essays) 0%, #b03a3a 100%);
+}
+.featured-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 28px rgba(0,0,0,0.10);
+  border-color: var(--accent);
+}
+.featured-card-art {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f9e9c8;
+  overflow: hidden;
+}
+.featured-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.featured-card-text {
+  padding: 24px 28px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.featured-card-eyebrow {
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  color: var(--c-essays);
+}
+.featured-card-title {
+  font-size: 22px;
+  font-weight: 700;
+  margin: 0;
+  line-height: 1.25;
+  letter-spacing: -0.2px;
+}
+.featured-card-body {
+  font-size: 14.5px;
+  line-height: 1.6;
+  margin: 0;
+  color: #2a2a2a;
+}
+.featured-card-cta {
+  margin-top: 4px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--c-essays);
+}
+
+@media (max-width: 700px) {
+  .featured-card {
+    grid-template-columns: 1fr;
+  }
+  .featured-card-art {
+    aspect-ratio: 16 / 10;
+  }
+  .featured-card-text {
+    padding: 18px 20px;
+  }
+  .featured-card-title { font-size: 19px; }
+}
+
+/* ════════════════════════════════════════════════════════════════════
+   COMIC STRIP — visual storytelling for the documentary core
+   Used for /comic-5658-23.html and any future dedicated comic page.
+   ════════════════════════════════════════════════════════════════════ */
+
+.comic-page {
+  max-width: 880px;
+}
+
+.comic-header {
+  margin: 8px 0 32px;
+}
+.comic-breadcrumb {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin: 0 0 12px;
+}
+.comic-breadcrumb a { text-decoration: none; }
+.comic-breadcrumb a:hover { text-decoration: underline; }
+
+.comic-title {
+  font-size: 36px;
+  font-weight: 700;
+  margin: 0 0 14px;
+  letter-spacing: -0.5px;
+  line-height: 1.15;
+}
+.comic-subtitle {
+  font-size: 16px;
+  line-height: 1.65;
+  color: var(--text-muted);
+  margin: 0;
+  max-width: 720px;
+}
+
+.comic-strip {
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+  margin: 8px 0 48px;
+}
+
+.comic-panel {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 6px 24px rgba(0,0,0,0.06);
+}
+
+.comic-panel-number {
+  position: absolute;
+  top: 14px;
+  inset-inline-start: 14px;
+  z-index: 3;
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  background: #1a1a1a;
+  color: white;
+  font-weight: 700;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+.comic-year-ribbon {
+  position: absolute;
+  top: 14px;
+  inset-inline-end: 14px;
+  z-index: 3;
+  background: rgba(255,255,255,0.92);
+  color: #2a2a2a;
+  font-weight: 700;
+  font-size: 13.5px;
+  padding: 6px 12px;
+  border-radius: 18px;
+  letter-spacing: 0.2px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+  border: 1px solid rgba(0,0,0,0.06);
+}
+
+.comic-panel-image-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1024 / 768;
+  background: #f5f5f5;
+  overflow: hidden;
+}
+.comic-panel-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ─── Speech bubbles ─────────────────────────────────────────────── */
+
+.comic-bubble {
+  position: absolute;
+  background: rgba(255,255,255,0.96);
+  border: 2.5px solid #1a1a1a;
+  border-radius: 18px;
+  padding: 10px 14px;
+  font-size: 13.5px;
+  font-weight: 600;
+  line-height: 1.4;
+  color: #1a1a1a;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.18);
+  z-index: 2;
+}
+/* Tail variants — small triangle hung off the bubble pointing at the speaker */
+.comic-bubble::after {
+  content: "";
+  position: absolute;
+  width: 0; height: 0;
+  border-style: solid;
+}
+.comic-bubble--bottom-left::after {
+  bottom: -16px; left: 18px;
+  border-width: 16px 14px 0 0;
+  border-color: #1a1a1a transparent transparent transparent;
+}
+.comic-bubble--bottom-right::after {
+  bottom: -16px; right: 18px;
+  border-width: 16px 0 0 14px;
+  border-color: #1a1a1a transparent transparent transparent;
+}
+.comic-bubble--top-left::after {
+  top: -16px; left: 18px;
+  border-width: 0 14px 16px 0;
+  border-color: transparent #1a1a1a transparent transparent;
+}
+.comic-bubble--top-right::after {
+  top: -16px; right: 18px;
+  border-width: 0 0 16px 14px;
+  border-color: transparent transparent #1a1a1a transparent;
+}
+
+/* "ANNULLED" stamp overlay (panel 4) */
+.comic-stamp {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%) rotate(-12deg);
+  font-size: 46px;
+  font-weight: 900;
+  letter-spacing: 4px;
+  color: rgba(176,58,58,0.95);
+  border: 6px double currentColor;
+  padding: 8px 26px;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.05);
+  z-index: 2;
+  text-shadow: 0 1px 0 rgba(0,0,0,0.1);
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.comic-caption {
+  margin: 0;
+  padding: 16px 22px 20px;
+  font-size: 14.5px;
+  line-height: 1.65;
+  color: #2a2a2a;
+  background: #fafafa;
+  border-top: 1px solid var(--border);
+}
+
+/* ─── Endnote section ─────────────────────────────────────────────── */
+
+.comic-endnote {
+  margin: 32px 0 16px;
+  padding: 24px 28px;
+  background: var(--accent-soft);
+  border-inline-start: 4px solid var(--accent);
+  border-radius: 8px;
+}
+.comic-endnote h2 {
+  margin: 0 0 10px;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--accent);
+  border: none;
+  padding: 0;
+}
+.comic-endnote-body {
+  margin: 0 0 14px;
+  font-size: 14.5px;
+  line-height: 1.7;
+  color: #2a2a2a;
+}
+.comic-endnote-links {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.9;
+}
+.comic-endnote-links a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px dotted var(--accent);
+}
+.comic-endnote-links a:hover { border-bottom-style: solid; }
+
+/* ─── Mobile refinements ─────────────────────────────────────────── */
+
+@media (max-width: 700px) {
+  .comic-title { font-size: 26px; }
+  .comic-subtitle { font-size: 15px; }
+  .comic-strip { gap: 36px; }
+  .comic-panel-number { width: 28px; height: 28px; font-size: 14px; top: 10px; inset-inline-start: 10px; }
+  .comic-year-ribbon { font-size: 12px; padding: 5px 10px; top: 10px; inset-inline-end: 10px; }
+  .comic-bubble { font-size: 12.5px; padding: 8px 11px; border-width: 2px; }
+  .comic-caption { font-size: 13.5px; padding: 13px 16px 16px; }
+  .comic-stamp { font-size: 32px; padding: 6px 18px; border-width: 5px; }
+  .comic-endnote { padding: 18px 18px; }
+}
+
+/* ─── Print ──────────────────────────────────────────────────────── */
+
+@media print {
+  .comic-panel { box-shadow: none; break-inside: avoid; }
+  .will-animate { opacity: 1 !important; transform: none !important; }
+}
+
 /* ─── Print: hide chrome and decorative bits ─────────────────────── */
 
 @media print {

@@ -26,6 +26,35 @@
   hero.append(el("p", { class: "reading-hero-intro" }, t.reading_intro));
   main.append(hero);
 
+  // ─── Featured visual story (comic) ───────────────────────────────
+  // Prominent above-the-fold card linking to the comic. Helps non-
+  // technical readers find a friendly entry point before the
+  // category-filtered grid below.
+  const featured = el("a", { class: "featured-card", href: "comic-5658-23.html" });
+  const featuredLeft = el("div", { class: "featured-card-art" });
+  featuredLeft.append(el("img", {
+    src: "assets/comics/5658-23/panel-5-the-question.png",
+    alt: lang === "he" ? "המאסטרו והילד שואל" : "The Maestro and the child asking",
+    class: "featured-card-img",
+    loading: "lazy",
+  }));
+  featured.append(featuredLeft);
+  const featuredRight = el("div", { class: "featured-card-text" });
+  featuredRight.append(el("span", { class: "featured-card-eyebrow" },
+    lang === "he" ? "סיפור מצויר · חדש" : "Visual story · new"));
+  featuredRight.append(el("h2", { class: "featured-card-title" },
+    lang === "he"
+      ? "מי נתן להם את הסמכות הזו?"
+      : "Who gave them that authority?"));
+  featuredRight.append(el("p", { class: "featured-card-body" },
+    lang === "he"
+      ? "סיפור קצר בחמישה לוחות על הדרך שבה בית המשפט העליון בישראל הגיע לפסול תיקון לחוק-יסוד — צעד שמעולם לא הוסמך אליו על-ידי הציבור או הכנסת. גרסה ידידותית, מצוירת, של מאמר היסוד של הפרויקט."
+      : "A five-panel story about how the Israeli Supreme Court came to strike a Basic Law amendment — a step never granted to it by the public or the Knesset. A friendly, illustrated companion to the project's foundational essay."));
+  featuredRight.append(el("span", { class: "featured-card-cta" },
+    (lang === "he" ? "התחל לקרוא " : "Start reading ") + "→"));
+  featured.append(featuredRight);
+  main.append(featured);
+
   let content = {};
   try {
     content = await fetchJSON("_data/content.json");
