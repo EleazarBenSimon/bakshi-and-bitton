@@ -69,5 +69,17 @@
       "pending": "תלוי ועומד",
       "moot": "התייתר"
     }
+  },
+  "respondent": {
+    "he": {
+      "Knesset": "הכנסת",
+      "Government": "הממשלה",
+      "Cabinet": "הממשלה",
+      "Minister": "שר/ה",
+      "Prime Minister": "ראש הממשלה",
+      "Statute": "חקיקה",
+      "Local-Authority": "רשות מקומית",
+      "Senior-Appointments-Committee": "הוועדה לבדיקת מינויים בכירים"
+    }
   }
 }

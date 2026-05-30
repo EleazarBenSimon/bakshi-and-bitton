@@ -274,6 +274,64 @@ function role_label(role) {
   return map[role] || role;
 }
 
+// ─── Controlled-vocabulary labels ───────────────────────────────────────
+// Human-readable Hebrew/English for the enum fields. Kept in sync with
+// scripts/build.py (which emits the same maps to _data/labels.json for the
+// prerendered static pages). Renders "בוטל" / "Struck down" instead of the
+// raw code "struck_down".
+const LABELS = {
+  outcome: {
+    he: { struck_down: "בוטל", partially_struck: "בוטל חלקית", mandatory_order: "צו עשה",
+          warning_of_voidness: "התראת בטלות", remanded: "הוחזר לדיון", dismissed: "נדחה",
+          declarative: "הצהרתי" },
+    en: { struck_down: "Struck down", partially_struck: "Partially struck",
+          mandatory_order: "Mandatory order", warning_of_voidness: "Warning of voidness",
+          remanded: "Remanded", dismissed: "Dismissed", declarative: "Declarative" },
+  },
+  doctrine: {
+    he: { reasonableness: "עילת הסבירות", proportionality: "מידתיות", ultra_vires: "חריגה מסמכות",
+          separation_of_powers: "הפרדת רשויות", judicial_independence: "עצמאות שיפוטית",
+          procedural_review: "ביקורת הליכית", conflict_of_interest: "ניגוד עניינים",
+          constitutional_supremacy: "עליונות חוקתית", constituent_authority_limits: "גבולות הסמכות המכוננת",
+          abuse_of_constituent_power: "שימוש לרעה בסמכות מכוננת", basic_law_judiciary: "חוק-יסוד: השפיטה",
+          basic_law_government: "חוק-יסוד: הממשלה", basic_law_human_dignity_and_liberty: "חוק-יסוד: כבוד האדם וחירותו" },
+    en: { reasonableness: "Reasonableness", proportionality: "Proportionality", ultra_vires: "Ultra vires",
+          separation_of_powers: "Separation of powers", judicial_independence: "Judicial independence",
+          procedural_review: "Procedural review", conflict_of_interest: "Conflict of interest",
+          constitutional_supremacy: "Constitutional supremacy", constituent_authority_limits: "Constituent-authority limits",
+          abuse_of_constituent_power: "Abuse of constituent power", basic_law_judiciary: "Basic Law: The Judiciary",
+          basic_law_government: "Basic Law: The Government", basic_law_human_dignity_and_liberty: "Basic Law: Human Dignity and Liberty" },
+  },
+  petitioner_type: {
+    he: { NGO: "ארגון חברה אזרחית", individual: "יחיד/ה", political: "גורם פוליטי",
+          local_authority: "רשות מקומית", corporation: "תאגיד", party: "סיעה" },
+    en: {},
+  },
+  compliance_state: {
+    he: { complied: "קוים", defied: "לא קוים", partial: "קוים חלקית", pending: "תלוי ועומד", moot: "התייתר" },
+    en: {},
+  },
+  respondent: {
+    he: { Knesset: "הכנסת", Government: "הממשלה", Cabinet: "הממשלה", Minister: "שר/ה",
+          "Prime Minister": "ראש הממשלה", Statute: "חקיקה", "Local-Authority": "רשות מקומית",
+          "Senior-Appointments-Committee": "הוועדה לבדיקת מינויים בכירים" },
+    en: {},
+  },
+};
+function labelFor(kind, code) {
+  if (code == null || code === "") return code;
+  const m = (LABELS[kind] && LABELS[kind][lang]) || {};
+  if (m[code]) return m[code];
+  // English fallback: humanize the raw code (Title case, underscores → spaces)
+  return String(code).replace(/_/g, " ");
+}
+function outcome_label(o) { return labelFor("outcome", o); }
+function doctrine_label(d) { return labelFor("doctrine", d); }
+function doctrines_label(arr) { return (arr || []).map(doctrine_label).join(", "); }
+function petitioner_type_label(p) { return labelFor("petitioner_type", p); }
+function compliance_label(c) { return labelFor("compliance_state", c); }
+function respondent_label(r) { return labelFor("respondent", r); }
+
 function renderHeader(active) {
   const header = el("header",
     {},
@@ -995,4 +1053,4 @@ function renderCurveSection(rulings) {
   return wrap;
 }
 
-window.CO = { lang, t, el, fetchJSON, ruling_name, justice_name, role_label, renderHeader, renderFooter, renderCurve, renderCurveSection };
+window.CO = { lang, t, el, fetchJSON, ruling_name, justice_name, role_label, renderHeader, renderFooter, renderCurve, renderCurveSection, outcome_label, doctrine_label, doctrines_label, petitioner_type_label, compliance_label, respondent_label };

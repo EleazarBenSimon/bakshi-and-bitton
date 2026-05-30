@@ -6,15 +6,60 @@
   "ruling_date": "2006-12-12",
   "filing_date": null,
   "panel": [
-    { "name_he": "אהרן ברק", "name_en": "Aharon Barak", "role": "President", "slug": "barak" },
-    { "name_he": "לא אומת", "name_en": "Justice (unverified)", "role": "Justice", "slug": "unverified-2" },
-    { "name_he": "לא אומת", "name_en": "Justice (unverified)", "role": "Justice", "slug": "unverified-3" },
-    { "name_he": "לא אומת", "name_en": "Justice (unverified)", "role": "Justice", "slug": "unverified-4" },
-    { "name_he": "לא אומת", "name_en": "Justice (unverified)", "role": "Justice", "slug": "unverified-5" },
-    { "name_he": "לא אומת", "name_en": "Justice (unverified)", "role": "Justice", "slug": "unverified-6" },
-    { "name_he": "לא אומת", "name_en": "Justice (unverified)", "role": "Justice", "slug": "unverified-7" },
-    { "name_he": "לא אומת", "name_en": "Justice (unverified)", "role": "Justice", "slug": "unverified-8" },
-    { "name_he": "לא אומת", "name_en": "Justice (unverified)", "role": "Justice", "slug": "unverified-9" }
+    {
+      "name_he": "אהרן ברק",
+      "name_en": "Aharon Barak",
+      "role": "President",
+      "slug": "barak"
+    },
+    {
+      "name_he": "לא אומת",
+      "name_en": "Justice (unverified)",
+      "role": "Justice",
+      "slug": "unverified-2"
+    },
+    {
+      "name_he": "לא אומת",
+      "name_en": "Justice (unverified)",
+      "role": "Justice",
+      "slug": "unverified-3"
+    },
+    {
+      "name_he": "לא אומת",
+      "name_en": "Justice (unverified)",
+      "role": "Justice",
+      "slug": "unverified-4"
+    },
+    {
+      "name_he": "לא אומת",
+      "name_en": "Justice (unverified)",
+      "role": "Justice",
+      "slug": "unverified-5"
+    },
+    {
+      "name_he": "לא אומת",
+      "name_en": "Justice (unverified)",
+      "role": "Justice",
+      "slug": "unverified-6"
+    },
+    {
+      "name_he": "לא אומת",
+      "name_en": "Justice (unverified)",
+      "role": "Justice",
+      "slug": "unverified-7"
+    },
+    {
+      "name_he": "לא אומת",
+      "name_en": "Justice (unverified)",
+      "role": "Justice",
+      "slug": "unverified-8"
+    },
+    {
+      "name_he": "לא אומת",
+      "name_en": "Justice (unverified)",
+      "role": "Justice",
+      "slug": "unverified-9"
+    }
   ],
   "petitioner_type": "NGO",
   "petitioner_name_he": "עדאלה — המרכז המשפטי לזכויות המיעוט הערבי בישראל ואח'",
@@ -29,7 +74,9 @@
   "outcome": "struck_down",
   "vote_majority": 9,
   "vote_minority": 0,
-  "majority_authors": ["barak"],
+  "majority_authors": [
+    "barak"
+  ],
   "minority_authors": [],
   "official_url": "https://versa.cardozo.yu.edu/opinions/adalah-legal-center-arab-minority-rights-israel-v-minister-defense",
   "secondary_urls": [
@@ -52,5 +99,6 @@
   "domain": "civil-tort-and-state-liability",
   "competence_class": "acquisition",
   "adversarial_view": null,
-  "notes": "Nine-justice panel, unanimous outcome verified per Versa/Cardozo and ICRC casebook. Lead opinion by Barak verified; eight other panel seats marked 'unverified' placeholder pending checking against printed judgment. One of the last major Knesset-statute strikes during the Barak presidency (Barak retired September 2006; this judgment issued shortly thereafter under his authorship on a case argued before retirement)."
+  "notes": "Nine-justice panel, unanimous outcome verified per Versa/Cardozo and ICRC casebook. Lead opinion by Barak verified; eight other panel seats marked 'unverified' placeholder pending checking against printed judgment. One of the last major Knesset-statute strikes during the Barak presidency (Barak retired September 2006; this judgment issued shortly thereafter under his authorship on a case argued before retirement).",
+  "notes_he": "הרכב של תשעה שופטים, תוצאה פה אחד אומתה לפי Versa/Cardozo ומקראת ICRC. דעת הרוב המובילה מאת ברק אומתה; שמונה מושבי הרכב אחרים מסומנים כמציין-מקום 'לא מאומת' עד לבדיקה מול פסק הדין המודפס. אחד מביטולי חוקי הכנסת המשמעותיים האחרונים בתקופת נשיאותו של ברק (ברק פרש בספטמבר 2006; פסק דין זה ניתן זמן קצר לאחר מכן בחתימתו בתיק שנטען בפניו טרם פרישתו)."
 }

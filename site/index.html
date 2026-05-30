@@ -27,7 +27,7 @@
 <script src="assets/app.js"></script>
 <script>
 (async function () {
-  const { t, el, fetchJSON, ruling_name, renderHeader, renderFooter, renderCurveSection, lang } = window.CO;
+  const { t, el, fetchJSON, ruling_name, renderHeader, renderFooter, renderCurveSection, lang, outcome_label, doctrine_label, doctrines_label } = window.CO;
   const root = document.getElementById("root");
   document.documentElement.lang = lang;
 
@@ -53,14 +53,16 @@
   // Filters
   const filtersDiv = el("div", { class: "filters" });
 
-  const outcomes = [...new Set(rulings.map((r) => r.outcome))].sort();
-  const doctrines = [...new Set(rulings.flatMap((r) => r.doctrine_invoked || []))].sort();
+  const outcomes = [...new Set(rulings.map((r) => r.outcome))].sort()
+    .map((o) => ({ value: o, label: outcome_label(o) }));
+  const doctrines = [...new Set(rulings.flatMap((r) => r.doctrine_invoked || []))].sort()
+    .map((d) => ({ value: d, label: doctrine_label(d) }));
   const years = [...new Set(rulings.map((r) => (r.ruling_date || "").slice(0, 4)).filter(Boolean))].sort().reverse();
 
   function makeSelect(label, key, options) {
     const sel = el("select", { id: `filter-${key}` },
       el("option", { value: "" }, t.filter_all),
-      ...options.map((o) => el("option", { value: o }, o))
+      ...options.map((o) => el("option", { value: o.value }, o.label))
     );
     return el("label", {}, label, sel);
   }
@@ -132,10 +134,10 @@
           el("div", { style: "color:var(--text-muted);font-size:12px;margin-top:2px" }, ruling_name(r))
         ),
         el("td", {},
-          el("span", { class: `outcome-pill outcome-${r.outcome}` }, r.outcome.replace(/_/g, " "))
+          el("span", { class: `outcome-pill outcome-${r.outcome}` }, outcome_label(r.outcome))
         ),
         el("td", { class: "vote" }, vote),
-        el("td", { style: "font-size:13px;color:var(--text-muted)" }, (r.doctrine_invoked || []).join(", ")),
+        el("td", { style: "font-size:13px;color:var(--text-muted)" }, doctrines_label(r.doctrine_invoked)),
         el("td", { style: "font-size:13px" }, lang === "he" ? (r.petitioner_name_he || "") : (r.petitioner_name_en || "")),
       );
       tbody.append(tr);

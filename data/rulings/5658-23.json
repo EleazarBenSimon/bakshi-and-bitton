@@ -6,21 +6,96 @@
   "ruling_date": "2024-01-01",
   "filing_date": null,
   "panel": [
-    { "name_he": "אסתר חיות", "name_en": "Esther Hayut", "role": "Retired Justice", "slug": "hayut" },
-    { "name_he": "עוזי פוגלמן", "name_en": "Uzi Vogelman", "role": "Deputy President", "slug": "vogelman" },
-    { "name_he": "יצחק עמית", "name_en": "Yitzhak Amit", "role": "Justice", "slug": "amit" },
-    { "name_he": "נעם סולברג", "name_en": "Noam Sohlberg", "role": "Justice", "slug": "sohlberg" },
-    { "name_he": "דפנה ברק-ארז", "name_en": "Daphne Barak-Erez", "role": "Justice", "slug": "barak-erez" },
-    { "name_he": "ענת ברון", "name_en": "Anat Baron", "role": "Retired Justice", "slug": "baron" },
-    { "name_he": "דוד מינץ", "name_en": "David Mintz", "role": "Justice", "slug": "mintz" },
-    { "name_he": "יוסף אלרון", "name_en": "Yosef Elron", "role": "Justice", "slug": "elron" },
-    { "name_he": "יעל וילנר", "name_en": "Yael Willner", "role": "Justice", "slug": "willner" },
-    { "name_he": "עופר גרוסקופף", "name_en": "Ofer Grosskopf", "role": "Justice", "slug": "grosskopf" },
-    { "name_he": "אלכס שטיין", "name_en": "Alex Stein", "role": "Justice", "slug": "stein" },
-    { "name_he": "גילה כנפי-שטייניץ", "name_en": "Gila Canfy-Steinitz", "role": "Justice", "slug": "canfy-steinitz" },
-    { "name_he": "ח'אלד כבוב", "name_en": "Khaled Kabub", "role": "Justice", "slug": "kabub" },
-    { "name_he": "יחיאל כשר", "name_en": "Yechiel Kasher", "role": "Justice", "slug": "kasher" },
-    { "name_he": "רות רונן", "name_en": "Ruth Ronen", "role": "Justice", "slug": "ronen" }
+    {
+      "name_he": "אסתר חיות",
+      "name_en": "Esther Hayut",
+      "role": "Retired Justice",
+      "slug": "hayut"
+    },
+    {
+      "name_he": "עוזי פוגלמן",
+      "name_en": "Uzi Vogelman",
+      "role": "Deputy President",
+      "slug": "vogelman"
+    },
+    {
+      "name_he": "יצחק עמית",
+      "name_en": "Yitzhak Amit",
+      "role": "Justice",
+      "slug": "amit"
+    },
+    {
+      "name_he": "נעם סולברג",
+      "name_en": "Noam Sohlberg",
+      "role": "Justice",
+      "slug": "sohlberg"
+    },
+    {
+      "name_he": "דפנה ברק-ארז",
+      "name_en": "Daphne Barak-Erez",
+      "role": "Justice",
+      "slug": "barak-erez"
+    },
+    {
+      "name_he": "ענת ברון",
+      "name_en": "Anat Baron",
+      "role": "Retired Justice",
+      "slug": "baron"
+    },
+    {
+      "name_he": "דוד מינץ",
+      "name_en": "David Mintz",
+      "role": "Justice",
+      "slug": "mintz"
+    },
+    {
+      "name_he": "יוסף אלרון",
+      "name_en": "Yosef Elron",
+      "role": "Justice",
+      "slug": "elron"
+    },
+    {
+      "name_he": "יעל וילנר",
+      "name_en": "Yael Willner",
+      "role": "Justice",
+      "slug": "willner"
+    },
+    {
+      "name_he": "עופר גרוסקופף",
+      "name_en": "Ofer Grosskopf",
+      "role": "Justice",
+      "slug": "grosskopf"
+    },
+    {
+      "name_he": "אלכס שטיין",
+      "name_en": "Alex Stein",
+      "role": "Justice",
+      "slug": "stein"
+    },
+    {
+      "name_he": "גילה כנפי-שטייניץ",
+      "name_en": "Gila Canfy-Steinitz",
+      "role": "Justice",
+      "slug": "canfy-steinitz"
+    },
+    {
+      "name_he": "ח'אלד כבוב",
+      "name_en": "Khaled Kabub",
+      "role": "Justice",
+      "slug": "kabub"
+    },
+    {
+      "name_he": "יחיאל כשר",
+      "name_en": "Yechiel Kasher",
+      "role": "Justice",
+      "slug": "kasher"
+    },
+    {
+      "name_he": "רות רונן",
+      "name_en": "Ruth Ronen",
+      "role": "Justice",
+      "slug": "ronen"
+    }
   ],
   "petitioner_type": "NGO",
   "petitioner_name_he": "התנועה למען איכות השלטון בישראל (ועתירות נוספות מאוחדות)",
@@ -35,8 +110,25 @@
   "outcome": "struck_down",
   "vote_majority": 8,
   "vote_minority": 7,
-  "majority_authors": ["hayut", "vogelman", "amit", "barak-erez", "baron", "grosskopf", "kabub", "ronen"],
-  "minority_authors": ["sohlberg", "mintz", "elron", "willner", "stein", "canfy-steinitz", "kasher"],
+  "majority_authors": [
+    "hayut",
+    "vogelman",
+    "amit",
+    "barak-erez",
+    "baron",
+    "grosskopf",
+    "kabub",
+    "ronen"
+  ],
+  "minority_authors": [
+    "sohlberg",
+    "mintz",
+    "elron",
+    "willner",
+    "stein",
+    "canfy-steinitz",
+    "kasher"
+  ],
   "official_url": "https://supremedecisions.court.gov.il/Home/Download?path=HebrewVerdicts%2F23%2F580%2F056%2Fv31&fileName=23056580.V31&type=2",
   "secondary_urls": [
     "https://versa.cardozo.yu.edu/opinions/movement-quality-government-v-knesset",
@@ -61,5 +153,8 @@
     "post-oct7",
     "headliner"
   ],
-  "notes": "First instance in Israeli history of the Supreme Court striking down an amendment to a Basic Law. Justices Hayut and Baron had retired in October 2023 (Hayut Oct 16, Baron Oct 12) but participated in the ruling within the statutory three-month post-retirement window per §15(d) Basic Law: The Judiciary and §10A Courts Law. The 12-3 holding on the principle of reviewing Basic Laws was decided concurrently with the 8-7 holding on this specific amendment. Justices Willner, Stein, and Canfy-Steinitz accepted the review-power principle but voted against application by reading the amendment narrowly to preserve 'reasonableness-balancing' per HCJ 389/80 Dapei Zahav."
+  "notes": "First instance in Israeli history of the Supreme Court striking down an amendment to a Basic Law. Justices Hayut and Baron had retired in October 2023 (Hayut Oct 16, Baron Oct 12) but participated in the ruling within the statutory three-month post-retirement window per §15(d) Basic Law: The Judiciary and §10A Courts Law. The 12-3 holding on the principle of reviewing Basic Laws was decided concurrently with the 8-7 holding on this specific amendment. Justices Willner, Stein, and Canfy-Steinitz accepted the review-power principle but voted against application by reading the amendment narrowly to preserve 'reasonableness-balancing' per HCJ 389/80 Dapei Zahav.",
+  "notes_he": "המקרה הראשון בתולדות ישראל שבו בית המשפט העליון ביטל תיקון לחוק יסוד. השופטות חיות וברון פרשו באוקטובר 2023 (חיות ב-16 באוקטובר, ברון ב-12 באוקטובר) אך השתתפו בפסק הדין בתוך חלון שלושת החודשים הקבוע בחוק לאחר פרישה לפי §15(ד) חוק יסוד: השפיטה ו-§10א לחוק בתי המשפט. ההכרעה ברוב של 12-3 בדבר עקרון הביקורת על חוקי יסוד הוכרעה במקביל להכרעה ברוב של 8-7 בדבר התיקון הספציפי הזה. השופטים וילנר, שטיין וכנפי-שטייניץ קיבלו את עקרון סמכות הביקורת אך הצביעו נגד יישומו תוך פרשנות מצמצמת של התיקון כדי לשמר 'איזון-סבירות' לפי בג\"ץ 389/80 דפי זהב.",
+  "defiance_signals_he": "מנהיגי הקואליציה מתחו ביקורת פומבית על פסק הדין; שר המשפטים לוין כינה אותו 'היפוכה של רוח האחדות' (כפי שדווח ב-Times of Israel ובעיתונות העברית הישראלית המאוזכרת ב-secondary_urls). לא נעשה ניסיון לחקיקה מחדש ישירה של התיקון. פעילות חקיקתית מאוחרת יותר עסקה בשינוי מבנה הוועדה לבחירת שופטים (מרץ 2025).",
+  "predicate_ag_opinion_he": "היועצת המשפטית לממשלה גלי בהרב-מיארה הגישה עמדה לצד העותרים"
 }

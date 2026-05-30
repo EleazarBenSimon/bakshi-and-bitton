@@ -6,15 +6,60 @@
   "ruling_date": "2021-05-23",
   "filing_date": null,
   "panel": [
-    { "name_he": "אסתר חיות", "name_en": "Esther Hayut", "role": "President", "slug": "hayut" },
-    { "name_he": "ניל הנדל", "name_en": "Neal Hendel", "role": "Justice", "slug": "hendel" },
-    { "name_he": "יצחק עמית", "name_en": "Yitzhak Amit", "role": "Justice", "slug": "amit" },
-    { "name_he": "נעם סולברג", "name_en": "Noam Sohlberg", "role": "Justice", "slug": "sohlberg" },
-    { "name_he": "דפנה ברק-ארז", "name_en": "Daphne Barak-Erez", "role": "Justice", "slug": "barak-erez" },
-    { "name_he": "ענת ברון", "name_en": "Anat Baron", "role": "Justice", "slug": "baron" },
-    { "name_he": "ג'ורג' קרא", "name_en": "George Karra", "role": "Justice", "slug": "karra" },
-    { "name_he": "דוד מינץ", "name_en": "David Mintz", "role": "Justice", "slug": "mintz" },
-    { "name_he": "יוסף אלרון", "name_en": "Yosef Elron", "role": "Justice", "slug": "elron" }
+    {
+      "name_he": "אסתר חיות",
+      "name_en": "Esther Hayut",
+      "role": "President",
+      "slug": "hayut"
+    },
+    {
+      "name_he": "ניל הנדל",
+      "name_en": "Neal Hendel",
+      "role": "Justice",
+      "slug": "hendel"
+    },
+    {
+      "name_he": "יצחק עמית",
+      "name_en": "Yitzhak Amit",
+      "role": "Justice",
+      "slug": "amit"
+    },
+    {
+      "name_he": "נעם סולברג",
+      "name_en": "Noam Sohlberg",
+      "role": "Justice",
+      "slug": "sohlberg"
+    },
+    {
+      "name_he": "דפנה ברק-ארז",
+      "name_en": "Daphne Barak-Erez",
+      "role": "Justice",
+      "slug": "barak-erez"
+    },
+    {
+      "name_he": "ענת ברון",
+      "name_en": "Anat Baron",
+      "role": "Justice",
+      "slug": "baron"
+    },
+    {
+      "name_he": "ג'ורג' קרא",
+      "name_en": "George Karra",
+      "role": "Justice",
+      "slug": "karra"
+    },
+    {
+      "name_he": "דוד מינץ",
+      "name_en": "David Mintz",
+      "role": "Justice",
+      "slug": "mintz"
+    },
+    {
+      "name_he": "יוסף אלרון",
+      "name_en": "Yosef Elron",
+      "role": "Justice",
+      "slug": "elron"
+    }
   ],
   "petitioner_type": "Party",
   "petitioner_name_he": "סתיו שפיר (לשעבר ח\"כ) ואח' (עתירות מאוחדות, ובכללן עתירות של ארגוני חברה אזרחית)",
@@ -30,8 +75,19 @@
   "outcome": "warning_of_voidness",
   "vote_majority": 6,
   "vote_minority": 3,
-  "majority_authors": ["hayut", "hendel", "amit", "barak-erez", "baron", "karra"],
-  "minority_authors": ["sohlberg", "mintz", "elron"],
+  "majority_authors": [
+    "hayut",
+    "hendel",
+    "amit",
+    "barak-erez",
+    "baron",
+    "karra"
+  ],
+  "minority_authors": [
+    "sohlberg",
+    "mintz",
+    "elron"
+  ],
   "official_url": "https://supremedecisions.court.gov.il/Home/Download?path=HebrewVerdicts%5C20%5C690%5C059%5Cv16&fileName=20059690.V16&type=2",
   "secondary_urls": [
     "https://verfassungsblog.de/saving-the-constitution-from-politics/",
@@ -56,5 +112,6 @@
   "domain": "basic-law-amendment",
   "competence_class": "acquisition",
   "adversarial_view": null,
-  "notes": "Doctrinal anchor case. Establishes the tripartite test (abuse of constituent power, generality, compatibility with the constitutional fabric) subsequently invoked in HCJ 5658/23 (reasonableness amendment, January 2024) and HCJ 5119/23 (incapacitation amendment, January 2024). Disposition is a 'warning of voidness' (התראת בטלות) — not a strike — the Court declined to void the amendments but signaled future similar amendments would be void under the abuse-of-constituent-power test. Vote: 6-3, uniform across doctrine and disposition. Majority: Hayut (lead), Hendel, Amit, Barak-Erez, Baron, Karra. Dissent: Sohlberg, Mintz, Elron. Internal divergence within the 6-justice majority (Hayut's analytical framework for identifying abuse-of-constituent-power vs. Barak-Erez's framework) did not produce a separate vote tally. The petitioner is recorded as 'Party' to reflect Shafir's status as a former Knesset Member; consolidated petitions included NGO co-petitioners. An earlier draft of this record encoded the panel and vote incorrectly (7-2 with Melcer, Vogelman, Willner listed) per a research brief that omitted Justice Elron's dissent and confused the panel composition with an unrelated sibling-era ruling; corrected against arnontl.com legal-firm analysis, afiklaw.com docket header, and Verfassungsblog summary."
+  "notes": "Doctrinal anchor case. Establishes the tripartite test (abuse of constituent power, generality, compatibility with the constitutional fabric) subsequently invoked in HCJ 5658/23 (reasonableness amendment, January 2024) and HCJ 5119/23 (incapacitation amendment, January 2024). Disposition is a 'warning of voidness' (התראת בטלות) — not a strike — the Court declined to void the amendments but signaled future similar amendments would be void under the abuse-of-constituent-power test. Vote: 6-3, uniform across doctrine and disposition. Majority: Hayut (lead), Hendel, Amit, Barak-Erez, Baron, Karra. Dissent: Sohlberg, Mintz, Elron. Internal divergence within the 6-justice majority (Hayut's analytical framework for identifying abuse-of-constituent-power vs. Barak-Erez's framework) did not produce a separate vote tally. The petitioner is recorded as 'Party' to reflect Shafir's status as a former Knesset Member; consolidated petitions included NGO co-petitioners. An earlier draft of this record encoded the panel and vote incorrectly (7-2 with Melcer, Vogelman, Willner listed) per a research brief that omitted Justice Elron's dissent and confused the panel composition with an unrelated sibling-era ruling; corrected against arnontl.com legal-firm analysis, afiklaw.com docket header, and Verfassungsblog summary.",
+  "notes_he": "תיק עוגן דוקטרינרי. מבסס את המבחן התלת-שלבי (ניצול לרעה של הסמכות המכוננת, כלליות, התאמה למארג החוקתי) שאוזכר לאחר מכן בבג\"ץ 5658/23 (תיקון הסבירות, ינואר 2024) ובבג\"ץ 5119/23 (תיקון ההשבתה, ינואר 2024). ההכרעה היא 'התראת בטלות' — לא ביטול — בית המשפט נמנע מלבטל את התיקונים אך אותת כי תיקונים דומים בעתיד יהיו בטלים לפי מבחן הניצול לרעה של הסמכות המכוננת. הצבעה: 6-3, אחידה הן בדוקטרינה והן בהכרעה. רוב: חיות (מובילה), הנדל, עמית, ברק-ארז, ברון, קרא. מיעוט: סולברג, מינץ, אלרון. הסטייה הפנימית בתוך רוב ששת השופטים (מסגרת הניתוח של חיות לזיהוי ניצול לרעה של הסמכות המכוננת לעומת המסגרת של ברק-ארז) לא הניבה ספירת הצבעה נפרדת. העותר רשום כ'בעל דין' כדי לשקף את מעמדו של שפיר כחבר כנסת לשעבר; העתירות המאוחדות כללו עותרים שותפים מקרב ארגונים לא-ממשלתיים. טיוטה קודמת של רשומה זו קודדה את ההרכב וההצבעה בצורה שגויה (7-2 עם מלצר, פוגלמן ווילנר רשומים) לפי תדריך מחקר שהשמיט את דעת המיעוט של השופט אלרון ובלבל את ההרכב עם פסק דין אחר מאותה תקופה; תוקן מול ניתוח של משרד עורכי הדין arnontl.com, כותרת התיק ב-afiklaw.com, ותקציר Verfassungsblog."
 }

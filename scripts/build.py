@@ -485,6 +485,16 @@ COMPLIANCE_HE = {
     "pending": "תלוי ועומד",
     "moot": "התייתר",
 }
+RESPONDENT_HE = {
+    "Knesset": "הכנסת",
+    "Government": "הממשלה",
+    "Cabinet": "הממשלה",
+    "Minister": "שר/ה",
+    "Prime Minister": "ראש הממשלה",
+    "Statute": "חקיקה",
+    "Local-Authority": "רשות מקומית",
+    "Senior-Appointments-Committee": "הוועדה לבדיקת מינויים בכירים",
+}
 
 
 def build_labels(out_dir: Path) -> None:
@@ -494,6 +504,7 @@ def build_labels(out_dir: Path) -> None:
         "doctrine": {"he": DOCTRINE_LABELS_HE, "en": DOCTRINE_LABELS_EN},
         "petitioner_type": {"he": PETITIONER_TYPE_HE},
         "compliance_state": {"he": COMPLIANCE_HE},
+        "respondent": {"he": RESPONDENT_HE},
     }
     (out_dir / "labels.json").write_text(
         json.dumps(labels, ensure_ascii=False, indent=2), encoding="utf-8"
@@ -632,7 +643,10 @@ def render_ruling_page(r: dict) -> str:
         row("תאריך הגשה", _esc(r["filing_date"]))
     row("סוג עותר", _esc(PETITIONER_TYPE_HE.get(r.get("petitioner_type"), r.get("petitioner_type"))))
     row("עותר", _esc(r.get("petitioner_name_he")))
-    row("משיב", _esc(r.get("respondent_he") or r.get("respondent")))
+    resp = RESPONDENT_HE.get(r.get("respondent"), r.get("respondent"))
+    row("משיב", _esc(resp))
+    if r.get("respondent_body_he") or r.get("respondent_body"):
+        row("גוף נושא ההחלטה", _esc(r.get("respondent_body_he") or r.get("respondent_body")))
     if r.get("respondent_decision_he"):
         row("ההחלטה המעורערת", _esc(r["respondent_decision_he"]))
     doctrines = ", ".join(DOCTRINE_LABELS_HE.get(d, d) for d in (r.get("doctrine_invoked") or []))

@@ -27,10 +27,13 @@
 <script src="assets/app.js"></script>
 <script>
 (async function () {
-  const { t, el, fetchJSON, ruling_name, role_label, renderHeader, renderFooter, lang } = window.CO;
+  const { t, el, fetchJSON, ruling_name, role_label, renderHeader, renderFooter, lang,
+          outcome_label, doctrines_label, petitioner_type_label, compliance_label, respondent_label } = window.CO;
   const root = document.getElementById("root");
   document.documentElement.lang = lang;
   root.append(renderHeader("rulings"));
+  // Prefer a Hebrew variant of single-language fields when present (he mode).
+  const heField = (he, base) => (lang === "he" && he) ? he : base;
 
   const main = el("main", {});
 
@@ -90,19 +93,21 @@
 
   addField(t.label_ruling_date, r.ruling_date);
   if (r.filing_date) addField(t.label_filing_date, r.filing_date);
-  addField(t.label_petitioner_type, r.petitioner_type);
+  addField(t.label_petitioner_type, petitioner_type_label(r.petitioner_type));
   addField(t.label_petitioner, lang === "he" ? r.petitioner_name_he : r.petitioner_name_en);
-  addField(t.label_respondent, r.respondent);
-  if (r.respondent_body) addField(t.label_respondent_body, r.respondent_body);
+  addField(t.label_respondent, lang === "he" ? respondent_label(r.respondent) : r.respondent);
+  if (r.respondent_body) addField(t.label_respondent_body, heField(r.respondent_body_he, r.respondent_body));
   addField(t.label_respondent_decision, lang === "he" ? r.respondent_decision_he : r.respondent_decision_en);
-  addField(t.label_doctrine_invoked, (r.doctrine_invoked || []).join(", "));
-  addField(t.label_outcome, el("span", { class: `outcome-pill outcome-${r.outcome}` }, r.outcome.replace(/_/g, " ")));
+  addField(t.label_doctrine_invoked, doctrines_label(r.doctrine_invoked));
+  addField(t.label_outcome, el("span", { class: `outcome-pill outcome-${r.outcome}` }, outcome_label(r.outcome)));
   if (r.vote_majority != null) {
     addField(t.label_vote, `${r.vote_majority}–${r.vote_minority ?? 0}`);
   }
-  if (r.predicate_ag_opinion) addField(t.label_predicate_ag, r.predicate_ag_opinion);
-  if (r.compliance_state) addField(t.label_compliance, r.compliance_state);
-  if (r.defiance_signals) addField(t.label_defiance, r.defiance_signals);
+  const predAg = heField(r.predicate_ag_opinion_he, r.predicate_ag_opinion);
+  if (predAg) addField(t.label_predicate_ag, predAg);
+  if (r.compliance_state) addField(t.label_compliance, compliance_label(r.compliance_state));
+  const defiance = heField(r.defiance_signals_he, r.defiance_signals);
+  if (defiance) addField(t.label_defiance, defiance);
   if ((r.tags || []).length) addField(t.label_tags, (r.tags || []).join(", "));
 
   main.append(grid);
@@ -141,9 +146,10 @@
   }
 
   // Notes
-  if (r.notes) {
+  const notesTxt = heField(r.notes_he, r.notes);
+  if (notesTxt) {
     main.append(el("h2", {}, t.label_notes));
-    main.append(el("div", { class: "notes-box" }, r.notes));
+    main.append(el("div", { class: "notes-box" }, notesTxt));
   }
 
   root.append(main);
