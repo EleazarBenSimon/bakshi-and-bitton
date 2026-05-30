@@ -155,6 +155,12 @@ def build_justices(out_dir: Path, rulings: list) -> list:
             slug = j.get("slug")
             if not slug:
                 continue
+            # Placeholder seats for rulings whose full panel composition was not
+            # verified. They are kept on the ruling's own panel (for honest
+            # panel-size reporting) but must NOT aggregate into the justices
+            # index — "unverified-3" is a different unknown person in each case.
+            if slug.startswith("unverified"):
+                continue
             if slug not in justices:
                 justices[slug] = {
                     "slug": slug,
@@ -674,7 +680,8 @@ def render_ruling_page(r: dict) -> str:
         sl = j.get("slug")
         klass = "author-majority" if sl in maj else ("author-minority" if sl in minset else "")
         nm = _esc(j.get("name_he"))
-        link = f'<a href="justice.html?slug={_esc(sl)}">{nm}</a>' if sl else nm
+        linkable = sl and not sl.startswith("unverified")
+        link = f'<a href="justice.html?slug={_esc(sl)}">{nm}</a>' if linkable else nm
         panel_items.append(f'<li class="{klass}">{link}</li>')
     panel = ('<h2>הרכב</h2><ul class="panel-list">' + "".join(panel_items) + '</ul>')
 
@@ -689,6 +696,16 @@ def render_ruling_page(r: dict) -> str:
     if notes_txt:
         notes = f'<h2>הערות</h2><div class="notes-box">{_esc(notes_txt)}</div>'
 
+    adversarial = ""
+    adv_txt = r.get("adversarial_view_he") or r.get("adversarial_view")
+    if adv_txt:
+        adversarial = (
+            '<h2>הוגנות אדברסרית — העמדה הנגדית</h2>'
+            '<div class="adversarial-box">'
+            '<p class="adversarial-note">פרשנות, לא תיעוד: זוהי העמדה התומכת בפסיקה, '
+            'המובאת לשם איזון. הליבה התיעודית שלמעלה מציינת עובדות הליכיות בלבד.</p>'
+            f'<p>{_esc(adv_txt)}</p></div>')
+
     official = ""
     if r.get("official_url"):
         official = (f'<p><a class="source-link" href="{_esc(r["official_url"])}" '
@@ -700,7 +717,7 @@ def render_ruling_page(r: dict) -> str:
         f'<h1>{_esc(case_id)}</h1>'
         f'<p style="color:var(--text-muted);font-size:15px;margin-top:-8px">{_esc(name_he)}</p>'
         f'<p style="font-size:16px;line-height:1.6">{_esc(summary_he)}</p>'
-        f'{official}{grid}{panel}{secondary}{notes}'
+        f'{official}{grid}{panel}{secondary}{notes}{adversarial}'
         f'<p style="margin-top:24px;font-size:14px"><a href="{_esc(spa_url)}">'
         f'גרסה אינטראקטיבית מלאה / English →</a></p>'
         f'</main>{_STATIC_FOOTER}</div>'

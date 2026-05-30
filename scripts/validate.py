@@ -17,6 +17,25 @@ from pathlib import Path
 REPO_ROOT = Path(__file__).resolve().parent.parent
 SCHEMA_PATH = REPO_ROOT / "schemas" / "ruling.schema.json"
 RULINGS_DIR = REPO_ROOT / "data" / "rulings"
+CONTENT_DIR = REPO_ROOT / "content"
+
+
+def check_content_drift(ruling_slugs: set) -> int:
+    """Catch content/data drift: every ruling-JSON link in a content piece must
+    resolve to a real ruling, so the narrative layer can't silently fall out of
+    sync with the documentary core. Returns an error count."""
+    if not CONTENT_DIR.exists():
+        return 0
+    errors = 0
+    link_re = re.compile(r"data/rulings/([a-z0-9-]+)\.json")
+    for md in sorted(CONTENT_DIR.rglob("*.md")):
+        text = md.read_text(encoding="utf-8")
+        for slug in {m.group(1) for m in link_re.finditer(text)}:
+            if slug not in ruling_slugs:
+                rel = md.relative_to(REPO_ROOT)
+                print(f"✗ {rel}: links ruling '{slug}' not present in data/rulings/")
+                errors += 1
+    return errors
 
 
 def load_schema() -> dict:
@@ -137,7 +156,13 @@ def main() -> int:
                 f"panel {len(ruling.get('panel',[]))}"
             )
 
-    print(f"\n{len(files)} ruling(s) checked, {total_errors} error(s)")
+    # Content/data drift: ruling links in the narrative layer must resolve.
+    ruling_slugs = {f.stem for f in files}
+    drift_errors = check_content_drift(ruling_slugs)
+    total_errors += drift_errors
+
+    print(f"\n{len(files)} ruling(s) checked, {len(ruling_slugs)} in documentary core, "
+          f"{total_errors} error(s)")
     return 0 if total_errors == 0 else 1
 
 

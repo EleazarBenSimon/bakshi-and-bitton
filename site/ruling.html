@@ -119,8 +119,10 @@
     const isMajAuthor = (r.majority_authors || []).includes(j.slug);
     const isMinAuthor = (r.minority_authors || []).includes(j.slug);
     const klass = isMajAuthor ? "author-majority" : isMinAuthor ? "author-minority" : "";
+    const jname = lang === "he" ? j.name_he : j.name_en;
+    const linkable = j.slug && !j.slug.startsWith("unverified");
     const li = el("li", { class: klass },
-      j.slug ? el("a", { href: `justice.html?slug=${j.slug}` }, (lang === "he" ? j.name_he : j.name_en)) : (lang === "he" ? j.name_he : j.name_en),
+      linkable ? el("a", { href: `justice.html?slug=${j.slug}` }, jname) : jname,
       j.role ? el("span", { style: "color:var(--text-muted);font-size:11px;margin-inline-start:6px" }, role_label(j.role)) : null,
     );
     ul.append(li);
@@ -150,6 +152,19 @@
   if (notesTxt) {
     main.append(el("h2", {}, t.label_notes));
     main.append(el("div", { class: "notes-box" }, notesTxt));
+  }
+
+  // Adversarial fairness — the opposing (ruling-defending) view, clearly
+  // demarcated as interpretation, not documentary fact.
+  const advTxt = lang === "he"
+    ? (r.adversarial_view_he || r.adversarial_view_en)
+    : (r.adversarial_view_en || r.adversarial_view_he);
+  if (advTxt) {
+    main.append(el("h2", {}, t.label_adversarial));
+    const box = el("div", { class: "adversarial-box" });
+    box.append(el("p", { class: "adversarial-note" }, t.adversarial_note));
+    box.append(el("p", { dir: "auto" }, advTxt));
+    main.append(box);
   }
 
   root.append(main);
