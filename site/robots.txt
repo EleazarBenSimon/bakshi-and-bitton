@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://eleazarbensimon.github.io/bakshi-and-bitton/sitemap.xml

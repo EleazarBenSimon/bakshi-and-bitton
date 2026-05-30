@@ -4,6 +4,21 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Bakshi&Bitton · Justice</title>
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<meta name="description" content="פרופיל שופט/ת — הופעות בהרכבים וחיבור דעות.">
+<link rel="canonical" href="https://eleazarbensimon.github.io/bakshi-and-bitton/justice.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Bakshi&Bitton · בקשי וביטון">
+<meta property="og:title" content="שופט/ת">
+<meta property="og:description" content="פרופיל שופט/ת — הופעות בהרכבים וחיבור דעות.">
+<meta property="og:url" content="https://eleazarbensimon.github.io/bakshi-and-bitton/justice.html">
+<meta property="og:image" content="https://eleazarbensimon.github.io/bakshi-and-bitton/assets/og-default.png">
+<meta property="og:locale" content="he_IL">
+<meta property="og:locale:alternate" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="שופט/ת">
+<meta name="twitter:description" content="פרופיל שופט/ת — הופעות בהרכבים וחיבור דעות.">
+<meta name="twitter:image" content="https://eleazarbensimon.github.io/bakshi-and-bitton/assets/og-default.png">
 <link rel="stylesheet" href="assets/style.css">
 <link rel="alternate" type="application/rss+xml" title="Bakshi&Bitton — new rulings" href="feed.xml">
 </head>
@@ -41,6 +56,8 @@
     root.append(main);
     return;
   }
+
+  document.title = `${justice_name(j)} · בקשי וביטון`;
 
   main.append(el("p", {}, el("a", { href: "justices.html" }, "← " + t.nav_justices)));
   main.append(el("h1", {}, justice_name(j)));

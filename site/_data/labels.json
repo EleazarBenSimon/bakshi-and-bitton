@@ -1,0 +1,73 @@
+{
+  "outcome": {
+    "he": {
+      "struck_down": "בוטל",
+      "partially_struck": "בוטל חלקית",
+      "mandatory_order": "צו עשה",
+      "warning_of_voidness": "התראת בטלות",
+      "remanded": "הוחזר לדיון",
+      "dismissed": "נדחה",
+      "declarative": "הצהרתי"
+    },
+    "en": {
+      "struck_down": "Struck down",
+      "partially_struck": "Partially struck",
+      "mandatory_order": "Mandatory order",
+      "warning_of_voidness": "Warning of voidness",
+      "remanded": "Remanded",
+      "dismissed": "Dismissed",
+      "declarative": "Declarative"
+    }
+  },
+  "doctrine": {
+    "he": {
+      "reasonableness": "עילת הסבירות",
+      "proportionality": "מידתיות",
+      "ultra_vires": "חריגה מסמכות",
+      "separation_of_powers": "הפרדת רשויות",
+      "judicial_independence": "עצמאות שיפוטית",
+      "procedural_review": "ביקורת הליכית",
+      "conflict_of_interest": "ניגוד עניינים",
+      "constitutional_supremacy": "עליונות חוקתית",
+      "constituent_authority_limits": "גבולות הסמכות המכוננת",
+      "abuse_of_constituent_power": "שימוש לרעה בסמכות מכוננת",
+      "basic_law_judiciary": "חוק-יסוד: השפיטה",
+      "basic_law_government": "חוק-יסוד: הממשלה",
+      "basic_law_human_dignity_and_liberty": "חוק-יסוד: כבוד האדם וחירותו"
+    },
+    "en": {
+      "reasonableness": "Reasonableness",
+      "proportionality": "Proportionality",
+      "ultra_vires": "Ultra vires",
+      "separation_of_powers": "Separation of powers",
+      "judicial_independence": "Judicial independence",
+      "procedural_review": "Procedural review",
+      "conflict_of_interest": "Conflict of interest",
+      "constitutional_supremacy": "Constitutional supremacy",
+      "constituent_authority_limits": "Constituent-authority limits",
+      "abuse_of_constituent_power": "Abuse of constituent power",
+      "basic_law_judiciary": "Basic Law: The Judiciary",
+      "basic_law_government": "Basic Law: The Government",
+      "basic_law_human_dignity_and_liberty": "Basic Law: Human Dignity and Liberty"
+    }
+  },
+  "petitioner_type": {
+    "he": {
+      "NGO": "ארגון חברה אזרחית",
+      "individual": "יחיד/ה",
+      "political": "גורם פוליטי",
+      "local_authority": "רשות מקומית",
+      "corporation": "תאגיד",
+      "party": "סיעה"
+    }
+  },
+  "compliance_state": {
+    "he": {
+      "complied": "קוים",
+      "defied": "לא קוים",
+      "partial": "קוים חלקית",
+      "pending": "תלוי ועומד",
+      "moot": "התייתר"
+    }
+  }
+}

@@ -18,6 +18,7 @@ Dependencies:
 """
 
 import csv
+import html
 import json
 import re
 import sys
@@ -370,13 +371,17 @@ def build_rss(site_dir: Path, rulings: list) -> Path:
         case_id = r.get("case_id", "?")
         slug = r.get("case_id_slug", "")
         outcome = r.get("outcome", "")
+        outcome_he = OUTCOME_LABELS_HE.get(outcome, outcome.replace("_", " "))
         summary_he = (r.get("summary_he") or "")[:600]
 
-        link = f"{SITE_BASE_URL}/ruling.html?slug={slug}"
+        # Canonical link is the prerendered static ruling page (real per-ruling
+        # OG/meta + crawlable). The old ?slug= form pointed at a param the SPA
+        # never read, so every feed link 404'd in practice.
+        link = f"{SITE_BASE_URL}/ruling-{slug}.html"
 
-        title_combined = f"{case_id} — {title_he} ({outcome})"
+        title_combined = f"{case_id} — {title_he} ({outcome_he})"
         desc_html = (
-            f"<p><strong>תוצאה:</strong> {xml_escape(outcome)}</p>"
+            f"<p><strong>תוצאה:</strong> {xml_escape(outcome_he)}</p>"
             f"<p>{xml_escape(summary_he)}</p>"
             f'<p><a href="{xml_escape(r.get("official_url",""))}">פסק הדין הרשמי</a></p>'
         )
@@ -410,6 +415,379 @@ def build_rss(site_dir: Path, rulings: list) -> Path:
     return out
 
 
+# ─── Controlled-vocabulary labels ────────────────────────────────────────
+# Human-readable Hebrew/English labels for the enum fields that were
+# previously shown to users as raw code strings (struck_down, ultra_vires…).
+# These maps are the single source of truth: build.py uses them for the
+# prerendered static pages, and they are emitted to _data/labels.json so the
+# SPA (app.js) renders the same labels at runtime.
+
+OUTCOME_LABELS_HE = {
+    "struck_down": "בוטל",
+    "partially_struck": "בוטל חלקית",
+    "mandatory_order": "צו עשה",
+    "warning_of_voidness": "התראת בטלות",
+    "remanded": "הוחזר לדיון",
+    "dismissed": "נדחה",
+    "declarative": "הצהרתי",
+}
+OUTCOME_LABELS_EN = {
+    "struck_down": "Struck down",
+    "partially_struck": "Partially struck",
+    "mandatory_order": "Mandatory order",
+    "warning_of_voidness": "Warning of voidness",
+    "remanded": "Remanded",
+    "dismissed": "Dismissed",
+    "declarative": "Declarative",
+}
+DOCTRINE_LABELS_HE = {
+    "reasonableness": "עילת הסבירות",
+    "proportionality": "מידתיות",
+    "ultra_vires": "חריגה מסמכות",
+    "separation_of_powers": "הפרדת רשויות",
+    "judicial_independence": "עצמאות שיפוטית",
+    "procedural_review": "ביקורת הליכית",
+    "conflict_of_interest": "ניגוד עניינים",
+    "constitutional_supremacy": "עליונות חוקתית",
+    "constituent_authority_limits": "גבולות הסמכות המכוננת",
+    "abuse_of_constituent_power": "שימוש לרעה בסמכות מכוננת",
+    "basic_law_judiciary": "חוק-יסוד: השפיטה",
+    "basic_law_government": "חוק-יסוד: הממשלה",
+    "basic_law_human_dignity_and_liberty": "חוק-יסוד: כבוד האדם וחירותו",
+}
+DOCTRINE_LABELS_EN = {
+    "reasonableness": "Reasonableness",
+    "proportionality": "Proportionality",
+    "ultra_vires": "Ultra vires",
+    "separation_of_powers": "Separation of powers",
+    "judicial_independence": "Judicial independence",
+    "procedural_review": "Procedural review",
+    "conflict_of_interest": "Conflict of interest",
+    "constitutional_supremacy": "Constitutional supremacy",
+    "constituent_authority_limits": "Constituent-authority limits",
+    "abuse_of_constituent_power": "Abuse of constituent power",
+    "basic_law_judiciary": "Basic Law: The Judiciary",
+    "basic_law_government": "Basic Law: The Government",
+    "basic_law_human_dignity_and_liberty": "Basic Law: Human Dignity and Liberty",
+}
+PETITIONER_TYPE_HE = {
+    "NGO": "ארגון חברה אזרחית",
+    "individual": "יחיד/ה",
+    "political": "גורם פוליטי",
+    "local_authority": "רשות מקומית",
+    "corporation": "תאגיד",
+    "party": "סיעה",
+}
+COMPLIANCE_HE = {
+    "complied": "קוים",
+    "defied": "לא קוים",
+    "partial": "קוים חלקית",
+    "pending": "תלוי ועומד",
+    "moot": "התייתר",
+}
+
+
+def build_labels(out_dir: Path) -> None:
+    """Emit _data/labels.json so app.js can render the same human labels."""
+    labels = {
+        "outcome": {"he": OUTCOME_LABELS_HE, "en": OUTCOME_LABELS_EN},
+        "doctrine": {"he": DOCTRINE_LABELS_HE, "en": DOCTRINE_LABELS_EN},
+        "petitioner_type": {"he": PETITIONER_TYPE_HE},
+        "compliance_state": {"he": COMPLIANCE_HE},
+    }
+    (out_dir / "labels.json").write_text(
+        json.dumps(labels, ensure_ascii=False, indent=2), encoding="utf-8"
+    )
+
+
+# ─── Prerendered static pages (SEO / social previews / no-JS) ─────────────
+# The site is a client-rendered SPA: search crawlers and social-card scrapers
+# that don't execute JS see an empty shell. These generators emit one static,
+# fully-baked HTML page per ruling and per content piece — real <head> meta +
+# Open Graph + JSON-LD + crawlable Hebrew body — so a shared link renders a
+# rich card and the content is indexable. The interactive SPA stays the
+# default for navigation; these are canonical landing pages.
+
+OG_IMAGE = f"{SITE_BASE_URL}/assets/og-default.png"
+
+
+def _esc(s) -> str:
+    return html.escape(str(s if s is not None else ""), quote=True)
+
+
+def _page_head(title_he: str, description: str, canonical_path: str,
+               og_type: str = "website", jsonld: dict | None = None,
+               og_image: str = OG_IMAGE) -> str:
+    """Full <head> with localized title, description, OG, Twitter, canonical,
+    favicon, and optional JSON-LD."""
+    canonical = f"{SITE_BASE_URL}/{canonical_path}"
+    desc = " ".join((description or "").split())[:300]
+    parts = [
+        '<!DOCTYPE html>',
+        '<html lang="he" dir="rtl">',
+        '<head>',
+        '<meta charset="UTF-8">',
+        '<meta name="viewport" content="width=device-width, initial-scale=1">',
+        f'<title>{_esc(title_he)} · בקשי וביטון</title>',
+        f'<meta name="description" content="{_esc(desc)}">',
+        f'<link rel="canonical" href="{_esc(canonical)}">',
+        '<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">',
+        '<link rel="stylesheet" href="assets/style.css">',
+        '<link rel="alternate" type="application/rss+xml" title="Bakshi&Bitton — new rulings" href="feed.xml">',
+        f'<meta property="og:type" content="{og_type}">',
+        f'<meta property="og:site_name" content="Bakshi&Bitton · בקשי וביטון">',
+        f'<meta property="og:title" content="{_esc(title_he)}">',
+        f'<meta property="og:description" content="{_esc(desc)}">',
+        f'<meta property="og:url" content="{_esc(canonical)}">',
+        f'<meta property="og:image" content="{_esc(og_image)}">',
+        '<meta property="og:locale" content="he_IL">',
+        '<meta property="og:locale:alternate" content="en_US">',
+        '<meta name="twitter:card" content="summary_large_image">',
+        f'<meta name="twitter:title" content="{_esc(title_he)}">',
+        f'<meta name="twitter:description" content="{_esc(desc)}">',
+        f'<meta name="twitter:image" content="{_esc(og_image)}">',
+    ]
+    if jsonld:
+        parts.append(
+            '<script type="application/ld+json">'
+            + json.dumps(jsonld, ensure_ascii=False) + '</script>'
+        )
+    parts.append('</head>')
+    return "\n".join(parts)
+
+
+def _static_header(active: str) -> str:
+    """Static Hebrew header matching app.js renderHeader markup. The EN toggle
+    routes to the interactive SPA (which holds the bilingual rendering)."""
+    def nav(href, label, key):
+        style = ' style="font-weight:600;color:var(--accent)"' if key == active else ''
+        return f'<a href="{href}"{style}>{label}</a>'
+    return (
+        '<header><div class="header-inner">'
+        '<div><a class="logo" href="index.html">בקשי וביטון'
+        '<span class="logo-sub">פסיקות בית המשפט העליון בעניין החלטות ממשלה ומינויים</span>'
+        '</a></div>'
+        '<nav>'
+        + nav("index.html", "פסיקות", "rulings")
+        + nav("reading.html", "קריאה", "reading")
+        + nav("justices.html", "שופטים", "justices")
+        + nav("cite.html", "ציטוט והפצה", "cite")
+        + nav("about.html", "אודות", "about")
+        + '</nav>'
+        '<button class="lang-toggle" onclick="localStorage.setItem(\'bakshi-and-bitton-lang\',\'en\');'
+        'location.href=this.dataset.spa">EN</button>'
+        '</div></header>'
+    )
+
+
+_STATIC_FOOTER = (
+    '<footer>Bakshi&Bitton · '
+    '<a href="https://github.com/EleazarBenSimon/bakshi-and-bitton">github.com/EleazarBenSimon/bakshi-and-bitton</a>'
+    ' · MIT License · '
+    '<a href="https://github.com/EleazarBenSimon/bakshi-and-bitton/blob/main/METHODOLOGY.md">מתודולוגיה</a>'
+    '</footer>'
+)
+
+
+def render_ruling_page(r: dict) -> str:
+    slug = r.get("case_id_slug", "")
+    case_id = r.get("case_id", "")
+    name_he = r.get("case_name_he", "")
+    summary_he = r.get("summary_he", "")
+    spa_url = f"ruling.html?id={slug}"
+
+    # JSON-LD: model each ruling as an Article about a legal decision, with the
+    # official ruling as isBasedOn (provenance).
+    jsonld = {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": f"{case_id} — {name_he}",
+        "inLanguage": "he",
+        "datePublished": r.get("ruling_date", ""),
+        "url": f"{SITE_BASE_URL}/ruling-{slug}.html",
+        "image": OG_IMAGE,
+        "isPartOf": {"@type": "Dataset", "name": "Bakshi&Bitton",
+                     "url": f"{SITE_BASE_URL}/"},
+        "author": {"@type": "Person", "name": "Eleazar Ben Simon"},
+        "publisher": {"@type": "Organization", "name": "Bakshi&Bitton"},
+        "abstract": summary_he,
+    }
+    if r.get("official_url"):
+        jsonld["isBasedOn"] = r["official_url"]
+
+    head = _page_head(
+        title_he=f"{case_id} — {name_he}" if name_he else case_id,
+        description=summary_he, canonical_path=f"ruling-{slug}.html",
+        og_type="article", jsonld=jsonld,
+    )
+
+    # Detail grid (humanized Hebrew labels)
+    rows = []
+    def row(label, value):
+        if value in (None, "", []):
+            return
+        rows.append(f"<dt>{_esc(label)}</dt><dd>{value}</dd>")
+    row("תאריך הפסיקה", _esc(r.get("ruling_date")))
+    if r.get("filing_date"):
+        row("תאריך הגשה", _esc(r["filing_date"]))
+    row("סוג עותר", _esc(PETITIONER_TYPE_HE.get(r.get("petitioner_type"), r.get("petitioner_type"))))
+    row("עותר", _esc(r.get("petitioner_name_he")))
+    row("משיב", _esc(r.get("respondent_he") or r.get("respondent")))
+    if r.get("respondent_decision_he"):
+        row("ההחלטה המעורערת", _esc(r["respondent_decision_he"]))
+    doctrines = ", ".join(DOCTRINE_LABELS_HE.get(d, d) for d in (r.get("doctrine_invoked") or []))
+    row("עילות שנטענו", _esc(doctrines))
+    outcome = r.get("outcome", "")
+    row("תוצאה", f'<span class="outcome-pill outcome-{_esc(outcome)}">'
+                 f'{_esc(OUTCOME_LABELS_HE.get(outcome, outcome))}</span>')
+    if r.get("vote_majority") is not None:
+        row("הצבעה", f'{_esc(r.get("vote_majority"))}–{_esc(r.get("vote_minority") or 0)}')
+    if r.get("predicate_ag_opinion_he") or r.get("predicate_ag_opinion"):
+        row("חוות-דעת היועמ\"ש שקדמה", _esc(r.get("predicate_ag_opinion_he") or r.get("predicate_ag_opinion")))
+    if r.get("compliance_state"):
+        row("מצב יישום", _esc(COMPLIANCE_HE.get(r["compliance_state"], r["compliance_state"])))
+    if r.get("defiance_signals_he") or r.get("defiance_signals"):
+        row("סימני התנגדות", _esc(r.get("defiance_signals_he") or r.get("defiance_signals")))
+    if r.get("tags"):
+        row("תיוגים", _esc(", ".join(r["tags"])))
+    grid = '<dl class="ruling-detail-grid">' + "".join(rows) + '</dl>'
+
+    # Panel
+    panel_items = []
+    maj = set(r.get("majority_authors") or [])
+    minset = set(r.get("minority_authors") or [])
+    for j in r.get("panel", []):
+        sl = j.get("slug")
+        klass = "author-majority" if sl in maj else ("author-minority" if sl in minset else "")
+        nm = _esc(j.get("name_he"))
+        link = f'<a href="justice.html?slug={_esc(sl)}">{nm}</a>' if sl else nm
+        panel_items.append(f'<li class="{klass}">{link}</li>')
+    panel = ('<h2>הרכב</h2><ul class="panel-list">' + "".join(panel_items) + '</ul>')
+
+    secondary = ""
+    if r.get("secondary_urls"):
+        lis = "".join(f'<li><a href="{_esc(u)}" target="_blank" rel="noopener">{_esc(u)}</a></li>'
+                      for u in r["secondary_urls"])
+        secondary = f'<h2>מקורות משניים</h2><ul>{lis}</ul>'
+
+    notes = ""
+    notes_txt = r.get("notes_he") or r.get("notes")
+    if notes_txt:
+        notes = f'<h2>הערות</h2><div class="notes-box">{_esc(notes_txt)}</div>'
+
+    official = ""
+    if r.get("official_url"):
+        official = (f'<p><a class="source-link" href="{_esc(r["official_url"])}" '
+                    f'target="_blank" rel="noopener">→ פסק הדין הרשמי</a></p>')
+
+    body = (
+        f'<div id="root">{_static_header("rulings")}<main>'
+        f'<p><a href="index.html">← פסיקות</a></p>'
+        f'<h1>{_esc(case_id)}</h1>'
+        f'<p style="color:var(--text-muted);font-size:15px;margin-top:-8px">{_esc(name_he)}</p>'
+        f'<p style="font-size:16px;line-height:1.6">{_esc(summary_he)}</p>'
+        f'{official}{grid}{panel}{secondary}{notes}'
+        f'<p style="margin-top:24px;font-size:14px"><a href="{_esc(spa_url)}">'
+        f'גרסה אינטראקטיבית מלאה / English →</a></p>'
+        f'</main>{_STATIC_FOOTER}</div>'
+    )
+    # data-spa on the toggle so it routes to this ruling's SPA view
+    body = body.replace('class="lang-toggle"', f'class="lang-toggle" data-spa="{_esc(spa_url)}"')
+    return head + '\n<body>\n' + body + '\n</body>\n</html>\n'
+
+
+def render_content_static_page(piece: dict, category: str) -> str:
+    slug = piece.get("slug", "")
+    title_he = piece.get("title_he") or piece.get("title") or slug
+    summary_he = piece.get("summary_he") or piece.get("summary") or ""
+    body_html = piece.get("body_html_he") or piece.get("body_html") or ""
+    spa_url = f"content.html?slug={slug}"
+    badge = {"essays": "מאמר", "explainers": "הסבר", "patterns": "תיעוד דפוס"}.get(category, category)
+
+    jsonld = {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": title_he,
+        "inLanguage": "he",
+        "datePublished": piece.get("date", ""),
+        "url": f"{SITE_BASE_URL}/reading-{slug}.html",
+        "image": OG_IMAGE,
+        "author": {"@type": "Person", "name": "Eleazar Ben Simon"},
+        "publisher": {"@type": "Organization", "name": "Bakshi&Bitton"},
+        "abstract": summary_he,
+    }
+    head = _page_head(title_he=title_he, description=summary_he,
+                      canonical_path=f"reading-{slug}.html",
+                      og_type="article", jsonld=jsonld)
+    qa = (f'<aside class="quick-answer"><div class="quick-answer-label">תשובה מהירה</div>'
+          f'<p class="quick-answer-body" dir="auto">{_esc(summary_he)}</p></aside>') if summary_he else ""
+    body = (
+        f'<div id="root">{_static_header("reading")}<main>'
+        f'<p class="breadcrumb"><a href="reading.html">קריאה</a> / {_esc(badge)}</p>'
+        f'<article class="content-article" dir="auto">'
+        f'<header class="article-header">'
+        f'<span class="article-badge article-badge--{_esc(category)}">{_esc(badge)}</span>'
+        f'<h1 class="article-title" dir="auto">{_esc(title_he)}</h1>{qa}</header>'
+        f'<div class="article-body">{body_html}</div>'
+        f'<p style="margin-top:24px;font-size:14px"><a href="{_esc(spa_url)}">'
+        f'גרסה אינטראקטיבית מלאה / English →</a></p>'
+        f'</article></main>{_STATIC_FOOTER}</div>'
+    )
+    body = body.replace('class="lang-toggle"', f'class="lang-toggle" data-spa="{_esc(spa_url)}"')
+    return head + '\n<body>\n' + body + '\n</body>\n</html>\n'
+
+
+def build_static_pages(site_dir: Path, rulings: list, content: dict) -> int:
+    n = 0
+    for r in rulings:
+        slug = r.get("case_id_slug")
+        if not slug:
+            continue
+        (site_dir / f"ruling-{slug}.html").write_text(render_ruling_page(r), encoding="utf-8")
+        n += 1
+    for category, pieces in content.items():
+        for piece in pieces:
+            slug = piece.get("slug")
+            if not slug:
+                continue
+            (site_dir / f"reading-{slug}.html").write_text(
+                render_content_static_page(piece, category), encoding="utf-8")
+            n += 1
+    return n
+
+
+def build_sitemap(site_dir: Path, rulings: list, content: dict, justices: list) -> Path:
+    urls = ["", "index.html", "reading.html", "justices.html", "cite.html",
+            "about.html", "comic-5658-23.html"]
+    for r in rulings:
+        if r.get("case_id_slug"):
+            urls.append(f"ruling-{r['case_id_slug']}.html")
+    for pieces in content.values():
+        for p in pieces:
+            if p.get("slug"):
+                urls.append(f"reading-{p['slug']}.html")
+    for j in justices:
+        if j.get("slug"):
+            urls.append(f"justice.html?slug={j['slug']}")
+    body = "\n".join(
+        f"  <url><loc>{SITE_BASE_URL}/{xml_escape(u)}</loc></url>" for u in urls
+    )
+    xml = ('<?xml version="1.0" encoding="UTF-8"?>\n'
+           '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+           + body + "\n</urlset>\n")
+    out = site_dir / "sitemap.xml"
+    out.write_text(xml, encoding="utf-8")
+    return out
+
+
+def build_robots(site_dir: Path) -> Path:
+    out = site_dir / "robots.txt"
+    out.write_text(
+        "User-agent: *\nAllow: /\n\n"
+        f"Sitemap: {SITE_BASE_URL}/sitemap.xml\n", encoding="utf-8")
+    return out
+
+
 def main() -> int:
     OUT_DIR.mkdir(parents=True, exist_ok=True)
 
@@ -429,6 +807,18 @@ def main() -> int:
 
     rss_path = build_rss(SITE_DIR, rulings)
     print(f"✓ wrote {rss_path} ({len(rulings)} feed items)")
+
+    build_labels(OUT_DIR)
+    print(f"✓ wrote {OUT_DIR/'labels.json'} (enum → human labels)")
+
+    n_static = build_static_pages(SITE_DIR, rulings, content_out)
+    print(f"✓ wrote {n_static} prerendered static pages (ruling-*.html, reading-*.html)")
+
+    sitemap_path = build_sitemap(SITE_DIR, rulings, content_out, justices_list)
+    print(f"✓ wrote {sitemap_path}")
+
+    robots_path = build_robots(SITE_DIR)
+    print(f"✓ wrote {robots_path}")
 
     return 0
 
