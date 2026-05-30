@@ -73,6 +73,13 @@
   const summary = lang === "he" ? r.summary_he : r.summary_en;
   main.append(el("p", { style: "font-size:16px;line-height:1.6" }, summary));
 
+  // Illustrated comic for this ruling, if any (prominent callout)
+  if (r.comic) {
+    const ctitle = lang === "he" ? (r.comic.title_he || r.comic.title_en) : (r.comic.title_en || r.comic.title_he);
+    main.append(el("p", { class: "ruling-comic-link" },
+      el("a", { href: r.comic.url }, "🖼 " + ctitle + " →")));
+  }
+
   if (r.official_url) {
     main.append(el("p", {}, el("a", { class: "source-link", href: r.official_url, target: "_blank", rel: "noopener" }, "→ " + t.label_official_url)));
   }
@@ -165,6 +172,21 @@
     box.append(el("p", { class: "adversarial-note" }, t.adversarial_note));
     box.append(el("p", { dir: "auto" }, advTxt));
     main.append(box);
+  }
+
+  // Related reading — content pieces that discuss this ruling
+  if ((r.related_content || []).length) {
+    main.append(el("h2", {}, t.label_related_reading));
+    const ul = el("ul", { class: "related-reading" });
+    const catBadge = { essays: t.cat_badge_essays, explainers: t.cat_badge_explainers, patterns: t.cat_badge_patterns };
+    for (const p of r.related_content) {
+      const ptitle = lang === "he" ? (p.title_he || p.title_en) : (p.title_en || p.title_he);
+      ul.append(el("li", {},
+        el("a", { href: `content.html?slug=${encodeURIComponent(p.slug)}` }, ptitle),
+        el("span", { style: "color:var(--text-muted);font-size:12px;margin-inline-start:6px" },
+          "· " + (catBadge[p.category] || p.category))));
+    }
+    main.append(ul);
   }
 
   root.append(main);

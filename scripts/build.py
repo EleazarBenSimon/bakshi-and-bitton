@@ -131,11 +131,59 @@ def relativize_internal_links(html: str) -> str:
 
 # ─── Build stages ────────────────────────────────────────────────────────
 
+# Illustrated comics keyed to the ruling they retell. Surfaced as a prominent
+# link on that ruling's page (and vice-versa).
+COMICS = {
+    "5658-23": {
+        "url": "comic-5658-23.html",
+        "title_he": "מי נתן להם את הסמכות הזו? — סיפור מצויר",
+        "title_en": "Who gave them this authority? — illustrated story",
+    },
+}
+
+
+def _reverse_content_index() -> dict:
+    """Scan content/*/*.md for links to data/rulings/<slug>.json and return
+    {ruling_slug: [{slug,title_he,title_en,category}]} so each ruling can link
+    back to the essays/explainers/patterns that discuss it."""
+    index: dict[str, list] = defaultdict(list)
+    if not CONTENT_DIR.exists():
+        return index
+    link_re = re.compile(r"data/rulings/([a-z0-9-]+)\.json")
+    for category in CONTENT_CATEGORIES:
+        cat_dir = CONTENT_DIR / category
+        if not cat_dir.exists():
+            continue
+        for f in sorted(cat_dir.glob("*.md")):
+            if f.stem.endswith(".he") or f.stem.endswith(".en"):
+                continue
+            text = f.read_text(encoding="utf-8")
+            meta, _ = parse_frontmatter(text)
+            title = meta.get("title", f.stem)
+            piece = {
+                "slug": f.stem, "category": category,
+                "title_he": meta.get("title_he", title),
+                "title_en": meta.get("title_en", title),
+            }
+            for slug in {m.group(1) for m in link_re.finditer(text)}:
+                if all(p["slug"] != piece["slug"] for p in index[slug]):
+                    index[slug].append(piece)
+    return index
+
+
 def build_rulings(out_dir: Path) -> list:
     rulings = []
     for f in sorted(RULINGS_DIR.glob("*.json")):
         rulings.append(json.loads(f.read_text(encoding="utf-8")))
     rulings.sort(key=lambda r: r.get("ruling_date", ""), reverse=True)
+    # Enrich with cross-links (comic + related reading) for the site layer.
+    rev = _reverse_content_index()
+    for r in rulings:
+        slug = r.get("case_id_slug")
+        if slug in COMICS:
+            r["comic"] = COMICS[slug]
+        if rev.get(slug):
+            r["related_content"] = rev[slug]
     (out_dir / "rulings.json").write_text(
         json.dumps(rulings, ensure_ascii=False, indent=2), encoding="utf-8"
     )
@@ -711,13 +759,27 @@ def render_ruling_page(r: dict) -> str:
         official = (f'<p><a class="source-link" href="{_esc(r["official_url"])}" '
                     f'target="_blank" rel="noopener">→ פסק הדין הרשמי</a></p>')
 
+    comic = ""
+    if r.get("comic"):
+        comic = (f'<p class="ruling-comic-link"><a href="{_esc(r["comic"]["url"])}">'
+                 f'🖼 {_esc(r["comic"]["title_he"])} →</a></p>')
+
+    related = ""
+    if r.get("related_content"):
+        cats = {"essays": "מאמר", "explainers": "הסבר", "patterns": "תיעוד דפוס"}
+        items = "".join(
+            f'<li><a href="reading-{_esc(p["slug"])}.html">{_esc(p["title_he"])}</a>'
+            f' <span style="color:var(--text-muted);font-size:12px">· {_esc(cats.get(p["category"], p["category"]))}</span></li>'
+            for p in r["related_content"])
+        related = f'<h2>קריאה נוספת</h2><ul class="related-reading">{items}</ul>'
+
     body = (
         f'<div id="root">{_static_header("rulings")}<main>'
         f'<p><a href="index.html">← פסיקות</a></p>'
         f'<h1>{_esc(case_id)}</h1>'
         f'<p style="color:var(--text-muted);font-size:15px;margin-top:-8px">{_esc(name_he)}</p>'
         f'<p style="font-size:16px;line-height:1.6">{_esc(summary_he)}</p>'
-        f'{official}{grid}{panel}{secondary}{notes}{adversarial}'
+        f'{comic}{official}{grid}{panel}{secondary}{notes}{adversarial}{related}'
         f'<p style="margin-top:24px;font-size:14px"><a href="{_esc(spa_url)}">'
         f'גרסה אינטראקטיבית מלאה / English →</a></p>'
         f'</main>{_STATIC_FOOTER}</div>'

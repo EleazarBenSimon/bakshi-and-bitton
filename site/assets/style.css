@@ -1580,3 +1580,17 @@ html[lang="he"] .content-article .article-body {
   margin: 0 0 8px;
   font-style: italic;
 }
+
+/* Ruling ↔ comic / related-reading cross-links */
+.ruling-comic-link a {
+  display: inline-block;
+  background: var(--accent-soft);
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+}
+.ruling-comic-link a:hover { background: var(--accent); color: #fff; }
+.related-reading { line-height: 1.9; }
