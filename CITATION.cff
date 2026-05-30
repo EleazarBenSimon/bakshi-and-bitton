@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+message: "If you use this dataset, please cite it as below."
+title: "Bakshi&Bitton: A Documentary Database of Israeli Supreme Court Interventions in Elected-Branch Decisions and Appointments"
+abstract: >-
+  A structured, source-linked documentary database of Israeli Supreme Court
+  rulings on government decisions and appointments. Each record includes the
+  case number, panel composition, doctrine invoked, vote split, outcome, and a
+  direct link to the official ruling. Bilingual (Hebrew/English).
+type: dataset
+authors:
+  - family-names: "Ben Simon"
+    given-names: "Eleazar"
+license: MIT
+repository-code: "https://github.com/EleazarBenSimon/bakshi-and-bitton"
+url: "https://eleazarbensimon.github.io/bakshi-and-bitton/"
+keywords:
+  - Israeli Supreme Court
+  - judicial review
+  - constitutional law
+  - Israel
+  - legal database
+year: 2026

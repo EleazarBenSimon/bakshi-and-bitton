@@ -1,0 +1,28 @@
+{
+  "title": "Bakshi&Bitton: A Documentary Database of Israeli Supreme Court Interventions in Elected-Branch Decisions and Appointments",
+  "description": "A structured, source-linked documentary database of Israeli Supreme Court rulings on government decisions and appointments. Each record includes the case number, panel composition, doctrine invoked, vote split, outcome, and a direct link to the official ruling. Bilingual (Hebrew/English). The dataset is released as JSON and CSV.",
+  "upload_type": "dataset",
+  "access_right": "open",
+  "license": "MIT",
+  "creators": [
+    { "name": "Ben Simon, Eleazar" }
+  ],
+  "keywords": [
+    "Israeli Supreme Court",
+    "judicial review",
+    "constitutional law",
+    "Israel",
+    "High Court of Justice",
+    "reasonableness doctrine",
+    "constituent authority",
+    "legal database"
+  ],
+  "language": "heb",
+  "related_identifiers": [
+    {
+      "identifier": "https://eleazarbensimon.github.io/bakshi-and-bitton/",
+      "relation": "isDocumentedBy",
+      "scheme": "url"
+    }
+  ]
+}

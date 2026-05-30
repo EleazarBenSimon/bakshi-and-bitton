@@ -1,0 +1,60 @@
+name: Validate data
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'data/**'
+      - 'content/**'
+      - 'schemas/**'
+      - 'scripts/validate.py'
+      - 'scripts/build.py'
+      - '.github/workflows/validate.yml'
+  pull_request:
+    paths:
+      - 'data/**'
+      - 'content/**'
+      - 'schemas/**'
+      - 'scripts/**'
+  workflow_dispatch:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      # Blocking: schema validity, slug/filename consistency, vote/panel
+      # consistency, author-slug references, and content/data drift
+      # (every ruling-JSON link in the narrative layer must resolve).
+      - name: Validate rulings + content drift
+        run: python3 scripts/validate.py
+
+      - name: Install build deps
+        run: pip install markdown
+
+      # Blocking: the build must succeed end-to-end (data, content, static
+      # pages, sitemap) so a broken ruling/content piece can't reach deploy.
+      - name: Build site (smoke test)
+        run: python3 scripts/build.py
+
+  link-check:
+    runs-on: ubuntu-latest
+    # Non-blocking: source links rot over time; surface dead official/secondary
+    # URLs as a warning without failing the build.
+    continue-on-error: true
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+      - name: Check ruling source URLs are reachable
+        run: python3 scripts/check_links.py

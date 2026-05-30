@@ -112,6 +112,7 @@ const i18n = {
     back_to_top: "חזרה לראש העמוד",
     reading_progress_aria: "התקדמות הקריאה",
     no_match_filter: "אין פריטים שעונים על הסינון",
+    curve_sr_pointer: "אותם נתונים זמינים כטבלה מלאה הניתנת למיון בהמשך העמוד.",
   },
   en: {
     site_title: "Bakshi&Bitton",
@@ -223,6 +224,7 @@ const i18n = {
     back_to_top: "Back to top",
     reading_progress_aria: "Reading progress",
     no_match_filter: "No items match the filter",
+    curve_sr_pointer: "The same data is available as a full, sortable table below.",
   },
 };
 
@@ -995,7 +997,7 @@ function renderCurveMobile_DEPRECATED(rulings) {
 }
 
 function renderCurveSection(rulings) {
-  const wrap = el("section", { class: "curve-section" });
+  const wrap = el("section", { class: "curve-section", "aria-label": t.curve_title });
   wrap.append(el("h2", { class: "curve-h2" }, t.curve_title));
   wrap.append(el("p", { class: "curve-subtitle" }, t.curve_subtitle));
 
@@ -1003,6 +1005,9 @@ function renderCurveSection(rulings) {
   const svgWrap = el("div", { class: "curve-wrap" });
   svgWrap.append(svg);
   wrap.append(svgWrap);
+  // Screen-reader pointer: the chart is decorative-analytical; the same data
+  // is available as a sortable table immediately below.
+  wrap.append(el("p", { class: "visually-hidden" }, t.curve_sr_pointer));
 
   // Era zoom controls — change the SVG viewBox to focus on a slice.
   // Same chart, but text/dots grow as the viewBox shrinks → higher
