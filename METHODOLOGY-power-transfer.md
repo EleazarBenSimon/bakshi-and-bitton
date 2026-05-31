@@ -244,6 +244,28 @@ The project's curve will be plotted alongside Weinshall's
 intervention-count when her data is published in machine-readable
 form, so readers can directly compare.
 
+**The ISCD dataset as a resource (distinct from her 2024 argument).**
+Separately from Weinshall's intervention-vs-involvement *reframing*, the
+**Israeli Supreme Court Database** (ISCD — [iscd.huji.ac.il](https://iscd.huji.ac.il/);
+Weinshall, Epstein & Worms, *Journal of Empirical Legal Studies*, 2020) is a
+**complementary external resource**, not a competitor to this project's
+documentary core. Its scope is verified against the ISCD codebook:
+
+- **Coverage:** all final decisions in cases *opened* **2010–2018**, decided by
+  panels of three to nine justices (16,109 cases / 48,634 opinions).
+  **Nothing before 2010.**
+- **Form:** **coded variables only** (case-centered, 61 variables;
+  justice-centered, 74 variables), distributed as `.csv` / `.xlsx` / `.dta`.
+  It contains **no full opinion text.**
+
+The two resources therefore do not overlap. ISCD offers deep *quantitative*
+structure for one recent decade with no text; our core offers source-linked,
+full-text-pointing documentation across **1976–2026** — and the load-bearing
+eras for this project's thesis (the 2006–09 statute-strike wave and the
+2021–26 Basic-Law-amendment review) lie *outside* ISCD's window. Where the
+windows coincide (2010–2018), ISCD is the authoritative volumetric denominator
+and is cited as such; where they do not, only the documentary core speaks.
+
 ## 7. External validation
 
 The power-transfer curve will be plotted alongside two external
