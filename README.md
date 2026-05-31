@@ -1,5 +1,7 @@
 # Bakshi&Bitton
 
+**Live site:** https://eleazarbensimon.github.io/bakshi-and-bitton/
+
 A documentary preservation project of the ongoing process by which the Israeli Supreme Court has been deformed from a guardian of law into an instrument that constrains the elected institutions of the State of Israel against the will of the public.
 
 **Status**: V0 — pre-launch, building documentary core and informative content layer.
