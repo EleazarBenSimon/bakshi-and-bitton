@@ -23,6 +23,14 @@ In its original, narrow form, the doctrine was the common-law **Wednesbury unrea
 
 Israeli administrative law adopted Wednesbury reasonableness from British common law in the early years of the state. Through the 1970s the standard was applied narrowly, in line with its British origin.
 
+The transition into a *standalone* Israeli ground of review is generally traced to [**HCJ 156/75 *Fawzi Dakka v. Minister of Transportation***](../../data/rulings/156-75-dakka.json) (1976), where Justice Meir Shamgar articulated unreasonableness as an *independent* basis for invalidating administrative action — not merely as evidence of some other defect:
+
+> *"As a general matter it must first be established that statutory powers — especially those bearing on the rights of the individual — ought to be exercised reasonably. An authority that fails this duty acts outside the scope of its authority. From the general to the particular: a regulation infected by unreasonableness going to the root of the matter is regarded as exceeding its maker's authority, and is therefore null and void."*
+>
+> — Justice Shamgar, HCJ 156/75, פ״ד ל(2) 94 at 101 (public domain; Copyright Act 2007 §6). Hebrew original: "כללית יש להקדים ולקבוע כי סמכויות סטטוטוריות — ובעיקר אלה אשר להן נגיעה או זיקה לזכויות הפרט — מן הראוי שיופעלו באופן סביר. רשות הנמנעת מקיום חובה זו פועלת מחוץ לגדר סמכותה. מן הכלל לפרט: תקנה אשר דבקה בה האי־סבירות היורדת לשרשו של ענין, רואים אותה כחורגת מסמכותו של מי שהתקינה ובשל כך תיחשב כבטלה ומבוטלת."
+
+At this stage the threshold was still close to Wednesbury — unreasonableness "going to the root" of the matter. The decisive widening came later.
+
 This changed substantially under the tenure of Justice Aharon Barak. Per Prof. Moshe Cohen-Eliya's account in [*Israel's Juristocracy*](https://lawliberty.org/israels-juristocracy/) (Law & Liberty, March 2024):
 
 > "Barak essentially abandoned this test in the 1980s and instead crafted the 'balancing' version of reasonableness, in which judges exercise discretionary executive powers if they conclude that the government did not correctly weigh or 'balance' different factors or considerations."
