@@ -886,17 +886,29 @@ def build_robots(site_dir: Path) -> Path:
     return out
 
 
+# Google Search Console ownership token (HTML-tag verification). Injected into
+# every page's <head> on each build so verification survives rebuilds — Google
+# re-checks the tag periodically and silently un-verifies if it disappears.
+GOOGLE_SITE_VERIFICATION = "xjBO4qp4oVELM3i_R8MDu1IgT9S9u0hNMyDfKPHIWd4"
+
+
 def version_assets(site_dir: Path) -> dict:
     """Cache-busting: stamp a content-hash query onto the CSS/JS links in every
     HTML page, so a changed asset is fetched fresh instead of served from a
     stale browser/CDN cache. Runs over shells + generated pages alike; the hash
-    only changes when the asset's bytes change, so it's stable otherwise."""
+    only changes when the asset's bytes change, so it's stable otherwise.
+
+    Also injects the Google Search Console verification meta tag into each
+    page's <head> (idempotent) so site ownership stays verified across builds."""
     import hashlib
     versions = {}
     for asset in ("assets/style.css", "assets/app.js"):
         p = site_dir / asset
         if p.exists():
             versions[asset] = hashlib.sha1(p.read_bytes()).hexdigest()[:8]
+    verify_tag = (
+        f'<meta name="google-site-verification" '
+        f'content="{GOOGLE_SITE_VERIFICATION}">')
     n = 0
     for html_file in site_dir.glob("*.html"):
         text = html_file.read_text(encoding="utf-8")
@@ -906,6 +918,9 @@ def version_assets(site_dir: Path) -> dict:
             new = re.sub(
                 rf'{re.escape(asset)}(\?v=[0-9a-f]+)?',
                 f'{asset}?v={ver}', new)
+        # inject verification tag once, right after the opening <head>
+        if "google-site-verification" not in new and "<head>" in new:
+            new = new.replace("<head>", "<head>\n" + verify_tag, 1)
         if new != text:
             html_file.write_text(new, encoding="utf-8")
             n += 1
