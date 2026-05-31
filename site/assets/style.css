@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Assistant:wght@400;500;600;700;800&family=Frank+Ruhl+Libre:wght@500;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Assistant:wght@400;500;600;700;800&family=Frank+Ruhl+Libre:wght@500;700;900&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&display=swap');
 
 /* Bakshi&Bitton — stylesheet
    Goals: credible, intelligent, readable; RTL-default with LTR toggle; no framework.
@@ -1750,30 +1750,52 @@ main a:not(.source-link):hover { text-decoration-color: var(--accent); }
    dark footer. Cohesive, RTL-safe, data-viz untouched.
    ════════════════════════════════════════════════════════════════════ */
 
+/* ════════════════════════════════════════════════════════════════════
+   DESIGN SYSTEM — "Judicial Atmospheric" (Claude Design handoff).
+   Cool blue-grey refinement of the v2 editorial voice: navy ink, judicial
+   blue, imperial gold, jewel-tone outcomes, three-voice type. This :root
+   is last in the cascade and is authoritative.
+   ════════════════════════════════════════════════════════════════════ */
 :root {
-  --ink:        #191b20;     /* masthead + footer */
-  --ink-2:      #23262e;
-  --paper:      #f5f2ec;     /* warm scholarly paper */
-  --bg:         #f5f2ec;
-  --surface:    #fffdf9;
-  --text:       #1c1e22;
-  --text-muted: #5d6066;
-  --border:     #e6e0d4;
-  --accent:     #233a5c;     /* deep navy — structure & links */
-  --accent-deep:#15243c;
-  --accent-soft:#e7ecf4;
-  --gold:       #b08433;     /* bronze-gold editorial accent */
-  --gold-soft:  #f1e7d2;
-  --gold-deep:  #8c6722;
-  --shadow-sm:  0 1px 2px rgba(20,18,12,.04), 0 2px 8px rgba(20,18,12,.05);
-  --shadow-md:  0 10px 34px rgba(20,18,12,.10);
+  --ink:        #0f2038;     /* navy masthead + footer */
+  --ink-2:      #1a2e4a;
+  --paper:      #eaedf4;     /* cool atmospheric paper */
+  --bg:         #eaedf4;
+  --surface:    #fbfcff;
+  --text:       #1b2433;
+  --text-muted: #56607a;
+  --border:     #dbe1ec;
+  --accent:     #1d4276;     /* judicial blue — structure & links */
+  --accent-deep:#142c52;
+  --accent-soft:#e2e9f4;
+  --gold:       #b78d3e;     /* imperial gold editorial accent */
+  --gold-soft:  #efe7d2;
+  --gold-deep:  #8a6722;
+  /* jewel-tone outcome palette */
+  --outcome-struck:      #9c2b39;
+  --outcome-remanded:    #b07a1f;
+  --outcome-dismissed:   #45694e;
+  --outcome-upheld:      #2c6a47;
+  --outcome-declarative: #3f5a86;
+  /* reading-list category accents */
+  --c-essays:     #1d4276;
+  --c-explainers: #a87a2c;
+  --c-patterns:   #2f6a5a;
+  --shadow-sm:  0 1px 2px rgba(16,28,52,.06), 0 2px 8px rgba(16,28,52,.07);
+  --shadow-md:  0 10px 34px rgba(16,28,52,.13);
+  --radius:     10px;
+  --radius-lg:  12px;
+  --radius-sm:  8px;
+  --radius-pill:20px;
+  /* third voice: Newsreader reading serif (Frank Ruhl Libre for Hebrew) */
+  --font-read:  'Newsreader','Frank Ruhl Libre',Georgia,serif;
 }
 
 body { background: var(--paper); }
-/* faint warm vignette at the very top for atmosphere */
+/* faint cool vignette at the very top for atmosphere */
 body::before {
   content:""; position:fixed; inset:0 0 auto 0; height:240px; z-index:-1;
-  background: radial-gradient(120% 90% at 50% -40%, rgba(176,132,51,.06), transparent 70%);
+  background: radial-gradient(120% 90% at 50% -40%, rgba(29,66,118,.08), transparent 70%);
   pointer-events:none;
 }
 
@@ -1850,7 +1872,7 @@ h1, h2, .reading-hero-title, .article-title { color: var(--ink); }
 
 /* ── TABLE — refined, gold-ruled header ───────────────────────────── */
 table { box-shadow: var(--shadow-sm); }
-thead { background: #faf6ee; }
+thead { background: #eef2f8; }
 thead th {
   font-weight: 700; font-size: 12px; letter-spacing: .6px; text-transform: uppercase;
   color: var(--gold-deep);
@@ -1858,7 +1880,7 @@ thead th {
   padding-top: 13px; padding-bottom: 13px;
 }
 tbody tr { transition: background .12s; }
-tbody tr:hover { background: #faf7f0; }
+tbody tr:hover { background: #eef2f8; }
 
 /* ── LINKS ────────────────────────────────────────────────────────── */
 a { color: var(--accent); }
@@ -1880,11 +1902,11 @@ footer {
   text-align: center;
   font-size: 13.5px;
 }
-footer a { color: rgba(246,241,230,.9); text-decoration: none; border-bottom: 1px solid rgba(176,132,51,.5); }
+footer a { color: rgba(246,241,230,.9); text-decoration: none; border-bottom: 1px solid rgba(183,141,62,.5); }
 footer a:hover { color: #fff; border-bottom-color: var(--gold); }
 
 /* ── selection ────────────────────────────────────────────────────── */
-::selection { background: rgba(176,132,51,.22); }
+::selection { background: rgba(29,66,118,.16); }
 
 /* ── gentle entrance for the main column ──────────────────────────── */
 @keyframes co-rise { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
@@ -1943,7 +1965,7 @@ footer a:hover { color: #fff; border-bottom-color: var(--gold); }
   position: sticky; top: 0; z-index: 30;
   display: flex; flex-wrap: wrap; align-items: center; gap: 10px;
   padding: 12px 14px; margin: 18px 0 14px;
-  background: rgba(245,242,236,.92);
+  background: rgba(234,237,244,.92);
   backdrop-filter: saturate(1.3) blur(8px);
   border: 1px solid var(--border); border-radius: 12px;
   box-shadow: var(--shadow-sm);
@@ -1959,7 +1981,7 @@ footer a:hover { color: #fff; border-bottom-color: var(--gold); }
   border: 1px solid var(--border); border-radius: 9px; background: var(--surface);
   transition: border-color .15s, box-shadow .15s;
 }
-.fbar-search:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(35,58,92,.12); }
+.fbar-search:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(29,66,118,.14); }
 .fbar-select {
   font: inherit; font-size: 14px; font-weight: 500;
   padding: 9px 12px; border: 1px solid var(--border); border-radius: 9px;
@@ -1967,7 +1989,7 @@ footer a:hover { color: #fff; border-bottom-color: var(--gold); }
   max-width: 200px; transition: border-color .15s;
 }
 .fbar-select:hover { border-color: var(--accent); }
-.fbar-select:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(35,58,92,.12); }
+.fbar-select:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(29,66,118,.14); }
 .fbar-spacer { flex: 1 1 auto; }
 .fbar-count { font-size: 14px; font-weight: 700; color: var(--accent); white-space: nowrap; font-variant-numeric: tabular-nums; }
 .fbar-clear {
@@ -1994,7 +2016,7 @@ footer a:hover { color: #fff; border-bottom-color: var(--gold); }
 .th-active .th-btn { color: var(--accent); }
 .th-arrow { font-size: 10px; }
 .rrow { cursor: pointer; }
-.rrow:hover { background: #faf6ee; box-shadow: inset 3px 0 0 var(--gold); }
+.rrow:hover { background: #eef2f8; box-shadow: inset 3px 0 0 var(--gold); }
 html[lang="he"] .rrow:hover { box-shadow: inset -3px 0 0 var(--gold); }
 .rrow:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
 .rrow td { padding-top: 11px; padding-bottom: 11px; }
@@ -2044,4 +2066,62 @@ html[lang="he"] .rrow:hover { box-shadow: inset -3px 0 0 var(--gold); }
 }
 @media (max-width: 420px) {
   .stat-band { grid-template-columns: 1fr 1fr; }
+}
+
+/* ════════════════════════════════════════════════════════════════════
+   READING VOICE — the third type face. Long-form reading bodies adopt
+   the Newsreader serif (Frank Ruhl Libre for Hebrew), a controlled
+   measure, old-style numerals, an editorial drop cap (Latin only), a
+   lead paragraph, and a gold pull-quote. UI / data chrome stays sans.
+   ════════════════════════════════════════════════════════════════════ */
+.content-article .article-body {
+  font-family: var(--font-read);
+  max-width: 66ch;
+  color: var(--text);
+  font-feature-settings: "liga" 1, "calt" 1, "onum" 1, "kern" 1;
+}
+/* Hebrew reading serif sits a touch larger for even colour */
+html[lang="he"] .content-article .article-body {
+  font-feature-settings: "liga" 1, "calt" 1, "kern" 1;
+}
+/* lead paragraph — sets the entry tempo */
+.content-article .article-body > p:first-of-type {
+  font-size: 1.16em;
+  line-height: 1.66;
+  color: var(--text);
+}
+/* editorial drop cap — Latin script only (Hebrew has no initials) */
+html[lang="en"] .content-article .article-body > p:first-of-type::first-letter {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-size: 3.4em;
+  line-height: .82;
+  float: left;
+  margin: 6px 10px 0 0;
+  color: var(--accent);
+}
+/* gold pull-quote — replaces the soft-tinted blockquote */
+.content-article .article-body blockquote {
+  background: transparent;
+  border: none;
+  border-inline-start: 3px solid var(--gold);
+  padding: 4px 0 4px 20px;
+  padding-inline-start: 20px;
+  margin: 26px 0;
+  font-size: 1.18em;
+  line-height: 1.6;
+  color: var(--ink-2);
+  font-style: italic;
+  border-radius: 0;
+}
+/* Hebrew has no true italic — carry the emphasis on weight instead */
+html[lang="he"] .content-article .article-body blockquote {
+  font-style: normal;
+  font-weight: 500;
+}
+@media (max-width: 600px) {
+  .content-article .article-body { max-width: none; }
+  html[lang="en"] .content-article .article-body > p:first-of-type::first-letter {
+    font-size: 2.8em;
+  }
 }
