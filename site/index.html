@@ -50,6 +50,9 @@
     return;
   }
 
+  // ── The curve — signature visual, the first major thing encountered ─
+  main.append(renderCurveSection(rulings));
+
   // ── Stat band (animated count-up) ──────────────────────────────────
   const struckSet = new Set(["struck_down", "partially_struck"]);
   const yrs = rulings.map(r => +(r.ruling_date || "").slice(0, 4)).filter(Boolean);
@@ -132,22 +135,6 @@
   const tbody = el("tbody", { id: "rulings-tbody" });
   const tableInner = el("table", { class: "rulings-table" }, el("thead", {}, headRow), tbody);
   main.append(el("div", { class: "table-scroll" }, tableInner));
-
-  // ── Collapsible curve (below the table) ────────────────────────────
-  const curveToggle = el("button", { class: "curve-toggle", type: "button", "aria-expanded": "false" },
-    svgIcon("M4 19h16 M4 19V6 M8 15l4-5 4 3 4-7", "curve-toggle-icon"),
-    el("span", { class: "curve-toggle-label" }, t.curve_show));
-  const curveHolder = el("div", { class: "curve-collapsible", id: "curve-holder" });
-  let curveBuilt = false;
-  curveToggle.addEventListener("click", () => {
-    const open = curveHolder.classList.toggle("open");
-    curveToggle.setAttribute("aria-expanded", String(open));
-    curveToggle.querySelector(".curve-toggle-label").textContent = open ? t.curve_hide : t.curve_show;
-    curveToggle.classList.toggle("active", open);
-    if (open && !curveBuilt) { curveHolder.append(renderCurveSection(rulings)); curveBuilt = true; }
-  });
-  main.append(el("div", { class: "curve-toggle-wrap" }, curveToggle));
-  main.append(curveHolder);
 
   // ── Filtering + sorting + render ───────────────────────────────────
   const sortVal = {
