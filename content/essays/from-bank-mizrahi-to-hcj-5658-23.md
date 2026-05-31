@@ -118,7 +118,6 @@ During the same period, the Court continued to intervene in elected-branch appoi
 
 - **Baharav-Miara dismissal** (Dec 2025): seven-justice panel unanimously struck the cabinet's first-ever vote to fire an Attorney General. See `../../data/rulings/18225-06-25-baharav-miara.json`.
 - **Zini / Shin Bet** (Dec 2025): three-justice panel split 2-1; majority declined to intervene; Court President Amit in dissent argued the appointment committee should examine the Prime Minister's own conflict of interest. See `../../data/rulings/427-10-25-zini.json`.
-- **Gofman / Mossad** (May 2026): three-justice panel unanimously remanded the appointment on procedural grounds — applying logic substantively similar to Amit's Zini dissent. See `../../data/rulings/gofman-mossad-2026-05.json`.
 
 The Court's intervention rate in high-profile appointment decisions during this period is documented in `../patterns/court-intervention-pattern-2014-2026.md`.
 

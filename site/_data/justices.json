@@ -1,78 +1,5 @@
 [
   {
-    "slug": "grosskopf",
-    "name_he": "עופר גרוסקופף",
-    "name_en": "Ofer Grosskopf",
-    "appearances": [
-      {
-        "case_id_slug": "gofman-mossad-2026-05",
-        "case_id": "בג\"ץ — עתירות מאוחדות נגד מינוי גופמן",
-        "ruling_date": "2026-05-19",
-        "role": "Justice",
-        "outcome": "remanded",
-        "authored_majority": false,
-        "authored_minority": false
-      },
-      {
-        "case_id_slug": "18225-06-25-baharav-miara",
-        "case_id": "בג\"ץ 18225-06-25",
-        "ruling_date": "2025-12-14",
-        "role": "Justice",
-        "outcome": "struck_down",
-        "authored_majority": false,
-        "authored_minority": false
-      },
-      {
-        "case_id_slug": "8987-22-levin-jsc",
-        "case_id": "בג\"ץ 8987/22",
-        "ruling_date": "2024-09-12",
-        "role": "Justice",
-        "outcome": "mandatory_order",
-        "authored_majority": false,
-        "authored_minority": false
-      },
-      {
-        "case_id_slug": "5119-23-incapacitation",
-        "case_id": "בג\"ץ 5119/23",
-        "ruling_date": "2024-01-03",
-        "role": "Justice",
-        "outcome": "partially_struck",
-        "authored_majority": false,
-        "authored_minority": false
-      },
-      {
-        "case_id_slug": "5658-23",
-        "case_id": "בג\"ץ 5658/23",
-        "ruling_date": "2024-01-01",
-        "role": "Justice",
-        "outcome": "struck_down",
-        "authored_majority": true,
-        "authored_minority": false
-      },
-      {
-        "case_id_slug": "8948-22-deri",
-        "case_id": "בג\"ץ 8948/22",
-        "ruling_date": "2023-01-18",
-        "role": "Justice",
-        "outcome": "struck_down",
-        "authored_majority": false,
-        "authored_minority": false
-      },
-      {
-        "case_id_slug": "5782-21-zilber",
-        "case_id": "בג\"ץ 5782/21",
-        "ruling_date": "2022-01-12",
-        "role": "Justice",
-        "outcome": "partially_struck",
-        "authored_majority": false,
-        "authored_minority": false
-      }
-    ],
-    "panel_count": 7,
-    "majority_authored": 1,
-    "minority_authored": 0
-  },
-  {
     "slug": "sohlberg",
     "name_he": "נעם סולברג",
     "name_en": "Noam Sohlberg",
@@ -146,79 +73,6 @@
     "minority_authored": 4
   },
   {
-    "slug": "stein",
-    "name_he": "אלכס שטיין",
-    "name_en": "Alex Stein",
-    "appearances": [
-      {
-        "case_id_slug": "gofman-mossad-2026-05",
-        "case_id": "בג\"ץ — עתירות מאוחדות נגד מינוי גופמן",
-        "ruling_date": "2026-05-19",
-        "role": "Justice",
-        "outcome": "remanded",
-        "authored_majority": false,
-        "authored_minority": false
-      },
-      {
-        "case_id_slug": "18225-06-25-baharav-miara",
-        "case_id": "בג\"ץ 18225-06-25",
-        "ruling_date": "2025-12-14",
-        "role": "Justice",
-        "outcome": "struck_down",
-        "authored_majority": false,
-        "authored_minority": false
-      },
-      {
-        "case_id_slug": "8987-22-levin-jsc",
-        "case_id": "בג\"ץ 8987/22",
-        "ruling_date": "2024-09-12",
-        "role": "Justice",
-        "outcome": "mandatory_order",
-        "authored_majority": false,
-        "authored_minority": false
-      },
-      {
-        "case_id_slug": "5119-23-incapacitation",
-        "case_id": "בג\"ץ 5119/23",
-        "ruling_date": "2024-01-03",
-        "role": "Justice",
-        "outcome": "partially_struck",
-        "authored_majority": false,
-        "authored_minority": true
-      },
-      {
-        "case_id_slug": "5658-23",
-        "case_id": "בג\"ץ 5658/23",
-        "ruling_date": "2024-01-01",
-        "role": "Justice",
-        "outcome": "struck_down",
-        "authored_majority": false,
-        "authored_minority": true
-      },
-      {
-        "case_id_slug": "8948-22-deri",
-        "case_id": "בג\"ץ 8948/22",
-        "ruling_date": "2023-01-18",
-        "role": "Justice",
-        "outcome": "struck_down",
-        "authored_majority": false,
-        "authored_minority": false
-      },
-      {
-        "case_id_slug": "5782-21-zilber",
-        "case_id": "בג\"ץ 5782/21",
-        "ruling_date": "2022-01-12",
-        "role": "Justice",
-        "outcome": "partially_struck",
-        "authored_majority": true,
-        "authored_minority": false
-      }
-    ],
-    "panel_count": 7,
-    "majority_authored": 1,
-    "minority_authored": 2
-  },
-  {
     "slug": "amit",
     "name_he": "יצחק עמית",
     "name_en": "Yitzhak Amit",
@@ -281,6 +135,70 @@
     "panel_count": 6,
     "majority_authored": 3,
     "minority_authored": 1
+  },
+  {
+    "slug": "grosskopf",
+    "name_he": "עופר גרוסקופף",
+    "name_en": "Ofer Grosskopf",
+    "appearances": [
+      {
+        "case_id_slug": "18225-06-25-baharav-miara",
+        "case_id": "בג\"ץ 18225-06-25",
+        "ruling_date": "2025-12-14",
+        "role": "Justice",
+        "outcome": "struck_down",
+        "authored_majority": false,
+        "authored_minority": false
+      },
+      {
+        "case_id_slug": "8987-22-levin-jsc",
+        "case_id": "בג\"ץ 8987/22",
+        "ruling_date": "2024-09-12",
+        "role": "Justice",
+        "outcome": "mandatory_order",
+        "authored_majority": false,
+        "authored_minority": false
+      },
+      {
+        "case_id_slug": "5119-23-incapacitation",
+        "case_id": "בג\"ץ 5119/23",
+        "ruling_date": "2024-01-03",
+        "role": "Justice",
+        "outcome": "partially_struck",
+        "authored_majority": false,
+        "authored_minority": false
+      },
+      {
+        "case_id_slug": "5658-23",
+        "case_id": "בג\"ץ 5658/23",
+        "ruling_date": "2024-01-01",
+        "role": "Justice",
+        "outcome": "struck_down",
+        "authored_majority": true,
+        "authored_minority": false
+      },
+      {
+        "case_id_slug": "8948-22-deri",
+        "case_id": "בג\"ץ 8948/22",
+        "ruling_date": "2023-01-18",
+        "role": "Justice",
+        "outcome": "struck_down",
+        "authored_majority": false,
+        "authored_minority": false
+      },
+      {
+        "case_id_slug": "5782-21-zilber",
+        "case_id": "בג\"ץ 5782/21",
+        "ruling_date": "2022-01-12",
+        "role": "Justice",
+        "outcome": "partially_struck",
+        "authored_majority": false,
+        "authored_minority": false
+      }
+    ],
+    "panel_count": 6,
+    "majority_authored": 1,
+    "minority_authored": 0
   },
   {
     "slug": "hayut",
@@ -347,16 +265,25 @@
     "minority_authored": 0
   },
   {
-    "slug": "barak-erez",
-    "name_he": "דפנה ברק-ארז",
-    "name_en": "Daphne Barak-Erez",
+    "slug": "stein",
+    "name_he": "אלכס שטיין",
+    "name_en": "Alex Stein",
     "appearances": [
       {
-        "case_id_slug": "gofman-mossad-2026-05",
-        "case_id": "בג\"ץ — עתירות מאוחדות נגד מינוי גופמן",
-        "ruling_date": "2026-05-19",
+        "case_id_slug": "18225-06-25-baharav-miara",
+        "case_id": "בג\"ץ 18225-06-25",
+        "ruling_date": "2025-12-14",
         "role": "Justice",
-        "outcome": "remanded",
+        "outcome": "struck_down",
+        "authored_majority": false,
+        "authored_minority": false
+      },
+      {
+        "case_id_slug": "8987-22-levin-jsc",
+        "case_id": "בג\"ץ 8987/22",
+        "ruling_date": "2024-09-12",
+        "role": "Justice",
+        "outcome": "mandatory_order",
         "authored_majority": false,
         "authored_minority": false
       },
@@ -367,7 +294,7 @@
         "role": "Justice",
         "outcome": "partially_struck",
         "authored_majority": false,
-        "authored_minority": false
+        "authored_minority": true
       },
       {
         "case_id_slug": "5658-23",
@@ -375,8 +302,8 @@
         "ruling_date": "2024-01-01",
         "role": "Justice",
         "outcome": "struck_down",
-        "authored_majority": true,
-        "authored_minority": false
+        "authored_majority": false,
+        "authored_minority": true
       },
       {
         "case_id_slug": "8948-22-deri",
@@ -388,18 +315,18 @@
         "authored_minority": false
       },
       {
-        "case_id_slug": "5969-20-shafir",
-        "case_id": "בג\"ץ 5969/20",
-        "ruling_date": "2021-05-23",
+        "case_id_slug": "5782-21-zilber",
+        "case_id": "בג\"ץ 5782/21",
+        "ruling_date": "2022-01-12",
         "role": "Justice",
-        "outcome": "warning_of_voidness",
+        "outcome": "partially_struck",
         "authored_majority": true,
         "authored_minority": false
       }
     ],
-    "panel_count": 5,
-    "majority_authored": 2,
-    "minority_authored": 0
+    "panel_count": 6,
+    "majority_authored": 1,
+    "minority_authored": 2
   },
   {
     "slug": "mintz",
@@ -563,6 +490,52 @@
       }
     ],
     "panel_count": 5,
+    "majority_authored": 2,
+    "minority_authored": 0
+  },
+  {
+    "slug": "barak-erez",
+    "name_he": "דפנה ברק-ארז",
+    "name_en": "Daphne Barak-Erez",
+    "appearances": [
+      {
+        "case_id_slug": "5119-23-incapacitation",
+        "case_id": "בג\"ץ 5119/23",
+        "ruling_date": "2024-01-03",
+        "role": "Justice",
+        "outcome": "partially_struck",
+        "authored_majority": false,
+        "authored_minority": false
+      },
+      {
+        "case_id_slug": "5658-23",
+        "case_id": "בג\"ץ 5658/23",
+        "ruling_date": "2024-01-01",
+        "role": "Justice",
+        "outcome": "struck_down",
+        "authored_majority": true,
+        "authored_minority": false
+      },
+      {
+        "case_id_slug": "8948-22-deri",
+        "case_id": "בג\"ץ 8948/22",
+        "ruling_date": "2023-01-18",
+        "role": "Justice",
+        "outcome": "struck_down",
+        "authored_majority": false,
+        "authored_minority": false
+      },
+      {
+        "case_id_slug": "5969-20-shafir",
+        "case_id": "בג\"ץ 5969/20",
+        "ruling_date": "2021-05-23",
+        "role": "Justice",
+        "outcome": "warning_of_voidness",
+        "authored_majority": true,
+        "authored_minority": false
+      }
+    ],
+    "panel_count": 4,
     "majority_authored": 2,
     "minority_authored": 0
   },

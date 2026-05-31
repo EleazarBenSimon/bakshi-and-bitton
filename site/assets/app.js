@@ -88,7 +88,6 @@ const i18n = {
     ann_adalah: "2006 · פסילת חוק ראשונה לאחר מזרחי",
     ann_shafir: "2021 · התראת-בטלות ראשונה",
     ann_5658: "2024 · פסילת תיקון לחוק-יסוד",
-    ann_gofman: "2026 · צו להחזיר מינוי במוסד",
     cat_badge_essays: "מאמר",
     cat_badge_explainers: "הסבר",
     cat_badge_patterns: "תיעוד דפוס",
@@ -198,7 +197,6 @@ const i18n = {
     ann_adalah: "2006 · First post-Mizrahi statute strike",
     ann_shafir: "2021 · First warning of voidness",
     ann_5658: "2024 · Basic Law amendment struck",
-    ann_gofman: "2026 · PM ordered to remand Mossad appointment",
     cat_badge_essays: "Essay",
     cat_badge_explainers: "Explainer",
     cat_badge_patterns: "Pattern",
@@ -425,7 +423,6 @@ function curveAnnotationsMap() {
     "8276-05-adalah-civil-wrongs": t.ann_adalah,
     "5969-20-shafir":              t.ann_shafir,
     "5658-23":                     t.ann_5658,
-    "gofman-mossad-2026-05":       t.ann_gofman,
   };
 }
 
@@ -481,7 +478,6 @@ function renderCurve(rulings) {
     "8276-05-adalah-civil-wrongs": { text: t.ann_adalah, side: "below", align: "start",  dy: 6 },
     "5969-20-shafir":            { text: t.ann_shafir,  side: "below", align: "middle", dy: 16 },
     "5658-23":                   { text: t.ann_5658,    side: "above", align: "end",    dy: -10 },
-    "gofman-mossad-2026-05":     { text: t.ann_gofman,  side: "below", align: "start",  dy: 18 },
   };
 
   const eras = [
