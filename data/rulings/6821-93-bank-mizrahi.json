@@ -86,8 +86,10 @@
     "dorner"
   ],
   "minority_authors": [],
-  "official_url": "https://versa.cardozo.yu.edu/opinions/united-mizrahi-bank-v-migdal-cooperative-village",
+  "official_url": "https://supremedecisions.court.gov.il/Home/Download?path=EnglishVerdicts%5C93%5C210%5C068%5Cz01&fileName=93068210_z01.txt&type=2",
   "secondary_urls": [
+    "https://versa.cardozo.yu.edu/opinions/united-mizrahi-bank-v-migdal-cooperative-village",
+    "https://www.nevo.co.il/psika_word/elyon/padi-nh-4-221-l.pdf",
     "https://versa.cardozo.yu.edu/sites/default/files/upload/opinions/United%20Mizrahi%20Bank%20v.%20Migdal%20Cooperative%20Village.pdf",
     "https://he.wikipedia.org/wiki/%D7%A4%D7%A1%D7%A7_%D7%93%D7%99%D7%9F_%D7%91%D7%A0%D7%A7_%D7%94%D7%9E%D7%96%D7%A8%D7%97%D7%99"
   ],
@@ -109,6 +111,7 @@
     "pre-digital",
     "headliner"
   ],
-  "notes": "Pre-digital era ruling — no supremedecisions.court.gov.il URL exists for this 1995 judgment. The official_url field points to the Cardozo Versa English translation, which is the closest authoritative full-text source. Canonical Hebrew citation: פ\"ד מט(4) 221. Methodology trade-offs: (1) schema 'outcome' enum has no 'declarative' value; 'dismissed' is used because the disposition of the bank's appeal was denial, even though the ruling's lasting significance is the doctrinal assertion of judicial review over primary legislation. (2) Schema 'respondent' enum has no 'Statute' or 'Legislation' value; 'Other' is used because the challenge was effectively to a Knesset statute rather than to an individual official's decision (Knesset is listed but here the formal party-structure was inter-private appeal raising a constitutional question). (3) Schema 'doctrine_invoked' enum has no 'constitutional_supremacy' value; 'constituent_authority_limits' is used as the closest match for the Barak constituent-authority doctrine, paired with 'basic_law_human_dignity_and_liberty' (the right-of-property predicate). (4) All nine justices joined the disposition; doctrinal split on the source of Basic Law supremacy is recorded in summary and noted here, not encoded as majority/minority because the schema treats vote splits at the disposition level. Cheshin concurred in result while disputing the constitutional-supremacy reasoning.",
-  "notes_he": "פסק דין מהעידן הטרום-דיגיטלי — לא קיימת כתובת supremedecisions.court.gov.il לפסק דין זה משנת 1995. שדה official_url מפנה לתרגום האנגלי המלא של Cardozo Versa, שהוא מקור הטקסט המלא הסמכותי הקרוב ביותר. אזכור עברי קנוני: פ\"ד מט(4) 221. שיקולי מתודולוגיה: (1) למניין הערכים של 'outcome' בסכמה אין ערך 'declarative'; נעשה שימוש ב'dismissed' מאחר שההכרעה בערעור הבנק הייתה דחייה, אף שמשמעותו הנמשכת של פסק הדין היא הקביעה הדוקטרינרית של ביקורת שיפוטית על חקיקה ראשית. (2) למניין הערכים של 'respondent' בסכמה אין ערך 'Statute' או 'Legislation'; נעשה שימוש ב'Other' מאחר שהאתגר היה למעשה נגד חוק של הכנסת ולא נגד החלטה של בעל תפקיד יחיד (הכנסת מצוינת אך כאן מבנה בעלי הדין הפורמלי היה ערעור בין-פרטי המעלה שאלה חוקתית). (3) למניין הערכים של 'doctrine_invoked' בסכמה אין ערך 'constitutional_supremacy'; נעשה שימוש ב'constituent_authority_limits' כהתאמה הקרובה ביותר לדוקטרינת הסמכות המכוננת של ברק, בשילוב עם 'basic_law_human_dignity_and_liberty' (הזכות לקניין כבסיס). (4) כל תשעת השופטים הצטרפו להכרעה; הפיצול הדוקטרינרי באשר למקור עליונותם של חוקי היסוד נרשם בתקציר ומצוין כאן, אך לא קודד כרוב/מיעוט מאחר שהסכמה מתייחסת לפיצולי הצבעה ברמת ההכרעה. חשין הצטרף לתוצאה תוך חלוקה על ההנמקה בדבר העליונות החוקתית."
+  "notes": "Pre-digital ruling (1995): the official court database hosts the authoritative ENGLISH translation (linked as official_url); the original HEBREW text is not freely online — it is available on Nevo behind a paywall and in print (פ\"ד מט(4) 221).",
+  "notes_he": "פסק דין מהתקופה הטרום-דיגיטלית (1995): מאגר בתי המשפט מארח את התרגום הרשמי לאנגלית (המקושר כמקור הרשמי); הנוסח העברי המקורי אינו זמין באופן חופשי מקוון — הוא זמין ב-Nevo מאחורי חומת תשלום ובדפוס (פ\"ד מט(4) 221).",
+  "print_citation": "פ\"ד מט(4) 221 (1995)"
 }

@@ -80,8 +80,16 @@
       el("a", { href: r.comic.url }, "🖼 " + ctitle + " →")));
   }
 
+  if (r.print_citation) {
+    main.append(el("p", { class: "print-citation" },
+      t.label_print_citation + ": ", el("strong", {}, r.print_citation)));
+  }
   if (r.official_url) {
-    main.append(el("p", {}, el("a", { class: "source-link", href: r.official_url, target: "_blank", rel: "noopener" }, "→ " + t.label_official_url)));
+    // court.gov.il = the authoritative ruling; anything else is a secondary
+    // description and must not be labeled as the official ruling text.
+    const isCourt = r.official_url.includes("court.gov.il");
+    main.append(el("p", {}, el("a", { class: "source-link", href: r.official_url, target: "_blank", rel: "noopener" },
+      "→ " + (isCourt ? t.label_official_url : t.label_online_secondary))));
   }
 
   const grid = el("dl", { class: "ruling-detail-grid" });

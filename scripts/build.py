@@ -745,10 +745,18 @@ def render_ruling_page(r: dict) -> str:
         notes = f'<h2>הערות</h2><div class="notes-box">{_esc(notes_txt)}</div>'
 
 
+    print_cite = ""
+    if r.get("print_citation"):
+        print_cite = (f'<p class="print-citation">מקור רשמי (בדפוס בלבד): '
+                      f'<strong>{_esc(r["print_citation"])}</strong></p>')
     official = ""
     if r.get("official_url"):
+        # Only court.gov.il is the authoritative ruling; anything else (Versa,
+        # encyclopedia) is a secondary description and must not be mislabeled.
+        is_court = "court.gov.il" in r["official_url"]
+        label = "→ פסק הדין הרשמי" if is_court else "→ מקור מקוון (משני — אינו נוסח פסק הדין)"
         official = (f'<p><a class="source-link" href="{_esc(r["official_url"])}" '
-                    f'target="_blank" rel="noopener">→ פסק הדין הרשמי</a></p>')
+                    f'target="_blank" rel="noopener">{label}</a></p>')
 
     comic = ""
     if r.get("comic"):
@@ -770,7 +778,7 @@ def render_ruling_page(r: dict) -> str:
         f'<h1>{_esc(case_id)}</h1>'
         f'<p style="color:var(--text-muted);font-size:15px;margin-top:-8px">{_esc(name_he)}</p>'
         f'<p style="font-size:16px;line-height:1.6">{_esc(summary_he)}</p>'
-        f'{comic}{official}{grid}{panel}{secondary}{notes}{related}'
+        f'{comic}{print_cite}{official}{grid}{panel}{secondary}{notes}{related}'
         f'<p style="margin-top:24px;font-size:14px"><a href="{_esc(spa_url)}">'
         f'גרסה אינטראקטיבית מלאה / English →</a></p>'
         f'</main>{_STATIC_FOOTER}</div>'
