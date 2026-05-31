@@ -886,6 +886,32 @@ def build_robots(site_dir: Path) -> Path:
     return out
 
 
+def version_assets(site_dir: Path) -> dict:
+    """Cache-busting: stamp a content-hash query onto the CSS/JS links in every
+    HTML page, so a changed asset is fetched fresh instead of served from a
+    stale browser/CDN cache. Runs over shells + generated pages alike; the hash
+    only changes when the asset's bytes change, so it's stable otherwise."""
+    import hashlib
+    versions = {}
+    for asset in ("assets/style.css", "assets/app.js"):
+        p = site_dir / asset
+        if p.exists():
+            versions[asset] = hashlib.sha1(p.read_bytes()).hexdigest()[:8]
+    n = 0
+    for html_file in site_dir.glob("*.html"):
+        text = html_file.read_text(encoding="utf-8")
+        new = text
+        for asset, ver in versions.items():
+            # match the asset with or without an existing ?v=… and re-stamp it
+            new = re.sub(
+                rf'{re.escape(asset)}(\?v=[0-9a-f]+)?',
+                f'{asset}?v={ver}', new)
+        if new != text:
+            html_file.write_text(new, encoding="utf-8")
+            n += 1
+    return {"versions": versions, "pages_stamped": n}
+
+
 def main() -> int:
     OUT_DIR.mkdir(parents=True, exist_ok=True)
 
@@ -917,6 +943,9 @@ def main() -> int:
 
     robots_path = build_robots(SITE_DIR)
     print(f"✓ wrote {robots_path}")
+
+    vinfo = version_assets(SITE_DIR)
+    print(f"✓ cache-busted assets {vinfo['versions']} on {vinfo['pages_stamped']} pages")
 
     return 0
 
