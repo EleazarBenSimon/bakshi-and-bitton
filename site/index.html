@@ -19,24 +19,27 @@
 <meta name="twitter:title" content="מאגר הפסיקות">
 <meta name="twitter:description" content="פסיקות בית המשפט העליון בעניין החלטות ממשלה ומינויים">
 <meta name="twitter:image" content="https://eleazarbensimon.github.io/bakshi-and-bitton/assets/og-default.png">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Dataset", "name": "Bakshi&Bitton · בקשי וביטון", "description": "מאגר תיעודי מובנה של פסיקות בית המשפט העליון בישראל בעניין החלטות ממשלה ומינויים — מקושר למקור הרשמי. A structured documentary database of Israeli Supreme Court rulings on elected-branch decisions and appointments.", "url": "https://eleazarbensimon.github.io/bakshi-and-bitton/", "inLanguage": ["he", "en"], "license": "https://opensource.org/licenses/MIT", "creator": {"@type": "Person", "name": "Eleazar Ben Simon"}, "distribution": [{"@type": "DataDownload", "encodingFormat": "application/json", "contentUrl": "https://eleazarbensimon.github.io/bakshi-and-bitton/_data/rulings.json"}, {"@type": "DataDownload", "encodingFormat": "text/csv", "contentUrl": "https://eleazarbensimon.github.io/bakshi-and-bitton/_data/rulings.csv"}]}</script><link rel="stylesheet" href="assets/style.css?v=66e12c58">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Dataset", "name": "Bakshi&Bitton · בקשי וביטון", "description": "מאגר תיעודי מובנה של פסיקות בית המשפט העליון בישראל בעניין החלטות ממשלה ומינויים — מקושר למקור הרשמי. A structured documentary database of Israeli Supreme Court rulings on elected-branch decisions and appointments.", "url": "https://eleazarbensimon.github.io/bakshi-and-bitton/", "inLanguage": ["he", "en"], "license": "https://opensource.org/licenses/MIT", "creator": {"@type": "Person", "name": "Eleazar Ben Simon"}, "distribution": [{"@type": "DataDownload", "encodingFormat": "application/json", "contentUrl": "https://eleazarbensimon.github.io/bakshi-and-bitton/_data/rulings.json"}, {"@type": "DataDownload", "encodingFormat": "text/csv", "contentUrl": "https://eleazarbensimon.github.io/bakshi-and-bitton/_data/rulings.csv"}]}</script><link rel="stylesheet" href="assets/style.css?v=ab0fd7f3">
 <link rel="alternate" type="application/rss+xml" title="Bakshi&Bitton — new rulings" href="feed.xml">
 </head>
 <body>
 <div id="root"></div>
-<script src="assets/app.js?v=4efeade1"></script>
+<script src="assets/app.js?v=280fa2bc"></script>
 <script>
 (async function () {
-  const { t, el, fetchJSON, ruling_name, renderHeader, renderFooter, renderCurveSection, lang, outcome_label, doctrine_label, doctrines_label } = window.CO;
+  const { t, el, fetchJSON, ruling_name, renderHeader, renderFooter, renderCurveSection, lang,
+          outcome_label, doctrine_label, doctrines_label } = window.CO;
   const root = document.getElementById("root");
   document.documentElement.lang = lang;
-
   root.append(renderHeader("rulings"));
 
-  const main = el("main", {});
+  const main = el("main", { class: "home" });
 
-  main.append(el("h1", {}, t.site_title));
-  main.append(el("div", { class: "notice" }, t.methodology_notice));
+  // ── Compact hero ───────────────────────────────────────────────────
+  const hero = el("div", { class: "home-hero" });
+  hero.append(el("h1", {}, t.site_title));
+  hero.append(el("p", { class: "home-tagline" }, t.site_subtitle));
+  main.append(hero);
 
   let rulings = [];
   try {
@@ -47,109 +50,216 @@
     return;
   }
 
-  // Intervention-severity curve (hero visual)
-  main.append(renderCurveSection(rulings));
+  // ── Stat band (animated count-up) ──────────────────────────────────
+  const struckSet = new Set(["struck_down", "partially_struck"]);
+  const yrs = rulings.map(r => +(r.ruling_date || "").slice(0, 4)).filter(Boolean);
+  const minY = Math.min(...yrs), maxY = Math.max(...yrs);
+  const stats = [
+    { n: rulings.length, label: t.stat_rulings, key: "" },
+    { n: rulings.filter(r => struckSet.has(r.outcome)).length, label: t.stat_struck, key: "struck" },
+    { n: (maxY - minY), label: t.stat_years, suffix: "", pre: `${minY}–${maxY}`, isText: true },
+    { n: rulings.filter(r => (r.panel || []).length >= 9).length, label: t.stat_enbanc, key: "" },
+  ];
+  const statBand = el("div", { class: "stat-band" });
+  for (const s of stats) {
+    const numEl = el("div", { class: "stat-num" }, s.isText ? s.pre : "0");
+    const tile = el("div", { class: "stat-tile" + (s.key === "struck" ? " stat-tile--accent" : "") },
+      numEl,
+      el("div", { class: "stat-label" }, s.label));
+    statBand.append(tile);
+    if (!s.isText) countUp(numEl, s.n);
+  }
+  main.append(statBand);
 
-  // Filters
-  const filtersDiv = el("div", { class: "filters" });
+  // ── Methodology note (compact, secondary) ──────────────────────────
+  main.append(el("p", { class: "home-method" }, t.methodology_notice));
 
-  const outcomes = [...new Set(rulings.map((r) => r.outcome))].sort()
-    .map((o) => ({ value: o, label: outcome_label(o) }));
-  const doctrines = [...new Set(rulings.flatMap((r) => r.doctrine_invoked || []))].sort()
-    .map((d) => ({ value: d, label: doctrine_label(d) }));
-  const years = [...new Set(rulings.map((r) => (r.ruling_date || "").slice(0, 4)).filter(Boolean))].sort().reverse();
+  // ── Filter / search bar (sticky) ───────────────────────────────────
+  const outcomes = [...new Set(rulings.map(r => r.outcome))].sort().map(o => ({ value: o, label: outcome_label(o) }));
+  const doctrines = [...new Set(rulings.flatMap(r => r.doctrine_invoked || []))].sort().map(d => ({ value: d, label: doctrine_label(d) }));
+  const years = [...new Set(rulings.map(r => (r.ruling_date || "").slice(0, 4)).filter(Boolean))].sort().reverse();
 
-  function makeSelect(label, key, options) {
-    const sel = el("select", { id: `filter-${key}` },
-      el("option", { value: "" }, t.filter_all),
-      ...options.map((o) => el("option", { value: o.value }, o.label))
-    );
-    return el("label", {}, label, sel);
+  function makeSelect(key, allLabel, options) {
+    return el("select", { id: `filter-${key}`, class: "fbar-select", "aria-label": allLabel },
+      el("option", { value: "" }, allLabel),
+      ...options.map(o => el("option", { value: o.value }, o.label)));
   }
 
-  filtersDiv.append(makeSelect(t.filter_outcome, "outcome", outcomes));
-  filtersDiv.append(makeSelect(t.filter_doctrine, "doctrine", doctrines));
-  filtersDiv.append(makeSelect(t.filter_year, "year", years));
-  filtersDiv.append(
-    el("label", {}, " ",
-      el("input", { type: "search", id: "filter-search", placeholder: t.search_placeholder, style: "min-width:220px" })
-    )
-  );
+  const searchInput = el("input", {
+    type: "search", id: "filter-search", class: "fbar-search",
+    placeholder: t.search_placeholder, "aria-label": t.filter_search_label,
+  });
+  const searchWrap = el("div", { class: "fbar-search-wrap" },
+    svgIcon("M11 4a7 7 0 1 0 4.95 11.95l4.55 4.55-1.4 1.4-4.55-4.55A7 7 0 0 0 11 4z", "fbar-search-icon"),
+    searchInput);
 
-  main.append(filtersDiv);
+  const selOutcome = makeSelect("outcome", t.filter_outcome, outcomes);
+  const selDoctrine = makeSelect("doctrine", t.filter_doctrine, doctrines);
+  const selYear = makeSelect("year", t.filter_year, years);
 
-  const countDiv = el("p", { id: "count", style: "color:var(--text-muted);font-size:14px" });
-  main.append(countDiv);
+  const clearBtn = el("button", { class: "fbar-clear", type: "button" }, t.filter_clear);
+  const countSpan = el("span", { class: "fbar-count", id: "count" });
 
-  const tableInner = el("table", {},
-    el("thead", {},
-      el("tr", {},
-        el("th", {}, t.col_date),
-        el("th", {}, t.col_case),
-        el("th", {}, t.col_outcome),
-        el("th", { style: "white-space:nowrap" }, t.col_vote),
-        el("th", {}, t.col_doctrine),
-        el("th", {}, t.col_petitioner),
-      )
-    ),
-    el("tbody", { id: "rulings-tbody" })
-  );
-  const table = el("div", { class: "table-scroll" }, tableInner);
-  main.append(table);
+  const fbar = el("div", { class: "fbar" },
+    searchWrap, selOutcome, selDoctrine, selYear,
+    el("span", { class: "fbar-spacer" }),
+    countSpan, clearBtn);
+  main.append(fbar);
+
+  // ── Table ──────────────────────────────────────────────────────────
+  const sort = { col: "date", dir: -1 };  // newest first
+  const cols = [
+    { key: "date",      label: t.col_date,       sortable: true,  cls: "" },
+    { key: "case",      label: t.col_case,       sortable: false, cls: "" },
+    { key: "outcome",   label: t.col_outcome,    sortable: true,  cls: "" },
+    { key: "vote",      label: t.col_vote,       sortable: true,  cls: "col-num" },
+    { key: "doctrine",  label: t.col_doctrine,   sortable: false, cls: "col-soft" },
+    { key: "petitioner",label: t.col_petitioner, sortable: false, cls: "col-soft" },
+  ];
+  const headRow = el("tr", {});
+  for (const c of cols) {
+    const th = el("th", { class: c.cls + (c.sortable ? " th-sortable" : "") });
+    if (c.sortable) {
+      const arrow = el("span", { class: "th-arrow" }, "");
+      th.append(el("button", { class: "th-btn", type: "button", "aria-label": t.sort_aria,
+        onClick: () => toggleSort(c.key) }, c.label, arrow));
+      th.dataset.col = c.key;
+    } else {
+      th.append(c.label);
+    }
+    headRow.append(th);
+  }
+  const tbody = el("tbody", { id: "rulings-tbody" });
+  const tableInner = el("table", { class: "rulings-table" }, el("thead", {}, headRow), tbody);
+  main.append(el("div", { class: "table-scroll" }, tableInner));
+
+  // ── Collapsible curve (below the table) ────────────────────────────
+  const curveToggle = el("button", { class: "curve-toggle", type: "button", "aria-expanded": "false" },
+    svgIcon("M4 19h16 M4 19V6 M8 15l4-5 4 3 4-7", "curve-toggle-icon"),
+    el("span", { class: "curve-toggle-label" }, t.curve_show));
+  const curveHolder = el("div", { class: "curve-collapsible", id: "curve-holder" });
+  let curveBuilt = false;
+  curveToggle.addEventListener("click", () => {
+    const open = curveHolder.classList.toggle("open");
+    curveToggle.setAttribute("aria-expanded", String(open));
+    curveToggle.querySelector(".curve-toggle-label").textContent = open ? t.curve_hide : t.curve_show;
+    curveToggle.classList.toggle("active", open);
+    if (open && !curveBuilt) { curveHolder.append(renderCurveSection(rulings)); curveBuilt = true; }
+  });
+  main.append(el("div", { class: "curve-toggle-wrap" }, curveToggle));
+  main.append(curveHolder);
+
+  // ── Filtering + sorting + render ───────────────────────────────────
+  const sortVal = {
+    date: r => r.ruling_date || "",
+    outcome: r => outcome_label(r.outcome),
+    vote: r => (r.vote_majority != null ? r.vote_majority * 100 - (r.vote_minority || 0) : -1),
+  };
+
+  function currentFilters() {
+    return {
+      outcome: selOutcome.value, doctrine: selDoctrine.value, year: selYear.value,
+      search: (searchInput.value || "").trim().toLowerCase(),
+    };
+  }
 
   function render() {
-    const fOutcome = document.getElementById("filter-outcome").value;
-    const fDoctrine = document.getElementById("filter-doctrine").value;
-    const fYear = document.getElementById("filter-year").value;
-    const fSearch = (document.getElementById("filter-search").value || "").toLowerCase();
-
-    const filtered = rulings.filter((r) => {
-      if (fOutcome && r.outcome !== fOutcome) return false;
-      if (fDoctrine && !(r.doctrine_invoked || []).includes(fDoctrine)) return false;
-      if (fYear && !(r.ruling_date || "").startsWith(fYear)) return false;
-      if (fSearch) {
-        const hay = [r.case_id, r.case_name_he, r.case_name_en, r.summary_he, r.summary_en, r.petitioner_name_he, r.petitioner_name_en].join(" ").toLowerCase();
-        if (!hay.includes(fSearch)) return false;
+    const f = currentFilters();
+    let list = rulings.filter(r => {
+      if (f.outcome && r.outcome !== f.outcome) return false;
+      if (f.doctrine && !(r.doctrine_invoked || []).includes(f.doctrine)) return false;
+      if (f.year && !(r.ruling_date || "").startsWith(f.year)) return false;
+      if (f.search) {
+        const hay = [r.case_id, r.case_name_he, r.case_name_en, r.summary_he, r.summary_en,
+          r.petitioner_name_he, r.petitioner_name_en].join(" ").toLowerCase();
+        if (!hay.includes(f.search)) return false;
       }
       return true;
     });
+    const get = sortVal[sort.col] || sortVal.date;
+    list.sort((a, b) => {
+      const va = get(a), vb = get(b);
+      if (va < vb) return -1 * sort.dir;
+      if (va > vb) return 1 * sort.dir;
+      return 0;
+    });
 
-    countDiv.textContent = t.rulings_count(filtered.length);
-    const tbody = document.getElementById("rulings-tbody");
+    countSpan.textContent = t.rulings_count(list.length);
+    const anyFilter = f.outcome || f.doctrine || f.year || f.search;
+    clearBtn.classList.toggle("show", !!anyFilter);
+
+    // update sort arrows
+    headRow.querySelectorAll("th[data-col]").forEach(th => {
+      const a = th.querySelector(".th-arrow");
+      a.textContent = th.dataset.col === sort.col ? (sort.dir === 1 ? " ▲" : " ▼") : "";
+      th.classList.toggle("th-active", th.dataset.col === sort.col);
+    });
+
     tbody.replaceChildren();
-
-    if (filtered.length === 0) {
-      tbody.append(el("tr", {}, el("td", { colspan: "6" }, t.no_rulings)));
+    if (!list.length) {
+      tbody.append(el("tr", {}, el("td", { colspan: "6", class: "tbl-empty" }, t.no_rulings)));
       return;
     }
-
-    for (const r of filtered) {
-      const vote = r.vote_majority != null
-        ? `${r.vote_majority}–${r.vote_minority ?? 0}`
-        : "—";
-      const tr = el("tr", {},
-        el("td", { class: "vote", style: "white-space:nowrap" }, r.ruling_date),
+    for (const r of list) {
+      const vote = r.vote_majority != null ? `${r.vote_majority}–${r.vote_minority ?? 0}` : "—";
+      const href = `ruling-${r.case_id_slug}.html`;
+      const tr = el("tr", { class: "rrow", tabindex: "0" },
+        el("td", { class: "col-date" }, r.ruling_date),
         el("td", {},
-          el("a", { href: `ruling.html?id=${r.case_id_slug}` }, r.case_id),
-          el("div", { style: "color:var(--text-muted);font-size:12px;margin-top:2px" }, ruling_name(r))
-        ),
-        el("td", {},
-          el("span", { class: `outcome-pill outcome-${r.outcome}` }, outcome_label(r.outcome))
-        ),
-        el("td", { class: "vote" }, vote),
-        el("td", { style: "font-size:13px;color:var(--text-muted)" }, doctrines_label(r.doctrine_invoked)),
-        el("td", { style: "font-size:13px" }, lang === "he" ? (r.petitioner_name_he || "") : (r.petitioner_name_en || "")),
+          el("a", { href, class: "rrow-case" }, r.case_id),
+          el("div", { class: "rrow-name" }, ruling_name(r))),
+        el("td", {}, el("span", { class: `outcome-pill outcome-${r.outcome}` }, outcome_label(r.outcome))),
+        el("td", { class: "col-num vote" }, vote),
+        el("td", { class: "col-soft" }, doctrines_label(r.doctrine_invoked)),
+        el("td", { class: "col-soft" }, lang === "he" ? (r.petitioner_name_he || "") : (r.petitioner_name_en || "")),
       );
+      tr.addEventListener("click", (e) => { if (!e.target.closest("a")) location.href = href; });
+      tr.addEventListener("keydown", (e) => { if (e.key === "Enter") location.href = href; });
       tbody.append(tr);
     }
   }
 
-  filtersDiv.addEventListener("change", render);
-  filtersDiv.addEventListener("input", render);
+  function toggleSort(col) {
+    if (sort.col === col) sort.dir *= -1;
+    else { sort.col = col; sort.dir = col === "date" ? -1 : 1; }
+    render();
+  }
+
+  function clearAll() {
+    selOutcome.value = ""; selDoctrine.value = ""; selYear.value = ""; searchInput.value = "";
+    render(); searchInput.focus();
+  }
+  clearBtn.addEventListener("click", clearAll);
+
+  let searchTimer;
+  searchInput.addEventListener("input", () => { clearTimeout(searchTimer); searchTimer = setTimeout(render, 120); });
+  selOutcome.addEventListener("change", render);
+  selDoctrine.addEventListener("change", render);
+  selYear.addEventListener("change", render);
 
   root.append(main);
   root.append(renderFooter());
   render();
+
+  // ── helpers ────────────────────────────────────────────────────────
+  function svgIcon(d, cls) {
+    const ns = "http://www.w3.org/2000/svg";
+    const s = document.createElementNS(ns, "svg");
+    s.setAttribute("viewBox", "0 0 24 24"); s.setAttribute("class", cls); s.setAttribute("aria-hidden", "true");
+    s.innerHTML = `<path d="${d}" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>`;
+    return s;
+  }
+  function countUp(node, target) {
+    if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) { node.textContent = target; return; }
+    const dur = 650, t0 = performance.now();
+    function step(now) {
+      const p = Math.min(1, (now - t0) / dur);
+      const eased = 1 - Math.pow(1 - p, 3);
+      node.textContent = Math.round(target * eased);
+      if (p < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
 })();
 </script>
 </body>
