@@ -46,6 +46,10 @@ SITE_BASE_URL = "https://eleazarbensimon.github.io/bakshi-and-bitton"
 
 # Categories shown in the Reading section, in display order.
 CONTENT_CATEGORIES = ["essays", "explainers", "patterns"]
+# Extra content categories that are built (HTML, static pages, findable by
+# content.html) but do NOT appear in the Reading list — they have their own
+# top-level nav entry instead. "structure" = the Power-Structure long-form.
+EXTRA_CONTENT_CATEGORIES = ["structure"]
 
 
 # ─── Helpers ─────────────────────────────────────────────────────────────
@@ -251,7 +255,8 @@ def build_content(out_dir: Path) -> dict:
     Build the informative content layer: convert each content/*/foo.md to HTML
     and emit content.json with metadata + body_html per piece.
     """
-    out = {cat: [] for cat in CONTENT_CATEGORIES}
+    all_categories = CONTENT_CATEGORIES + EXTRA_CONTENT_CATEGORIES
+    out = {cat: [] for cat in all_categories}
     if not CONTENT_DIR.exists():
         print("  (no content/ directory found; skipping content build)")
         (out_dir / "content.json").write_text(
@@ -276,7 +281,7 @@ def build_content(out_dir: Path) -> dict:
         stripped = re.sub(r"[`*_#>~|\-]+", " ", stripped)
         return len([w for w in stripped.split() if w and not w.startswith("http")])
 
-    for category in CONTENT_CATEGORIES:
+    for category in all_categories:
         cat_dir = CONTENT_DIR / category
         if not cat_dir.exists():
             continue
@@ -636,6 +641,7 @@ def _static_header(active: str) -> str:
         + nav("index.html", "פסיקות", "rulings")
         + nav("reading.html", "קריאה", "reading")
         + nav("justices.html", "שופטים", "justices")
+        + nav("content.html?slug=power-structure", "מבנה הכוח", "structure")
         + nav("cite.html", "ציטוט והפצה", "cite")
         + nav("about.html", "אודות", "about")
         + '</nav>'

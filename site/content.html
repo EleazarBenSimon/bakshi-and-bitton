@@ -31,7 +31,9 @@
   const root = document.getElementById("root");
   document.documentElement.lang = lang;
 
-  root.append(renderHeader("reading"));
+  root.append(renderHeader(
+    new URLSearchParams(location.search).get("slug") === "power-structure"
+      ? "structure" : "reading"));
 
   // ─── Reading-progress bar (sticky under header) ──────────────────
   const progressTrack = el("div", { class: "reading-progress", role: "progressbar",
@@ -87,16 +89,25 @@
     essays: t.cat_essays,
     explainers: t.cat_explainers,
     patterns: t.cat_patterns,
+    structure: t.nav_structure,
   };
   const categoryBadge = {
     essays: t.cat_badge_essays,
     explainers: t.cat_badge_explainers,
     patterns: t.cat_badge_patterns,
+    structure: t.nav_structure,
   };
+  // "structure" is its own top-level section, not part of Reading.
   const breadcrumb = el("p", { class: "breadcrumb" });
-  breadcrumb.append(el("a", { href: "reading.html" }, t.reading_title));
-  breadcrumb.append(" / ");
-  breadcrumb.append(categoryLabel[category] || category);
+  if (category === "structure") {
+    breadcrumb.append(el("a", { href: "index.html" }, t.site_title));
+    breadcrumb.append(" / ");
+    breadcrumb.append(t.nav_structure);
+  } else {
+    breadcrumb.append(el("a", { href: "reading.html" }, t.reading_title));
+    breadcrumb.append(" / ");
+    breadcrumb.append(categoryLabel[category] || category);
+  }
   main.append(breadcrumb);
 
   // ─── Two-column layout: article + sticky TOC sidebar ─────────────
@@ -280,8 +291,11 @@
   article.append(shareBar);
 
   // ─── "Read next" — related pieces ────────────────────────────────
+  // Keep Reading and the standalone Power-Structure section from cross-
+  // suggesting each other.
   const allPieces = [];
   for (const cat of Object.keys(content)) {
+    if (cat === "structure" || category === "structure") continue;
     for (const it of content[cat]) {
       if (it.slug !== slug) allPieces.push({ ...it, _category: cat });
     }
