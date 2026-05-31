@@ -1743,3 +1743,157 @@ main a:not(.source-link):hover { text-decoration-color: var(--accent); }
   .reading-hero-title { font-size: 30px; }
   .content-article .article-body h2 { font-size: 21px; }
 }
+
+/* ════════════════════════════════════════════════════════════════════
+   DESIGN v2 — EDITORIAL. Dark masthead, warm scholarly paper, gold
+   editorial accent, larger serif display, designed section markers,
+   dark footer. Cohesive, RTL-safe, data-viz untouched.
+   ════════════════════════════════════════════════════════════════════ */
+
+:root {
+  --ink:        #191b20;     /* masthead + footer */
+  --ink-2:      #23262e;
+  --paper:      #f5f2ec;     /* warm scholarly paper */
+  --bg:         #f5f2ec;
+  --surface:    #fffdf9;
+  --text:       #1c1e22;
+  --text-muted: #5d6066;
+  --border:     #e6e0d4;
+  --accent:     #233a5c;     /* deep navy — structure & links */
+  --accent-deep:#15243c;
+  --accent-soft:#e7ecf4;
+  --gold:       #b08433;     /* bronze-gold editorial accent */
+  --gold-soft:  #f1e7d2;
+  --gold-deep:  #8c6722;
+  --shadow-sm:  0 1px 2px rgba(20,18,12,.04), 0 2px 8px rgba(20,18,12,.05);
+  --shadow-md:  0 10px 34px rgba(20,18,12,.10);
+}
+
+body { background: var(--paper); }
+/* faint warm vignette at the very top for atmosphere */
+body::before {
+  content:""; position:fixed; inset:0 0 auto 0; height:240px; z-index:-1;
+  background: radial-gradient(120% 90% at 50% -40%, rgba(176,132,51,.06), transparent 70%);
+  pointer-events:none;
+}
+
+/* ── MASTHEAD (scoped to page header — NOT the in-article <header>) ── */
+#root > header {
+  background: var(--ink);
+  border-bottom: none;
+  box-shadow: inset 0 -3px 0 var(--gold), 0 8px 30px rgba(0,0,0,.16);
+  backdrop-filter: none;
+  padding: 20px 24px 22px;
+}
+#root > header .logo { color: #f6f1e6; font-family: var(--font-serif); font-weight: 700; font-size: 27px; letter-spacing: .3px; }
+#root > header .logo:hover { color: #fff; }
+#root > header .logo-sub { color: rgba(246,241,230,.58); font-weight: 400; font-size: 12.5px; }
+#root > header nav a { color: rgba(246,241,230,.66) !important; font-weight: 600; font-size: 14.5px; }
+#root > header nav a:hover { color: #fff !important; }
+#root > header nav a[style*="600"] { color: var(--gold) !important; }
+#root > header nav a[style*="600"]::after { background: var(--gold); height: 2px; bottom: -4px; }
+/* neutralize base/v1 <header> styling leaking onto the in-article header */
+.article-header { background: transparent !important; box-shadow: none; backdrop-filter: none; }
+.lang-toggle {
+  background: transparent; color: rgba(246,241,230,.82);
+  border: 1px solid rgba(246,241,230,.26); border-radius: 8px; font-weight: 600;
+}
+.lang-toggle:hover { background: rgba(255,255,255,.07); border-color: var(--gold); color: var(--gold); }
+
+/* ── DISPLAY TYPE — bigger, more confident ────────────────────────── */
+main > h1:first-of-type {
+  font-size: clamp(34px, 6vw, 56px);
+  line-height: 1.08;
+  margin: 14px 0 18px;
+  color: var(--ink);
+}
+.reading-hero-title { font-size: clamp(34px, 5.5vw, 52px); }
+.article-title { font-size: clamp(30px, 4.5vw, 42px); }
+h1, h2, .reading-hero-title, .article-title { color: var(--ink); }
+
+/* ── DESIGNED SECTION MARKERS (gold tick above each section heading) ─ */
+.content-article .article-body h2 {
+  border-bottom: none;
+  padding-bottom: 0;
+  margin-top: 44px;
+}
+.content-article .article-body h2::before {
+  content: ""; display: block;
+  width: 40px; height: 3px; border-radius: 2px;
+  background: var(--gold);
+  margin-bottom: 16px;
+}
+
+/* ── LEAD / NOTICE — editorial pull treatment ─────────────────────── */
+.notice {
+  background: transparent;
+  border: none;
+  border-inline-start: 3px solid var(--gold);
+  padding: 4px 0 4px 18px;
+  padding-inline-start: 18px;
+  font-size: 18px;
+  line-height: 1.7;
+  color: #34373d;
+  font-family: var(--font-serif);
+  font-weight: 500;
+  max-width: 860px;
+}
+
+/* ── SURFACES ─────────────────────────────────────────────────────── */
+.curve-section, .content-article, .content-layout > .content-article,
+.reading-card, .read-next-card, .featured-card, .comic-panel, .filters, .table-scroll {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+}
+.curve-section, .content-article, .content-layout > .content-article { border-radius: 12px; }
+
+/* ── TABLE — refined, gold-ruled header ───────────────────────────── */
+table { box-shadow: var(--shadow-sm); }
+thead { background: #faf6ee; }
+thead th {
+  font-weight: 700; font-size: 12px; letter-spacing: .6px; text-transform: uppercase;
+  color: var(--gold-deep);
+  border-bottom: 2px solid var(--gold) !important;
+  padding-top: 13px; padding-bottom: 13px;
+}
+tbody tr { transition: background .12s; }
+tbody tr:hover { background: #faf7f0; }
+
+/* ── LINKS ────────────────────────────────────────────────────────── */
+a { color: var(--accent); }
+.source-link { background: var(--accent); border-radius: 8px; box-shadow: var(--shadow-sm); }
+.source-link:hover { background: var(--accent-deep); opacity: 1; }
+
+/* ── BADGES / EYEBROWS pick up gold where neutral ─────────────────── */
+.article-badge { background: var(--gold-soft); color: var(--gold-deep); }
+.quick-answer { border-radius: 10px; }
+
+/* ── DARK FOOTER (full-bleed) ─────────────────────────────────────── */
+footer {
+  background: var(--ink);
+  color: rgba(246,241,230,.6);
+  border-top: 3px solid var(--gold);
+  max-width: none;
+  margin: 72px 0 0;
+  padding: 34px 24px 40px;
+  text-align: center;
+  font-size: 13.5px;
+}
+footer a { color: rgba(246,241,230,.9); text-decoration: none; border-bottom: 1px solid rgba(176,132,51,.5); }
+footer a:hover { color: #fff; border-bottom-color: var(--gold); }
+
+/* ── selection ────────────────────────────────────────────────────── */
+::selection { background: rgba(176,132,51,.22); }
+
+/* ── gentle entrance for the main column ──────────────────────────── */
+@keyframes co-rise { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: no-preference) {
+  main { animation: co-rise .5s ease both; }
+}
+
+@media (max-width: 700px) {
+  .header-inner { flex-direction: column; align-items: flex-start; gap: 10px; }
+  .notice { font-size: 16px; }
+  footer { margin-top: 48px; padding: 26px 20px 32px; }
+}
