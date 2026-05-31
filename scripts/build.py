@@ -744,15 +744,6 @@ def render_ruling_page(r: dict) -> str:
     if notes_txt:
         notes = f'<h2>הערות</h2><div class="notes-box">{_esc(notes_txt)}</div>'
 
-    adversarial = ""
-    adv_txt = r.get("adversarial_view_he") or r.get("adversarial_view")
-    if adv_txt:
-        adversarial = (
-            '<h2>הוגנות אדברסרית — העמדה הנגדית</h2>'
-            '<div class="adversarial-box">'
-            '<p class="adversarial-note">פרשנות, לא תיעוד: זוהי העמדה התומכת בפסיקה, '
-            'המובאת לשם איזון. הליבה התיעודית שלמעלה מציינת עובדות הליכיות בלבד.</p>'
-            f'<p>{_esc(adv_txt)}</p></div>')
 
     official = ""
     if r.get("official_url"):
@@ -779,7 +770,7 @@ def render_ruling_page(r: dict) -> str:
         f'<h1>{_esc(case_id)}</h1>'
         f'<p style="color:var(--text-muted);font-size:15px;margin-top:-8px">{_esc(name_he)}</p>'
         f'<p style="font-size:16px;line-height:1.6">{_esc(summary_he)}</p>'
-        f'{comic}{official}{grid}{panel}{secondary}{notes}{adversarial}{related}'
+        f'{comic}{official}{grid}{panel}{secondary}{notes}{related}'
         f'<p style="margin-top:24px;font-size:14px"><a href="{_esc(spa_url)}">'
         f'גרסה אינטראקטיבית מלאה / English →</a></p>'
         f'</main>{_STATIC_FOOTER}</div>'
