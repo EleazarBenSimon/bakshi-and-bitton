@@ -35,3 +35,8 @@ GEMINI.md
 # Logs
 *.log
 npm-debug.log*
+
+# Local build & cutover backups — public repo, keep local-only (Rule #1 / Rule #2)
+.build/
+.cutover-backup-*/
+.pytest_cache/
