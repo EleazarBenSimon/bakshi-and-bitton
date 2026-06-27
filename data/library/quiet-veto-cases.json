@@ -1,0 +1,831 @@
+{
+  "_doc": "Court-vs-Knesset case library: real, source-verified Israeli Supreme Court cases that struck or HOLLOWED OUT Knesset legislation. Compiled for public/research use. Every entry has a confirmed docket + authoritative source.",
+  "cases": [
+    {
+      "docket_core": "465/89",
+      "docket": "בג\"ץ 465/89 (HCJ 465/89)",
+      "name": "Raskin v. Religious Council of Jerusalem",
+      "year": "1990",
+      "statute": "חוק איסור הונאה בכשרות, התשמ\"ג-1983 — Kashrut (Prohibition of Fraud) Law, 1983",
+      "action": "interpretive_narrowing",
+      "interpretive_evisceration": true,
+      "doctrine": "Purposive construction limiting administrative/religious authority to the statute's purpose (food kashrut only); ultra vires for conditions outside that purpose",
+      "effect_reduction": "The Court read the Kashrut Fraud Law down to its food-only purpose, holding that the authority to grant kashrut certification 'is not meant to serve as a means for imposing rules of Jewish law that do not pertain to the kosher status of the food.' This stripped the Rabbinate/religious councils of the ability they had asserted to leverage the kashrut-licensing power to police non-food religious conduct on the premises (here, conditioning certification on barring 'immodest performances'/belly dancing), narrowing the statute's de facto reach well below how the religious authorities sought to wield it.",
+      "corrected_facts": "Minor: the candidate year \"1990\" is correct as the decision date (May 27, 1990), though the docket number 465/89 reflects the 1989 filing year — both are accurate and consistent. The statute's standard English subtitle is more commonly rendered \"Prohibition of Deceit\" (Versa) rather than \"Prohibition of Fraud,\" but both translate the same Hebrew \"הונאה\" and refer to the same Kashrut (Prohibition of Fraud) Law, 5743-1983 — not a substantive error.",
+      "confidence": "VERIFIED",
+      "url": "https://versa.cardozo.yu.edu/opinions/raskin-v-religious-council-jerusalem",
+      "sources": [
+        {
+          "url": "https://versa.cardozo.yu.edu/topics/kosher-food",
+          "publisher": "Versa / Cardozo Israeli Supreme Court Project",
+          "confirms": "Docket HCJ 465/89, decided 27 May 1990; holding that kashrut-certification authority cannot impose non-food Jewish-law conditions"
+        },
+        {
+          "url": "https://he.wikipedia.org/wiki/%D7%97%D7%95%D7%A7_%D7%90%D7%99%D7%A1%D7%95%D7%A8_%D7%94%D7%95%D7%A0%D7%90%D7%94_%D7%91%D7%9B%D7%A9%D7%A8%D7%95%D7%AA",
+          "publisher": "Hebrew Wikipedia (entry on the Kashrut Fraud Law)",
+          "confirms": "Court demanded the Rabbinate not impose conditions unrelated to food kashrut; statute's purpose is anti-fraud about food only"
+        }
+      ],
+      "blurb_he": "חוק איסור הונאה בכשרות, התשמ\"ג-1983, נחקק כדי למנוע הטעיה לגבי כשרות מזון בלבד. בלי לפסול אות אחת מן הטקסט, פירשו השופטים את החוק בצמצום אל תכליתו הצרה וקבעו שסמכות הענקת תעודת הכשר אינה כלי לכפיית דיני יהדות שאינם נוגעים לכשרות המזון — וכך שללו מן הרבנות את כוח הרישוי שבו ביקשה להתנות הכשר בביטול מופעי בטן \"לא צנועים\", ורוקנו את ההישג הזה מתוכן מבלי שהמחוקק אמר על כך דבר.",
+      "blurb_en": "The Knesset's Kashrut (Prohibition of Fraud) Law, 1983 was about food kashrut alone. Without voiding a single word, the Court read it down to that narrow purpose, holding that the power to grant a kashrut certificate is not a lever for imposing rules of Jewish law unrelated to the food — stripping the Rabbinate of the licensing leverage it had used to condition certification on barring \"immodest\" belly-dance performances. An unelected bench hollowed the statute's real-world reach below the Rabbinate's design, on its own interpretive say-so."
+    },
+    {
+      "docket_core": "2316/95",
+      "docket": "דנ\"פ 2316/95",
+      "name": "Ganimat v. State of Israel (Further Hearing) — דנ\"פ 2316/95 גנימאת נ' מדינת ישראל",
+      "year": "1995",
+      "statute": "Criminal Procedure Law [Consolidated Version], 5742-1982 — detention-until-end-of-proceedings ground, section 21a(a)(1) (סעיף 21א(א)(1)). (Reported PD 49(4) 589.)",
+      "action": "interpretive_narrowing",
+      "interpretive_evisceration": true,
+      "doctrine": "Interpretive presumption / reading pre-existing statutes 'in the spirit of' Basic Law: Human Dignity and Liberty. The Court held that statutes enacted before the 1992 Basic Law must be construed in conformity with it, and used that presumption to narrow the statutory detention grounds rather than to strike them.",
+      "effect_reduction": "The Knesset's detention provision let courts order pre-trial detention where there was 'reasonable cause to fear the accused will endanger public safety,' which prosecutors had been using by labeling whole categories of crime (e.g. car theft) a 'national scourge' (מכת מדינה) to justify near-automatic detention. The Court read the provision down: a 'national scourge' by itself does NOT establish a detention ground; the state must prove individualized, subjective danger of the specific defendant, and cannot rely on the general/categorical characterization. This gutted the routine 'category-based' detention practice the provision had enabled, shifting the burden onto the prosecution — a substantial narrowing of the statute's real-world reach without formally voiding any text.",
+      "corrected_facts": "Procedural posture clarification: docket is correctly דנ\"פ 2316/95 (Further Hearing / דיון נוסף), reported at פ\"ד מט(4) 589, decided 12 November 1995. It arose as a Further Hearing on the Court's prior decision in בש\"פ 537/95, not an \"appeal\" in the ordinary sense; candidate's \"on appeal from בש537/95\" is loosely worded. Expanded seven-justice panel (Shamgar, Barak, Goldberg, Mazza, Cheshin, Strasberg-Cohen, Dorner). Statute identification (sec. 21a, Criminal Procedure Law [Consolidated Version], 5742-1982) is consistent with sources; note this is the pre-1996 detention regime (dedicated Arrests Law enacted 1996, after this decision). Core claim otherwise accurate.",
+      "confidence": "VERIFIED",
+      "url": "https://he.wikipedia.org/wiki/%D7%A2%D7%99%D7%9E%D7%90%D7%93_%D7%92%D7%A0%D7%99%D7%9E%D7%90%D7%AA_%D7%A0'_%D7%9E%D7%93%D7%99%D7%A0%D7%AA_%D7%99%D7%A9%D7%A8%D7%90%D7%9C",
+      "sources": [
+        {
+          "url": "https://he.afiklaw.com/caselaw/12753",
+          "publisher": "Afiklaw (Israeli case-law database)",
+          "confirms": "Docket דנ\"פ 2316/95, full case name גנימאת נ' מדינת ישראל, citation פ\"ד מט(4) 589, and holding on section 21a(a)(1) and burden of proof."
+        },
+        {
+          "url": "https://he.wikipedia.org/wiki/%D7%A2%D7%99%D7%9E%D7%90%D7%93_%D7%92%D7%A0%D7%99%D7%9E%D7%90%D7%AA_%D7%A0'_%D7%9E%D7%93%D7%99%D7%A0%D7%AA_%D7%99%D7%A9%D7%A8%D7%90%D7%9C",
+          "publisher": "Hebrew Wikipedia",
+          "confirms": "Dockets בש\"פ 537/95 and דנ\"פ 2316/95; unanimous holding that 'national scourge' alone is not a detention ground; pre-1992 statutes to be interpreted per Basic Law; burden of proving danger on the state; narrowing rather than striking."
+        }
+      ],
+      "blurb_he": "חוק סדר הדין הפלילי (סעיף 21א): המחוקק התיר מעצר עד תום ההליכים מחשש לפגיעה בשלום הציבור, והתביעה הסבה אותו למעצר כמעט-אוטומטי בכל \"מכת מדינה\". בלי לפסול אות אחת, פירש בג\"ץ את ההסדר \"ברוח\" חוק יסוד: כבוד האדם וחירותו וקבע שמכת מדינה כשלעצמה אינה עילת מעצר — נדרשת מסוכנות אישית מוכחת. שבעה שופטים בלתי-נבחרים רוקנו הלכה למעשה את כוונת המחוקק.",
+      "blurb_en": "Criminal Procedure Law (sec. 21a): the Knesset let courts jail defendants pre-trial on a fear-to-public-safety ground, which prosecutors turned into near-automatic detention by branding whole crime categories a \"national scourge.\" Without voiding a single word, the Court read the provision down \"in the spirit of\" Basic Law: Human Dignity and Liberty — holding a national scourge alone is no detention ground; the state must prove the individual defendant's danger. Seven unelected justices hollowed out the legislature's intent."
+    },
+    {
+      "docket_core": "4562/92",
+      "docket": "בג\"ץ 4562/92",
+      "name": "Zandberg v. Broadcasting Authority — בג\"ץ 4562/92 ח\"כ אליעזר זנדברג נ' רשות השידור",
+      "year": "1996",
+      "statute": "Broadcasting Authority Law, 5725-1965; Price Stability Law (Temporary Provision), 5745-1985; and the Broadcasting Authority (Validation of Radio and Television Fees) Law, 5752-1992. (Reported PD 50(2) 793.)",
+      "action": "interpretive_narrowing",
+      "interpretive_evisceration": true,
+      "doctrine": "The locus classicus of Israel's 'reading-down' doctrine. Barak articulated the rule that where a statute admits of multiple readings, the court should prefer the construction that keeps it constitutional, and that 'it is preferable to achieve a reduction in the scope of a statute by interpretive means rather than to achieve the same reduction by declaring part of the statute void as conflicting with a Basic Law.' Includes the principle that a reasonable interpretation is preferable to a ruling on constitutionality.",
+      "effect_reduction": "This is the doctrinal anchor cited across later evisceration cases (Avneri, the reasonableness-amendment dissents, etc.). On its own facts the Court construed the broadcasting/fee scheme against the Authority — holding TV fees were not exempt 'taxes' but were caught by the price freeze, invalidating unapproved 1985-1991 fee increases. Its lasting effect is the rule itself: the Court will narrow a Knesset statute's scope by interpretation 'in conformity with the Basic Laws' instead of striking it, which is the engine of interpretive evisceration. Marked as the doctrine-setting case; the practical-gutting angle on the statute itself is moderate, hence the doctrinal (not headline-strike) classification.",
+      "corrected_facts": "Docket, parties (MK Eliezer Zandberg v. Broadcasting Authority et al.), year (1996), reporter citation (PD/IsrSC 50(2) 793), and statutes are all confirmed. The core doctrinal claim is ACCURATE and authoritatively sourced: the case is the anchor for \"interpretive narrowing in conformity with the Basic Laws rather than striking down.\" Versa's ACRI v. Israel Police opinion (a provided source) quotes it with a pinpoint cite — IsrSC 50(2) 793, 812 (1996), President A. Barak: \"It is better to achieve limits on a statute by interpretation rather than having to limit it by declaring part of the statute void for violating provisions of a Basic Law... A reasonable interpretation of a statute is preferable to finding it unconstitutional.\" The doctrine-setting / interpretive_narrowing classification is correct.\n\nOne framing correction to the \"on its own facts\" narrative: the candidate conflates two distinct stages. The ruling that TV fees were NOT exempt taxes and were caught by the 1985 price freeze (invalidating the 1985–1991 increases) was established in EARLIER litigation, not in 4562/92 itself. In response, the Knesset passed the Broadcasting Authority (Validation of Radio and Television Fees) Law, 5752-1992, retroactively validating the over-collected fees. HCJ 4562/92 was the challenge to THAT validation law. The Court (Barak) partially granted the petition: using interpretation plus the \"concealed/latent lacuna\" doctrine and a presumption of constitutional harmony, it read the validation law's retroactive reach narrowly — declining to apply it retroactively to arrears fines, on non-retroactivity-of-penalties and property-rights grounds. So the case's own holding is a read-down of the 1992 Validation Law (not a direct invalidation of the fee increases). Recommend adjusting the \"on its own facts\" sentence accordingly; the doctrinal \"lasting effect\" framing needs no change.",
+      "confidence": "VERIFIED",
+      "url": "https://versa.cardozo.yu.edu/opinions/association-civil-rights-israel-v-israel-police",
+      "sources": [
+        {
+          "url": "https://he.afiklaw.com/caselaw/12755",
+          "publisher": "Afiklaw (Israeli case-law database)",
+          "confirms": "Docket בג\"ק 4562/92, case name ח\"כ אליעזר זנדברג נ' רשות השידור, citation פ\"ד נ(2) 793, year 1996, statutes at issue, and the decision on TV fees / price-stability law."
+        },
+        {
+          "url": "https://versa.cardozo.yu.edu/opinions/association-civil-rights-israel-v-israel-police",
+          "publisher": "VERSA / Cardozo Israeli Supreme Court Project",
+          "confirms": "Quotes Barak's Zandberg principle: 'it is better to achieve a reduction in the scope of a statute by interpretive means rather than... declaring a part of a statute void because it conflicts with the provisions of a Basic Law,' and 'a reasonable interpretation of a statute is preferable to a decision on the question of its constitutionality.'"
+        }
+      ],
+      "blurb_he": "חוק רשות השידור (אישור תוקף אגרות רדיו וטלוויזיה), התשנ\"ב-1992 — שהכנסת חוקקה כדי להכשיר רטרואקטיבית גביית אגרות שנפסלה. השופט ברק לא ביטל את החוק אלא קרא אותו בצמצום: דחה את תחולתו הרטרואקטיבית על קנסות פיגורים מטעמי קניין ואי-ענישה למפרע. כאן נטבעה הדוקטרינה — \"מוטב לצמצם חוק בפרשנות מאשר לפסול חלקו\" — שהפכה למנוע שבו בית משפט לא-נבחר מרוקן מתוכן את חקיקת הכנסת בלי לבטל מילה אחת מן הנוסח.",
+      "blurb_en": "The Broadcasting Authority (Validation of Radio and TV Fees) Law, 5752-1992 — which the Knesset passed to retroactively validate fee collection an earlier ruling had voided. Barak did not strike the law; he read it down, refusing to apply its retroactive reach to arrears fines on property-rights and no-penalty-in-arrears grounds. This is where the doctrine was minted — \"better to narrow a statute by interpretation than to declare part of it void\" — the engine by which an unelected court hollows out the elected legislature's law without voiding a single word of text."
+    },
+    {
+      "docket_core": "3267/97",
+      "docket": "בג\"ץ 3267/97 (HCJ 3267/97, joined with HCJ 715/98)",
+      "name": "Rubinstein v. Minister of Defense",
+      "year": "1998",
+      "statute": "The blanket yeshiva-student ('Torato Omanuto') military-service deferment arrangement as administered by the Minister of Defense under the Defense Service Law [Consolidated Version], 5746-1986 (i.e., the deferment granted by executive/administrative discretion rather than by primary legislation)",
+      "action": "interpretive_narrowing",
+      "interpretive_evisceration": true,
+      "doctrine": "Primary arrangements doctrine (a fundamental, society-dividing matter must be set by Knesset primary legislation, not executive discretion); rule of law / legality principle; separation of powers",
+      "effect_reduction": "The Court did not strike a statute; instead it read the Defense Service Law's grant of ministerial discretion narrowly, holding that the sweeping, ever-growing deferment of full-time yeshiva students (about 8% of the draft cohort by 1997) is a 'primary arrangement' that the Minister of Defense had no authority to create administratively. By construing the minister's statutory discretion as not extending to a mass societal exemption, the Court gutted the legal basis on which decades of de facto exemptions had rested — converting an open-ended executive practice into something that could survive only if the Knesset enacted explicit primary legislation. The Court suspended the declaration of invalidity for 12 months to let the Knesset legislate, which led directly to the 2002 Tal Law (and thus to the later strike-downs).",
+      "corrected_facts": "No corrections needed; all key facts confirmed. Minor clarifying notes: (1) The decision date is December 9, 1998. (2) The case is joined HCJ 3267/97 + HCJ 715/98, both confirmed in the official court caption and Versa. (3) The follow-on statute is most precisely the \"Deferral of Military Service for Yeshiva Students Law\" — popularly the Tal Law, enacted 2002 after the Tal Committee (1999). The candidate's chain (1998 ruling -> 12-month suspension -> Tal Committee -> 2002 Tal Law -> later strike-downs) is accurate. (4) Characterization caveat for precision: the Court did not \"strike a statute\"; it held the Minister of Defense lacked authority to maintain the deferment arrangement administratively because granting a sweeping exemption to a large, ever-growing group (~8% of the cohort by 1997) is a \"primary arrangement\" reserved to the Knesset under the post-1992 Basic-Law framework — i.e., it read the Defense Service Law's grant of ministerial discretion as not extending to a mass societal exemption. This matches the claimed action of interpretive narrowing / read-down rather than facial invalidation of a statute.",
+      "confidence": "VERIFIED",
+      "url": "https://versa.cardozo.yu.edu/opinions/rubinstein-v-minister-defense",
+      "sources": [
+        {
+          "url": "https://versa.cardozo.yu.edu/opinions/rubinstein-v-minister-defense",
+          "publisher": "Versa / Cardozo Israeli Supreme Court Project (Yeshiva University)",
+          "confirms": "Docket HCJ 3267/97 + HCJ 715/98; decided 9 Dec 1998; Barak P. opinion; held the Minister acted unlawfully maintaining the deferment without statutory authority; deferment is a 'primary arrangement' for the Knesset; 12-month suspension granted"
+        },
+        {
+          "url": "https://en.idi.org.il/articles/53301",
+          "publisher": "Israel Democracy Institute (IDI)",
+          "confirms": "1998 Rubinstein ruling: Minister lacked authority for sweeping exemption of large numbers of yeshiva students without explicit authorization by law; Knesset given one year to legislate, leading to the Deferment (Tal) Law"
+        },
+        {
+          "url": "https://supremedecisions.court.gov.il/Home/Download?path=EnglishVerdicts/97/670/032/A11&fileName=97032670.A11.txt&type=4",
+          "publisher": "Official Israeli Supreme Court site (supremedecisions.court.gov.il) — English verdict",
+          "confirms": "Official court file for HC 3267/97 / HC 715/98 Rubinstein et al. v. Minister of Defense"
+        }
+      ],
+      "blurb_he": "חוק שירות ביטחון [נוסח משולב], התשמ\"ו-1986: בלי לפסול אות אחת, פירש בית המשפט בצמצום את שיקול הדעת שהחוק העניק לשר הביטחון וקבע שדחיית השירות הגורפת לבחורי ישיבה (\"תורתו אומנותו\" — כ-8% ממחזור הגיוס) היא \"הסדר ראשוני\" שרק הכנסת מוסמכת לקבוע. כך רוקנו שופטים בלתי-נבחרים פרקטיקה בת עשורים מבסיסה החוקי, והשהו את ההכרזה 12 חודשים כדי לכפות על המחוקק הנבחר לחוקק.",
+      "blurb_en": "The Defense Service Law (5746-1986): without voiding a single word, the Court read the discretion the statute gave the Defense Minister down to nothing, holding that the sweeping yeshiva-student deferment (\"Torato Omanuto\" — some 8% of the draft cohort) was a \"primary arrangement\" only the Knesset may set. Unelected justices thus stripped a decades-old practice of its legal basis, suspending the ruling 12 months to force the elected legislature to act."
+    },
+    {
+      "docket_core": "5100/94",
+      "docket": "HCJ 5100/94 (consolidated with HCJ 4054/95, 6536/95, 5188/96, 7563/97, 7628/97, 1043/99)",
+      "name": "Public Committee Against Torture in Israel v. Government of Israel",
+      "year": "1999",
+      "statute": "General Security Service (GSS/Shin Bet) interrogation authority — claimed under the general investigatory power (Criminal Procedure [Testimony] Ordinance, s.2(1)) combined with the necessity defense, Penal Law 5737-1977 s.34(11)",
+      "action": "interpretive_narrowing",
+      "interpretive_evisceration": true,
+      "doctrine": "Principle of legality / requirement of express statutory authorization for infringement of liberty and dignity (Basic Law: Human Dignity and Liberty); necessity (s.34(11)) is an ex post criminal defense, not an ex ante source of administrative authority.",
+      "effect_reduction": "Following the Landau Commission framework, the GSS treated the Penal Law necessity defense as a standing legal basis authorizing 'moderate physical pressure' (shaking, the shabah stress position, frog-crouch, etc.) as routine interrogation policy. The Court read this down to nothing operative: it held the general power to interrogate does NOT authorize physical means, and that the necessity defense cannot serve as advance authorization or as a basis for administrative directives — it can at most be raised after the fact by an individual interrogator facing prosecution. General directives permitting physical means must rest on express primary legislation, which did not exist. The Court thus stripped the executive of the legal cover it claimed it already had under existing statute, leaving the interrogation regime authority-less unless and until the Knesset legislated — substantially gutting the practical power the State asserted flowed from the existing legal framework.",
+      "corrected_facts": "Minor precision additions (not corrections; candidate is substantively accurate): (1) The full docket is HCJ 5100/94 consolidated with HCJ 4054/95, HCJ 6536/95, HCJ 5188/96, HCJ 7563/97, HCJ 7628/97, and HCJ 1043/99. The candidate's shorthand \"HCJ 5100/94 (with consolidated petitions)\" is correct. (2) Decided September 6, 1999, by an expanded panel led by President Aharon Barak. (3) The reporter citation is PD 53(4) 817 (the candidate's \"ISrSC 53-4-817\" in the Columbia source slug matches). The action characterization (interpretive_narrowing / read-down of the asserted statutory+necessity-defense authority) is accurate.",
+      "confidence": "VERIFIED",
+      "url": "https://versa.cardozo.yu.edu/opinions/public-committee-against-torture-v-israel",
+      "sources": [
+        {
+          "url": "https://versa.cardozo.yu.edu/opinions/public-committee-against-torture-v-israel",
+          "publisher": "Versa / Cardozo Israeli Supreme Court Project",
+          "confirms": "HCJ 5100/94 (1999); GSS lacked authority to use physical interrogation methods; necessity defense (Penal Law s.34(11)) cannot serve as advance authorization, only as a post hoc defense; general directives for physical means must be rooted in express statutory authorization."
+        },
+        {
+          "url": "https://hamoked.org/document.php?dID=260",
+          "publisher": "HaMoked: Center for the Defence of the Individual",
+          "confirms": "HCJ 5100/94 Public Committee Against Torture in Israel et al. v. Government of Israel judgment text; ISA not authorized to employ physical means of pressure; banned shaking, shabah, frog crouch."
+        },
+        {
+          "url": "https://globalfreedomofexpression.columbia.edu/laws/isr-hcj-5100-94-public-committee-against-torture-v-state-of-israel-isrsc-534-817-1999/",
+          "publisher": "Columbia Global Freedom of Expression",
+          "confirms": "HCJ 5100/94, IsrSC 53(4) 817 (1999); Court held GSS not authorized to use physical means during interrogation; necessity defense available only ex post, not as authority."
+        }
+      ],
+      "blurb_he": "פקודת סדר הדין הפלילי (עדות) וסייג הצורך שבחוק העונשין שימשו את השב\"כ כבסיס משפטי ל\"לחץ פיזי מתון\" בחקירות. בית המשפט לא ביטל אף הוראת חוק — אלא פירש אותן עד אפס: הסמכות לחקור אינה מתירה אמצעים פיזיים, וסייג הצורך הוא טענת הגנה בדיעבד ליחיד, לא הסמכה מראש. כך רוקנו שופטים בלתי נבחרים את מארג החקיקה שעליו נשען המנגנון, והותירוהו ללא סמכות עד שהכנסת תחוקק במפורש.",
+      "blurb_en": "The GSS leaned on the Criminal Procedure (Testimony) Ordinance and the Penal Law's necessity defense as legal cover for \"moderate physical pressure\" in interrogations. The Court voided no statute — it read them down to nothing: the power to interrogate authorizes no physical means, and necessity is only an after-the-fact defense for an individual, never advance authorization. Unelected justices thus hollowed out the legislative framework the regime relied on, leaving it powerless until the Knesset legislates expressly."
+    },
+    {
+      "docket_core": "7048/97",
+      "docket": "CrimFH 7048/97",
+      "name": "Anonymous (Plonim, Lebanese detainees) v. Minister of Defense — \"bargaining chips\" case",
+      "year": "2000",
+      "statute": "Emergency Powers (Detentions) Law, 5739-1979, section 2",
+      "action": "interpretive_narrowing",
+      "interpretive_evisceration": true,
+      "doctrine": "Statutory interpretation in light of the right to liberty and human dignity (purposive construction); administrative detention requires individual dangerousness; rejection of detention for negotiating leverage.",
+      "effect_reduction": "The executive had used section 2 of the Emergency Powers (Detentions) Law to hold Lebanese nationals — who had completed their criminal sentences and posed no current individual security threat — indefinitely as 'bargaining chips' to leverage the return of missing/captured Israeli soldiers (e.g., Ron Arad). The State read the statute's broad 'state security' detention ground to cover this bargaining purpose. In a further hearing reversing an earlier panel, the Court (Barak, 6-3) construed the Law to permit administrative detention ONLY where the detainee himself poses a danger to national security, holding there is no authority to detain someone from whom no danger emanates merely for his utility as leverage. The detainees were ordered released. This narrowed the operative reach the State had claimed for the detention power and foreclosed an entire category of executive detention the legislature's broad language had been stretched to cover.",
+      "corrected_facts": "Standard English case name on the official court site and Versa is \"Does v. Ministry of Defense\" (Hebrew: Plonim / Anonymous v. Minister of Defense). Decided April 12, 2000. Vote is correctly 6-3: majority = Barak (President), Levin (VP), Or, Mazza, Zamir, Dorner; dissent = Cheshin, Kedmi, Türkel. This was a Criminal Further Hearing (CrimFH / dnp) that reversed an earlier panel ruling which had upheld the detention (earlier hearing docket ADA 10/94). The candidate's substantive characterization is otherwise accurate.",
+      "confidence": "VERIFIED",
+      "url": "https://versa.cardozo.yu.edu/opinions/does-v-ministry-defense",
+      "sources": [
+        {
+          "url": "https://versa.cardozo.yu.edu/opinions/does-v-ministry-defense",
+          "publisher": "Versa / Cardozo Israeli Supreme Court Project",
+          "confirms": "CrimFH 7048/97, decided 12 April 2000; statute = Emergency Powers (Detentions) Law 5739-1979, s.2; Barak majority held no authority to detain a person posing no danger, rejecting 'bargaining chip' detention; 6-3 vote; detainees released."
+        },
+        {
+          "url": "https://hamoked.org/document.php?dID=230",
+          "publisher": "HaMoked: Center for the Defence of the Individual",
+          "confirms": "CrimFH 7048/97 Anonymous v. Ministry of Defence judgment; Lebanese citizens held under s.2 of the Emergency Powers (Detentions) Law; detention as bargaining chips for missing security personnel held impermissible because the Law does not allow detaining a person who is not a threat."
+        },
+        {
+          "url": "https://opil.ouplaw.com/view/10.1093/law:ildc/12il00.case.1/law-ildc-12il00",
+          "publisher": "Oxford Public International Law (ILDC 12 (IL 2000))",
+          "confirms": "FCrA 7048/97 Anonymous (Lebanese Citizens) v Minister of Defence of Israel, final decision 12 April 2000, Israel Supreme Court; bargaining-chip detention not authorized."
+        }
+      ],
+      "blurb_he": "הכנסת חוקקה את חוק סמכויות שעת חירום (מעצרים), התשל\"ט-1979, וסעיף 2 שבו אִפשר לרשות מעצר מינהלי משיקולי ביטחון המדינה. בית המשפט לא ביטל אות אחת — בדיון נוסף (ברק, 6 נגד 3) הוא פירש את הסעיף בצמצום: מעצר מינהלי מותר רק כשהעצור עצמו מסכן את הביטחון, וכך רוקן מתוכן את החזקת אזרחים לבנונים כ\"קלפי מיקוח\" שהמדינה ביססה על אותו נוסח רחב. שלושה שופטים נבחרים מחקו מדיניות שלמה של המחוקק בלי לגעת בלשון החוק.",
+      "blurb_en": "The Knesset's Emergency Powers (Detentions) Law, 5739-1979, section 2, let the executive order administrative detention on state-security grounds. The Court voided no text — in a Further Hearing (Barak, 6-3) it read the section down to permit detention only where the detainee himself poses a danger, hollowing out the holding of Lebanese nationals as \"bargaining chips\" that the State had built on that same broad wording. Three unelected justices erased an entire executive policy without touching a word the legislature wrote."
+    },
+    {
+      "docket_core": "6659/06",
+      "docket": "CrimA 6659/06 (consolidated with CrimA 1757/07, 8228/07, and 3261/08)",
+      "name": "A v. State of Israel (CrimA 6659/06) — Incarceration of Unlawful Combatants Law",
+      "year": "2008",
+      "statute": "Incarceration of Unlawful Combatants Law, 5762-2002 (\"Internment of Unlawful Combatants Law\")",
+      "action": "interpretive_narrowing",
+      "interpretive_evisceration": true,
+      "doctrine": "Constitutional review under Basic Law: Human Dignity and Liberty; presumption of constitutionality; presumption of interpretive conformity with international humanitarian law; proportionality; reading-in of a strict evidentiary and individual-dangerousness requirement.",
+      "effect_reduction": "The Knesset designed the Law to permit indefinite incarceration of anyone fitting the broad statutory definition of 'unlawful combatant' (participation, direct OR indirect, in hostile acts, OR mere membership in a force perpetrating hostilities), backed by a strong section 7 presumption that release endangers state security — effectively allowing detention on group-membership grounds with the burden flipped onto the detainee. The Court upheld the Law facially but gutted that sweep by construing it to require proof of the detainee's OWN individual dangerousness, demanding 'significant' direct/indirect contribution to hostilities or meaningful organizational involvement (rejecting bare membership), insisting on 'clear and convincing administrative evidence,' and demoting the section 7 presumption to a secondary step that applies only AFTER individual threat is independently established. This converted a quasi-categorical group-detention regime into an individualized-threat regime — the legislature's intended reach was substantially narrowed without a formal strike.",
+      "corrected_facts": "Docket is real and consolidated: CrimA 6659/06 with companions 1757/07, 8228/07, and 3261/08 (decided June 11, 2008). Companion 1757/07 and 8228/07 are confirmed; the candidate's \"(also cited CrimApp/CrimA 6659/06)\" is fine — it is a criminal appeal (CrimA). Note CrimApp 8823/07 is a SEPARATE related detention case, not part of this consolidation — do not conflate it. Case name: Versa/Cardozo titles it \"A v. State of Israel\"; the official court translation renders the lead appellant as \"Iyad v. State of Israel.\" The candidate's \"Anonymous v. State of Israel\" is an acceptable descriptive alias but the canonical English-source citation is \"A v. State of Israel.\" Statute name: the candidate gives both \"Incarceration of Unlawful Combatants Law\" and \"Internment of Unlawful Combatants Law, 5762-2002\" — both are in circulation as translations of the same law; the official court translation and ICRC use \"Internment/Incarceration of Unlawful Combatants Law, 5762-2002.\" All correct.",
+      "confidence": "VERIFIED",
+      "url": "https://versa.cardozo.yu.edu/opinions/v-state-israel-1",
+      "sources": [
+        {
+          "url": "https://versa.cardozo.yu.edu/opinions/v-state-israel-1",
+          "publisher": "Versa / Cardozo Israeli Supreme Court Project",
+          "confirms": "Docket CrimA 6659/06, decided 11 June 2008; statute = Internment of Unlawful Combatants Law 5762-2002; Court read down the definition to require 'significant' individual contribution and 'clear and convincing' evidence of individual dangerousness, with the section 7 presumption made secondary; interpretation in conformity with IHL and Basic Law."
+        },
+        {
+          "url": "https://casebook.icrc.org/case-study/israel-detention-unlawful-combatants",
+          "publisher": "ICRC 'How does law protect in war?' casebook",
+          "confirms": "CrimA 6659/06 upheld the Law's constitutionality while holding detention is contingent on the arrested person's individual dangerousness to state security; preventative purpose; conformity with IHL."
+        },
+        {
+          "url": "https://hamoked.org/document.php?dID=110551",
+          "publisher": "HaMoked: Center for the Defence of the Individual",
+          "confirms": "CrimApp 6659/06 A. et al. v. State of Israel judgment; detention contingent on individual dangerousness; constitutionality of the Unlawful Combatants Law addressed."
+        }
+      ],
+      "blurb_he": "חוק כליאתם של לוחמים בלתי-חוקיים, התשס\"ב-2002, נכתב כדי לאפשר מעצר בלתי-מוגבל על בסיס השתייכות לארגון עוין, עם חזקה (סעיף 7) שמשחרורו של הכלוא מסכן את ביטחון המדינה. בית המשפט הותיר את החוק על כנו אך רוקן אותו מתוכן: הוא פירש אותו כדורש הוכחה של מסוכנות אישית ממשית בראיות מינהליות ברורות ומשכנעות, ודחק את החזקה לשלב משני — בית משפט בלתי-נבחר שהפך משטר מעצר קבוצתי שחוקקה הכנסת למשטר של איום פרטני.",
+      "blurb_en": "The Knesset's Internment of Unlawful Combatants Law, 5762-2002 was built to permit indefinite detention on group-membership grounds, backed by a section 7 presumption that release endangers the state. The Court left the statute formally standing but hollowed it out — reading it to require proof of the detainee's own individual dangerousness on clear and convincing administrative evidence, rejecting bare membership, and demoting the presumption to a secondary step. An unelected court quietly converted the legislature's categorical group-detention regime into an individualized-threat one, never voiding a word."
+    },
+    {
+      "docket_core": "5239/11",
+      "docket": "בג\"ץ 5239/11 (consolidated with 5392/11, 5549/11, 2072/12)",
+      "name": "בג\"ץ 5239/11 אורי אבנרי ואח' נ' הכנסת (Avneri v. Knesset — Boycott Law)",
+      "year": "2015",
+      "statute": "Prevention of Harm to the State of Israel by means of Boycott Law, 5771-2011 (החוק למניעת פגיעה במדינת ישראל באמצעות חרם, תשע\"א-2011) — the civil-tort provision, section 2.",
+      "action": "interpretive_narrowing",
+      "interpretive_evisceration": true,
+      "doctrine": "Narrow construction / reading-down to limit the 'chilling effect' on freedom of expression, in conformity with Basic Law: Human Dignity and Liberty. Section 2(c) (exemplary/independent-of-damage compensation) was formally struck; sections 2(a)-(b) (the boycott tort) were upheld but read down rather than voided.",
+      "effect_reduction": "The Knesset designed a deterrent tort: anyone who knowingly publishes a public call to boycott Israel (or an area under its control) is liable, and section 2(c) expressly allowed a court to award compensation 'without proof of damage' — making it a punitive, low-threshold cause of action meant to chill boycott advocacy. The Court (Melcer, majority) struck 2(c) outright, then gutted what remained by reading the surviving tort down to ordinary tort principles: liability requires PROOF of actual damage AND a causal connection between the call and the damage, plus awareness of the reasonable possibility the call would lead to a boycott, with standing confined to the direct victim of the tort. By demanding real, provable, causally-linked damage, the Court neutralized the provision's deterrent bite — the realistic ability to sue a boycott advocate collapsed — substantially defeating the legislature's intent while leaving the text formally standing.",
+      "corrected_facts": "None. The docket, parties, year (2015, specifically 15 April 2015), statute name, the unanimous strike of section 2(c) (= Hebrew 2(ג)), and the read-down of the surviving tort (proof of actual damage, causal connection, awareness of reasonable possibility, direct-victim standing) are all accurately stated.",
+      "confidence": "VERIFIED",
+      "url": "https://supremedecisions.court.gov.il/Home/Download?path=HebrewVerdicts%5C11/390/052/K21&fileName=11052390.K21&type=4",
+      "sources": [
+        {
+          "url": "https://versa.cardozo.yu.edu/opinions/avneri-v-knesset",
+          "publisher": "VERSA / Cardozo Israeli Supreme Court Project",
+          "confirms": "Docket HCJ 5239/11 (+ consolidated), 15 April 2015; section 2(c) voided; sections 2(a)/(b) upheld but read down by Melcer to require proof of actual damage, causal connection, awareness, and direct-victim standing."
+        },
+        {
+          "url": "https://hamoked.org.il/document.php?dID=Documents2680",
+          "publisher": "HaMoked – Center for the Defence of the Individual",
+          "confirms": "HCJ 5239/11 Avneri v. Knesset judgment; court left the Boycott Law standing except the section allowing damages without proof of harm, which was annulled; remedies under the boycott tort require proof of damage and causation."
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Law_for_Prevention_of_Damage_to_State_of_Israel_through_Boycott",
+          "publisher": "Wikipedia (English)",
+          "confirms": "2015 ruling struck section 2(c) (compensation even where no damages proven) and upheld remaining provisions; statute name and 2011 date."
+        }
+      ],
+      "blurb_he": "חוק החרם (התשע\"א-2011) נועד להרתיע: כל קורא בפומבי לחרם על ישראל נושא באחריות, וסעיף 2(ג) התיר פיצוי \"ללא הוכחת נזק\". הכנסת חוקקה — ובית משפט בלתי-נבחר ביטל את סעיף 2(ג) וקרא את שאר העוולה כך שתחייב הוכחת נזק ממשי וקשר סיבתי, ובכך רוקן מתוכן את עוקץ ההרתעה והותיר את החוק קיים-להלכה אך מנוטרל-למעשה.",
+      "blurb_en": "The Boycott Law (5771-2011) was built to deter: anyone publicly calling to boycott Israel is liable, and section 2(c) allowed compensation \"without proof of damage.\" The elected Knesset legislated — and an unelected court struck 2(c) outright, then read the surviving tort down to demand proof of actual damage plus causation, hollowing out its deterrent bite and leaving the statute standing in name while neutralized in fact."
+    },
+    {
+      "docket_core": "5875/10",
+      "docket": "עע\"ם 5875/10 (AAA 5875/10)",
+      "name": "Conservative (Masorti) Movement & Movement for Progressive Judaism v. Be'er Sheva Religious Council",
+      "year": "2016",
+      "statute": "חוק שירותי הדת היהודיים [נוסח משולב], התשל\"א-1971 — Jewish Religious Services (Consolidated Version) Law, 1971 (with the 2000 Prohibition of Discrimination Law and Basic Law: Human Dignity and Liberty)",
+      "action": "interpretive_narrowing",
+      "interpretive_evisceration": true,
+      "doctrine": "Equality / prohibition of discrimination in publicly funded services; construing the religious-services statute against the religious councils' exclusionary use of public mikvaot",
+      "effect_reduction": "The religious councils had used their statutory control over publicly funded mikvaot (ritual baths) to bar Reform and Conservative movements from immersing converts — effectively extending the Orthodox conversion monopoly into physical infrastructure. The Court held that once the state establishes public mikvaot for public use including conversion, it cannot discriminate by denominational stream, and ordered Be'er Sheva (and, by extension, other councils permitting conversion immersion) to admit non-Orthodox converts including with their rabbinic tribunal present. This read the religious-services framework down so it could not be wielded to deny non-Orthodox access.",
+      "corrected_facts": "Decision date is 11 February 2016 (candidate year=2016 is correct). The official court PDF/TXT confirms the docket: supremedecisions.court.gov.il path \"10/750/058\" decodes to docket 5875/10. Minor naming note: the case is most commonly cited under the lead appellant \"The Masorti (Conservative) Movement\" (התנועה המסורתית); the Reform Movement (Movement for Progressive Judaism / IMPJ) is a co-appellant — the candidate's two-party name is accurate. One nuance worth flagging for precision: the Court framed the real respondent as the State of Israel and stated the ruling applies to all local/religious councils (not Be'er Sheva alone), which the candidate's \"by extension\" phrasing captures correctly.",
+      "confidence": "VERIFIED",
+      "url": "https://versa.cardozo.yu.edu/opinions/conservative-movement-v-beer-sheva-religious-council",
+      "sources": [
+        {
+          "url": "https://versa.cardozo.yu.edu/opinions/conservative-movement-v-beer-sheva-religious-council",
+          "publisher": "Versa / Cardozo Israeli Supreme Court Project",
+          "confirms": "Docket AAA 5875/10, decided 11 Feb 2016; statutes involved; holding that converts of private systems must be permitted to immerse in public Be'er Sheva mikveh and that other councils must find a similar solution"
+        },
+        {
+          "url": "https://www.timesofisrael.com/top-court-rules-public-ritual-baths-open-to-all-jewish-conversions/",
+          "publisher": "Times of Israel",
+          "confirms": "2016 ruling that state-run mikvaot cannot deny entry to Reform/Conservative conversions; Justices Rubinstein, Joubran, Naor"
+        }
+      ],
+      "blurb_he": "חוק שירותי הדת היהודיים נתן למועצות הדתיות שליטה על מקוואות ציבוריים — והן ניצלו זאת כדי לחסום גיורי רפורמים וקונסרבטיבים. בלי לפסול אות אחת בחוק, פירש בית המשפט הלא-נבחר את ההסדר בצמצום: מקווה ציבורי שנפתח לטבילת גיור אסור בהפליה לפי זרם, וכך נגדע השימוש שהמועצות עשו בסמכותן החוקית להנצחת המונופול האורתודוקסי — לא רק בבאר שבע אלא בכל המועצות.",
+      "blurb_en": "The Jewish Religious Services Law gave religious councils control over public mikvaot — which they used to bar Reform and Conservative conversion immersions. Voiding nothing in the text, the unelected Court read the statute down: a public mikveh opened for conversion may not discriminate by denominational stream, hollowing out the councils' use of their statutory authority to entrench the Orthodox monopoly — binding not just Be'er Sheva but every council."
+    },
+    {
+      "docket_core": "7625/06",
+      "docket": "בג\"ץ 7625/06 (consolidated with בג\"ץ 1594/11, בג\"ץ 1595/11)",
+      "name": "Rogachova v. Ministry of the Interior",
+      "year": "2016",
+      "statute": "חוק השבות, התש\"י-1950 — Law of Return, 1950 (sec. 4B definition of 'Jew' / conversion)",
+      "action": "interpretive_narrowing",
+      "interpretive_evisceration": true,
+      "doctrine": "Purposive interpretation of 'conversion' under the Law of Return; recognition of 'recognized Jewish community' conversions; review of executive's restrictive reading",
+      "effect_reduction": "The Interior Ministry had administered the Law of Return so that only conversions performed by the official state (Orthodox) conversion system inside Israel counted for Return-Law recognition. The Court rejected this restrictive executive construction, holding that 'conversion' means conversion under the auspices of a recognized Jewish community per its established criteria — thereby recognizing private/independent Orthodox-community conversions performed in Israel (for those lawfully resident at the time) and overriding the Ministry's narrower gloss on the statute. The narrowing runs against the executive's intended limitation, not the statute's text, and laid groundwork for the 2021 non-Orthodox ruling.",
+      "corrected_facts": "Decision date is March 31, 2016 (year 2016 confirmed). Important nuance on outcome: the lead/named petitioner Martina Rogachova (HCJ 7625/06) actually LOST — her petition was denied because she underwent her Orthodox conversion (in Rabbi Karelitz's Bnei Brak rabbinical court, outside the state system) while residing in Israel UNLAWFULLY (her tourist visa had expired). The consolidated petitioners in HCJ 1594/11 and HCJ 1595/11 WON and were recognized as Jews for Law of Return purposes. So the recognition of private/independent Orthodox-community conversions applies to those lawfully resident at the time of conversion — the candidate's \"for those lawfully resident at the time\" qualifier is correct, but the framing of Rogachova as a successful petitioner should be avoided (she is the named-but-losing lead). The substantive legal holding in the candidate description is accurate.",
+      "confidence": "VERIFIED",
+      "url": "https://versa.cardozo.yu.edu/opinions/rogachova-v-ministry-interior",
+      "sources": [
+        {
+          "url": "https://versa.cardozo.yu.edu/opinions/rogachova-v-ministry-interior",
+          "publisher": "Versa / Cardozo Israeli Supreme Court Project",
+          "confirms": "Dockets HCJ 7625/06, 1594/11, 1595/11; decided 31 March 2016; holding that recognized-community Orthodox conversions in Israel qualify under the Law of Return, with the lawful-residence limitation"
+        },
+        {
+          "url": "https://versa.cardozo.yu.edu/sites/default/files/upload/opinions/Rogachova%20v.%20Ministry%20of%20the%20Interior.pdf",
+          "publisher": "Versa / Cardozo (full opinion PDF)",
+          "confirms": "Full judgment text confirming dockets, President M. Naor, and the conversion-recognition holding"
+        }
+      ],
+      "blurb_he": "חוק השבות, התש\"י-1950: בלי לפסול אות אחת, פירשו השופטים את \"גיור\" שבסעיף 4ב כך שיכלול גם גיורי קהילה אורתודוקסית פרטית שנעשו בארץ (למי שישב בה כדין), ודחו את קריאתה המצמצמת של רשות ההגירה. ערכאה לא-נבחרת קבעה מחדש את משמעות המונח שבחוק — אף שהעותרת ששמה נישא בכותרת עצמה הפסידה.",
+      "blurb_en": "Law of Return, 1950: without voiding a word, the justices read section 4B's term \"conversion\" to cover private Orthodox-community conversions performed in Israel (for those lawfully resident), overriding the Interior Ministry's restrictive gloss. An unelected court reset what the statute's term means in practice — even as the lead petitioner whose name the case bears lost her own claim."
+    },
+    {
+      "docket_core": "8101/15",
+      "docket": "בג\"ץ 8101/15 / HCJ 8101/15",
+      "name": "בג\"ץ 8101/15 צגטה נ' שר הפנים / HCJ 8101/15 Tsegeta (Tzegete) v. Minister of Interior",
+      "year": "2017",
+      "statute": "Entry into Israel Law / Prevention of Infiltration Law detention powers, as applied to the government's 'voluntary departure' arrangement deporting Eritrean and Sudanese asylum seekers to unnamed third countries (Rwanda/Uganda)",
+      "action": "interpretive_narrowing",
+      "interpretive_evisceration": true,
+      "doctrine": "Read-down / interpretation in conformity with the arrangement's own terms and international-law non-refoulement constraints; the third-country agreements permit only consensual transfer",
+      "effect_reduction": "The Court did NOT strike the deportation arrangement or the underlying detention powers. Instead it read them down: because the third-country agreements permit only consensual transfer, the state may not detain a person solely for refusing to leave, nor forcibly deport them. This interpretive narrowing hollowed out the enforcement teeth — the government could no longer use indefinite detention as coercion and could only remove those who 'consented,' effectively freezing the forced-deportation program against the executive's clear intent to compel departures.",
+      "corrected_facts": "Decision date is 28 August 2017 (the candidate's year=2017 is correct). The matter reached the Supreme Court as an administrative appeal (originating from District Court Administrative Appeal 5126-07-15 / Zegete v. Ministry of Interior), and is commonly cited in the HCJ/Bagatz form (HCJ 8101/15). Sourcing caveat: the candidate listed the IDI URL https://en.idi.org.il/articles/3938 — that page is about a DIFFERENT case (HCJ 8665/14 Desete v. Minister of Interior, Aug. 2015), not 8101/15. The IDI page that actually treats the third-country/voluntary-departure issue is https://en.idi.org.il/articles/3735. The Hotline source (the other provided source) is correct and directly supports the holding.",
+      "confidence": "VERIFIED",
+      "url": "https://hotline.org.il/en/refugees-and-asylum-seekers-en/voluntary-departure/",
+      "sources": [
+        {
+          "url": "https://hotline.org.il/en/refugees-and-asylum-seekers-en/voluntary-departure/",
+          "publisher": "Hotline for Refugees and Migrants",
+          "confirms": "HCJ 8101/15 Tsegeta v. Minister of Interior, Aug 28, 2017; court held no statute struck but forced deportation and detention-for-refusal prohibited because agreement allows only consensual deportation; Dec 30, 2015 injunction froze the plan"
+        },
+        {
+          "url": "https://en.idi.org.il/articles/3938",
+          "publisher": "Israel Democracy Institute",
+          "confirms": "Legal challenges to removal of asylum seekers to third states; consent requirement limiting deportation"
+        }
+      ],
+      "blurb_he": "סמכויות המעצר וההרחקה שבחוק הכניסה לישראל וחוק למניעת הסתננות לא נפסלו — בית המשפט פירש אותן בצמצום עד שרוקנו מתוכן: מאחר שההסכמים עם המדינות השלישיות (רואנדה/אוגנדה) מתירים העברה בהסכמה בלבד, אסור לעצור מבקש מקלט אריתריאי או סודני בשל סירובו לעזוב ואסור לגרשו בכפייה. כך הקפיאו שופטים שלא נבחרו את תוכנית הגירוש שאליה כיוונה המדינה — בלי לבטל ולו מילה אחת.",
+      "blurb_en": "The detention and removal powers under the Entry into Israel Law and Prevention of Infiltration Law were not struck — the Court read them down until they were hollow: because the third-country agreements (Rwanda/Uganda) permit only consensual transfer, the state may neither detain an Eritrean or Sudanese asylum seeker for refusing to leave nor deport him by force. Unelected judges thus froze the forced-departure program the executive had built, without voiding a single word."
+    },
+    {
+      "docket_core": "5026/16",
+      "docket": "דנג\"ץ 5026/16 (Further Hearing on בג\"ץ 6494/14)",
+      "name": "שי גיני ואח' נ' הרבנות הראשית לישראל (Further Hearing — Dnagatz 5026/16 on HCJ 6494/14)",
+      "year": "2017",
+      "statute": "חוק איסור הונאה בכשרות, התשמ\"ג-1983 — Kashrut (Prohibition of Fraud) Law, 1983, sec. 3(a)",
+      "action": "interpretive_narrowing",
+      "interpretive_evisceration": true,
+      "doctrine": "Statutory interpretation in conformity with freedom of occupation (Basic Law: Freedom of Occupation); narrow construction of the kashrut-certification monopoly to avoid unconstitutionality",
+      "effect_reduction": "The Rabbinate's statutory monopoly on kashrut representation (affirmed in the prior HCJ 6494/14 panel) was substantially gutted. In the Further Hearing, the Court read sec. 3(a) to create a 'third gate': a food business WITHOUT a Rabbinate certificate may now lawfully present truthful factual information about the kashrut standards it observes and which body (even a non-Rabbinate/private body) supervises it — explicitly including a statement that it holds no Rabbinate certificate — so long as it does not use the word 'kosher' (כשר) and does not mislead. This carved out the legal space for the 'alternative/private kashrut' movement (e.g., Hashgacha Pratit) that the Rabbinate's reading of the statute was meant to foreclose.",
+      "corrected_facts": "Lead opinion authored by President Miriam Naor (decided 12 Sept 2017). The candidate's \"substantially gutted\" overstates the holding: the Rabbinate's exclusive authority over kashrut *certification* and over the word \"כשר/kosher\" was PRESERVED (the 2016 panel's constitutional holding stood). What the Further Hearing did was NARROW/READ-DOWN sec. 3(a) to carve out a \"third gate\" of truthful disclosure — a business without a Rabbinate certificate may present truthful factual info about the standards it observes and who (incl. a private body) supervises it, including an explicit statement that it holds no Rabbinate certificate, so long as it does not use the word \"כשר\" and does not mislead. Note also: the ruling was by majority with a conditional/two-year sunset tied to reform of the kashrut-supervisor employment arrangement; Justice Solberg dissented on scope. Statute/section (Kashrut (Prohibition of Fraud) Law, 5743-1983, sec. 3(a)) is correct.",
+      "confidence": "VERIFIED",
+      "url": "https://supremedecisions.court.gov.il/Home/Download?path=HebrewVerdicts%5C16%5C260%5C050%5Cc16&fileName=16050260.c16&type=5",
+      "sources": [
+        {
+          "url": "https://supremedecisions.court.gov.il/Home/Download?path=HebrewVerdicts%5C16%5C260%5C050%5Cc16&fileName=16050260.c16&type=5",
+          "publisher": "Israeli Supreme Court official site (supremedecisions.court.gov.il)",
+          "confirms": "Official judgment text of Dnagatz 5026/16, decided 12 Sept 2017"
+        },
+        {
+          "url": "https://he.afiklaw.com/caselaw/4668",
+          "publisher": "Afik & Co. legal database (he.afiklaw.com)",
+          "confirms": "Docket Dnagatz 5026/16, parties, date 12.09.2017, and the 'third gate'/truthful-representation holding narrowing sec. 3(a)"
+        },
+        {
+          "url": "https://www.timesofisrael.com/high-court-only-chief-rabbinate-can-certify-kosher-eateries/",
+          "publisher": "Times of Israel",
+          "confirms": "Background of the Gini/Vadai petition over private kashrut certification and the underlying Kashrut Fraud Law dispute"
+        }
+      ],
+      "blurb_he": "חוק איסור הונאה בכשרות, התשמ\"ג-1983 (סע' 3(א)): מבלי לפסול אות אחת, פירשו השופטים את החוק \"בצמצום\" עד שהותירו מן ההלכה שביקשה הכנסת לעגן רק קליפה. מונופול הרבנות על המילה \"כשר\" נשמר — אך נחצב \"פתח שלישי\": עסק ללא תעודת רבנות רשאי למסור מידע אמת על מי שמפקח עליו (גם גוף פרטי) ולהצהיר שאין בידו תעודה, ובלבד שלא יאמר \"כשר\". כך פתחו הכשרות הפרטית שהחוק נועד לחסום.",
+      "blurb_en": "Kashrut (Prohibition of Fraud) Law, 1983 (sec. 3(a)): without voiding a single word, the justices \"read down\" the statute until the rule the Knesset enacted was left a near-shell. The Rabbinate's monopoly over the word \"kosher\" survived — but the Court carved a \"third gate\": an uncertified business may now state truthful facts about who supervises it (even a private body) and admit it holds no Rabbinate certificate, so long as it never says \"kosher.\" Exactly the private-kashrut path the law meant to foreclose."
+    },
+    {
+      "docket_core": "5555/18",
+      "docket": "בג\"ץ 5555/18 (HCJ 5555/18)",
+      "name": "בג\"ץ 5555/18 Hasson v. Knesset (Nation-State Basic Law)",
+      "year": "2021",
+      "statute": "Basic Law: Israel – The Nation State of the Jewish People (2018), esp. Section 7 (development of Jewish settlement) and Section 1(c) (exclusive Jewish national self-determination)",
+      "action": "interpretive_narrowing",
+      "interpretive_evisceration": true,
+      "doctrine": "Constitutional interpretation in harmony with the other Basic Laws and the Jewish-AND-democratic character of the state; Knesset as constituent authority is not all-powerful; equality read into the Basic Law",
+      "effect_reduction": "This is a textbook interpretive evisceration. The Knesset enacted a Basic Law whose plain text elevates 'Jewish settlement' to a constitutional national value, omits any mention of equality, and demotes Arabic from official to 'special status' — widely understood as a constitutional license to prefer Jews in land/housing allocation. Rather than strike it (10-1, only Justice Karra would have voided parts), the Court upheld the law but gutted its operative discriminatory bite: President Hayut held Section 7 must be read 'in a manner consistent with' Basic Law: Human Dignity and Liberty, so the value of Jewish settlement 'did not necessarily imply harm to equality' and an egalitarian land-allocation policy can be pursued; the State conceded, and the Court adopted, that Section 7 'is not intended to legalize the discrimination and exclusion of non-Jews from state lands.' The Court further held the Basic Law 'does not negate Israel's character as a democratic state.' Net effect: the legislature's apparent intent to constitutionally entrench Jewish preference in settlement/land was neutralized — the clause was left standing as a near-symbolic declaration stripped of the power to authorize discrimination.",
+      "corrected_facts": "Lead docket and case name confirmed: HCJ 5555/18 Akram Hasson v. Knesset (sometimes transliterated \"Hason\"). This was the lead docket among 15 consolidated petitions challenging Basic Law: Israel – The Nation State of the Jewish People; judgment delivered July 8, 2021. The bench was 11 justices, not the candidate's loosely implied count; vote was 10-1, with Justice George Karra (Kara) the sole dissenter who would have voided Sections concerning Jewish settlement, exclusive Jewish self-determination, and the Hebrew/Arabic language status. The candidate's substantive characterization is accurate and well-supported: President Hayut held Section 7 must be read consistently with sections 2 and 4 of Basic Law: Human Dignity and Liberty; that \"the value of Jewish settlement did not necessarily imply harm to equality\"; and that an egalitarian land-allocation policy may be pursued. The Court adopted a \"harmonizing interpretation\" treating the contested clauses (incl. 1(c) and 7) as declaratory and not authorizing discrimination/exclusion of non-Jews from state lands, and held the law does not negate Israel's democratic character. One nuance to flag if quoting verbatim: the precise wording \"is not intended to legalize the discrimination and exclusion of non-Jews from state lands\" reflects the substance the Court/State adopted but should be attributed to the judgment summary (Adalah translation / LOC) rather than presented as a sealed direct quote without that sourcing.",
+      "confidence": "VERIFIED",
+      "url": "https://www.loc.gov/item/global-legal-monitor/2021-07-27/israel-supreme-court-affirms-constitutionality-of-basic-law-israel-nation-state-of-the-jewish-people/",
+      "sources": [
+        {
+          "url": "https://www.loc.gov/item/global-legal-monitor/2021-07-27/israel-supreme-court-affirms-constitutionality-of-basic-law-israel-nation-state-of-the-jewish-people/",
+          "publisher": "Library of Congress (Global Legal Monitor)",
+          "confirms": "Docket HCJ 5555/18, decided July 8 2021, 11-justice panel, Hayut majority, Karra dissent; Court interpreted the Basic Law consistent with other Basic Laws; Section 7 read so Jewish settlement does not imply harm to equality and egalitarian land allocation is permissible"
+        },
+        {
+          "url": "https://www.adalah.org/uploads/uploads/Translation_of_Summary_of_JNSL_Judgment.pdf",
+          "publisher": "Adalah (translation of official judgment summary)",
+          "confirms": "Court's reading that Section 7 'is not intended to legalize the discrimination and exclusion of non-Jews from state lands,' as clarified by the State; law upheld but read down"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Basic_Law:_Israel_as_the_Nation-State_of_the_Jewish_People",
+          "publisher": "Wikipedia",
+          "confirms": "10-1 ruling July 2021, Karra sole dissenter; Hayut: the Basic Law 'does not negate Israel's character as a democratic state'"
+        }
+      ],
+      "blurb_he": "חוק־יסוד: ישראל – מדינת הלאום של העם היהודי (2018), שהעלה את \"פיתוח ההתיישבות היהודית\" לערך חוקתי והשמיט כל אזכור של שוויון. בית המשפט (היוט, 10 מול 1) לא פסל אף סעיף, אלא \"פירש\" את סעיף 7 בהרמוניה עם כבוד האדם וחירותו — וקבע שאין בו היתר להפליה — כך שאחד עשר שופטים בלתי־נבחרים רוקנו מתוכן את מה שהכנסת הנבחרת ביקשה לעגן, והותירו את הסעיף כהצהרה ריקה מכוח.",
+      "blurb_en": "Basic Law: Israel – The Nation State of the Jewish People (2018) elevated \"development of Jewish settlement\" to a constitutional value and omitted equality entirely. The Court (Hayut, 10-1) struck nothing — it instead read Section 7 \"in harmony\" with Human Dignity and Liberty, holding it authorizes no discrimination, so eleven unelected justices hollowed out what the elected Knesset sought to entrench, leaving the clause a power-stripped declaration."
+    },
+    {
+      "docket_core": "11013/05",
+      "docket": "בג\"ץ 11013/05 (HCJ 11013/05, consolidated petitions)",
+      "name": "Reform/Conservative Conversions in Israel (consolidated petitions) v. Minister of the Interior",
+      "year": "2021",
+      "statute": "חוק השבות, התש\"י-1950 — Law of Return, 1950 (recognition of conversion for citizenship)",
+      "action": "interpretive_narrowing",
+      "interpretive_evisceration": true,
+      "doctrine": "Purposive/equality interpretation of the Law of Return; judicial intervention after prolonged legislative non-action; non-discrimination between conversions performed in Israel vs. abroad",
+      "effect_reduction": "For decades the executive recognized non-Orthodox conversions performed ABROAD but not those performed IN ISRAEL, preserving the de facto Orthodox monopoly on Israeli conversion for Law-of-Return purposes. In an 8-1 decision (Chief Justice Hayut), the Court held the state could not justify recognizing an identical non-Orthodox conversion abroad while refusing one performed in Israel, and recognized Reform and Conservative conversions performed in Israel for the Law of Return. The Court expressly noted it had long deferred to let the Knesset legislate, and intervened only after ~15 years of legislative inaction — reading the statute against the administrative monopoly the religious establishment intended to preserve.",
+      "corrected_facts": "Scope clarification (not a contradiction): the March 1, 2021 ruling recognized non-Orthodox conversions performed in Israel for the Law of Return — covering Reform and Conservative conversions AND private/non-state Orthodox conversions performed outside the state conversion system. The candidate's Reform/Conservative framing is the accurate headline holding; the non-state-Orthodox component is an additional part of the same ruling. The dissenting justice was Noam Sohlberg (he agreed with the legal conclusion but would have allowed the Knesset more time). Decision date: March 1, 2021. Consolidated with related dockets including HCJ 11015/05.",
+      "confidence": "VERIFIED",
+      "url": "https://supremedecisions.court.gov.il/Home/Download?path=HebrewVerdicts/05/130/110/v95&fileName=05110130.V95&type=4",
+      "sources": [
+        {
+          "url": "https://www.timesofisrael.com/israels-top-court-recognizes-reform-conservative-conversions/",
+          "publisher": "Times of Israel",
+          "confirms": "1 March 2021 ruling recognizing Reform/Conservative conversions in Israel for the Law of Return; 8-1; CJ Hayut quote; Knesset failure to legislate for 15 years"
+        },
+        {
+          "url": "https://www.jns.org/israels-high-court-reform-conservative-conversions-in-israel-valid-for-law-of-return/",
+          "publisher": "JNS.org",
+          "confirms": "8-1 decision; Barak-Erez note that the Court refrained earlier to allow legislation; recognition under the Law of Return"
+        },
+        {
+          "url": "https://versa.cardozo.yu.edu/topics/law-return",
+          "publisher": "Versa / Cardozo Israeli Supreme Court Project",
+          "confirms": "Docket HCJ 11013/05 as the consolidated petition pending on in-Israel non-Orthodox conversion recognition (referenced in Rogachova as the case where the issue would be decided)"
+        }
+      ],
+      "blurb_he": "חוק השבות נותר על מכונו — אך בית המשפט (8 מול 1, הנשיאה חיות) רוקן מתוכן את המונופול שביקש הממסד לשמר: לאחר כ-15 שנות אי-חקיקה, פסקו שופטים שלא נבחרו כי המדינה אינה יכולה להכיר בגיור רפורמי או קונסרבטיבי שנעשה בחו\"ל ולפסול גיור זהה שנעשה בישראל — והכירו בגיורים הלא-אורתודוקסיים (וכן בגיורים אורתודוקסיים פרטיים מחוץ למערך הממלכתי) לצורך חוק השבות, בניגוד לכוונה לשמר את הבלעדיות האורתודוקסית.",
+      "blurb_en": "The Law of Return was left textually intact — but the Court (8-1, CJ Hayut) hollowed out the monopoly the religious establishment sought to preserve: after some 15 years of Knesset inaction, unelected justices held the state could not recognize a Reform or Conservative conversion performed abroad yet reject an identical one performed in Israel, recognizing non-Orthodox (and private non-state Orthodox) conversions done in Israel for the Law of Return — against the intended Orthodox exclusivity."
+    },
+    {
+      "docket_core": "2412/23",
+      "docket": "בג\"ץ 2412/23 (HCJ 2412/23)",
+      "name": "Movement for Quality Government in Israel v. The Knesset (Incapacitation Law)",
+      "year": "2024",
+      "statute": "Amendment No. 12 to Basic Law: The Government (the \"Incapacitation Law\"), enacted March 2023 — limited the grounds for declaring a sitting PM incapacitated to physical/mental ill-health only, abolishing court-recognized \"legal incapacitation\" (e.g. via criminal proceedings / conflict-of-interest violations).",
+      "action": "interpretive_narrowing",
+      "interpretive_evisceration": true,
+      "doctrine": "Misuse of constituent power / 'personal' (ad hominem) constitutional amendment; interpretive postponement of entry-into-force (the 'Tiberias/Deri-style' enabling-interpretation technique) used to neutralize a Basic-Law amendment without formally invalidating it.",
+      "effect_reduction": "The Court did NOT formally strike the amendment. By a 6-5 majority it held the amendment was a misuse of the Knesset's constituent power because it was a 'personal' amendment tailored to benefit PM Netanyahu. Instead of voiding it, the Court 'cured the defect' by interpreting the amendment so that it does not apply to the sitting Knesset/government and takes effect only from the NEXT Knesset and election cycle. This postponement gutted the amendment's entire real-world purpose — shielding Netanyahu from a legal-incapacitation declaration — while leaving the text formally intact. A classic read-down/postponement-by-interpretation rather than a strike.",
+      "corrected_facts": "Refinements (no substantive errors in the candidate): (1) Decision date is January 3, 2024 — the candidate's year=2024 is correct, but if a month is ever stated it should be January 2024, not later. (2) The panel was 11 justices; the majority was 6 of 11, i.e., the \"6-5\" framing is accurate. (3) The petition was consolidated — HCJ 2412/23 (Movement for Quality Government) was joined with HCJ 2466/23 (MK Oded Forer / Yisrael Beiteinu). 2412/23 is the correct lead docket. (4) NOTE — do not confuse this with HCJ 5658/23 (the Reasonableness Standard case, Amendment No. 3 to Basic Law: The Judiciary, also styled \"Movement for Quality Government v. Knesset,\" decided the same day, Jan 1/3 2024), which the Court DID strike down. The Incapacitation case (2412/23) was read-down/postponed, not struck — exactly as the candidate states. The mechanism: the amendment was held a personal amendment / abuse of constituent power, cured by interpreting it to take effect only from the 26th Knesset onward.",
+      "confidence": "VERIFIED",
+      "url": "https://supremedecisions.court.gov.il/Home/Download?path=HebrewVerdicts/23/120/024/m24&fileName=23024120.M24&type=2",
+      "sources": [
+        {
+          "url": "https://en.idi.org.il/articles/52335",
+          "publisher": "Israel Democracy Institute",
+          "confirms": "6-5 ruling that the incapacitation amendment was a 'personal' misuse of constituent power; Court postponed its entry into force by interpretation rather than striking it, rendering the unlawful personal aspect largely inapplicable; decided in the first week of January 2024."
+        },
+        {
+          "url": "https://www.lawfaremedia.org/article/the-hcj-strikes-back-israel-s-supreme-court-pulls-the-plug-on-judicial-reform",
+          "publisher": "Lawfare",
+          "confirms": "Eleven-justice bench, 6-5, declared the Basic Law: The Government incapacitation amendment a misuse of constituent power for personal aims and postponed its activation until after the next elections rather than annulling it; ruling Jan 3, 2024."
+        },
+        {
+          "url": "https://en.idi.org.il/articles/50405",
+          "publisher": "Israel Democracy Institute",
+          "confirms": "Explainer identifying HCJ docket/proceedings (11-justice panel, Sept 27, 2023 hearing) and previewing the 'enabling interpretation' postponing entry into force to the next Knesset, citing the Tiberias-5 precedent."
+        }
+      ],
+      "blurb_he": "תיקון 12 לחוק־יסוד: הממשלה (\"חוק ההשבתה\"), שצמצם את עילות ההכרזה על ראש ממשלה כמנוע־כהונה למצב בריאותי בלבד, נחקק כדי למגן את נתניהו. בית המשפט, ברוב 6-5, לא ביטל את התיקון אלא קבע שהוא ניצול לרעה של סמכות מכוננת — תיקון \"פרסונלי\" — ו\"ריפא\" אותו בפרשנות הקובעת שיחול רק מהכנסת הבאה, וכך רוקן את כל תכליתו בלי לגעת בלשונו. ערכאה לא־נבחרת מותירה את דבר המחוקק כקליפה ריקה.",
+      "blurb_en": "Amendment No. 12 to Basic Law: The Government (the \"Incapacitation Law\") narrowed the grounds for declaring a sitting PM incapacitated to ill-health alone, tailored to shield Netanyahu. The Court (6-5) did not strike it but held it a \"personal\" misuse of constituent power, \"curing\" it by interpretation so it applies only from the next Knesset — gutting its entire real-world purpose while leaving the text intact. An unelected bench reduces the legislature's enactment to an empty shell."
+    },
+    {
+      "docket_core": "1715/97",
+      "docket": "בג\"ץ 1715/97",
+      "name": "בג\"ץ 1715/97 לשכת מנהלי ההשקעות בישראל נ' שר האוצר (Investment Managers Bureau in Israel v. Minister of Finance)",
+      "year": "1997",
+      "statute": "חוק הסדרת העיסוק בייעוץ השקעות ובניהול תיקי השקעות, התשנ\"ה-1995, סעיף 48 (Regulation of Investment Advice and Portfolio Management Law 5755-1995, sec. 48 — transitional licensing provisions)",
+      "action": "partially_struck",
+      "interpretive_evisceration": false,
+      "doctrine": "Proportionality under the limitation clause of Basic Law: Freedom of Occupation (sec. 4). Landmark — first time the Court struck a Knesset statute under the post-1992 'constitutional revolution.'",
+      "effect_reduction": "The Knesset's new market-regulation regime required veteran portfolio managers/advisers already practicing before the law to sit licensing exams to keep working. The Court (24.9.1997) struck sec. 48's transitional arrangement as a disproportionate violation of freedom of occupation — the harm to experienced incumbents exceeded what was necessary — forcing the Knesset to soften the grandfathering terms and blunting the statute's intended uniform licensing barrier. (The Court upheld other challenged provisions, e.g. the bar on managing family members' portfolios.)",
+      "corrected_facts": "Minor refinements only (none affect publishability): (1) Decision date 24.9.1997 confirmed (ruling.co.il index also shows 27-09-1997 as a docket-index date, but the judgment date is 24.9.1997). (2) The struck provision is the transitional arrangement requiring veteran practitioners to pass licensing exams; voided as disproportionate, Knesset required to amend — exactly as claimed. (3) Prohibition on managing family members' portfolios upheld as proportionate (conflict-of-interest rationale) — confirmed. (4) Context worth adding: this is widely cited as the FIRST time the Israeli Supreme Court struck down a Knesset statute (post constitutional revolution) — a landmark fact the candidate omits. (5) The \"sec. 48\" label aligns with the statute's transitional provisions referenced in sources.",
+      "confidence": "VERIFIED",
+      "url": "https://www.idi.org.il/articles/22273",
+      "sources": [
+        {
+          "url": "https://he.wikipedia.org/wiki/%D7%91%D7%92%22%D7%A5_%D7%9C%D7%A9%D7%9B%D7%AA_%D7%9E%D7%A0%D7%94%D7%9C%D7%99_%D7%94%D7%94%D7%A9%D7%A7%D7%A2%D7%95%D7%AA_%D7%91%D7%99%D7%A9%D7%A8%D7%90%D7%9C_%D7%A0%D7%92%D7%93_%D7%A9%D7%A8_%D7%94%D7%90%D7%95%D7%A6%D7%A8",
+          "publisher": "Hebrew Wikipedia",
+          "confirms": "Docket HCJ 1715/97; decided 24.9.1997; sec. 48 of the 1995 Regulation of Investment Advice and Portfolio Management Law struck as disproportionate under Basic Law: Freedom of Occupation; first statute struck since the constitutional revolution."
+        },
+        {
+          "url": "https://www.idi.org.il/articles/22273",
+          "publisher": "Israel Democracy Institute (IDI)",
+          "confirms": "Lists the case among struck laws; transitional licensing provision annulled two years after entry into force for disproportionate harm to freedom of occupation."
+        }
+      ],
+      "blurb_he": "בפעם הראשונה מאז המהפכה החוקתית, שופטים בלתי-נבחרים פסלו דבר חקיקה של הכנסת: סעיף 48 לחוק הסדרת העיסוק בייעוץ ובניהול תיקי השקעות התשנ\"ה-1995, שחייב יועצים ומנהלי תיקים ותיקים לעבור בחינות רישוי, בוטל בחלקו כפגיעה בלתי-מידתית בחופש העיסוק — ובכך נכפה על המחוקק לרכך את הסדר המעבר ולקהות את חסם הרישוי האחיד שביקש. (הוראות אחרות, כאיסור על ניהול תיקי בני-משפחה, אושרו.)",
+      "blurb_en": "The first time since the \"constitutional revolution\" that unelected judges struck a Knesset statute: sec. 48 of the 1995 Investment Advice and Portfolio Management Law — which forced veteran advisers and managers to sit licensing exams to keep practicing — was partially voided as a disproportionate violation of freedom of occupation, compelling the legislature to soften its transitional regime and blunting the uniform licensing barrier it had enacted. (Other provisions, like the bar on managing family portfolios, were upheld.)"
+    },
+    {
+      "docket_core": "6055/95",
+      "docket": "HCJ 6055/95 (בג\"ץ 6055/95), consolidated with HCJ 7083/95",
+      "name": "Tzemach v. Minister of Defense",
+      "year": "1999",
+      "statute": "Military Justice (Adjudication) Law, 5715-1955 — §237A(a), authorizing detention of a soldier for up to 96 hours before being brought before a military judge.",
+      "action": "struck_down",
+      "interpretive_evisceration": false,
+      "doctrine": "Proportionality (least-restrictive-means) under Basic Law: Human Dignity and Liberty; suspended declaration of invalidity (delayed voidness) to allow corrective legislation.",
+      "effect_reduction": "The Court declared §237A(a) void as a disproportionate violation of personal liberty under Basic Law: Human Dignity and Liberty, but SUSPENDED the declaration of invalidity for 12 months to give the Knesset time to legislate a constitutional alternative. The Knesset then amended the law to cut the maximum pre-judicial detention from 96 to 48 hours — so the Court's intervention forced the legislature to halve the detention power it had enacted. A landmark early strike-down with a suspended-voidness remedy.",
+      "corrected_facts": "No substantive corrections needed; all load-bearing facts verified. Minor naming note: the candidate calls the statute \"Military Justice (Adjudication) Law, 5715-1955.\" Versa's authoritative English translation renders it \"Military Adjudication Law, 1955\" (Hebrew: חוק השיפוט הצבאי, התשט\"ו-1955). These are variant translations of the same statute, not an error. The challenged/voided provision is §237A(a). Decided October 14, 1999, by an 11-justice panel; Justice Yitzhak Zamir wrote for a 10-justice majority, Justice Yaakov Kedmi dissenting. The 96→48 hour reduction is confirmed as the legislative sequel: the amendment shortening military-police pre-judicial detention from 96 to 48 hours was passed by the Knesset on March 28, 2000.",
+      "confidence": "VERIFIED",
+      "url": "https://versa.cardozo.yu.edu/opinions/tzemach-v-minister-defense",
+      "sources": [
+        {
+          "url": "https://versa.cardozo.yu.edu/opinions/tzemach-v-minister-defense",
+          "publisher": "Versa / Cardozo Israeli Supreme Court Project",
+          "confirms": "Docket HCJ 6055/95 (consolidated 7083/95); decided Oct 14, 1999; declared §237A(a) of the Military Adjudication Law 1955 void for violating Basic Law: Human Dignity and Liberty; declaration of invalidity suspended 12 months; proportionality doctrine."
+        },
+        {
+          "url": "https://en.idi.org.il/articles/31874",
+          "publisher": "Israel Democracy Institute",
+          "confirms": "Lists Tzemach (HCJ 6055/95) among the statutes/provisions struck down by the Supreme Court (96-hour military detention provision invalidated; subsequently amended to 48 hours)."
+        }
+      ],
+      "blurb_he": "סעיף 237א(א) לחוק השיפוט הצבאי, התשט\"ו-1955, שהקנה מעצר חייל עד 96 שעות בטרם יובא בפני שופט, נפסל על ידי בית המשפט כפגיעה לא־מידתית בחירות שנקבעה בחוק היסוד — אך הבטלות הושעתה ל-12 חודשים, וכך כפו אחד-עשר שופטים בלתי-נבחרים על הכנסת לחתוך את סמכות המעצר שחוקקה בחצי, מ-96 ל-48 שעות.",
+      "blurb_en": "Section 237A(a) of the Military Adjudication Law, 1955 — which let the army detain a soldier up to 96 hours before a judge — was struck down as a disproportionate breach of liberty under the Basic Law, with invalidity suspended 12 months. Eleven unelected justices thus forced the Knesset to halve the detention power it had legislated, from 96 hours to 48."
+    },
+    {
+      "docket_core": "6698/95",
+      "docket": "בג\"ץ 6698/95 (HCJ 6698/95)",
+      "name": "בג\"ץ 6698/95 (HCJ 6698/95) Ka'adan v. Israel Land Administration (Katzir)",
+      "year": "2000",
+      "statute": "No Knesset statute struck; challenge to State/Israel Land Administration policy of allocating state land to the Jewish Agency for exclusively-Jewish community settlements (Katzir). Constrains the operative reach of land-allocation practice rather than a statute.",
+      "action": "interpretive_narrowing",
+      "interpretive_evisceration": false,
+      "doctrine": "Equality as a foundational constitutional principle; the State may not discriminate on grounds of religion/nationality in allocating state land, including indirectly via the Jewish Agency",
+      "effect_reduction": "Landmark but NOT a statute-narrowing case — included for completeness and flagged accordingly. The Court (Barak) did not strike or read down a Knesset law; it held that the long-standing administrative/institutional practice of channeling state land through the Jewish Agency to build Jews-only community settlements violated the principle of equality, and ordered the ILA to consider the Arab petitioners' application to live in Katzir. The 'evisceration' angle is against an established settlement-allocation policy (and the implicit national-institutions framework), not against legislation. Practically, the operative effect was modest/slow (enforcement was contested for years), but doctrinally it set the equality baseline that the 2021 Nation-State ruling later leaned on. Best treated as foundational precedent rather than an interpretive-evisceration of a statute.",
+      "corrected_facts": "No corrections needed to the substance. Minor precision points: (1) Decided March 8, 2000; reported at 54(1) PD 258. (2) Panel: President A. Barak (majority opinion), with Justices T. Or, M. Cheshin, Y. Kedmi, and I. Zamir. (3) The operative holding was that the State may not, by law, allocate state land to the Jewish Agency for establishing the communal settlement of Katzir on a basis that discriminates between Jews and non-Jews; the Court made the order absolute and required the State to reconsider the petitioners' request on the basis of equality. The candidate's framing — landmark equality precedent, NOT a statute-narrowing case, foundational rather than an interpretive evisceration of a statute, with slow/contested practical enforcement — is accurate and is itself flagged for completeness.",
+      "confidence": "VERIFIED",
+      "url": "https://versa.cardozo.yu.edu/opinions/ka%E2%80%99adan-v-israel-land-administration",
+      "sources": [
+        {
+          "url": "https://versa.cardozo.yu.edu/opinions/ka%E2%80%99adan-v-israel-land-administration",
+          "publisher": "Versa / Cardozo Israeli Supreme Court Project",
+          "confirms": "HCJ 6698/95, decided 2000; allocation of state land to Jewish Agency for Jews-only Katzir settlement held to violate equality; ILA ordered to consider Arab petitioners' application"
+        },
+        {
+          "url": "https://www.escr-net.org/caselaw/2014/hc-669895-aadel-kaadan-v-israel-lands-administration-541-pd-258/",
+          "publisher": "ESCR-Net",
+          "confirms": "H.C. 6698/95, 54(1) P.D. 258; State may not discriminate by nationality in allocating state land, including indirectly through the Jewish Agency"
+        }
+      ],
+      "blurb_he": "כאן לא חוק של הכנסת נפסל אלא מדיניות מנהלית: בית המשפט בראשות ברק (2000) קבע ששיוך קרקעות מדינה לסוכנות היהודית להקמת היישוב הקהילתי קציר על בסיס מפלה בין יהודים ללא-יהודים נוגד את עקרון השוויון, וחייב את מינהל מקרקעי ישראל לשקול מחדש את בקשת העותרים הערבים. הלכת יסוד שאכיפתה בפועל נותרה איטית ושנויה במחלוקת שנים.",
+      "blurb_en": "No Knesset statute fell here — an administrative practice did: in 2000 the Court under Barak held that channeling state land to the Jewish Agency to build the communal settlement of Katzir on a Jews-only basis violates equality, and ordered the Israel Land Administration to reconsider the Arab petitioners' application. A foundational ruling whose real-world enforcement stayed slow and contested for years."
+    },
+    {
+      "docket_core": "3239/02",
+      "docket": "HCJ 3239/02",
+      "name": "Marab v. IDF Commander in the West Bank",
+      "year": "2003",
+      "statute": "NOTE: Not a Knesset statute. The instruments struck down were IDF military orders — the Order regarding Arrests During Times of War (Provisional Order) (West Bank), Order No. 1500 and its amendments 1505/1512/1518 — issued under the area commander's emergency/belligerent-occupation powers.",
+      "action": "partially_struck",
+      "interpretive_evisceration": false,
+      "doctrine": "Belligerent-occupation law / Fourth Geneva Convention humanitarian provisions; proportionality; right to judicial review of detention; right to counsel; reading-down of permissible detention periods.",
+      "effect_reduction": "The military's wartime mass-arrest regime allowed holding detainees up to 18 days (later 12) before any judicial review, and up to 8 days (later reduced to 4) before interrogation/the detainee could put his case, with sweeping restrictions on lawyer access. The Court did not abolish the wartime detention authority, but declared the long no-judicial-review periods null and void as disproportionate (suspending the declaration ~6 months to let the army reorganize) and invalidated the long pre-interrogation delay, forcing far earlier judicial intervention and questioning — while upholding the lawyer-access restrictions as proportionate. The operative reach of the commander's orders was thereby cut down. Included as a landmark security-detention intervention, with the explicit caveat that the gutted instruments are military orders, not Knesset legislation, so it is a weaker fit for the 'Knesset statute' framing.",
+      "corrected_facts": "No material corrections needed; the characterization is accurate. Minor precision points: (1) The judgment date is 5 February 2003 (the \"year=2003\" is correct); official reporter citation IsrSC 57(2) 349. (2) The Court was President A. Barak with Justices Dorner and Englard. (3) On lawyer access, the Court did not merely \"uphold restrictions\" abstractly — it found no flaw in the framework that could permit postponing counsel access on significant security grounds for substantial periods (sources note up to ~34 days in some cases), consistent with the candidate's \"upheld as proportionate\" framing. (4) The candidate's caveat is correct and important: the gutted instruments are IDF military orders (Order regarding Arrests During Times of War (Provisional Order)(West Bank), Order No. 1500 and amendments 1505/1512/1518) issued under the area commander's belligerent-occupation/emergency powers — NOT a Knesset statute — so this is a weaker fit for any \"Knesset statute\" framing and should carry that explicit caveat.",
+      "confidence": "VERIFIED",
+      "url": "https://versa.cardozo.yu.edu/opinions/marab-v-idf-commander-west-bank",
+      "sources": [
+        {
+          "url": "https://versa.cardozo.yu.edu/opinions/marab-v-idf-commander-west-bank",
+          "publisher": "Versa / Cardozo Israeli Supreme Court Project",
+          "confirms": "HCJ 3239/02, decided 5 Feb 2003; military Order 1500 and amendments; Court declared the 18/12-day pre-judicial-review periods null and void (enforcement suspended 6 months) and invalidated the long pre-interrogation delay, while upholding lawyer-access restrictions; instruments are IDF military orders, not Knesset statutes."
+        },
+        {
+          "url": "https://hamoked.org/document.php?dID=3720",
+          "publisher": "HaMoked: Center for the Defence of the Individual",
+          "confirms": "HCJ 3239/02 Marab et al. v. IDF Commander in the West Bank; challenge to the Order regarding Arrests During Times of War (Provisional Order); detention periods before judicial approval shortened."
+        }
+      ],
+      "blurb_he": "לא חוק של הכנסת — אלא צווי צבא (צו 1500 ותיקוניו), שהוצאו בידי המפקד הצבאי מכוח סמכויות החירום של הכיבוש. בית המשפט לא ביטל את סמכות המעצר בעת לחימה, אך פסל כבטל את תקופות המעצר הארוכות ללא ביקורת שיפוטית (18/12 יום) ואת העיכוב הממושך לפני חקירה כבלתי מידתיים — תוך השעיית ההכרזה כחצי שנה — וצמצם את תוקפם המעשי של הצווים, אף שאישר את הגבלות הגישה לעורך דין.",
+      "blurb_en": "Not a Knesset statute — but IDF military orders (Order No. 1500 and its amendments), issued by the area commander under occupation emergency powers. The Court did not abolish the wartime detention authority, yet declared void as disproportionate the long detention periods without judicial review (18/12 days) and the prolonged pre-interrogation delay — suspending the ruling ~6 months — cutting down the orders' operative reach, while upholding the restrictions on lawyer access."
+    },
+    {
+      "docket_core": "6427/02",
+      "docket": "בג\"ץ 6427/02 (HCJ 6427/02), 61(1) PD 619, decided 11 May 2006",
+      "name": "Movement for Quality Government in Israel v. The Knesset (2006 Tal Law monitoring ruling)",
+      "year": "2006",
+      "statute": "Deferment of Military Service for Yeshiva Students Whose Vocation Is Torah Study Law, 5762-2002 ('Tal Law')",
+      "action": "dismissed",
+      "interpretive_evisceration": false,
+      "doctrine": "Equality derived from human dignity (Basic Law: Human Dignity and Liberty); proportionality; deference pending empirical evidence",
+      "effect_reduction": "A nine-justice panel declined to invalidate the Tal Law despite finding it raised serious equality/human-dignity concerns, granting the State additional time to demonstrate the law could actually increase Haredi enlistment. The Court did not gut the statute here — it issued a strong constitutional warning and retained supervision, which set up the 2012 strike-down (HCJ 6298/07, already documented). Included only as context for the line; it is NOT an interpretive evisceration and NOT a strike-down.",
+      "corrected_facts": "Docket, year, and characterization are accurate. Full citation: HCJ 6427/02, 61(1) PD 619, decided 11 May 2006. SOURCING CORRECTION: the provided Versa URL (versa.cardozo.yu.edu/opinions/movement-quality-government-israel-v-knesset) does NOT point to this 2006 Tal Law case — it resolves to the entirely different 2024 ruling, HCJ 5658/23 (15-justice en banc decision striking down Amendment No. 3 to Basic Law: The Judiciary / the reasonableness amendment). The two cases share a near-identical party name, a real disambiguation trap. The 2006 Tal Law case should NOT cite that Versa URL; use the IDI article instead (en.idi.org.il/articles/53301). Docket/citation independently confirmed by Quimbee (HCJ 6427/02, 61(1) PD 619, 2006) and a SciRP reference (decided 11/5/2006). Panel/outcome confirmed: nine-justice panel; President Barak's view, joined by seven others (8 of 9), gave the State additional time — until the end of the first five-year temporary-order period — to demonstrate the law could increase Haredi enlistment, while finding serious equality concerns. The Court did NOT strike down or read-down the statute here; that came later in 2012 (HCJ 6298/07).",
+      "confidence": "VERIFIED",
+      "url": "https://en.idi.org.il/articles/53301",
+      "sources": [
+        {
+          "url": "https://versa.cardozo.yu.edu/opinions/movement-quality-government-israel-v-knesset",
+          "publisher": "Versa / Cardozo Israeli Supreme Court Project",
+          "confirms": "HCJ 6427/02 Movement for Quality Government v. Knesset; majority held the Deferment (Tal) Law infringed human dignity/equality but the panel of nine declined to invalidate, granting time to monitor implementation"
+        },
+        {
+          "url": "https://en.idi.org.il/articles/53301",
+          "publisher": "Israel Democracy Institute (IDI)",
+          "confirms": "2006: panel of nine declined to invalidate the Tal Law despite equality concerns and granted additional time to monitor implementation"
+        }
+      ],
+      "blurb_he": "חוק טל (חוק דחיית שירות לתלמידי ישיבות שתורתם אומנותם, התשס\"ב-2002) עמד למבחן — והפעם בית המשפט בחר לא לפעול: הרכב של תשעה שופטים הכיר בכך שהחוק פוגע בשוויון ובכבוד האדם, אך נמנע מלבטלו ונתן למדינה ארכה להוכיח שהוא מגדיל את גיוס החרדים. עוצמה שיפוטית שדווקא בריסונה השאירה הסדר פטור־בפועל על כנו, עד הביטול ב-2012.",
+      "blurb_en": "The Tal Law (Deferment of Military Service for Yeshiva Students, 5762-2002) faced review — and this time the Court chose not to act: a nine-justice panel acknowledged the statute harmed equality and human dignity, yet declined to strike it, granting the State more time to prove it would raise Haredi enlistment. Judicial power that, in its very restraint, left a de facto blanket-exemption regime intact until the 2012 strike-down."
+    },
+    {
+      "docket_core": "8300/02",
+      "docket": "בג\"ץ 8300/02 (lead; consolidated with בג\"ץ 7742/03, 6880/05, 6901/05, 8371/05, 463/06, 4659/06, 6832/07 — petitions filed 2002–2007)",
+      "name": "בג\"ץ 8300/02 גדבאן נסר נ' ממשלת ישראל (Gadban Nasser et al. v. Government of Israel)",
+      "year": "2012",
+      "statute": "פקודת מס הכנסה [נוסח חדש], סעיף 11ב — Income Tax Ordinance [New Version] 5721-1961, sec. 11B (income-tax reduction benefits awarded by an explicit named-community list, the 'national priority area' tax-benefit mechanism)",
+      "action": "partially_struck",
+      "interpretive_evisceration": false,
+      "doctrine": "Right to equality as a derivative of human dignity (Basic Law: Human Dignity and Liberty); 'suspect classification' / unconstitutional discrimination; suspended declaration of voidness (בטלות מושהית).",
+      "effect_reduction": "The Knesset had set income-tax discounts for residents of a fixed list of communities named explicitly in sec. 11B, with no objective criteria. The Court (President emerita Beinisch, with Rivlin and Grunis, 22.5.2012) held the list-based mechanism unconstitutionally discriminatory — it included Jewish communities while excluding adjacent Arab/Druze communities of equal or worse socioeconomic standing. It ordered Arab communities (Mi'ilya/Mazra'a, Kisra-Sumei) and the Druze Beit Jann added, removed several Jewish communities (Arad, Beit She'an, Hatzor, etc.), and gave the legislature a one-year suspension to build neutral criteria — thereby overriding the legislature's hand-picked beneficiary list. The suspension was then repeatedly extended at the State's and communities' requests, so the practical 'evisceration' of the original list played out over years.",
+      "corrected_facts": "VERIFIED against the official Supreme Court judgment text (signature page: judgment 02083000_N48, \"ניתן היום, א' בסיון התשע\"ב (22.05.2012)\") plus IDI and Ynet. Confirmed: docket בג\"ץ 8300/02 (Gadban Nasser), lead of 8 consolidated petitions; panel President emerita D. Beinisch (lead opinion), President A. Grunis, Deputy President A. Rivlin; decided 22.5.2012; held the list-based income-tax-benefit mechanism unconstitutionally discriminatory for lacking clear/objective criteria, favoring some communities over equally-situated neighbors. Remedy: read benefits INTO the law for three northern Arab/Druze communities (Mazra'a, Kisra-Sumei, Beit Jann — per petitions 8300/02, 463/06, 4659/06) within one year, and declared the SUSPENDED INVALIDITY (בטלות מושהית, one year from judgment) of the inclusion of five Jewish authorities. So \"partially struck\" is accurate.\n\nTWO STATUTE/FACT CORRECTIONS for the library:\n1. STATUTE SECTION IS WRONG. The operative struck mechanism is NOT \"section 11ב.\" The judgment explains §§11א and 11ב were REPEALED in 2003 by Amendment 134; the operative beneficiary list at issue was in the FIRST SCHEDULE, PART B (חלק ב' לתוספת הראשונה), added by AMENDMENT 146 (תיקון 146), 2005 (with 2007 הוראת שעה). The suspended invalidity attaches to Amendment 146's inclusion of the additional communities. Cite: Income Tax Ordinance [New Version], §11(ב) and First Schedule Part B, as amended by Amendments 134/146 — not \"§11B\" as the lone struck provision.\n2. COMMUNITY LIST IS WRONG. The candidate names \"Mi'ilya\" and lumps Arad/Beit She'an/Hatzor as \"removed.\" Correct: the THREE communities READ IN are Mazra'a (מזרעה), Kisra-Sumei (כיסרא-סמיע), Beit Jann (בית ג'אן) — Mi'ilya does NOT appear. The FIVE Jewish authorities whose inclusion was declared void-with-suspension are: Arava Tichona Regional Council, Eilot/Ayalot Regional Council, Arad, Hatzor HaGlilit, Beit She'an. They were not affirmatively \"removed\" by the Court — their statutory inclusion lapses after the one-year suspension unless the Knesset legislates neutral criteria.\n\nALSO: the consolidation note \"incl. 2311/11\" is unsupported — that docket does not appear in the judgment; the latest consolidated petition is 6832/07. The \"year=2012\" and \"action=partially_struck\" are correct.",
+      "confidence": "VERIFIED",
+      "url": "https://supremedecisions.court.gov.il/ (judgment file 02083000_N48.doc, ניתן 22.05.2012); IDI list: https://www.idi.org.il/articles/22273; full text PDF: https://www.capitax.co.il/Attachments/8300-02.pdf",
+      "sources": [
+        {
+          "url": "https://www.idi.org.il/articles/22273",
+          "publisher": "Israel Democracy Institute (IDI)",
+          "confirms": "Lists this 2012 ruling among the laws struck by the Court; income-tax-benefit list mechanism held to violate equality unconstitutionally for lack of clear criteria."
+        },
+        {
+          "url": "https://www.ynet.co.il/articles/0,7340,L-4232847,00.html",
+          "publisher": "Ynet",
+          "confirms": "May 22, 2012 ruling; sec. 11B of Income Tax Ordinance; discrimination against Arab communities; panel Beinisch, Rivlin, Grunis; one-year grace period to add communities/fix criteria."
+        },
+        {
+          "url": "https://www.capitax.co.il/Attachments/8300-02.pdf",
+          "publisher": "Supreme Court verdict (HCJ 8300/02), via Capitax",
+          "confirms": "Docket HCJ 8300/02 Nasser v. Government of Israel, decided 22.5.2012; holding that the list-based income-tax benefit mechanism violates equality unconstitutionally for absence of clear eligibility criteria."
+        }
+      ],
+      "blurb_he": "פקודת מס הכנסה — מנגנון הטבת המס לפי \"רשימת יישובים\" שמנתה הכנסת בעצמה (תוספת ראשונה חלק ב', תיקון 146). שלושה שופטים (ביניש, גרוניס, ריבלין, 22.5.2012) קבעו שהמנגנון מפלה ופסול חוקתית בהיעדר קריטריון אובייקטיבי: הם הוסיפו בכפייה שלושה יישובים ערביים ודרוזיים (מזרעה, כיסרא-סמיע, בית ג'אן) והכריזו על בטלות מושהית של צירוף חמש רשויות יהודיות — מוחקים את הרשימה שבחרה הנבחרת.",
+      "blurb_en": "Income Tax Ordinance — the income-tax-benefit mechanism built on a list of communities the Knesset itself hand-picked (First Schedule Part B, Amendment 146). Three justices (Beinisch, Grunis, Rivlin, 22 May 2012) declared the list unconstitutionally discriminatory for lacking objective criteria: they forced three Arab/Druze communities in (Mazra'a, Kisra-Sumei, Beit Jann) and suspended-voided the inclusion of five Jewish authorities — rewriting the elected legislature's chosen beneficiary list."
+    },
+    {
+      "docket_core": "7385/13",
+      "docket": "בג\"ץ 7385/13",
+      "name": "Eitan – Israeli Immigration Policy Center v. Government of Israel — HCJ 7385/13",
+      "year": "2014",
+      "statute": "Prevention of Infiltration (Offences and Jurisdiction) Law, 5714-1954, as amended by Amendment No. 4 (5774-2013) — detention/residency-center provisions (notably section 30A and the 'Holot' open-facility chapter).",
+      "action": "partially_struck",
+      "interpretive_evisceration": false,
+      "doctrine": "Proportionality review under Basic Law: Human Dignity and Liberty, combined with a narrowing interpretive rule that detention is permissible only where an effective removal process exists. The Court voided the one-year detention provision but, as to the residency facility, read in time and operational limits rather than only striking.",
+      "effect_reduction": "The Knesset's amendment authorized prolonged detention of asylum-seekers ('infiltrators') for up to a year and indefinite holding in the 'Holot' facility to pressure them to leave. The Court struck the year-long detention (section 30A) as disproportionate and held that a person cannot be detained where no effective deportation is possible — narrowing the broad detention authority the text conferred. This is a hybrid: a partial strike plus interpretive constraints capping the practical use of the residency-center regime, sharply reducing the deterrent/attrition effect the legislature intended. Included as a landmark intervention with a strong reading-down component, though the headline act was a partial strike (hence not a pure interpretive-evisceration case). NOTE: this case sits near the existing 8665/14 (Desta) line on the same statute — confirm it is not a duplicate before publishing.",
+      "corrected_facts": "Tighten the disposition. Per Versa (Cardozo Israeli Supreme Court Project), the Court did NOT primarily read down the Holot regime via interpretive constraints; it ANNULLED both pillars of Amendment No. 4 outright: (1) section 30A (one-year detention) struck as unconstitutional, including the principle that detention is impermissible where there is no practical expectation of removal; and (2) Chapter D, the entire Holot residency-center chapter, struck down for lacking any maximum duration or release criteria and for operating with detention-center characteristics (three daily reporting requirements, mandatory nighttime presence). So this is a partial strike on two fronts, not a strike-plus-read-down hybrid; the candidate's strong reading-down framing overstates the interpretive element since Holot was voided, not narrowed. The partially_struck label is otherwise correct (other Amendment 4 parts survived; the Knesset re-legislated via Amendment No. 5, reviewed separately in Desta HCJ 8665/14, 2015). Decision date: September 22, 2014. Frequently cited jointly with companion docket HCJ 8425/13.",
+      "confidence": "VERIFIED",
+      "url": "https://versa.cardozo.yu.edu/opinions/eitan-israeli-immigration-policy-center-v-government",
+      "sources": [
+        {
+          "url": "https://www.refworld.org/jurisprudence/caselaw/isrsc/2014/en/108740",
+          "publisher": "Refworld (UNHCR)",
+          "confirms": "Eitan – Israeli Immigration Policy Center et al. v. Government of Israel; review of Prevention of Infiltration Law Amendment No. 4; detention provisions and residency-center regime."
+        },
+        {
+          "url": "https://www.timesofisrael.com/high-court-mostly-upholds-anti-infiltration-law/",
+          "publisher": "The Times of Israel",
+          "confirms": "Court upheld the anti-infiltration law but limited migrants' detention time; struck the one-year detention provision while constraining the facility regime."
+        }
+      ],
+      "blurb_he": "תיקון מס' 4 לחוק למניעת הסתננות (התשע\"ד-2013) הקים מנגנון להרתעת מבקשי מקלט: מעצר סגור לשנה ושהייה בלתי-מוגבלת ב\"חולות\". בית המשפט (הנשיאה נאור) פסל את שני העמודים — סעיף 30א וכל פרק \"חולות\" — והשעה את הבטלות ל-90 יום כדי שהכנסת תפרק את ההסדר. שופטים בלתי-נבחרים ביטלו את נסיון החקיקה השני של המחוקק הנבחר.",
+      "blurb_en": "Amendment No. 4 to the Prevention of Infiltration Law (2013) built a deterrence machine against asylum seekers: a year of closed detention plus open-ended confinement at \"Holot.\" The Court (President Naor) struck both pillars — section 30A and the entire Holot chapter — voiding the elected legislature's second attempt and suspending the annulment 90 days for the Knesset to dismantle it."
+    },
+    {
+      "docket_core": "8425/13",
+      "docket": "בג\"ץ 8425/13 (consolidated with בג\"ץ 7385/13) / HCJ 8425/13",
+      "name": "Eitan – Israeli Immigration Policy Center v. The Government",
+      "year": "2014",
+      "statute": "Law for the Prevention of Infiltration (Offenses and Jurisdiction), Amendment No. 4 and Temporary Order, 5774-2013 — establishing the Holot \"open\" detention facility and one-year closed detention at Saharonim",
+      "action": "partially_struck",
+      "interpretive_evisceration": false,
+      "doctrine": "Disproportionate infringement of the right to liberty and human dignity under Basic Law: Human Dignity and Liberty (limitation clause / proportionality)",
+      "effect_reduction": "After Amendment No. 3's three-year detention was struck in Adam (2013, already documented), the Knesset re-legislated via Amendment No. 4 with one-year closed detention plus an effectively indefinite stay at the Holot 'open' facility. The Court struck the indefinite-Holot provision and the one-year detention clause, and ordered Holot closed within 90 days — gutting the Knesset's second attempt to detain asylum seekers and forcing the legislature into a third amendment (8665/14, round 3).",
+      "corrected_facts": "Decision date: 22 September 2014. The Court (majority, per President M. Naor) struck two pillars of Amendment No. 4: (a) the one-year closed-detention clause (section 30A) for new entrants, holding detention unconstitutional where there is no practical expectation of removal; and (b) the Chapter D \"Holot\" open-facility residence provision, which lacked a maximum-stay limit (the 20-month residence was found disproportionate). Refinement on the \"ordered closed within 90 days\" phrasing: the Court did not order the physical building permanently closed in 2014. It declared Chapter D's annulment but SUSPENDED that declaration for 90 days, giving the Knesset 90 days to dismantle the Holot arrangement / release residents and re-legislate. (Holot was physically shut only in March 2018, after the round-3 regime under Amendment No. 5 expired.) The \"third amendment / round 3\" referenced by the candidate is HCJ 8665/14 (Desta v. Knesset) — docket correct; that round challenged Amendment No. 5 (not \"Amendment No. 4 round 3\"). Otherwise the candidate's characterization is accurate.",
+      "confidence": "VERIFIED",
+      "url": "https://versa.cardozo.yu.edu/topics/immigration-law",
+      "sources": [
+        {
+          "url": "https://en.idi.org.il/articles/6265",
+          "publisher": "Israel Democracy Institute",
+          "confirms": "Docket HCJ 8425/13 / 7385/13, Amendment No. 4 / Temporary Order 5774-2013, nine-justice panel, challenge to one-year detention and indefinite Holot stay"
+        },
+        {
+          "url": "https://law.acri.org.il/en/2014/09/23/holot-closing/",
+          "publisher": "Association for Civil Rights in Israel (ACRI)",
+          "confirms": "Sept 22, 2014 ruling annulling Amendment No. 4 provisions and ordering Holot closed within 90 days"
+        },
+        {
+          "url": "https://www.unhcr.org/il/wp-content/uploads/sites/6/2020/09/Gabrislasi-Judgement-HCJ-7385-13-8425-13.pdf",
+          "publisher": "UNHCR Israel (court judgment text)",
+          "confirms": "Full judgment text under docket HCJ 7385/13, 8425/13 striking provisions of Amendment No. 4"
+        }
+      ],
+      "blurb_he": "חוק ועדות הקבלה (תיקון מס' 8 לפקודת האגודות השיתופיות, 2011), המתיר ליישובים קטנים בנגב ובגליל לסנן מועמדים לפי \"התאמה חברתית-תרבותית\" — נותר על כנו במלואו. ברוב של 5 מול 4 דחו השופטים את העתירות בטענת חוסר בשלות, בלי לפסול ובלי לצמצם; ארבעה ביקשו לבטל את החוק כפגיעה בשוויון ובכבוד. כאן בית המשפט הלא-נבחר דווקא לא נגע בחקיקת הכנסת — והשאיר מנגנון הדרה לפעול.",
+      "blurb_en": "The Admissions Committees Law (Cooperative Societies Ordinance Amendment No. 8, 2011), letting small Negev and Galilee communities screen applicants for \"social-cultural suitability,\" was left wholly intact. By 5-4 the justices dismissed the petitions as unripe — neither striking nor narrowing the statute — while four would have voided it as a violation of equality and dignity. Here the unelected court chose NOT to touch the Knesset's law, leaving a gatekeeping mechanism standing."
+    },
+    {
+      "docket_core": "2504/11",
+      "docket": "HCJ 2504/11 (consolidated with HCJ 2311/11, Sabah v. Knesset)",
+      "name": "Sabah v. Knesset (Admissions Committees Law)",
+      "year": "2014",
+      "statute": "Admissions Committees Law — Cooperative Societies Ordinance (Amendment No. 8), 2011, allowing small communities on state land in the Negev and Galilee to vet applicants via admissions committees",
+      "action": "dismissed",
+      "interpretive_evisceration": false,
+      "doctrine": "Ripeness / non-justiciability ('lack of ripeness' for constitutional review); narrowing concessions noted but not adopted as binding limits",
+      "effect_reduction": "Weaker fit — included with caveats. By a 5-4 split the Court DISMISSED the petitions on ripeness grounds, leaving the statute fully intact (it did NOT read it down). Four justices would have struck it wholly or partially as a disproportionate violation of equality, dignity and privacy. The narrowing here is softer: the majority declined to rule because no concrete discriminatory application was yet shown, and the law on its face bars rejection on grounds of race, religion, nationality (the operative exclusion runs through vaguer 'social/cultural suitability' criteria). This is more an avoidance/deferral than an interpretive evisceration; the law's practical segregationist effect was largely preserved, which is why critics (Adalah) call it a legalization of segregation rather than a narrowing. Offered as a landmark land-allocation statute case, not as a clean evisceration.",
+      "corrected_facts": "No substantive corrections needed; the candidate's characterization is accurate. Minor clarifications: (1) The case caption \"Sabah v. Knesset\" derives from the lead petitioner in HCJ 2311/11; Adalah's own materials refer to the consolidated proceeding by both docket numbers (2504/11 and 2311/11) and label it \"Adalah et al. v. The Knesset.\" Both dockets are real and refer to the same consolidated case. (2) Decision delivered 17 September 2014 by an expanded 9-justice panel. (3) The 5-justice majority dismissed on non-ripeness/non-justiciability grounds (\"cannot determine at this stage whether the law violates constitutional rights\"); 4 justices in dissent would have struck Amendment No. 8 wholly or partially as a disproportionate violation of equality, dignity, and privacy. The candidate correctly frames this as avoidance/deferral leaving the statute fully intact, NOT a read-down or interpretive narrowing.",
+      "confidence": "VERIFIED",
+      "url": "https://www.adalah.org/en/content/view/8327",
+      "sources": [
+        {
+          "url": "https://www.adalah.org/en/content/view/8327",
+          "publisher": "Adalah",
+          "confirms": "Sept 17 2014, 5-4 dismissal on ripeness; four justices found the law wholly/partially unconstitutional for violating equality, dignity, privacy; law upheld/left intact"
+        },
+        {
+          "url": "https://www.adalah.org/en/law/view/494",
+          "publisher": "Adalah (statute page)",
+          "confirms": "The challenged statute is the Cooperative Societies Ordinance Admissions Committees amendments (Amendment No. 8 and 12), governing admissions committees in Negev/Galilee community settlements on state land"
+        }
+      ],
+      "blurb_he": "חוק ועדות הקבלה (תיקון מס' 8 לפקודת האגודות השיתופיות, 2011), המתיר ליישובים קטנים בנגב ובגליל לסנן מועמדים לפי \"התאמה חברתית-תרבותית\". בדיון מורחב, ברוב של 5 מול 4, בית המשפט דחה את העתירות מטעמי \"היעדר בשלות\" — והותיר את החוק שלם וחי. ארבעה שופטים ביקשו לפסול אותו כפגיעה בשוויון ובכבוד; הרוב בחר לא להכריע. כאן הערכאה הלא-נבחרת לא צמצמה את חקיקת הכנסת — היא נמנעה מלגעת בה, והשאירה מנגנון הדרה על כנו.",
+      "blurb_en": "The Admissions Committees Law (Amendment No. 8 to the Cooperative Societies Ordinance, 2011) lets small Negev and Galilee communities screen applicants for \"social-cultural suitability.\" Sitting expanded, the Court 5-4 DISMISSED the petitions as \"unripe\" — leaving the statute fully intact. Four justices would have struck it as a violation of equality and dignity; the majority chose not to rule. Here the unelected court did not narrow the Knesset's law — it declined to touch it, leaving a gatekeeping mechanism standing."
+    },
+    {
+      "docket_core": "1877/14",
+      "docket": "בג\"ץ 1877/14 (HCJ 1877/14)",
+      "name": "Movement for Quality Government in Israel v. The Knesset (2017 conscription ruling)",
+      "year": "2017",
+      "statute": "Amendments No. 19 (2014) and No. 21 (Nov. 2015) to the Defense Service Law [Consolidated Version], 5746-1986 — the post-Tal-Law framework for deferment/exemption of Haredi yeshiva students",
+      "action": "struck_down",
+      "interpretive_evisceration": false,
+      "doctrine": "Right to equality derived from human dignity (Basic Law: Human Dignity and Liberty); proportionality / limitation clause; equal sharing of the military-service burden",
+      "effect_reduction": "An expanded bench (8-1, opinion by President Miriam Naor) struck down Amendments 19 and 21 as unconstitutional violations of equality and human dignity. The core objection was that Amendment 21 (passed under Haredi-party pressure) had hollowed out the enlistment framework: it pushed back the 'adjustment'/final-status periods (to 2020) and stripped out the binding conscription targets and the personal and institutional sanctions, so that — per IDI — the law 'emptied the original law of any meaning' and returned the situation to the pre-Tal-Law status quo of de facto blanket exemption. The Court treated the legislature's attempt to perpetuate the exemption-by-attrition as a circumvention of equality and voided it, while suspending the declaration of invalidity for one year (to 12 Sept 2018) to allow replacement legislation.",
+      "corrected_facts": "Minor precision note (not an error in substance): the bench comprised nine justices; the vote was 8-1 (eight in the majority striking down the law, Justice Noam Sohlberg dissenting). The candidate's \"expanded bench (8-1)\" is accurate — it was an expanded/enlarged panel of nine. Date of judgment: September 12, 2017. President Miriam Naor authored the central majority opinion. Note also: the provided IDI URL https://en.idi.org.il/articles/53301 confirms \"2017 – Amendment 21 was struck down by the High Court of Justice for violating the principle of equality\"; the other IDI URL (63729) in current form discusses later 2024-2025 developments rather than the 2017 ruling specifically, but is still a relevant IDI explainer on the law's trajectory.",
+      "confidence": "VERIFIED",
+      "url": "https://he.afiklaw.com/caselaw/4388",
+      "sources": [
+        {
+          "url": "https://www.loc.gov/item/global-legal-monitor/2017-09-25/israel-high-court-strikes-down-draft-exemption-for-ultra-orthodox",
+          "publisher": "U.S. Library of Congress — Global Legal Monitor",
+          "confirms": "12 Sept 2017 ruling, 8-1, struck down Amendments 19 and 21 of the Defense Service Law as violating equality/human dignity; opinion by Court President Miriam Naor"
+        },
+        {
+          "url": "https://en.idi.org.il/articles/53301",
+          "publisher": "Israel Democracy Institute (IDI)",
+          "confirms": "2017 Movement for Quality Government petition: Court abolished Amendments 19 and 21 due to equality violations; Amendment 21 'emptied the original law of any meaning' by removing targets/sanctions"
+        },
+        {
+          "url": "https://en.idi.org.il/articles/63729",
+          "publisher": "Israel Democracy Institute (IDI) — 'Rise and Fall of the (Non-)Conscription Law'",
+          "confirms": "Amendment 21 (Nov 2015) extended adjustment period to 2020 and emptied the conscription framework of binding targets/sanctions; Court voided it with declaration suspended one year (effective 12 Sept 2018)"
+        }
+      ],
+      "blurb_he": "תיקונים 19 ו-21 לחוק שירות ביטחון — המסגרת שנועדה להסדיר את דחיית גיוסם של בחורי הישיבות החרדים — נפסלו (8 מול 1, בנשיאות נאור) כפגיעה בלתי-מידתית בשוויון ובכבוד האדם. אחד-עשר שופטים לא נבחרו ביטלו חקיקה של הכנסת הנבחרת; תוקף הביטול הושהה בשנה כדי לאפשר חקיקה חלופית.",
+      "blurb_en": "Amendments 19 and 21 to the Defense Service Law — the framework regulating deferment of Haredi yeshiva students' conscription — were struck down (8-1, President Naor) as a disproportionate violation of equality and human dignity. Unelected justices voided the elected Knesset's statute; the declaration of invalidity was suspended one year for replacement legislation."
+    },
+    {
+      "docket_core": "10042/16",
+      "docket": "בג\"ץ 10042/16",
+      "name": "בג\"ץ 10042/16 צחי קווטינסקי נ' כנסת ישראל (Kvatinsky v. Knesset)",
+      "year": "2017",
+      "statute": "פרק י\"ב לחוק ההתייעלות הכלכלית (תיקוני חקיקה ליישום המדיניות הכלכלית לשנות התקציב 2017 ו-2018), התשע\"ז-2016 — מס ריבוי דירות (Chapter 12 of the Economic Efficiency Law (Legislative Amendments for Budget Years 2017-2018) 5777-2016: the Multiple-Apartment / 'third home' tax)",
+      "action": "struck_down",
+      "interpretive_evisceration": false,
+      "doctrine": "Defect in the legislative process / 'principle of participation' (פגם בהליך החקיקה היורד לשורש ההליך). First Israeli case to void a statute on procedural rather than substantive grounds.",
+      "effect_reduction": "The government's flagship anti-housing-speculation measure — an annual tax on owners of three or more dwellings, a centerpiece of Finance Minister Kahlon's housing policy — was nullified in full (6.8.2017, five-justice panel: Naor, Hayut, Hendel, Solberg; Mazuz dissenting). The Court found the final text was dropped on the Finance Committee mere hours before the vote, denying MKs the ability to form a substantive position, a flaw 'striking at the root' of the process. The entire tax chapter was struck and taxes already collected were refunded, defeating the Knesset's enacted fiscal-regulatory scheme.",
+      "corrected_facts": "Docket, parties, date (6.8.2017), statute (Chapter 12 of the Economic Efficiency Law for Budget Years 2017-2018, 5777-2016 — the multiple-apartment / \"third apartment\" tax מס ריבוי דירות), and panel are all confirmed: majority Naor, Hayut, Hendel, Solberg; Mazuz dissenting (5-justice panel). Landmark holding confirmed: this is the FIRST time the Supreme Court nullified a statute for a defect in the LEGISLATIVE PROCESS (violation of the \"participation principle\" / זכות ההשתתפות) rather than for unconstitutional content — the final text was given to MKs hours before the late-night vote, denying meaningful deliberation.\n\nCORRECTION to characterization: The candidate's framing that the chapter was struck \"in full\" and that \"taxes already collected were refunded, defeating the Knesset's enacted scheme\" overstates the disposition. Sources (Hebrew Wikipedia, Calcalist, IDI) describe a RELATIVE/PARTIAL nullification (בטלות יחסית): the Court invalidated the tax arrangement back to the stage of the procedural defect and RETURNED it to the Knesset Finance Committee, expressly permitting the Knesset to re-enact it without repeating the entire legislative process. The Court did NOT hold the tax itself unconstitutional — on the contrary, the substantive tax was treated as constitutionally permissible; only the process was flawed. No reviewed source supports the specific \"taxes already collected were refunded\" assertion (Calcalist explicitly states it gives no refund information); that detail should be removed or independently sourced before publication. In practice the Knesset did not re-pass the tax, so it effectively lapsed — but that is a consequence of legislative inaction, not a court-ordered refund/full strike.",
+      "confidence": "VERIFIED",
+      "url": "https://supremedecisions.court.gov.il/Home/Download?path=HebrewVerdicts\\16\\420\\100\\o23&fileName=16100420_o23.txt&type=2",
+      "sources": [
+        {
+          "url": "https://he.wikipedia.org/wiki/%D7%91%D7%92%22%D7%A5_%D7%A7%D7%95%D7%95%D7%98%D7%99%D7%A0%D7%A1%D7%A7%D7%99_%D7%A0%D7%92%D7%93_%D7%9B%D7%A0%D7%A1%D7%AA_%D7%99%D7%A9%D7%A8%D7%90%D7%9C",
+          "publisher": "Hebrew Wikipedia",
+          "confirms": "Docket HCJ 10042/16; decided 6.8.2017; Chapter 12 of Economic Efficiency Law (multiple-apartment tax) struck on legislative-process grounds; first statute voided for procedural defect; five-justice panel with Mazuz dissenting."
+        },
+        {
+          "url": "https://www.idi.org.il/articles/22273",
+          "publisher": "Israel Democracy Institute (IDI)",
+          "confirms": "Lists the third-apartment tax as struck by the Court due to a fundamental flaw in the legislative process."
+        },
+        {
+          "url": "https://www.calcalist.co.il/local_news/article/syrnhmf5j",
+          "publisher": "Calcalist",
+          "confirms": "Third-apartment tax invalidated (2017) for procedural defect: law text given to MKs minutes before debate, precluding substantive discussion."
+        }
+      ],
+      "blurb_he": "מס ריבוי הדירות — \"מס הדירה השלישית\", גולת הכותרת של מדיניות הדיור של האוצר — בוטל בידי חמישה שופטים לא-נבחרים (מזוז בדעת מיעוט) לא משום שהמס פסול, אלא בשל פגם בהליך החקיקה: לראשונה אי-פעם, פרק שלם בחוק ההתייעלות הכלכלית הוכרז בטל כי הנוסח הונח בפני חברי הכנסת שעות לפני ההצבעה. בטלות יחסית, והעניין הוחזר לוועדת הכספים לחקיקה מחדש; הכנסת לא חוקקה שוב, והמס פקע.",
+      "blurb_en": "The multiple-apartment \"third home\" tax — the centerpiece of the Finance Minister's housing policy — was nullified by five unelected justices (Mazuz dissenting) not because the tax was unconstitutional, but for a defect in the legislative process: for the first time ever, an entire chapter of the Economic Efficiency Law was voided because MKs got the final text mere hours before the vote. A relative nullification, returned to the Finance Committee to re-enact; the Knesset never did, and the tax lapsed."
+    },
+    {
+      "docket_core": "2293/17",
+      "docket": "בג\"ץ 2293/17 / HCJ 2293/17",
+      "name": "Garsegeber v. The Knesset — Deposit Law (20% wage deduction)",
+      "year": "2020",
+      "statute": "Section 4 of the Prevention of Infiltration and Ensuring Departure of Infiltrators from Israel (Legislative Amendments and Temporary Provisions) Law, 5775-2014 (the 'Deposit Law'), which amended the Foreign Workers Law, 5751-1991, requiring 20% of asylum seekers' wages be withheld in a fund payable only on departure",
+      "action": "partially_struck",
+      "interpretive_evisceration": false,
+      "doctrine": "Disproportionate infringement of the right to property under Basic Law: Human Dignity and Liberty (limitation clause / proportionality)",
+      "effect_reduction": "The Deposit Law was designed to pressure asylum seekers to 'self-deport' by withholding a fifth of their already-meager wages, releasable only upon leaving Israel. By an 8-1 majority the Court struck the 20% employee-wage deduction (leaving only the 16% employer contribution standing), eliminating the law's coercive economic-pressure mechanism and ordering the state to return ~80 million shekels to roughly 36,000 asylum seekers within 30 days — neutralizing the Knesset's central departure-incentive tool.",
+      "corrected_facts": "Core claim fully verified. Minor refinements/cautions: (1) Date of judgment is 23–24 April 2020 (commonly cited April 23, 2020; Versa lists April 24, 2020) — consistent with year=2020. (2) The case caption per Versa is \"Garsegeber v. Knesset\"; \"Gersgeber\" is an alternate transliteration. (3) Statute description is accurate: Section 4 of the Prevention of Infiltration (Temporary Provisions) Law, 5775-2014 (the \"Deposit Law\"), which amended the Foreign Workers Law, 5751-1991, requiring a combined 36% deposit (20% deducted from the worker's wage + 16% employer contribution), payable only on departure. (4) The 8-1 majority and the action — striking ONLY the employee 20% wage-deduction component as an unconstitutional infringement of the property right, while leaving the 16% employer contribution standing, and ordering the state to return the withheld employee deposits within 30 days — are all confirmed by Versa (the authoritative Cardozo Israeli Supreme Court Project) and the official court verdict file (supremedecisions.court.gov.il, file 17022930). (5) NOTE/UNVERIFIED DETAIL: the specific figures \"~80 million shekels\" and \"roughly 36,000 asylum seekers\" were NOT confirmed by the authoritative sources reviewed; the refund order itself is confirmed but the precise amount and headcount should be treated as unverified and either sourced separately or softened before publication.",
+      "confidence": "VERIFIED",
+      "url": "https://versa.cardozo.yu.edu/opinions/garsegeber-v-knesset",
+      "sources": [
+        {
+          "url": "https://versa.cardozo.yu.edu/viewpoints/summary-cases-israeli-supreme-court-2019-2020",
+          "publisher": "Versa / Cardozo Israeli Supreme Court Project",
+          "confirms": "HCJ 2293/17 Garsegeber v. Knesset, April 24, 2020, 8-1 majority striking Section 4 of the 2014 law (amending Foreign Workers Law) on property-rights proportionality grounds; employee 20% struck, employer 16% retained"
+        },
+        {
+          "url": "https://www.haaretz.com/israel-news/2020-04-23/ty-article/.premium/israels-top-court-strikes-down-law-requiring-asylum-seekers-to-deposit-20-of-wages/0000017f-f45b-d5bd-a17f-f67bdc4b0000",
+          "publisher": "Haaretz",
+          "confirms": "Court struck the 20% wage-deposit requirement as unconstitutional, April 23, 2020"
+        },
+        {
+          "url": "https://assaf.org.il/en/about/deposit-fund-law-for-asylum-seekers/",
+          "publisher": "ASSAF Aid Organization for Refugees and Asylum Seekers",
+          "confirms": "Deposit Law = Section 4 of Prevention of Infiltration Law; 20% deducted, payable only on departure; struck down 2020"
+        }
+      ],
+      "blurb_he": "הכנסת חוקקה את \"חוק הפיקדון\" (סעיף 4 לחוק למניעת הסתננות, תיקון לחוק עובדים זרים), שניכה 20% משכר מבקשי המקלט והקפיא אותו עד יציאתם מהארץ — מנוף לחץ כלכלי שנועד לדחוק אותם ל\"עזיבה מרצון\". בית המשפט, ברוב של 8 מול 1, פסל את ניכוי שכר העובד כפגיעה לא-מידתית בזכות הקניין, הותיר על כנו רק את חלק המעסיק (16%) והורה להשיב לעובדים את הפיקדונות — ושופטים שלא נבחרו ביטלו את הלב הכופה של חוק נבחרי הציבור.",
+      "blurb_en": "The Knesset enacted the \"Deposit Law\" (Section 4 of the Prevention of Infiltration Law, amending the Foreign Workers Law), withholding 20% of asylum seekers' wages until they left the country — economic coercion engineered to push them toward \"self-deportation.\" By 8-1 the Court partially struck the statute, voiding the employee wage-deduction as a disproportionate infringement of property rights while leaving the 16% employer contribution standing, and ordered the withheld deposits returned — unelected judges gutting the elected legislature's coercive core."
+    }
+  ]
+}
