@@ -20,12 +20,12 @@
 <meta name="twitter:title" content="פסיקה">
 <meta name="twitter:description" content="פסיקת בית המשפט העליון — תיעוד מובנה מקושר למקור הרשמי.">
 <meta name="twitter:image" content="https://eleazarbensimon.github.io/bakshi-and-bitton/assets/og-default.png">
-<link rel="stylesheet" href="assets/style.css?v=206369e7">
+<link rel="stylesheet" href="assets/style.css?v=39cb1345">
 <link rel="alternate" type="application/rss+xml" title="Bakshi&Bitton — new rulings" href="feed.xml">
 </head>
 <body>
 <div id="root"></div>
-<script src="assets/app.js?v=0013bc14"></script>
+<script src="assets/app.js?v=81640fe8"></script>
 <script>
 (async function () {
   const { t, el, fetchJSON, ruling_name, role_label, renderHeader, renderFooter, lang,
@@ -68,11 +68,7 @@
   if (canon) canon.setAttribute("href", `ruling-${id}.html`);
 
   main.append(el("p", {}, el("a", { href: "index.html" }, "← " + t.nav_rulings)));
-  main.append(el("h1", {}, r.case_id));
-  main.append(el("p", { style: "color:var(--text-muted);font-size:15px;margin-top:-8px" }, ruling_name(r)));
-
-  const summary = lang === "he" ? r.summary_he : r.summary_en;
-  main.append(el("p", { style: "font-size:16px;line-height:1.6" }, summary));
+  main.append(window.CO.renderRulingHero(r));
 
   // Illustrated comic for this ruling, if any (prominent callout)
   if (r.comic) {

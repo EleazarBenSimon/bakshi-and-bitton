@@ -710,6 +710,35 @@ def _satirize_mqg(html: str) -> str:
     return html
 
 
+def _ruling_hero(r: dict) -> str:
+    """Bold public-facing hero atop each ruling page: the verdict in large type,
+    the case, the sharp summary, and a stat strip foregrounding WHO acted —
+    panel size, vote, and the justices who authored the lead opinion."""
+    outcome = r.get("outcome", "")
+    label = OUTCOME_LABELS_HE.get(outcome, outcome)
+    panel = r.get("panel") or []
+    n = len(panel)
+    slug2name = {j.get("slug"): j.get("name_he") for j in panel}
+    leads = [slug2name.get(s, s) for s in (r.get("majority_authors") or []) if slug2name.get(s, s)]
+    stats = []
+    if n:
+        stats.append(f'<span class="rh-stat"><b>{n}</b> שופטים</span>')
+    if r.get("vote_majority") is not None:
+        stats.append(f'<span class="rh-stat">הצבעה <b>{_esc(r.get("vote_majority"))}–{_esc(r.get("vote_minority") or 0)}</b></span>')
+    if leads:
+        stats.append(f'<span class="rh-stat">חוות-הדעת המובילה: <b>{_esc(", ".join(leads))}</b></span>')
+    stat_html = ('<div class="rh-stats">' + "".join(stats) + '</div>') if stats else ''
+    return (
+        '<div class="ruling-hero">'
+        f'<span class="rh-verdict outcome-pill outcome-{_esc(outcome)}">{_esc(label)}</span>'
+        f'<h1 class="rh-case">{_esc(r.get("case_id", ""))}</h1>'
+        f'<p class="rh-name">{_esc(r.get("case_name_he", ""))}</p>'
+        f'<p class="rh-summary">{_esc(r.get("summary_he", ""))}</p>'
+        f'{stat_html}'
+        '</div>'
+    )
+
+
 def render_ruling_page(r: dict) -> str:
     slug = r.get("case_id_slug", "")
     case_id = r.get("case_id", "")
@@ -831,9 +860,7 @@ def render_ruling_page(r: dict) -> str:
     body = (
         f'<div id="root">{_static_header("rulings")}<main>'
         f'<p><a href="index.html">← פסיקות</a></p>'
-        f'<h1>{_esc(case_id)}</h1>'
-        f'<p style="color:var(--text-muted);font-size:15px;margin-top:-8px">{_esc(name_he)}</p>'
-        f'<p style="font-size:16px;line-height:1.6">{_esc(summary_he)}</p>'
+        f'{_ruling_hero(r)}'
         f'{comic}{print_cite}{official}{grid}{panel}{secondary}{notes}{related}'
         f'<p style="margin-top:24px;font-size:14px"><a href="{_esc(spa_url)}">'
         f'גרסה אינטראקטיבית מלאה / English →</a></p>'

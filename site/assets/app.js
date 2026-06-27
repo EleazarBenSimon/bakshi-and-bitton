@@ -1110,4 +1110,22 @@ function decorateMQG(root) {
   }
 }
 
-window.CO = { lang, t, el, fetchJSON, ruling_name, justice_name, role_label, renderHeader, renderFooter, renderCurve, renderCurveSection, outcome_label, doctrine_label, doctrines_label, petitioner_type_label, compliance_label, respondent_label, SEVERITY_BY_OUTCOME, decorateMQG };
+// Bold public-facing hero atop a ruling (SPA view) — mirrors build.py _ruling_hero.
+function renderRulingHero(r) {
+  const panel = r.panel || [];
+  const s2n = {}; for (const j of panel) s2n[j.slug] = lang === "he" ? j.name_he : j.name_en;
+  const leads = (r.majority_authors || []).map(s => s2n[s] || s).filter(Boolean);
+  const hero = el("div", { class: "ruling-hero" });
+  hero.append(el("span", { class: `rh-verdict outcome-pill outcome-${r.outcome}` }, outcome_label(r.outcome)));
+  hero.append(el("h1", { class: "rh-case" }, r.case_id));
+  hero.append(el("p", { class: "rh-name" }, ruling_name(r)));
+  hero.append(el("p", { class: "rh-summary" }, lang === "he" ? r.summary_he : r.summary_en));
+  const st = el("div", { class: "rh-stats" }); let any = false;
+  if (panel.length) { st.append(el("span", { class: "rh-stat" }, el("b", {}, String(panel.length)), lang === "he" ? " שופטים" : " justices")); any = true; }
+  if (r.vote_majority != null) { st.append(el("span", { class: "rh-stat" }, lang === "he" ? "הצבעה " : "vote ", el("b", {}, `${r.vote_majority}–${r.vote_minority ?? 0}`))); any = true; }
+  if (leads.length) { st.append(el("span", { class: "rh-stat" }, lang === "he" ? "חוות-הדעת המובילה: " : "lead opinion: ", el("b", {}, leads.join(", ")))); any = true; }
+  if (any) hero.append(st);
+  return hero;
+}
+
+window.CO = { lang, t, el, fetchJSON, ruling_name, justice_name, role_label, renderHeader, renderFooter, renderCurve, renderCurveSection, outcome_label, doctrine_label, doctrines_label, petitioner_type_label, compliance_label, respondent_label, SEVERITY_BY_OUTCOME, decorateMQG, renderRulingHero };
