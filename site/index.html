@@ -20,12 +20,12 @@
 <meta name="twitter:title" content="מאגר הפסיקות">
 <meta name="twitter:description" content="פסיקות בית המשפט העליון בעניין החלטות ממשלה ומינויים">
 <meta name="twitter:image" content="https://eleazarbensimon.github.io/bakshi-and-bitton/assets/og-default.png">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Dataset", "name": "Bakshi&Bitton · בקשי וביטון", "description": "מאגר תיעודי מובנה של פסיקות בית המשפט העליון בישראל בעניין החלטות ממשלה ומינויים — מקושר למקור הרשמי. A structured documentary database of Israeli Supreme Court rulings on elected-branch decisions and appointments.", "url": "https://eleazarbensimon.github.io/bakshi-and-bitton/", "inLanguage": ["he", "en"], "license": "https://opensource.org/licenses/MIT", "creator": {"@type": "Person", "name": "Eleazar Ben Simon"}, "distribution": [{"@type": "DataDownload", "encodingFormat": "application/json", "contentUrl": "https://eleazarbensimon.github.io/bakshi-and-bitton/_data/rulings.json"}, {"@type": "DataDownload", "encodingFormat": "text/csv", "contentUrl": "https://eleazarbensimon.github.io/bakshi-and-bitton/_data/rulings.csv"}]}</script><link rel="stylesheet" href="assets/style.css?v=39cb1345">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Dataset", "name": "Bakshi&Bitton · בקשי וביטון", "description": "מאגר תיעודי מובנה של פסיקות בית המשפט העליון בישראל בעניין החלטות ממשלה ומינויים — מקושר למקור הרשמי. A structured documentary database of Israeli Supreme Court rulings on elected-branch decisions and appointments.", "url": "https://eleazarbensimon.github.io/bakshi-and-bitton/", "inLanguage": ["he", "en"], "license": "https://opensource.org/licenses/MIT", "creator": {"@type": "Person", "name": "Eleazar Ben Simon"}, "distribution": [{"@type": "DataDownload", "encodingFormat": "application/json", "contentUrl": "https://eleazarbensimon.github.io/bakshi-and-bitton/_data/rulings.json"}, {"@type": "DataDownload", "encodingFormat": "text/csv", "contentUrl": "https://eleazarbensimon.github.io/bakshi-and-bitton/_data/rulings.csv"}]}</script><link rel="stylesheet" href="assets/style.css?v=5ad6c77d">
 <link rel="alternate" type="application/rss+xml" title="Bakshi&Bitton — new rulings" href="feed.xml">
 </head>
 <body>
 <div id="root"></div>
-<script src="assets/app.js?v=81640fe8"></script>
+<script src="assets/app.js?v=95d20c6b"></script>
 <script>
 (async function () {
   const { t, el, fetchJSON, ruling_name, renderHeader, renderFooter, renderCurveSection, lang,
@@ -52,6 +52,12 @@
     return;
   }
 
+  // The 22 rulings are deep case files; the corpus is far larger. Pull the
+  // FULL footprint (rulings + Quiet-Veto library) so the hero tells the true
+  // scale instead of undercounting it as "22 rulings".
+  let corpus = null;
+  try { corpus = await fetchJSON("_data/corpus_stats.json"); } catch (e) { corpus = null; }
+
   // ── The curve — signature visual, the first major thing encountered ─
   main.append(renderCurveSection(rulings));
 
@@ -59,7 +65,12 @@
   const struckSet = new Set(["struck_down", "partially_struck"]);
   const yrs = rulings.map(r => +(r.ruling_date || "").slice(0, 4)).filter(Boolean);
   const minY = Math.min(...yrs), maxY = Math.max(...yrs);
-  const stats = [
+  const stats = corpus ? [
+    { n: corpus.total_cases, label: t.stat_documented, key: "" },
+    { n: corpus.neutralized_total, label: t.stat_neutralized, key: "struck" },
+    { isText: true, pre: `${corpus.year_min}–${corpus.year_max}`, label: t.stat_years },
+    { n: corpus.library_hollowed, label: t.stat_hollowed, key: "" },
+  ] : [
     { n: rulings.length, label: t.stat_rulings, key: "" },
     { n: rulings.filter(r => struckSet.has(r.outcome)).length, label: t.stat_struck, key: "struck" },
     { n: (maxY - minY), label: t.stat_years, suffix: "", pre: `${minY}–${maxY}`, isText: true },
@@ -75,6 +86,15 @@
     if (!s.isText) countUp(numEl, s.n);
   }
   main.append(statBand);
+
+  // ── Scale note — the 22-row table is only the core; point to the rest ──
+  if (corpus) {
+    const note = el("p", { class: "home-scale-note" });
+    note.append(document.createTextNode(t.scale_note_a(corpus.rulings_total) + " "));
+    note.append(el("a", { href: "reading-quiet-veto.html" }, t.scale_note_link(corpus.total_cases)));
+    note.append(document.createTextNode(" " + t.scale_note_b));
+    main.append(note);
+  }
 
   // ── Methodology note (compact, secondary) ──────────────────────────
   main.append(el("p", { class: "home-method" }, t.methodology_notice));

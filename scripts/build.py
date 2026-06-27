@@ -37,6 +37,7 @@ except ImportError:
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 RULINGS_DIR = REPO_ROOT / "data" / "rulings"
+LIBRARY_FILE = REPO_ROOT / "data" / "library" / "quiet-veto-cases.json"
 JUSTICES_DIR = REPO_ROOT / "data" / "justices"
 CONTENT_DIR = REPO_ROOT / "content"
 SITE_DIR = REPO_ROOT / "site"
@@ -1047,12 +1048,83 @@ def _bilingual_lint(rulings: list) -> None:
         print(f"    - {m}")
 
 
+def build_corpus_stats(out_dir: Path, rulings: list) -> dict:
+    """Aggregate the FULL documentary footprint — the in-depth rulings PLUS the
+    Quiet-Veto library — into _data/corpus_stats.json so the homepage hero
+    reflects the true scale, not just the 22-row rulings table. The 22 rulings
+    are deep case files; the library catalogues every law the Court struck OR
+    quietly hollowed out. Dedup by core docket so a case documented in both
+    tracks is never double-counted."""
+    def core(s):
+        if not s:
+            return None
+        m = re.search(r"(\d{3,6}/\d{2,4})", str(s))
+        return m.group(1) if m else None
+
+    def year_of(*vals):
+        for v in vals:
+            if not v:
+                continue
+            m = re.search(r"(\d{4})", str(v))
+            if m:
+                return int(m.group(1))
+        return None
+
+    struck = {"struck_down", "partially_struck"}
+    r_struck = [r for r in rulings if r.get("outcome") in struck]
+    r_dockets = {core(r.get("case_id")) for r in rulings} - {None}
+    years = [year_of(r.get("ruling_date")) for r in rulings]
+
+    lib = []
+    if LIBRARY_FILE.exists():
+        raw = json.loads(LIBRARY_FILE.read_text(encoding="utf-8"))
+        lib = raw if isinstance(raw, list) else raw.get("cases", [])
+
+    def act(x):
+        return (x.get("action") or x.get("category") or "").lower()
+
+    # "dismissed" = the Court DECLINED to touch the law (honest counter-evidence);
+    # everything else neutralised a law — by striking it or emptying it of content.
+    l_dismissed = [x for x in lib if "dismiss" in act(x)]
+    l_neutralized = [x for x in lib if "dismiss" not in act(x)]
+    l_struck = [x for x in lib if "struck" in act(x)]
+    l_hollowed = [x for x in l_neutralized if "struck" not in act(x)]
+    l_dockets = {core(x.get("docket") or x.get("case_id") or x.get("case"))
+                 for x in lib} - {None}
+    years += [year_of(x.get("date"), x.get("year")) for x in lib]
+
+    overlap = r_dockets & l_dockets
+    years = [y for y in years if y]
+    stats = {
+        "rulings_total": len(rulings),
+        "rulings_struck": len(r_struck),
+        "library_total": len(lib),
+        "library_struck": len(l_struck),
+        "library_hollowed": len(l_hollowed),
+        "library_neutralized": len(l_neutralized),
+        "library_dismissed": len(l_dismissed),
+        "total_cases": len(rulings) + len(lib) - len(overlap),
+        "neutralized_total": len(r_struck) + len(l_neutralized) - len(overlap),
+        "overlap": len(overlap),
+        "year_min": min(years) if years else None,
+        "year_max": max(years) if years else None,
+    }
+    (out_dir / "corpus_stats.json").write_text(
+        json.dumps(stats, ensure_ascii=False, indent=2), encoding="utf-8")
+    return stats
+
+
 def main() -> int:
     OUT_DIR.mkdir(parents=True, exist_ok=True)
 
     rulings = build_rulings(OUT_DIR)
     print(f"✓ wrote {OUT_DIR/'rulings.json'} ({len(rulings)} rulings)")
     _bilingual_lint(rulings)
+
+    cs = build_corpus_stats(OUT_DIR, rulings)
+    print(f"✓ wrote {OUT_DIR/'corpus_stats.json'} "
+          f"({cs['total_cases']} documented cases, {cs['neutralized_total']} "
+          f"struck/hollowed, {cs['year_min']}–{cs['year_max']})")
 
     justices_list = build_justices(OUT_DIR, rulings)
     print(f"✓ wrote {OUT_DIR/'justices.json'} ({len(justices_list)} justices)")

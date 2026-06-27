@@ -1982,6 +1982,16 @@ footer a:hover { color: #fff; border-bottom-color: var(--gold); }
   margin: 16px 0 20px; max-width: 880px;
 }
 
+/* Scale note under the stat band — the 22-row table is only the core; the real
+   footprint is the full library. Reads a touch louder than the method note. */
+.home-scale-note {
+  font-size: 14px; line-height: 1.6; color: var(--text);
+  margin: 2px 0 18px; max-width: 880px;
+}
+.home-scale-note a {
+  font-weight: 600; white-space: nowrap;
+}
+
 /* ── Stat band ─────────────────────────────────────────────────────── */
 .stat-band {
   display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px;
