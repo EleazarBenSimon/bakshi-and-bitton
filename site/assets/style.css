@@ -511,7 +511,7 @@ footer {
 }
 .curve circle {
   cursor: pointer;
-  transition: r 0.12s ease, fill-opacity 0.12s ease;
+  transition: r 0.28s ease, fill-opacity 0.28s ease, stroke-width 0.28s ease;
 }
 .curve a:hover circle,
 .curve a:focus circle {

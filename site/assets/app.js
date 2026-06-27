@@ -475,7 +475,7 @@ function curveEras() {
   ];
 }
 
-function renderCurve(rulings) {
+function renderCurve(rulings, extraEvents = []) {
   const NS = "http://www.w3.org/2000/svg";
   const W = 1040, H = 500;
   const M = { top: 88, right: 48, bottom: 80, left: 96 };
@@ -742,6 +742,38 @@ function renderCurve(rulings) {
     fill: "#7a2828", "font-weight": "700",
     "letter-spacing": "0.3",
   }, t.cum_axis_label));
+
+  // ── secondary event dots: the Quiet-Veto (reading-down) library ──
+  // Real, dated court actions plotted as small translucent dots that RIDE
+  // the existing cumulative line (they do NOT feed it — like "application"
+  // dots), so the curve's logic/shape is unchanged; they only add point
+  // density toward the fuller ~70-event footprint. Rendered BEFORE the
+  // coded-ruling dots so those stay visually dominant. Off-axis (pre-1975)
+  // events are skipped. Each carries a hover tooltip; clicking opens the
+  // library. To revert: this block + curve_events.json can simply be dropped.
+  function cumAt(yd) {
+    let c = 0;
+    for (const p of points) { if (p.yd <= yd) c += weightOf(p.r); else break; }
+    return c;
+  }
+  const EVENT_COLOR = { struck: "#b03a3a", read_down: "#c47d27" };
+  for (const ev of (extraEvents || [])) {
+    const yd = yearDecimal(String(ev.when || ""));
+    if (!(yd >= YR_MIN && yd <= YR_MAX)) continue;
+    const ex = xOf(yd), ey = yCum(cumAt(yd));
+    const lbl = lang === "he"
+      ? (ev.kind === "struck" ? "בוטל" : "פרשנות מצמצמת")
+      : (ev.kind === "struck" ? "struck" : "read down");
+    const a = svgEl("a", { href: "reading-quiet-veto.html", class: "curve-ev" });
+    const c = svgEl("circle", {
+      cx: ex, cy: ey, r: "3",
+      fill: EVENT_COLOR[ev.kind] || "#888", "fill-opacity": "0.42",
+      stroke: "#fff", "stroke-width": "1",
+    });
+    c.append(svgEl("title", {}, `${ev.when} · ${ev.docket} · ${ev.name} — ${lbl}`));
+    a.append(c);
+    svg.append(a);
+  }
 
   // ── dots (positioned ON the cumulative curve) ───────────────────
   // Each dot sits at (year, cumulative-count-when-added), so it visibly
@@ -1029,12 +1061,12 @@ function renderCurveMobile_DEPRECATED(rulings) {
   return svg;
 }
 
-function renderCurveSection(rulings) {
+function renderCurveSection(rulings, extraEvents = []) {
   const wrap = el("section", { class: "curve-section", "aria-label": t.curve_title });
   wrap.append(el("h2", { class: "curve-h2" }, t.curve_title));
   wrap.append(el("p", { class: "curve-subtitle" }, t.curve_subtitle));
 
-  const svg = renderCurve(rulings);
+  const svg = renderCurve(rulings, extraEvents);
   const svgWrap = el("div", { class: "curve-wrap" });
   svgWrap.append(svg);
   wrap.append(svgWrap);

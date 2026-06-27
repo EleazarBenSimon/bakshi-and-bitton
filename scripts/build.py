@@ -1114,6 +1114,33 @@ def build_corpus_stats(out_dir: Path, rulings: list) -> dict:
     return stats
 
 
+def build_curve_events(out_dir: Path) -> int:
+    """Emit _data/curve_events.json — the Quiet-Veto (reading-down) library
+    cases as light SECONDARY dots for the homepage curve. These do NOT feed
+    the cumulative line (that stays driven only by the coded rulings, so the
+    curve's logic is unchanged); they only add real, dated point events so the
+    graph reflects the fuller ~70-event footprint. Revert = drop this file."""
+    if not LIBRARY_FILE.exists():
+        return 0
+    raw = json.loads(LIBRARY_FILE.read_text(encoding="utf-8"))
+    cases = raw if isinstance(raw, list) else raw.get("cases", [])
+    out = []
+    for c in cases:
+        when = c.get("date") or c.get("year")
+        if not when:
+            continue
+        act = (c.get("action") or "").lower()
+        out.append({
+            "when": str(when),
+            "docket": c.get("docket_core") or c.get("docket") or "",
+            "name": c.get("name") or "",
+            "kind": "struck" if "struck" in act else "read_down",
+        })
+    (out_dir / "curve_events.json").write_text(
+        json.dumps(out, ensure_ascii=False, indent=2), encoding="utf-8")
+    return len(out)
+
+
 def main() -> int:
     OUT_DIR.mkdir(parents=True, exist_ok=True)
 
@@ -1125,6 +1152,9 @@ def main() -> int:
     print(f"✓ wrote {OUT_DIR/'corpus_stats.json'} "
           f"({cs['total_cases']} documented cases, {cs['neutralized_total']} "
           f"struck/hollowed, {cs['year_min']}–{cs['year_max']})")
+
+    ne = build_curve_events(OUT_DIR)
+    print(f"✓ wrote {OUT_DIR/'curve_events.json'} ({ne} library event dots)")
 
     justices_list = build_justices(OUT_DIR, rulings)
     print(f"✓ wrote {OUT_DIR/'justices.json'} ({len(justices_list)} justices)")
