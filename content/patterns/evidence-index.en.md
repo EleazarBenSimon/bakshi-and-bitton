@@ -4,18 +4,18 @@ title_he: "מפתח הראיות: כל מקרה, מספר התיק, והמקור
 title_en: "Evidence Index: every case, its docket, and the source"
 contributor: "@EleazarBenSimon"
 date: 2026-06-27
-summary_he: "עמוד אחד למציאת ההוכחה במהירות: כל פסיקה וכל מקרה — מספר תיק, שורת תקציר, וקישור ישיר למקור הסמכותי. לוויכוח, לציטוט, להפצה."
-summary_en: "One page to find the proof fast: every ruling and case — docket, one-line, and a direct link to the authoritative source. For arguing, citing, sharing."
+summary_he: "עמוד אחד למציאת ההוכחה במהירות: 22 פסיקות ו-48 מקרים — מספר תיק, תקציר, וקישור ישיר למקור."
+summary_en: "One page to find the proof fast: 22 rulings and 48 cases — docket, one-line, and a direct authoritative source link."
 ---
 
 # Evidence Index: every case, its docket, and the official source
 
-One page to find the proof fast. For each case — the docket number, one line on what the Court did, and a direct link to the authoritative source. In an argument with a colleague or a neighbor: open the page, search (Ctrl-F) the topic, and have the receipt in seconds. All verified; nothing to fear in saying it out loud.
+One page to find the proof fast — docket, one line on what the Court did, and a direct link to the authoritative source. In a debate: open, Ctrl-F, have the receipt in seconds.
 
-**22 rulings in the documentary core · 27 cases in the "Quiet Veto" library.** Full data: `data/rulings/` and `data/library/quiet-veto-cases.json`.
+**22 documented rulings · 48 cases in the "Quiet Veto" library.**
 
 
-## Documentary core — documented rulings
+## Documentary core
 
 - **בג"ץ 427/10/25 ובג"ץ 453/10/25 (מאוחדות)** (2025) — This time the Court chose not to step in. [official ruling](https://supremedecisions.court.gov.il/Home/Download?path=NetVerdicts/2025/12/28/2025-10-427-13-2&fileName=05b2a0af994d458db9dd0b81568028ff&type=4) · [on this site](ruling-427-10-25-zini.html)
 - **בג"ץ 18225-06-25** (2025) — For the first time in Israeli history the elected cabinet voted. [official ruling](https://supremedecisions.court.gov.il/Home/Download?path=NetVerdicts%2F2025%2F12%2F14%2F2025-6-18225-46-2&fileName=c679628666624044834964934086f82c&type=4) · [on this site](ruling-18225-06-25-baharav-miara.html)
@@ -40,32 +40,53 @@ One page to find the proof fast. For each case — the docket number, one line o
 - **ע"א 6821/93** (1995) — In the ruling that launched the "constitutional revolution," an expanded panel of nine unelected justices claimed for itself the power to strike down the…. [official ruling](https://supremedecisions.court.gov.il/Home/Download?path=EnglishVerdicts%5C93%5C210%5C068%5Cz01&fileName=93068210_z01.txt&type=2) · [on this site](ruling-6821-93-bank-mizrahi.html)
 - **בג"ץ 156/75** (1976) — The petition was dismissed unanimously by the three-justice panel. [verified source](https://versa.cardozo.yu.edu/topics/judicial-reasonableness) · [on this site](ruling-156-75-dakka.html)
 
-## The Quiet Veto — laws gutted or struck
+## The Quiet Veto
 
+- **HCJ 195/64** (1964-09-27) — The Chief Rabbinical Council's statutory kashrut-certification authority (pre-1983) was left textually intact. [source](https://versa.cardozo.yu.edu/opinions/marbek-slaughter-house-v-chief-rabbinical-council)
+- **HCJ 910/86** (1988-06-12) — Petition denied. [source](https://versa.cardozo.yu.edu/opinions/ressler-v-minister-defence)
 - **בג"ץ 465/89 (HCJ 465/89)** (1990) — The Knesset's Kashrut (Prohibition of Fraud) Law, 1983 was about food kashrut alone. [source](https://versa.cardozo.yu.edu/opinions/raskin-v-religious-council-jerusalem)
 - **דנ"פ 2316/95** (1995) — Criminal Procedure Law (sec. [source](https://he.wikipedia.org/wiki/%D7%A2%D7%99%D7%9E%D7%90%D7%93_%D7%92%D7%A0%D7%99%D7%9E%D7%90%D7%AA_%D7%A0'_%D7%9E%D7%93%D7%99%D7%A0%D7%AA_%D7%99%D7%A9%D7%A8%D7%90%D7%9C)
 - **בג"ץ 4562/92** (1996) — The Broadcasting Authority (Validation of Radio and TV Fees) Law, 5752-1992. [source](https://versa.cardozo.yu.edu/opinions/association-civil-rights-israel-v-israel-police)
+- **בג"ץ 1715/97** (1997) — The first time since the "constitutional revolution" that unelected judges struck a Knesset statute. [source](https://www.idi.org.il/articles/22273)
 - **בג"ץ 3267/97 (HCJ 3267/97, joined with HCJ 715/98)** (1998) — The Defense Service Law (5746-1986). [source](https://versa.cardozo.yu.edu/opinions/rubinstein-v-minister-defense)
 - **HCJ 5100/94 (consolidated with HCJ 4054/95, 6536/95, 5188/96, 7563/97, 7628/97, 1043/99)** (1999) — The GSS leaned on the Criminal Procedure (Testimony) Ordinance and the Penal Law's necessity defense as legal cover for "moderate physical pressure" in…. [source](https://versa.cardozo.yu.edu/opinions/public-committee-against-torture-v-israel)
+- **HCJ 6055/95 (בג"ץ 6055/95), consolidated with HCJ 7083/95** (1999) — Section 237A(a) of the Military Adjudication Law, 1955. [source](https://versa.cardozo.yu.edu/opinions/tzemach-v-minister-defense)
+- **CA (ע"א) 6024/97** (1999-07-06) — The Right to Alternative Civil Burial Law, 5756-1996 was enacted to widen burial choice. [source](https://versa.cardozo.yu.edu/opinions/shavit-v-rishon-lezion-jewish-burial-society)
 - **CrimFH 7048/97** (2000) — The Knesset's Emergency Powers (Detentions) Law, 5739-1979, section 2, let the executive order administrative detention on state-security grounds. [source](https://versa.cardozo.yu.edu/opinions/does-v-ministry-defense)
+- **בג"ץ 6698/95 (HCJ 6698/95)** (2000) — No Knesset statute fell here. [source](https://versa.cardozo.yu.edu/opinions/ka%E2%80%99adan-v-israel-land-administration)
+- **HCJ 244/00 (בג"ץ 244/00), consolidated with five further petitions** (2002-08-29) — Israel Lands Administration Law / Basic Law. [source](https://he.wikipedia.org/wiki/%D7%91%D7%92%22%D7%A5_%D7%94%D7%A7%D7%A8%D7%A7%D7%A2%D7%95%D7%AA)
+- **HCJ 3239/02** (2003) — Not a Knesset statute. [source](https://versa.cardozo.yu.edu/opinions/marab-v-idf-commander-west-bank)
+- **HCJ 1437/02 (consolidated with HCJ 3168/02)** (2004 (official reporter IsrSC 58(2) 746; precise day unconfirmed — a search surfaced "10 February 2004" but not grounded in a primary source)) — Regulation 29(b) of the Prison Service Regulations, 5738-1978. [source](https://law.acri.org.il/he/wp-content/uploads/2011/07/hit1437metukenet.pdf)
+- **HCJ 953/01 (consolidated with HCJ 1355/01, HCJ 7406/01, HCJ 2283/02)** (2004-06-14) — The Local Authorities (Special Authorization) Law, 1956 empowered municipalities to ban pork sales. [source](https://versa.cardozo.yu.edu/opinions/solodkin-v-beit-shemesh-municipality)
+- **HCJ 2597/99; HCJ 2859/99** (2005-05-31) — Section 4B of the Law of Return, 5710-1950, leaves "converted" undefined, and the Interior Ministry read it to require converts to join and belong to the…. [source](https://versa.cardozo.yu.edu/opinions/tais-rodriguez-tushbeim-v-minister-interior)
+- **HCJ 1661/05 (consolidated petitions) — reported IsrSC 59(2) 481 (2005)** (2005-06-09) — Implementation of the Disengagement Plan Law, 2005. [source](https://en.idi.org.il/articles/31874)
+- **בג"ץ 6427/02 (HCJ 6427/02), 61(1) PD 619, decided 11 May 2006** (2006) — The Tal Law (Deferment of Military Service for Yeshiva Students, 5762-2002) faced review. [source](https://en.idi.org.il/articles/53301)
+- **HCJ 4542/02** (2006-03-30) — In Kav LaOved (2006) the Court struck down the government's "binding arrangement" issued under section 6 of the Entry into Israel Law, 5712-1952. [source](https://versa.cardozo.yu.edu/opinions/kav-laoved-worker%E2%80%99s-hotline-v-government-israel)
 - **CrimA 6659/06 (consolidated with CrimA 1757/07, 8228/07, and 3261/08)** (2008) — The Knesset's Internment of Unlawful Combatants Law, 5762-2002 was built to permit indefinite detention on group-membership grounds, backed by a section 7…. [source](https://versa.cardozo.yu.edu/opinions/v-state-israel-1)
+- **HCJ 6824/07** (2010-12-20) — The Tax Authority routinely collected tax debts from citizens stopped at police checkpoints. [source](https://he.wikipedia.org/wiki/%D7%91%D7%92%22%D7%A5_%D7%9E%D7%A0%D7%90%D7%A2_%D7%A0%D7%92%D7%93_%D7%A8%D7%A9%D7%95%D7%AA_%D7%94%D7%9E%D7%A1%D7%99%D7%9D)
+- **בג"ץ 8300/02 (lead; consolidated with בג"ץ 7742/03, 6880/05, 6901/05, 8371/05, 463/06, 4659/06, 6832/07 — petitions filed 2002–2007)** (2012) — Income Tax Ordinance. [source](https://supremedecisions.court.gov.il/ (judgment file 02083000_N48.doc, ניתן 22.05.2012); IDI list: https://www.idi.org.il/articles/22273; full text PDF: https://www.capitax.co.il/Attachments/8300-02.pdf)
+- **HCJ 10662/04 (joined with HCJ 3282/05 and HCJ 7804/05) — בג"ץ 10662/04 סלאח חסן נ' המוסד לביטוח לאומי; official citation PD 65(1) 782.** (2012-02-28) — A seven-justice bench led by President Beinisch struck down section 9A(b) of the Income Support (Guaranteed Income) Law, 5741-1980. [source](https://supremedecisions.court.gov.il/Home/Download?path=PediVerdicts%5C65%5C1&fileName=SH1_13_10662-04.pdf&type=4)
+- **HCJ 3809/08 (joined with HCJ 9995/08)** (2012-05-28) — The Criminal Procedure (Enforcement Powers. [source](https://versa.cardozo.yu.edu/opinions/association-civil-rights-israel-v-israel-police)
+- **AAA 3782/12 (עע"מ 3782/12)** (2013-03-24) — Police had arrogated to themselves a power to order ISPs to block gambling sites, stretching the authority to close a "place" under sec. [source](https://versa.cardozo.yu.edu/opinions/tel-aviv-jaffa-district-commander-v-israel-internet-association)
+- **בג"ץ 7385/13** (2014) — Amendment No. [source](https://versa.cardozo.yu.edu/opinions/eitan-israeli-immigration-policy-center-v-government)
+- **בג"ץ 8425/13 (consolidated with בג"ץ 7385/13) / HCJ 8425/13** (2014) — The Admissions Committees Law (Cooperative Societies Ordinance Amendment No. [source](https://versa.cardozo.yu.edu/topics/immigration-law)
+- **HCJ 2504/11 (consolidated with HCJ 2311/11, Sabah v. Knesset)** (2014) — The Admissions Committees Law (Amendment No. [source](https://www.adalah.org/en/content/view/8327)
+- **HCJ 8091/14** (2014-12-31) — Regulation 119 of the Defence (Emergency) Regulations, 1945. [source](https://versa.cardozo.yu.edu/opinions/hamoked-center-defense-individual-v-minister-defense)
 - **בג"ץ 5239/11 (consolidated with 5392/11, 5549/11, 2072/12)** (2015) — The Boycott Law (5771-2011) was built to deter. [source](https://supremedecisions.court.gov.il/Home/Download?path=HebrewVerdicts%5C11/390/052/K21&fileName=11052390.K21&type=4)
 - **עע"ם 5875/10 (AAA 5875/10)** (2016) — The Jewish Religious Services Law gave religious councils control over public mikvaot. [source](https://versa.cardozo.yu.edu/opinions/conservative-movement-v-beer-sheva-religious-council)
 - **בג"ץ 7625/06 (consolidated with בג"ץ 1594/11, בג"ץ 1595/11)** (2016) — Law of Return, 1950. [source](https://versa.cardozo.yu.edu/opinions/rogachova-v-ministry-interior)
 - **בג"ץ 8101/15 / HCJ 8101/15** (2017) — The detention and removal powers under the Entry into Israel Law and Prevention of Infiltration Law were not struck. [source](https://hotline.org.il/en/refugees-and-asylum-seekers-en/voluntary-departure/)
 - **דנג"ץ 5026/16 (Further Hearing on בג"ץ 6494/14)** (2017) — Kashrut (Prohibition of Fraud) Law, 1983 (sec. [source](https://supremedecisions.court.gov.il/Home/Download?path=HebrewVerdicts%5C16%5C260%5C050%5Cc16&fileName=16050260.c16&type=5)
-- **בג"ץ 5555/18 (HCJ 5555/18)** (2021) — Basic Law. [source](https://www.loc.gov/item/global-legal-monitor/2021-07-27/israel-supreme-court-affirms-constitutionality-of-basic-law-israel-nation-state-of-the-jewish-people/)
-- **בג"ץ 11013/05 (HCJ 11013/05, consolidated petitions)** (2021) — The Law of Return was left textually intact. [source](https://supremedecisions.court.gov.il/Home/Download?path=HebrewVerdicts/05/130/110/v95&fileName=05110130.V95&type=4)
-- **בג"ץ 2412/23 (HCJ 2412/23)** (2024) — Amendment No. [source](https://supremedecisions.court.gov.il/Home/Download?path=HebrewVerdicts/23/120/024/m24&fileName=23024120.M24&type=2)
-- **בג"ץ 1715/97** (1997) — The first time since the "constitutional revolution" that unelected judges struck a Knesset statute. [source](https://www.idi.org.il/articles/22273)
-- **HCJ 6055/95 (בג"ץ 6055/95), consolidated with HCJ 7083/95** (1999) — Section 237A(a) of the Military Adjudication Law, 1955. [source](https://versa.cardozo.yu.edu/opinions/tzemach-v-minister-defense)
-- **בג"ץ 6698/95 (HCJ 6698/95)** (2000) — No Knesset statute fell here. [source](https://versa.cardozo.yu.edu/opinions/ka%E2%80%99adan-v-israel-land-administration)
-- **HCJ 3239/02** (2003) — Not a Knesset statute. [source](https://versa.cardozo.yu.edu/opinions/marab-v-idf-commander-west-bank)
-- **בג"ץ 6427/02 (HCJ 6427/02), 61(1) PD 619, decided 11 May 2006** (2006) — The Tal Law (Deferment of Military Service for Yeshiva Students, 5762-2002) faced review. [source](https://en.idi.org.il/articles/53301)
-- **בג"ץ 8300/02 (lead; consolidated with בג"ץ 7742/03, 6880/05, 6901/05, 8371/05, 463/06, 4659/06, 6832/07 — petitions filed 2002–2007)** (2012) — Income Tax Ordinance. [source](https://supremedecisions.court.gov.il/ (judgment file 02083000_N48.doc, ניתן 22.05.2012); IDI list: https://www.idi.org.il/articles/22273; full text PDF: https://www.capitax.co.il/Attachments/8300-02.pdf)
-- **בג"ץ 7385/13** (2014) — Amendment No. [source](https://versa.cardozo.yu.edu/opinions/eitan-israeli-immigration-policy-center-v-government)
-- **בג"ץ 8425/13 (consolidated with בג"ץ 7385/13) / HCJ 8425/13** (2014) — The Admissions Committees Law (Cooperative Societies Ordinance Amendment No. [source](https://versa.cardozo.yu.edu/topics/immigration-law)
-- **HCJ 2504/11 (consolidated with HCJ 2311/11, Sabah v. Knesset)** (2014) — The Admissions Committees Law (Amendment No. [source](https://www.adalah.org/en/content/view/8327)
 - **בג"ץ 1877/14 (HCJ 1877/14)** (2017) — Amendments 19 and 21 to the Defense Service Law. [source](https://he.afiklaw.com/caselaw/4388)
 - **בג"ץ 10042/16** (2017) — The multiple-apartment "third home" tax. [source](https://supremedecisions.court.gov.il/Home/Download?path=HebrewVerdicts\16\420\100\o23&fileName=16100420_o23.txt&type=2)
+- **HCJ 6494/14 (2016-06-06); Further Hearing דנג"ץ 5026/16 (2017-09-12)** (2017-09-12) — The Knesset's Prohibition of Kashrut Fraud Law, 1983 (sec. [source](https://supremedecisions.court.gov.il/Home/Download?path=HebrewVerdicts%5C16%5C260%5C050%5Cc16&fileName=16050260.c16&type=2)
 - **בג"ץ 2293/17 / HCJ 2293/17** (2020) — The Knesset enacted the "Deposit Law" (Section 4 of the Prevention of Infiltration Law, amending the Foreign Workers Law), withholding 20% of asylum seekers'…. [source](https://versa.cardozo.yu.edu/opinions/garsegeber-v-knesset)
+- **HCJ 2109/20 (consolidated 2135/20, 2141/20)** (2020-04-26) — The Government authorized the Shin Bet to track COVID patients' and contacts' cell-phone location data under Sec. [source](https://versa.cardozo.yu.edu/opinions/ben-meir-v-prime-minister)
+- **HCJ 1550/18 (joined with HCJ 2240/18)** (2020-04-30) — Without voiding a single line of legislation, the Court read the Public Health Ordinance (1940) and the Patient's Rights Law into a shell. [source](https://versa.cardozo.yu.edu/viewpoints/summary-cases-israeli-supreme-court-2019-2020)
+- **בג"ץ 5555/18 (HCJ 5555/18)** (2021) — Basic Law. [source](https://www.loc.gov/item/global-legal-monitor/2021-07-27/israel-supreme-court-affirms-constitutionality-of-basic-law-israel-nation-state-of-the-jewish-people/)
+- **בג"ץ 11013/05 (HCJ 11013/05, consolidated petitions)** (2021) — The Law of Return was left textually intact. [source](https://supremedecisions.court.gov.il/Home/Download?path=HebrewVerdicts/05/130/110/v95&fileName=05110130.V95&type=4)
+- **HCJ 5469/20 (consolidated with HCJ 6312/20, 6786/20, 6859/20, 6866/20, 6878/20)** (2021-04-04) — A nine-justice bench under President Hayut struck down Regulation 24(1) of the Coronavirus emergency regulations (enacted under the Special Powers for Coping…. [source](https://www.adalah.org/uploads/uploads/HCJ_6312_20_ruling.pdf)
+- **HCJ 6942/19 (בג"ץ 6942/19)** (2023-07-12) — Israel Land Council Decisions 717, 727 and 737 handed kibbutzim and moshavim a vast share of the state-land value created when farmland was rezoned for housing…. [source](https://supremedecisions.court.gov.il/Home/Download?path=HebrewVerdicts%2F19%2F420%2F069%2Fv44&fileName=19069420.V44&type=2)
+- **בג"ץ 2412/23 (HCJ 2412/23)** (2024) — Amendment No. [source](https://supremedecisions.court.gov.il/Home/Download?path=HebrewVerdicts/23/120/024/m24&fileName=23024120.M24&type=2)
+- **HCJ 6198/23 (lead petition, with joined petitions)** (2024-06-25) — With the yeshiva-deferment arrangement expired and no exemption left in the Defense Service Law [Consolidated Version], 5746-1986, a unanimous nine-justice…. [source](https://www.loc.gov/item/global-legal-monitor/2024-07-02/israel-high-court-rules-that-state-must-draft-yeshiva-students-to-the-military/)
+- **HCJ 7922/19 (court file 2019-0-7922-60-2)** (2025-09-15) — The Court struck down the "Chief of Staff increases". [source](https://supremedecisions.court.gov.il/Home/Download?path=NetVerdicts/2025/9/15/2019-0-7922-60-2&fileName=705465e874b0446f9dfbf25866401d02&type=2)

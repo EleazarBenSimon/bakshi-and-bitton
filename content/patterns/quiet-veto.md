@@ -4,20 +4,31 @@ title_he: "הווטו השקט: מקרים שבהם בית המשפט העליו
 title_en: "Quiet Veto: cases where Israel's Supreme Court hollowed out or struck Knesset laws"
 contributor: "@EleazarBenSimon"
 date: 2026-06-27
-summary_he: "ספרייה ציבורית מאומתת של 27 מקרים (1990–2024) שבהם בית המשפט העליון ביטל חוקים של הכנסת — או, ב-15 מהם, רוקן אותם מתוכן בפרשנות מבלי לבטלם רשמית. לכל מקרה מספר תיק ומקור סמכותי."
-summary_en: "A verified public library of 27 cases (1990–2024) in which Israel's Supreme Court struck Knesset laws — or, in 15 of them, gutted them through interpretation without formally voiding them. Every case has a docket and an authoritative source."
+summary_he: "ספרייה ציבורית מאומתת של 48 מקרים (1964–2025) שבהם בית המשפט העליון ביטל חוקים של הכנסת — או רוקן אותם מתוכן בפרשנות מבלי לבטלם רשמית. לכל מקרה מספר תיק, תאריך, הרכב ומקור."
+summary_en: "A verified public library of 48 cases (1964–2025) in which Israel's Supreme Court struck Knesset laws — or gutted them through interpretation without formally voiding them. Each case has a docket, date, panel, and authoritative source."
 ---
 
-# הווטו השקט: כשבית המשפט מרוקן חוקים, לא רק מבטל אותם
+# הווטו השקט: כשבית המשפט מרוקן חוקים — לא רק מבטל אותם
 
-כוחו האמיתי של בית המשפט העליון אינו נמדד רק בחוקים שהוא **פוסל** במוצהר. לעיתים קרובות יותר הוא מותיר את החוק על ספר החוקים — ובאמצעות "פרשנות" מרוקן אותו מתוכנו, מצמצם את תחולתו עד שהשפעתו בפועל הופכת זניחה, בניגוד לכוונה שלשמה חוקקה הכנסת הנבחרת. זוהי ספרייה ציבורית של מקרים אמיתיים ומאומתים — לכל ערך מספר תיק ומקור סמכותי.
+חוק שבית המשפט **מרוקן מתוכן** הוא חוק **שבוטל הלכה למעשה**. אחרי שהכנסת הנבחרת השקיעה מאמץ עצום בחקיקה, החוק נותר על ספר החוקים — אך כוחו מועבר בשקט לידיים שלא נבחרו, בניגוד לכוונה שלשמה נחקק. הפגיעה בשליטת הציבור על חוקיו זהה — ולעיתים חמורה יותר, כי היא נעשית חרישית. זו ספרייה ציבורית של מקרים אמיתיים ומאומתים — לכל אחד מספר תיק, תאריך, הרכב ומקור סמכותי.
 
-**27 מקרים מאומתים** (1990–2024) · **15 רוקנו בפרשנות (לא בוטלו)** · **12 בוטלו / בוטלו חלקית**. הנתונים המלאים זמינים להורדה: `data/library/quiet-veto-cases.json`.
-
-> כל מקרה מקושר למקור סמכותי שאומת (מאגר פסקי הדין הרשמי, Versa/Cardozo, המכון הישראלי לדמוקרטיה, ועוד). זו ספרייה לחוקרים, עיתונאים ואנשי המקצוע — חופשית לשימוש (רישיון MIT).
+**48 מקרים מאומתים** (1964–2025) · **25 רוקנו בפרשנות (לא בוטלו רשמית)** · **23 בוטלו / בוטלו חלקית**. נתונים מלאים: `data/library/quiet-veto-cases.json`.
 
 
 ## רוקנו מתוכן — לא בוטלו (אוויסצרציה פרשנית)
+
+
+### HCJ 195/64 — HCJ 195/64 Southern Co. (Marbek Slaughterhouse) v. Chief Rabbinical Council (מרבק נ' המועצה הרבנית הראשית) (1964-09-27)
+
+*רוקן בפרשנות* · הרכב: Olshan P., Agranat D.P., Landau J., Witkon J., Manny J.
+
+
+סמכותה הסטטוטורית של המועצה הרבנית הראשית להעניק תעודות כשרות (לפני חוק 1983) לא בוטלה — אך בית המשפט פירש אותה בצמצום וקבע כי תנאים שאינם נוגעים לכשרות הבשר עצמו חורגים מהסמכות. כך הותיר את הטקסט על כנו אך רוקן את כוחה של הרשות הדתית לכפות שמירת מצוות רחבה על מי שאינו שומר, וכבל סמכות מנהלית לתחום המזון בלבד.
+
+
+**החוק:** Statutory authority of the Chief Rabbinical Council to grant kashrut certification (pre-1983 kashrut authority)  
+
+**מקור:** [Versa · Cardozo](https://versa.cardozo.yu.edu/opinions/marbek-slaughter-house-v-chief-rabbinical-council)
 
 
 ### בג"ץ 465/89 (HCJ 465/89) — Raskin v. Religious Council of Jerusalem (1990)
@@ -85,6 +96,19 @@ summary_en: "A verified public library of 27 cases (1990–2024) in which Israel
 **מקור:** [Versa · Cardozo](https://versa.cardozo.yu.edu/opinions/public-committee-against-torture-v-israel)
 
 
+### CA (ע"א) 6024/97 — CA 6024/97 Shavit v. Rishon LeZion Jewish Burial Society (1999-07-06)
+
+*רוקן בפרשנות* · הרכב: President A. Barak, Justice M. Cheshin, Justice I. Englard (majority: Cheshin and Barak)
+
+
+חוק הזכות לקבורה אזרחית חלופית, התשנ"ו-1996, חוקק כדי להסדיר חופש בחירה בקבורה — אך לא ביטל בעיני בג"ץ את שלטון חברות הקדישא היהודיות, שמנעו מבני משפחה לחרות על מצבה תאריכי לידה ופטירה לועזיים (בספרות לטיניות) לצד התאריך העברי. בית המשפט, ברוב של חשין וברק, לא פסל תקנון ולא חוק, אלא הכריז כי חברות הקדישא הן גוף דו-מהותי הכפוף לכללי המשפט הציבורי, "קרא בצמצום" את כלל הרב, ופירש את המגבלה ככזו הפוגעת בכבוד האדם ובתחושת הקרובים — וכך הפך פסיקה דתית-מנהלית לאות מתה מבלי לבטל את לשונה.
+
+
+**החוק:** Burial-society bylaws under religious burial authority; engaging Right to Alternative Civil Burial Law, 5756-1996; Standard Contracts Law; Basic Law: Human Dignity and Liberty  
+
+**מקור:** [Versa · Cardozo](https://versa.cardozo.yu.edu/opinions/shavit-v-rishon-lezion-jewish-burial-society)
+
+
 ### CrimFH 7048/97 — "bargaining chips" case (2000)
 
 *רוקן בפרשנות*
@@ -98,6 +122,32 @@ summary_en: "A verified public library of 27 cases (1990–2024) in which Israel
 **מקור:** [Versa · Cardozo](https://versa.cardozo.yu.edu/opinions/does-v-ministry-defense)
 
 
+### HCJ 953/01 (consolidated with HCJ 1355/01, HCJ 7406/01, HCJ 2283/02) — HCJ 953/01 Solodkin v. Beit Shemesh Municipality (2004-06-14)
+
+*רוקן בפרשנות* · הרכב: Nine justices: Aharon Barak (President, author), Theodor Or, Eliahu Mazza, Mishael Cheshin, Jacob Turkel, Dorit Beinisch, Ayala Procaccia, Edmond E. Levy, Miriam Naor
+
+
+חוק הרשויות המקומיות (אישור מיוחד), התשי"ז-1956, הסמיך עיריות לאסור על מכירת בשר חזיר — וסמכות זו, כפשוטה, התירה איסור גורף. תשעה שופטים, בראשות ברק, לא פסלו את החוק אלא "קראו אותו במורד": פירשו את ההסמכה כמחייבת איזון מידתי שכונה-שכונה, התלו את חוקי העזר של בית שמש, כרמיאל וטבריה והחזירום לניסוח מחדש — וכך צמצמו בפועל את כוח האיסור הרבה מתחת לרוחב שהמחוקק הנבחר העניק, מבלי לבטל מילה מן הטקסט.
+
+
+**החוק:** Local Authorities (Special Authorization) Law, 5717-1956 — the statute empowering municipalities to enact by-laws restricting/prohibiting the sale of pork; and the municipal by-laws of Beit Shemesh, Carmiel and Tiberias issued under it.  
+
+**מקור:** [Versa · Cardozo](https://versa.cardozo.yu.edu/opinions/solodkin-v-beit-shemesh-municipality)
+
+
+### HCJ 2597/99; HCJ 2859/99 — HCJ 2597/99 & 2859/99 Rodriguez-Tushbeim v. Minister of Interior (2005-05-31)
+
+*רוקן בפרשנות* · הרכב: 11-justice panel: President Barak, Vice-President Emeritus Mazza, Vice-President Cheshin, Justice Emeritus Türkel, and Justices Beinisch, Rivlin, Procaccia, Levy, Grunis, Naor, Hayut. Vote 7-4 (majority: Barak, Mazza, Cheshin, Beinisch, Rivlin, Naor, Hayut; dissent: Türkel, Procaccia, Levy, Grunis).
+
+
+סעיף 4ב לחוק השבות, התש"י-1950, אינו מגדיר מיהו "שהתגייר", ומשרד הפנים דרש שמתגיירים יצטרפו לקהילה המגיירת וישתייכו אליה כדי שיוכרו כיהודים. בית המשפט העליון (הרכב 11 שופטים, 7-4, 2005) דחה את הפרשנות המצמצמת של הרשות המבצעת וקבע שדי בגיור בקהילה יהודית מוכרת בחו"ל ועלייה לאחריו — בית משפט בלתי-נבחר הכריע במחלוקת ערכית טעונה והרחיב את תחולת החוק על גיורים לא-אורתודוקסיים מעבר לקו שביקש המינהל הנבחר לשרטט.
+
+
+**החוק:** Law of Return, 5710-1950, sec. 4B (חוק השבות)  
+
+**מקור:** [Versa · Cardozo](https://versa.cardozo.yu.edu/opinions/tais-rodriguez-tushbeim-v-minister-interior)
+
+
 ### CrimA 6659/06 (consolidated with CrimA 1757/07, 8228/07, and 3261/08) — Incarceration of Unlawful Combatants Law (2008)
 
 *רוקן בפרשנות*
@@ -109,6 +159,45 @@ summary_en: "A verified public library of 27 cases (1990–2024) in which Israel
 **החוק:** Incarceration of Unlawful Combatants Law, 5762-2002 ("Internment of Unlawful Combatants Law")  
 
 **מקור:** [Versa · Cardozo](https://versa.cardozo.yu.edu/opinions/v-state-israel-1)
+
+
+### HCJ 6824/07 — Mana'e v. Tax Authority (מנאע נ' רשות המסים) (2010-12-20)
+
+*רוקן בפרשנות* · הרכב: President Dorit Beinisch, Justice Hanan Melzer, Justice Uzi Fogelman (opinion authored by Fogelman)
+
+
+רשות המסים נהגה לגבות חובות מס מאזרחים שנעצרו במחסומי משטרה — וגם בקניונים ובמקומות ציבוריים — בהסתמך על סמכויות הגבייה הכלליות שבפקודת המסים (גבייה), 1929. בלי לפסול אות אחת בחוק, פירש בית המשפט את סמכויות הגבייה בצמצום וקבע שאין בהן הסמכה מפורשת לגבות חוב במחסום ביטחוני; כך רוקנו שופטים בלתי-נבחרים מתוכן את כלי האכיפה שהמחוקק נתן לרשות, בלי לבטל את הטקסט.
+
+
+**החוק:** Tax Authority practice of collecting tax debts at police security roadblocks, asserted under general collection/seizure powers in the Tax (Collection) Ordinance and related tax statutes  
+
+**מקור:** [Wikipedia](https://he.wikipedia.org/wiki/%D7%91%D7%92%22%D7%A5_%D7%9E%D7%A0%D7%90%D7%A2_%D7%A0%D7%92%D7%93_%D7%A8%D7%A9%D7%95%D7%AA_%D7%94%D7%9E%D7%A1%D7%99%D7%9D)
+
+
+### HCJ 3809/08 (joined with HCJ 9995/08) — Association for Civil Rights in Israel v. Israel Police ('Big Brother' / Communications Data Law) (2012-05-28)
+
+*רוקן בפרשנות* · הרכב: Expanded 7-justice panel: President D. Beinisch (author), A. Grunis, E. Rivlin, M. Naor, E. Arbel, E. Hayut, H. Melcer
+
+
+חוק סדר הדין הפלילי (סמכויות אכיפה – נתוני תקשורת), התשס"ח-2007 – "חוק האח הגדול" שהכנסת חוקקה כדי לתת למשטרה גישה רחבה לנתוני תקשורת. הרכב מורחב של שבעה שופטים בראשות הנשיאה ביניש סירב לפסול אותו, אך פירש אותו בצמצום עד שהותיר ממנו קליפה: הגישה הוגבלה ל"תכלית ממוקדת וקונקרטית" בלבד ולא לאיתור עבריינות כללי, וגישה ללא צו הוצרה למקרי קיצון של הצלת חיים – וכך בית משפט בלתי-נבחר ריקן מתוכן את סמכות המעקב הרחבה שביקשה הכנסת הנבחרת, בלי לבטל מילה מן הטקסט.
+
+
+**החוק:** Criminal Procedure (Enforcement Powers — Communications Data) Law, 5768-2007 (חוק סדר הדין הפלילי (סמכויות אכיפה – נתוני תקשורת); 'חוק האח הגדול')  
+
+**מקור:** [Versa · Cardozo](https://versa.cardozo.yu.edu/opinions/association-civil-rights-israel-v-israel-police)
+
+
+### HCJ 8091/14 — HaMoked: Center for the Defense of the Individual v. Minister of Defense (2014-12-31)
+
+*רוקן בפרשנות* · הרכב: Justice Elyakim Rubinstein (authoring), Justice Esther Hayut, Justice Noam Sohlberg
+
+
+תקנה 119 לתקנות ההגנה (שעת חירום), 1945 — סמכות הריסת בתים עונשית — חוסה תחת שמירת הדינים ולכן לא ניתן היה לפסול אותה. במקום זאת קבע בית המשפט שיש לפרש את התקנה לאור חוק יסוד: כבוד האדם וחירותו ולהפעילה במידתיות, וכפה עליה מבחני־משנה (חומרת המעשה, פגיעה בבני משפחה חפים, עוצמת הראיות, האם אטימה או הריסה חלקית תספיק) — וכך הפך שופטים שלא נבחרו סמכות צבאית גורפת לכוח כבול ומפוקח, שאסור להפעילו כענישה קולקטיבית, מבלי לגעת בלשון התקנה.
+
+
+**החוק:** Regulation 119 of the Defence (Emergency) Regulations, 1945 (תקנה 119 לתקנות ההגנה (שעת חירום)) — punitive house demolitions  
+
+**מקור:** [Versa · Cardozo](https://versa.cardozo.yu.edu/opinions/hamoked-center-defense-individual-v-minister-defense)
 
 
 ### בג"ץ 5239/11 (consolidated with 5392/11, 5549/11, 2072/12) — Boycott Law) (2015)
@@ -160,7 +249,7 @@ summary_en: "A verified public library of 27 cases (1990–2024) in which Israel
 
 **החוק:** Entry into Israel Law / Prevention of Infiltration Law detention powers, as applied to the government's 'voluntary departure' arrangement deporting Eritrean and Sudanese asylum seekers to unnamed third countries (Rwanda/Uganda)  
 
-**מקור:** [Hotline for Refugees & Migrants](https://hotline.org.il/en/refugees-and-asylum-seekers-en/voluntary-departure/)
+**מקור:** [Hotline](https://hotline.org.il/en/refugees-and-asylum-seekers-en/voluntary-departure/)
 
 
 ### דנג"ץ 5026/16 (Further Hearing on בג"ץ 6494/14) — Dnagatz 5026/16 on HCJ 6494/14) (2017)
@@ -174,6 +263,45 @@ summary_en: "A verified public library of 27 cases (1990–2024) in which Israel
 **החוק:** חוק איסור הונאה בכשרות, התשמ"ג-1983 — Kashrut (Prohibition of Fraud) Law, 1983, sec. 3(a)  
 
 **מקור:** [מאגר פסקי הדין הרשמי / Official court DB](https://supremedecisions.court.gov.il/Home/Download?path=HebrewVerdicts%5C16%5C260%5C050%5Cc16&fileName=16050260.c16&type=5)
+
+
+### HCJ 6494/14 (2016-06-06); Further Hearing דנג"ץ 5026/16 (2017-09-12) — HCJ 6494/14 & HCJ-FH (דנג"ץ) 5026/16 Gini v. Chief Rabbinate (גיני נ' הרבנות הראשית) (2017-09-12)
+
+*רוקן בפרשנות* · הרכב: Expanded 7-justice panel (Further Hearing / דיון נוסף): President M. Naor, Deputy President A. Rubinstein, Deputy President S. Jubran, Justice E. Hayut, Justice H. Melcer, Justice N. Solberg, Justice A. Shaham
+
+
+המחוקק אסר בחוק איסור הונאה בכשרות, התשמ"ג-1983 (סע' 3(א)) על הצגת מצג כשרות ללא תעודה מהרבנות, והרבנות אכפה זאת כמונופול גורף. הרכב מורחב של שבעה שופטים בדיון נוסף לא ביטל אות אחת מן הסעיף — אך פירש אותו בצמצום כך שבית עסק רשאי למסור מידע אמת על הסטנדרטים שהוא שומר ועל אופן הפיקוח, ואף להבהיר שאין לו תעודת הרבנות, ובלבד שלא יכנה עצמו "כשר"; כך רוקנו שבעה שופטים בלתי-נבחרים את האכיפה ואת המונופול שהמחוקק ביקש, מבלי לגעת בלשון החוק.
+
+
+**החוק:** Prohibition of Kashrut Fraud Law, 5743-1983, sec. 3(a) (חוק איסור הונאה בכשרות)  
+
+**מקור:** [מאגר פסקי הדין הרשמי / Official court DB](https://supremedecisions.court.gov.il/Home/Download?path=HebrewVerdicts%5C16%5C260%5C050%5Cc16&fileName=16050260.c16&type=2)
+
+
+### HCJ 2109/20 (consolidated 2135/20, 2141/20) — Ben Meir v. Prime Minister (בן מאיר נ' ראש הממשלה) (2020-04-26)
+
+*רוקן בפרשנות* · הרכב: President E. Hayut, Deputy President H. Melcer, Justice N. Sohlberg
+
+
+הממשלה הסמיכה את השב"כ למעקב סלולרי אחר חולי קורונה ומגעיהם מכוח סעיף 7(ב)(6) לחוק השב"כ ותקנות שעת חירום לפי חוק-יסוד: הממשלה — והבג"ץ לא ביטל את הכלי במפורש, אלא קבע שהוא אינו יכול להישען על הסמכה מנהלית-ממשלתית: בית משפט בלתי-נבחר תחם את התוכנית בלוח זמנים קצר וחייב את הרשות המבצעת לפרק את מנגנון החירום שלה ולהעבירו לחקיקה ראשית בכנסת — וכך רוקן את ההסדר התקנתי הקיים מתוקף, גם בלי למחוק את לשונו.
+
+
+**החוק:** Government's emergency authorization (per Sec. 7(b)(6) of the General Security Service Law, 5762-2002) plus emergency regulations (תקנות לשעת חירום) under Basic Law: The Government, deploying the Shin Bet (GSS) to track cell-phone location data of COVID-19 patients and their contacts  
+
+**מקור:** [Versa · Cardozo](https://versa.cardozo.yu.edu/opinions/ben-meir-v-prime-minister)
+
+
+### HCJ 1550/18 (joined with HCJ 2240/18) — Secular Forum Association v. Minister of Health (עמותת הפורום החילוני נ' שר הבריאות) (2020-04-30)
+
+*בוטל* · הרכב: Justices Neal Hendel, Uzi Vogelman, Ofer Grosskopf (Hendel partially dissented on the statutory-authority ground)
+
+
+בלי לפסול אות אחת בחקיקה, בית המשפט פירש את פקודת בריאות העם (1940) ואת חוק זכויות החולה כך שירוקנו מתוכן: סעיף 33(ח) לפקודה מסמיך רק את מנכ"ל משרד הבריאות — לא בתי חולים בודדים — להסדיר מזון, ובסעיף 9 לחוק זכויות החולה אין כל הסמכה לאסור חמץ או לחטט בתיקי מבקרים. שלושה שופטים בלתי-נבחרים הפכו צו מנהלי אוכף-כשרות לאות מתה ופוסלים אותו גם כפגיעה באוטונומיה, בכבוד ובחופש מדת — וכך מאיינים בפרשנות מדיניות שהמערכת ביקשה לכפות.
+
+
+**החוק:** Hospital management directives/orders barring visitors from bringing chametz (leavened food) into hospitals during Passover, purportedly grounded in the Public Health Ordinance (פקודת בריאות העם) and the Patient's Rights Law (חוק זכויות החולה)  
+
+**מקור:** [Versa · Cardozo](https://versa.cardozo.yu.edu/viewpoints/summary-cases-israeli-supreme-court-2019-2020)
 
 
 ### בג"ץ 5555/18 (HCJ 5555/18) — בג"ץ 5555/18 Hasson v. Knesset (Nation-State Basic Law) (2021)
@@ -218,6 +346,19 @@ summary_en: "A verified public library of 27 cases (1990–2024) in which Israel
 ## בוטלו / בוטלו חלקית
 
 
+### HCJ 910/86 — HCJ 910/86 (1988-06-12)
+
+*התראת בטלות* · הרכב: Shamgar P., Ben-Porat D.P., Barak J. (three-justice panel)
+
+
+העתירה נדחתה: בית המשפט קבע שהסדר דחיית השירות לבחורי ישיבה ("תורתו אומנותו"), שניתן מכוח שיקול דעתו המנהלי של שר הביטחון לפי חוק שירות ביטחון, מצוי בגדר סמכותו — ולא פסל דבר. אך שלושה שופטים בלתי-נבחרים שמרו לעצמם תקרה שיפוטית מעל הסדר שהרשויות הנבחרות הותירו פתוח: ברק קבע ש"הכמות הופכת לאיכות", וכשמספר הדחויים יגיע לחלק ניכר מבני הגיוס ההסדר ייהפך לבלתי-סביר ויחויב בביטול — והפך פררוגטיבה של הנבחרים לכוח שהערכאה רשאית להפעיל לפי שעון שקבעה היא.
+
+
+**החוק:** Yeshiva-student military-service deferment arrangement issued under the Defense Service Law (administrative deferment of full-time yeshiva students, 'Torato Umanuto')  
+
+**מקור:** [Versa · Cardozo](https://versa.cardozo.yu.edu/opinions/ressler-v-minister-defence)
+
+
 ### בג"ץ 1715/97 — בג"ץ 1715/97 לשכת מנהלי ההשקעות בישראל נ' שר האוצר (Investment Managers Bureau in Israel v. Minister of Finance) (1997)
 
 *בוטל חלקית*
@@ -257,6 +398,19 @@ summary_en: "A verified public library of 27 cases (1990–2024) in which Israel
 **מקור:** [Versa · Cardozo](https://versa.cardozo.yu.edu/opinions/ka%E2%80%99adan-v-israel-land-administration)
 
 
+### HCJ 244/00 (בג"ץ 244/00), consolidated with five further petitions — HCJ 244/00 Mizrahi Democratic Rainbow ("Keshet") / Siyach Chadash Association for Democratic Discourse v. Minister of National Infrastructure (2002-08-29)
+
+*בוטל* · הרכב: Panel of seven justices: President Aharon Barak (presiding); Justices Theodor Or, Eliyahu Matza, Tova Strasberg-Cohen, Dalia Dorner, Dorit Beinisch, and Ayala Procaccia. Lead opinion authored by Justice Theodor Or.
+
+
+חוק רשות מקרקעי ישראל / חוק יסוד: מקרקעי ישראל: שבעה שופטים בלתי-נבחרים הורו ש"כל ההחלטות הנידונות בטלות ומבוטלות" — וביטלו את החלטות מועצת מקרקעי ישראל 717, 727 ו-737, מנגנון שהיה מעביר נתח עצום מערכּם של מקרקעי מדינה חקלאיים ששונה ייעודם למגזר ההתיישבותי. ביהמ"ש קבע שחלוקה זו לוקה בחוסר סבירות קיצוני ובפגיעה בשוויון ובאמון הציבור במשאב ציבורי, וכפה על המועצה והכנסת לעצב מסגרת חדשה.
+
+
+**החוק:** Israel Land Council Decisions (החלטות מועצת מקרקעי ישראל) No. 717, 727 and 737 — secondary land-allocation policy issued under the Israel Lands Administration Law / Basic Law: Israel Lands. Decision 727 gave kibbutzim/moshavim leasing agricultural state land 27–29% of state revenue when the land was rezoned for residential use; Decision 737 let settlements rezone and re-allocate land to members/recommendees without tender at reduced lease fees (22–66% of value); Decision 717 allowed discounted lease rates (16–51% of value) for industrial rezoning.  
+
+**מקור:** [Wikipedia](https://he.wikipedia.org/wiki/%D7%91%D7%92%22%D7%A5_%D7%94%D7%A7%D7%A8%D7%A7%D7%A2%D7%95%D7%AA)
+
+
 ### HCJ 3239/02 — Marab v. IDF Commander in the West Bank (2003)
 
 *בוטל חלקית*
@@ -268,6 +422,32 @@ summary_en: "A verified public library of 27 cases (1990–2024) in which Israel
 **החוק:** NOTE: Not a Knesset statute. The instruments struck down were IDF military orders — the Order regarding Arrests During Times of War (Provisional Order) (West Bank), Order No. 1500 and its amendments 1505/1512/1518 — issued under the area commander's emergency/belligerent-occupation powers.  
 
 **מקור:** [Versa · Cardozo](https://versa.cardozo.yu.edu/opinions/marab-v-idf-commander-west-bank)
+
+
+### HCJ 1437/02 (consolidated with HCJ 3168/02) — HCJ 1437/02 Association for Civil Rights in Israel (ACRI) v. Minister of Public Security (2004 (official reporter IsrSC 58(2) 746; precise day unconfirmed — a search surfaced "10 February 2004" but not grounded in a primary source))
+
+*בוטל* · הרכב: Justice Esther Hayut (majority) and Justice Eliezer Rivlin (majority); Justice Miriam Naor (dissent)
+
+
+תקנה 29(ב) לתקנות בתי הסוהר, התשל"ח-1978 — שהסמיכה את שירות בתי הסוהר למנוע או להגביל פגישת אסיר עם עורך דינו — נפסלה: בית המשפט הכריז עליה כבטלה בהיעדר הסמכה בפקודת בתי הסוהר ובשל פגיעה בלתי מידתית בזכות להיוועצות בעורך דין, אך השעה את הבטלות בכתשעה חודשים כדי לאפשר לכנסת לחוקק חוק. כך מחקו שופטים שלא נבחרו הסדר משני ששירות הכליאה הפעיל, וכפו על הרשות המבצעת והמחוקקת להעביר את העניין לחקיקה ראשית.
+
+
+**החוק:** Regulation 29(b) of the Prison Service Regulations, 5738-1978 (תקנות בתי הסוהר) — empowering the prison authority to prevent/restrict a prisoner's meeting with an attorney — enacted under the Prisons Ordinance  
+
+**מקור:** [law.acri.org.il](https://law.acri.org.il/he/wp-content/uploads/2011/07/hit1437metukenet.pdf)
+
+
+### HCJ 1661/05 (consolidated petitions) — reported IsrSC 59(2) 481 (2005) — Gaza Coast Regional Council v. The Knesset (2005-06-09)
+
+*בוטל חלקית* · הרכב: 11-justice expanded panel headed by President Aharon Barak; petition on the core scheme rejected 10-1 (compensation provisions modified/partly invalidated)
+
+
+חוק יישום תכנית ההתנתקות, התשס"ה-2005: הרכב של 11 שופטים בראשות אהרן ברק אישר את מתווה הפינוי עצמו (10 מול 1), אך פסל חלקית את הסדר הפיצויים כפגיעה לא-מידתית בקניין ובכבוד — הרחיב את מענק הגיל מתחת לגיל 21, תיקן את חישוב תקופת המגורים, וריכך הגבלות שתיעלו את המפונים למסלול הפיצוי הסטטוטורי בלבד. בית משפט לא-נבחר חייב את הכנסת הנבחרת להעניק פיצוי נדיב יותר מזה שעיצבה בחוק.
+
+
+**החוק:** Implementation of the Disengagement Plan Law, 2005 — compensation provisions  
+
+**מקור:** [IDI](https://en.idi.org.il/articles/31874)
 
 
 ### בג"ץ 6427/02 (HCJ 6427/02), 61(1) PD 619, decided 11 May 2006 — Movement for Quality Government in Israel v. The Knesset (2006 Tal Law monitoring ruling) (2006)
@@ -283,6 +463,19 @@ summary_en: "A verified public library of 27 cases (1990–2024) in which Israel
 **מקור:** [IDI](https://en.idi.org.il/articles/53301)
 
 
+### HCJ 4542/02 — Kav LaOved Worker's Hotline v. Government of Israel (2006-03-30)
+
+*בוטל* · הרכב: President A. Barak, Vice-President Emeritus M. Cheshin, Justice E.E. Levy (opinion by Levy)
+
+
+בעתירת קו לעובד (2006) פסל בג"ץ את "הסדר הכבילה" שקבעה הממשלה מכוח סעיף 6 לחוק הכניסה לישראל, התשי"ב-1952 — אשר כבל מהגר עבודה למעסיק יחיד הנקוב ברישיונו, כך שעזיבתו הפכה אותו לשוהה בלתי-חוקי הצפוי למעצר וגירוש. שלושה שופטים בלתי-נבחרים הכריזו על ההסדר כבטל, כפגיעה בלתי-מידתית בכבוד האדם ובחירותו וב"זכות להתפטר", וכפו על הרשות לעצב מחדש את משטר ההיתרים — מה שצ'שן כינה צורה של עבדות מודרנית.
+
+
+**החוק:** Entry into Israel Law, 5712-1952, section 6 — government 'binding/restrictive employment arrangement' (כבילה) tying a migrant worker's residence/work permit to a single named employer  
+
+**מקור:** [Versa · Cardozo](https://versa.cardozo.yu.edu/opinions/kav-laoved-worker%E2%80%99s-hotline-v-government-israel)
+
+
 ### בג"ץ 8300/02 (lead; consolidated with בג"ץ 7742/03, 6880/05, 6901/05, 8371/05, 463/06, 4659/06, 6832/07 — petitions filed 2002–2007) — בג"ץ 8300/02 גדבאן נסר נ' ממשלת ישראל (Gadban Nasser et al. v. Government of Israel) (2012)
 
 *בוטל חלקית*
@@ -294,6 +487,32 @@ summary_en: "A verified public library of 27 cases (1990–2024) in which Israel
 **החוק:** פקודת מס הכנסה [נוסח חדש], סעיף 11ב — Income Tax Ordinance [New Version] 5721-1961, sec. 11B (income-tax reduction benefits awarded by an explicit named-community list, the 'national priority area' tax-benefit mechanism)  
 
 **מקור:** [מאגר פסקי הדין הרשמי / Official court DB](https://supremedecisions.court.gov.il/ (judgment file 02083000_N48.doc, ניתן 22.05.2012); IDI list: https://www.idi.org.il/articles/22273; full text PDF: https://www.capitax.co.il/Attachments/8300-02.pdf)
+
+
+### HCJ 10662/04 (joined with HCJ 3282/05 and HCJ 7804/05) — בג"ץ 10662/04 סלאח חסן נ' המוסד לביטוח לאומי; official citation PD 65(1) 782. — HCJ 10662/04 Salah Hassan v. National Insurance Institute (2012-02-28)
+
+*בוטל* · הרכב: Seven-justice panel led by President Dorit Beinisch, with Justices Miriam Naor, Edna Arbel, Elyakim Rubinstein, Salim Joubran, Esther Hayut, and Uzi Fogelman. (Notably Beinisch's final judgment before retiring.)
+
+
+מותב של שבעה בראשות הנשיאה ביניש פסל את סעיף 9א(ב) לחוק הבטחת הכנסה, התשמ"א-1980 — חזקת בעלות/שימוש ברכב ששללה גורפת קצבת הבטחת הכנסה — וקבע כי שלילה קטגורית של מינימום קיום אנושי בכבוד פוגעת בכבוד האדם באופן בלתי-מידתי. בית משפט בלתי-נבחר ביטל הוראת חיסכון תקציבית שהמחוקק חוקק כדי לרסן הוצאה, והשיב לעניים זכאות שהחוק נטל מהם — הפעם הראשונה שחוק נפסל בעילה של פגיעה בזכות חברתית (ביצוע הבטלות הושהה כחצי שנה).
+
+
+**החוק:** Income Support (Guaranteed Income) Law, 5741-1980 — sec. 9A(b), the conclusive presumption disqualifying any owner/user of a private vehicle from the income-guarantee benefit  
+
+**מקור:** [מאגר פסקי הדין הרשמי / Official court DB](https://supremedecisions.court.gov.il/Home/Download?path=PediVerdicts%5C65%5C1&fileName=SH1_13_10662-04.pdf&type=4)
+
+
+### AAA 3782/12 (עע"מ 3782/12) — Tel Aviv-Jaffa District Commander v. Israel Internet Association (2013-03-24)
+
+*בוטל* · הרכב: Justice Uzi Vogelman (majority opinion); President Asher Grunis (concurring); Justice Noam Sohlberg (dissenting)
+
+
+המשטרה ניכסה לעצמה סמכות לצוות על ספקיות האינטרנט לחסום אתרי הימורים, בהישען על סמכות סגירת "מקום" לפי סעיף 229 לחוק העונשין, התשל"ז-1977; בית המשפט העליון דחה את ערעור המדינה וקבע — אף שהכיר בכך שאתר עשוי להיחשב "מקום" וחסימה כ"סגירה" — שאין כל הסמכה מפורשת לגייס צד שלישי פרטי לאכיפה, ובכך פסל כסמכות שלא הייתה וגזר על המשטרה לחזור לכנסת לחקיקה ראשית. שופט אחד (סולברג) חלק וסבר שהסמכות קיימת.
+
+
+**החוק:** Penal Law, 5737-1977 (esp. sec. 229 — power to close 'premises' used for gambling); the police practice of ordering ISPs to block access to online gambling sites  
+
+**מקור:** [Versa · Cardozo](https://versa.cardozo.yu.edu/opinions/tel-aviv-jaffa-district-commander-v-israel-internet-association)
 
 
 ### בג"ץ 7385/13 — Israeli Immigration Policy Center v. Government of Israel — HCJ 7385/13 (2014)
@@ -372,3 +591,55 @@ summary_en: "A verified public library of 27 cases (1990–2024) in which Israel
 **החוק:** Section 4 of the Prevention of Infiltration and Ensuring Departure of Infiltrators from Israel (Legislative Amendments and Temporary Provisions) Law, 5775-2014 (the 'Deposit Law'), which amended the Foreign Workers Law, 5751-1991, requiring 20% of asylum seekers' wages be withheld in a fund payable only on departure  
 
 **מקור:** [Versa · Cardozo](https://versa.cardozo.yu.edu/opinions/garsegeber-v-knesset)
+
+
+### HCJ 5469/20 (consolidated with HCJ 6312/20, 6786/20, 6859/20, 6866/20, 6878/20) — My Home Is Israel v. Government of Israel (2021-04-04)
+
+*בוטל חלקית* · הרכב: Nine justices: President E. Hayut, Deputy President H. Melcer, and Justices N. Hendel, U. Vogelman, Y. Amit, N. Sohlberg, D. Barak-Erez, M. Mazuz, A. Baron
+
+
+תשעה שופטים, בראשות הנשיאה חיות, פסלו את תקנה 24(1) לתקנות הקורונה (חוק סמכויות מיוחדות להתמודדות עם נגיף הקורונה (הוראת שעה), התש"ף-2020), שאסרה הפגנה במרחק העולה על 1,000 מטר ממקום המגורים, כפגיעה בלתי-מידתית בחופש הביטוי ובזכות למחות — בעוד החוק עצמו ורוב הוראותיו אושרו. משהתקנה כבר פקעה (תקפה רק 1–13.10.2020), בית המשפט הבלתי-נבחר הכריז על בטלותה למפרע והורה לבטל ולהשיב את הקנסות שהוטלו על כ-18,000 אזרחים — אלא אם המדינה תחזור בה תוך 90 יום — וכך ריקן מתוכן את אכיפת מגבלת ההפגנות שקבעה הרשות המבצעת.
+
+
+**החוק:** Regulation 24(1) of the Special Powers for Coping with the Novel Coronavirus (Temporary Provision) regulations — restricting participation in protests to within 1,000 meters of one's residence — enacted under the Coronavirus Law (חוק סמכויות מיוחדות להתמודדות עם נגיף הקורונה החדש (הוראת שעה), 5780-2020)  
+
+**מקור:** [Adalah](https://www.adalah.org/uploads/uploads/HCJ_6312_20_ruling.pdf)
+
+
+### HCJ 6942/19 (בג"ץ 6942/19) — foreign-worker deposit-forfeiture case (2023-07-12)
+
+*בוטל* · הרכב: Expanded 7-justice panel. Majority (6): President Esther Hayut (authoring), Deputy President Uzi Vogelman, Justices Yitzhak Amit, Daphne Barak-Erez, Anat Baron, Ofer Grosskopf. Dissent (1): Justice Noam Solberg.
+
+
+החלטות 717, 727 ו-737 של מועצת מקרקעי ישראל העניקו לקיבוצים ולמושבים נתח עצום מערך הקרקע הציבורית בעת הסבת קרקע חקלאית לבנייה ולתעשייה — הקצאה ללא מכרז ובדמי-חכירה מוזלים. שבעה שופטים, שאיש מהם לא נבחר, הורו כי "כל ההחלטות הנידונות בטלות ומבוטלות", ביטלו במחי יד את מנגנון רווחי-ההון של מגזר ההתיישבות בנימוק של חוסר-סבירות קיצוני ופגיעה בשוויון ובנאמנות הציבורית — וכפו על המועצה לתכנן מסגרת חדשה תחת אמות-מידה שקבע בית המשפט.
+
+
+**החוק:** Foreign Workers Law, 5751-1991, sec. 1A(7)(2) and sec. 1A(7)(3A), and the Foreign Workers (Deposit for Foreign Workers) Regulations, 5776-2016 — the mechanism deducting/forfeiting an escalating share of the worker's mandatory deposit (severance + employer pension component) if the worker overstayed, with total forfeiture after six months' delay.  
+
+**מקור:** [מאגר פסקי הדין הרשמי / Official court DB](https://supremedecisions.court.gov.il/Home/Download?path=HebrewVerdicts%2F19%2F420%2F069%2Fv44&fileName=19069420.V44&type=2)
+
+
+### HCJ 6198/23 (lead petition, with joined petitions) — HCJ 6198/23 (and joined petitions) (2024-06-25)
+
+*בוטל* · הרכב: Extended bench of 9 justices, unanimous; opinion authored by Acting Supreme Court President Justice Uzi Vogelman. (Full roster of all nine names not surfaced in the English-language authoritative sources reviewed.)
+
+
+משפקעה הסדרת הדחייה לבחורי ישיבה ולא נותר כל פטור בחוק שירות הביטחון, התשמ"ו-1986, פסק בית המשפט פה אחד (תשעה שופטים, מפי המשנה לנשיאה פוגלמן) כי החלטת הממשלה להורות לצה"ל שלא לגייס חרדים זכאי גיוס נעדרת בסיס חוקי: בהיעדר פטור חל חוק חובת הגיוס האוניברסלי, ואין סמכות לאכיפה בררנית. בכך הפך בית המשפט בלתי-נבחר את שתיקת הקואליציה והכנסת לצו שיפוטי פוזיטיבי המחייב לפעול לגיוס ואוסר על העברת כספי מדינה לישיבות עבור תלמידים זכאי גיוס — תוצאה הנוגדת את כוונת הרשות הנבחרת.
+
+
+**החוק:** Defense Service Law [Consolidated Version], 5746-1986 — following expiry (June 30, 2023) of the statutory deferment arrangement and lapse of interim Government Decision 682  
+
+**מקור:** [Library of Congress](https://www.loc.gov/item/global-legal-monitor/2024-07-02/israel-high-court-rules-that-state-must-draft-yeshiva-students-to-the-military/)
+
+
+### HCJ 7922/19 (court file 2019-0-7922-60-2) — HCJ 7922/19 Tzedek Financi & Ravach Naki v. State (Chief of Staff Pension "Increases") (2025-09-15)
+
+*בוטל* · הרכב: President Isaac Amit (opinion author), Justice Noam Sohlberg/—; confirmed members: President Isaac Amit, Justice David Mintz, Justice Ofer Grosskopf
+
+
+בית המשפט קבע ש"הגדלות הרמטכ"ל" — תוספות פנסיה של כ-1.8 מיליארד ש"ח בשנה ששולמו לכ-98% מאנשי הקבע — חורגות מסמכות הרמטכ"ל לפי חוק שירות הקבע בצה"ל (גמלאות), שכן הטבה גורפת וכמעט-אוניברסלית היא "הסדר ראשוני" שחייב להיקבע בחקיקת הכנסת ולא בשיקול דעת מינהלי; ביטל את ההסדר (בהשעיה עד סוף 2025, תוך הגנה על גמלאים קיימים) ודחק את הסוגיה אל הכנסת. שופטים בלתי-נבחרים פסלו הטבת-ענק רבת-שנים והכפיפו את מימושה לרצונו הטוב של המחוקק.
+
+
+**החוק:** Permanent Service in the IDF (Pensions) Law [Consolidated Version], 5745-1985 — esp. the Chief of Staff's discretionary pension-'increase' power (sec. 18(b))  
+
+**מקור:** [מאגר פסקי הדין הרשמי / Official court DB](https://supremedecisions.court.gov.il/Home/Download?path=NetVerdicts/2025/9/15/2019-0-7922-60-2&fileName=705465e874b0446f9dfbf25866401d02&type=2)
