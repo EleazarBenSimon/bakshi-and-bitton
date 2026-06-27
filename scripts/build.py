@@ -693,6 +693,23 @@ def _share_bar(canonical: str, share_title: str) -> str:
     )
 
 
+# Editorial satire (DISPLAY-ONLY): render the petitioner "Movement for Quality
+# Government" with its "for quality" claim struck through and annotated
+# "(for abolition)". The documentary data keeps the org's real, factual name;
+# this transform runs at render time over the visible <body> only (never the
+# head/title/OG/JSON-LD), so the structured record and SEO stay accurate.
+_MQG_HE = re.compile(r'התנועה למען איכות השלטון')
+_MQG_EN = re.compile(r'Movement for Quality Government', re.IGNORECASE)
+
+
+def _satirize_mqg(html: str) -> str:
+    if not html:
+        return html
+    html = _MQG_HE.sub('התנועה למען <del class="mqg-strike">איכות</del>(ביטול) השלטון', html)
+    html = _MQG_EN.sub('Movement for <del class="mqg-strike">Quality</del> (Abolition of) Government', html)
+    return html
+
+
 def render_ruling_page(r: dict) -> str:
     slug = r.get("case_id_slug", "")
     case_id = r.get("case_id", "")
@@ -825,6 +842,7 @@ def render_ruling_page(r: dict) -> str:
     )
     # data-spa on the toggle so it routes to this ruling's SPA view
     body = body.replace('class="lang-toggle"', f'class="lang-toggle" data-spa="{_esc(spa_url)}"')
+    body = _satirize_mqg(body)
     return head + '\n<body>\n' + body + '\n</body>\n</html>\n'
 
 
@@ -867,6 +885,7 @@ def render_content_static_page(piece: dict, category: str) -> str:
         f'</article></main>{_STATIC_FOOTER}</div>'
     )
     body = body.replace('class="lang-toggle"', f'class="lang-toggle" data-spa="{_esc(spa_url)}"')
+    body = _satirize_mqg(body)
     return head + '\n<body>\n' + body + '\n</body>\n</html>\n'
 
 

@@ -1085,4 +1085,29 @@ function renderCurveSection(rulings) {
   return wrap;
 }
 
-window.CO = { lang, t, el, fetchJSON, ruling_name, justice_name, role_label, renderHeader, renderFooter, renderCurve, renderCurveSection, outcome_label, doctrine_label, doctrines_label, petitioner_type_label, compliance_label, respondent_label, SEVERITY_BY_OUTCOME };
+// Editorial satire (DISPLAY-ONLY): sweep rendered text nodes and render the
+// petitioner "Movement for Quality Government" with its "for quality" claim
+// struck through + "(for abolition)". The data keeps the org's real name; this
+// only decorates what is shown, to match the prerendered pages (build.py).
+function decorateMQG(root) {
+  if (!root) return;
+  const reTest = /(התנועה למען איכות השלטון|Movement for Quality Government)/i;
+  const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, null);
+  const targets = [];
+  let n;
+  while ((n = walker.nextNode())) {
+    if (n.parentNode && n.parentNode.closest && n.parentNode.closest("del.mqg-strike")) continue;
+    if (reTest.test(n.nodeValue)) targets.push(n);
+  }
+  for (const node of targets) {
+    const h = node.nodeValue
+      .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;")
+      .replace(/התנועה למען איכות השלטון/g, 'התנועה למען <del class="mqg-strike">איכות</del>(ביטול) השלטון')
+      .replace(/Movement for Quality Government/gi, 'Movement for <del class="mqg-strike">Quality</del> (Abolition of) Government');
+    const span = document.createElement("span");
+    span.innerHTML = h;
+    node.parentNode.replaceChild(span, node);
+  }
+}
+
+window.CO = { lang, t, el, fetchJSON, ruling_name, justice_name, role_label, renderHeader, renderFooter, renderCurve, renderCurveSection, outcome_label, doctrine_label, doctrines_label, petitioner_type_label, compliance_label, respondent_label, SEVERITY_BY_OUTCOME, decorateMQG };

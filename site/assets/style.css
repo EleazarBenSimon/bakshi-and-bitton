@@ -1145,6 +1145,14 @@ html[lang="he"] .reading-progress-fill {
   border-color: var(--outcome-upheld);
   color: var(--outcome-upheld);
 }
+
+/* Editorial strike on the "Movement for Quality Government" name (display-only). */
+.mqg-strike {
+  text-decoration: line-through;
+  text-decoration-color: var(--outcome-struck);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 1px;
+}
 .share-icon { width: 15px; height: 15px; }
 
 /* ─── "Read next" related-pieces section ─────────────────────────── */

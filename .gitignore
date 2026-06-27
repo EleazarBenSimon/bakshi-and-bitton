@@ -40,3 +40,11 @@ npm-debug.log*
 .build/
 .cutover-backup-*/
 .pytest_cache/
+
+# Comic MANUFACTURE / production drafts — NEVER publish (Rule #1 / Rule #2).
+# Only FINISHED, hand-selected comic pages (site/comic-<id>.html + their final
+# panels under site/assets/comics/<id>/) belong on the public repo. The scripts,
+# storyboards, asset deltas, and raw pre-selection panels stay local-only — they
+# also embed absolute /Users paths that must never reach the alias repo.
+scripts/comic-storyboards/
+site/assets/comics/662-11/
