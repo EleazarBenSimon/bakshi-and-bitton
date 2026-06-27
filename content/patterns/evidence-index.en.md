@@ -12,7 +12,7 @@ summary_en: "One page to find the proof fast: 22 rulings and 48 cases — docket
 
 One page to find the proof fast — docket, one line on what the Court did, and a direct link to the authoritative source. In a debate: open, Ctrl-F, have the receipt in seconds.
 
-**22 documented rulings · 48 cases in the "Quiet Veto" library.**
+**22 documented rulings · 48 cases in the reading-down library (פרשנות מצמצמת).**
 
 
 ## Documentary core
@@ -40,7 +40,7 @@ One page to find the proof fast — docket, one line on what the Court did, and 
 - **ע"א 6821/93** (1995) — In the ruling that launched the "constitutional revolution," an expanded panel of nine unelected justices claimed for itself the power to strike down the…. [official ruling](https://supremedecisions.court.gov.il/Home/Download?path=EnglishVerdicts%5C93%5C210%5C068%5Cz01&fileName=93068210_z01.txt&type=2) · [on this site](ruling-6821-93-bank-mizrahi.html)
 - **בג"ץ 156/75** (1976) — The petition was dismissed unanimously by the three-justice panel. [verified source](https://versa.cardozo.yu.edu/topics/judicial-reasonableness) · [on this site](ruling-156-75-dakka.html)
 
-## The Quiet Veto
+## Reading down — laws emptied of force without being struck
 
 - **HCJ 195/64** (1964-09-27) — The Chief Rabbinical Council's statutory kashrut-certification authority (pre-1983) was left textually intact. [source](https://versa.cardozo.yu.edu/opinions/marbek-slaughter-house-v-chief-rabbinical-council)
 - **HCJ 910/86** (1988-06-12) — Petition denied. [source](https://versa.cardozo.yu.edu/opinions/ressler-v-minister-defence)

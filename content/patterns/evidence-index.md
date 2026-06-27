@@ -12,7 +12,7 @@ summary_en: "One page to find the proof fast: 22 rulings and 48 cases — docket
 
 עמוד אחד למציאת ההוכחה במהירות. לכל מקרה — מספר תיק, שורה אחת על מה שבית המשפט עשה, וקישור ישיר למקור הסמכותי. בוויכוח: פִּתחו, חפשו (Ctrl-F), וקבלו את הראָיה בשניות.
 
-**22 פסיקות מתועדות · 48 מקרים בספריית "הווטו השקט".**
+**22 פסיקות מתועדות · 48 מקרים בספריית פרשנות מצמצמת (reading down).**
 
 
 ## הליבה התיעודית
@@ -40,7 +40,7 @@ summary_en: "One page to find the proof fast: 22 rulings and 48 cases — docket
 - **ע"א 6821/93** (1995) — בפסק הדין שפתח את "המהפכה החוקתית", הרכב מורחב של תשעה שופטים לא-נבחרים נטל לעצמו את הסמכות לפסול חקיקה ראשית של הכנסת. [פסק הדין הרשמי](https://supremedecisions.court.gov.il/Home/Download?path=EnglishVerdicts%5C93%5C210%5C068%5Cz01&fileName=93068210_z01.txt&type=2) · [בפרויקט](ruling-6821-93-bank-mizrahi.html)
 - **בג"ץ 156/75** (1976) — העתירה אמנם נדחתה פה אחד בהרכב שלושה, אך כאן בית המשפט העליון, בשבתו כבג"ץ, חרץ לעצמו כלי כוח חדש. [מקור מאומת](https://versa.cardozo.yu.edu/topics/judicial-reasonableness) · [בפרויקט](ruling-156-75-dakka.html)
 
-## הווטו השקט
+## פרשנות מצמצמת — חוקים שרוקנו מכוחם בלי שבוטלו
 
 - **HCJ 195/64** (1964-09-27) — סמכותה הסטטוטורית של המועצה הרבנית הראשית להעניק תעודות כשרות (לפני חוק 1983) לא בוטלה. [מקור](https://versa.cardozo.yu.edu/opinions/marbek-slaughter-house-v-chief-rabbinical-council)
 - **HCJ 910/86** (1988-06-12) — העתירה נדחתה. [מקור](https://versa.cardozo.yu.edu/opinions/ressler-v-minister-defence)

@@ -1,21 +1,23 @@
 ---
-title: "Quiet Veto: cases where Israel's Supreme Court hollowed out or struck Knesset laws"
-title_he: "הווטו השקט: מקרים שבהם בית המשפט העליון רוקן או ביטל חוקים של הכנסת"
-title_en: "Quiet Veto: cases where Israel's Supreme Court hollowed out or struck Knesset laws"
+title: "Reading Down: how Israel's Supreme Court empties laws of force — and the laws it struck outright"
+title_he: "פרשנות מצמצמת: כיצד בית המשפט העליון מרוקן חוקים מכוחם — ולצד זאת, החוקים שנפסלו"
+title_en: "Reading Down: how Israel's Supreme Court empties laws of force — and the laws it struck outright"
 contributor: "@EleazarBenSimon"
 date: 2026-06-27
-summary_he: "ספרייה ציבורית מאומתת של 48 מקרים (1964–2025) שבהם בית המשפט העליון ביטל חוקים של הכנסת — או רוקן אותם מתוכן בפרשנות מבלי לבטלם רשמית. לכל מקרה מספר תיק, תאריך, הרכב ומקור."
-summary_en: "A verified public library of 48 cases (1964–2025) in which Israel's Supreme Court struck Knesset laws — or gutted them through interpretation without formally voiding them. Each case has a docket, date, panel, and authoritative source."
+summary_he: "ספרייה ציבורית מאומתת של 48 מקרים (1964–2025) שבהם בית המשפט העליון פסל חוקים של הכנסת — או צמצם אותם בפרשנות (reading down — פרשנות מצמצמת) עד שרוקנו מכוחם, מבלי לבטלם רשמית. לכל מקרה מספר תיק, תאריך, הרכב ומקור."
+summary_en: "A verified public library of 48 cases (1964–2025) in which Israel's Supreme Court struck Knesset laws — or read them down (Hebrew: פרשנות מצמצמת), gutting them through interpretation without formally voiding them. Each case has a docket, date, panel, and authoritative source."
 ---
 
-# הווטו השקט: כשבית המשפט מרוקן חוקים — לא רק מבטל אותם
+# פרשנות מצמצמת: כשבית המשפט מרוקן חוק מכוחו — לא רק כשהוא פוסל אותו
 
 חוק שבית המשפט **מרוקן מתוכן** הוא חוק **שבוטל הלכה למעשה**. אחרי שהכנסת הנבחרת השקיעה מאמץ עצום בחקיקה, החוק נותר על ספר החוקים — אך כוחו מועבר בשקט לידיים שלא נבחרו, בניגוד לכוונה שלשמה נחקק. הפגיעה בשליטת הציבור על חוקיו זהה — ולעיתים חמורה יותר, כי היא נעשית חרישית. זו ספרייה ציבורית של מקרים אמיתיים ומאומתים — לכל אחד מספר תיק, תאריך, הרכב ומקור סמכותי.
 
 **48 מקרים מאומתים** (1964–2025) · **25 רוקנו בפרשנות (לא בוטלו רשמית)** · **23 בוטלו / בוטלו חלקית**. נתונים מלאים: `data/library/quiet-veto-cases.json`.
 
 
-## רוקנו מתוכן — לא בוטלו (אוויסצרציה פרשנית)
+> **איך קוראים לזה.** המונח האנגלי הפשוט והמקובל ביותר הוא **reading down** (בעברית: **פרשנות מצמצמת**) — פירוש חוק בצמצום כה רב עד שלא נותר ממנו כמעט כוח, **בלי לפסול אותו רשמית**. אנו פותחים דווקא במונח הזה, במכוון: בית המשפט ניזון מהסבכת המושגים — ואנו עונים במילים הפשוטות והמדויקות שהשדה כבר משתמש בהן. *מונחים נלווים, כמשניים:* **פרשנות תכליתית אובייקטיבית** — שיטתו של אהרן ברק לקרוא בחוק את שלדעת השופט ראוי שייכתב בו; היא המנוע של התופעה וסיפור גדול בפני עצמו, שנייחד לו דיון נפרד. וכן **הווטו השקט**, הכינוי שלנו, השואל מילה מאביעד בקשי — המכנה את כוחו של בית המשפט להרוג חוק "וטו" (JNS, 2020): זהו פניו השקטים של אותו וטו. ומעיד הדבר שאין שם אנגלי מוסכם לתופעה — גם זה חלק מהסיפור.
+
+## פרשנות מצמצמת — רוקנו מכוחם בלי שבוטלו (reading down)
 
 
 ### HCJ 195/64 — HCJ 195/64 Southern Co. (Marbek Slaughterhouse) v. Chief Rabbinical Council (מרבק נ' המועצה הרבנית הראשית) (1964-09-27)
