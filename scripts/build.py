@@ -981,11 +981,51 @@ def version_assets(site_dir: Path) -> dict:
     return {"versions": versions, "pages_stamped": n}
 
 
+# Bilingual lint (warn-only): catch voice/summary edits that touch one language
+# but not its pair, or drop a paired field. Guards the editorial-voice pass so
+# he/en stay in sync. Reports drift; never fails the build.
+_LINT_PAIRS = [
+    ("summary_he", "summary_en"),
+    ("case_name_he", "case_name_en"),
+    ("petitioner_name_he", "petitioner_name_en"),
+    ("respondent_decision_he", "respondent_decision_en"),
+    ("notes_he", "notes"),
+    ("defiance_signals_he", "defiance_signals"),
+    ("predicate_ag_opinion_he", "predicate_ag_opinion"),
+    ("respondent_body_he", "respondent_body"),
+]
+
+
+def _bilingual_lint(rulings: list) -> None:
+    def filled(v):
+        return isinstance(v, str) and v.strip() != ""
+    unpaired, divergent = [], []
+    for r in rulings:
+        slug = r.get("case_id_slug", "?")
+        for he, en in _LINT_PAIRS:
+            a, b = filled(r.get(he)), filled(r.get(en))
+            if a != b:
+                have, miss = (he, en) if a else (en, he)
+                unpaired.append(f"{slug}: {have} present but {miss} empty")
+        sh, se = r.get("summary_he") or "", r.get("summary_en") or ""
+        if filled(sh) and filled(se):
+            ratio = len(sh) / max(1, len(se))
+            if ratio > 2.5 or ratio < 0.4:
+                divergent.append(f"{slug}: summary he/en length ratio {ratio:.2f} (possible voice drift)")
+    if not unpaired and not divergent:
+        print("✓ bilingual lint: all he/en pairs in sync")
+        return
+    print(f"⚠ bilingual lint: {len(unpaired)} unpaired field(s), {len(divergent)} length-divergent summary(ies)")
+    for m in unpaired + divergent:
+        print(f"    - {m}")
+
+
 def main() -> int:
     OUT_DIR.mkdir(parents=True, exist_ok=True)
 
     rulings = build_rulings(OUT_DIR)
     print(f"✓ wrote {OUT_DIR/'rulings.json'} ({len(rulings)} rulings)")
+    _bilingual_lint(rulings)
 
     justices_list = build_justices(OUT_DIR, rulings)
     print(f"✓ wrote {OUT_DIR/'justices.json'} ({len(justices_list)} justices)")
