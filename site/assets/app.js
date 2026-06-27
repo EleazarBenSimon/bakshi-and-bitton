@@ -61,6 +61,8 @@ const i18n = {
     filter_all: "הכל",
     filter_outcome: "סנן לפי תוצאה",
     filter_doctrine: "סנן לפי עילה",
+    filter_petitioner: "סנן לפי סוג עותר",
+    filter_compliance: "סנן לפי מצב יישום",
     filter_year: "סנן לפי שנה",
     search_placeholder: "חיפוש בתקצירים…",
     no_rulings: "אין פסיקות שעונות על הסינון",
@@ -182,6 +184,8 @@ const i18n = {
     filter_all: "All",
     filter_outcome: "Filter by outcome",
     filter_doctrine: "Filter by doctrine",
+    filter_petitioner: "Filter by petitioner",
+    filter_compliance: "Filter by compliance",
     filter_year: "Filter by year",
     search_placeholder: "Search summaries…",
     no_rulings: "No rulings match the filter",
@@ -1081,4 +1085,4 @@ function renderCurveSection(rulings) {
   return wrap;
 }
 
-window.CO = { lang, t, el, fetchJSON, ruling_name, justice_name, role_label, renderHeader, renderFooter, renderCurve, renderCurveSection, outcome_label, doctrine_label, doctrines_label, petitioner_type_label, compliance_label, respondent_label };
+window.CO = { lang, t, el, fetchJSON, ruling_name, justice_name, role_label, renderHeader, renderFooter, renderCurve, renderCurveSection, outcome_label, doctrine_label, doctrines_label, petitioner_type_label, compliance_label, respondent_label, SEVERITY_BY_OUTCOME };

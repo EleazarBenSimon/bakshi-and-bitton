@@ -1,0 +1,68 @@
+{
+  "case_id": "בג\"ץ 5819/24",
+  "case_id_slug": "5819-24-conscription-enforcement",
+  "case_name_he": "התנועה למען איכות השלטון בישראל נ' שר הביטחון ואח'",
+  "case_name_en": "Movement for Quality Government in Israel v. Minister of Defense et al.",
+  "ruling_date": "2025-11-19",
+  "filing_date": null,
+  "panel": [
+    {
+      "name_he": "נעם סולברג",
+      "name_en": "Noam Sohlberg",
+      "role": "Deputy President",
+      "slug": "sohlberg"
+    },
+    {
+      "name_he": "דוד מינץ",
+      "name_en": "David Mintz",
+      "role": "Justice",
+      "slug": "mintz"
+    }
+  ],
+  "petitioner_type": "NGO",
+  "petitioner_name_he": "התנועה למען איכות השלטון בישראל (ועתירות נוספות)",
+  "petitioner_name_en": "Movement for Quality Government in Israel (with additional petitions)",
+  "respondent": "Government",
+  "respondent_decision_he": "מחדל הממשלה לגבש וליישם מדיניות אכיפה אפקטיבית לגיוס תלמידי ישיבה חרדים לאחר שפג תוקפו של ההסדר הפוטר אותם משירות, והיעדר אכיפה בפועל של צווי הגיוס שנשלחו ולא כובדו.",
+  "respondent_decision_en": "The government's failure to formulate and apply an effective enforcement policy for conscripting Haredi yeshiva students after the blanket exemption lapsed, and the lack of actual enforcement of draft orders that had been issued and ignored.",
+  "doctrine_invoked": [],
+  "outcome": "mandatory_order",
+  "vote_majority": null,
+  "vote_minority": null,
+  "majority_authors": [
+    "sohlberg"
+  ],
+  "minority_authors": [],
+  "official_url": "https://supremedecisions.court.gov.il/Home/Download?path=NetVerdicts/2025/11/25/2024-0-5819-47-2&fileName=e5a3b5b49a010000090037f6afb111f4&type=2",
+  "secondary_urls": [
+    "https://en.idi.org.il/articles/63168",
+    "https://www.jns.org/news/israel-news/israeli-supreme-court-orders-concrete-measures-against-haredi-draft-evaders",
+    "https://www.jpost.com/israel-news/politics-and-diplomacy/article-885262"
+  ],
+  "summary_he": "ביום 19 בנובמבר 2025 הוציא הרכב מורחב של חמישה שופטים, בראשות המשנה לנשיא נעם סולברג, צו מוחלט המורה לממשלה לגבש בתוך 45 ימים (עד 4 בינואר 2026) מדיניות אכיפה אפקטיבית שתביא לגיוס בפועל של תלמידי ישיבה חרדים. הצו ניתן פה אחד.",
+  "summary_en": "On 19 November 2025 an expanded five-justice panel, led by Deputy President Noam Sohlberg, issued an order absolute directing the government to formulate within 45 days (by 4 January 2026) an effective enforcement policy that would lead to the actual conscription of Haredi yeshiva students. The order was unanimous.",
+  "predicate_ag_opinion": null,
+  "respondent_body": null,
+  "compliance_state": "contested",
+  "defiance_signals": "The government did not meet the 45-day deadline (4 January 2026). The Movement for Quality Government filed a contempt-of-court motion; at a subsequent hearing Justice David Mintz stated that the rule of law had failed. Attorney General Gali Baharav-Miara publicly stated that the government was acting in violation of the ruling. As of the latest verified reporting the enforcement and contempt proceedings remained ongoing; no final contempt finding has been confirmed.",
+  "defiance_signals_sources": [
+    "https://en.idi.org.il/articles/63168",
+    "https://www.jpost.com/israel-news/politics-and-diplomacy/article-885262",
+    "https://www.timesofisrael.com/there-is-no-rule-of-law-high-court-justices-rail-at-failure-to-enlist-haredim/"
+  ],
+  "target_branch": "executive",
+  "domain": "conscription-and-equality",
+  "competence_class": "application",
+  "adversarial_view": null,
+  "tags": [
+    "conscription",
+    "haredi-draft",
+    "mandatory-order",
+    "contempt",
+    "post-oct7",
+    "expanded-panel"
+  ],
+  "notes": "Order absolute (צו מוחלט) implementing the post-2024 holding that there is no lawful basis for a blanket exemption of Haredi yeshiva students from conscription. Expanded five-justice panel led by Deputy President Sohlberg; reported as unanimous. Only Sohlberg and Mintz are named in available reporting — the remaining three seats and any separate opinions are pending primary-source confirmation, so the exact vote breakdown beyond 'unanimous' is left null. The contempt-of-court proceedings (January 2026 onward) over the government's missed deadline were ongoing as of the latest verified reporting. Official ruling hosted on the Supreme Court database (official_url; path, date and docket internally consistent); facts corroborated by IDI and multiple outlets (secondary_urls).",
+  "notes_he": "צו מוחלט המיישם את ההלכה שמשנת 2024 שלפיה אין בסיס חוקי לפטור גורף של תלמידי ישיבה חרדים מגיוס. הרכב מורחב של חמישה שופטים בראשות המשנה לנשיא סולברג; דווח כי הצו ניתן פה אחד. בדיווחים הזמינים מאוזכרים בשמם רק סולברג ומינץ — שלושת המושבים הנותרים וכל דעה נפרדת טעונים אימות ממקור ראשוני, ולכן פירוט ההצבעה מעבר ל'פה אחד' הושאר ריק. הליכי ביזיון בית המשפט (מינואר 2026 ואילך) בגין החמצת המועד היו תלויים ועומדים נכון לדיווח המאומת האחרון.",
+  "defiance_signals_he": "הממשלה לא עמדה במועד של 45 הימים (4 בינואר 2026). התנועה למען איכות השלטון הגישה בקשה לפי פקודת ביזיון בית המשפט; בדיון מאוחר יותר אמר השופט דוד מינץ כי שלטון החוק קרס. היועצת המשפטית לממשלה גלי בהרב-מיארה הצהירה בפומבי כי הממשלה פועלת בניגוד לפסק הדין. נכון לדיווח המאומת האחרון, הליכי האכיפה והביזיון היו תלויים ועומדים; לא אומתה הכרעה סופית בבקשת הביזיון."
+}

@@ -25,6 +25,7 @@ import sys
 from collections import defaultdict
 from datetime import datetime, timezone
 from pathlib import Path
+from urllib.parse import quote
 from xml.sax.saxutils import escape as xml_escape
 
 try:
@@ -660,6 +661,38 @@ _STATIC_FOOTER = (
 )
 
 
+def _share_bar(canonical: str, share_title: str) -> str:
+    """Static, tracker-free share bar for the canonical landing pages: intent
+    URLs only (no third-party widgets or scripts); copy + print use tiny inline
+    handlers. Hebrew labels match the prerendered (he) pages and reuse the
+    .share-bar / .share-btn styling already in style.css."""
+    u = quote(canonical, safe="")
+    ttl = quote(share_title, safe="")
+    ttl_u = quote(share_title + " — " + canonical, safe="")
+    copy_js = (
+        "var b=this;navigator.clipboard&&navigator.clipboard.writeText(b.dataset.url);"
+        "b.classList.add('copied');b.textContent='הועתק ✓';"
+        "setTimeout(function(){b.classList.remove('copied');"
+        "b.textContent='העתק קישור';},2000);return false;"
+    )
+    return (
+        '<div class="share-bar" aria-label="שיתוף">'
+        '<span class="share-label">שיתוף:</span>'
+        '<a class="share-btn" target="_blank" rel="noopener" '
+        f'href="https://x.com/intent/post?text={ttl}&amp;url={u}">X</a>'
+        '<a class="share-btn" target="_blank" rel="noopener" '
+        f'href="https://bsky.app/intent/compose?text={ttl_u}">Bluesky</a>'
+        '<a class="share-btn" target="_blank" rel="noopener" '
+        f'href="https://wa.me/?text={ttl_u}">WhatsApp</a>'
+        f'<a class="share-btn" href="mailto:?subject={ttl}&amp;body={ttl_u}">מייל</a>'
+        f'<button type="button" class="share-btn" data-url="{_esc(canonical)}" '
+        f'onclick="{copy_js}">העתק קישור</button>'
+        '<button type="button" class="share-btn" '
+        'onclick="window.print();return false;">הדפסה / PDF</button>'
+        '</div>'
+    )
+
+
 def render_ruling_page(r: dict) -> str:
     slug = r.get("case_id_slug", "")
     case_id = r.get("case_id", "")
@@ -787,6 +820,7 @@ def render_ruling_page(r: dict) -> str:
         f'{comic}{print_cite}{official}{grid}{panel}{secondary}{notes}{related}'
         f'<p style="margin-top:24px;font-size:14px"><a href="{_esc(spa_url)}">'
         f'גרסה אינטראקטיבית מלאה / English →</a></p>'
+        f'{_share_bar(f"{SITE_BASE_URL}/ruling-{slug}.html", (case_id + " — " + name_he) if name_he else case_id)}'
         f'</main>{_STATIC_FOOTER}</div>'
     )
     # data-spa on the toggle so it routes to this ruling's SPA view
@@ -829,6 +863,7 @@ def render_content_static_page(piece: dict, category: str) -> str:
         f'<div class="article-body">{body_html}</div>'
         f'<p style="margin-top:24px;font-size:14px"><a href="{_esc(spa_url)}">'
         f'גרסה אינטראקטיבית מלאה / English →</a></p>'
+        f'{_share_bar(f"{SITE_BASE_URL}/reading-{slug}.html", title_he)}'
         f'</article></main>{_STATIC_FOOTER}</div>'
     )
     body = body.replace('class="lang-toggle"', f'class="lang-toggle" data-spa="{_esc(spa_url)}"')

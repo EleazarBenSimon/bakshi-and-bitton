@@ -199,6 +199,148 @@
     ]
   },
   {
+    "case_id": "בג\"ץ 5819/24",
+    "case_id_slug": "5819-24-conscription-enforcement",
+    "case_name_he": "התנועה למען איכות השלטון בישראל נ' שר הביטחון ואח'",
+    "case_name_en": "Movement for Quality Government in Israel v. Minister of Defense et al.",
+    "ruling_date": "2025-11-19",
+    "filing_date": null,
+    "panel": [
+      {
+        "name_he": "נעם סולברג",
+        "name_en": "Noam Sohlberg",
+        "role": "Deputy President",
+        "slug": "sohlberg"
+      },
+      {
+        "name_he": "דוד מינץ",
+        "name_en": "David Mintz",
+        "role": "Justice",
+        "slug": "mintz"
+      }
+    ],
+    "petitioner_type": "NGO",
+    "petitioner_name_he": "התנועה למען איכות השלטון בישראל (ועתירות נוספות)",
+    "petitioner_name_en": "Movement for Quality Government in Israel (with additional petitions)",
+    "respondent": "Government",
+    "respondent_decision_he": "מחדל הממשלה לגבש וליישם מדיניות אכיפה אפקטיבית לגיוס תלמידי ישיבה חרדים לאחר שפג תוקפו של ההסדר הפוטר אותם משירות, והיעדר אכיפה בפועל של צווי הגיוס שנשלחו ולא כובדו.",
+    "respondent_decision_en": "The government's failure to formulate and apply an effective enforcement policy for conscripting Haredi yeshiva students after the blanket exemption lapsed, and the lack of actual enforcement of draft orders that had been issued and ignored.",
+    "doctrine_invoked": [],
+    "outcome": "mandatory_order",
+    "vote_majority": null,
+    "vote_minority": null,
+    "majority_authors": [
+      "sohlberg"
+    ],
+    "minority_authors": [],
+    "official_url": "https://supremedecisions.court.gov.il/Home/Download?path=NetVerdicts/2025/11/25/2024-0-5819-47-2&fileName=e5a3b5b49a010000090037f6afb111f4&type=2",
+    "secondary_urls": [
+      "https://en.idi.org.il/articles/63168",
+      "https://www.jns.org/news/israel-news/israeli-supreme-court-orders-concrete-measures-against-haredi-draft-evaders",
+      "https://www.jpost.com/israel-news/politics-and-diplomacy/article-885262"
+    ],
+    "summary_he": "ביום 19 בנובמבר 2025 הוציא הרכב מורחב של חמישה שופטים, בראשות המשנה לנשיא נעם סולברג, צו מוחלט המורה לממשלה לגבש בתוך 45 ימים (עד 4 בינואר 2026) מדיניות אכיפה אפקטיבית שתביא לגיוס בפועל של תלמידי ישיבה חרדים. הצו ניתן פה אחד.",
+    "summary_en": "On 19 November 2025 an expanded five-justice panel, led by Deputy President Noam Sohlberg, issued an order absolute directing the government to formulate within 45 days (by 4 January 2026) an effective enforcement policy that would lead to the actual conscription of Haredi yeshiva students. The order was unanimous.",
+    "predicate_ag_opinion": null,
+    "respondent_body": null,
+    "compliance_state": "contested",
+    "defiance_signals": "The government did not meet the 45-day deadline (4 January 2026). The Movement for Quality Government filed a contempt-of-court motion; at a subsequent hearing Justice David Mintz stated that the rule of law had failed. Attorney General Gali Baharav-Miara publicly stated that the government was acting in violation of the ruling. As of the latest verified reporting the enforcement and contempt proceedings remained ongoing; no final contempt finding has been confirmed.",
+    "defiance_signals_sources": [
+      "https://en.idi.org.il/articles/63168",
+      "https://www.jpost.com/israel-news/politics-and-diplomacy/article-885262",
+      "https://www.timesofisrael.com/there-is-no-rule-of-law-high-court-justices-rail-at-failure-to-enlist-haredim/"
+    ],
+    "target_branch": "executive",
+    "domain": "conscription-and-equality",
+    "competence_class": "application",
+    "adversarial_view": null,
+    "tags": [
+      "conscription",
+      "haredi-draft",
+      "mandatory-order",
+      "contempt",
+      "post-oct7",
+      "expanded-panel"
+    ],
+    "notes": "Order absolute (צו מוחלט) implementing the post-2024 holding that there is no lawful basis for a blanket exemption of Haredi yeshiva students from conscription. Expanded five-justice panel led by Deputy President Sohlberg; reported as unanimous. Only Sohlberg and Mintz are named in available reporting — the remaining three seats and any separate opinions are pending primary-source confirmation, so the exact vote breakdown beyond 'unanimous' is left null. The contempt-of-court proceedings (January 2026 onward) over the government's missed deadline were ongoing as of the latest verified reporting. Official ruling hosted on the Supreme Court database (official_url; path, date and docket internally consistent); facts corroborated by IDI and multiple outlets (secondary_urls).",
+    "notes_he": "צו מוחלט המיישם את ההלכה שמשנת 2024 שלפיה אין בסיס חוקי לפטור גורף של תלמידי ישיבה חרדים מגיוס. הרכב מורחב של חמישה שופטים בראשות המשנה לנשיא סולברג; דווח כי הצו ניתן פה אחד. בדיווחים הזמינים מאוזכרים בשמם רק סולברג ומינץ — שלושת המושבים הנותרים וכל דעה נפרדת טעונים אימות ממקור ראשוני, ולכן פירוט ההצבעה מעבר ל'פה אחד' הושאר ריק. הליכי ביזיון בית המשפט (מינואר 2026 ואילך) בגין החמצת המועד היו תלויים ועומדים נכון לדיווח המאומת האחרון.",
+    "defiance_signals_he": "הממשלה לא עמדה במועד של 45 הימים (4 בינואר 2026). התנועה למען איכות השלטון הגישה בקשה לפי פקודת ביזיון בית המשפט; בדיון מאוחר יותר אמר השופט דוד מינץ כי שלטון החוק קרס. היועצת המשפטית לממשלה גלי בהרב-מיארה הצהירה בפומבי כי הממשלה פועלת בניגוד לפסק הדין. נכון לדיווח המאומת האחרון, הליכי האכיפה והביזיון היו תלויים ועומדים; לא אומתה הכרעה סופית בבקשת הביזיון."
+  },
+  {
+    "case_id": "בג\"ץ 54321-03-25",
+    "case_id_slug": "54321-03-25-ronen-bar-shin-bet",
+    "case_name_he": "התנועה למען איכות השלטון בישראל ואח' נ' ממשלת ישראל ואח'",
+    "case_name_en": "Movement for Quality Government in Israel et al. v. Government of Israel et al. (dismissal of ISA Director Ronen Bar)",
+    "ruling_date": "2025-05-21",
+    "filing_date": null,
+    "panel": [
+      {
+        "name_he": "יצחק עמית",
+        "name_en": "Yitzhak Amit",
+        "role": "President",
+        "slug": "amit"
+      },
+      {
+        "name_he": "נעם סולברג",
+        "name_en": "Noam Sohlberg",
+        "role": "Deputy President",
+        "slug": "sohlberg"
+      },
+      {
+        "name_he": "דפנה ברק-ארז",
+        "name_en": "Daphne Barak-Erez",
+        "role": "Justice",
+        "slug": "barak-erez"
+      }
+    ],
+    "petitioner_type": "NGO",
+    "petitioner_name_he": "התנועה למען איכות השלטון בישראל ואח' (עתירות מאוחדות)",
+    "petitioner_name_en": "Movement for Quality Government in Israel et al. (consolidated petitions)",
+    "respondent": "Government",
+    "respondent_decision_he": "החלטת הממשלה (מרץ 2025) להפסיק את כהונתו של ראש שירות הביטחון הכללי (שב\"כ) רונן בר.",
+    "respondent_decision_en": "The government's decision (March 2025) to terminate the tenure of Israel Security Agency (Shin Bet) Director Ronen Bar.",
+    "doctrine_invoked": [
+      "conflict_of_interest",
+      "procedural_review"
+    ],
+    "outcome": "declarative",
+    "vote_majority": 2,
+    "vote_minority": 1,
+    "majority_authors": [
+      "amit",
+      "barak-erez"
+    ],
+    "minority_authors": [
+      "sohlberg"
+    ],
+    "official_url": "https://supremedecisions.court.gov.il/Home/Download?path=NetVerdicts/2025/5/21/2025-3-54321-19-2&fileName=98373ea7f7aa4aa08c7d15995850f38f&type=4",
+    "secondary_urls": [
+      "https://www.idi.org.il/articles/59537",
+      "https://www.timesofisrael.com/high-court-rules-shin-bet-heads-dismissal-unlawful-pm-had-conflict-of-interest/",
+      "https://www.haaretz.co.il/news/law/2025-05-21/ty-article/00000196-f314-d886-a9df-f3151c5c0000"
+    ],
+    "summary_he": "ביום 21 במאי 2025 קבע בג\"ץ כי החלטת הממשלה להפסיק את כהונת ראש השב\"כ רונן בר התקבלה שלא כדין — ללא העברת העניין לוועדה המייעצת למינויים בכירים, בעת שראש הממשלה היה בניגוד עניינים, ללא תשתית עובדתית מספקת וללא שימוע כדין. בית המשפט לא נתן סעד אופרטיבי משום שבר הודיע כי יסיים את תפקידו.",
+    "summary_en": "On 21 May 2025 the High Court of Justice held that the government's decision to terminate the tenure of Shin Bet Director Ronen Bar was unlawful — taken without referral to the Senior Appointments Advisory Committee, while the Prime Minister was in a conflict of interest, without an adequate factual basis and without a proper hearing. The Court granted no operative remedy because Bar had announced he would step down.",
+    "predicate_ag_opinion": "Attorney General Gali Baharav-Miara had advised that the dismissal process was legally flawed and could not proceed as conducted (March 2025).",
+    "respondent_body": null,
+    "compliance_state": "n/a",
+    "defiance_signals": null,
+    "target_branch": "executive",
+    "domain": "intelligence-and-security-appointments",
+    "competence_class": "extension",
+    "adversarial_view": null,
+    "tags": [
+      "shin-bet",
+      "security-sector",
+      "conflict-of-interest",
+      "senior-appointments",
+      "declaratory"
+    ],
+    "notes": "Declaratory ruling; no operative remedy because Director Bar had announced (28 April 2025) that he would step down. The majority (President Amit and Justice Barak-Erez) held the dismissal unlawful; Deputy President Sohlberg agreed the process 'raised substantial difficulty' but regarded the petitions as having become moot following Bar's resignation announcement — so the 2-1 split is on whether to issue a principled ruling, not on the merits of legality. Official ruling hosted on the Supreme Court database (official_url; path, date and docket internally consistent); docket בג\"ץ 54321-03-25 (consolidated with 54373-03-25) and facts corroborated by IDI and multiple outlets (secondary_urls).",
+    "notes_he": "פסק דין הצהרתי; לא ניתן סעד אופרטיבי משום שראש השב\"כ בר הודיע (28 באפריל 2025) כי יסיים את תפקידו. דעת הרוב (הנשיא עמית והשופטת ברק-ארז) קבעה כי הפיטורים נעשו שלא כדין; המשנה לנשיא סולברג סבר כי ההליך 'מעורר קושי ניכר' אך ראה את העתירות כתאורטיות לאחר הודעת ההתפטרות — כך שהפיצול 2-1 הוא בשאלת מתן הכרעה עקרונית ולא בשאלת חוקיות הפיטורים לגופה.",
+    "defiance_signals_he": null
+  },
+  {
     "case_id": "בג\"ץ 8987/22",
     "case_id_slug": "8987-22-levin-jsc",
     "case_name_he": "התנועה למען איכות השלטון בישראל ואח' נ' שר המשפטים ואח' (עתירות מאוחדות: בג\"ץ 99/23, בג\"ץ 179/23, בג\"ץ 1711/24, בג\"ץ 896/24)",

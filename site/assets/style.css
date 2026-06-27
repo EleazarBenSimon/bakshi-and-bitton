@@ -2066,6 +2066,14 @@ html[lang="he"] .rrow:hover { box-shadow: inset -3px 0 0 var(--gold); }
 }
 @media (max-width: 420px) {
   .stat-band { grid-template-columns: 1fr 1fr; }
+  /* tighten the masthead and let the 6-item nav wrap cleanly on phones */
+  header { padding: 12px 14px; }
+  nav { display: flex; flex-wrap: wrap; gap: 6px 14px; }
+  nav a { margin: 0; font-size: 13px; }
+  .logo { font-size: 18px; }
+  .logo-sub { font-size: 12px; }
+  /* keep comic speech bubbles legible but not oversized on narrow screens */
+  .comic-bubble { font-size: 11.5px; padding: 7px 9px; }
 }
 
 /* ════════════════════════════════════════════════════════════════════

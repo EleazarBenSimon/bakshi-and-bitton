@@ -20,16 +20,17 @@
 <meta name="twitter:title" content="מאגר הפסיקות">
 <meta name="twitter:description" content="פסיקות בית המשפט העליון בעניין החלטות ממשלה ומינויים">
 <meta name="twitter:image" content="https://eleazarbensimon.github.io/bakshi-and-bitton/assets/og-default.png">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Dataset", "name": "Bakshi&Bitton · בקשי וביטון", "description": "מאגר תיעודי מובנה של פסיקות בית המשפט העליון בישראל בעניין החלטות ממשלה ומינויים — מקושר למקור הרשמי. A structured documentary database of Israeli Supreme Court rulings on elected-branch decisions and appointments.", "url": "https://eleazarbensimon.github.io/bakshi-and-bitton/", "inLanguage": ["he", "en"], "license": "https://opensource.org/licenses/MIT", "creator": {"@type": "Person", "name": "Eleazar Ben Simon"}, "distribution": [{"@type": "DataDownload", "encodingFormat": "application/json", "contentUrl": "https://eleazarbensimon.github.io/bakshi-and-bitton/_data/rulings.json"}, {"@type": "DataDownload", "encodingFormat": "text/csv", "contentUrl": "https://eleazarbensimon.github.io/bakshi-and-bitton/_data/rulings.csv"}]}</script><link rel="stylesheet" href="assets/style.css?v=41c61abe">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Dataset", "name": "Bakshi&Bitton · בקשי וביטון", "description": "מאגר תיעודי מובנה של פסיקות בית המשפט העליון בישראל בעניין החלטות ממשלה ומינויים — מקושר למקור הרשמי. A structured documentary database of Israeli Supreme Court rulings on elected-branch decisions and appointments.", "url": "https://eleazarbensimon.github.io/bakshi-and-bitton/", "inLanguage": ["he", "en"], "license": "https://opensource.org/licenses/MIT", "creator": {"@type": "Person", "name": "Eleazar Ben Simon"}, "distribution": [{"@type": "DataDownload", "encodingFormat": "application/json", "contentUrl": "https://eleazarbensimon.github.io/bakshi-and-bitton/_data/rulings.json"}, {"@type": "DataDownload", "encodingFormat": "text/csv", "contentUrl": "https://eleazarbensimon.github.io/bakshi-and-bitton/_data/rulings.csv"}]}</script><link rel="stylesheet" href="assets/style.css?v=fbdccda9">
 <link rel="alternate" type="application/rss+xml" title="Bakshi&Bitton — new rulings" href="feed.xml">
 </head>
 <body>
 <div id="root"></div>
-<script src="assets/app.js?v=280fa2bc"></script>
+<script src="assets/app.js?v=0a69c87a"></script>
 <script>
 (async function () {
   const { t, el, fetchJSON, ruling_name, renderHeader, renderFooter, renderCurveSection, lang,
-          outcome_label, doctrine_label, doctrines_label } = window.CO;
+          outcome_label, doctrine_label, doctrines_label,
+          petitioner_type_label, compliance_label, SEVERITY_BY_OUTCOME } = window.CO;
   const root = document.getElementById("root");
   document.documentElement.lang = lang;
   root.append(renderHeader("rulings"));
@@ -82,6 +83,10 @@
   const outcomes = [...new Set(rulings.map(r => r.outcome))].sort().map(o => ({ value: o, label: outcome_label(o) }));
   const doctrines = [...new Set(rulings.flatMap(r => r.doctrine_invoked || []))].sort().map(d => ({ value: d, label: doctrine_label(d) }));
   const years = [...new Set(rulings.map(r => (r.ruling_date || "").slice(0, 4)).filter(Boolean))].sort().reverse();
+  const petitionerTypes = [...new Set(rulings.map(r => r.petitioner_type).filter(Boolean))].sort()
+    .map(p => ({ value: p, label: petitioner_type_label(p) }));
+  const complianceStates = [...new Set(rulings.map(r => r.compliance_state).filter(Boolean))].sort()
+    .map(c => ({ value: c, label: compliance_label(c) }));
 
   function makeSelect(key, allLabel, options) {
     return el("select", { id: `filter-${key}`, class: "fbar-select", "aria-label": allLabel },
@@ -100,12 +105,14 @@
   const selOutcome = makeSelect("outcome", t.filter_outcome, outcomes);
   const selDoctrine = makeSelect("doctrine", t.filter_doctrine, doctrines);
   const selYear = makeSelect("year", t.filter_year, years);
+  const selPetitioner = makeSelect("petitioner", t.filter_petitioner, petitionerTypes);
+  const selCompliance = makeSelect("compliance", t.filter_compliance, complianceStates);
 
   const clearBtn = el("button", { class: "fbar-clear", type: "button" }, t.filter_clear);
   const countSpan = el("span", { class: "fbar-count", id: "count" });
 
   const fbar = el("div", { class: "fbar" },
-    searchWrap, selOutcome, selDoctrine, selYear,
+    searchWrap, selOutcome, selDoctrine, selYear, selPetitioner, selCompliance,
     el("span", { class: "fbar-spacer" }),
     countSpan, clearBtn);
   main.append(fbar);
@@ -140,13 +147,14 @@
   // ── Filtering + sorting + render ───────────────────────────────────
   const sortVal = {
     date: r => r.ruling_date || "",
-    outcome: r => outcome_label(r.outcome),
+    outcome: r => SEVERITY_BY_OUTCOME[r.outcome] ?? 0,  // sort by intervention severity (power-grab index), not alphabetically
     vote: r => (r.vote_majority != null ? r.vote_majority * 100 - (r.vote_minority || 0) : -1),
   };
 
   function currentFilters() {
     return {
       outcome: selOutcome.value, doctrine: selDoctrine.value, year: selYear.value,
+      petitioner: selPetitioner.value, compliance: selCompliance.value,
       search: (searchInput.value || "").trim().toLowerCase(),
     };
   }
@@ -157,6 +165,8 @@
       if (f.outcome && r.outcome !== f.outcome) return false;
       if (f.doctrine && !(r.doctrine_invoked || []).includes(f.doctrine)) return false;
       if (f.year && !(r.ruling_date || "").startsWith(f.year)) return false;
+      if (f.petitioner && r.petitioner_type !== f.petitioner) return false;
+      if (f.compliance && r.compliance_state !== f.compliance) return false;
       if (f.search) {
         const hay = [r.case_id, r.case_name_he, r.case_name_en, r.summary_he, r.summary_en,
           r.petitioner_name_he, r.petitioner_name_en].join(" ").toLowerCase();
@@ -173,7 +183,7 @@
     });
 
     countSpan.textContent = t.rulings_count(list.length);
-    const anyFilter = f.outcome || f.doctrine || f.year || f.search;
+    const anyFilter = f.outcome || f.doctrine || f.year || f.petitioner || f.compliance || f.search;
     clearBtn.classList.toggle("show", !!anyFilter);
 
     // update sort arrows
@@ -214,7 +224,8 @@
   }
 
   function clearAll() {
-    selOutcome.value = ""; selDoctrine.value = ""; selYear.value = ""; searchInput.value = "";
+    selOutcome.value = ""; selDoctrine.value = ""; selYear.value = "";
+    selPetitioner.value = ""; selCompliance.value = ""; searchInput.value = "";
     render(); searchInput.focus();
   }
   clearBtn.addEventListener("click", clearAll);
@@ -224,6 +235,8 @@
   selOutcome.addEventListener("change", render);
   selDoctrine.addEventListener("change", render);
   selYear.addEventListener("change", render);
+  selPetitioner.addEventListener("change", render);
+  selCompliance.addEventListener("change", render);
 
   root.append(main);
   root.append(renderFooter());
