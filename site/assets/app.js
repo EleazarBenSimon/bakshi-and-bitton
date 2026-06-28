@@ -563,6 +563,25 @@ function renderCurve(rulings, extraEvents = []) {
   glow.append(gMerge);
   defs.append(glow);
 
+  // Muted deep-red gradient for the cumulative line (oxblood → crimson —
+  // grave, no bright/warm tones) + a soft glow that lifts it off the grid.
+  const curveGrad = svgEl("linearGradient", { id: "curveGrad", x1: "0", y1: "0", x2: "1", y2: "0" });
+  curveGrad.append(svgEl("stop", { offset: "0%", "stop-color": "#7e3330" }));
+  curveGrad.append(svgEl("stop", { offset: "60%", "stop-color": "#a23635" }));
+  curveGrad.append(svgEl("stop", { offset: "100%", "stop-color": "#b83b3b" }));
+  defs.append(curveGrad);
+
+  const softGlow = svgEl("filter", { id: "curveSoft", x: "-60%", y: "-60%", width: "220%", height: "220%" });
+  softGlow.append(svgEl("feGaussianBlur", { in: "SourceGraphic", stdDeviation: "2", result: "sb" }));
+  const sgT = svgEl("feComponentTransfer", { in: "sb", result: "sbb" });
+  sgT.append(svgEl("feFuncA", { type: "linear", slope: "0.45" }));
+  softGlow.append(sgT);
+  const sgM = svgEl("feMerge");
+  sgM.append(svgEl("feMergeNode", { in: "sbb" }));
+  sgM.append(svgEl("feMergeNode", { in: "SourceGraphic" }));
+  softGlow.append(sgM);
+  defs.append(softGlow);
+
   svg.append(defs);
 
   // ── era backgrounds + headers ────────────────────────────────────
@@ -715,10 +734,11 @@ function renderCurve(rulings, extraEvents = []) {
   svg.append(svgEl("path", { d: curveArea, fill: "url(#envFill)" }));
   const cumLineEl = svgEl("path", {
     d: curveLine, fill: "none",
-    stroke: "#b03a3a", "stroke-width": "2.8",
-    opacity: "0.92",
+    stroke: "url(#curveGrad)", "stroke-width": "2.8",
+    opacity: "0.95",
     "stroke-linecap": "round",
     "stroke-linejoin": "round",
+    filter: "url(#curveSoft)",
     class: "cum-line",
   });
   // Animated draw-in (CSS keyframes via --len; reduced-motion disables it).
@@ -766,7 +786,7 @@ function renderCurve(rulings, extraEvents = []) {
   // contributing to the climb, not merely riding it. Smaller/translucent so
   // the coded-ruling dots stay dominant. Hover shows the case; click opens
   // the library. To revert: drop this block + curve_events.json.
-  const EVENT_COLOR = { struck: "#b03a3a", read_down: "#c47d27" };
+  const EVENT_COLOR = { struck: "#b03a3a", read_down: "#9c6529" };
   for (const e of mergedEvents) {
     if (e.kind !== "lib") continue;
     const ev = e.ev;
