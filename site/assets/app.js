@@ -74,7 +74,7 @@ const i18n = {
     role_Justice: "שופט/ת",
     role_RJ: "שופט/ת בדימוס (בחלון סטטוטורי)",
     curve_title: "העקומה: 1976–2026",
-    curve_subtitle: "העקומה האדומה מצטברת ומשוקללת: בכל פסיקה היא עולה לפי סוג ההתפשטות של בית המשפט בה (רכישה +3, הרחבה +1, יישום שגרתי 0). 'רכישה' = פעם ראשונה שבית המשפט מתערב בצירוף (רשות נבחרת × תחום מדיניות) חדש. 'הרחבה' = יישום שיפוטי לתחום-משנה חדש בצירוף שכבר נכבש. 'יישום' = הפעלה שגרתית של דוקטרינה מבוססת. גודל הנקודה מבטא את היקף ההכרעה הפרטנית — כמה מרחיקת-לכת הייתה התוצאה באותה פסיקה (לא 'חומרה'). ראו METHODOLOGY-power-transfer.md לפירוט.",
+    curve_subtitle: "העקומה האדומה מצטברת ומשוקללת: בכל פסיקה היא עולה לפי סוג ההתפשטות של בית המשפט בה (רכישה +3, הרחבה +1, יישום שגרתי 0). 'רכישה' = פעם ראשונה שבית המשפט מתערב בצירוף (רשות נבחרת × תחום מדיניות) חדש. 'הרחבה' = יישום שיפוטי לתחום-משנה חדש בצירוף שכבר נכבש. 'יישום' = הפעלה שגרתית של דוקטרינה מבוססת. גודל הנקודה מבטא את היקף ההכרעה הפרטנית — כמה מרחיקת-לכת הייתה התוצאה באותה פסיקה (לא 'חומרה'). כל מקרה בספריית פרשנות מצמצמת (חוק שבוטל או רוקן) מוסיף +1, כך שהעקומה מסכמת את מלוא העברת הכוח המתועדת — 70 אירועים, לא רק 22. ראו METHODOLOGY-power-transfer.md לפירוט.",
     curve_caption: "מה רואים: נורמליזציה הדרגתית של ההתפשטות השיפוטית לתחומים שמעולם לא ניתנה לבית המשפט סמכות מפורשת מאת הציבור או נציגיו. נקודות שלא מעלות את העקומה הן 'יישומים' — שגרתיות בתוך תחום שכבר נכבש; נקודות שמעלות אנכית את העקומה הן 'רכישות' של תחום שלם חדש. השכבה השנייה ('קריאה') תדון בפרשנות.",
     cum_axis_label: "מדד הסמכות (מצטבר)",
     curve_aria: "תרשים פיזור של פסיקות בית המשפט העליון לפי שנה ומדד הסמכות המצטבר, 1976–2026",
@@ -203,7 +203,7 @@ const i18n = {
     role_Justice: "Justice",
     role_RJ: "Retired Justice (statutory post-retirement window)",
     curve_title: "The curve: 1976–2026",
-    curve_subtitle: "The red curve is cumulative and weighted: each ruling adds height according to the kind of competence reach it represents (acquisition +3, extension +1, routine application 0). 'Acquisition' = first ruling in a (target-branch × policy-domain) cell. 'Extension' = application to a meaningfully new sub-domain within an already-claimed cell. 'Application' = routine use of settled doctrine. Dot size encodes the reach of the individual disposition — how far-reaching that ruling's result was (not 'severity'). See METHODOLOGY-power-transfer.md for full criteria.",
+    curve_subtitle: "The red curve is cumulative and weighted: each ruling adds height according to the kind of competence reach it represents (acquisition +3, extension +1, routine application 0). 'Acquisition' = first ruling in a (target-branch × policy-domain) cell. 'Extension' = application to a meaningfully new sub-domain within an already-claimed cell. 'Application' = routine use of settled doctrine. Dot size encodes the reach of the individual disposition — how far-reaching that ruling's result was (not 'severity'). Each reading-down library case (a law struck or hollowed) adds +1, so the curve sums the full documented transfer of power — 70 events, not just 22. See METHODOLOGY-power-transfer.md for full criteria.",
     curve_caption: "What you see: the gradual normalization of judicial reach into domains never expressly authorized by the public or its elected representatives. Dots that do NOT raise the curve are 'applications' — routine use within already-claimed territory; dots that raise the curve sharply are 'acquisitions' of entirely new domains. The site's second layer ('Reading') discusses interpretation.",
     cum_axis_label: "Authority index (cumulative)",
     curve_aria: "Scatter plot of Israeli Supreme Court rulings by year and cumulative authority index, 1976–2026",
@@ -647,22 +647,35 @@ function renderCurve(rulings, extraEvents = []) {
   }
 
   const CUM_HEADROOM = 0.92;
-  // Pre-compute total weight so dots and ticks share the same y-scale.
+
+  // Merge the coded rulings with the reading-down library cases into ONE
+  // chronological power-transfer stream. Rulings keep their competence-class
+  // weight (acquisition +3, extension +1, application 0); each library case
+  // (a law struck or read down) adds +1 — so the curve SUMS the full
+  // documented shift of power away from the elected branch, not just the 22
+  // deep-file rulings. Library events are tagged 'lib' → smaller dots below.
+  const LIB_WEIGHT = 1;
+  const mergedEvents = points.map((p) => ({ yd: p.yd, w: weightOf(p.r), kind: "ruling", p }));
+  for (const ev of (extraEvents || [])) {
+    const yd = yearDecimal(String(ev.when || ""));
+    if (yd >= YR_MIN && yd <= YR_MAX) mergedEvents.push({ yd, w: LIB_WEIGHT, kind: "lib", ev });
+  }
+  mergedEvents.sort((a, b) => a.yd - b.yd);
+
   let cumTotal = 0;
-  for (const p of points) cumTotal += weightOf(p.r);
+  for (const e of mergedEvents) cumTotal += e.w;
   function yCum(c) { return M.top + innerH - (c / Math.max(1, cumTotal)) * innerH * CUM_HEADROOM; }
 
-  // Build (year, cumulative-weight) sequence with a (YR_MIN, 0) anchor.
-  // Each ruling adds its competence-class weight (acquisition=3, etc.).
-  // Application/ratification rulings don't move the curve but still
-  // appear as dots — visibly NOT adding height, which is the point.
+  // Cumulative-after each event; the line climbs through ALL of them, so
+  // every documented case visibly raises it — the accumulation IS the story.
   const cumXY = [{ x: xOf(YR_MIN), y: yCum(0) }];
   const cumByCase = {};
   let cum = 0;
-  for (const p of points) {
-    cum += weightOf(p.r);
-    cumByCase[p.r.case_id_slug] = cum;
-    cumXY.push({ x: xOf(p.yd), y: yCum(cum) });
+  for (const e of mergedEvents) {
+    cum += e.w;
+    e.cumAfter = cum;
+    if (e.kind === "ruling") cumByCase[e.p.r.case_id_slug] = cum;
+    cumXY.push({ x: xOf(e.yd), y: yCum(cum) });
   }
   cumXY.push({ x: xOf(YR_MAX), y: yCum(cum) });
 
@@ -743,31 +756,23 @@ function renderCurve(rulings, extraEvents = []) {
     "letter-spacing": "0.3",
   }, t.cum_axis_label));
 
-  // ── secondary event dots: the Quiet-Veto (reading-down) library ──
-  // Real, dated court actions plotted as small translucent dots that RIDE
-  // the existing cumulative line (they do NOT feed it — like "application"
-  // dots), so the curve's logic/shape is unchanged; they only add point
-  // density toward the fuller ~70-event footprint. Rendered BEFORE the
-  // coded-ruling dots so those stay visually dominant. Off-axis (pre-1975)
-  // events are skipped. Each carries a hover tooltip; clicking opens the
-  // library. To revert: this block + curve_events.json can simply be dropped.
-  function cumAt(yd) {
-    let c = 0;
-    for (const p of points) { if (p.yd <= yd) c += weightOf(p.r); else break; }
-    return c;
-  }
+  // ── secondary event dots: the reading-down library (summed in) ──
+  // Each library case is summed into the cumulative line above (weight +1),
+  // so these dots sit at the height AFTER they incremented it — visibly
+  // contributing to the climb, not merely riding it. Smaller/translucent so
+  // the coded-ruling dots stay dominant. Hover shows the case; click opens
+  // the library. To revert: drop this block + curve_events.json.
   const EVENT_COLOR = { struck: "#b03a3a", read_down: "#c47d27" };
-  for (const ev of (extraEvents || [])) {
-    const yd = yearDecimal(String(ev.when || ""));
-    if (!(yd >= YR_MIN && yd <= YR_MAX)) continue;
-    const ex = xOf(yd), ey = yCum(cumAt(yd));
+  for (const e of mergedEvents) {
+    if (e.kind !== "lib") continue;
+    const ev = e.ev;
     const lbl = lang === "he"
       ? (ev.kind === "struck" ? "בוטל" : "פרשנות מצמצמת")
       : (ev.kind === "struck" ? "struck" : "read down");
     const a = svgEl("a", { href: "reading-quiet-veto.html", class: "curve-ev" });
     const c = svgEl("circle", {
-      cx: ex, cy: ey, r: "3",
-      fill: EVENT_COLOR[ev.kind] || "#888", "fill-opacity": "0.42",
+      cx: xOf(e.yd), cy: yCum(e.cumAfter), r: "3.2",
+      fill: EVENT_COLOR[ev.kind] || "#888", "fill-opacity": "0.5",
       stroke: "#fff", "stroke-width": "1",
     });
     c.append(svgEl("title", {}, `${ev.when} · ${ev.docket} · ${ev.name} — ${lbl}`));
