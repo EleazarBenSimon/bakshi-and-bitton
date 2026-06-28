@@ -713,13 +713,17 @@ function renderCurve(rulings, extraEvents = []) {
   const curveArea = curveLine + ` L ${cumXY[cumXY.length - 1].x} ${baselineY} L ${cumXY[0].x} ${baselineY} Z`;
 
   svg.append(svgEl("path", { d: curveArea, fill: "url(#envFill)" }));
-  svg.append(svgEl("path", {
+  const cumLineEl = svgEl("path", {
     d: curveLine, fill: "none",
     stroke: "#b03a3a", "stroke-width": "2.8",
     opacity: "0.92",
     "stroke-linecap": "round",
     "stroke-linejoin": "round",
-  }));
+    class: "cum-line",
+  });
+  // Animated draw-in (CSS keyframes via --len; reduced-motion disables it).
+  try { cumLineEl.style.setProperty("--len", cumLineEl.getTotalLength()); } catch (e) {}
+  svg.append(cumLineEl);
 
   // ── left-side y-axis: cumulative engagement count ────────────────
   // Cumulative is the only y-axis now (severity axis removed). Tick
@@ -774,8 +778,8 @@ function renderCurve(rulings, extraEvents = []) {
       cx: xOf(e.yd), cy: yCum(e.cumAfter), r: "3.2",
       fill: EVENT_COLOR[ev.kind] || "#888", "fill-opacity": "0.5",
       stroke: "#fff", "stroke-width": "1",
+      class: "ev", "data-tip": `${ev.when} · ${ev.docket} · ${ev.name} — ${lbl}`,
     });
-    c.append(svgEl("title", {}, `${ev.when} · ${ev.docket} · ${ev.name} — ${lbl}`));
     a.append(c);
     svg.append(a);
   }
@@ -799,16 +803,24 @@ function renderCurve(rulings, extraEvents = []) {
       a.append(halo);
     }
 
+    const tipTxt = `${p.r.case_id} — ${lang === "he" ? (p.r.case_name_he || p.r.case_name_en) : (p.r.case_name_en || p.r.case_name_he)}`;
     const circle = svgEl("circle", {
       cx: x, cy: y, r: String(radius),
       fill: color, "fill-opacity": "0.97",
       stroke: "#fff", "stroke-width": "2.2",
       filter: "url(#dotShadow)",
+      class: "ev", "data-tip": tipTxt,
     });
-    circle.append(svgEl("title", {}, `${p.r.ruling_date} · ${p.r.case_id} · ${p.r.outcome.replace(/_/g, " ")}`));
     a.append(circle);
     svg.append(a);
   }
+
+  // Hover highlight ring — moved onto the dot under the pointer (kept on top).
+  svg.append(svgEl("circle", {
+    cx: "-20", cy: "-20", r: "0", fill: "none",
+    stroke: "#b03a3a", "stroke-width": "2", "stroke-opacity": "0.95",
+    class: "curve-hl", "pointer-events": "none",
+  }));
 
   // ── annotation callouts (boxed, with leader lines) ───────────────
   // Each annotation is wrapped in a <g class="annotation" data-x="…">
@@ -1074,6 +1086,42 @@ function renderCurveSection(rulings, extraEvents = []) {
   const svg = renderCurve(rulings, extraEvents);
   const svgWrap = el("div", { class: "curve-wrap" });
   svgWrap.append(svg);
+
+  // Anchored hover bubble that points at the exact dot, + a highlight ring.
+  // viewBox-aware mapping so it stays correct under the era-zoom viewBoxes.
+  const cTip = el("div", { class: "curve-tip" });
+  const cArr = el("div", { class: "curve-tip-arr" });
+  const cTxt = el("span", {});
+  cTip.append(cArr, cTxt);
+  svgWrap.append(cTip);
+  svg.addEventListener("pointerover", (e) => {
+    const c = e.target;
+    if (!c.classList || !c.classList.contains("ev")) return;
+    const cx = +c.getAttribute("cx"), cy = +c.getAttribute("cy"), r = +c.getAttribute("r");
+    const ring = svg.querySelector(".curve-hl");
+    if (ring) { ring.setAttribute("cx", cx); ring.setAttribute("cy", cy); ring.setAttribute("r", r + 4); ring.style.opacity = "1"; }
+    const vb = svg.viewBox.baseVal, rect = svg.getBoundingClientRect();
+    const px = (cx - vb.x) / vb.width * rect.width;
+    const py = (cy - vb.y) / vb.height * rect.height;
+    cTxt.textContent = c.getAttribute("data-tip") || "";
+    cTip.style.opacity = "1";
+    const bw = cTip.offsetWidth, bh = cTip.offsetHeight;
+    const below = py < bh + 30;
+    const left = Math.max(2, Math.min(px - bw / 2, rect.width - bw - 2));
+    cTip.style.left = left + "px";
+    cTip.style.top = (below ? py + r + 9 : py - r - 9 - bh) + "px";
+    cArr.className = "curve-tip-arr " + (below ? "up" : "down");
+    cArr.style.left = Math.max(8, Math.min(px - left - 7, bw - 22)) + "px";
+    cArr.style.top = (below ? -7 : bh - 1) + "px";
+  });
+  svg.addEventListener("pointerout", (e) => {
+    if (e.target.classList && e.target.classList.contains("ev")) {
+      cTip.style.opacity = "0";
+      const ring = svg.querySelector(".curve-hl");
+      if (ring) ring.style.opacity = "0";
+    }
+  });
+
   wrap.append(svgWrap);
   // Screen-reader pointer: the chart is decorative-analytical; the same data
   // is available as a sortable table immediately below.
