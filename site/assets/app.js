@@ -572,9 +572,9 @@ function renderCurve(rulings, extraEvents = []) {
   defs.append(curveGrad);
 
   const softGlow = svgEl("filter", { id: "curveSoft", x: "-60%", y: "-60%", width: "220%", height: "220%" });
-  softGlow.append(svgEl("feGaussianBlur", { in: "SourceGraphic", stdDeviation: "2", result: "sb" }));
+  softGlow.append(svgEl("feGaussianBlur", { in: "SourceGraphic", stdDeviation: "2.4", result: "sb" }));
   const sgT = svgEl("feComponentTransfer", { in: "sb", result: "sbb" });
-  sgT.append(svgEl("feFuncA", { type: "linear", slope: "0.45" }));
+  sgT.append(svgEl("feFuncA", { type: "linear", slope: "0.6" }));
   softGlow.append(sgT);
   const sgM = svgEl("feMerge");
   sgM.append(svgEl("feMergeNode", { in: "sbb" }));

@@ -456,8 +456,13 @@ footer {
 .curve-wrap {
   width: 100%;
   overflow-x: auto;
-  margin: 8px 0;
+  margin: 12px 0;
   position: relative;
+  background: linear-gradient(168deg, #f4f5f6 0%, #e6e9ec 100%);
+  border: 1px solid #dcdfe3;
+  border-radius: 14px;
+  box-shadow: 0 8px 26px rgba(50, 60, 80, 0.07);
+  padding: 10px 8px 6px;
 }
 .curve {
   width: 100%;
