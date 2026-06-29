@@ -461,7 +461,7 @@ def build_rss(site_dir: Path, rulings: list) -> Path:
         '<?xml version="1.0" encoding="UTF-8"?>\n'
         '<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">\n'
         '  <channel>\n'
-        f'    <title>Bakshi&amp;Bitton · בקשי וביטון</title>\n'
+        f'    <title>Bakshi&amp;Bitton · בקשי&amp;ביטון</title>\n'
         f'    <link>{SITE_BASE_URL}/</link>\n'
         f'    <atom:link href="{SITE_BASE_URL}/feed.xml" rel="self" type="application/rss+xml"/>\n'
         '    <description>פסיקות בית המשפט העליון בעניין החלטות ממשלה ומינויים — תיעוד מובנה, מקושר למקור הרשמי.</description>\n'
@@ -600,14 +600,14 @@ def _page_head(title_he: str, description: str, canonical_path: str,
         '<head>',
         '<meta charset="UTF-8">',
         '<meta name="viewport" content="width=device-width, initial-scale=1">',
-        f'<title>{_esc(title_he)} · בקשי וביטון</title>',
+        f'<title>{_esc(title_he)} · בקשי&amp;ביטון</title>',
         f'<meta name="description" content="{_esc(desc)}">',
         f'<link rel="canonical" href="{_esc(canonical)}">',
         '<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">',
         '<link rel="stylesheet" href="assets/style.css">',
         '<link rel="alternate" type="application/rss+xml" title="Bakshi&Bitton — new rulings" href="feed.xml">',
         f'<meta property="og:type" content="{og_type}">',
-        f'<meta property="og:site_name" content="Bakshi&Bitton · בקשי וביטון">',
+        f'<meta property="og:site_name" content="Bakshi&amp;Bitton · בקשי&amp;ביטון">',
         f'<meta property="og:title" content="{_esc(title_he)}">',
         f'<meta property="og:description" content="{_esc(desc)}">',
         f'<meta property="og:url" content="{_esc(canonical)}">',
@@ -636,7 +636,7 @@ def _static_header(active: str) -> str:
         return f'<a href="{href}"{style}>{label}</a>'
     return (
         '<header><div class="header-inner">'
-        '<div><a class="logo" href="index.html">בקשי וביטון'
+        '<div><a class="logo" href="index.html">בקשי&amp;ביטון'
         '<span class="logo-sub">פסיקות בית המשפט העליון בעניין החלטות ממשלה ומינויים</span>'
         '</a></div>'
         '<nav>'

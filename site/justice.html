@@ -9,7 +9,7 @@
 <meta name="description" content="פרופיל שופט/ת — הופעות בהרכבים וחיבור דעות.">
 <link rel="canonical" href="https://eleazarbensimon.github.io/bakshi-and-bitton/justice.html">
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="Bakshi&Bitton · בקשי וביטון">
+<meta property="og:site_name" content="Bakshi&amp;Bitton · בקשי&amp;ביטון">
 <meta property="og:title" content="שופט/ת">
 <meta property="og:description" content="פרופיל שופט/ת — הופעות בהרכבים וחיבור דעות.">
 <meta property="og:url" content="https://eleazarbensimon.github.io/bakshi-and-bitton/justice.html">
@@ -25,7 +25,7 @@
 </head>
 <body>
 <div id="root"></div>
-<script src="assets/app.js?v=a90b48d4"></script>
+<script src="assets/app.js?v=0c567a4e"></script>
 <script>
 (async function () {
   const { t, el, fetchJSON, justice_name, role_label, renderHeader, renderFooter, lang } = window.CO;
@@ -58,7 +58,7 @@
     return;
   }
 
-  document.title = `${justice_name(j)} · בקשי וביטון`;
+  document.title = `${justice_name(j)} · בקשי&ביטון`;
 
   main.append(el("p", {}, el("a", { href: "justices.html" }, "← " + t.nav_justices)));
   main.append(el("h1", {}, justice_name(j)));

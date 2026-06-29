@@ -3,7 +3,7 @@
 
 const i18n = {
   he: {
-    site_title: "בקשי וביטון",
+    site_title: "בקשי&ביטון",
     site_subtitle: "פסיקות בית המשפט העליון בעניין החלטות ממשלה ומינויים",
     nav_rulings: "פסיקות",
     nav_reading: "קריאה",
