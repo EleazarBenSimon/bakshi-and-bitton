@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta name="google-site-verification" content="xjBO4qp4oVELM3i_R8MDu1IgT9S9u0hNMyDfKPHIWd4">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>בית המשפט העליון — מודל תלת-ממדי · Bakshi&amp;Bitton</title>
+<meta name="description" content="מודל תלת-ממדי אינטראקטיבי של צורות בניין בית המשפט העליון בירושלים — הפירמידה, ספריית הרוטונדה העגולה, ה'קו' הליניארי ואגפי האולמות.">
+<link rel="canonical" href="https://eleazarbensimon.github.io/bakshi-and-bitton/building-3d.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Bakshi&amp;Bitton · בקשי&amp;ביטון">
+<meta property="og:title" content="בית המשפט העליון — מודל תלת-ממדי">
+<meta property="og:description" content="מודל אינטראקטיבי של צורות בניין בית המשפט העליון: הפירמידה, הספרייה העגולה, הקו והאגפים.">
+<meta property="og:url" content="https://eleazarbensimon.github.io/bakshi-and-bitton/building-3d.html">
+<meta property="og:image" content="https://eleazarbensimon.github.io/bakshi-and-bitton/assets/og-default.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="בית המשפט העליון — מודל תלת-ממדי">
+<meta name="twitter:image" content="https://eleazarbensimon.github.io/bakshi-and-bitton/assets/og-default.png">
+<style>
+  html, body { margin: 0; height: 100%; background: #0e1726; color: #eef2f7;
+    font-family: 'Assistant', system-ui, -apple-system, "Segoe UI", Arial, sans-serif; overflow: hidden; }
+  #scene { position: fixed; inset: 0; display: block; }
+  .hud { position: fixed; pointer-events: none; }
+  .top { top: 0; right: 0; left: 0; padding: 16px 20px;
+    background: linear-gradient(180deg, rgba(8,14,24,.78), rgba(8,14,24,0)); }
+  .ttl { font-size: 17px; font-weight: 700; letter-spacing: .2px; }
+  .sub { font-size: 12.5px; color: #aebccf; margin-top: 2px; }
+  .bottom { bottom: 0; right: 0; left: 0; padding: 12px 20px 16px;
+    background: linear-gradient(0deg, rgba(8,14,24,.78), rgba(8,14,24,0));
+    display: flex; justify-content: space-between; align-items: flex-end; gap: 12px; flex-wrap: wrap; }
+  .hint { font-size: 12px; color: #9fb0c4; }
+  .legend { display: flex; flex-wrap: wrap; gap: 10px 16px; font-size: 12px; color: #c4d0de; }
+  .legend .it { display: inline-flex; align-items: center; gap: 6px; }
+  .sw { width: 11px; height: 11px; border-radius: 3px; display: inline-block; }
+  .links { pointer-events: auto; font-size: 12.5px; }
+  .links a { color: #ff9a9a; text-decoration: none; }
+  .links a:hover { text-decoration: underline; }
+  .note { font-size: 10.5px; color: #6f7e92; margin-top: 6px; max-width: 60ch; }
+  #fallback { position: fixed; inset: 0; display: none; align-items: center; justify-content: center;
+    text-align: center; padding: 24px; color: #c4d0de; }
+  .btn { pointer-events: auto; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.18);
+    color: #eef2f7; border-radius: 8px; padding: 6px 12px; font: inherit; font-size: 12.5px; cursor: pointer; }
+  .btn:hover { background: rgba(255,255,255,.14); }
+</style>
+</head>
+<body>
+<canvas id="scene"></canvas>
+
+<div class="hud top">
+  <div class="ttl">בית המשפט העליון — מודל מרחבי</div>
+  <div class="sub">הפירמידה · הספרייה העגולה · ה"קו" · אגפי האולמות</div>
+</div>
+
+<div class="hud bottom">
+  <div>
+    <div class="legend">
+      <span class="it"><span class="sw" style="background:#d9c79b"></span>אבן ירושלמית</span>
+      <span class="it"><span class="sw" style="background:#bfe0ee"></span>הפירמידה (אור עליון)</span>
+      <span class="it"><span class="sw" style="background:#9fb6c6"></span>הספרייה העגולה</span>
+    </div>
+    <div class="note">מודל סכמטי של צורות הבניין — לא ייצוג אדריכלי מדויק. הבניין תוכנן ע"י רם כרמי ועדה כרמי-מלמדה (1992) סביב רעיון "הקו והמעגל".</div>
+  </div>
+  <div style="text-align:left">
+    <div class="hint">גררו לסיבוב · גלגלת לזום · <button class="btn" id="spin">עצור סיבוב</button></div>
+    <div class="links" style="margin-top:6px"><a href="index.html">← בקשי&amp;ביטון</a></div>
+  </div>
+</div>
+
+<div id="fallback">לא ניתן לטעון את המנוע התלת-ממדי. נסו לרענן, או חזרו ל<a href="index.html" style="color:#ff9a9a"> בקשי&amp;ביטון</a>.</div>
+
+<img src="https://visitor-badge.laobi.icu/badge?page_id=eleazarbensimon.bakshi-3d" alt="" aria-hidden="true" width="1" height="1" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);opacity:0;pointer-events:none" />
+
+<script type="importmap">
+{ "imports": {
+  "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+} }
+</script>
+<script type="module">
+import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+
+const canvas = document.getElementById('scene');
+const renderer = new THREE.WebGLRenderer({ canvas, antialias: true });
+renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+renderer.shadowMap.enabled = true;
+renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+
+const scene = new THREE.Scene();
+scene.background = new THREE.Color('#142033');
+scene.fog = new THREE.Fog('#142033', 80, 200);
+
+const camera = new THREE.PerspectiveCamera(42, innerWidth / innerHeight, 0.1, 500);
+camera.position.set(46, 34, 50);
+
+const controls = new OrbitControls(camera, renderer.domElement);
+controls.enableDamping = true;
+controls.dampingFactor = 0.07;
+controls.minDistance = 28;
+controls.maxDistance = 120;
+controls.maxPolarAngle = Math.PI * 0.49;   // keep above ground
+controls.target.set(0, 6, 0);
+controls.autoRotate = true;
+controls.autoRotateSpeed = 0.55;
+
+// ── lights ──────────────────────────────────────────────────────────
+scene.add(new THREE.HemisphereLight('#cfe2f2', '#3a3324', 0.85));
+const sun = new THREE.DirectionalLight('#fff4e0', 1.5);
+sun.position.set(34, 48, 22);
+sun.castShadow = true;
+sun.shadow.mapSize.set(2048, 2048);
+const d = 60;
+Object.assign(sun.shadow.camera, { left: -d, right: d, top: d, bottom: -d, near: 1, far: 200 });
+sun.shadow.camera.updateProjectionMatrix();
+sun.shadow.bias = -0.0004;
+scene.add(sun);
+
+// ── materials ───────────────────────────────────────────────────────
+const stone = new THREE.MeshStandardMaterial({ color: '#d9c79b', roughness: 0.92, metalness: 0.02 });
+const stoneDark = new THREE.MeshStandardMaterial({ color: '#c3ad7d', roughness: 0.95, metalness: 0.02 });
+const libMat = new THREE.MeshStandardMaterial({ color: '#a9bccc', roughness: 0.6, metalness: 0.05 });
+const glass = new THREE.MeshStandardMaterial({ color: '#bfe0ee', roughness: 0.15, metalness: 0.1, transparent: true, opacity: 0.62, side: THREE.DoubleSide });
+const plazaMat = new THREE.MeshStandardMaterial({ color: '#b8ac8e', roughness: 1 });
+
+const building = new THREE.Group();
+
+function box(w, h, dp, mat, x, y, z) {
+  const m = new THREE.Mesh(new THREE.BoxGeometry(w, h, dp), mat);
+  m.position.set(x, y, z); m.castShadow = true; m.receiveShadow = true;
+  building.add(m); return m;
+}
+
+// the long linear gallery — "the line"
+box(34, 7.5, 6.5, stone, 0, 3.75, 0);
+// a lower stone podium under everything (ties the masses together)
+box(40, 2, 30, stoneDark, 2, 1, -2);
+// courtroom wing — perpendicular, forming a courtyard
+box(7, 6.5, 18, stone, 6, 3.25, -12);
+box(7, 6.5, 14, stone, -14, 3.25, -10);
+// gatehouse / forecourt block
+box(8, 5, 8, stoneDark, 17, 2.5, 8);
+
+// circular library rotunda
+const lib = new THREE.Mesh(new THREE.CylinderGeometry(7, 7, 10, 56), libMat);
+lib.position.set(-15, 5, 2); lib.castShadow = true; lib.receiveShadow = true;
+building.add(lib);
+const libRoof = new THREE.Mesh(new THREE.CylinderGeometry(7.4, 7, 1.2, 56), stoneDark);
+libRoof.position.set(-15, 10.5, 2); libRoof.castShadow = true;
+building.add(libRoof);
+
+// entrance hall + the iconic glass pyramid (square, rotated 45°)
+const hall = box(11, 8, 11, stone, 12, 4, 3);
+const pyr = new THREE.Mesh(new THREE.ConeGeometry(8.4, 8.5, 4), glass);
+pyr.position.set(12, 12.25, 3); pyr.rotation.y = Math.PI / 4; pyr.castShadow = true;
+building.add(pyr);
+// a thin copper-toned ridge cap on the pyramid apex
+const apex = new THREE.Mesh(new THREE.ConeGeometry(0.6, 1.2, 4), new THREE.MeshStandardMaterial({ color: '#9c5a32', roughness: 0.5, metalness: 0.4 }));
+apex.position.set(12, 16.8, 3); apex.rotation.y = Math.PI / 4;
+building.add(apex);
+
+// subtle vertical window slots on the gallery (recessed dark strips)
+const slot = new THREE.MeshStandardMaterial({ color: '#5a6675', roughness: 0.4 });
+for (let i = -7; i <= 7; i++) {
+  const s = new THREE.Mesh(new THREE.BoxGeometry(0.5, 4.5, 0.3), slot);
+  s.position.set(i * 2.1, 4, 3.35); building.add(s);
+}
+
+// center the group on the ground
+building.position.y = 0;
+scene.add(building);
+
+// plaza ground
+const ground = new THREE.Mesh(new THREE.PlaneGeometry(400, 400), plazaMat);
+ground.rotation.x = -Math.PI / 2; ground.position.y = -0.01; ground.receiveShadow = true;
+scene.add(ground);
+
+// gentle grid lines on the plaza for scale
+const grid = new THREE.GridHelper(120, 24, '#8a7f66', '#a99e80');
+grid.position.y = 0.02; grid.material.opacity = 0.25; grid.material.transparent = true;
+scene.add(grid);
+
+// ── interaction: pause auto-rotate ──────────────────────────────────
+const spinBtn = document.getElementById('spin');
+spinBtn.addEventListener('click', () => {
+  controls.autoRotate = !controls.autoRotate;
+  spinBtn.textContent = controls.autoRotate ? 'עצור סיבוב' : 'הפעל סיבוב';
+});
+renderer.domElement.addEventListener('pointerdown', () => { controls.autoRotate = false; spinBtn.textContent = 'הפעל סיבוב'; });
+
+function resize() {
+  renderer.setSize(innerWidth, innerHeight);
+  camera.aspect = innerWidth / innerHeight; camera.updateProjectionMatrix();
+}
+addEventListener('resize', resize); resize();
+
+function loop() {
+  requestAnimationFrame(loop);
+  controls.update();
+  renderer.render(scene, camera);
+}
+loop();
+
+// if the module/canvas failed, show fallback (basic guard)
+setTimeout(() => {
+  if (!renderer.info.render.frame) document.getElementById('fallback').style.display = 'flex';
+}, 4000);
+window.__scene = { scene, building, renderer };  // for verification
+</script>
+</body>
+</html>
