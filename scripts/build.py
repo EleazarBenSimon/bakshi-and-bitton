@@ -941,7 +941,7 @@ def build_static_pages(site_dir: Path, rulings: list, content: dict) -> int:
 
 def build_sitemap(site_dir: Path, rulings: list, content: dict, justices: list) -> Path:
     urls = ["", "index.html", "reading.html", "justices.html", "tags.html", "timeline.html", "cite.html",
-            "about.html", "comic-5658-23.html", "building-3d.html"]
+            "about.html", "comic-5658-23.html"]
     for r in rulings:
         if r.get("case_id_slug"):
             urls.append(f"ruling-{r['case_id_slug']}.html")
