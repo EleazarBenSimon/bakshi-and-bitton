@@ -557,6 +557,17 @@ function renderCurve(rulings, extraEvents = [], domain = null) {
   const X_HI = domain ? domain[1] : YR_MAX;
   function xOf(yd) { return M.left + ((yd - X_LO) / (X_HI - X_LO)) * innerW; }
   function yOf(sev) { return M.top + innerH - (sev / SEV_AXIS_MAX) * innerH; }
+  // Checkpoint map-pin: a teardrop (with a white hole) whose tip sits on the
+  // point, head above. Scaled from the standard place-marker path (tip 12,22).
+  function mapPin(px, py, s) {
+    const g = svgEl("g", { class: "map-pin", transform: `translate(${px - 12 * s} ${py - 22 * s}) scale(${s})` });
+    g.append(svgEl("path", {
+      d: "M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z",
+      fill: "url(#pinGrad)", stroke: "#8f1f22", "stroke-width": "0.7", filter: "url(#dotShadow)",
+    }));
+    g.append(svgEl("circle", { cx: "12", cy: "9", r: "3.1", fill: "#ffffff" }));
+    return g;
+  }
 
   const points = rulings.map((r) => ({
     r,
@@ -645,6 +656,13 @@ function renderCurve(rulings, extraEvents = [], domain = null) {
   const plotClip = svgEl("clipPath", { id: "plotClip" });
   plotClip.append(svgEl("rect", { x: M.left, y: M.top - 6, width: innerW, height: innerH + 10 }));
   defs.append(plotClip);
+
+  // Glossy-red gradient for the checkpoint map-pins.
+  const pinGrad = svgEl("linearGradient", { id: "pinGrad", x1: "0", y1: "0", x2: "0", y2: "1" });
+  pinGrad.append(svgEl("stop", { offset: "0%", "stop-color": "#e8484a" }));
+  pinGrad.append(svgEl("stop", { offset: "55%", "stop-color": "#cf2f30" }));
+  pinGrad.append(svgEl("stop", { offset: "100%", "stop-color": "#a81f22" }));
+  defs.append(pinGrad);
 
   svg.append(defs);
 
@@ -954,8 +972,8 @@ function renderCurve(rulings, extraEvents = [], domain = null) {
     const above = y > M.top + innerH * 0.5;
     const radius = 4 + p.sev;
 
-    // Rounded "indication" callout: a point-emphasis ring on the curve, a
-    // short rounded connector, and a soft pill that sits close to its point.
+    // Checkpoint marker: a red map-pin (teardrop with a white hole) whose tip
+    // sits on the key point, plus a soft rounded label pill near it.
     const text = ann.text;
     const parts = text.split(" · ");      // "YYYY · description" → emphasize the year
     const charW = 6.4, padX = 13, boxH = 25;
@@ -967,27 +985,16 @@ function renderCurve(rulings, extraEvents = [], domain = null) {
     const rightLimit = M.left + innerW - 2, leftLimit = M.left + 2;
     if (boxX + boxW > rightLimit) boxX = rightLimit - boxW;
     if (boxX < leftLimit) boxX = leftLimit;
-    const gap = 17;
-    const boxY = (above ? y - boxH - gap : y + gap) + (ann.dy || 0);
+    // Pin points down (tip on the point, head above). Low points → label above
+    // the pin head; high points → label below the point.
+    const PIN_S = 1.45, pinTopY = y - 20 * PIN_S;
+    let boxY = (above ? pinTopY - 6 - boxH : y + 13) + (ann.dy || 0);
+    boxY = Math.max(M.top + 2, Math.min(boxY, M.top + innerH - boxH - 2));
 
     const annEra = p.yd < 2005.5 ? "era1" : (p.yd < 2020.5 ? "era2" : "era3");
     const g = svgEl("g", { class: "annotation", "data-x": String(Math.round(x)), "data-era": annEra });
 
-    // soft ring marking this dot as a key moment
-    g.append(svgEl("circle", {
-      cx: x, cy: y, r: radius + 5, fill: "none",
-      stroke: "#a23635", "stroke-width": "1.3", "stroke-opacity": "0.42",
-    }));
-    // rounded connector from the point up/down to the pill, with a small node
-    const connFromY = above ? y - radius - 4 : y + radius + 4;
-    const connToY = above ? boxY + boxH : boxY;
-    const anchorX = Math.max(boxX + 13, Math.min(x, boxX + boxW - 13));
-    g.append(svgEl("path", {
-      d: `M ${x} ${connFromY} Q ${x} ${(connFromY + connToY) / 2}, ${anchorX} ${connToY}`,
-      fill: "none", stroke: "#a23635", "stroke-width": "1", "stroke-opacity": "0.5", "stroke-linecap": "round",
-    }));
-    g.append(svgEl("circle", { cx: x, cy: connFromY, r: "2.1", fill: "#a23635", "fill-opacity": "0.85" }));
-    // the soft rounded pill
+    // the soft rounded label pill
     g.append(svgEl("rect", {
       x: boxX, y: boxY, width: boxW, height: boxH,
       rx: boxH / 2, ry: boxH / 2,
@@ -1008,6 +1015,8 @@ function renderCurve(rulings, extraEvents = [], domain = null) {
       txtEl.append(document.createTextNode(text));
     }
     g.append(txtEl);
+    // the map-pin checkpoint marker (drawn last so it sits on top, tip on the point)
+    g.append(mapPin(x, y, PIN_S));
     svg.append(g);
   }
 
