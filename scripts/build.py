@@ -141,10 +141,18 @@ def relativize_internal_links(html: str) -> str:
 # Illustrated comics keyed to the ruling they retell. Surfaced as a prominent
 # link on that ruling's page (and vice-versa).
 COMICS = {
+    # The house-style 12-panel arc — the paradox of authority's source — retells BOTH bookend rulings —
+    # Bank Mizrahi (the power claimed) and HCJ 5658/23 (the power used to void a
+    # Basic Law) — so both link to it. Replaces the old 5-panel comic-5658-23.
+    "6821-93-bank-mizrahi": {
+        "url": "comic-6821-93.html",
+        "title_he": "פרדוקס מקור הסמכות — סיפור מצויר",
+        "title_en": "The Paradox of Authority's Source — illustrated story",
+    },
     "5658-23": {
-        "url": "comic-5658-23.html",
-        "title_he": "מי נתן להם את הסמכות הזו? — סיפור מצויר",
-        "title_en": "Who gave them this authority? — illustrated story",
+        "url": "comic-6821-93.html",
+        "title_he": "פרדוקס מקור הסמכות — סיפור מצויר",
+        "title_en": "The Paradox of Authority's Source — illustrated story",
     },
 }
 
@@ -861,10 +869,18 @@ def render_ruling_page(r: dict) -> str:
             for p in r["related_content"])
         related = f'<h2>קריאה נוספת</h2><ul class="related-reading">{items}</ul>'
 
+    why = ""
+    wm_he = r.get("why_matters_he")
+    if wm_he:
+        why = ('<details class="why-matters" open>'
+               '<summary>למה זה חשוב</summary>'
+               f'<div class="why-matters-body">{_esc(wm_he)}</div></details>')
+
     body = (
         f'<div id="root">{_static_header("rulings")}<main>'
         f'<p><a href="index.html">← פסיקות</a></p>'
         f'{_ruling_hero(r)}'
+        f'{why}'
         f'{comic}{print_cite}{official}{grid}{panel}{secondary}{notes}{related}'
         f'<p style="margin-top:24px;font-size:14px"><a href="{_esc(spa_url)}">'
         f'גרסה אינטראקטיבית מלאה / English →</a></p>'
@@ -941,7 +957,7 @@ def build_static_pages(site_dir: Path, rulings: list, content: dict) -> int:
 
 def build_sitemap(site_dir: Path, rulings: list, content: dict, justices: list) -> Path:
     urls = ["", "index.html", "reading.html", "justices.html", "tags.html", "timeline.html", "cite.html",
-            "about.html", "comic-5658-23.html"]
+            "about.html", "comic-6821-93.html"]
     for r in rulings:
         if r.get("case_id_slug"):
             urls.append(f"ruling-{r['case_id_slug']}.html")
@@ -1017,6 +1033,7 @@ def version_assets(site_dir: Path) -> dict:
 # he/en stay in sync. Reports drift; never fails the build.
 _LINT_PAIRS = [
     ("summary_he", "summary_en"),
+    ("why_matters_he", "why_matters_en"),
     ("case_name_he", "case_name_en"),
     ("petitioner_name_he", "petitioner_name_en"),
     ("respondent_decision_he", "respondent_decision_en"),

@@ -239,6 +239,45 @@ tbody tr:last-child td { border-bottom: none; }
   font-size: 14px;
 }
 
+/* "Why this matters" — the editorial/alarm layer on each ruling. Distinct from
+   the factual summary (hero) and the muted notes-box: a prominent red-edged
+   callout carrying the warning-toned voice. */
+.why-matters {
+  background: #fbf3f1;
+  border: 1px solid #e7cbc6;
+  border-inline-start: 4px solid #8a2f2c;
+  border-radius: 6px;
+  padding: 4px 16px;
+  margin: 18px 0;
+}
+.why-matters > summary {
+  cursor: pointer;
+  list-style: none;
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  color: #8a2f2c;
+  padding: 10px 0;
+}
+.why-matters > summary::-webkit-details-marker { display: none; }
+.why-matters > summary::after {
+  content: "▾";
+  font-size: 11px;
+  margin-inline-start: 8px;
+  opacity: .6;
+}
+.why-matters:not([open]) > summary::after { content: "▸"; }
+.why-matters-body {
+  font-size: 16.5px;
+  line-height: 1.65;
+  color: var(--text);
+  padding: 2px 0 14px;
+}
+@media (max-width: 600px) {
+  .why-matters-body { font-size: 15.5px; }
+}
+
 footer {
   max-width: var(--max-width);
   margin: 48px auto 24px;
@@ -1508,7 +1547,7 @@ html[lang="he"] .content-article .article-body {
 
 /* ════════════════════════════════════════════════════════════════════
    COMIC STRIP — visual storytelling for the documentary core
-   Used for /comic-5658-23.html and any future dedicated comic page.
+   Used for /comic-6821-93.html and any future dedicated comic page.
    ════════════════════════════════════════════════════════════════════ */
 
 .comic-page {
@@ -1546,6 +1585,22 @@ html[lang="he"] .content-article .article-body {
   flex-direction: column;
   gap: 56px;
   margin: 8px 0 48px;
+}
+
+/* Full composed comic page (single tall image, bubbles + captions baked in —
+   the house-style deliverable). Centered, framed, capped for readability. */
+.comic-fullpage {
+  margin: 20px auto 40px;
+  max-width: 760px;
+  padding: 0;
+}
+.comic-fullpage-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  border: 1px solid #d9c9a8;
+  box-shadow: 0 6px 26px rgba(35, 63, 102, 0.18);
 }
 
 .comic-panel {

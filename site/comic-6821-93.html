@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+<meta name="google-site-verification" content="xjBO4qp4oVELM3i_R8MDu1IgT9S9u0hNMyDfKPHIWd4">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bakshi&Bitton · Comic · The Paradox of Authority's Source (6821/93 → 5658/23)</title>
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<meta name="description" content="סיפור מצויר ב-12 לוחות: כיצד סכסוך חוב קטן בקיבוץ הפך לכלי שבאמצעותו שאב בית משפט בלתי-נבחר את סמכותו מתוך חוקי-היסוד של הכנסת עצמה — ולאחר מכן השתמש באותה סמכות כדי לחסן את עצמו מפני ניסיון הכנסת לרסן אותה.">
+<link rel="canonical" href="https://eleazarbensimon.github.io/bakshi-and-bitton/comic-6821-93.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Bakshi&amp;Bitton · בקשי&amp;ביטון">
+<meta property="og:title" content="פרדוקס מקור הסמכות — סיפור מצויר">
+<meta property="og:description" content="כיצד בית משפט בלתי-נבחר שאב את סמכותו מחוקי-היסוד של הכנסת עצמה — ואז השתמש באותה סמכות כדי לחסן את עצמו מפני ניסיון הכנסת לרסן אותה.">
+<meta property="og:url" content="https://eleazarbensimon.github.io/bakshi-and-bitton/comic-6821-93.html">
+<meta property="og:image" content="https://eleazarbensimon.github.io/bakshi-and-bitton/assets/og-default.png">
+<meta property="og:locale" content="he_IL">
+<meta property="og:locale:alternate" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="פרדוקס מקור הסמכות — סיפור מצויר">
+<meta name="twitter:description" content="כיצד בית משפט בלתי-נבחר שאב את סמכותו מחוקי-היסוד של הכנסת עצמה — ואז השתמש בה כדי לחסן את עצמו מפני ניסיון הכנסת לרסן אותה.">
+<meta name="twitter:image" content="https://eleazarbensimon.github.io/bakshi-and-bitton/assets/og-default.png">
+<link rel="stylesheet" href="assets/style.css?v=f54b6cdb">
+<link rel="alternate" type="application/rss+xml" title="Bakshi&Bitton — new rulings" href="feed.xml">
+</head>
+<body>
+<div id="root"></div>
+<script src="assets/app.js?v=548e1f71"></script>
+<script>
+(function () {
+  const { t, el, renderHeader, renderFooter, lang } = window.CO;
+  const root = document.getElementById("root");
+  document.documentElement.lang = lang;
+
+  root.append(renderHeader("reading"));
+
+  const main = el("main", { class: "comic-page" });
+
+  // Header
+  const header = el("header", { class: "comic-header" });
+  header.append(el("p", { class: "comic-breadcrumb" },
+    el("a", { href: "reading.html" }, t.reading_title), " / ",
+    lang === "he" ? "קומיקס" : "Comic"));
+  header.append(el("h1", { class: "comic-title" },
+    lang === "he"
+      ? "פרדוקס מקור הסמכות"
+      : "The Paradox of Authority's Source"));
+  header.append(el("p", { class: "comic-subtitle" },
+    lang === "he"
+      ? "סיפור מצויר ב-12 לוחות: כיצד סכסוך חוב קטן בקיבוץ הפך לכלי שבאמצעותו שאב בית משפט בלתי-נבחר את סמכותו מתוך חוקי-היסוד של הכנסת עצמה — ולאחר מכן השתמש באותה סמכות כדי לחסן את עצמו מפני ניסיון הכנסת היחיד לרסן אותה."
+      : "A 12-panel story: how a small kibbutz-debt dispute became the vehicle through which an unelected court drew its authority from the Knesset's own Basic Laws — then used that very authority to immunize itself from the Knesset's one attempt to rein it in."));
+  main.append(header);
+
+  // ─── The composed comic page (bilingual; speech + captions are baked in) ──
+  const altText = lang === "he"
+    ? "סיפור מצויר ב-12 לוחות על פרדוקס מקור הסמכות: מבנק המזרחי (1995) לפסילת תיקון חוק-היסוד (2024)."
+    : "A 12-panel comic on the paradox of authority's source: from Bank Mizrahi (1995) to the voiding of a Basic Law amendment (2024).";
+  const fig = el("figure", { class: "comic-fullpage will-animate" });
+  fig.append(el("img", {
+    src: lang === "he" ? "assets/comics/mizrahi-arc/page-he.png" : "assets/comics/mizrahi-arc/page-en.png",
+    alt: altText,
+    class: "comic-fullpage-img",
+    loading: "lazy",
+  }));
+  main.append(fig);
+
+  // ─── Endnote ────────────────────────────────────────────────────
+  const endnote = el("section", { class: "comic-endnote" });
+  endnote.append(el("h2", {}, lang === "he"
+    ? "האם זה באמת ככה?"
+    : "Is that really how it happened?"));
+  endnote.append(el("p", { class: "comic-endnote-body" }, lang === "he"
+    ? "כן — באופן מהותי, כן. כל אחד מהאירועים בסיפור הזה הוא פסק-דין שמתועד באתר זה. הקומיקס מבליט את הפרדוקס שבבסיס הסיפור: בית המשפט שאב את סמכותו לבטל חוקי כנסת מתוך חוקי-היסוד שהכנסת עצמה חוקקה — ולאחר מכן הסתמך על אותה סמכות כדי לחסן את עצמו מפני ניסיון הכנסת היחיד להשיב אותה. הציבור או הכנסת לא חיוו בכך דעה — מעולם."
+    : "Yes — substantively, yes. Each event in this story is a ruling documented on this site. The comic highlights the paradox at its core: the Court drew its authority to strike down Knesset laws from Basic Laws the Knesset itself enacted — and then relied on that very authority to immunize itself from the Knesset's one attempt to take it back. The public and the Knesset never weighed in. Not once."));
+  const links = el("p", { class: "comic-endnote-links" });
+  links.append(el("a", { href: "content.html?slug=from-bank-mizrahi-to-hcj-5658-23" },
+    lang === "he" ? "המסה המלאה: ממזרחי לבג״ץ 5658/23" : "Read the full essay: From Bank Mizrahi to HCJ 5658/23"));
+  links.append(el("br", {}));
+  links.append(el("a", { href: "ruling.html?id=6821-93-bank-mizrahi" },
+    lang === "he" ? "פסק הדין: בנק המזרחי (1995)" : "Ruling: Bank Mizrahi (1995)"));
+  links.append(el("br", {}));
+  links.append(el("a", { href: "ruling.html?id=5969-20-shafir" },
+    lang === "he" ? "פסק הדין: שפיר (2021)" : "Ruling: Shafir (2021)"));
+  links.append(el("br", {}));
+  links.append(el("a", { href: "ruling.html?id=5658-23" },
+    lang === "he" ? "פסק הדין: בג״ץ 5658/23 (2024)" : "Ruling: HCJ 5658/23 (2024)"));
+  endnote.append(links);
+  main.append(endnote);
+
+  root.append(main);
+  root.append(renderFooter());
+
+  // Scroll-triggered fade-in
+  if ("IntersectionObserver" in window) {
+    const io = new IntersectionObserver((entries) => {
+      for (const ent of entries) {
+        if (ent.isIntersecting) { ent.target.classList.add("in-view"); io.unobserve(ent.target); }
+      }
+    }, { threshold: 0.08 });
+    for (const elt of main.querySelectorAll(".will-animate")) io.observe(elt);
+  } else {
+    for (const elt of main.querySelectorAll(".will-animate")) elt.classList.add("in-view");
+  }
+})();
+</script>
+</body>
+</html>
