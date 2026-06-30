@@ -90,6 +90,6 @@ const wrap=document.getElementById("cw"),tip=document.getElementById("tip"),tipc
 function showTip(c){const vx=+c.dataset.vx,vy=+c.dataset.vy,r=+c.dataset.r;hl.setAttribute("cx",vx);hl.setAttribute("cy",vy);hl.setAttribute("r",r+4);hl.style.opacity=1;const s=svg.clientWidth/680,wrc=wrap.getBoundingClientRect(),svc=svg.getBoundingClientRect();const dx=(svc.left-wrc.left)+vx*s,dy=(svc.top-wrc.top)+vy*s,rp=r*s;tipc.textContent=c.dataset.lab;tip.style.opacity=1;const bw=tipc.offsetWidth,bh=tipc.offsetHeight;const below=vy<140;let left=Math.max(4,Math.min(dx-bw/2,wrc.width-bw-4));tip.style.left=left+"px";tip.style.top=(below?dy+rp+9:dy-rp-9-bh)+"px";arr.className="tiparr "+(below?"up":"down");arr.style.left=Math.max(8,Math.min(dx-left-7,bw-22))+"px";arr.style.top=(below?-7:bh-1)+"px";}
 function hideTip(){tip.style.opacity=0;hl.style.opacity=0;}
 </script>
-<img src="https://visitor-badge.laobi.icu/badge?page_id=eleazarbensimon.bakshi-poster" alt="" aria-hidden="true" width="1" height="1" style="position:absolute;left:-9999px;top:0;width:1px;height:1px;opacity:0;pointer-events:none" />
+<img src="https://visitor-badge.laobi.icu/badge?page_id=eleazarbensimon.bakshi-poster" alt="" aria-hidden="true" width="1" height="1" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);opacity:0;pointer-events:none" />
 </body>
 </html>

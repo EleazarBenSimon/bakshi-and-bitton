@@ -12,6 +12,10 @@ const i18n = {
     nav_cite: "ציטוט והפצה",
     nav_about: "אודות",
     nav_methodology: "מתודולוגיה",
+    nav_tags: "נושאים",
+    tags_title: "נושאים — עיון לפי תחום",
+    tags_intro: "כל פסיקה במאגר מתויגת לפי הנושאים המשפטיים והמדיניותיים שבהם היא נוגעת. בחרו נושא כדי לראות את הפסיקות המקושרות אליו — גודל התגית משקף את מספר הפסיקות.",
+    tags_hint: "בחרו נושא מהענן כדי לראות את הפסיקות הקשורות אליו.",
     reading_title: "קריאה",
     reading_intro: "מאמרים, הסברים ומסמכי דפוסים. השכבה המידעית של הפרויקט: חומרים שמחברים את הפסיקות בליבה התיעודית לתמונה הגדולה. כל פריט נסקר על-ידי מתאמים וכולל סעיף 'הוגנות אדברסרית' המביא את העמדה הנגדית בכתבי בעליה שלה.",
     cat_essays: "מאמרים",
@@ -141,6 +145,10 @@ const i18n = {
     nav_cite: "Cite & Share",
     nav_about: "About",
     nav_methodology: "Methodology",
+    nav_tags: "Topics",
+    tags_title: "Topics — browse by theme",
+    tags_intro: "Every ruling in the archive is tagged by the legal and policy themes it touches. Pick a topic to see its linked rulings — tag size reflects how many rulings carry it.",
+    tags_hint: "Pick a topic from the cloud to see its rulings.",
     reading_title: "Reading",
     reading_intro: "Essays, explainers, and pattern documents. The project's informative layer: material that connects the rulings in the documentary core into the larger picture. Every piece is moderator-reviewed and includes an 'adversarial fairness' section presenting the opposing position in its own proponents' words.",
     cat_essays: "Essays",
@@ -359,6 +367,42 @@ const LABELS = {
           "Senior-Appointments-Committee": "הוועדה לבדיקת מינויים בכירים" },
     en: {},
   },
+  // Theme tags (for the tag browser). HE labels are authoritative; EN falls
+  // back to a humanized slug except where the humanized form reads poorly.
+  tags: {
+    he: {
+      "headliner": "תיק דגל", "reasonableness": "עילת הסבירות", "basic-law-strike": "פסילה מכוח חוק-יסוד",
+      "doctrine-anchor": "עוגן דוקטרינרי", "basic-law-amendment": "תיקון לחוק-יסוד", "expanded-panel": "הרכב מורחב",
+      "post-oct7": "אחרי ה-7 באוקטובר", "abuse-of-constituent-power": "שימוש לרעה בסמכות מכוננת",
+      "anti-infiltration": "חוק למניעת הסתננות", "appointment-block": "חסימת מינויים", "asylum-seekers": "מבקשי מקלט",
+      "conflict-of-interest": "ניגוד עניינים", "constituent-authority": "סמכות מכוננת", "constitutional-revolution": "המהפכה החוקתית",
+      "en-banc": "הרכב מלא", "mandatory-order": "צו עשה", "pre-digital": "טרום-העידן הדיגיטלי", "shin-bet": "השב״כ",
+      "administrative-failure": "כשל מינהלי", "administrative-review": "ביקורת מינהלית", "ag-non-defense": "סירוב היועמ״ש להגן על החוק",
+      "appointments-committee": "ועדת המינויים", "attorney-general": "היועץ המשפטי לממשלה", "barak-court": "בית המשפט של ברק",
+      "basic-law-government": "חוק-יסוד: הממשלה", "basic-law-supremacy": "עליונות חוקי-היסוד", "borderline-scope": "תחום גבולי",
+      "cabinet-resolution": "החלטת ממשלה", "civil-wrongs": "עוולות אזרחיות (אחריות המדינה)", "coalition-arrangement": "הסדר קואליציוני",
+      "conscription": "גיוס", "consolidated-petitions": "עתירות מאוחדות", "contempt": "ביזיון בית המשפט",
+      "declaratory": "סעד הצהרתי", "deri": "פרשת דרעי", "detention": "מעצר והחזקה", "doctrinal-foundation": "תשתית דוקטרינרית",
+      "executive-action": "פעולת הרשות המבצעת", "first-of-kind": "תקדים ראשון מסוגו", "gas-framework": "מתווה הגז",
+      "gatekeeper": "שומרי הסף", "haredi-conscription": "גיוס חרדים", "haredi-draft": "גיוס בני ישיבות", "haredi-politics": "פוליטיקה חרדית",
+      "holot": "מתקן חולות", "incapacitation": "נבצרות", "judicial-review": "ביקורת שיפוטית",
+      "judicial-selection-committee": "הוועדה לבחירת שופטים", "local-authority": "רשות מקומית", "minister-appointment": "מינוי שר",
+      "ministerial-appointment": "מינוי שרים", "ministerial-decision": "החלטת שר", "ministerial-duty": "חובת שר",
+      "ngo-petitioner": "עותר מהחברה האזרחית", "personal-legislation": "חקיקה פרסונלית", "prison-conditions": "תנאי מאסר",
+      "privatization": "הפרטה", "property-rights": "זכות הקניין", "qatargate": "פרשת קטארגייט", "reliance-interest": "אינטרס ההסתמכות",
+      "religion-and-state": "דת ומדינה", "religious-services": "שירותי דת", "security-appointment": "מינוי ביטחוני",
+      "security-sector": "מערכת הביטחון", "senior-appointments": "מינויים בכירים", "settlements": "התנחלויות",
+      "sovereign-function": "תפקיד שלטוני", "state-immunity": "חסינות המדינה", "supreme-court-president": "נשיא בית המשפט העליון",
+      "tal-law": "חוק טל", "transition-period": "תקופת מעבר", "ultra-vires": "חריגה מסמכות", "warning-of-voidness": "התראת בטלות",
+      "welfare-policy": "מדיניות רווחה",
+    },
+    en: {
+      "post-oct7": "Post-Oct 7", "ag-non-defense": "AG declined to defend", "shin-bet": "Shin Bet (GSS)",
+      "en-banc": "En banc", "deri": "Deri affair", "holot": "Holot facility", "tal-law": "Tal Law",
+      "barak-court": "The Barak Court", "ngo-petitioner": "Civil-society petitioner", "first-of-kind": "First of its kind",
+      "civil-wrongs": "Civil wrongs (state liability)", "qatargate": "Qatargate", "gas-framework": "Gas framework",
+    },
+  },
 };
 function labelFor(kind, code) {
   if (code == null || code === "") return code;
@@ -373,6 +417,12 @@ function doctrines_label(arr) { return (arr || []).map(doctrine_label).join(", "
 function petitioner_type_label(p) { return labelFor("petitioner_type", p); }
 function compliance_label(c) { return labelFor("compliance_state", c); }
 function respondent_label(r) { return labelFor("respondent", r); }
+function tag_label(slug) {
+  const m = (LABELS.tags && LABELS.tags[lang]) || {};
+  if (m[slug]) return m[slug];
+  // Humanize the slug: hyphens/underscores → spaces, Title Case (EN fallback).
+  return String(slug).replace(/[-_]/g, " ").replace(/\b\w/g, c => c.toUpperCase());
+}
 
 function renderHeader(active) {
   const header = el("header",
@@ -387,6 +437,7 @@ function renderHeader(active) {
         el("a", { href: "index.html", style: active === "rulings" ? "font-weight:600;color:var(--accent)" : "" }, t.nav_rulings),
         el("a", { href: "reading.html", style: active === "reading" ? "font-weight:600;color:var(--accent)" : "" }, t.nav_reading),
         el("a", { href: "justices.html", style: active === "justices" ? "font-weight:600;color:var(--accent)" : "" }, t.nav_justices),
+        el("a", { href: "tags.html", style: active === "tags" ? "font-weight:600;color:var(--accent)" : "" }, t.nav_tags),
         el("a", { href: "content.html?slug=power-structure", style: active === "structure" ? "font-weight:600;color:var(--accent)" : "" }, t.nav_structure),
         el("a", { href: "cite.html", style: active === "cite" ? "font-weight:600;color:var(--accent)" : "" }, t.nav_cite),
         el("a", { href: "about.html", style: active === "about" ? "font-weight:600;color:var(--accent)" : "" }, t.nav_about),
@@ -1245,4 +1296,70 @@ function renderRulingHero(r) {
   return hero;
 }
 
-window.CO = { lang, t, el, fetchJSON, ruling_name, justice_name, role_label, renderHeader, renderFooter, renderCurve, renderCurveSection, outcome_label, doctrine_label, doctrines_label, petitioner_type_label, compliance_label, respondent_label, SEVERITY_BY_OUTCOME, decorateMQG, renderRulingHero };
+// ─── Tag browser (themes) ────────────────────────────────────────────
+// A frequency-weighted cloud of every theme tag in the corpus. Click a tag
+// to list the rulings that carry it; deep-linkable via tags.html?tag=slug.
+function renderTagBrowser(rulings) {
+  const main = el("main", { class: "tags-page" });
+  main.append(el("h1", {}, t.tags_title));
+  main.append(el("p", { class: "tags-intro" }, t.tags_intro));
+
+  const byTag = new Map();
+  for (const r of rulings)
+    for (const tg of (r.tags || [])) {
+      if (!byTag.has(tg)) byTag.set(tg, []);
+      byTag.get(tg).push(r);
+    }
+  const collator = new Intl.Collator(lang === "he" ? "he" : "en");
+  const entries = [...byTag.entries()]
+    .sort((a, b) => b[1].length - a[1].length || collator.compare(tag_label(a[0]), tag_label(b[0])));
+  const maxN = entries.length ? entries[0][1].length : 1;
+
+  const cloud = el("div", { class: "tag-cloud" });
+  const results = el("div", { class: "tag-results" });
+  results.append(el("p", { class: "tag-results-hint" }, t.tags_hint));
+
+  let activeChip = null;
+  function showTag(slug, chip) {
+    if (activeChip) activeChip.classList.remove("on");
+    activeChip = chip || null;
+    if (chip) chip.classList.add("on");
+    const list = (byTag.get(slug) || []).slice()
+      .sort((a, b) => (b.ruling_date || "").localeCompare(a.ruling_date || ""));
+    results.replaceChildren(
+      el("div", { class: "tag-results-head" },
+        el("span", { class: "tag-results-title" }, tag_label(slug)),
+        el("span", { class: "tag-results-count" }, t.rulings_count(list.length))));
+    const ul = el("ul", { class: "tag-result-list" });
+    for (const r of list) {
+      const href = `ruling-${r.case_id_slug}.html`;
+      ul.append(el("li", {},
+        el("a", { href },
+          el("span", { class: "trl-case" }, r.case_id),
+          el("span", { class: "trl-name" }, ruling_name(r))),
+        el("span", { class: `outcome-pill outcome-${r.outcome}` }, outcome_label(r.outcome))));
+    }
+    results.append(ul);
+    try { history.replaceState(null, "", `tags.html?tag=${encodeURIComponent(slug)}`); } catch (e) {}
+  }
+
+  entries.forEach(([slug, rs]) => {
+    const n = rs.length;
+    const size = (0.92 + (n - 1) / Math.max(1, maxN - 1) * 0.85).toFixed(2);
+    const chip = el("button", { class: "tag-chip", type: "button", style: `font-size:${size}rem` },
+      tag_label(slug), el("span", { class: "tag-chip-n" }, String(n)));
+    chip.addEventListener("click", () => showTag(slug, chip));
+    cloud.append(chip);
+  });
+
+  main.append(cloud, results);
+
+  const pre = new URLSearchParams(location.search).get("tag");
+  if (pre && byTag.has(pre)) {
+    const idx = entries.findIndex(e => e[0] === pre);
+    showTag(pre, cloud.children[idx] || null);
+  }
+  return main;
+}
+
+window.CO = { lang, t, el, fetchJSON, ruling_name, justice_name, role_label, renderHeader, renderFooter, renderCurve, renderCurveSection, outcome_label, doctrine_label, doctrines_label, petitioner_type_label, compliance_label, respondent_label, tag_label, renderTagBrowser, SEVERITY_BY_OUTCOME, decorateMQG, renderRulingHero };

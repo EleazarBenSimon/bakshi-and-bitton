@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+<meta name="google-site-verification" content="xjBO4qp4oVELM3i_R8MDu1IgT9S9u0hNMyDfKPHIWd4">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bakshi&amp;Bitton · נושאים</title>
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<meta name="description" content="עיון במאגר הפסיקות לפי נושא — תחומי מדיניות, מהלכים דוקטרינריים וסוגי הליך. בחרו נושא כדי לראות את הפסיקות המקושרות.">
+<link rel="canonical" href="https://eleazarbensimon.github.io/bakshi-and-bitton/tags.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Bakshi&amp;Bitton · בקשי&amp;ביטון">
+<meta property="og:title" content="נושאים — עיון לפי תחום">
+<meta property="og:description" content="עיון במאגר הפסיקות לפי נושא — תחומי מדיניות, מהלכים דוקטרינריים וסוגי הליך.">
+<meta property="og:url" content="https://eleazarbensimon.github.io/bakshi-and-bitton/tags.html">
+<meta property="og:image" content="https://eleazarbensimon.github.io/bakshi-and-bitton/assets/og-default.png">
+<meta property="og:locale" content="he_IL">
+<meta property="og:locale:alternate" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="נושאים — עיון לפי תחום">
+<meta name="twitter:description" content="עיון במאגר הפסיקות לפי נושא.">
+<meta name="twitter:image" content="https://eleazarbensimon.github.io/bakshi-and-bitton/assets/og-default.png">
+<link rel="stylesheet" href="assets/style.css?v=7102ccdc">
+<link rel="alternate" type="application/rss+xml" title="Bakshi&Bitton — new rulings" href="feed.xml">
+</head>
+<body>
+<img src="https://visitor-badge.laobi.icu/badge?page_id=eleazarbensimon.bakshi-home" alt="" aria-hidden="true" width="1" height="1" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);opacity:0;pointer-events:none" />
+<div id="root"></div>
+<script src="assets/app.js?v=65d33aa8"></script>
+<script>
+(async function () {
+  const { t, el, fetchJSON, renderHeader, renderFooter, renderTagBrowser, lang } = window.CO;
+  const root = document.getElementById("root");
+  document.documentElement.lang = lang;
+  root.append(renderHeader("tags"));
+
+  let rulings;
+  try {
+    rulings = await fetchJSON("_data/rulings.json");
+  } catch (e) {
+    root.append(el("main", {}, el("p", {}, `Error: ${e.message}`)));
+    root.append(renderFooter());
+    return;
+  }
+
+  root.append(renderTagBrowser(rulings));
+  root.append(renderFooter());
+})();
+</script>
+</body>
+</html>

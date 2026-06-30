@@ -552,6 +552,67 @@ html[lang="he"] .curve { direction: ltr; }
   .curve { min-width: 0; }
 }
 
+/* ─── Tag browser (themes) ────────────────────────────────────────── */
+.tags-page .tags-intro {
+  color: var(--text-muted);
+  max-width: 62ch;
+  margin: 2px 0 18px;
+  line-height: 1.6;
+}
+.tag-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px 10px;
+  align-items: baseline;
+  margin: 14px 0 28px;
+  padding-bottom: 22px;
+  border-bottom: 1px solid var(--border);
+}
+.tag-chip {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 6px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  border-radius: 999px;
+  padding: 5px 13px;
+  cursor: pointer;
+  line-height: 1.25;
+  font-family: inherit;
+  transition: background 0.15s, border-color 0.15s, color 0.15s, box-shadow 0.15s;
+}
+.tag-chip:hover { background: var(--accent-soft); border-color: #c2cbd9; }
+.tag-chip:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.tag-chip.on { background: var(--accent); border-color: var(--accent); color: #fff; box-shadow: var(--shadow-sm); }
+.tag-chip-n { font-size: 0.7em; opacity: 0.55; font-variant-numeric: tabular-nums; }
+.tag-chip.on .tag-chip-n { opacity: 0.85; }
+.tag-results { min-height: 44px; }
+.tag-results-hint { color: var(--text-muted); font-size: 14px; margin: 4px 0; }
+.tag-results-head {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin: 4px 0 12px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--accent);
+}
+.tag-results-title { font-weight: 700; font-size: 19px; color: var(--accent-deep); }
+.tag-results-count { color: var(--text-muted); font-size: 13px; }
+.tag-result-list { list-style: none; margin: 0; padding: 0; }
+.tag-result-list li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 4px;
+  border-bottom: 1px solid var(--border);
+}
+.tag-result-list li a { display: flex; flex-direction: column; gap: 2px; text-decoration: none; }
+.tag-result-list li a:hover .trl-name { text-decoration: underline; }
+.trl-case { font-weight: 600; color: var(--accent); font-size: 13.5px; }
+.trl-name { color: var(--text); font-size: 14.5px; }
+
 /* ─── Print stylesheet ────────────────────────────────────────────
    Goal: any page renders cleanly when the user does "Print → Save
    as PDF" in their browser. Strip the chrome (header, nav, footer,
