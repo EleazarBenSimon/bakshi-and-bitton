@@ -655,6 +655,22 @@ function renderCurve(rulings, extraEvents = []) {
       "letter-spacing": "0.6",
       fill: era.stripe,
     }, era.label.toUpperCase()));
+    // Clickable era header → filter the rulings table to this era and jump
+    // to it (dispatched as a CustomEvent so the curve stays decoupled from
+    // whatever page hosts it). Integer year bounds partition all rulings.
+    const eLo = i === 0 ? 0 : Math.floor(era.start) + 1;
+    const eHi = i === eras.length - 1 ? 9999 : Math.floor(era.end);
+    const hit = svgEl("rect", {
+      x: x1, y: M.top - 42, width: x2 - x1, height: 40,
+      fill: "transparent", "pointer-events": "all",
+      class: "era-hit", tabindex: "0", role: "button",
+      "aria-label": (lang === "he" ? "סנן את הטבלה לתקופה " : "Filter table to era ") + era.label,
+    });
+    hit.append(svgEl("title", {}, lang === "he" ? "לחצו לסינון הטבלה לתקופה זו" : "Click to filter the table to this era"));
+    const fireEra = () => document.dispatchEvent(new CustomEvent("co-era-filter", { detail: { start: eLo, end: eHi, label: era.label } }));
+    hit.addEventListener("click", fireEra);
+    hit.addEventListener("keydown", (ev) => { if (ev.key === "Enter" || ev.key === " ") { ev.preventDefault(); fireEra(); } });
+    svg.append(hit);
     if (i < eras.length - 1) {
       svg.append(svgEl("line", {
         x1: x2, x2: x2, y1: M.top - 18, y2: M.top + innerH,
@@ -849,7 +865,7 @@ function renderCurve(rulings, extraEvents = []) {
       cx: xOf(e.yd), cy: yCum(e.cumAfter), r: "3.2",
       fill: EVENT_COLOR[ev.kind] || "#888", "fill-opacity": "0.5",
       stroke: "#fff", "stroke-width": "1",
-      class: "ev", "data-tip": `${ev.when} · ${ev.docket} · ${ev.name} — ${lbl}`,
+      class: "ev", "data-tip": `${ev.docket} — ${ev.name}`, "data-sub": `${ev.when} · ${lbl}`,
     });
     a.append(c);
     svg.append(a);
@@ -874,13 +890,16 @@ function renderCurve(rulings, extraEvents = []) {
       a.append(halo);
     }
 
-    const tipTxt = `${p.r.case_id} — ${lang === "he" ? (p.r.case_name_he || p.r.case_name_en) : (p.r.case_name_en || p.r.case_name_he)}`;
+    const nm = lang === "he" ? (p.r.case_name_he || p.r.case_name_en) : (p.r.case_name_en || p.r.case_name_he);
+    const tipTxt = `${p.r.case_id} — ${nm}`;
+    const docs = doctrines_label(p.r.doctrine_invoked || []);
+    const tipSub = `${p.r.ruling_date} · ${outcome_label(p.r.outcome)}${docs ? " · " + docs : ""}`;
     const circle = svgEl("circle", {
       cx: x, cy: y, r: String(radius),
       fill: color, "fill-opacity": "0.97",
       stroke: "#fff", "stroke-width": "2.2",
       filter: "url(#dotShadow)",
-      class: "ev", "data-tip": tipTxt,
+      class: "ev", "data-tip": tipTxt, "data-sub": tipSub,
     });
     a.append(circle);
     svg.append(a);
@@ -1162,8 +1181,9 @@ function renderCurveSection(rulings, extraEvents = []) {
   // viewBox-aware mapping so it stays correct under the era-zoom viewBoxes.
   const cTip = el("div", { class: "curve-tip" });
   const cArr = el("div", { class: "curve-tip-arr" });
-  const cTxt = el("span", {});
-  cTip.append(cArr, cTxt);
+  const cTxt = el("span", { class: "curve-tip-main" });
+  const cSub = el("span", { class: "curve-tip-sub" });
+  cTip.append(cArr, cTxt, cSub);
   svgWrap.append(cTip);
   svg.addEventListener("pointerover", (e) => {
     const c = e.target;
@@ -1175,6 +1195,9 @@ function renderCurveSection(rulings, extraEvents = []) {
     const px = (cx - vb.x) / vb.width * rect.width;
     const py = (cy - vb.y) / vb.height * rect.height;
     cTxt.textContent = c.getAttribute("data-tip") || "";
+    const sub = c.getAttribute("data-sub") || "";
+    cSub.textContent = sub;
+    cSub.style.display = sub ? "block" : "none";
     cTip.style.opacity = "1";
     const bw = cTip.offsetWidth, bh = cTip.offsetHeight;
     const below = py < bh + 30;

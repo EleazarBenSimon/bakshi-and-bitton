@@ -20,13 +20,13 @@
 <meta name="twitter:title" content="בקשי&amp;ביטון">
 <meta name="twitter:description" content="פסיקות בית המשפט העליון בעניין החלטות ממשלה ומינויים">
 <meta name="twitter:image" content="https://eleazarbensimon.github.io/bakshi-and-bitton/assets/og-default.png">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Dataset", "name": "Bakshi&Bitton · בקשי&ביטון", "description": "מאגר תיעודי מובנה של פסיקות בית המשפט העליון בישראל בעניין החלטות ממשלה ומינויים — מקושר למקור הרשמי. A structured documentary database of Israeli Supreme Court rulings on elected-branch decisions and appointments.", "url": "https://eleazarbensimon.github.io/bakshi-and-bitton/", "inLanguage": ["he", "en"], "license": "https://opensource.org/licenses/MIT", "creator": {"@type": "Person", "name": "Eleazar Ben Simon"}, "distribution": [{"@type": "DataDownload", "encodingFormat": "application/json", "contentUrl": "https://eleazarbensimon.github.io/bakshi-and-bitton/_data/rulings.json"}, {"@type": "DataDownload", "encodingFormat": "text/csv", "contentUrl": "https://eleazarbensimon.github.io/bakshi-and-bitton/_data/rulings.csv"}]}</script><link rel="stylesheet" href="assets/style.css?v=7102ccdc">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Dataset", "name": "Bakshi&Bitton · בקשי&ביטון", "description": "מאגר תיעודי מובנה של פסיקות בית המשפט העליון בישראל בעניין החלטות ממשלה ומינויים — מקושר למקור הרשמי. A structured documentary database of Israeli Supreme Court rulings on elected-branch decisions and appointments.", "url": "https://eleazarbensimon.github.io/bakshi-and-bitton/", "inLanguage": ["he", "en"], "license": "https://opensource.org/licenses/MIT", "creator": {"@type": "Person", "name": "Eleazar Ben Simon"}, "distribution": [{"@type": "DataDownload", "encodingFormat": "application/json", "contentUrl": "https://eleazarbensimon.github.io/bakshi-and-bitton/_data/rulings.json"}, {"@type": "DataDownload", "encodingFormat": "text/csv", "contentUrl": "https://eleazarbensimon.github.io/bakshi-and-bitton/_data/rulings.csv"}]}</script><link rel="stylesheet" href="assets/style.css?v=277a80dc">
 <link rel="alternate" type="application/rss+xml" title="Bakshi&Bitton — new rulings" href="feed.xml">
 </head>
 <body>
 <img src="https://visitor-badge.laobi.icu/badge?page_id=eleazarbensimon.bakshi-home" alt="" aria-hidden="true" width="1" height="1" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);opacity:0;pointer-events:none" />
 <div id="root"></div>
-<script src="assets/app.js?v=65d33aa8"></script>
+<script src="assets/app.js?v=f11f9903"></script>
 <script>
 (async function () {
   const { t, el, fetchJSON, ruling_name, renderHeader, renderFooter, renderCurveSection, lang,
@@ -134,15 +134,17 @@
 
   const clearBtn = el("button", { class: "fbar-clear", type: "button" }, t.filter_clear);
   const countSpan = el("span", { class: "fbar-count", id: "count" });
+  const eraChip = el("button", { class: "fbar-era-chip", type: "button", style: "display:none" });
 
   const fbar = el("div", { class: "fbar" },
-    searchWrap, selOutcome, selDoctrine, selYear, selPetitioner, selCompliance,
+    searchWrap, selOutcome, selDoctrine, selYear, selPetitioner, selCompliance, eraChip,
     el("span", { class: "fbar-spacer" }),
     countSpan, clearBtn);
   main.append(fbar);
 
   // ── Table ──────────────────────────────────────────────────────────
   const sort = { col: "date", dir: -1 };  // newest first
+  let eraFilter = null;  // {start,end,label} when an era band on the curve is clicked
   const cols = [
     { key: "date",      label: t.col_date,       sortable: true,  cls: "" },
     { key: "case",      label: t.col_case,       sortable: false, cls: "" },
@@ -191,6 +193,7 @@
       if (f.year && !(r.ruling_date || "").startsWith(f.year)) return false;
       if (f.petitioner && r.petitioner_type !== f.petitioner) return false;
       if (f.compliance && r.compliance_state !== f.compliance) return false;
+      if (eraFilter) { const ey = +(r.ruling_date || "").slice(0, 4); if (!(ey >= eraFilter.start && ey <= eraFilter.end)) return false; }
       if (f.search) {
         const hay = [r.case_id, r.case_name_he, r.case_name_en, r.summary_he, r.summary_en,
           r.petitioner_name_he, r.petitioner_name_en].join(" ").toLowerCase();
@@ -207,7 +210,7 @@
     });
 
     countSpan.textContent = t.rulings_count(list.length);
-    const anyFilter = f.outcome || f.doctrine || f.year || f.petitioner || f.compliance || f.search;
+    const anyFilter = f.outcome || f.doctrine || f.year || f.petitioner || f.compliance || f.search || eraFilter;
     clearBtn.classList.toggle("show", !!anyFilter);
 
     // update sort arrows
@@ -248,12 +251,32 @@
     render();
   }
 
+  function setEra(era) {
+    eraFilter = era;
+    if (era) {
+      eraChip.textContent = (lang === "he" ? "תקופה: " : "Era: ") + era.label + "  ✕";
+      eraChip.style.display = "";
+    } else {
+      eraChip.style.display = "none";
+    }
+  }
+
   function clearAll() {
     selOutcome.value = ""; selDoctrine.value = ""; selYear.value = "";
     selPetitioner.value = ""; selCompliance.value = ""; searchInput.value = "";
+    setEra(null);
     render(); searchInput.focus();
   }
   clearBtn.addEventListener("click", clearAll);
+  eraChip.addEventListener("click", () => { setEra(null); render(); });
+
+  // Curve → table drill-down: clicking an era band on the power-curve filters
+  // the table to that era's years and scrolls it into view.
+  document.addEventListener("co-era-filter", (e) => {
+    setEra(e.detail);
+    render();
+    fbar.scrollIntoView({ behavior: "smooth", block: "start" });
+  });
 
   let searchTimer;
   searchInput.addEventListener("input", () => { clearTimeout(searchTimer); searchTimer = setTimeout(render, 120); });

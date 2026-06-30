@@ -483,6 +483,13 @@ footer {
 .curve-tip-arr { position: absolute; width: 0; height: 0; }
 .curve-tip-arr.down { border-left: 7px solid transparent; border-right: 7px solid transparent; border-top: 8px solid #fff; }
 .curve-tip-arr.up { border-left: 7px solid transparent; border-right: 7px solid transparent; border-bottom: 8px solid #fff; }
+.curve-tip-main { display: block; font-weight: 600; }
+.curve-tip-sub { display: block; margin-top: 3px; font-size: 11px; color: #8a7d7a; }
+.era-hit { cursor: pointer; }
+.era-hit:hover { fill: rgba(35, 63, 102, 0.07); }
+.era-hit:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+.fbar-era-chip { display: inline-flex; align-items: center; gap: 6px; border: 1px solid var(--accent); background: var(--accent-soft); color: var(--accent-deep); border-radius: 999px; padding: 4px 12px; font-size: 13px; font-family: inherit; cursor: pointer; white-space: nowrap; }
+.fbar-era-chip:hover { background: #dde6f4; }
 @media (prefers-reduced-motion: reduce) { .cum-line { animation: none; } }
 
 /* Era zoom controls */
