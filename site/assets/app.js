@@ -715,7 +715,7 @@ function renderCurve(rulings, extraEvents = [], domain = null) {
     }));
     svg.append(svgEl("text", {
       x: x, y: M.top + innerH + 22,
-      "text-anchor": "middle", "font-size": "12.5", "font-weight": "500", fill: "#555",
+      "text-anchor": "middle", "font-size": "15", "font-weight": "600", fill: "#39414b",
     }, String(yr)));
   }
 
@@ -857,15 +857,20 @@ function renderCurve(rulings, extraEvents = [], domain = null) {
     }));
     svg.append(svgEl("text", {
       x: leftAxisX - 9, y: y + 4,
-      "text-anchor": "end", "font-size": "11",
-      fill: "#555", "font-weight": "600",
+      "text-anchor": "end", "font-size": "13",
+      fill: "#39414b", "font-weight": "600",
     }, String(c)));
   }
+  // Cumulative-axis title — rotated vertical along the y-axis (the standard
+  // place), which also frees the top-left corner and avoids the old left-edge
+  // cutoff of the horizontal label.
+  const cumLabelCY = M.top + innerH / 2;
   svg.append(svgEl("text", {
-    x: leftAxisX - 9, y: M.top - 14,
-    "text-anchor": "end", "font-size": "10.5",
+    x: 22, y: cumLabelCY,
+    "text-anchor": "middle", "font-size": "12.5",
     fill: "#7a2828", "font-weight": "700",
     "letter-spacing": "0.3",
+    transform: `rotate(-90, 22, ${cumLabelCY})`,
   }, t.cum_axis_label));
 
   // ── secondary event dots: the reading-down library (summed in) ──
@@ -949,53 +954,60 @@ function renderCurve(rulings, extraEvents = [], domain = null) {
     const above = y > M.top + innerH * 0.5;
     const radius = 4 + p.sev;
 
-    // estimate text box dimensions
+    // Rounded "indication" callout: a point-emphasis ring on the curve, a
+    // short rounded connector, and a soft pill that sits close to its point.
     const text = ann.text;
-    const charW = 6.8;
-    const padX = 9, padY = 5;
+    const parts = text.split(" · ");      // "YYYY · description" → emphasize the year
+    const charW = 6.4, padX = 13, boxH = 25;
     const boxW = Math.round(text.length * charW + padX * 2);
-    const boxH = 22;
-
     let boxX;
-    if (ann.align === "end")       boxX = x - boxW + 6;
-    else if (ann.align === "start") boxX = x - 6;
+    if (ann.align === "end")        boxX = x - boxW + 8;
+    else if (ann.align === "start") boxX = x - 8;
     else                            boxX = x - boxW / 2;
-    // clamp inside chart area so callouts never overflow
-    const rightLimit = M.left + innerW - 2;
-    const leftLimit  = M.left + 2;
+    const rightLimit = M.left + innerW - 2, leftLimit = M.left + 2;
     if (boxX + boxW > rightLimit) boxX = rightLimit - boxW;
     if (boxX < leftLimit) boxX = leftLimit;
-
-    const baseBoxY = above ? y - 32 : y + 14;
-    const boxY = baseBoxY + (ann.dy || 0);
-
-    // leader line
-    const leadFromY = above ? y - radius - 2 : y + radius + 2;
-    const leadToY   = above ? boxY + boxH    : boxY;
+    const gap = 17;
+    const boxY = (above ? y - boxH - gap : y + gap) + (ann.dy || 0);
 
     const annEra = p.yd < 2005.5 ? "era1" : (p.yd < 2020.5 ? "era2" : "era3");
-    const g = svgEl("g", {
-      class: "annotation",
-      "data-x": String(Math.round(x)),
-      "data-era": annEra,
-    });
-    g.append(svgEl("line", {
-      x1: x, x2: x, y1: leadFromY, y2: leadToY,
-      stroke: "#b03a3a", "stroke-width": "1.2", opacity: "0.7",
+    const g = svgEl("g", { class: "annotation", "data-x": String(Math.round(x)), "data-era": annEra });
+
+    // soft ring marking this dot as a key moment
+    g.append(svgEl("circle", {
+      cx: x, cy: y, r: radius + 5, fill: "none",
+      stroke: "#a23635", "stroke-width": "1.3", "stroke-opacity": "0.42",
     }));
+    // rounded connector from the point up/down to the pill, with a small node
+    const connFromY = above ? y - radius - 4 : y + radius + 4;
+    const connToY = above ? boxY + boxH : boxY;
+    const anchorX = Math.max(boxX + 13, Math.min(x, boxX + boxW - 13));
+    g.append(svgEl("path", {
+      d: `M ${x} ${connFromY} Q ${x} ${(connFromY + connToY) / 2}, ${anchorX} ${connToY}`,
+      fill: "none", stroke: "#a23635", "stroke-width": "1", "stroke-opacity": "0.5", "stroke-linecap": "round",
+    }));
+    g.append(svgEl("circle", { cx: x, cy: connFromY, r: "2.1", fill: "#a23635", "fill-opacity": "0.85" }));
+    // the soft rounded pill
     g.append(svgEl("rect", {
       x: boxX, y: boxY, width: boxW, height: boxH,
-      rx: "4", ry: "4",
-      fill: "#ffffff",
-      stroke: "#b03a3a", "stroke-width": "1.2",
+      rx: boxH / 2, ry: boxH / 2,
+      fill: "#fffdfb", stroke: "#ecd9d9", "stroke-width": "1",
       filter: "url(#dotShadow)",
     }));
-    g.append(svgEl("text", {
+    const txtEl = svgEl("text", {
       x: boxX + boxW / 2, y: boxY + boxH / 2 + 4,
-      "text-anchor": "middle",
-      "font-size": "11.5", "font-weight": "600",
-      fill: "#7a2828",
-    }, text));
+      "text-anchor": "middle", "font-size": "11.5",
+    });
+    if (parts.length > 1) {
+      txtEl.append(svgEl("tspan", { "font-weight": "700", fill: "#8a2f2c" }, parts[0]));
+      txtEl.append(svgEl("tspan", { fill: "#b6a3a3" }, "  ·  "));
+      txtEl.append(svgEl("tspan", { "font-weight": "500", fill: "#463a3a" }, parts.slice(1).join(" · ")));
+    } else {
+      txtEl.setAttribute("fill", "#463a3a");
+      txtEl.setAttribute("font-weight", "500");
+      txtEl.append(document.createTextNode(text));
+    }
+    g.append(txtEl);
     svg.append(g);
   }
 

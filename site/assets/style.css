@@ -502,7 +502,7 @@ footer {
 .era-seg.on .era-seg-range { color: var(--text); }
 .era-seg--all.on { background: var(--accent-soft); }
 /* +/- zoom buttons (overlay) + drag-to-select brush */
-.curve-zoomctl { position: absolute; top: 10px; left: 10px; display: flex; flex-direction: column; gap: 5px; z-index: 5; }
+.curve-zoomctl { position: absolute; top: 9px; left: 12px; display: flex; flex-direction: row; gap: 6px; z-index: 5; }
 .curve-zoombtn { width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; border: 1px solid var(--border); background: rgba(255, 255, 255, 0.92); color: var(--accent-deep); border-radius: 7px; font-size: 19px; line-height: 1; cursor: pointer; font-family: inherit; box-shadow: var(--shadow-sm); }
 .curve-zoombtn:hover { background: #fff; border-color: #c2cbd9; }
 .curve-zoombtn:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
