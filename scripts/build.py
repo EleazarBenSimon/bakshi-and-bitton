@@ -87,6 +87,7 @@ def markdown_to_html(body: str) -> str:
         body,
         extensions=[
             "tables",          # the pattern document uses tables
+            "footnotes",       # [^1] footnote syntax in the long essays
             "fenced_code",     # for any ``` blocks
             "attr_list",       # so we can target classes if needed later
             "sane_lists",      # better list handling
