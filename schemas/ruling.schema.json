@@ -169,6 +169,16 @@
       "maxLength": 600,
       "description": "Factual one-to-two-sentence English summary. See METHODOLOGY §4."
     },
+    "why_matters_he": {
+      "type": "string",
+      "maxLength": 1400,
+      "description": "Optional editorial 'Why this matters' block (Hebrew). UNLIKE summary, this layer MAY editorialize (warning-toned, analytical). Targets the Court's seizure of power from elected institutions; never relitigates a removed official's alleged wrongdoing; grounded only in documented facts."
+    },
+    "why_matters_en": {
+      "type": "string",
+      "maxLength": 1400,
+      "description": "Optional editorial 'Why this matters' block (English mirror of why_matters_he)."
+    },
     "predicate_ag_opinion": {
       "type": ["string", "null"],
       "description": "If the cabinet/government acted against a prior Attorney General opinion, brief reference to that opinion (date + topic). Null otherwise."
