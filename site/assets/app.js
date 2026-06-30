@@ -568,6 +568,19 @@ function renderCurve(rulings, extraEvents = [], domain = null) {
     g.append(svgEl("circle", { cx: "12", cy: "9", r: "3.1", fill: "#ffffff" }));
     return g;
   }
+  // Greedy word-wrap into lines of at most maxChars (keeps callout labels
+  // compact + multi-row instead of one over-wide bubble).
+  function wrapWords(str, maxChars) {
+    const out = [];
+    let cur = "";
+    for (const w of String(str).split(/\s+/)) {
+      if (!cur) cur = w;
+      else if ((cur + " " + w).length <= maxChars) cur += " " + w;
+      else { out.push(cur); cur = w; }
+    }
+    if (cur) out.push(cur);
+    return out;
+  }
 
   const points = rulings.map((r) => ({
     r,
@@ -961,6 +974,7 @@ function renderCurve(rulings, extraEvents = [], domain = null) {
   // ── annotation callouts (boxed, with leader lines) ───────────────
   // Only annotations whose anchor is inside the visible window are drawn,
   // so a re-fitted (zoomed) era stays clean.
+  const placedLabels = [];  // for nudging apart labels that would collide
   for (const p of points) {
     const ann = annotations[p.r.case_id_slug];
     if (!ann) continue;
@@ -973,47 +987,61 @@ function renderCurve(rulings, extraEvents = [], domain = null) {
     const radius = 4 + p.sev;
 
     // Checkpoint marker: a red map-pin (teardrop with a white hole) whose tip
-    // sits on the key point, plus a soft rounded label pill near it.
+    // sits on the key point, plus a compact rounded label that stacks the year
+    // over a word-wrapped description (instead of one over-wide bubble).
     const text = ann.text;
-    const parts = text.split(" · ");      // "YYYY · description" → emphasize the year
-    const charW = 6.4, padX = 13, boxH = 25;
-    const boxW = Math.round(text.length * charW + padX * 2);
+    const parts = text.split(" · ").map(s => s.trim());
+    const yearPart = parts.find(p => /^\d{4}$/.test(p));
+    const descStr = parts.filter(p => p !== yearPart).join(" · ");
+    const lines = [];                                  // {t, year}
+    if (yearPart) lines.push({ t: yearPart, year: true });
+    for (const ln of wrapWords(descStr || text, 17)) lines.push({ t: ln, year: false });
+
+    const lineH = 14.5, padX = 15, padY = 8;
+    const maxChars = Math.max(...lines.map(l => l.t.length));
+    const boxW = Math.round(maxChars * 6.3 + padX * 2);
+    const boxH = Math.round(lines.length * lineH + padY * 2);
     let boxX;
-    if (ann.align === "end")        boxX = x - boxW + 8;
-    else if (ann.align === "start") boxX = x - 8;
+    if (ann.align === "end")        boxX = x - boxW + 12;
+    else if (ann.align === "start") boxX = x - 12;
     else                            boxX = x - boxW / 2;
     const rightLimit = M.left + innerW - 2, leftLimit = M.left + 2;
     if (boxX + boxW > rightLimit) boxX = rightLimit - boxW;
     if (boxX < leftLimit) boxX = leftLimit;
     // Pin points down (tip on the point, head above). Low points → label above
-    // the pin head; high points → label below the point.
+    // the pin head; high points → label below the point. Nudge apart collisions.
     const PIN_S = 1.45, pinTopY = y - 20 * PIN_S;
     let boxY = (above ? pinTopY - 6 - boxH : y + 13) + (ann.dy || 0);
+    let guard = 0;
+    while (guard < 8) {
+      const o = placedLabels.find(b => !(boxX + boxW <= b.x || boxX >= b.x + b.w || boxY + boxH <= b.y || boxY >= b.y + b.h));
+      if (!o) break;
+      boxY = above ? (o.y - boxH - 6) : (o.y + o.h + 6);  // snap just clear of the neighbor
+      guard++;
+    }
     boxY = Math.max(M.top + 2, Math.min(boxY, M.top + innerH - boxH - 2));
+    placedLabels.push({ x: boxX, y: boxY, w: boxW, h: boxH });
 
+    const cx = boxX + boxW / 2;
     const annEra = p.yd < 2005.5 ? "era1" : (p.yd < 2020.5 ? "era2" : "era3");
     const g = svgEl("g", { class: "annotation", "data-x": String(Math.round(x)), "data-era": annEra });
 
-    // the soft rounded label pill
+    // the soft rounded label (taller, narrower, more oval than the old pill)
     g.append(svgEl("rect", {
       x: boxX, y: boxY, width: boxW, height: boxH,
-      rx: boxH / 2, ry: boxH / 2,
+      rx: Math.min(20, boxH / 2), ry: Math.min(20, boxH / 2),
       fill: "#fffdfb", stroke: "#ecd9d9", "stroke-width": "1",
       filter: "url(#dotShadow)",
     }));
-    const txtEl = svgEl("text", {
-      x: boxX + boxW / 2, y: boxY + boxH / 2 + 4,
-      "text-anchor": "middle", "font-size": "11.5",
+    const txtEl = svgEl("text", { x: cx, y: boxY + padY + 11, "text-anchor": "middle" });
+    lines.forEach((ln, i) => {
+      txtEl.append(svgEl("tspan", {
+        x: cx, dy: i === 0 ? 0 : lineH,
+        "font-weight": ln.year ? "700" : "500",
+        "font-size": ln.year ? "13" : "11.5",
+        fill: ln.year ? "#8a2f2c" : "#463a3a",
+      }, ln.t));
     });
-    if (parts.length > 1) {
-      txtEl.append(svgEl("tspan", { "font-weight": "700", fill: "#8a2f2c" }, parts[0]));
-      txtEl.append(svgEl("tspan", { fill: "#b6a3a3" }, "  ·  "));
-      txtEl.append(svgEl("tspan", { "font-weight": "500", fill: "#463a3a" }, parts.slice(1).join(" · ")));
-    } else {
-      txtEl.setAttribute("fill", "#463a3a");
-      txtEl.setAttribute("font-weight", "500");
-      txtEl.append(document.createTextNode(text));
-    }
     g.append(txtEl);
     // the map-pin checkpoint marker (drawn last so it sits on top, tip on the point)
     g.append(mapPin(x, y, PIN_S));
