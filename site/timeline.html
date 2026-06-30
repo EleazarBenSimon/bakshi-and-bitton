@@ -4,21 +4,21 @@
 <meta name="google-site-verification" content="xjBO4qp4oVELM3i_R8MDu1IgT9S9u0hNMyDfKPHIWd4">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Bakshi&amp;Bitton · נושאים</title>
+<title>Bakshi&amp;Bitton · ציר זמן</title>
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-<meta name="description" content="עיון במאגר הפסיקות לפי נושא — תחומי מדיניות, מהלכים דוקטרינריים וסוגי הליך. בחרו נושא כדי לראות את הפסיקות המקושרות.">
-<link rel="canonical" href="https://eleazarbensimon.github.io/bakshi-and-bitton/tags.html">
+<meta name="description" content="ציר הזמן של פעולות בית המשפט העליון נגד חקיקת הכנסת, 1964–2026 — כל מקרה מתועד לפי סדר כרונולוגי, מחולק לשלוש תקופות.">
+<link rel="canonical" href="https://eleazarbensimon.github.io/bakshi-and-bitton/timeline.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Bakshi&amp;Bitton · בקשי&amp;ביטון">
-<meta property="og:title" content="נושאים — עיון לפי תחום">
-<meta property="og:description" content="עיון במאגר הפסיקות לפי נושא — תחומי מדיניות, מהלכים דוקטרינריים וסוגי הליך.">
-<meta property="og:url" content="https://eleazarbensimon.github.io/bakshi-and-bitton/tags.html">
+<meta property="og:title" content="ציר הזמן — 1964–2026">
+<meta property="og:description" content="כל פעולה מתועדת של בית המשפט נגד חקיקת הכנסת, לפי סדר כרונולוגי.">
+<meta property="og:url" content="https://eleazarbensimon.github.io/bakshi-and-bitton/timeline.html">
 <meta property="og:image" content="https://eleazarbensimon.github.io/bakshi-and-bitton/assets/og-default.png">
 <meta property="og:locale" content="he_IL">
 <meta property="og:locale:alternate" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="נושאים — עיון לפי תחום">
-<meta name="twitter:description" content="עיון במאגר הפסיקות לפי נושא.">
+<meta name="twitter:title" content="ציר הזמן — 1964–2026">
+<meta name="twitter:description" content="כל פעולה מתועדת של בית המשפט נגד חקיקת הכנסת, לפי סדר כרונולוגי.">
 <meta name="twitter:image" content="https://eleazarbensimon.github.io/bakshi-and-bitton/assets/og-default.png">
 <link rel="stylesheet" href="assets/style.css?v=e885787e">
 <link rel="alternate" type="application/rss+xml" title="Bakshi&Bitton — new rulings" href="feed.xml">
@@ -29,21 +29,20 @@
 <script src="assets/app.js?v=bd0f48a5"></script>
 <script>
 (async function () {
-  const { t, el, fetchJSON, renderHeader, renderFooter, renderTagBrowser, lang } = window.CO;
+  const { t, el, fetchJSON, renderHeader, renderFooter, renderTimeline, lang } = window.CO;
   const root = document.getElementById("root");
   document.documentElement.lang = lang;
-  root.append(renderHeader("tags"));
+  root.append(renderHeader("timeline"));
 
-  let rulings;
-  try {
-    rulings = await fetchJSON("_data/rulings.json");
-  } catch (e) {
-    root.append(el("main", {}, el("p", {}, `Error: ${e.message}`)));
-    root.append(renderFooter());
-    return;
+  let rulings = [], events = [];
+  try { rulings = await fetchJSON("_data/rulings.json"); } catch (e) {}
+  try { events = await fetchJSON("_data/curve_events.json"); } catch (e) {}
+
+  if (!rulings.length && !events.length) {
+    root.append(el("main", {}, el("p", {}, "Error loading timeline data.")));
+  } else {
+    root.append(renderTimeline(rulings, events));
   }
-
-  root.append(renderTagBrowser(rulings));
   root.append(renderFooter());
 })();
 </script>

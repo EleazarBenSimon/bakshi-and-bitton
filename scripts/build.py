@@ -644,6 +644,7 @@ def _static_header(active: str) -> str:
         + nav("reading.html", "קריאה", "reading")
         + nav("justices.html", "שופטים", "justices")
         + nav("tags.html", "נושאים", "tags")
+        + nav("timeline.html", "ציר זמן", "timeline")
         + nav("content.html?slug=power-structure", "מבנה הכוח", "structure")
         + nav("cite.html", "ציטוט והפצה", "cite")
         + nav("about.html", "אודות", "about")
@@ -938,7 +939,7 @@ def build_static_pages(site_dir: Path, rulings: list, content: dict) -> int:
 
 
 def build_sitemap(site_dir: Path, rulings: list, content: dict, justices: list) -> Path:
-    urls = ["", "index.html", "reading.html", "justices.html", "tags.html", "cite.html",
+    urls = ["", "index.html", "reading.html", "justices.html", "tags.html", "timeline.html", "cite.html",
             "about.html", "comic-5658-23.html"]
     for r in rulings:
         if r.get("case_id_slug"):

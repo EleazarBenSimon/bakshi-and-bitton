@@ -16,6 +16,11 @@ const i18n = {
     tags_title: "נושאים — עיון לפי תחום",
     tags_intro: "כל פסיקה במאגר מתויגת לפי הנושאים המשפטיים והמדיניותיים שבהם היא נוגעת. בחרו נושא כדי לראות את הפסיקות המקושרות אליו — גודל התגית משקף את מספר הפסיקות.",
     tags_hint: "בחרו נושא מהענן כדי לראות את הפסיקות הקשורות אליו.",
+    nav_timeline: "ציר זמן",
+    timeline_title: "ציר הזמן — 1964–2026",
+    timeline_intro: "כל פעולה מתועדת של בית המשפט נגד חקיקת הכנסת, לפי סדר כרונולוגי ומחולקת לשלוש תקופות. כל שורה מקושרת למקור — פסיקות הליבה לעמוד הפסיקה, ומקרי הספרייה למאגר הקריאה.",
+    tl_struck: "חוק שבוטל",
+    tl_read_down: "פרשנות מצמצמת",
     reading_title: "קריאה",
     reading_intro: "מאמרים, הסברים ומסמכי דפוסים. השכבה המידעית של הפרויקט: חומרים שמחברים את הפסיקות בליבה התיעודית לתמונה הגדולה. כל פריט נסקר על-ידי מתאמים וכולל סעיף 'הוגנות אדברסרית' המביא את העמדה הנגדית בכתבי בעליה שלה.",
     cat_essays: "מאמרים",
@@ -149,6 +154,11 @@ const i18n = {
     tags_title: "Topics — browse by theme",
     tags_intro: "Every ruling in the archive is tagged by the legal and policy themes it touches. Pick a topic to see its linked rulings — tag size reflects how many rulings carry it.",
     tags_hint: "Pick a topic from the cloud to see its rulings.",
+    nav_timeline: "Timeline",
+    timeline_title: "Timeline — 1964–2026",
+    timeline_intro: "Every documented court action against Knesset legislation, in chronological order, split into three eras. Each row links to its source — the core rulings to the ruling page, the library cases to the reading archive.",
+    tl_struck: "statute struck",
+    tl_read_down: "read down",
     reading_title: "Reading",
     reading_intro: "Essays, explainers, and pattern documents. The project's informative layer: material that connects the rulings in the documentary core into the larger picture. Every piece is moderator-reviewed and includes an 'adversarial fairness' section presenting the opposing position in its own proponents' words.",
     cat_essays: "Essays",
@@ -438,6 +448,7 @@ function renderHeader(active) {
         el("a", { href: "reading.html", style: active === "reading" ? "font-weight:600;color:var(--accent)" : "" }, t.nav_reading),
         el("a", { href: "justices.html", style: active === "justices" ? "font-weight:600;color:var(--accent)" : "" }, t.nav_justices),
         el("a", { href: "tags.html", style: active === "tags" ? "font-weight:600;color:var(--accent)" : "" }, t.nav_tags),
+        el("a", { href: "timeline.html", style: active === "timeline" ? "font-weight:600;color:var(--accent)" : "" }, t.nav_timeline),
         el("a", { href: "content.html?slug=power-structure", style: active === "structure" ? "font-weight:600;color:var(--accent)" : "" }, t.nav_structure),
         el("a", { href: "cite.html", style: active === "cite" ? "font-weight:600;color:var(--accent)" : "" }, t.nav_cite),
         el("a", { href: "about.html", style: active === "about" ? "font-weight:600;color:var(--accent)" : "" }, t.nav_about),
@@ -1574,4 +1585,58 @@ function renderTagBrowser(rulings) {
   return main;
 }
 
-window.CO = { lang, t, el, fetchJSON, ruling_name, justice_name, role_label, renderHeader, renderFooter, renderCurve, renderCurveSection, outcome_label, doctrine_label, doctrines_label, petitioner_type_label, compliance_label, respondent_label, tag_label, renderTagBrowser, SEVERITY_BY_OUTCOME, decorateMQG, renderRulingHero };
+// ─── Timeline (chronological reading of the whole corpus) ────────────
+// Merges the 22 core rulings + the 48 reading-down library cases into one
+// chronological list, grouped into the three eras. Core rulings link to their
+// ruling page (rich, with an outcome pill); library cases link to the reading
+// archive (compact, with a struck/read-down tag).
+function renderTimeline(rulings, events) {
+  const main = el("main", { class: "timeline-page" });
+  main.append(el("h1", {}, t.timeline_title));
+  main.append(el("p", { class: "timeline-intro" }, t.timeline_intro));
+
+  const items = [];
+  for (const r of (rulings || [])) items.push({ date: r.ruling_date || "", year: parseInt((r.ruling_date || "").slice(0, 4), 10) || 0, kind: "ruling", r });
+  for (const ev of (events || [])) items.push({ date: ev.when || "", year: parseInt((ev.when || "").slice(0, 4), 10) || 0, kind: "lib", ev });
+  items.sort((a, b) => (a.date < b.date ? -1 : a.date > b.date ? 1 : 0));
+
+  const ERAS = curveEras();
+  const eraOf = (yr) => (yr < 2005.5 ? 0 : yr < 2020.5 ? 1 : 2);
+  const eraRange = ["1964–2005", "2006–2020", "2021–2026"];
+
+  let curEra = -1, list = null;
+  for (const it of items) {
+    const e = eraOf(it.year);
+    if (e !== curEra) {
+      curEra = e;
+      main.append(el("div", { class: "tl-era", style: `--era-color:${ERAS[e].stripe}` },
+        el("span", { class: "tl-era-name" }, ERAS[e].label),
+        el("span", { class: "tl-era-range", dir: "ltr" }, eraRange[e])));
+      list = el("ol", { class: "tl-list" });
+      main.append(list);
+    }
+    let entry;
+    if (it.kind === "ruling") {
+      const r = it.r;
+      entry = el("li", { class: "tl-item tl-ruling" },
+        el("span", { class: "tl-year" }, String(it.year || "")),
+        el("a", { class: "tl-body", href: `ruling-${r.case_id_slug}.html` },
+          el("span", { class: "tl-docket" }, r.case_id),
+          el("span", { class: "tl-name" }, ruling_name(r))),
+        el("span", { class: `outcome-pill outcome-${r.outcome}` }, outcome_label(r.outcome)));
+    } else {
+      const ev = it.ev;
+      entry = el("li", { class: "tl-item tl-lib" },
+        el("span", { class: "tl-year" }, String(it.year || "")),
+        el("a", { class: "tl-body", href: "reading-quiet-veto.html" },
+          el("span", { class: "tl-docket" }, ev.docket),
+          el("span", { class: "tl-name" }, ev.name)),
+        el("span", { class: `tl-kind tl-kind-${ev.kind}` }, ev.kind === "struck" ? t.tl_struck : t.tl_read_down));
+    }
+    list.append(entry);
+  }
+  decorateMQG(main);
+  return main;
+}
+
+window.CO = { lang, t, el, fetchJSON, ruling_name, justice_name, role_label, renderHeader, renderFooter, renderCurve, renderCurveSection, outcome_label, doctrine_label, doctrines_label, petitioner_type_label, compliance_label, respondent_label, tag_label, renderTagBrowser, renderTimeline, SEVERITY_BY_OUTCOME, decorateMQG, renderRulingHero };
