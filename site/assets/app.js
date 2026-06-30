@@ -975,6 +975,9 @@ function renderCurve(rulings, extraEvents = [], domain = null) {
   // Only annotations whose anchor is inside the visible window are drawn,
   // so a re-fitted (zoomed) era stays clean.
   const placedLabels = [];  // for nudging apart labels that would collide
+  const dotPts = [];        // dot centres, so labels avoid covering indicated points
+  for (const q of points) if (q.yd >= X_LO && q.yd <= X_HI) dotPts.push({ x: xOf(q.yd), y: yCum(cumByCase[q.r.case_id_slug]), r: 4 + q.sev });
+  for (const e of mergedEvents) if (e.kind === "lib" && e.yd >= X_LO && e.yd <= X_HI) dotPts.push({ x: xOf(e.yd), y: yCum(e.cumAfter), r: 3.2 });
   for (const p of points) {
     const ann = annotations[p.r.case_id_slug];
     if (!ann) continue;
@@ -995,51 +998,47 @@ function renderCurve(rulings, extraEvents = [], domain = null) {
     const descStr = parts.filter(p => p !== yearPart).join(" · ");
     const lines = [];                                  // {t, year}
     if (yearPart) lines.push({ t: yearPart, year: true });
-    for (const ln of wrapWords(descStr || text, 17)) lines.push({ t: ln, year: false });
+    for (const ln of wrapWords(descStr || text, 16)) lines.push({ t: ln, year: false });
 
-    const lineH = 14.5, padX = 15, padY = 8;
-    const maxChars = Math.max(...lines.map(l => l.t.length));
-    const boxW = Math.round(maxChars * 6.3 + padX * 2);
-    const boxH = Math.round(lines.length * lineH + padY * 2);
-    let boxX;
-    if (ann.align === "end")        boxX = x - boxW + 12;
-    else if (ann.align === "start") boxX = x - 12;
-    else                            boxX = x - boxW / 2;
-    const rightLimit = M.left + innerW - 2, leftLimit = M.left + 2;
-    if (boxX + boxW > rightLimit) boxX = rightLimit - boxW;
-    if (boxX < leftLimit) boxX = leftLimit;
-    // Pin points down (tip on the point, head above). Low points → label above
-    // the pin head; high points → label below the point. Nudge apart collisions.
+    // No bubble — the label is just text with a white knockout halo (paint-order
+    // stroke) so it reads over the chart, hugging the pin and centred on its
+    // point. Low point → text just above the pin head; high point → just below.
+    const lineH = 14, charW = 6.1;
+    const blockW = Math.max(...lines.map(l => l.t.length)) * charW;
+    const blockH = lines.length * lineH;
+    const rightLimit = M.left + innerW - 4, leftLimit = M.left + 4;
+    const cx = Math.max(leftLimit + blockW / 2, Math.min(x, rightLimit - blockW / 2));
     const PIN_S = 1.45, pinTopY = y - 20 * PIN_S;
-    let boxY = (above ? pinTopY - 6 - boxH : y + 13) + (ann.dy || 0);
+    let topY = (above ? pinTopY - 5 - blockH : y + 12) + (ann.dy || 0);
+    const GAP = 14;  // generous so the white halos never touch
     let guard = 0;
-    while (guard < 8) {
-      const o = placedLabels.find(b => !(boxX + boxW <= b.x || boxX >= b.x + b.w || boxY + boxH <= b.y || boxY >= b.y + b.h));
-      if (!o) break;
-      boxY = above ? (o.y - boxH - 6) : (o.y + o.h + 6);  // snap just clear of the neighbor
-      guard++;
+    while (guard < 16) {
+      const lx0 = cx - blockW / 2, lx1 = cx + blockW / 2;
+      // clear of other labels (up for low points, down for high points)…
+      const lab = placedLabels.find(b => !(lx1 + 2 <= b.x || lx0 - 2 >= b.x + b.w || topY + blockH + GAP <= b.y || topY - GAP >= b.y + b.h));
+      if (lab) { topY = above ? (lab.y - blockH - GAP) : (lab.y + lab.h + GAP); guard++; continue; }
+      // …and clear of any dot in its column, so it never covers an indicated point
+      const dot = dotPts.find(d => d.x + d.r + 1 > lx0 && d.x - d.r - 1 < lx1 && d.y + d.r + 2 > topY && d.y - d.r - 2 < topY + blockH);
+      if (dot) { topY = above ? (dot.y - dot.r - 4 - blockH) : (dot.y + dot.r + 4); guard++; continue; }
+      break;
     }
-    boxY = Math.max(M.top + 2, Math.min(boxY, M.top + innerH - boxH - 2));
-    placedLabels.push({ x: boxX, y: boxY, w: boxW, h: boxH });
+    topY = Math.max(M.top + 4, Math.min(topY, M.top + innerH - blockH - 4));
+    placedLabels.push({ x: cx - blockW / 2, y: topY, w: blockW, h: blockH });
 
-    const cx = boxX + boxW / 2;
     const annEra = p.yd < 2005.5 ? "era1" : (p.yd < 2020.5 ? "era2" : "era3");
     const g = svgEl("g", { class: "annotation", "data-x": String(Math.round(x)), "data-era": annEra });
 
-    // the soft rounded label (taller, narrower, more oval than the old pill)
-    g.append(svgEl("rect", {
-      x: boxX, y: boxY, width: boxW, height: boxH,
-      rx: Math.min(20, boxH / 2), ry: Math.min(20, boxH / 2),
-      fill: "#fffdfb", stroke: "#ecd9d9", "stroke-width": "1",
-      filter: "url(#dotShadow)",
-    }));
-    const txtEl = svgEl("text", { x: cx, y: boxY + padY + 11, "text-anchor": "middle" });
+    const txtEl = svgEl("text", {
+      x: cx, y: topY + 11, "text-anchor": "middle",
+      "paint-order": "stroke", stroke: "#ffffff", "stroke-width": "3.4",
+      "stroke-linejoin": "round", "stroke-opacity": "0.9",
+    });
     lines.forEach((ln, i) => {
       txtEl.append(svgEl("tspan", {
         x: cx, dy: i === 0 ? 0 : lineH,
-        "font-weight": ln.year ? "700" : "500",
-        "font-size": ln.year ? "13" : "11.5",
-        fill: ln.year ? "#8a2f2c" : "#463a3a",
+        "font-weight": ln.year ? "700" : "600",
+        "font-size": ln.year ? "13.5" : "11.5",
+        fill: ln.year ? "#8a2f2c" : "#3f3535",
       }, ln.t));
     });
     g.append(txtEl);
