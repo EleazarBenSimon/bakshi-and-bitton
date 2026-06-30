@@ -526,7 +526,7 @@ function curveEras() {
   ];
 }
 
-function renderCurve(rulings, extraEvents = []) {
+function renderCurve(rulings, extraEvents = [], domain = null) {
   const NS = "http://www.w3.org/2000/svg";
   const W = 1040, H = 500;
   const M = { top: 88, right: 48, bottom: 80, left: 96 };
@@ -549,7 +549,13 @@ function renderCurve(rulings, extraEvents = []) {
     const mo = parseInt(d.slice(5, 7), 10) || 1;
     return yr + (mo - 1) / 12;
   }
-  function xOf(yd) { return M.left + ((yd - YR_MIN) / (YR_MAX - YR_MIN)) * innerW; }
+  // Visible x-domain (year span). null → full range; an era domain re-fits
+  // the curve so that slice fills the plot width (a true zoom, not a viewBox
+  // crop). The cumulative y-scale stays global, so a focused era's height is
+  // still read against the full accumulation.
+  const X_LO = domain ? domain[0] : YR_MIN;
+  const X_HI = domain ? domain[1] : YR_MAX;
+  function xOf(yd) { return M.left + ((yd - X_LO) / (X_HI - X_LO)) * innerW; }
   function yOf(sev) { return M.top + innerH - (sev / SEV_AXIS_MAX) * innerH; }
 
   const points = rulings.map((r) => ({
@@ -633,19 +639,28 @@ function renderCurve(rulings, extraEvents = []) {
   softGlow.append(sgM);
   defs.append(softGlow);
 
+  // Clip the cumulative line/area to the plot, so a re-fitted (zoomed) view
+  // shows only the in-window segment — the line enters at the left edge at the
+  // height it had already accumulated to by that year.
+  const plotClip = svgEl("clipPath", { id: "plotClip" });
+  plotClip.append(svgEl("rect", { x: M.left, y: M.top - 6, width: innerW, height: innerH + 10 }));
+  defs.append(plotClip);
+
   svg.append(defs);
 
   // ── era backgrounds + headers ────────────────────────────────────
   for (let i = 0; i < eras.length; i++) {
     const era = eras[i];
-    const x1 = xOf(era.start);
-    const x2 = xOf(era.end);
+    // Skip eras entirely outside the visible window; clamp the rest to the plot.
+    if (era.end <= X_LO || era.start >= X_HI) continue;
+    const x1 = xOf(Math.max(era.start, X_LO));
+    const x2 = xOf(Math.min(era.end, X_HI));
     svg.append(svgEl("rect", {
       x: x1, y: M.top, width: x2 - x1, height: innerH,
       fill: era.fill,
     }));
     svg.append(svgEl("rect", {
-      x: x1 + 1, y: M.top - 26, width: x2 - x1 - 2, height: 4,
+      x: x1 + 1, y: M.top - 26, width: Math.max(0, x2 - x1 - 2), height: 4,
       fill: era.stripe, opacity: "0.7", rx: "2",
     }));
     svg.append(svgEl("text", {
@@ -655,23 +670,24 @@ function renderCurve(rulings, extraEvents = []) {
       "letter-spacing": "0.6",
       fill: era.stripe,
     }, era.label.toUpperCase()));
-    // Clickable era header → filter the rulings table to this era and jump
-    // to it (dispatched as a CustomEvent so the curve stays decoupled from
-    // whatever page hosts it). Integer year bounds partition all rulings.
-    const eLo = i === 0 ? 0 : Math.floor(era.start) + 1;
-    const eHi = i === eras.length - 1 ? 9999 : Math.floor(era.end);
+    // Clickable era header → "focus" this era: re-fit the curve to it AND
+    // filter the table. renderCurveSection owns that (via the co-era-focus
+    // event), so the curve stays decoupled from whatever page hosts it.
     const hit = svgEl("rect", {
       x: x1, y: M.top - 42, width: x2 - x1, height: 40,
       fill: "transparent", "pointer-events": "all",
       class: "era-hit", tabindex: "0", role: "button",
-      "aria-label": (lang === "he" ? "סנן את הטבלה לתקופה " : "Filter table to era ") + era.label,
+      "aria-label": (lang === "he" ? "התמקדות בתקופה " : "Focus era ") + era.label,
     });
-    hit.append(svgEl("title", {}, lang === "he" ? "לחצו לסינון הטבלה לתקופה זו" : "Click to filter the table to this era"));
-    const fireEra = () => document.dispatchEvent(new CustomEvent("co-era-filter", { detail: { start: eLo, end: eHi, label: era.label } }));
+    hit.append(svgEl("title", {}, lang === "he"
+      ? "לחצו להתמקדות בתקופה זו — הגדלת העקומה וסינון הטבלה"
+      : "Click to focus this era — zoom the curve and filter the table"));
+    const fireEra = () => document.dispatchEvent(new CustomEvent("co-era-focus", { detail: { idx: i } }));
     hit.addEventListener("click", fireEra);
     hit.addEventListener("keydown", (ev) => { if (ev.key === "Enter" || ev.key === " ") { ev.preventDefault(); fireEra(); } });
     svg.append(hit);
-    if (i < eras.length - 1) {
+    // Inter-era divider — only when the boundary actually falls inside the view.
+    if (i < eras.length - 1 && era.end > X_LO && era.end < X_HI) {
       svg.append(svgEl("line", {
         x1: x2, x2: x2, y1: M.top - 18, y2: M.top + innerH,
         stroke: "#d0d0d0", "stroke-width": "1", "stroke-dasharray": "3 3",
@@ -685,9 +701,13 @@ function renderCurve(rulings, extraEvents = []) {
   // chart has a single coherent y-axis (cumulative engagement) and dots
   // visibly cause the curve they sit on.
 
-  // ── decade gridlines + x-axis labels ─────────────────────────────
-  const decadeYears = [1980, 1990, 2000, 2010, 2020, 2026];
-  for (const yr of decadeYears) {
+  // ── gridlines + x-axis labels (ticks adapt to the visible window) ─
+  const tStep = (X_HI - X_LO) > 40 ? 10 : (X_HI - X_LO) > 18 ? 5 : (X_HI - X_LO) > 8 ? 2 : 1;
+  const tickYears = [];
+  for (let yr = Math.ceil(X_LO / tStep) * tStep; yr <= X_HI; yr += tStep) {
+    if (yr >= X_LO && yr <= X_HI) tickYears.push(yr);
+  }
+  for (const yr of tickYears) {
     const x = xOf(yr);
     svg.append(svgEl("line", {
       x1: x, x2: x, y1: M.top, y2: M.top + innerH,
@@ -798,7 +818,7 @@ function renderCurve(rulings, extraEvents = []) {
   const baselineY = yCum(0);
   const curveArea = curveLine + ` L ${cumXY[cumXY.length - 1].x} ${baselineY} L ${cumXY[0].x} ${baselineY} Z`;
 
-  svg.append(svgEl("path", { d: curveArea, fill: "url(#envFill)" }));
+  svg.append(svgEl("path", { d: curveArea, fill: "url(#envFill)", "clip-path": "url(#plotClip)" }));
   const cumLineEl = svgEl("path", {
     d: curveLine, fill: "none",
     stroke: "url(#curveGrad)", "stroke-width": "2.8",
@@ -806,6 +826,7 @@ function renderCurve(rulings, extraEvents = []) {
     "stroke-linecap": "round",
     "stroke-linejoin": "round",
     filter: "url(#curveSoft)",
+    "clip-path": "url(#plotClip)",
     class: "cum-line",
   });
   // Animated draw-in (CSS keyframes via --len; reduced-motion disables it).
@@ -856,6 +877,7 @@ function renderCurve(rulings, extraEvents = []) {
   const EVENT_COLOR = { struck: "#b03a3a", read_down: "#9c6529" };
   for (const e of mergedEvents) {
     if (e.kind !== "lib") continue;
+    if (e.yd < X_LO || e.yd > X_HI) continue;
     const ev = e.ev;
     const lbl = lang === "he"
       ? (ev.kind === "struck" ? "בוטל" : "פרשנות מצמצמת")
@@ -876,6 +898,7 @@ function renderCurve(rulings, extraEvents = []) {
   // *causes* the curve's climb at that point. Severity is re-encoded as
   // dot RADIUS (sev 5 strikes are biggest, sev 1 dismissals smallest).
   for (const p of points) {
+    if (p.yd < X_LO || p.yd > X_HI) continue;
     const x = xOf(p.yd), y = yCum(cumByCase[p.r.case_id_slug]);
     const color = DOT_COLOR_BY_OUTCOME[p.r.outcome] || "#666";
     const radius = 4 + p.sev;
@@ -913,12 +936,12 @@ function renderCurve(rulings, extraEvents = []) {
   }));
 
   // ── annotation callouts (boxed, with leader lines) ───────────────
-  // Each annotation is wrapped in a <g class="annotation" data-x="…">
-  // so the zoom-bar handler can hide callouts whose anchor falls
-  // outside the active viewBox (keeps zoomed eras visually clean).
+  // Only annotations whose anchor is inside the visible window are drawn,
+  // so a re-fitted (zoomed) era stays clean.
   for (const p of points) {
     const ann = annotations[p.r.case_id_slug];
     if (!ann) continue;
+    if (p.yd < X_LO || p.yd > X_HI) continue;
     const x = xOf(p.yd), y = yCum(cumByCase[p.r.case_id_slug]);
     // For dots high on the curve, push label below; for dots low, push
     // label above. Ignores the per-annotation `side` setting — those
@@ -1173,104 +1196,127 @@ function renderCurveSection(rulings, extraEvents = []) {
   wrap.append(el("h2", { class: "curve-h2" }, t.curve_title));
   wrap.append(el("p", { class: "curve-subtitle" }, t.curve_subtitle));
 
-  const svg = renderCurve(rulings, extraEvents);
+  let svg = renderCurve(rulings, extraEvents);
   const svgWrap = el("div", { class: "curve-wrap" });
   svgWrap.append(svg);
 
   // Anchored hover bubble that points at the exact dot, + a highlight ring.
-  // viewBox-aware mapping so it stays correct under the era-zoom viewBoxes.
+  // Bound per-SVG so it keeps working after the curve is re-rendered for an
+  // era focus (the <svg> element is swapped out).
   const cTip = el("div", { class: "curve-tip" });
   const cArr = el("div", { class: "curve-tip-arr" });
   const cTxt = el("span", { class: "curve-tip-main" });
   const cSub = el("span", { class: "curve-tip-sub" });
   cTip.append(cArr, cTxt, cSub);
   svgWrap.append(cTip);
-  svg.addEventListener("pointerover", (e) => {
-    const c = e.target;
-    if (!c.classList || !c.classList.contains("ev")) return;
-    const cx = +c.getAttribute("cx"), cy = +c.getAttribute("cy"), r = +c.getAttribute("r");
-    const ring = svg.querySelector(".curve-hl");
-    if (ring) { ring.setAttribute("cx", cx); ring.setAttribute("cy", cy); ring.setAttribute("r", r + 4); ring.style.opacity = "1"; }
-    const vb = svg.viewBox.baseVal, rect = svg.getBoundingClientRect();
-    const px = (cx - vb.x) / vb.width * rect.width;
-    const py = (cy - vb.y) / vb.height * rect.height;
-    cTxt.textContent = c.getAttribute("data-tip") || "";
-    const sub = c.getAttribute("data-sub") || "";
-    cSub.textContent = sub;
-    cSub.style.display = sub ? "block" : "none";
-    cTip.style.opacity = "1";
-    const bw = cTip.offsetWidth, bh = cTip.offsetHeight;
-    const below = py < bh + 30;
-    const left = Math.max(2, Math.min(px - bw / 2, rect.width - bw - 2));
-    cTip.style.left = left + "px";
-    cTip.style.top = (below ? py + r + 9 : py - r - 9 - bh) + "px";
-    cArr.className = "curve-tip-arr " + (below ? "up" : "down");
-    cArr.style.left = Math.max(8, Math.min(px - left - 7, bw - 22)) + "px";
-    cArr.style.top = (below ? -7 : bh - 1) + "px";
-  });
-  svg.addEventListener("pointerout", (e) => {
-    if (e.target.classList && e.target.classList.contains("ev")) {
-      cTip.style.opacity = "0";
-      const ring = svg.querySelector(".curve-hl");
-      if (ring) ring.style.opacity = "0";
-    }
-  });
+
+  function bindTip(target) {
+    target.addEventListener("pointerover", (e) => {
+      const c = e.target;
+      if (!c.classList || !c.classList.contains("ev")) return;
+      const cx = +c.getAttribute("cx"), cy = +c.getAttribute("cy"), r = +c.getAttribute("r");
+      const ring = target.querySelector(".curve-hl");
+      if (ring) { ring.setAttribute("cx", cx); ring.setAttribute("cy", cy); ring.setAttribute("r", r + 4); ring.style.opacity = "1"; }
+      const vb = target.viewBox.baseVal, rect = target.getBoundingClientRect();
+      const px = (cx - vb.x) / vb.width * rect.width;
+      const py = (cy - vb.y) / vb.height * rect.height;
+      cTxt.textContent = c.getAttribute("data-tip") || "";
+      const sub = c.getAttribute("data-sub") || "";
+      cSub.textContent = sub;
+      cSub.style.display = sub ? "block" : "none";
+      cTip.style.opacity = "1";
+      const bw = cTip.offsetWidth, bh = cTip.offsetHeight;
+      const below = py < bh + 30;
+      const left = Math.max(2, Math.min(px - bw / 2, rect.width - bw - 2));
+      cTip.style.left = left + "px";
+      cTip.style.top = (below ? py + r + 9 : py - r - 9 - bh) + "px";
+      cArr.className = "curve-tip-arr " + (below ? "up" : "down");
+      cArr.style.left = Math.max(8, Math.min(px - left - 7, bw - 22)) + "px";
+      cArr.style.top = (below ? -7 : bh - 1) + "px";
+    });
+    target.addEventListener("pointerout", (e) => {
+      if (e.target.classList && e.target.classList.contains("ev")) {
+        cTip.style.opacity = "0";
+        const ring = target.querySelector(".curve-hl");
+        if (ring) ring.style.opacity = "0";
+      }
+    });
+  }
+  bindTip(svg);
 
   wrap.append(svgWrap);
   // Screen-reader pointer: the chart is decorative-analytical; the same data
   // is available as a sortable table immediately below.
   wrap.append(el("p", { class: "visually-hidden" }, t.curve_sr_pointer));
 
-  // Era zoom controls — change the SVG viewBox to focus on a slice.
-  // Same chart, but text/dots grow as the viewBox shrinks → higher
-  // legibility on phones; useful on desktop too for close inspection.
-  // viewBox values match the desktop chart's geometry with margins
-  // M.left=160, M.right=96, innerW=784. Era boundaries (1976→1995→2005.5
-  // →2020.5→2026) map to SVG x ≈ 160 → 460 → 620 → 846 → 944. Each era
-  // zoom includes a small buffer for context + the right-axis labels.
-  // viewBoxes match desktop chart with margins M.left=96, M.right=48,
-  // innerW=896. Era boundaries (1976→2005.5→2020.5→2026) map to SVG x
-  // ≈ 96 → 622 → 880 → 992. Each zoom includes a small left margin
-  // for the cumulative-axis tick labels.
-  const ZOOMS = [
-    { id: "all",  label: t.zoom_all,    viewBox: "0 0 1040 500" },
-    { id: "era1", label: "1976–2005",  viewBox: "0 0 700 500" },
-    { id: "era2", label: "2006–2020",  viewBox: "540 0 360 500" },
-    { id: "era3", label: "2021–2026",  viewBox: "820 0 220 500" },
+  // ── Unified era control ──────────────────────────────────────────
+  // One accessible segmented control. Selecting an era RE-FITS the curve so
+  // that span fills the plot width (a genuine zoom — not a viewBox crop) AND
+  // filters the rulings table to that era (via the co-era-filter event the
+  // host page listens for). Clicking an era band on the curve does the same
+  // (dispatches co-era-focus, handled here). The first segment resets both.
+  const ERAS = curveEras();
+  const SEGS = [
+    { idx: -1, name: t.zoom_all,     range: null,        color: null },
+    { idx: 0,  name: ERAS[0].label,  range: "1976–2005", color: ERAS[0].stripe },
+    { idx: 1,  name: ERAS[1].label,  range: "2006–2020", color: ERAS[1].stripe },
+    { idx: 2,  name: ERAS[2].label,  range: "2021–2026", color: ERAS[2].stripe },
   ];
-  const zoomBar = el("div", { class: "curve-zoom-bar", "aria-label": t.zoom_hint });
-  zoomBar.append(el("span", { class: "curve-zoom-label" }, t.zoom_hint));
-  const buttons = [];
-  for (const z of ZOOMS) {
-    // dir="ltr" on year-range buttons so "1976–2005" doesn't reverse to
-    // "2005–1976" in the Hebrew RTL layout. The "Full view" / "תצוגה מלאה"
-    // label is intrinsically directional so dir="auto" handles it.
-    const isYearRange = z.id !== "all";
-    const btn = el("button", {
-      class: "curve-zoom-btn",
-      "data-zoom": z.id,
-      dir: isYearRange ? "ltr" : "auto",
-    }, z.label);
-    btn.addEventListener("click", () => {
-      svg.setAttribute("viewBox", z.viewBox);
-      // Show only annotations whose tagged era matches the active zoom
-      // (or all annotations when zoom is "all"). Era is set in renderCurve
-      // from each ruling's year, so the filter is robust to boundary cases
-      // where a dot sits inside a neighboring era's viewBox margin.
-      for (const g of svg.querySelectorAll(".annotation")) {
-        const annEra = g.getAttribute("data-era");
-        const inView = z.id === "all" || annEra === z.id;
-        g.style.display = inView ? "" : "none";
-      }
-      for (const b of buttons) {
-        b.classList.toggle("active", b === btn);
-      }
-    });
-    buttons.push(btn);
-    zoomBar.append(btn);
+  function domainFor(idx) {
+    if (idx < 0) return null;
+    const e = ERAS[idx];
+    const pad = (e.end - e.start) * 0.04;  // breathing room so edge dots aren't flush
+    return [e.start - pad, e.end + pad];
   }
-  buttons[0].classList.add("active");
-  wrap.append(zoomBar);
+  function tableRangeFor(idx) {
+    if (idx < 0) return null;
+    const lo = idx === 0 ? 0 : Math.floor(ERAS[idx].start) + 1;
+    const hi = idx === ERAS.length - 1 ? 9999 : Math.floor(ERAS[idx].end);
+    return { start: lo, end: hi, label: ERAS[idx].label };
+  }
+
+  const control = el("div", { class: "curve-era-control", role: "group", "aria-label": t.zoom_hint });
+  const segButtons = [];
+  let curIdx = -1;
+  for (const s of SEGS) {
+    const seg = el("button", {
+      class: "era-seg" + (s.idx < 0 ? " era-seg--all" : ""),
+      type: "button", "data-idx": String(s.idx),
+      "aria-pressed": s.idx < 0 ? "true" : "false",
+      style: s.color ? `--seg-color:${s.color}` : "",
+    },
+      s.color ? el("span", { class: "era-seg-dot", "aria-hidden": "true" }) : null,
+      el("span", { class: "era-seg-name" }, s.name),
+      s.range ? el("span", { class: "era-seg-range", dir: "ltr" }, s.range) : null
+    );
+    seg.addEventListener("click", () => selectEra(s.idx));
+    segButtons.push(seg);
+    control.append(seg);
+  }
+
+  function selectEra(idx) {
+    curIdx = idx;
+    const fresh = renderCurve(rulings, extraEvents, domainFor(idx));
+    svg.replaceWith(fresh);
+    svg = fresh;
+    bindTip(svg);
+    for (const b of segButtons) {
+      const on = b.getAttribute("data-idx") === String(idx);
+      b.classList.toggle("on", on);
+      b.setAttribute("aria-pressed", on ? "true" : "false");
+    }
+    document.dispatchEvent(new CustomEvent("co-era-filter", { detail: tableRangeFor(idx) }));
+  }
+
+  // Era-band clicks on the curve (and the table's "clear" affordance) route
+  // here, so every entry point drives the one unified behavior. Clicking the
+  // already-focused era toggles back to the full view.
+  document.addEventListener("co-era-focus", (e) => {
+    const idx = (e && e.detail && typeof e.detail.idx === "number") ? e.detail.idx : -1;
+    selectEra(idx === curIdx && idx >= 0 ? -1 : idx);
+  });
+  segButtons[0].classList.add("on");
+  wrap.append(control);
 
   wrap.append(el("p", { class: "curve-caption" }, t.curve_caption));
   return wrap;

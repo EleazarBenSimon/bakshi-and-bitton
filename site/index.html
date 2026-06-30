@@ -20,13 +20,13 @@
 <meta name="twitter:title" content="בקשי&amp;ביטון">
 <meta name="twitter:description" content="פסיקות בית המשפט העליון בעניין החלטות ממשלה ומינויים">
 <meta name="twitter:image" content="https://eleazarbensimon.github.io/bakshi-and-bitton/assets/og-default.png">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Dataset", "name": "Bakshi&Bitton · בקשי&ביטון", "description": "מאגר תיעודי מובנה של פסיקות בית המשפט העליון בישראל בעניין החלטות ממשלה ומינויים — מקושר למקור הרשמי. A structured documentary database of Israeli Supreme Court rulings on elected-branch decisions and appointments.", "url": "https://eleazarbensimon.github.io/bakshi-and-bitton/", "inLanguage": ["he", "en"], "license": "https://opensource.org/licenses/MIT", "creator": {"@type": "Person", "name": "Eleazar Ben Simon"}, "distribution": [{"@type": "DataDownload", "encodingFormat": "application/json", "contentUrl": "https://eleazarbensimon.github.io/bakshi-and-bitton/_data/rulings.json"}, {"@type": "DataDownload", "encodingFormat": "text/csv", "contentUrl": "https://eleazarbensimon.github.io/bakshi-and-bitton/_data/rulings.csv"}]}</script><link rel="stylesheet" href="assets/style.css?v=277a80dc">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Dataset", "name": "Bakshi&Bitton · בקשי&ביטון", "description": "מאגר תיעודי מובנה של פסיקות בית המשפט העליון בישראל בעניין החלטות ממשלה ומינויים — מקושר למקור הרשמי. A structured documentary database of Israeli Supreme Court rulings on elected-branch decisions and appointments.", "url": "https://eleazarbensimon.github.io/bakshi-and-bitton/", "inLanguage": ["he", "en"], "license": "https://opensource.org/licenses/MIT", "creator": {"@type": "Person", "name": "Eleazar Ben Simon"}, "distribution": [{"@type": "DataDownload", "encodingFormat": "application/json", "contentUrl": "https://eleazarbensimon.github.io/bakshi-and-bitton/_data/rulings.json"}, {"@type": "DataDownload", "encodingFormat": "text/csv", "contentUrl": "https://eleazarbensimon.github.io/bakshi-and-bitton/_data/rulings.csv"}]}</script><link rel="stylesheet" href="assets/style.css?v=5c4a338a">
 <link rel="alternate" type="application/rss+xml" title="Bakshi&Bitton — new rulings" href="feed.xml">
 </head>
 <body>
 <img src="https://visitor-badge.laobi.icu/badge?page_id=eleazarbensimon.bakshi-home" alt="" aria-hidden="true" width="1" height="1" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);opacity:0;pointer-events:none" />
 <div id="root"></div>
-<script src="assets/app.js?v=f11f9903"></script>
+<script src="assets/app.js?v=4fb0fd17"></script>
 <script>
 (async function () {
   const { t, el, fetchJSON, ruling_name, renderHeader, renderFooter, renderCurveSection, lang,
@@ -261,21 +261,23 @@
     }
   }
 
+  const resetEra = () => document.dispatchEvent(new CustomEvent("co-era-focus", { detail: { idx: -1 } }));
+
   function clearAll() {
     selOutcome.value = ""; selDoctrine.value = ""; selYear.value = "";
     selPetitioner.value = ""; selCompliance.value = ""; searchInput.value = "";
-    setEra(null);
+    resetEra();  // resets the curve zoom + clears the era filter via the unified control
     render(); searchInput.focus();
   }
   clearBtn.addEventListener("click", clearAll);
-  eraChip.addEventListener("click", () => { setEra(null); render(); });
+  eraChip.addEventListener("click", resetEra);
 
-  // Curve → table drill-down: clicking an era band on the power-curve filters
-  // the table to that era's years and scrolls it into view.
+  // Unified era control (in renderCurveSection) emits co-era-filter whenever an
+  // era is focused/cleared — here we just sync the table. The curve re-fits
+  // itself, so no scroll-jump: the focus is felt in place.
   document.addEventListener("co-era-filter", (e) => {
     setEra(e.detail);
     render();
-    fbar.scrollIntoView({ behavior: "smooth", block: "start" });
   });
 
   let searchTimer;

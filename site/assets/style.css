@@ -490,6 +490,17 @@ footer {
 .era-hit:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
 .fbar-era-chip { display: inline-flex; align-items: center; gap: 6px; border: 1px solid var(--accent); background: var(--accent-soft); color: var(--accent-deep); border-radius: 999px; padding: 4px 12px; font-size: 13px; font-family: inherit; cursor: pointer; white-space: nowrap; }
 .fbar-era-chip:hover { background: #dde6f4; }
+/* Unified era control (segmented; replaces the old viewBox zoom bar) */
+.curve-era-control { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin: 16px 0 4px; }
+.era-seg { display: inline-flex; align-items: center; gap: 8px; border: 1px solid var(--border); background: var(--surface); color: var(--text); border-radius: 999px; padding: 7px 14px; cursor: pointer; font-family: inherit; font-size: 13px; line-height: 1.15; transition: background 0.15s, border-color 0.15s, box-shadow 0.15s; }
+.era-seg:hover { background: #f3f5f7; border-color: #c9ced4; }
+.era-seg:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.era-seg-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--seg-color, #999); flex: none; }
+.era-seg-name { font-weight: 600; }
+.era-seg-range { font-size: 11.5px; color: var(--text-muted); font-variant-numeric: tabular-nums; }
+.era-seg.on { border-color: var(--seg-color, var(--accent)); box-shadow: inset 0 0 0 1.5px var(--seg-color, var(--accent)); }
+.era-seg.on .era-seg-range { color: var(--text); }
+.era-seg--all.on { background: var(--accent-soft); }
 @media (prefers-reduced-motion: reduce) { .cum-line { animation: none; } }
 
 /* Era zoom controls */
