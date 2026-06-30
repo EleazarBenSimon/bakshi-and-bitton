@@ -1262,6 +1262,10 @@ function renderCurveSection(rulings, extraEvents = []) {
     { idx: 1,  name: ERAS[1].label,  range: "2006–2020", color: ERAS[1].stripe },
     { idx: 2,  name: ERAS[2].label,  range: "2021–2026", color: ERAS[2].stripe },
   ];
+  const FULL = [1975, 2027];  // full data range (matches renderCurve YR_MIN/MAX)
+  // Plot geometry inside the SVG viewBox (must match renderCurve's margins).
+  const PLOT = { vbW: 1040, vbH: 500, left: 96, innerW: 896, top: 88, innerH: 332 };
+
   function domainFor(idx) {
     if (idx < 0) return null;
     const e = ERAS[idx];
@@ -1274,10 +1278,24 @@ function renderCurveSection(rulings, extraEvents = []) {
     const hi = idx === ERAS.length - 1 ? 9999 : Math.floor(ERAS[idx].end);
     return { start: lo, end: hi, label: ERAS[idx].label };
   }
+  function highlightFor(d) {
+    if (!d) return -1;  // full → "All"
+    for (let i = 0; i < ERAS.length; i++) {
+      const e = domainFor(i);
+      if (e && Math.abs(e[0] - d[0]) < 0.02 && Math.abs(e[1] - d[1]) < 0.02) return i;
+    }
+    return null;  // a custom window (from drag-select / zoom buttons)
+  }
+  function tableRangeForDomain(d, idx) {
+    if (!d) return null;
+    if (idx != null && idx >= 0) return tableRangeFor(idx);
+    const lo = Math.floor(d[0]), hi = Math.ceil(d[1]);
+    return { start: lo, end: hi, label: lo + "–" + hi };
+  }
 
   const control = el("div", { class: "curve-era-control", role: "group", "aria-label": t.zoom_hint });
   const segButtons = [];
-  let curIdx = -1;
+  let curDomain = null, curHl = -1;
   for (const s of SEGS) {
     const seg = el("button", {
       class: "era-seg" + (s.idx < 0 ? " era-seg--all" : ""),
@@ -1289,34 +1307,111 @@ function renderCurveSection(rulings, extraEvents = []) {
       el("span", { class: "era-seg-name" }, s.name),
       s.range ? el("span", { class: "era-seg-range", dir: "ltr" }, s.range) : null
     );
-    seg.addEventListener("click", () => selectEra(s.idx));
+    seg.addEventListener("click", () => applyDomain(domainFor(s.idx)));
     segButtons.push(seg);
     control.append(seg);
   }
 
-  function selectEra(idx) {
-    curIdx = idx;
-    const fresh = renderCurve(rulings, extraEvents, domainFor(idx));
-    svg.replaceWith(fresh);
-    svg = fresh;
-    bindTip(svg);
+  // The single re-fit path. Every zoom entry point — segments, era-band
+  // clicks, drag-select, the +/- buttons — calls applyDomain. It re-renders
+  // the curve to that window, syncs the active segment, and filters the table
+  // to match (era label when the window is an era, else a year-range label).
+  function applyDomain(domain) {
+    let d = domain;
+    if (d) {
+      const lo = Math.max(FULL[0], Math.min(d[0], d[1]));
+      let hi = Math.min(FULL[1], Math.max(d[0], d[1]));
+      if (hi - lo < 1) hi = Math.min(FULL[1], lo + 1);
+      d = (lo <= FULL[0] + 0.5 && hi >= FULL[1] - 0.5) ? null : [lo, hi];
+    }
+    curDomain = d;
+    curHl = highlightFor(d);
+    const fresh = renderCurve(rulings, extraEvents, d);
+    svg.replaceWith(fresh); svg = fresh; bindTip(svg);
     for (const b of segButtons) {
-      const on = b.getAttribute("data-idx") === String(idx);
+      const on = curHl != null && b.getAttribute("data-idx") === String(curHl);
       b.classList.toggle("on", on);
       b.setAttribute("aria-pressed", on ? "true" : "false");
     }
-    document.dispatchEvent(new CustomEvent("co-era-filter", { detail: tableRangeFor(idx) }));
+    document.dispatchEvent(new CustomEvent("co-era-filter", { detail: tableRangeForDomain(d, curHl) }));
+  }
+  function zoomBy(factor) {
+    const base = curDomain || FULL;
+    const center = (base[0] + base[1]) / 2;
+    const half = Math.max((base[1] - base[0]) / 2 * factor, 1);  // min span ~2 yr
+    applyDomain([center - half, center + half]);
   }
 
   // Era-band clicks on the curve (and the table's "clear" affordance) route
-  // here, so every entry point drives the one unified behavior. Clicking the
-  // already-focused era toggles back to the full view.
+  // here. Clicking the already-focused era toggles back to the full view.
   document.addEventListener("co-era-focus", (e) => {
     const idx = (e && e.detail && typeof e.detail.idx === "number") ? e.detail.idx : -1;
-    selectEra(idx === curIdx && idx >= 0 ? -1 : idx);
+    applyDomain(domainFor(idx === curHl && idx >= 0 ? -1 : idx));
   });
   segButtons[0].classList.add("on");
   wrap.append(control);
+
+  // ── +/- zoom buttons (overlay in the corner) ─────────────────────
+  const zoomCtl = el("div", { class: "curve-zoomctl" });
+  const zin = el("button", { class: "curve-zoombtn", type: "button", "aria-label": lang === "he" ? "הגדלת תצוגה" : "Zoom in" }, "+");
+  const zout = el("button", { class: "curve-zoombtn", type: "button", "aria-label": lang === "he" ? "הקטנת תצוגה" : "Zoom out" }, "−");
+  zin.addEventListener("click", () => zoomBy(0.6));
+  zout.addEventListener("click", () => zoomBy(1 / 0.6));
+  zoomCtl.append(zin, zout);
+  svgWrap.append(zoomCtl);
+
+  // ── Drag-to-select a time window (mouse) → zoom to it ────────────
+  const brush = el("div", { class: "curve-brush" });
+  svgWrap.append(brush);
+  let bx0 = null, justBrushed = false;
+  function plotPx() {
+    const r = svg.getBoundingClientRect();
+    return {
+      left: r.left + PLOT.left / PLOT.vbW * r.width,
+      right: r.left + (PLOT.left + PLOT.innerW) / PLOT.vbW * r.width,
+      top: r.top + PLOT.top / PLOT.vbH * r.height,
+      bottom: r.top + (PLOT.top + PLOT.innerH) / PLOT.vbH * r.height,
+    };
+  }
+  function xToYear(clientX) {
+    const b = plotPx();
+    const frac = Math.max(0, Math.min(1, (clientX - b.left) / (b.right - b.left)));
+    const base = curDomain || FULL;
+    return base[0] + frac * (base[1] - base[0]);
+  }
+  function positionBrush(x0, x1) {
+    const b = plotPx(), wr = svgWrap.getBoundingClientRect();
+    const a = Math.max(b.left, Math.min(x0, x1));
+    const c = Math.min(b.right, Math.max(x0, x1));
+    brush.style.left = (a - wr.left) + "px";
+    brush.style.width = Math.max(0, c - a) + "px";
+    brush.style.top = (b.top - wr.top) + "px";
+    brush.style.height = (b.bottom - b.top) + "px";
+  }
+  svgWrap.addEventListener("pointerdown", (e) => {
+    if (e.button !== 0 || (e.pointerType && e.pointerType !== "mouse")) return;
+    if (e.target.closest && (e.target.closest("a") || e.target.closest(".era-hit") || e.target.closest("button"))) return;
+    bx0 = e.clientX;
+    brush.style.display = "block";
+    positionBrush(bx0, bx0);
+    try { svgWrap.setPointerCapture(e.pointerId); } catch (err) {}
+  });
+  svgWrap.addEventListener("pointermove", (e) => { if (bx0 != null) positionBrush(bx0, e.clientX); });
+  svgWrap.addEventListener("pointerup", (e) => {
+    if (bx0 == null) return;
+    const x0 = bx0; bx0 = null;
+    brush.style.display = "none";
+    if (Math.abs(e.clientX - x0) < 8) return;            // a click, not a drag
+    const y0 = xToYear(x0), y1 = xToYear(e.clientX);
+    if (Math.abs(y1 - y0) < 0.75) return;                // window too small
+    justBrushed = true;
+    applyDomain([y0, y1]);
+  });
+  // Swallow the click that follows a real drag so it doesn't fall through to a dot.
+  svgWrap.addEventListener("click", (e) => { if (justBrushed) { justBrushed = false; e.stopPropagation(); e.preventDefault(); } }, true);
+
+  wrap.append(el("p", { class: "curve-zoom-hint" },
+    lang === "he" ? "גררו עם העכבר על הגרף לבחירת טווח · לחצני +/− לזום" : "Drag across the chart to select a range · +/− to zoom"));
 
   wrap.append(el("p", { class: "curve-caption" }, t.curve_caption));
   return wrap;
