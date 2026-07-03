@@ -261,6 +261,171 @@ def build_justices(out_dir: Path, rulings: list) -> list:
     return justices_list
 
 
+_QV_OUTCOME_LABEL = {
+    "he": {
+        "read_down": "רוקן בפרשנות",
+        "struck_down": "בוטל",
+        "partially_struck": "בוטל חלקית",
+        "warning_of_voidness": "התראת בטלות",
+        "dismissed": "נדחה (אך עם הלכה)",
+    },
+    "en": {
+        "read_down": "Read down / gutted",
+        "struck_down": "Struck down",
+        "partially_struck": "Partially struck",
+        "warning_of_voidness": "Warning of voidness",
+        "dismissed": "Dismissed (w/ doctrine)",
+    },
+}
+_QV_HEADERS = {
+    "he": ("מספר תיק", "שנה", "חוק / רשות שנפגעו", "הכרעה", "סוג התוצאה"),
+    "en": ("Case / Citation", "Year", "Law / Authority Affected", "Holding", "Outcome Type"),
+}
+
+# The "Holding" column is the project's own condensed paraphrase of each
+# ruling's substance (see blurb_he/blurb_en in quiet-veto-cases.json) — NOT
+# a quotation of the court's own language and NOT an official translation.
+# Per METHODOLOGY.md §10, the project's defamation-law defense rests on facts
+# being sourced to the ruling itself, not the project's characterization; a
+# terse table cell reads as more authoritative than the same text embedded in
+# the cited, moderator-reviewed prose below, so this caption travels with the
+# table (generated, not hand-added, so it can't be dropped or go stale).
+_QV_CAPTION = {
+    "he": (
+        "**על מקורות והכרעה:** בכל שורה נגישה, טור 'הכרעה' הוא ניסוח תמציתי משל "
+        "הפרויקט של מהות הפסיקה — לא ציטוט מלשון פסק הדין ולא תרגום רשמי — "
+        "מעוגן במסמך הרשמי המקושר (↗) ליד מספר התיק. שורה מאופרת (⬚ המסמך "
+        "הרשמי חסר) מציינת שטרם אותר עבורה מקור רשמי נגיש בשפה זו; לחצו 'תרם "
+        "מסמך' אם בידיכם אחד."
+    ),
+    "en": (
+        "**On sources & holdings:** in each accessible row, the \"Holding\" is "
+        "the project's own condensed summary of the ruling's substance — not a "
+        "quotation of the court's language and not an official translation — "
+        "anchored to the official document linked (↗) beside the case number. A "
+        "greyed-out row (⬚ Official document missing) means no accessible "
+        "official source has been located for it in this language yet; click "
+        "“Contribute the document” if you have one."
+    ),
+}
+
+# Sentence-boundary detector for _qv_first_sentence: a '.'/'!'/'?' followed by
+# whitespace (or end of string) ends a sentence UNLESS it's immediately after
+# one of these abbreviations/citation markers (e.g. "sec.", "No.", "etc."),
+# in which case it's not a real sentence break and we keep scanning.
+_QV_ABBREV_TAIL = re.compile(
+    r"\b(?:No|Nos|Sec|Secs|Art|Arts|Rep|Ltd|Inc|Co|St|vs|etc|e\.g|i\.e|"
+    r"Mr|Mrs|Dr|Prof|Ord|Amdt|PD|par|para|pt|vol|ed|al)\.$",
+    re.IGNORECASE,
+)
+
+
+def _qv_first_sentence(text: str) -> str:
+    """Mechanically extract the first real sentence of a free-text field
+    (blurb_he/blurb_en), for a one-line, scannable table cell. Purely
+    derived — never paraphrases or rewrites the source text. Skips false
+    sentence-boundaries caused by abbreviations/citation markers ('sec.',
+    'No.', 'etc.') so those don't truncate the holding mid-thought; falls
+    back to the full field if no clean boundary is found. Verified safe on
+    Hebrew text too (no equivalent abbreviation landmines found in blurb_he
+    across all 48 cases)."""
+    text = (text or "").strip()
+    if not text:
+        return ""
+    for m in re.finditer(r"[.!?](\s+|$)", text):
+        candidate = text[: m.start() + 1]
+        if _QV_ABBREV_TAIL.search(candidate):
+            continue
+        return candidate.strip()
+    return text
+
+
+def _qv_outcome_type(case: dict) -> str:
+    """Classify a quiet-veto-cases.json entry into one of 5 outcome buckets,
+    derived ONLY from its `action` string + `interpretive_evisceration` flag
+    (never from the hand-written prose). Verified to reproduce the exact
+    25/12/8/2/1 split already stated in the prose intro and its per-case
+    italic tags, so the table stays consistent with the narrative without
+    scraping it."""
+    a = (case.get("action") or "").lower()
+    if case.get("interpretive_evisceration") is True:
+        return "read_down"
+    if "dismiss" in a:
+        return "dismissed"
+    if "warning_of_voidness" in a or "warning of voidness" in a:
+        return "warning_of_voidness"
+    if "partially_struck" in a:
+        return "partially_struck"
+    return "struck_down"
+
+
+def _quiet_veto_table_md(lang: str) -> str:
+    """Generate the quiet-veto quick-reference table as a raw HTML block,
+    straight from data/library/quiet-veto-cases.json at build time.
+
+    Source-gated (per language): each case's `official_sources[lang]` decides
+    whether the Holding is shown. If an official/authoritative source IS on
+    file, the row is normal and the Holding is anchored to that document
+    (linked '↗' beside the docket). If NOT, the row renders 'off-status'
+    (greyed identifying details, so a reader still knows WHICH document is
+    wanted) with the Holding cell replaced by a '⬚ missing' marker + a
+    'Contribute the document' button (wired to a client-side modal in app.js).
+    Emitted as raw HTML (not markdown) so rows can carry classes/buttons;
+    python-markdown passes a top-level <table> block through untouched, and
+    the caption after the blank line is processed as normal markdown.
+
+    KNOWN FOLLOW-UP: the 'Law / Authority Affected' column reads `statute`,
+    which has no per-language variant yet (pre-existing gap; needs a
+    `statute_he` for all 48 cases — content work, not a code change)."""
+    import html as _html
+    if not LIBRARY_FILE.exists():
+        return ""
+    raw = json.loads(LIBRARY_FILE.read_text(encoding="utf-8"))
+    cases = raw if isinstance(raw, list) else raw.get("cases", [])
+
+    def e(s):
+        return _html.escape(str(s or "").replace("\n", " ").strip())
+
+    blurb_field = "blurb_he" if lang == "he" else "blurb_en"
+    h = _QV_HEADERS[lang]
+    missing_label = "המסמך הרשמי חסר" if lang == "he" else "Official document missing"
+    contribute_label = "תרם מסמך" if lang == "he" else "Contribute the document"
+    src_title = "מקור רשמי" if lang == "he" else "official source"
+
+    parts = ['<table class="qv-table"><thead><tr>']
+    parts += [f"<th>{e(col)}</th>" for col in h]
+    parts.append("</tr></thead><tbody>")
+    for c in cases:
+        ot = _qv_outcome_type(c)
+        src = (c.get("official_sources") or {}).get(lang)
+        has = bool(src and src.get("url"))
+        docket = e(c.get("docket"))
+        if has:
+            docket_cell = (f'{docket} <a class="qv-src" href="{e(src["url"])}" '
+                           f'target="_blank" rel="noopener" title="{src_title}">↗</a>')
+            holding_cell = e(_qv_first_sentence(c.get(blurb_field)))
+        else:
+            docket_cell = docket
+            holding_cell = (
+                f'<span class="qv-missing-label">⬚ {e(missing_label)}</span> '
+                f'<button type="button" class="qv-contribute" '
+                f'data-docket="{e(c.get("docket_core") or c.get("docket"))}" '
+                f'data-name="{e(c.get("name"))}" data-lang="{lang}">{e(contribute_label)}</button>'
+            )
+        row_cls = "" if has else ' class="qv-row-off"'
+        parts.append(
+            f"<tr{row_cls}>"
+            f'<td class="qv-c-docket">{docket_cell}</td>'
+            f"<td>{e(c.get('year'))}</td>"
+            f'<td class="qv-c-statute">{e(c.get("statute"))}</td>'
+            f'<td class="qv-c-holding">{holding_cell}</td>'
+            f"<td>{e(_QV_OUTCOME_LABEL[lang][ot])}</td>"
+            f"</tr>"
+        )
+    parts.append("</tbody></table>")
+    return "".join(parts) + "\n\n" + _QV_CAPTION[lang] + "\n"
+
+
 def build_content(out_dir: Path) -> dict:
     """
     Build the informative content layer: convert each content/*/foo.md to HTML
@@ -319,6 +484,15 @@ def build_content(out_dir: Path) -> dict:
 
             body_he_raw = _load_overlay("he")
             body_en_raw = _load_overlay("en")
+
+            # Piece-specific build-time table injection: the source .md files
+            # carry only a marker comment (see METHODOLOGY-adjacent note in
+            # quiet-veto.md); the actual rows are generated here from the
+            # library JSON so they can never hand-drift from it.
+            if f.stem == "quiet-veto":
+                qv_marker = "<!-- TABLE:quiet-veto-cases -->"
+                body_he_raw = body_he_raw.replace(qv_marker, _quiet_veto_table_md("he"))
+                body_en_raw = body_en_raw.replace(qv_marker, _quiet_veto_table_md("en"))
 
             title_meta = meta.get("title", "").strip()
             title_he   = meta.get("title_he", title_meta).strip()
@@ -893,6 +1067,72 @@ def render_ruling_page(r: dict) -> str:
     return head + '\n<body>\n' + body + '\n</body>\n</html>\n'
 
 
+def _toc_slug(text: str) -> str:
+    """Mirror the SPA slugify (app.js): lowercase, keep Hebrew, strip
+    punctuation, spaces->hyphens, cap length — so static-page anchors are
+    stable and internally consistent with their TOC links."""
+    s = (text or "").lower().strip()
+    s = re.sub(r"[^\w֐-׿\s-]", "", s)
+    s = re.sub(r"\s+", "-", s)
+    return s[:80]
+
+
+def _content_toc(body_html: str, lang: str):
+    """Build an 'On this page' content-map for a static article, matching the
+    SPA's `.toc-sidebar` markup so the static and interactive views agree.
+    Injects stable ids onto h2/h3 in the body; returns (body_with_ids,
+    toc_html). Returns the body unchanged + '' if there are < 2 headings."""
+    seen = set()
+    entries = []
+
+    def repl(m):
+        level, attrs, inner = m.group(1), m.group(2), m.group(3)
+        text = re.sub(r"<[^>]+>", "", inner).strip()
+        if not text:
+            return m.group(0)
+        idm = re.search(r'id="([^"]+)"', attrs)
+        if idm:
+            hid, out = idm.group(1), m.group(0)
+        else:
+            base = "h-" + (_toc_slug(text) or f"section-{len(entries)}")
+            hid, n = base, 1
+            while hid in seen:
+                n += 1
+                hid = f"{base}-{n}"
+            out = f'<{level}{attrs} id="{hid}">{inner}</{level}>'
+        seen.add(hid)
+        entries.append((level, hid, text))
+        return out
+
+    new_body = re.sub(r"<(h2|h3)([^>]*)>(.*?)</\1>", repl, body_html, flags=re.S)
+    if len(entries) < 2:
+        return body_html, ""
+    title = "תוכן העמוד" if lang == "he" else "On this page"
+    items = "".join(
+        f'<li class="toc-item toc-item--{lvl}"><a class="toc-link" href="#{hid}">{txt}</a></li>'
+        for lvl, hid, txt in entries
+    )
+    toc = (f'<aside class="toc-sidebar" aria-label="{title}">'
+           f'<div class="toc-title">{title}</div>'
+           f'<ol class="toc-list">{items}</ol></aside>')
+    return new_body, toc
+
+
+# Self-contained content-map behaviour (mobile toggle + scroll-spy) for the
+# static reading pages — mirrors the SPA's TOC without needing app.js.
+_TOC_SCRIPT = (
+    '<script>(function(){'
+    'var b=document.querySelector(".toc-mobile-toggle"),s=document.querySelector(".toc-sidebar");'
+    'if(b&&s){var o=false;b.addEventListener("click",function(){o=!o;s.classList.toggle("toc-sidebar--open",o);b.classList.toggle("active",o);});'
+    's.addEventListener("click",function(e){if(e.target.closest(".toc-link")&&o){o=false;s.classList.remove("toc-sidebar--open");b.classList.remove("active");}});}'
+    'var ls=[].slice.call(document.querySelectorAll(".toc-link"));'
+    'if(ls.length&&"IntersectionObserver"in window){var mp={};ls.forEach(function(l){var h=document.getElementById(l.getAttribute("href").slice(1));if(h)mp[h.id]=l;});'
+    'var io=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){ls.forEach(function(l){l.classList.remove("active");});if(mp[en.target.id])mp[en.target.id].classList.add("active");}});},{rootMargin:"0px 0px -75% 0px"});'
+    'Object.keys(mp).forEach(function(id){io.observe(document.getElementById(id));});}'
+    '})();</script>'
+)
+
+
 def render_content_static_page(piece: dict, category: str) -> str:
     slug = piece.get("slug", "")
     title_he = piece.get("title_he") or piece.get("title") or slug
@@ -918,22 +1158,38 @@ def render_content_static_page(piece: dict, category: str) -> str:
                       og_type="article", jsonld=jsonld)
     qa = (f'<aside class="quick-answer"><div class="quick-answer-label">תשובה מהירה</div>'
           f'<p class="quick-answer-body" dir="auto">{_esc(summary_he)}</p></aside>') if summary_he else ""
-    body = (
-        f'<div id="root">{_static_header("reading")}<main>'
-        f'<p class="breadcrumb"><a href="reading.html">קריאה</a> / {_esc(badge)}</p>'
+    # Content-map: inject heading ids + build the same sidebar the SPA shows,
+    # so the static SEO page and the interactive view match.
+    body_html, toc_html = _content_toc(body_html, "he")
+    toc_btn = ('<button type="button" class="toc-mobile-toggle">תוכן העמוד ▾</button>'
+               if toc_html else "")
+    article = (
         f'<article class="content-article" dir="auto">'
         f'<header class="article-header">'
         f'<span class="article-badge article-badge--{_esc(category)}">{_esc(badge)}</span>'
         f'<h1 class="article-title" dir="auto">{_esc(title_he)}</h1>{qa}</header>'
+        f'{toc_btn}'
         f'<div class="article-body">{body_html}</div>'
         f'<p style="margin-top:24px;font-size:14px"><a href="{_esc(spa_url)}">'
         f'גרסה אינטראקטיבית מלאה / English →</a></p>'
         f'{_share_bar(f"{SITE_BASE_URL}/reading-{slug}.html", title_he)}'
-        f'</article></main>{_STATIC_FOOTER}</div>'
+        f'</article>'
+    )
+    inner = f'<div class="content-layout">{article}{toc_html}</div>' if toc_html else article
+    body = (
+        f'<div id="root">{_static_header("reading")}<main>'
+        f'<p class="breadcrumb"><a href="reading.html">קריאה</a> / {_esc(badge)}</p>'
+        f'{inner}</main>{_STATIC_FOOTER}</div>'
     )
     body = body.replace('class="lang-toggle"', f'class="lang-toggle" data-spa="{_esc(spa_url)}"')
     body = _satirize_mqg(body)
-    return head + '\n<body>\n' + body + '\n</body>\n</html>\n'
+    # Load the shared script so client-side enhancements work on these
+    # otherwise-static pages (the Quiet-Veto "contribute" modal); plus a
+    # small self-contained script for the content-map (mobile toggle +
+    # scroll-spy). Neither re-renders the already-baked content.
+    toc_script = _TOC_SCRIPT if toc_html else ""
+    return (head + '\n<body>\n' + body
+            + '\n<script src="assets/app.js"></script>\n' + toc_script + '\n</body>\n</html>\n')
 
 
 def build_static_pages(site_dir: Path, rulings: list, content: dict) -> int:
@@ -1109,6 +1365,14 @@ def build_corpus_stats(out_dir: Path, rulings: list) -> dict:
     l_neutralized = [x for x in lib if "dismiss" not in act(x)]
     l_struck = [x for x in lib if "struck" in act(x)]
     l_hollowed = [x for x in l_neutralized if "struck" not in act(x)]
+    # Precise "gutted via interpretation, never formally repealed" count — the
+    # project's signature soundbite. Distinct from l_hollowed above (which is
+    # the looser "not dismissed and no 'struck' in the action string" bucket,
+    # e.g. also catches warning_of_voidness cases that touched nothing yet):
+    # this reads the case's own interpretive_evisceration flag directly, the
+    # same definition already used in the prose intro's stated count and
+    # verified in the quiet-veto table's outcome classifier.
+    l_interpretive_gutted = [x for x in lib if x.get("interpretive_evisceration") is True]
     l_dockets = {core(x.get("docket") or x.get("case_id") or x.get("case"))
                  for x in lib} - {None}
     years += [year_of(x.get("date"), x.get("year")) for x in lib]
@@ -1121,6 +1385,7 @@ def build_corpus_stats(out_dir: Path, rulings: list) -> dict:
         "library_total": len(lib),
         "library_struck": len(l_struck),
         "library_hollowed": len(l_hollowed),
+        "library_interpretive_gutted": len(l_interpretive_gutted),
         "library_neutralized": len(l_neutralized),
         "library_dismissed": len(l_dismissed),
         "total_cases": len(rulings) + len(lib) - len(overlap),

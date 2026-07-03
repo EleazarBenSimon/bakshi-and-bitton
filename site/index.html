@@ -20,13 +20,13 @@
 <meta name="twitter:title" content="בקשי&amp;ביטון">
 <meta name="twitter:description" content="פסיקות בית המשפט העליון בעניין החלטות ממשלה ומינויים">
 <meta name="twitter:image" content="https://eleazarbensimon.github.io/bakshi-and-bitton/assets/og-default.png">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Dataset", "name": "Bakshi&Bitton · בקשי&ביטון", "description": "מאגר תיעודי מובנה של פסיקות בית המשפט העליון בישראל בעניין החלטות ממשלה ומינויים — מקושר למקור הרשמי. A structured documentary database of Israeli Supreme Court rulings on elected-branch decisions and appointments.", "url": "https://eleazarbensimon.github.io/bakshi-and-bitton/", "inLanguage": ["he", "en"], "license": "https://opensource.org/licenses/MIT", "creator": {"@type": "Person", "name": "Eleazar Ben Simon"}, "distribution": [{"@type": "DataDownload", "encodingFormat": "application/json", "contentUrl": "https://eleazarbensimon.github.io/bakshi-and-bitton/_data/rulings.json"}, {"@type": "DataDownload", "encodingFormat": "text/csv", "contentUrl": "https://eleazarbensimon.github.io/bakshi-and-bitton/_data/rulings.csv"}]}</script><link rel="stylesheet" href="assets/style.css?v=f54b6cdb">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Dataset", "name": "Bakshi&Bitton · בקשי&ביטון", "description": "מאגר תיעודי מובנה של פסיקות בית המשפט העליון בישראל בעניין החלטות ממשלה ומינויים — מקושר למקור הרשמי. A structured documentary database of Israeli Supreme Court rulings on elected-branch decisions and appointments.", "url": "https://eleazarbensimon.github.io/bakshi-and-bitton/", "inLanguage": ["he", "en"], "license": "https://opensource.org/licenses/MIT", "creator": {"@type": "Person", "name": "Eleazar Ben Simon"}, "distribution": [{"@type": "DataDownload", "encodingFormat": "application/json", "contentUrl": "https://eleazarbensimon.github.io/bakshi-and-bitton/_data/rulings.json"}, {"@type": "DataDownload", "encodingFormat": "text/csv", "contentUrl": "https://eleazarbensimon.github.io/bakshi-and-bitton/_data/rulings.csv"}]}</script><link rel="stylesheet" href="assets/style.css?v=53b716f4">
 <link rel="alternate" type="application/rss+xml" title="Bakshi&Bitton — new rulings" href="feed.xml">
 </head>
 <body>
 <img src="https://visitor-badge.laobi.icu/badge?page_id=eleazarbensimon.bakshi-home" alt="" aria-hidden="true" width="1" height="1" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);opacity:0;pointer-events:none" />
 <div id="root"></div>
-<script src="assets/app.js?v=548e1f71"></script>
+<script src="assets/app.js?v=31301d8f"></script>
 <script>
 (async function () {
   const { t, el, fetchJSON, ruling_name, renderHeader, renderFooter, renderCurveSection, lang,
@@ -61,6 +61,23 @@
   // Secondary event dots for the curve (Quiet-Veto / reading-down library).
   let curveEvents = [];
   try { curveEvents = await fetchJSON("_data/curve_events.json"); } catch (e) { curveEvents = []; }
+
+  // ── Headline stat — the project's signature soundbite, meant to be read
+  // in the first few seconds, before the curve. Numbers come straight from
+  // corpus_stats.json (itself derived at build time from the quiet-veto
+  // library JSON), never hardcoded, so this can't drift as the library grows.
+  if (corpus && corpus.library_total != null && corpus.library_interpretive_gutted != null) {
+    const headline = el("div", { class: "home-headline" });
+    const p = el("p", { class: "home-headline-text" },
+      el("strong", { class: "home-headline-num" }, String(corpus.library_total)),
+      t.home_headline_mid(corpus.year_min),
+      el("strong", { class: "home-headline-num" }, String(corpus.library_interpretive_gutted)),
+      t.home_headline_tail,
+      el("a", { href: "reading-quiet-veto.html" }, t.home_headline_link),
+    );
+    headline.append(p);
+    main.append(headline);
+  }
 
   // ── The curve — signature visual, the first major thing encountered ─
   main.append(renderCurveSection(rulings, curveEvents));

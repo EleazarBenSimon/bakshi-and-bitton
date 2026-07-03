@@ -12,6 +12,16 @@ const i18n = {
     nav_cite: "ציטוט והפצה",
     nav_about: "אודות",
     nav_methodology: "מתודולוגיה",
+    footer_data_link: "הורדת מאגר הנתונים (CSV/JSON)",
+    qv_cta_title: "תרומת מסמך רשמי",
+    qv_cta_sub_pre: "חסר לנו המקור הרשמי הנגיש עבור ",
+    qv_cta_sub_post: ". אם יש בידיכם עותק או קישור למסמך — בחרו דרך קלה לשלוח:",
+    qv_opt_github: "פתיחת בקשה ב-GitHub",
+    qv_opt_github_sub: "נפתח טופס מוכן מראש — רק להוסיף קישור/קובץ ולשלוח.",
+    qv_opt_copy: "העתקת פרטי הבקשה",
+    qv_opt_copy_sub: "מעתיק טקסט מוכן — הדביקו במייל, בהודעה, בכל מקום.",
+    qv_copied: "הועתק ✓",
+    qv_close: "סגירה",
     nav_tags: "נושאים",
     tags_title: "נושאים — עיון לפי תחום",
     tags_intro: "כל פסיקה במאגר מתויגת לפי הנושאים המשפטיים והמדיניותיים שבהם היא נוגעת. בחרו נושא כדי לראות את הפסיקות המקושרות אליו — גודל התגית משקף את מספר הפסיקות.",
@@ -132,6 +142,9 @@ const i18n = {
     stat_documented: "מקרים מתועדים",
     stat_neutralized: "חוקים שבוטלו או רוקנו",
     stat_hollowed: "רוקנו בפרשנות — בשקט",
+    home_headline_mid: (yearMin) => ` חוקי כנסת שביטל או רוקן בית המשפט העליון מאז ${yearMin} — `,
+    home_headline_tail: " מהם בלי שבוטלו רשמית אף פעם.",
+    home_headline_link: "המאגר המלא ←",
     scale_note_a: (n) => `${n} התיקים המלאים שלמטה הם רק הליבה.`,
     scale_note_link: (n) => `המאגר המלא: ${n} מקרים מתועדים ←`,
     scale_note_b: "כל אחד מהם — חוק או החלטה של נבחרי הציבור שבית המשפט ביטל או רוקן מתוכן.",
@@ -151,6 +164,16 @@ const i18n = {
     nav_cite: "Cite & Share",
     nav_about: "About",
     nav_methodology: "Methodology",
+    footer_data_link: "Download the dataset (CSV/JSON)",
+    qv_cta_title: "Contribute an official document",
+    qv_cta_sub_pre: "We're missing the accessible official source for ",
+    qv_cta_sub_post: ". If you have a copy or a link, pick the easiest way to send it:",
+    qv_opt_github: "Open a GitHub request",
+    qv_opt_github_sub: "Opens a pre-filled form — just add the link/file and submit.",
+    qv_opt_copy: "Copy the request details",
+    qv_opt_copy_sub: "Copies ready-made text — paste it into email, a message, anywhere.",
+    qv_copied: "Copied ✓",
+    qv_close: "Close",
     nav_tags: "Topics",
     tags_title: "Topics — browse by theme",
     tags_intro: "Every ruling in the archive is tagged by the legal and policy themes it touches. Pick a topic to see its linked rulings — tag size reflects how many rulings carry it.",
@@ -271,6 +294,9 @@ const i18n = {
     stat_documented: "documented cases",
     stat_neutralized: "laws struck or hollowed",
     stat_hollowed: "hollowed by reinterpretation — quietly",
+    home_headline_mid: (yearMin) => ` Knesset laws struck or gutted by the Court since ${yearMin} — `,
+    home_headline_tail: " of them without ever being formally repealed.",
+    home_headline_link: "See the full library →",
     scale_note_a: (n) => `The ${n} full case files below are only the core.`,
     scale_note_link: (n) => `The full evidence base: ${n} documented cases →`,
     scale_note_b: "Each one a law or decision of the people's elected branch that the Court struck or quietly emptied of content.",
@@ -466,7 +492,9 @@ function renderFooter() {
     "Bakshi&Bitton · ",
     el("a", { href: "https://github.com/EleazarBenSimon/bakshi-and-bitton" }, "github.com/EleazarBenSimon/bakshi-and-bitton"),
     " · MIT License · ",
-    el("a", { href: "https://github.com/EleazarBenSimon/bakshi-and-bitton/blob/main/METHODOLOGY.md" }, t.nav_methodology)
+    el("a", { href: "https://github.com/EleazarBenSimon/bakshi-and-bitton/blob/main/METHODOLOGY.md" }, t.nav_methodology),
+    " · ",
+    el("a", { href: "cite.html#data-download" }, t.footer_data_link)
   );
 }
 
@@ -1642,3 +1670,54 @@ function renderTimeline(rulings, events) {
 }
 
 window.CO = { lang, t, el, fetchJSON, ruling_name, justice_name, role_label, renderHeader, renderFooter, renderCurve, renderCurveSection, outcome_label, doctrine_label, doctrines_label, petitioner_type_label, compliance_label, respondent_label, tag_label, renderTagBrowser, renderTimeline, SEVERITY_BY_OUTCOME, decorateMQG, renderRulingHero };
+
+// ─── "Contribute the document" modal (Quiet-Veto missing-source rows) ──────
+// Delegated: any `.qv-contribute` button (emitted by build.py into the
+// source-gated library table) opens a small modal offering low-friction,
+// zero-backend ways to send in an official document we're missing.
+function openQvContribute(docket, name, cardLang) {
+  // Use the table row's language (not localStorage) so the modal matches the
+  // page the button was rendered on (esp. the static HE reading page).
+  const tt = (typeof i18n !== "undefined" && i18n[cardLang]) || t;
+  const backdrop = el("div", { class: "qv-modal-backdrop" });
+  const modal = el("div", { class: "qv-modal", role: "dialog", "aria-modal": "true", "aria-label": tt.qv_cta_title });
+
+  modal.append(el("h2", {}, tt.qv_cta_title));
+  modal.append(el("p", { class: "qv-modal-sub" },
+    tt.qv_cta_sub_pre, el("code", { dir: "ltr" }, docket), tt.qv_cta_sub_post));
+
+  const repo = "EleazarBenSimon/bakshi-and-bitton";
+  const title = `Official source needed: ${docket}`;
+  const body = `Case: ${docket} — ${name}\n\nI can contribute the official ruling document for this case.\nLink / details:\n`;
+  const gh = `https://github.com/${repo}/issues/new?title=${encodeURIComponent(title)}&body=${encodeURIComponent(body)}`;
+  modal.append(el("a", { class: "qv-modal-opt", href: gh, target: "_blank", rel: "noopener" },
+    tt.qv_opt_github, el("small", {}, tt.qv_opt_github_sub)));
+
+  const copyText = `Bakshi&Bitton — official source needed for ${docket} (${name}). I can contribute this document: [paste a link or attach the file]`;
+  const copyBtn = el("button", { type: "button", class: "qv-modal-opt" },
+    tt.qv_opt_copy, el("small", {}, tt.qv_opt_copy_sub));
+  copyBtn.addEventListener("click", () => {
+    if (navigator.clipboard) navigator.clipboard.writeText(copyText).catch(() => {});
+    copyBtn.firstChild.textContent = tt.qv_copied;
+  });
+  modal.append(copyBtn);
+
+  const close = () => { backdrop.remove(); document.removeEventListener("keydown", onKey); };
+  function onKey(e) { if (e.key === "Escape") close(); }
+  const closeBtn = el("button", { type: "button", class: "qv-modal-close" }, tt.qv_close);
+  closeBtn.addEventListener("click", close);
+  modal.append(closeBtn);
+
+  backdrop.addEventListener("click", (e) => { if (e.target === backdrop) close(); });
+  document.addEventListener("keydown", onKey);
+  backdrop.append(modal);
+  document.body.append(backdrop);
+  closeBtn.blur();
+}
+
+document.addEventListener("click", (e) => {
+  const btn = e.target.closest && e.target.closest(".qv-contribute");
+  if (!btn) return;
+  e.preventDefault();
+  openQvContribute(btn.dataset.docket || "", btn.dataset.name || "", btn.dataset.lang || lang);
+});

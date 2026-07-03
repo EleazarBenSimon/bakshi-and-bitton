@@ -2155,6 +2155,35 @@ footer a:hover { color: #fff; border-bottom-color: var(--gold); }
   margin: 6px 0 0; font-size: 16px; color: var(--text-muted);
   max-width: 760px; line-height: 1.55;
 }
+
+/* Headline stat — the project's signature soundbite, made immediately
+   visible right under the hero (before the curve). Reuses the site's
+   existing accent/box conventions (cf. .notes-box, .ruling-hero), just at
+   higher visual weight since this is meant to be read in ~5 seconds. */
+.home-headline {
+  display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 6px;
+  background: var(--accent-soft);
+  border: 1px solid var(--accent);
+  border-inline-start: 4px solid var(--accent);
+  border-radius: 6px;
+  padding: 14px 18px;
+  margin: 4px 0 18px;
+  max-width: 880px;
+}
+.home-headline-text {
+  margin: 0; font-size: 17px; line-height: 1.5; color: var(--text);
+}
+.home-headline-num {
+  font-size: 26px; font-weight: 800; color: var(--accent);
+}
+.home-headline a {
+  font-weight: 700; white-space: nowrap; margin-inline-start: 4px;
+}
+@media (max-width: 600px) {
+  .home-headline { padding: 12px 14px; }
+  .home-headline-text { font-size: 15px; }
+  .home-headline-num { font-size: 21px; }
+}
 .home-method {
   font-size: 13px; line-height: 1.6; color: var(--text-muted);
   border-inline-start: 2px solid var(--border); padding-inline-start: 12px;
@@ -2369,3 +2398,41 @@ html[lang="he"] .content-article .article-body blockquote {
     font-size: 2.8em;
   }
 }
+
+/* ── Quiet-Veto: source-gated table + "contribute the document" modal ──
+   Rows whose official source is missing render 'off-status' (greyed
+   identifying details) with the Holding cell replaced by a contribute
+   button that opens a client-side modal (app.js). */
+.qv-table .qv-src { text-decoration: none; font-size: 12px; opacity: .55; margin-inline-start: 4px; }
+.qv-table .qv-src:hover { opacity: 1; }
+.qv-row-off > td { opacity: .48; }                 /* grey the identifying details */
+.qv-row-off > td.qv-c-holding { opacity: 1; }      /* keep the CTA fully visible */
+.qv-missing-label { color: var(--text-muted); font-size: 12.5px; font-style: italic; margin-inline-end: 6px; }
+.qv-contribute {
+  font: inherit; font-size: 12px; font-weight: 600; color: #fff;
+  background: var(--accent); border: none; border-radius: 5px;
+  padding: 3px 10px; cursor: pointer; white-space: nowrap;
+}
+.qv-contribute:hover { background: var(--accent-deep); }
+
+.qv-modal-backdrop {
+  position: fixed; inset: 0; background: rgba(20, 28, 44, .55);
+  display: flex; align-items: center; justify-content: center; padding: 20px; z-index: 1000;
+}
+.qv-modal {
+  background: #fff; color: var(--text); border-radius: 10px; max-width: 440px; width: 100%;
+  padding: 22px 22px 16px; box-shadow: 0 12px 44px rgba(0, 0, 0, .3); max-height: 90vh; overflow: auto;
+}
+.qv-modal h2 { margin: 0 0 4px; font-size: 19px; }
+.qv-modal-sub { margin: 0 0 16px; font-size: 14px; color: var(--text-muted); line-height: 1.5; }
+.qv-modal-sub code { background: var(--accent-soft); padding: 1px 5px; border-radius: 3px; }
+.qv-modal-opt {
+  display: block; width: 100%; text-align: start; font: inherit; font-size: 14.5px; font-weight: 600;
+  color: var(--text); background: var(--accent-soft); border: 1px solid var(--border, #dbe1ea);
+  border-radius: 8px; padding: 11px 14px; margin-bottom: 10px; cursor: pointer; text-decoration: none;
+}
+.qv-modal-opt:hover { border-color: var(--accent); }
+.qv-modal-opt small { display: block; font-weight: 400; color: var(--text-muted); font-size: 12.5px; margin-top: 2px; }
+.qv-modal-close { display: block; margin: 4px auto 0; background: none; border: none; color: var(--text-muted); font: inherit; font-size: 13px; cursor: pointer; }
+@media (prefers-reduced-motion: no-preference) { .qv-modal { animation: qv-pop .16s ease-out; } }
+@keyframes qv-pop { from { transform: scale(.96); opacity: 0 } to { transform: scale(1); opacity: 1 } }
