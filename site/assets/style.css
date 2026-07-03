@@ -2418,6 +2418,30 @@ html[lang="he"] .content-article .article-body blockquote {
 }
 .qv-contribute:hover { background: var(--accent-deep); }
 
+/* Per-case reading sections (generated from quiet-veto-cases.json per language). */
+.qv-case {
+  padding: 14px 0 4px;
+  border-top: 1px solid var(--border);
+}
+.qv-case-docket {
+  margin: 0 0 2px; font-weight: 700; font-size: 16px; color: var(--accent);
+  letter-spacing: .2px;
+}
+.qv-case-tag {
+  margin: 0 0 8px; font-size: 12.5px; font-weight: 600; letter-spacing: .3px;
+  text-transform: uppercase; color: var(--text-muted);
+}
+.qv-case-blurb { margin: 0 0 8px; }
+.qv-case-src { margin: 0; font-size: 13.5px; color: var(--text-muted); }
+.qv-case-src .qv-src { text-decoration: none; font-weight: 600; }
+.qv-case-src .qv-src:hover { text-decoration: underline; }
+/* Missing-source case: grey the whole section so its 'off' status reads at a
+   glance (details stay legible), but keep the Contribute CTA fully opaque. */
+.qv-case-off .qv-case-docket,
+.qv-case-off .qv-case-tag,
+.qv-case-off .qv-case-blurb { opacity: .5; }
+.qv-case-off .qv-contribute { opacity: 1; }
+
 .qv-modal-backdrop {
   position: fixed; inset: 0; background: rgba(20, 28, 44, .55);
   display: flex; align-items: center; justify-content: center; padding: 20px; z-index: 1000;

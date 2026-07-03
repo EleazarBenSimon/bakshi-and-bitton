@@ -48,3 +48,7 @@ npm-debug.log*
 # also embed absolute /Users paths that must never reach the alias repo.
 scripts/comic-storyboards/
 site/assets/comics/662-11/
+
+# Python bytecode (can embed absolute source paths)
+__pycache__/
+*.pyc
