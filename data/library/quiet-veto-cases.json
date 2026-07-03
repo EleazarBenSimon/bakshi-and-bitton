@@ -32,7 +32,9 @@
         }
       },
       "blurb_he": "סמכותה הסטטוטורית של המועצה הרבנית הראשית להעניק תעודות כשרות (לפני חוק 1983) לא בוטלה — אך בית המשפט פירש אותה בצמצום וקבע כי תנאים שאינם נוגעים לכשרות הבשר עצמו חורגים מהסמכות. כך הותיר את הטקסט על כנו אך רוקן את כוחה של הרשות הדתית לכפות שמירת מצוות רחבה על מי שאינו שומר, וכבל סמכות מנהלית לתחום המזון בלבד.",
-      "blurb_en": "The Chief Rabbinical Council's statutory kashrut-certification authority (pre-1983) was left textually intact — but the unelected Court read it down, holding that licence conditions unrelated to the meat's actual kosher status were ultra vires. The text survived; its real-world reach was hollowed out, stripping the religious authority of power to enforce broader observance on the non-observant and confining it to the food itself."
+      "blurb_en": "The Chief Rabbinical Council's statutory kashrut-certification authority (pre-1983) was left textually intact — but the unelected Court read it down, holding that licence conditions unrelated to the meat's actual kosher status were ultra vires. The text survived; its real-world reach was hollowed out, stripping the religious authority of power to enforce broader observance on the non-observant and confining it to the food itself.",
+      "statute_he": "סמכותה הסטטוטורית של המועצה הרבנית הראשית להעניק תעודות כשרות (לפני חוק 1983)",
+      "statute_en": "Statutory authority of the Chief Rabbinical Council to grant kashrut certificates (pre-1983)"
     },
     {
       "docket_core": "465/89",
@@ -68,7 +70,9 @@
         }
       },
       "blurb_he": "חוק איסור הונאה בכשרות, התשמ\"ג-1983, נחקק כדי למנוע הטעיה לגבי כשרות מזון בלבד. בלי לפסול אות אחת מן הטקסט, פירשו השופטים את החוק בצמצום אל תכליתו הצרה וקבעו שסמכות הענקת תעודת הכשר אינה כלי לכפיית דיני יהדות שאינם נוגעים לכשרות המזון — וכך שללו מן הרבנות את כוח הרישוי שבו ביקשה להתנות הכשר בביטול מופעי בטן \"לא צנועים\", ורוקנו את ההישג הזה מתוכן מבלי שהמחוקק אמר על כך דבר.",
-      "blurb_en": "The Knesset's Kashrut (Prohibition of Fraud) Law, 1983 was about food kashrut alone. Without voiding a single word, the Court read it down to that narrow purpose, holding that the power to grant a kashrut certificate is not a lever for imposing rules of Jewish law unrelated to the food — stripping the Rabbinate of the licensing leverage it had used to condition certification on barring \"immodest\" belly-dance performances. An unelected bench hollowed the statute's real-world reach below the Rabbinate's design, on its own interpretive say-so."
+      "blurb_en": "The Knesset's Kashrut (Prohibition of Fraud) Law, 1983 was about food kashrut alone. Without voiding a single word, the Court read it down to that narrow purpose, holding that the power to grant a kashrut certificate is not a lever for imposing rules of Jewish law unrelated to the food — stripping the Rabbinate of the licensing leverage it had used to condition certification on barring \"immodest\" belly-dance performances. An unelected bench hollowed the statute's real-world reach below the Rabbinate's design, on its own interpretive say-so.",
+      "statute_he": "חוק איסור הונאה בכשרות, התשמ\"ג-1983",
+      "statute_en": "Kashrut (Prohibition of Fraud) Law, 1983"
     },
     {
       "docket_core": "2316/95",
@@ -104,7 +108,9 @@
         "en": null
       },
       "blurb_he": "חוק סדר הדין הפלילי (סעיף 21א): המחוקק התיר מעצר עד תום ההליכים מחשש לפגיעה בשלום הציבור, והתביעה הסבה אותו למעצר כמעט-אוטומטי בכל \"מכת מדינה\". בלי לפסול אות אחת, פירש בג\"ץ את ההסדר \"ברוח\" חוק יסוד: כבוד האדם וחירותו וקבע שמכת מדינה כשלעצמה אינה עילת מעצר — נדרשת מסוכנות אישית מוכחת. שבעה שופטים בלתי-נבחרים רוקנו הלכה למעשה את כוונת המחוקק.",
-      "blurb_en": "Criminal Procedure Law (sec. 21a): the Knesset let courts jail defendants pre-trial on a fear-to-public-safety ground, which prosecutors turned into near-automatic detention by branding whole crime categories a \"national scourge.\" Without voiding a single word, the Court read the provision down \"in the spirit of\" Basic Law: Human Dignity and Liberty — holding a national scourge alone is no detention ground; the state must prove the individual defendant's danger. Seven unelected justices hollowed out the legislature's intent."
+      "blurb_en": "Criminal Procedure Law (sec. 21a): the Knesset let courts jail defendants pre-trial on a fear-to-public-safety ground, which prosecutors turned into near-automatic detention by branding whole crime categories a \"national scourge.\" Without voiding a single word, the Court read the provision down \"in the spirit of\" Basic Law: Human Dignity and Liberty — holding a national scourge alone is no detention ground; the state must prove the individual defendant's danger. Seven unelected justices hollowed out the legislature's intent.",
+      "statute_he": "חוק סדר הדין הפלילי [נוסח משולב], התשמ\"ב-1982 — סעיף 21א(א)(1)",
+      "statute_en": "Criminal Procedure Law [Consolidated Version], 5742-1982 — sec. 21a(a)(1)"
     },
     {
       "docket_core": "4562/92",
@@ -140,7 +146,9 @@
         "en": null
       },
       "blurb_he": "חוק רשות השידור (אישור תוקף אגרות רדיו וטלוויזיה), התשנ\"ב-1992 — שהכנסת חוקקה כדי להכשיר רטרואקטיבית גביית אגרות שנפסלה. השופט ברק לא ביטל את החוק אלא קרא אותו בצמצום: דחה את תחולתו הרטרואקטיבית על קנסות פיגורים מטעמי קניין ואי-ענישה למפרע. כאן נטבעה הדוקטרינה — \"מוטב לצמצם חוק בפרשנות מאשר לפסול חלקו\" — שהפכה למנוע שבו בית משפט לא-נבחר מרוקן מתוכן את חקיקת הכנסת בלי לבטל מילה אחת מן הנוסח.",
-      "blurb_en": "The Broadcasting Authority (Validation of Radio and TV Fees) Law, 5752-1992 — which the Knesset passed to retroactively validate fee collection an earlier ruling had voided. Barak did not strike the law; he read it down, refusing to apply its retroactive reach to arrears fines on property-rights and no-penalty-in-arrears grounds. This is where the doctrine was minted — \"better to narrow a statute by interpretation than to declare part of it void\" — the engine by which an unelected court hollows out the elected legislature's law without voiding a single word of text."
+      "blurb_en": "The Broadcasting Authority (Validation of Radio and TV Fees) Law, 5752-1992 — which the Knesset passed to retroactively validate fee collection an earlier ruling had voided. Barak did not strike the law; he read it down, refusing to apply its retroactive reach to arrears fines on property-rights and no-penalty-in-arrears grounds. This is where the doctrine was minted — \"better to narrow a statute by interpretation than to declare part of it void\" — the engine by which an unelected court hollows out the elected legislature's law without voiding a single word of text.",
+      "statute_he": "חוק רשות השידור (אישור תוקף אגרות רדיו וטלוויזיה), התשנ\"ב-1992",
+      "statute_en": "Broadcasting Authority (Validation of Radio and TV Fees) Law, 5752-1992"
     },
     {
       "docket_core": "3267/97",
@@ -185,7 +193,9 @@
         }
       },
       "blurb_he": "חוק שירות ביטחון [נוסח משולב], התשמ\"ו-1986: בלי לפסול אות אחת, פירש בית המשפט בצמצום את שיקול הדעת שהחוק העניק לשר הביטחון וקבע שדחיית השירות הגורפת לבחורי ישיבה (\"תורתו אומנותו\" — כ-8% ממחזור הגיוס) היא \"הסדר ראשוני\" שרק הכנסת מוסמכת לקבוע. כך רוקנו שופטים בלתי-נבחרים פרקטיקה בת עשורים מבסיסה החוקי, והשהו את ההכרזה 12 חודשים כדי לכפות על המחוקק הנבחר לחוקק.",
-      "blurb_en": "The Defense Service Law (5746-1986): without voiding a single word, the Court read the discretion the statute gave the Defense Minister down to nothing, holding that the sweeping yeshiva-student deferment (\"Torato Omanuto\" — some 8% of the draft cohort) was a \"primary arrangement\" only the Knesset may set. Unelected justices thus stripped a decades-old practice of its legal basis, suspending the ruling 12 months to force the elected legislature to act."
+      "blurb_en": "The Defense Service Law (5746-1986): without voiding a single word, the Court read the discretion the statute gave the Defense Minister down to nothing, holding that the sweeping yeshiva-student deferment (\"Torato Omanuto\" — some 8% of the draft cohort) was a \"primary arrangement\" only the Knesset may set. Unelected justices thus stripped a decades-old practice of its legal basis, suspending the ruling 12 months to force the elected legislature to act.",
+      "statute_he": "חוק שירות ביטחון [נוסח משולב], התשמ\"ו-1986 (שיקול דעת שר הביטחון לדחיית שירות)",
+      "statute_en": "Defense Service Law [Consolidated Version], 5746-1986 (Defense Minister's service-deferment discretion)"
     },
     {
       "docket_core": "5100/94",
@@ -226,7 +236,9 @@
         }
       },
       "blurb_he": "פקודת סדר הדין הפלילי (עדות) וסייג הצורך שבחוק העונשין שימשו את השב\"כ כבסיס משפטי ל\"לחץ פיזי מתון\" בחקירות. בית המשפט לא ביטל אף הוראת חוק — אלא פירש אותן עד אפס: הסמכות לחקור אינה מתירה אמצעים פיזיים, וסייג הצורך הוא טענת הגנה בדיעבד ליחיד, לא הסמכה מראש. כך רוקנו שופטים בלתי נבחרים את מארג החקיקה שעליו נשען המנגנון, והותירוהו ללא סמכות עד שהכנסת תחוקק במפורש.",
-      "blurb_en": "The GSS leaned on the Criminal Procedure (Testimony) Ordinance and the Penal Law's necessity defense as legal cover for \"moderate physical pressure\" in interrogations. The Court voided no statute — it read them down to nothing: the power to interrogate authorizes no physical means, and necessity is only an after-the-fact defense for an individual, never advance authorization. Unelected justices thus hollowed out the legislative framework the regime relied on, leaving it powerless until the Knesset legislates expressly."
+      "blurb_en": "The GSS leaned on the Criminal Procedure (Testimony) Ordinance and the Penal Law's necessity defense as legal cover for \"moderate physical pressure\" in interrogations. The Court voided no statute — it read them down to nothing: the power to interrogate authorizes no physical means, and necessity is only an after-the-fact defense for an individual, never advance authorization. Unelected justices thus hollowed out the legislative framework the regime relied on, leaving it powerless until the Knesset legislates expressly.",
+      "statute_he": "פקודת סדר הדין הפלילי (עדות), סעיף 2(1), וסייג הצורך שבחוק העונשין, התשל\"ז-1977, סעיף 34יא",
+      "statute_en": "Criminal Procedure (Testimony) Ordinance, sec. 2(1), with the necessity defense, Penal Law 5737-1977, sec. 34(11)"
     },
     {
       "docket_core": "6024/97",
@@ -263,7 +275,9 @@
         }
       },
       "blurb_he": "חוק הזכות לקבורה אזרחית חלופית, התשנ\"ו-1996, חוקק כדי להסדיר חופש בחירה בקבורה — אך לא ביטל בעיני בג\"ץ את שלטון חברות הקדישא היהודיות, שמנעו מבני משפחה לחרות על מצבה תאריכי לידה ופטירה לועזיים (בספרות לטיניות) לצד התאריך העברי. בית המשפט, ברוב של חשין וברק, לא פסל תקנון ולא חוק, אלא הכריז כי חברות הקדישא הן גוף דו-מהותי הכפוף לכללי המשפט הציבורי, \"קרא בצמצום\" את כלל הרב, ופירש את המגבלה ככזו הפוגעת בכבוד האדם ובתחושת הקרובים — וכך הפך פסיקה דתית-מנהלית לאות מתה מבלי לבטל את לשונה.",
-      "blurb_en": "The Right to Alternative Civil Burial Law, 5756-1996 was enacted to widen burial choice — yet the Court refused to read it as overriding the Jewish burial societies whose rabbi barred a family from engraving Gregorian birth/death dates (in Latin numerals) alongside the Hebrew dates on a tombstone. Voiding neither statute nor bylaw, the majority (Cheshin, Barak) instead declared the societies dual public/private bodies bound by public-law norms, read the rule down, and recast the prohibition as an unconstitutional affront to the relatives' dignity — an unelected court hollowing a religious burial authority's rule-making into a shell while leaving its text formally intact."
+      "blurb_en": "The Right to Alternative Civil Burial Law, 5756-1996 was enacted to widen burial choice — yet the Court refused to read it as overriding the Jewish burial societies whose rabbi barred a family from engraving Gregorian birth/death dates (in Latin numerals) alongside the Hebrew dates on a tombstone. Voiding neither statute nor bylaw, the majority (Cheshin, Barak) instead declared the societies dual public/private bodies bound by public-law norms, read the rule down, and recast the prohibition as an unconstitutional affront to the relatives' dignity — an unelected court hollowing a religious burial authority's rule-making into a shell while leaving its text formally intact.",
+      "statute_he": "חוק הזכות לקבורה אזרחית חלופית, התשנ\"ו-1996",
+      "statute_en": "Right to Alternative Civil Burial Law, 5756-1996"
     },
     {
       "docket_core": "7048/97",
@@ -308,7 +322,9 @@
         }
       },
       "blurb_he": "הכנסת חוקקה את חוק סמכויות שעת חירום (מעצרים), התשל\"ט-1979, וסעיף 2 שבו אִפשר לרשות מעצר מינהלי משיקולי ביטחון המדינה. בית המשפט לא ביטל אות אחת — בדיון נוסף (ברק, 6 נגד 3) הוא פירש את הסעיף בצמצום: מעצר מינהלי מותר רק כשהעצור עצמו מסכן את הביטחון, וכך רוקן מתוכן את החזקת אזרחים לבנונים כ\"קלפי מיקוח\" שהמדינה ביססה על אותו נוסח רחב. שלושה שופטים נבחרים מחקו מדיניות שלמה של המחוקק בלי לגעת בלשון החוק.",
-      "blurb_en": "The Knesset's Emergency Powers (Detentions) Law, 5739-1979, section 2, let the executive order administrative detention on state-security grounds. The Court voided no text — in a Further Hearing (Barak, 6-3) it read the section down to permit detention only where the detainee himself poses a danger, hollowing out the holding of Lebanese nationals as \"bargaining chips\" that the State had built on that same broad wording. Three unelected justices erased an entire executive policy without touching a word the legislature wrote."
+      "blurb_en": "The Knesset's Emergency Powers (Detentions) Law, 5739-1979, section 2, let the executive order administrative detention on state-security grounds. The Court voided no text — in a Further Hearing (Barak, 6-3) it read the section down to permit detention only where the detainee himself poses a danger, hollowing out the holding of Lebanese nationals as \"bargaining chips\" that the State had built on that same broad wording. Three unelected justices erased an entire executive policy without touching a word the legislature wrote.",
+      "statute_he": "חוק סמכויות שעת חירום (מעצרים), התשל\"ט-1979, סעיף 2",
+      "statute_en": "Emergency Powers (Detentions) Law, 5739-1979, sec. 2"
     },
     {
       "docket_core": "953/01",
@@ -345,7 +361,9 @@
         }
       },
       "blurb_he": "חוק הרשויות המקומיות (אישור מיוחד), התשי\"ז-1956, הסמיך עיריות לאסור על מכירת בשר חזיר — וסמכות זו, כפשוטה, התירה איסור גורף. תשעה שופטים, בראשות ברק, לא פסלו את החוק אלא \"קראו אותו במורד\": פירשו את ההסמכה כמחייבת איזון מידתי שכונה-שכונה, התלו את חוקי העזר של בית שמש, כרמיאל וטבריה והחזירום לניסוח מחדש — וכך צמצמו בפועל את כוח האיסור הרבה מתחת לרוחב שהמחוקק הנבחר העניק, מבלי לבטל מילה מן הטקסט.",
-      "blurb_en": "The Local Authorities (Special Authorization) Law, 1956 empowered municipalities to ban pork sales — a grant that on its face permitted blanket prohibitions. Nine justices, led by Barak, struck nothing: they read the authorization down, construing it to require proportionate neighborhood-by-neighborhood balancing, suspended the Beit Shemesh, Carmiel and Tiberias by-laws and remanded them for redrafting — shrinking the power's real reach far below what the elected legislature had conferred, without voiding a word of the text."
+      "blurb_en": "The Local Authorities (Special Authorization) Law, 1956 empowered municipalities to ban pork sales — a grant that on its face permitted blanket prohibitions. Nine justices, led by Barak, struck nothing: they read the authorization down, construing it to require proportionate neighborhood-by-neighborhood balancing, suspended the Beit Shemesh, Carmiel and Tiberias by-laws and remanded them for redrafting — shrinking the power's real reach far below what the elected legislature had conferred, without voiding a word of the text.",
+      "statute_he": "חוק הרשויות המקומיות (אישור מיוחד), התשי\"ז-1956",
+      "statute_en": "Local Authorities (Special Authorization) Law, 5717-1956"
     },
     {
       "docket_core": "2597/99",
@@ -382,7 +400,9 @@
         }
       },
       "blurb_he": "סעיף 4ב לחוק השבות, התש\"י-1950, אינו מגדיר מיהו \"שהתגייר\", ומשרד הפנים דרש שמתגיירים יצטרפו לקהילה המגיירת וישתייכו אליה כדי שיוכרו כיהודים. בית המשפט העליון (הרכב 11 שופטים, 7-4, 2005) דחה את הפרשנות המצמצמת של הרשות המבצעת וקבע שדי בגיור בקהילה יהודית מוכרת בחו\"ל ועלייה לאחריו — בית משפט בלתי-נבחר הכריע במחלוקת ערכית טעונה והרחיב את תחולת החוק על גיורים לא-אורתודוקסיים מעבר לקו שביקש המינהל הנבחר לשרטט.",
-      "blurb_en": "Section 4B of the Law of Return, 5710-1950, leaves \"converted\" undefined, and the Interior Ministry read it to require converts to join and belong to the converting community before recognition as Jews. The Supreme Court (11-justice panel, 7-4, 2005) rejected the executive's narrowing gloss and held that conversion in a recognized Jewish community abroad followed by immigration suffices — an unelected court settling a charged value question and stretching the statute to cover non-Orthodox conversions past the line the elected administration sought to draw."
+      "blurb_en": "Section 4B of the Law of Return, 5710-1950, leaves \"converted\" undefined, and the Interior Ministry read it to require converts to join and belong to the converting community before recognition as Jews. The Supreme Court (11-justice panel, 7-4, 2005) rejected the executive's narrowing gloss and held that conversion in a recognized Jewish community abroad followed by immigration suffices — an unelected court settling a charged value question and stretching the statute to cover non-Orthodox conversions past the line the elected administration sought to draw.",
+      "statute_he": "חוק השבות, התש\"י-1950, סעיף 4ב",
+      "statute_en": "Law of Return, 5710-1950, sec. 4B"
     },
     {
       "docket_core": "6659/06",
@@ -427,7 +447,9 @@
         }
       },
       "blurb_he": "חוק כליאתם של לוחמים בלתי-חוקיים, התשס\"ב-2002, נכתב כדי לאפשר מעצר בלתי-מוגבל על בסיס השתייכות לארגון עוין, עם חזקה (סעיף 7) שמשחרורו של הכלוא מסכן את ביטחון המדינה. בית המשפט הותיר את החוק על כנו אך רוקן אותו מתוכן: הוא פירש אותו כדורש הוכחה של מסוכנות אישית ממשית בראיות מינהליות ברורות ומשכנעות, ודחק את החזקה לשלב משני — בית משפט בלתי-נבחר שהפך משטר מעצר קבוצתי שחוקקה הכנסת למשטר של איום פרטני.",
-      "blurb_en": "The Knesset's Internment of Unlawful Combatants Law, 5762-2002 was built to permit indefinite detention on group-membership grounds, backed by a section 7 presumption that release endangers the state. The Court left the statute formally standing but hollowed it out — reading it to require proof of the detainee's own individual dangerousness on clear and convincing administrative evidence, rejecting bare membership, and demoting the presumption to a secondary step. An unelected court quietly converted the legislature's categorical group-detention regime into an individualized-threat one, never voiding a word."
+      "blurb_en": "The Knesset's Internment of Unlawful Combatants Law, 5762-2002 was built to permit indefinite detention on group-membership grounds, backed by a section 7 presumption that release endangers the state. The Court left the statute formally standing but hollowed it out — reading it to require proof of the detainee's own individual dangerousness on clear and convincing administrative evidence, rejecting bare membership, and demoting the presumption to a secondary step. An unelected court quietly converted the legislature's categorical group-detention regime into an individualized-threat one, never voiding a word.",
+      "statute_he": "חוק כליאתם של לוחמים בלתי-חוקיים, התשס\"ב-2002 (סעיף 7)",
+      "statute_en": "Incarceration of Unlawful Combatants Law, 5762-2002 (sec. 7)"
     },
     {
       "docket_core": "6824/07",
@@ -465,7 +487,9 @@
         "en": null
       },
       "blurb_he": "רשות המסים נהגה לגבות חובות מס מאזרחים שנעצרו במחסומי משטרה — וגם בקניונים ובמקומות ציבוריים — בהסתמך על סמכויות הגבייה הכלליות שבפקודת המסים (גבייה), 1929. בלי לפסול אות אחת בחוק, פירש בית המשפט את סמכויות הגבייה בצמצום וקבע שאין בהן הסמכה מפורשת לגבות חוב במחסום ביטחוני; כך רוקנו שופטים בלתי-נבחרים מתוכן את כלי האכיפה שהמחוקק נתן לרשות, בלי לבטל את הטקסט.",
-      "blurb_en": "The Tax Authority routinely collected tax debts from citizens stopped at police checkpoints — and in malls and other public places — invoking the general collection powers of the Taxes (Collection) Ordinance, 1929. Without voiding a single word, the Court read those powers narrowly and held they contain no explicit authorization to collect a debt at a security roadblock; so unelected justices hollowed out an enforcement tool the legislature handed the executive, leaving the statutory text intact."
+      "blurb_en": "The Tax Authority routinely collected tax debts from citizens stopped at police checkpoints — and in malls and other public places — invoking the general collection powers of the Taxes (Collection) Ordinance, 1929. Without voiding a single word, the Court read those powers narrowly and held they contain no explicit authorization to collect a debt at a security roadblock; so unelected justices hollowed out an enforcement tool the legislature handed the executive, leaving the statutory text intact.",
+      "statute_he": "פקודת המסים (גבייה), 1929",
+      "statute_en": "Taxes (Collection) Ordinance, 1929"
     },
     {
       "docket_core": "3809/08",
@@ -507,7 +531,9 @@
         }
       },
       "blurb_he": "חוק סדר הדין הפלילי (סמכויות אכיפה – נתוני תקשורת), התשס\"ח-2007 – \"חוק האח הגדול\" שהכנסת חוקקה כדי לתת למשטרה גישה רחבה לנתוני תקשורת. הרכב מורחב של שבעה שופטים בראשות הנשיאה ביניש סירב לפסול אותו, אך פירש אותו בצמצום עד שהותיר ממנו קליפה: הגישה הוגבלה ל\"תכלית ממוקדת וקונקרטית\" בלבד ולא לאיתור עבריינות כללי, וגישה ללא צו הוצרה למקרי קיצון של הצלת חיים – וכך בית משפט בלתי-נבחר ריקן מתוכן את סמכות המעקב הרחבה שביקשה הכנסת הנבחרת, בלי לבטל מילה מן הטקסט.",
-      "blurb_en": "The Criminal Procedure (Enforcement Powers — Communications Data) Law, 5768-2007 — the \"Big Brother\" law the Knesset passed to grant police sweeping access to communications metadata. An expanded 7-justice panel under President Beinisch refused to strike it, yet read it so narrowly it left a shell: access was confined to a \"focused and concrete purpose\" rather than general crime detection, and warrantless access to extreme life-saving cases — an unelected court hollowing out the broad surveillance power the elected legislature intended, without voiding a single word of the text."
+      "blurb_en": "The Criminal Procedure (Enforcement Powers — Communications Data) Law, 5768-2007 — the \"Big Brother\" law the Knesset passed to grant police sweeping access to communications metadata. An expanded 7-justice panel under President Beinisch refused to strike it, yet read it so narrowly it left a shell: access was confined to a \"focused and concrete purpose\" rather than general crime detection, and warrantless access to extreme life-saving cases — an unelected court hollowing out the broad surveillance power the elected legislature intended, without voiding a single word of the text.",
+      "statute_he": "חוק סדר הדין הפלילי (סמכויות אכיפה – נתוני תקשורת), התשס\"ח-2007",
+      "statute_en": "Criminal Procedure (Enforcement Powers — Communications Data) Law, 5768-2007"
     },
     {
       "docket_core": "8091/14",
@@ -549,7 +575,9 @@
         }
       },
       "blurb_he": "תקנה 119 לתקנות ההגנה (שעת חירום), 1945 — סמכות הריסת בתים עונשית — חוסה תחת שמירת הדינים ולכן לא ניתן היה לפסול אותה. במקום זאת קבע בית המשפט שיש לפרש את התקנה לאור חוק יסוד: כבוד האדם וחירותו ולהפעילה במידתיות, וכפה עליה מבחני־משנה (חומרת המעשה, פגיעה בבני משפחה חפים, עוצמת הראיות, האם אטימה או הריסה חלקית תספיק) — וכך הפך שופטים שלא נבחרו סמכות צבאית גורפת לכוח כבול ומפוקח, שאסור להפעילו כענישה קולקטיבית, מבלי לגעת בלשון התקנה.",
-      "blurb_en": "Regulation 119 of the Defence (Emergency) Regulations, 1945 — punitive house demolitions — is shielded by the preservation-of-laws clause, so the Court could not strike it. Instead, unelected justices held the power MUST be construed under Basic Law: Human Dignity and Liberty and exercised proportionately, imposing subtests (severity of offense, harm to innocent family members, strength of evidence, whether sealing or partial demolition would suffice) — converting a sweeping military demolition power into a constrained, individualized one barred from use as collective punishment, all without touching a word of the text."
+      "blurb_en": "Regulation 119 of the Defence (Emergency) Regulations, 1945 — punitive house demolitions — is shielded by the preservation-of-laws clause, so the Court could not strike it. Instead, unelected justices held the power MUST be construed under Basic Law: Human Dignity and Liberty and exercised proportionately, imposing subtests (severity of offense, harm to innocent family members, strength of evidence, whether sealing or partial demolition would suffice) — converting a sweeping military demolition power into a constrained, individualized one barred from use as collective punishment, all without touching a word of the text.",
+      "statute_he": "תקנה 119 לתקנות ההגנה (שעת חירום), 1945",
+      "statute_en": "Regulation 119 of the Defence (Emergency) Regulations, 1945"
     },
     {
       "docket_core": "5239/11",
@@ -594,7 +622,9 @@
         }
       },
       "blurb_he": "חוק החרם (התשע\"א-2011) נועד להרתיע: כל קורא בפומבי לחרם על ישראל נושא באחריות, וסעיף 2(ג) התיר פיצוי \"ללא הוכחת נזק\". הכנסת חוקקה — ובית משפט בלתי-נבחר ביטל את סעיף 2(ג) וקרא את שאר העוולה כך שתחייב הוכחת נזק ממשי וקשר סיבתי, ובכך רוקן מתוכן את עוקץ ההרתעה והותיר את החוק קיים-להלכה אך מנוטרל-למעשה.",
-      "blurb_en": "The Boycott Law (5771-2011) was built to deter: anyone publicly calling to boycott Israel is liable, and section 2(c) allowed compensation \"without proof of damage.\" The elected Knesset legislated — and an unelected court struck 2(c) outright, then read the surviving tort down to demand proof of actual damage plus causation, hollowing out its deterrent bite and leaving the statute standing in name while neutralized in fact."
+      "blurb_en": "The Boycott Law (5771-2011) was built to deter: anyone publicly calling to boycott Israel is liable, and section 2(c) allowed compensation \"without proof of damage.\" The elected Knesset legislated — and an unelected court struck 2(c) outright, then read the surviving tort down to demand proof of actual damage plus causation, hollowing out its deterrent bite and leaving the statute standing in name while neutralized in fact.",
+      "statute_he": "החוק למניעת פגיעה במדינת ישראל באמצעות חרם, התשע\"א-2011 (סעיף 2)",
+      "statute_en": "Prevention of Harm to the State of Israel by means of Boycott Law, 5771-2011 (sec. 2)"
     },
     {
       "docket_core": "5875/10",
@@ -634,7 +664,9 @@
         }
       },
       "blurb_he": "חוק שירותי הדת היהודיים נתן למועצות הדתיות שליטה על מקוואות ציבוריים — והן ניצלו זאת כדי לחסום גיורי רפורמים וקונסרבטיבים. בלי לפסול אות אחת בחוק, פירש בית המשפט הלא-נבחר את ההסדר בצמצום: מקווה ציבורי שנפתח לטבילת גיור אסור בהפליה לפי זרם, וכך נגדע השימוש שהמועצות עשו בסמכותן החוקית להנצחת המונופול האורתודוקסי — לא רק בבאר שבע אלא בכל המועצות.",
-      "blurb_en": "The Jewish Religious Services Law gave religious councils control over public mikvaot — which they used to bar Reform and Conservative conversion immersions. Voiding nothing in the text, the unelected Court read the statute down: a public mikveh opened for conversion may not discriminate by denominational stream, hollowing out the councils' use of their statutory authority to entrench the Orthodox monopoly — binding not just Be'er Sheva but every council."
+      "blurb_en": "The Jewish Religious Services Law gave religious councils control over public mikvaot — which they used to bar Reform and Conservative conversion immersions. Voiding nothing in the text, the unelected Court read the statute down: a public mikveh opened for conversion may not discriminate by denominational stream, hollowing out the councils' use of their statutory authority to entrench the Orthodox monopoly — binding not just Be'er Sheva but every council.",
+      "statute_he": "חוק שירותי הדת היהודיים [נוסח משולב], התשל\"א-1971",
+      "statute_en": "Jewish Religious Services Law [Consolidated Version], 5731-1971"
     },
     {
       "docket_core": "7625/06",
@@ -674,7 +706,9 @@
         }
       },
       "blurb_he": "חוק השבות, התש\"י-1950: בלי לפסול אות אחת, פירשו השופטים את \"גיור\" שבסעיף 4ב כך שיכלול גם גיורי קהילה אורתודוקסית פרטית שנעשו בארץ (למי שישב בה כדין), ודחו את קריאתה המצמצמת של רשות ההגירה. ערכאה לא-נבחרת קבעה מחדש את משמעות המונח שבחוק — אף שהעותרת ששמה נישא בכותרת עצמה הפסידה.",
-      "blurb_en": "Law of Return, 1950: without voiding a word, the justices read section 4B's term \"conversion\" to cover private Orthodox-community conversions performed in Israel (for those lawfully resident), overriding the Interior Ministry's restrictive gloss. An unelected court reset what the statute's term means in practice — even as the lead petitioner whose name the case bears lost her own claim."
+      "blurb_en": "Law of Return, 1950: without voiding a word, the justices read section 4B's term \"conversion\" to cover private Orthodox-community conversions performed in Israel (for those lawfully resident), overriding the Interior Ministry's restrictive gloss. An unelected court reset what the statute's term means in practice — even as the lead petitioner whose name the case bears lost her own claim.",
+      "statute_he": "חוק השבות, התש\"י-1950 (סעיף 4ב — הגדרת \"יהודי\"/גיור)",
+      "statute_en": "Law of Return, 1950 (sec. 4B — definition of \"Jew\"/conversion)"
     },
     {
       "docket_core": "8101/15",
@@ -710,7 +744,9 @@
         "en": null
       },
       "blurb_he": "סמכויות המעצר וההרחקה שבחוק הכניסה לישראל וחוק למניעת הסתננות לא נפסלו — בית המשפט פירש אותן בצמצום עד שרוקנו מתוכן: מאחר שההסכמים עם המדינות השלישיות (רואנדה/אוגנדה) מתירים העברה בהסכמה בלבד, אסור לעצור מבקש מקלט אריתריאי או סודני בשל סירובו לעזוב ואסור לגרשו בכפייה. כך הקפיאו שופטים שלא נבחרו את תוכנית הגירוש שאליה כיוונה המדינה — בלי לבטל ולו מילה אחת.",
-      "blurb_en": "The detention and removal powers under the Entry into Israel Law and Prevention of Infiltration Law were not struck — the Court read them down until they were hollow: because the third-country agreements (Rwanda/Uganda) permit only consensual transfer, the state may neither detain an Eritrean or Sudanese asylum seeker for refusing to leave nor deport him by force. Unelected judges thus froze the forced-departure program the executive had built, without voiding a single word."
+      "blurb_en": "The detention and removal powers under the Entry into Israel Law and Prevention of Infiltration Law were not struck — the Court read them down until they were hollow: because the third-country agreements (Rwanda/Uganda) permit only consensual transfer, the state may neither detain an Eritrean or Sudanese asylum seeker for refusing to leave nor deport him by force. Unelected judges thus froze the forced-departure program the executive had built, without voiding a single word.",
+      "statute_he": "חוק הכניסה לישראל, התשי\"ב-1952 וחוק למניעת הסתננות (עבירות ושיפוט), התשי\"ד-1954 — סמכויות המעצר וההרחקה",
+      "statute_en": "Entry into Israel Law, 5712-1952 and Prevention of Infiltration (Offences and Jurisdiction) Law, 5714-1954 — detention and removal powers"
     },
     {
       "docket_core": "5026/16",
@@ -751,7 +787,9 @@
         "en": null
       },
       "blurb_he": "חוק איסור הונאה בכשרות, התשמ\"ג-1983 (סע' 3(א)): מבלי לפסול אות אחת, פירשו השופטים את החוק \"בצמצום\" עד שהותירו מן ההלכה שביקשה הכנסת לעגן רק קליפה. מונופול הרבנות על המילה \"כשר\" נשמר — אך נחצב \"פתח שלישי\": עסק ללא תעודת רבנות רשאי למסור מידע אמת על מי שמפקח עליו (גם גוף פרטי) ולהצהיר שאין בידו תעודה, ובלבד שלא יאמר \"כשר\". כך פתחו הכשרות הפרטית שהחוק נועד לחסום.",
-      "blurb_en": "Kashrut (Prohibition of Fraud) Law, 1983 (sec. 3(a)): without voiding a single word, the justices \"read down\" the statute until the rule the Knesset enacted was left a near-shell. The Rabbinate's monopoly over the word \"kosher\" survived — but the Court carved a \"third gate\": an uncertified business may now state truthful facts about who supervises it (even a private body) and admit it holds no Rabbinate certificate, so long as it never says \"kosher.\" Exactly the private-kashrut path the law meant to foreclose."
+      "blurb_en": "Kashrut (Prohibition of Fraud) Law, 1983 (sec. 3(a)): without voiding a single word, the justices \"read down\" the statute until the rule the Knesset enacted was left a near-shell. The Rabbinate's monopoly over the word \"kosher\" survived — but the Court carved a \"third gate\": an uncertified business may now state truthful facts about who supervises it (even a private body) and admit it holds no Rabbinate certificate, so long as it never says \"kosher.\" Exactly the private-kashrut path the law meant to foreclose.",
+      "statute_he": "חוק איסור הונאה בכשרות, התשמ\"ג-1983 (סעיף 3(א))",
+      "statute_en": "Kashrut (Prohibition of Fraud) Law, 1983, sec. 3(a)"
     },
     {
       "docket_core": "6494/14",
@@ -794,7 +832,9 @@
         "en": null
       },
       "blurb_he": "המחוקק אסר בחוק איסור הונאה בכשרות, התשמ\"ג-1983 (סע' 3(א)) על הצגת מצג כשרות ללא תעודה מהרבנות, והרבנות אכפה זאת כמונופול גורף. הרכב מורחב של שבעה שופטים בדיון נוסף לא ביטל אות אחת מן הסעיף — אך פירש אותו בצמצום כך שבית עסק רשאי למסור מידע אמת על הסטנדרטים שהוא שומר ועל אופן הפיקוח, ואף להבהיר שאין לו תעודת הרבנות, ובלבד שלא יכנה עצמו \"כשר\"; כך רוקנו שבעה שופטים בלתי-נבחרים את האכיפה ואת המונופול שהמחוקק ביקש, מבלי לגעת בלשון החוק.",
-      "blurb_en": "The Knesset's Prohibition of Kashrut Fraud Law, 1983 (sec. 3(a)) barred any kashrut representation without a Rabbinate certificate, and the Rabbinate enforced it as a sweeping monopoly. An expanded seven-justice panel in a Further Hearing voided not a single word — it read the section down so that an uncertified eatery may truthfully state which standards it keeps and how it is supervised, and even disclose that it holds no Rabbinate certificate, so long as it does not call itself \"kosher\"; thus seven unelected justices hollowed out the enforcement reach and monopoly the elected legislature intended, while leaving the text untouched."
+      "blurb_en": "The Knesset's Prohibition of Kashrut Fraud Law, 1983 (sec. 3(a)) barred any kashrut representation without a Rabbinate certificate, and the Rabbinate enforced it as a sweeping monopoly. An expanded seven-justice panel in a Further Hearing voided not a single word — it read the section down so that an uncertified eatery may truthfully state which standards it keeps and how it is supervised, and even disclose that it holds no Rabbinate certificate, so long as it does not call itself \"kosher\"; thus seven unelected justices hollowed out the enforcement reach and monopoly the elected legislature intended, while leaving the text untouched.",
+      "statute_he": "חוק איסור הונאה בכשרות, התשמ\"ג-1983, סעיף 3(א)",
+      "statute_en": "Prohibition of Kashrut Fraud Law, 5743-1983, sec. 3(a)"
     },
     {
       "docket_core": "2109/20",
@@ -841,7 +881,9 @@
         }
       },
       "blurb_he": "הממשלה הסמיכה את השב\"כ למעקב סלולרי אחר חולי קורונה ומגעיהם מכוח סעיף 7(ב)(6) לחוק השב\"כ ותקנות שעת חירום לפי חוק-יסוד: הממשלה — והבג\"ץ לא ביטל את הכלי במפורש, אלא קבע שהוא אינו יכול להישען על הסמכה מנהלית-ממשלתית: בית משפט בלתי-נבחר תחם את התוכנית בלוח זמנים קצר וחייב את הרשות המבצעת לפרק את מנגנון החירום שלה ולהעבירו לחקיקה ראשית בכנסת — וכך רוקן את ההסדר התקנתי הקיים מתוקף, גם בלי למחוק את לשונו.",
-      "blurb_en": "The Government authorized the Shin Bet to track COVID patients' and contacts' cell-phone location data under Sec. 7(b)(6) of the GSS Law and emergency regulations issued under Basic Law: The Government — and the unelected Court, without formally voiding the tool, held it could no longer rest on cabinet/administrative authorization, set a short deadline, and forced the executive to dismantle its own emergency mechanism and move the program into primary Knesset legislation, draining the existing regulatory arrangement of effect without striking its text."
+      "blurb_en": "The Government authorized the Shin Bet to track COVID patients' and contacts' cell-phone location data under Sec. 7(b)(6) of the GSS Law and emergency regulations issued under Basic Law: The Government — and the unelected Court, without formally voiding the tool, held it could no longer rest on cabinet/administrative authorization, set a short deadline, and forced the executive to dismantle its own emergency mechanism and move the program into primary Knesset legislation, draining the existing regulatory arrangement of effect without striking its text.",
+      "statute_he": "חוק שירות הביטחון הכללי, התשס\"ב-2002, סעיף 7(ב)(6) (ותקנות שעת חירום לפי חוק-יסוד: הממשלה)",
+      "statute_en": "General Security Service Law, 5762-2002, Sec. 7(b)(6) (and emergency regulations under Basic Law: The Government)"
     },
     {
       "docket_core": "1550/18",
@@ -874,7 +916,9 @@
         "en": null
       },
       "blurb_he": "בלי לפסול אות אחת בחקיקה, בית המשפט פירש את פקודת בריאות העם (1940) ואת חוק זכויות החולה כך שירוקנו מתוכן: סעיף 33(ח) לפקודה מסמיך רק את מנכ\"ל משרד הבריאות — לא בתי חולים בודדים — להסדיר מזון, ובסעיף 9 לחוק זכויות החולה אין כל הסמכה לאסור חמץ או לחטט בתיקי מבקרים. שלושה שופטים בלתי-נבחרים הפכו צו מנהלי אוכף-כשרות לאות מתה ופוסלים אותו גם כפגיעה באוטונומיה, בכבוד ובחופש מדת — וכך מאיינים בפרשנות מדיניות שהמערכת ביקשה לכפות.",
-      "blurb_en": "Without voiding a single line of legislation, the Court read the Public Health Ordinance (1940) and the Patient's Rights Law into a shell: Section 33(h) empowers only the Health Ministry's Director-General — not individual hospitals — to regulate food, and Section 9 of the Patient's Rights Law grants no authority to ban chametz or search visitors' bags. Three unelected justices turned a kashrut-enforcing administrative directive into a dead letter, also striking it as an infringement of autonomy, dignity and freedom from religion — gutting by interpretation a policy the system meant to impose."
+      "blurb_en": "Without voiding a single line of legislation, the Court read the Public Health Ordinance (1940) and the Patient's Rights Law into a shell: Section 33(h) empowers only the Health Ministry's Director-General — not individual hospitals — to regulate food, and Section 9 of the Patient's Rights Law grants no authority to ban chametz or search visitors' bags. Three unelected justices turned a kashrut-enforcing administrative directive into a dead letter, also striking it as an infringement of autonomy, dignity and freedom from religion — gutting by interpretation a policy the system meant to impose.",
+      "statute_he": "פקודת בריאות העם, 1940 (סעיף 33(ח)); חוק זכויות החולה, התשנ\"ו-1996 (סעיף 9)",
+      "statute_en": "Public Health Ordinance, 1940 (sec. 33(h)); Patient's Rights Law, 5756-1996 (sec. 9)"
     },
     {
       "docket_core": "5555/18",
@@ -915,7 +959,9 @@
         "en": null
       },
       "blurb_he": "חוק־יסוד: ישראל – מדינת הלאום של העם היהודי (2018), שהעלה את \"פיתוח ההתיישבות היהודית\" לערך חוקתי והשמיט כל אזכור של שוויון. בית המשפט (היוט, 10 מול 1) לא פסל אף סעיף, אלא \"פירש\" את סעיף 7 בהרמוניה עם כבוד האדם וחירותו — וקבע שאין בו היתר להפליה — כך שאחד עשר שופטים בלתי־נבחרים רוקנו מתוכן את מה שהכנסת הנבחרת ביקשה לעגן, והותירו את הסעיף כהצהרה ריקה מכוח.",
-      "blurb_en": "Basic Law: Israel – The Nation State of the Jewish People (2018) elevated \"development of Jewish settlement\" to a constitutional value and omitted equality entirely. The Court (Hayut, 10-1) struck nothing — it instead read Section 7 \"in harmony\" with Human Dignity and Liberty, holding it authorizes no discrimination, so eleven unelected justices hollowed out what the elected Knesset sought to entrench, leaving the clause a power-stripped declaration."
+      "blurb_en": "Basic Law: Israel – The Nation State of the Jewish People (2018) elevated \"development of Jewish settlement\" to a constitutional value and omitted equality entirely. The Court (Hayut, 10-1) struck nothing — it instead read Section 7 \"in harmony\" with Human Dignity and Liberty, holding it authorizes no discrimination, so eleven unelected justices hollowed out what the elected Knesset sought to entrench, leaving the clause a power-stripped declaration.",
+      "statute_he": "חוק־יסוד: ישראל – מדינת הלאום של העם היהודי (2018), בפרט סעיף 7 (פיתוח ההתיישבות היהודית) וסעיף 1(ג)",
+      "statute_en": "Basic Law: Israel – The Nation State of the Jewish People (2018), esp. sec. 7 (development of Jewish settlement) and sec. 1(c)"
     },
     {
       "docket_core": "11013/05",
@@ -956,7 +1002,9 @@
         "en": null
       },
       "blurb_he": "חוק השבות נותר על מכונו — אך בית המשפט (8 מול 1, הנשיאה חיות) רוקן מתוכן את המונופול שביקש הממסד לשמר: לאחר כ-15 שנות אי-חקיקה, פסקו שופטים שלא נבחרו כי המדינה אינה יכולה להכיר בגיור רפורמי או קונסרבטיבי שנעשה בחו\"ל ולפסול גיור זהה שנעשה בישראל — והכירו בגיורים הלא-אורתודוקסיים (וכן בגיורים אורתודוקסיים פרטיים מחוץ למערך הממלכתי) לצורך חוק השבות, בניגוד לכוונה לשמר את הבלעדיות האורתודוקסית.",
-      "blurb_en": "The Law of Return was left textually intact — but the Court (8-1, CJ Hayut) hollowed out the monopoly the religious establishment sought to preserve: after some 15 years of Knesset inaction, unelected justices held the state could not recognize a Reform or Conservative conversion performed abroad yet reject an identical one performed in Israel, recognizing non-Orthodox (and private non-state Orthodox) conversions done in Israel for the Law of Return — against the intended Orthodox exclusivity."
+      "blurb_en": "The Law of Return was left textually intact — but the Court (8-1, CJ Hayut) hollowed out the monopoly the religious establishment sought to preserve: after some 15 years of Knesset inaction, unelected justices held the state could not recognize a Reform or Conservative conversion performed abroad yet reject an identical one performed in Israel, recognizing non-Orthodox (and private non-state Orthodox) conversions done in Israel for the Law of Return — against the intended Orthodox exclusivity.",
+      "statute_he": "חוק השבות, התש\"י-1950",
+      "statute_en": "Law of Return, 5710-1950"
     },
     {
       "docket_core": "2412/23",
@@ -997,7 +1045,9 @@
         "en": null
       },
       "blurb_he": "תיקון 12 לחוק־יסוד: הממשלה (\"חוק ההשבתה\"), שצמצם את עילות ההכרזה על ראש ממשלה כמנוע־כהונה למצב בריאותי בלבד, נחקק כדי למגן את נתניהו. בית המשפט, ברוב 6-5, לא ביטל את התיקון אלא קבע שהוא ניצול לרעה של סמכות מכוננת — תיקון \"פרסונלי\" — ו\"ריפא\" אותו בפרשנות הקובעת שיחול רק מהכנסת הבאה, וכך רוקן את כל תכליתו בלי לגעת בלשונו. ערכאה לא־נבחרת מותירה את דבר המחוקק כקליפה ריקה.",
-      "blurb_en": "Amendment No. 12 to Basic Law: The Government (the \"Incapacitation Law\") narrowed the grounds for declaring a sitting PM incapacitated to ill-health alone, tailored to shield Netanyahu. The Court (6-5) did not strike it but held it a \"personal\" misuse of constituent power, \"curing\" it by interpretation so it applies only from the next Knesset — gutting its entire real-world purpose while leaving the text intact. An unelected bench reduces the legislature's enactment to an empty shell."
+      "blurb_en": "Amendment No. 12 to Basic Law: The Government (the \"Incapacitation Law\") narrowed the grounds for declaring a sitting PM incapacitated to ill-health alone, tailored to shield Netanyahu. The Court (6-5) did not strike it but held it a \"personal\" misuse of constituent power, \"curing\" it by interpretation so it applies only from the next Knesset — gutting its entire real-world purpose while leaving the text intact. An unelected bench reduces the legislature's enactment to an empty shell.",
+      "statute_he": "תיקון מס' 12 לחוק־יסוד: הממשלה (\"חוק ההשבתה\"), התשפ\"ג-2023",
+      "statute_en": "Amendment No. 12 to Basic Law: The Government (the \"Incapacitation Law\"), 2023"
     },
     {
       "docket_core": "910/86",
@@ -1039,7 +1089,9 @@
         }
       },
       "blurb_he": "העתירה נדחתה: בית המשפט קבע שהסדר דחיית השירות לבחורי ישיבה (\"תורתו אומנותו\"), שניתן מכוח שיקול דעתו המנהלי של שר הביטחון לפי חוק שירות ביטחון, מצוי בגדר סמכותו — ולא פסל דבר. אך שלושה שופטים בלתי-נבחרים שמרו לעצמם תקרה שיפוטית מעל הסדר שהרשויות הנבחרות הותירו פתוח: ברק קבע ש\"הכמות הופכת לאיכות\", וכשמספר הדחויים יגיע לחלק ניכר מבני הגיוס ההסדר ייהפך לבלתי-סביר ויחויב בביטול — והפך פררוגטיבה של הנבחרים לכוח שהערכאה רשאית להפעיל לפי שעון שקבעה היא.",
-      "blurb_en": "Petition denied: the Court held that the yeshiva-student service-deferment arrangement (\"Torato Umanuto\"), exercised under the Defense Minister's administrative discretion per the Defense Service Law, lay within his authority — striking nothing down. Yet three unelected justices reserved a judicial ceiling over an arrangement the elected branches left open-ended: Barak warned that \"quantity becomes quality,\" and once the deferred grow to a significant portion of conscription candidates the arrangement turns unreasonable and must be struck down — converting an elected-branch prerogative into a power the bench may void on a clock of its own setting."
+      "blurb_en": "Petition denied: the Court held that the yeshiva-student service-deferment arrangement (\"Torato Umanuto\"), exercised under the Defense Minister's administrative discretion per the Defense Service Law, lay within his authority — striking nothing down. Yet three unelected justices reserved a judicial ceiling over an arrangement the elected branches left open-ended: Barak warned that \"quantity becomes quality,\" and once the deferred grow to a significant portion of conscription candidates the arrangement turns unreasonable and must be struck down — converting an elected-branch prerogative into a power the bench may void on a clock of its own setting.",
+      "statute_he": "הסדר דחיית השירות לבחורי ישיבה (\"תורתו אומנותו\") מכוח חוק שירות ביטחון",
+      "statute_en": "Yeshiva-student service-deferment arrangement (\"Torato Umanuto\") under the Defense Service Law"
     },
     {
       "docket_core": "1715/97",
@@ -1075,7 +1127,9 @@
         "en": null
       },
       "blurb_he": "בפעם הראשונה מאז המהפכה החוקתית, שופטים בלתי-נבחרים פסלו דבר חקיקה של הכנסת: סעיף 48 לחוק הסדרת העיסוק בייעוץ ובניהול תיקי השקעות התשנ\"ה-1995, שחייב יועצים ומנהלי תיקים ותיקים לעבור בחינות רישוי, בוטל בחלקו כפגיעה בלתי-מידתית בחופש העיסוק — ובכך נכפה על המחוקק לרכך את הסדר המעבר ולקהות את חסם הרישוי האחיד שביקש. (הוראות אחרות, כאיסור על ניהול תיקי בני-משפחה, אושרו.)",
-      "blurb_en": "The first time since the \"constitutional revolution\" that unelected judges struck a Knesset statute: sec. 48 of the 1995 Investment Advice and Portfolio Management Law — which forced veteran advisers and managers to sit licensing exams to keep practicing — was partially voided as a disproportionate violation of freedom of occupation, compelling the legislature to soften its transitional regime and blunting the uniform licensing barrier it had enacted. (Other provisions, like the bar on managing family portfolios, were upheld.)"
+      "blurb_en": "The first time since the \"constitutional revolution\" that unelected judges struck a Knesset statute: sec. 48 of the 1995 Investment Advice and Portfolio Management Law — which forced veteran advisers and managers to sit licensing exams to keep practicing — was partially voided as a disproportionate violation of freedom of occupation, compelling the legislature to soften its transitional regime and blunting the uniform licensing barrier it had enacted. (Other provisions, like the bar on managing family portfolios, were upheld.)",
+      "statute_he": "חוק הסדרת העיסוק בייעוץ השקעות ובניהול תיקי השקעות, התשנ\"ה-1995, סעיף 48",
+      "statute_en": "Regulation of Investment Advice and Portfolio Management Law, 5755-1995, sec. 48"
     },
     {
       "docket_core": "6055/95",
@@ -1115,7 +1169,9 @@
         }
       },
       "blurb_he": "סעיף 237א(א) לחוק השיפוט הצבאי, התשט\"ו-1955, שהקנה מעצר חייל עד 96 שעות בטרם יובא בפני שופט, נפסל על ידי בית המשפט כפגיעה לא־מידתית בחירות שנקבעה בחוק היסוד — אך הבטלות הושעתה ל-12 חודשים, וכך כפו אחד-עשר שופטים בלתי-נבחרים על הכנסת לחתוך את סמכות המעצר שחוקקה בחצי, מ-96 ל-48 שעות.",
-      "blurb_en": "Section 237A(a) of the Military Adjudication Law, 1955 — which let the army detain a soldier up to 96 hours before a judge — was struck down as a disproportionate breach of liberty under the Basic Law, with invalidity suspended 12 months. Eleven unelected justices thus forced the Knesset to halve the detention power it had legislated, from 96 hours to 48."
+      "blurb_en": "Section 237A(a) of the Military Adjudication Law, 1955 — which let the army detain a soldier up to 96 hours before a judge — was struck down as a disproportionate breach of liberty under the Basic Law, with invalidity suspended 12 months. Eleven unelected justices thus forced the Knesset to halve the detention power it had legislated, from 96 hours to 48.",
+      "statute_he": "חוק השיפוט הצבאי, התשט\"ו-1955 — סעיף 237א(א)",
+      "statute_en": "Military Justice (Adjudication) Law, 5715-1955 — sec. 237A(a)"
     },
     {
       "docket_core": "6698/95",
@@ -1155,7 +1211,9 @@
         }
       },
       "blurb_he": "כאן לא חוק של הכנסת נפסל אלא מדיניות מנהלית: בית המשפט בראשות ברק (2000) קבע ששיוך קרקעות מדינה לסוכנות היהודית להקמת היישוב הקהילתי קציר על בסיס מפלה בין יהודים ללא-יהודים נוגד את עקרון השוויון, וחייב את מינהל מקרקעי ישראל לשקול מחדש את בקשת העותרים הערבים. הלכת יסוד שאכיפתה בפועל נותרה איטית ושנויה במחלוקת שנים.",
-      "blurb_en": "No Knesset statute fell here — an administrative practice did: in 2000 the Court under Barak held that channeling state land to the Jewish Agency to build the communal settlement of Katzir on a Jews-only basis violates equality, and ordered the Israel Land Administration to reconsider the Arab petitioners' application. A foundational ruling whose real-world enforcement stayed slow and contested for years."
+      "blurb_en": "No Knesset statute fell here — an administrative practice did: in 2000 the Court under Barak held that channeling state land to the Jewish Agency to build the communal settlement of Katzir on a Jews-only basis violates equality, and ordered the Israel Land Administration to reconsider the Arab petitioners' application. A foundational ruling whose real-world enforcement stayed slow and contested for years.",
+      "statute_he": "מדיניות הקצאת קרקעות מדינה של מינהל מקרקעי ישראל לסוכנות היהודית להקמת היישוב הקהילתי קציר (לא חוק — מדיניות מנהלית)",
+      "statute_en": "Israel Land Administration policy of allocating state land to the Jewish Agency for the communal settlement of Katzir (administrative practice, not a statute)"
     },
     {
       "docket_core": "244/00",
@@ -1193,7 +1251,9 @@
         "en": null
       },
       "blurb_he": "חוק רשות מקרקעי ישראל / חוק יסוד: מקרקעי ישראל: שבעה שופטים בלתי-נבחרים הורו ש\"כל ההחלטות הנידונות בטלות ומבוטלות\" — וביטלו את החלטות מועצת מקרקעי ישראל 717, 727 ו-737, מנגנון שהיה מעביר נתח עצום מערכּם של מקרקעי מדינה חקלאיים ששונה ייעודם למגזר ההתיישבותי. ביהמ\"ש קבע שחלוקה זו לוקה בחוסר סבירות קיצוני ובפגיעה בשוויון ובאמון הציבור במשאב ציבורי, וכפה על המועצה והכנסת לעצב מסגרת חדשה.",
-      "blurb_en": "Israel Lands Administration Law / Basic Law: Israel Lands: a panel of seven unelected justices declared \"all the discussed decisions null and void,\" striking Israel Land Council Decisions 717, 727 and 737 — the windfall mechanism that would have funneled a vast share of the value of rezoned state agricultural land to the settlement sector. The Court branded the scheme extremely unreasonable and a breach of equality and the state's trusteeship over a public resource, forcing the Land Council and Knesset to redraw the framework from scratch."
+      "blurb_en": "Israel Lands Administration Law / Basic Law: Israel Lands: a panel of seven unelected justices declared \"all the discussed decisions null and void,\" striking Israel Land Council Decisions 717, 727 and 737 — the windfall mechanism that would have funneled a vast share of the value of rezoned state agricultural land to the settlement sector. The Court branded the scheme extremely unreasonable and a breach of equality and the state's trusteeship over a public resource, forcing the Land Council and Knesset to redraw the framework from scratch.",
+      "statute_he": "החלטות מועצת מקרקעי ישראל 717, 727 ו-737 (מכוח חוק רשות מקרקעי ישראל וחוק יסוד: מקרקעי ישראל)",
+      "statute_en": "Israel Land Council Decisions 717, 727 and 737 (under the Israel Lands Administration Law / Basic Law: Israel Lands)"
     },
     {
       "docket_core": "3239/02",
@@ -1233,7 +1293,9 @@
         }
       },
       "blurb_he": "לא חוק של הכנסת — אלא צווי צבא (צו 1500 ותיקוניו), שהוצאו בידי המפקד הצבאי מכוח סמכויות החירום של הכיבוש. בית המשפט לא ביטל את סמכות המעצר בעת לחימה, אך פסל כבטל את תקופות המעצר הארוכות ללא ביקורת שיפוטית (18/12 יום) ואת העיכוב הממושך לפני חקירה כבלתי מידתיים — תוך השעיית ההכרזה כחצי שנה — וצמצם את תוקפם המעשי של הצווים, אף שאישר את הגבלות הגישה לעורך דין.",
-      "blurb_en": "Not a Knesset statute — but IDF military orders (Order No. 1500 and its amendments), issued by the area commander under occupation emergency powers. The Court did not abolish the wartime detention authority, yet declared void as disproportionate the long detention periods without judicial review (18/12 days) and the prolonged pre-interrogation delay — suspending the ruling ~6 months — cutting down the orders' operative reach, while upholding the restrictions on lawyer access."
+      "blurb_en": "Not a Knesset statute — but IDF military orders (Order No. 1500 and its amendments), issued by the area commander under occupation emergency powers. The Court did not abolish the wartime detention authority, yet declared void as disproportionate the long detention periods without judicial review (18/12 days) and the prolonged pre-interrogation delay — suspending the ruling ~6 months — cutting down the orders' operative reach, while upholding the restrictions on lawyer access.",
+      "statute_he": "צו צבאי בדבר מעצרים בעת לחימה (הוראת שעה) (יהודה ושומרון), צו מס' 1500 ותיקוניו",
+      "statute_en": "IDF Military Order regarding Arrests During Times of War (Provisional Order) (West Bank), Order No. 1500 and its amendments"
     },
     {
       "docket_core": "1437/02",
@@ -1267,7 +1329,9 @@
         "en": null
       },
       "blurb_he": "תקנה 29(ב) לתקנות בתי הסוהר, התשל\"ח-1978 — שהסמיכה את שירות בתי הסוהר למנוע או להגביל פגישת אסיר עם עורך דינו — נפסלה: בית המשפט הכריז עליה כבטלה בהיעדר הסמכה בפקודת בתי הסוהר ובשל פגיעה בלתי מידתית בזכות להיוועצות בעורך דין, אך השעה את הבטלות בכתשעה חודשים כדי לאפשר לכנסת לחוקק חוק. כך מחקו שופטים שלא נבחרו הסדר משני ששירות הכליאה הפעיל, וכפו על הרשות המבצעת והמחוקקת להעביר את העניין לחקיקה ראשית.",
-      "blurb_en": "Regulation 29(b) of the Prison Service Regulations, 5738-1978 — empowering the prison authority to bar or restrict a prisoner's meeting with his lawyer — was struck down: the Court declared it void for want of authority under the Prisons Ordinance and as a disproportionate infringement of the right to counsel, yet suspended the voidness for roughly nine months to let the Knesset legislate. Unelected justices erased a secondary arrangement the prison service had wielded and forced the executive and legislature to move the matter into primary law."
+      "blurb_en": "Regulation 29(b) of the Prison Service Regulations, 5738-1978 — empowering the prison authority to bar or restrict a prisoner's meeting with his lawyer — was struck down: the Court declared it void for want of authority under the Prisons Ordinance and as a disproportionate infringement of the right to counsel, yet suspended the voidness for roughly nine months to let the Knesset legislate. Unelected justices erased a secondary arrangement the prison service had wielded and forced the executive and legislature to move the matter into primary law.",
+      "statute_he": "תקנה 29(ב) לתקנות בתי הסוהר, התשל\"ח-1978",
+      "statute_en": "Regulation 29(b) of the Prison Service Regulations, 5738-1978"
     },
     {
       "docket_core": "1661/05",
@@ -1305,7 +1369,9 @@
         "en": null
       },
       "blurb_he": "חוק יישום תכנית ההתנתקות, התשס\"ה-2005: הרכב של 11 שופטים בראשות אהרן ברק אישר את מתווה הפינוי עצמו (10 מול 1), אך פסל חלקית את הסדר הפיצויים כפגיעה לא-מידתית בקניין ובכבוד — הרחיב את מענק הגיל מתחת לגיל 21, תיקן את חישוב תקופת המגורים, וריכך הגבלות שתיעלו את המפונים למסלול הפיצוי הסטטוטורי בלבד. בית משפט לא-נבחר חייב את הכנסת הנבחרת להעניק פיצוי נדיב יותר מזה שעיצבה בחוק.",
-      "blurb_en": "Implementation of the Disengagement Plan Law, 2005: an 11-justice panel under Aharon Barak upheld the evacuation scheme itself (10-1) but partially struck the compensation arrangement as a disproportionate violation of property and dignity — extending the individual grant to those under 21, fixing the residence-duration calculation, and loosening restrictions that confined evacuees to the statutory compensation track alone. An unelected court forced the elected Knesset to pay more generously than the law it had enacted provided."
+      "blurb_en": "Implementation of the Disengagement Plan Law, 2005: an 11-justice panel under Aharon Barak upheld the evacuation scheme itself (10-1) but partially struck the compensation arrangement as a disproportionate violation of property and dignity — extending the individual grant to those under 21, fixing the residence-duration calculation, and loosening restrictions that confined evacuees to the statutory compensation track alone. An unelected court forced the elected Knesset to pay more generously than the law it had enacted provided.",
+      "statute_he": "חוק יישום תכנית ההתנתקות, התשס\"ה-2005 — הסדר הפיצויים",
+      "statute_en": "Implementation of the Disengagement Plan Law, 2005 — compensation provisions"
     },
     {
       "docket_core": "6427/02",
@@ -1341,7 +1407,9 @@
         "en": null
       },
       "blurb_he": "חוק טל (חוק דחיית שירות לתלמידי ישיבות שתורתם אומנותם, התשס\"ב-2002) עמד למבחן — והפעם בית המשפט בחר לא לפעול: הרכב של תשעה שופטים הכיר בכך שהחוק פוגע בשוויון ובכבוד האדם, אך נמנע מלבטלו ונתן למדינה ארכה להוכיח שהוא מגדיל את גיוס החרדים. עוצמה שיפוטית שדווקא בריסונה השאירה הסדר פטור־בפועל על כנו, עד הביטול ב-2012.",
-      "blurb_en": "The Tal Law (Deferment of Military Service for Yeshiva Students, 5762-2002) faced review — and this time the Court chose not to act: a nine-justice panel acknowledged the statute harmed equality and human dignity, yet declined to strike it, granting the State more time to prove it would raise Haredi enlistment. Judicial power that, in its very restraint, left a de facto blanket-exemption regime intact until the 2012 strike-down."
+      "blurb_en": "The Tal Law (Deferment of Military Service for Yeshiva Students, 5762-2002) faced review — and this time the Court chose not to act: a nine-justice panel acknowledged the statute harmed equality and human dignity, yet declined to strike it, granting the State more time to prove it would raise Haredi enlistment. Judicial power that, in its very restraint, left a de facto blanket-exemption regime intact until the 2012 strike-down.",
+      "statute_he": "חוק דחיית שירות לתלמידי ישיבות שתורתם אומנותם, התשס\"ב-2002 (\"חוק טל\")",
+      "statute_en": "Deferment of Military Service for Yeshiva Students Whose Vocation Is Torah Study Law, 5762-2002 (\"Tal Law\")"
     },
     {
       "docket_core": "4542/02",
@@ -1383,7 +1451,9 @@
         }
       },
       "blurb_he": "בעתירת קו לעובד (2006) פסל בג\"ץ את \"הסדר הכבילה\" שקבעה הממשלה מכוח סעיף 6 לחוק הכניסה לישראל, התשי\"ב-1952 — אשר כבל מהגר עבודה למעסיק יחיד הנקוב ברישיונו, כך שעזיבתו הפכה אותו לשוהה בלתי-חוקי הצפוי למעצר וגירוש. שלושה שופטים בלתי-נבחרים הכריזו על ההסדר כבטל, כפגיעה בלתי-מידתית בכבוד האדם ובחירותו וב\"זכות להתפטר\", וכפו על הרשות לעצב מחדש את משטר ההיתרים — מה שצ'שן כינה צורה של עבדות מודרנית.",
-      "blurb_en": "In Kav LaOved (2006) the Court struck down the government's \"binding arrangement\" issued under section 6 of the Entry into Israel Law, 5712-1952 — which chained a migrant worker to one named employer, so that leaving turned the worker into an illegal alien facing arrest and deportation. Three unelected justices declared the arrangement void as a disproportionate violation of human dignity, liberty and the right to quit, forcing the executive to rebuild its permit regime — what Vice-President Cheshin called a form of modern servitude."
+      "blurb_en": "In Kav LaOved (2006) the Court struck down the government's \"binding arrangement\" issued under section 6 of the Entry into Israel Law, 5712-1952 — which chained a migrant worker to one named employer, so that leaving turned the worker into an illegal alien facing arrest and deportation. Three unelected justices declared the arrangement void as a disproportionate violation of human dignity, liberty and the right to quit, forcing the executive to rebuild its permit regime — what Vice-President Cheshin called a form of modern servitude.",
+      "statute_he": "חוק הכניסה לישראל, התשי\"ב-1952, סעיף 6",
+      "statute_en": "Entry into Israel Law, 5712-1952, section 6"
     },
     {
       "docket_core": "8300/02",
@@ -1424,7 +1494,9 @@
         "en": null
       },
       "blurb_he": "פקודת מס הכנסה — מנגנון הטבת המס לפי \"רשימת יישובים\" שמנתה הכנסת בעצמה (תוספת ראשונה חלק ב', תיקון 146). שלושה שופטים (ביניש, גרוניס, ריבלין, 22.5.2012) קבעו שהמנגנון מפלה ופסול חוקתית בהיעדר קריטריון אובייקטיבי: הם הוסיפו בכפייה שלושה יישובים ערביים ודרוזיים (מזרעה, כיסרא-סמיע, בית ג'אן) והכריזו על בטלות מושהית של צירוף חמש רשויות יהודיות — מוחקים את הרשימה שבחרה הנבחרת.",
-      "blurb_en": "Income Tax Ordinance — the income-tax-benefit mechanism built on a list of communities the Knesset itself hand-picked (First Schedule Part B, Amendment 146). Three justices (Beinisch, Grunis, Rivlin, 22 May 2012) declared the list unconstitutionally discriminatory for lacking objective criteria: they forced three Arab/Druze communities in (Mazra'a, Kisra-Sumei, Beit Jann) and suspended-voided the inclusion of five Jewish authorities — rewriting the elected legislature's chosen beneficiary list."
+      "blurb_en": "Income Tax Ordinance — the income-tax-benefit mechanism built on a list of communities the Knesset itself hand-picked (First Schedule Part B, Amendment 146). Three justices (Beinisch, Grunis, Rivlin, 22 May 2012) declared the list unconstitutionally discriminatory for lacking objective criteria: they forced three Arab/Druze communities in (Mazra'a, Kisra-Sumei, Beit Jann) and suspended-voided the inclusion of five Jewish authorities — rewriting the elected legislature's chosen beneficiary list.",
+      "statute_he": "פקודת מס הכנסה [נוסח חדש], התשכ\"א-1961, סעיף 11ב (תוספת ראשונה חלק ב', תיקון 146)",
+      "statute_en": "Income Tax Ordinance [New Version], 5721-1961, sec. 11B (First Schedule Part B, Amendment 146)"
     },
     {
       "docket_core": "10662/04",
@@ -1471,7 +1543,9 @@
         }
       },
       "blurb_he": "מותב של שבעה בראשות הנשיאה ביניש פסל את סעיף 9א(ב) לחוק הבטחת הכנסה, התשמ\"א-1980 — חזקת בעלות/שימוש ברכב ששללה גורפת קצבת הבטחת הכנסה — וקבע כי שלילה קטגורית של מינימום קיום אנושי בכבוד פוגעת בכבוד האדם באופן בלתי-מידתי. בית משפט בלתי-נבחר ביטל הוראת חיסכון תקציבית שהמחוקק חוקק כדי לרסן הוצאה, והשיב לעניים זכאות שהחוק נטל מהם — הפעם הראשונה שחוק נפסל בעילה של פגיעה בזכות חברתית (ביצוע הבטלות הושהה כחצי שנה).",
-      "blurb_en": "A seven-justice bench led by President Beinisch struck down section 9A(b) of the Income Support (Guaranteed Income) Law, 5741-1980 — the conclusive presumption disqualifying any vehicle owner/user from the income-guarantee benefit — holding that categorically denying a minimum of dignified subsistence disproportionately violates human dignity. An unelected court voided a budgetary cost-control provision the legislature enacted to curb spending, restoring to the poor an eligibility the statute had stripped from them — the first time a law was struck on a social-right ground (the declaration of voidness suspended roughly six months)."
+      "blurb_en": "A seven-justice bench led by President Beinisch struck down section 9A(b) of the Income Support (Guaranteed Income) Law, 5741-1980 — the conclusive presumption disqualifying any vehicle owner/user from the income-guarantee benefit — holding that categorically denying a minimum of dignified subsistence disproportionately violates human dignity. An unelected court voided a budgetary cost-control provision the legislature enacted to curb spending, restoring to the poor an eligibility the statute had stripped from them — the first time a law was struck on a social-right ground (the declaration of voidness suspended roughly six months).",
+      "statute_he": "חוק הבטחת הכנסה, התשמ\"א-1980 — סעיף 9א(ב)",
+      "statute_en": "Income Support (Guaranteed Income) Law, 5741-1980 — sec. 9A(b)"
     },
     {
       "docket_core": "3782/12",
@@ -1513,7 +1587,9 @@
         }
       },
       "blurb_he": "המשטרה ניכסה לעצמה סמכות לצוות על ספקיות האינטרנט לחסום אתרי הימורים, בהישען על סמכות סגירת \"מקום\" לפי סעיף 229 לחוק העונשין, התשל\"ז-1977; בית המשפט העליון דחה את ערעור המדינה וקבע — אף שהכיר בכך שאתר עשוי להיחשב \"מקום\" וחסימה כ\"סגירה\" — שאין כל הסמכה מפורשת לגייס צד שלישי פרטי לאכיפה, ובכך פסל כסמכות שלא הייתה וגזר על המשטרה לחזור לכנסת לחקיקה ראשית. שופט אחד (סולברג) חלק וסבר שהסמכות קיימת.",
-      "blurb_en": "Police had arrogated to themselves a power to order ISPs to block gambling sites, stretching the authority to close a \"place\" under sec. 229 of the Penal Law, 5737-1977; the Supreme Court dismissed the State's appeal and held — even while accepting that a website might be a \"place\" and blocking a \"closure\" — that no express statute authorized conscripting a private third party into enforcement, voiding a power the legislature never granted and sending the police back to the Knesset for primary legislation. One justice (Sohlberg) dissented, finding the authority did exist."
+      "blurb_en": "Police had arrogated to themselves a power to order ISPs to block gambling sites, stretching the authority to close a \"place\" under sec. 229 of the Penal Law, 5737-1977; the Supreme Court dismissed the State's appeal and held — even while accepting that a website might be a \"place\" and blocking a \"closure\" — that no express statute authorized conscripting a private third party into enforcement, voiding a power the legislature never granted and sending the police back to the Knesset for primary legislation. One justice (Sohlberg) dissented, finding the authority did exist.",
+      "statute_he": "חוק העונשין, התשל\"ז-1977 (סעיף 229 — סמכות סגירת \"מקום\" המשמש להימורים)",
+      "statute_en": "Penal Law, 5737-1977 (sec. 229 — power to close a \"place\" used for gambling)"
     },
     {
       "docket_core": "7385/13",
@@ -1549,7 +1625,9 @@
         "en": null
       },
       "blurb_he": "תיקון מס' 4 לחוק למניעת הסתננות (התשע\"ד-2013) הקים מנגנון להרתעת מבקשי מקלט: מעצר סגור לשנה ושהייה בלתי-מוגבלת ב\"חולות\". בית המשפט (הנשיאה נאור) פסל את שני העמודים — סעיף 30א וכל פרק \"חולות\" — והשעה את הבטלות ל-90 יום כדי שהכנסת תפרק את ההסדר. שופטים בלתי-נבחרים ביטלו את נסיון החקיקה השני של המחוקק הנבחר.",
-      "blurb_en": "Amendment No. 4 to the Prevention of Infiltration Law (2013) built a deterrence machine against asylum seekers: a year of closed detention plus open-ended confinement at \"Holot.\" The Court (President Naor) struck both pillars — section 30A and the entire Holot chapter — voiding the elected legislature's second attempt and suspending the annulment 90 days for the Knesset to dismantle it."
+      "blurb_en": "Amendment No. 4 to the Prevention of Infiltration Law (2013) built a deterrence machine against asylum seekers: a year of closed detention plus open-ended confinement at \"Holot.\" The Court (President Naor) struck both pillars — section 30A and the entire Holot chapter — voiding the elected legislature's second attempt and suspending the annulment 90 days for the Knesset to dismantle it.",
+      "statute_he": "חוק למניעת הסתננות (עבירות ושיפוט), התשי\"ד-1954 — תיקון מס' 4 (התשע\"ד-2013), סעיף 30א ופרק \"חולות\"",
+      "statute_en": "Prevention of Infiltration (Offences and Jurisdiction) Law, 5714-1954 — Amendment No. 4 (5774-2013), sec. 30A and the \"Holot\" chapter"
     },
     {
       "docket_core": "8425/13",
@@ -1590,7 +1668,9 @@
         "en": null
       },
       "blurb_he": "חוק ועדות הקבלה (תיקון מס' 8 לפקודת האגודות השיתופיות, 2011), המתיר ליישובים קטנים בנגב ובגליל לסנן מועמדים לפי \"התאמה חברתית-תרבותית\" — נותר על כנו במלואו. ברוב של 5 מול 4 דחו השופטים את העתירות בטענת חוסר בשלות, בלי לפסול ובלי לצמצם; ארבעה ביקשו לבטל את החוק כפגיעה בשוויון ובכבוד. כאן בית המשפט הלא-נבחר דווקא לא נגע בחקיקת הכנסת — והשאיר מנגנון הדרה לפעול.",
-      "blurb_en": "The Admissions Committees Law (Cooperative Societies Ordinance Amendment No. 8, 2011), letting small Negev and Galilee communities screen applicants for \"social-cultural suitability,\" was left wholly intact. By 5-4 the justices dismissed the petitions as unripe — neither striking nor narrowing the statute — while four would have voided it as a violation of equality and dignity. Here the unelected court chose NOT to touch the Knesset's law, leaving a gatekeeping mechanism standing."
+      "blurb_en": "The Admissions Committees Law (Cooperative Societies Ordinance Amendment No. 8, 2011), letting small Negev and Galilee communities screen applicants for \"social-cultural suitability,\" was left wholly intact. By 5-4 the justices dismissed the petitions as unripe — neither striking nor narrowing the statute — while four would have voided it as a violation of equality and dignity. Here the unelected court chose NOT to touch the Knesset's law, leaving a gatekeeping mechanism standing.",
+      "statute_he": "חוק ועדות הקבלה (תיקון מס' 8 לפקודת האגודות השיתופיות, 2011)",
+      "statute_en": "Admissions Committees Law (Cooperative Societies Ordinance Amendment No. 8, 2011)"
     },
     {
       "docket_core": "2504/11",
@@ -1626,7 +1706,9 @@
         "en": null
       },
       "blurb_he": "חוק ועדות הקבלה (תיקון מס' 8 לפקודת האגודות השיתופיות, 2011), המתיר ליישובים קטנים בנגב ובגליל לסנן מועמדים לפי \"התאמה חברתית-תרבותית\". בדיון מורחב, ברוב של 5 מול 4, בית המשפט דחה את העתירות מטעמי \"היעדר בשלות\" — והותיר את החוק שלם וחי. ארבעה שופטים ביקשו לפסול אותו כפגיעה בשוויון ובכבוד; הרוב בחר לא להכריע. כאן הערכאה הלא-נבחרת לא צמצמה את חקיקת הכנסת — היא נמנעה מלגעת בה, והשאירה מנגנון הדרה על כנו.",
-      "blurb_en": "The Admissions Committees Law (Amendment No. 8 to the Cooperative Societies Ordinance, 2011) lets small Negev and Galilee communities screen applicants for \"social-cultural suitability.\" Sitting expanded, the Court 5-4 DISMISSED the petitions as \"unripe\" — leaving the statute fully intact. Four justices would have struck it as a violation of equality and dignity; the majority chose not to rule. Here the unelected court did not narrow the Knesset's law — it declined to touch it, leaving a gatekeeping mechanism standing."
+      "blurb_en": "The Admissions Committees Law (Amendment No. 8 to the Cooperative Societies Ordinance, 2011) lets small Negev and Galilee communities screen applicants for \"social-cultural suitability.\" Sitting expanded, the Court 5-4 DISMISSED the petitions as \"unripe\" — leaving the statute fully intact. Four justices would have struck it as a violation of equality and dignity; the majority chose not to rule. Here the unelected court did not narrow the Knesset's law — it declined to touch it, leaving a gatekeeping mechanism standing.",
+      "statute_he": "חוק ועדות הקבלה (תיקון מס' 8 לפקודת האגודות השיתופיות), התשע\"א-2011",
+      "statute_en": "Admissions Committees Law (Amendment No. 8 to the Cooperative Societies Ordinance), 2011"
     },
     {
       "docket_core": "1877/14",
@@ -1667,7 +1749,9 @@
         "en": null
       },
       "blurb_he": "תיקונים 19 ו-21 לחוק שירות ביטחון — המסגרת שנועדה להסדיר את דחיית גיוסם של בחורי הישיבות החרדים — נפסלו (8 מול 1, בנשיאות נאור) כפגיעה בלתי-מידתית בשוויון ובכבוד האדם. אחד-עשר שופטים לא נבחרו ביטלו חקיקה של הכנסת הנבחרת; תוקף הביטול הושהה בשנה כדי לאפשר חקיקה חלופית.",
-      "blurb_en": "Amendments 19 and 21 to the Defense Service Law — the framework regulating deferment of Haredi yeshiva students' conscription — were struck down (8-1, President Naor) as a disproportionate violation of equality and human dignity. Unelected justices voided the elected Knesset's statute; the declaration of invalidity was suspended one year for replacement legislation."
+      "blurb_en": "Amendments 19 and 21 to the Defense Service Law — the framework regulating deferment of Haredi yeshiva students' conscription — were struck down (8-1, President Naor) as a disproportionate violation of equality and human dignity. Unelected justices voided the elected Knesset's statute; the declaration of invalidity was suspended one year for replacement legislation.",
+      "statute_he": "חוק שירות ביטחון [נוסח משולב], התשמ\"ו-1986 — תיקונים 19 ו-21",
+      "statute_en": "Defense Service Law [Consolidated Version], 5746-1986 — Amendments 19 and 21"
     },
     {
       "docket_core": "10042/16",
@@ -1708,7 +1792,9 @@
         "en": null
       },
       "blurb_he": "מס ריבוי הדירות — \"מס הדירה השלישית\", גולת הכותרת של מדיניות הדיור של האוצר — בוטל בידי חמישה שופטים לא-נבחרים (מזוז בדעת מיעוט) לא משום שהמס פסול, אלא בשל פגם בהליך החקיקה: לראשונה אי-פעם, פרק שלם בחוק ההתייעלות הכלכלית הוכרז בטל כי הנוסח הונח בפני חברי הכנסת שעות לפני ההצבעה. בטלות יחסית, והעניין הוחזר לוועדת הכספים לחקיקה מחדש; הכנסת לא חוקקה שוב, והמס פקע.",
-      "blurb_en": "The multiple-apartment \"third home\" tax — the centerpiece of the Finance Minister's housing policy — was nullified by five unelected justices (Mazuz dissenting) not because the tax was unconstitutional, but for a defect in the legislative process: for the first time ever, an entire chapter of the Economic Efficiency Law was voided because MKs got the final text mere hours before the vote. A relative nullification, returned to the Finance Committee to re-enact; the Knesset never did, and the tax lapsed."
+      "blurb_en": "The multiple-apartment \"third home\" tax — the centerpiece of the Finance Minister's housing policy — was nullified by five unelected justices (Mazuz dissenting) not because the tax was unconstitutional, but for a defect in the legislative process: for the first time ever, an entire chapter of the Economic Efficiency Law was voided because MKs got the final text mere hours before the vote. A relative nullification, returned to the Finance Committee to re-enact; the Knesset never did, and the tax lapsed.",
+      "statute_he": "פרק י\"ב לחוק ההתייעלות הכלכלית (תיקוני חקיקה ליישום המדיניות הכלכלית לשנות התקציב 2017 ו-2018), התשע\"ז-2016 — מס ריבוי דירות",
+      "statute_en": "Chapter 12 of the Economic Efficiency Law (Legislative Amendments for Implementing the Economic Policy for Budget Years 2017 and 2018), 5777-2016 — Multiple-Apartment Tax"
     },
     {
       "docket_core": "2293/17",
@@ -1749,7 +1835,9 @@
         "en": null
       },
       "blurb_he": "הכנסת חוקקה את \"חוק הפיקדון\" (סעיף 4 לחוק למניעת הסתננות, תיקון לחוק עובדים זרים), שניכה 20% משכר מבקשי המקלט והקפיא אותו עד יציאתם מהארץ — מנוף לחץ כלכלי שנועד לדחוק אותם ל\"עזיבה מרצון\". בית המשפט, ברוב של 8 מול 1, פסל את ניכוי שכר העובד כפגיעה לא-מידתית בזכות הקניין, הותיר על כנו רק את חלק המעסיק (16%) והורה להשיב לעובדים את הפיקדונות — ושופטים שלא נבחרו ביטלו את הלב הכופה של חוק נבחרי הציבור.",
-      "blurb_en": "The Knesset enacted the \"Deposit Law\" (Section 4 of the Prevention of Infiltration Law, amending the Foreign Workers Law), withholding 20% of asylum seekers' wages until they left the country — economic coercion engineered to push them toward \"self-deportation.\" By 8-1 the Court partially struck the statute, voiding the employee wage-deduction as a disproportionate infringement of property rights while leaving the 16% employer contribution standing, and ordered the withheld deposits returned — unelected judges gutting the elected legislature's coercive core."
+      "blurb_en": "The Knesset enacted the \"Deposit Law\" (Section 4 of the Prevention of Infiltration Law, amending the Foreign Workers Law), withholding 20% of asylum seekers' wages until they left the country — economic coercion engineered to push them toward \"self-deportation.\" By 8-1 the Court partially struck the statute, voiding the employee wage-deduction as a disproportionate infringement of property rights while leaving the 16% employer contribution standing, and ordered the withheld deposits returned — unelected judges gutting the elected legislature's coercive core.",
+      "statute_he": "סעיף 4 לחוק למניעת הסתננות (תיקוני חקיקה והוראת שעה), התשע\"ה-2014 (\"חוק הפיקדון\") — תיקון לחוק עובדים זרים, התשנ\"א-1991",
+      "statute_en": "Section 4 of the Prevention of Infiltration and Ensuring Departure of Infiltrators from Israel (Legislative Amendments and Temporary Provisions) Law, 5775-2014 (the \"Deposit Law\"), amending the Foreign Workers Law, 5751-1991"
     },
     {
       "docket_core": "5469/20",
@@ -1792,7 +1880,9 @@
         "en": null
       },
       "blurb_he": "תשעה שופטים, בראשות הנשיאה חיות, פסלו את תקנה 24(1) לתקנות הקורונה (חוק סמכויות מיוחדות להתמודדות עם נגיף הקורונה (הוראת שעה), התש\"ף-2020), שאסרה הפגנה במרחק העולה על 1,000 מטר ממקום המגורים, כפגיעה בלתי-מידתית בחופש הביטוי ובזכות למחות — בעוד החוק עצמו ורוב הוראותיו אושרו. משהתקנה כבר פקעה (תקפה רק 1–13.10.2020), בית המשפט הבלתי-נבחר הכריז על בטלותה למפרע והורה לבטל ולהשיב את הקנסות שהוטלו על כ-18,000 אזרחים — אלא אם המדינה תחזור בה תוך 90 יום — וכך ריקן מתוכן את אכיפת מגבלת ההפגנות שקבעה הרשות המבצעת.",
-      "blurb_en": "A nine-justice bench under President Hayut struck down Regulation 24(1) of the Coronavirus emergency regulations (enacted under the Special Powers for Coping with the Novel Coronavirus (Temporary Provision) Law, 5780-2020), which barred protesting more than 1,000 meters from one's home, as a disproportionate violation of free expression and the right to protest — while upholding the Law itself and most of its provisions. Since the regulation had already expired (in force only Oct 1-13, 2020), the unelected Court declared it void retroactively and ordered the cancellation and refund of fines levied on some 18,000 citizens unless the state rescinded them within 90 days, hollowing out enforcement of the executive's protest-limiting rule."
+      "blurb_en": "A nine-justice bench under President Hayut struck down Regulation 24(1) of the Coronavirus emergency regulations (enacted under the Special Powers for Coping with the Novel Coronavirus (Temporary Provision) Law, 5780-2020), which barred protesting more than 1,000 meters from one's home, as a disproportionate violation of free expression and the right to protest — while upholding the Law itself and most of its provisions. Since the regulation had already expired (in force only Oct 1-13, 2020), the unelected Court declared it void retroactively and ordered the cancellation and refund of fines levied on some 18,000 citizens unless the state rescinded them within 90 days, hollowing out enforcement of the executive's protest-limiting rule.",
+      "statute_he": "תקנה 24(1) לתקנות שעת חירום מכוח חוק סמכויות מיוחדות להתמודדות עם נגיף הקורונה החדש (הוראת שעה), התש\"ף-2020",
+      "statute_en": "Regulation 24(1) under the Special Powers for Coping with the Novel Coronavirus (Temporary Provision) Law, 5780-2020"
     },
     {
       "docket_core": "6942/19",
@@ -1830,7 +1920,9 @@
         "en": null
       },
       "blurb_he": "החלטות 717, 727 ו-737 של מועצת מקרקעי ישראל העניקו לקיבוצים ולמושבים נתח עצום מערך הקרקע הציבורית בעת הסבת קרקע חקלאית לבנייה ולתעשייה — הקצאה ללא מכרז ובדמי-חכירה מוזלים. שבעה שופטים, שאיש מהם לא נבחר, הורו כי \"כל ההחלטות הנידונות בטלות ומבוטלות\", ביטלו במחי יד את מנגנון רווחי-ההון של מגזר ההתיישבות בנימוק של חוסר-סבירות קיצוני ופגיעה בשוויון ובנאמנות הציבורית — וכפו על המועצה לתכנן מסגרת חדשה תחת אמות-מידה שקבע בית המשפט.",
-      "blurb_en": "Israel Land Council Decisions 717, 727 and 737 handed kibbutzim and moshavim a vast share of the state-land value created when farmland was rezoned for housing and industry — tender-free allocation at slashed lease fees. Seven unelected justices declared \"all the decisions discussed null and void,\" wiping out the settlement sector's windfall mechanism for extreme unreasonableness and breach of equality and the state's trusteeship of public land — forcing the Council to rebuild the framework under court-set criteria."
+      "blurb_en": "Israel Land Council Decisions 717, 727 and 737 handed kibbutzim and moshavim a vast share of the state-land value created when farmland was rezoned for housing and industry — tender-free allocation at slashed lease fees. Seven unelected justices declared \"all the decisions discussed null and void,\" wiping out the settlement sector's windfall mechanism for extreme unreasonableness and breach of equality and the state's trusteeship of public land — forcing the Council to rebuild the framework under court-set criteria.",
+      "statute_he": "החלטות 717, 727 ו-737 של מועצת מקרקעי ישראל",
+      "statute_en": "Israel Land Council Decisions 717, 727 and 737"
     },
     {
       "docket_core": "6198/23",
@@ -1873,7 +1965,9 @@
         "en": null
       },
       "blurb_he": "משפקעה הסדרת הדחייה לבחורי ישיבה ולא נותר כל פטור בחוק שירות הביטחון, התשמ\"ו-1986, פסק בית המשפט פה אחד (תשעה שופטים, מפי המשנה לנשיאה פוגלמן) כי החלטת הממשלה להורות לצה\"ל שלא לגייס חרדים זכאי גיוס נעדרת בסיס חוקי: בהיעדר פטור חל חוק חובת הגיוס האוניברסלי, ואין סמכות לאכיפה בררנית. בכך הפך בית המשפט בלתי-נבחר את שתיקת הקואליציה והכנסת לצו שיפוטי פוזיטיבי המחייב לפעול לגיוס ואוסר על העברת כספי מדינה לישיבות עבור תלמידים זכאי גיוס — תוצאה הנוגדת את כוונת הרשות הנבחרת.",
-      "blurb_en": "With the yeshiva-deferment arrangement expired and no exemption left in the Defense Service Law [Consolidated Version], 5746-1986, a unanimous nine-justice bench (opinion by Acting President Vogelman) held the government's instruction to the IDF not to draft draft-eligible Haredim legally baseless: absent any exemption the universal conscription duty applies and selective non-enforcement is unlawful. An unelected court thus converted the coalition's and Knesset's deliberate inaction into an affirmative judicial command to draft and a bar on transferring state funds to yeshivas for draft-eligible students — a result running directly against the elected branches' intent."
+      "blurb_en": "With the yeshiva-deferment arrangement expired and no exemption left in the Defense Service Law [Consolidated Version], 5746-1986, a unanimous nine-justice bench (opinion by Acting President Vogelman) held the government's instruction to the IDF not to draft draft-eligible Haredim legally baseless: absent any exemption the universal conscription duty applies and selective non-enforcement is unlawful. An unelected court thus converted the coalition's and Knesset's deliberate inaction into an affirmative judicial command to draft and a bar on transferring state funds to yeshivas for draft-eligible students — a result running directly against the elected branches' intent.",
+      "statute_he": "חוק שירות הביטחון [נוסח משולב], התשמ\"ו-1986",
+      "statute_en": "Defense Service Law [Consolidated Version], 5746-1986"
     },
     {
       "docket_core": "7922/19",
@@ -1911,7 +2005,9 @@
         "en": null
       },
       "blurb_he": "בית המשפט קבע ש\"הגדלות הרמטכ\"ל\" — תוספות פנסיה של כ-1.8 מיליארד ש\"ח בשנה ששולמו לכ-98% מאנשי הקבע — חורגות מסמכות הרמטכ\"ל לפי חוק שירות הקבע בצה\"ל (גמלאות), שכן הטבה גורפת וכמעט-אוניברסלית היא \"הסדר ראשוני\" שחייב להיקבע בחקיקת הכנסת ולא בשיקול דעת מינהלי; ביטל את ההסדר (בהשעיה עד סוף 2025, תוך הגנה על גמלאים קיימים) ודחק את הסוגיה אל הכנסת. שופטים בלתי-נבחרים פסלו הטבת-ענק רבת-שנים והכפיפו את מימושה לרצונו הטוב של המחוקק.",
-      "blurb_en": "The Court struck down the \"Chief of Staff increases\" — pension top-ups of roughly NIS 1.8 billion a year paid to some 98% of career personnel — as exceeding the Chief of Staff's authority under the Permanent Service (Pensions) Law, holding that a blanket, near-universal benefit is a \"primary arrangement\" the Knesset must legislate, not executive discretion; it voided the scheme (suspended to end-2025, sparing existing retirees) and pushed the matter to the legislature. Unelected justices canceled a decades-old mass entitlement and made its survival contingent on lawmakers' goodwill."
+      "blurb_en": "The Court struck down the \"Chief of Staff increases\" — pension top-ups of roughly NIS 1.8 billion a year paid to some 98% of career personnel — as exceeding the Chief of Staff's authority under the Permanent Service (Pensions) Law, holding that a blanket, near-universal benefit is a \"primary arrangement\" the Knesset must legislate, not executive discretion; it voided the scheme (suspended to end-2025, sparing existing retirees) and pushed the matter to the legislature. Unelected justices canceled a decades-old mass entitlement and made its survival contingent on lawmakers' goodwill.",
+      "statute_he": "חוק שירות הקבע בצבא הגנה לישראל (גמלאות) [נוסח משולב], התשמ\"ה-1985 — סעיף 18(ב)",
+      "statute_en": "Permanent Service in the IDF (Pensions) Law [Consolidated Version], 5745-1985 — sec. 18(b)"
     }
   ]
 }

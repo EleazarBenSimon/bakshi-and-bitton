@@ -387,6 +387,7 @@ def _quiet_veto_table_md(lang: str) -> str:
         return _html.escape(str(s or "").replace("\n", " ").strip())
 
     blurb_field = "blurb_he" if lang == "he" else "blurb_en"
+    statute_field = "statute_he" if lang == "he" else "statute_en"
     h = _QV_HEADERS[lang]
     missing_label = "המסמך הרשמי חסר" if lang == "he" else "Official document missing"
     contribute_label = "תרם מסמך" if lang == "he" else "Contribute the document"
@@ -399,7 +400,10 @@ def _quiet_veto_table_md(lang: str) -> str:
         ot = _qv_outcome_type(c)
         src = (c.get("official_sources") or {}).get(lang)
         has = bool(src and src.get("url"))
-        docket = e(c.get("docket"))
+        # Language-normalised docket (same helper the prose sections use) so the
+        # HE table shows בג"ץ… and the EN table shows HCJ…, not the raw
+        # bilingual `docket` field.
+        docket = e(_qv_docket(c, lang))
         if has:
             docket_cell = (f'{docket} <a class="qv-src" href="{e(src["url"])}" '
                            f'target="_blank" rel="noopener" title="{src_title}">↗</a>')
@@ -417,7 +421,7 @@ def _quiet_veto_table_md(lang: str) -> str:
             f"<tr{row_cls}>"
             f'<td class="qv-c-docket">{docket_cell}</td>'
             f"<td>{e(c.get('year'))}</td>"
-            f'<td class="qv-c-statute">{e(c.get("statute"))}</td>'
+            f'<td class="qv-c-statute">{e(c.get(statute_field) or c.get("statute"))}</td>'
             f'<td class="qv-c-holding">{holding_cell}</td>'
             f"<td>{e(_QV_OUTCOME_LABEL[lang][ot])}</td>"
             f"</tr>"
