@@ -20,12 +20,12 @@
 <meta name="twitter:title" content="קריאה">
 <meta name="twitter:description" content="מאמר מתוך שכבת התוכן המידעי של מאגר בקשי וביטון.">
 <meta name="twitter:image" content="https://eleazarbensimon.github.io/bakshi-and-bitton/assets/og-default.png">
-<link rel="stylesheet" href="assets/style.css?v=1c1687c3">
+<link rel="stylesheet" href="assets/style.css?v=cf97cda3">
 <link rel="alternate" type="application/rss+xml" title="Bakshi&Bitton — new rulings" href="feed.xml">
 </head>
 <body>
 <div id="root"></div>
-<script src="assets/app.js?v=31301d8f"></script>
+<script src="assets/app.js?v=60057254"></script>
 <script>
 (async function () {
   const { t, el, fetchJSON, renderHeader, renderFooter, lang } = window.CO;
@@ -177,8 +177,11 @@
   const body = el("div", { class: "article-body", html: localizedBodyHtml });
   article.append(body);
 
-  // ─── Build TOC from h2/h3 in the body ────────────────────────────
-  const headings = body.querySelectorAll("h2, h3");
+  // ─── Build TOC from h2/h3 + tagged table rows in the body ────────
+  // Table rows carrying data-toc-label (the Quiet-Veto quick-reference table)
+  // become h3-level bullets that jump to the row, so the content-map indexes
+  // the table's cases directly instead of a duplicated prose block.
+  const headings = body.querySelectorAll("h2, h3, tr[data-toc-label]");
   const tocSidebar = el("aside", { class: "toc-sidebar", "aria-label": t.toc_title });
   const tocTitle = el("div", { class: "toc-title" }, t.toc_title);
   tocSidebar.append(tocTitle);
@@ -194,7 +197,8 @@
 
   let h2Index = 0;
   for (const h of headings) {
-    const text = h.textContent.trim();
+    const isRow = h.tagName === "TR";
+    const text = isRow ? (h.getAttribute("data-toc-label") || "").trim() : h.textContent.trim();
     if (!text) continue;
     let id = h.id;
     if (!id) {
@@ -205,7 +209,8 @@
       }
       h.id = id;
     }
-    const item = el("li", { class: `toc-item toc-item--${h.tagName.toLowerCase()}` });
+    const lvl = isRow ? "h3" : h.tagName.toLowerCase();
+    const item = el("li", { class: `toc-item toc-item--${lvl}` });
     const link = el("a", { href: `#${id}`, class: "toc-link" }, text);
     item.append(link);
     tocList.append(item);

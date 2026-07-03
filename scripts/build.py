@@ -416,9 +416,19 @@ def _quiet_veto_table_md(lang: str) -> str:
                 f'data-docket="{e(c.get("docket_core") or c.get("docket"))}" '
                 f'data-name="{e(c.get("name"))}" data-lang="{lang}">{e(contribute_label)}</button>'
             )
-        row_cls = "" if has else ' class="qv-row-off"'
+        # Each row is a jump target for the content-map: a stable id + a
+        # data-toc-label (the case's language-normalised docket + clean name)
+        # that both TOC builders (build.py _content_toc and the SPA
+        # content.html script) turn into a sidebar bullet pointing here.
+        row_id = "qv-row-" + re.sub(r"[^0-9A-Za-z]+", "-", (c.get("docket_core") or "")).strip("-")
+        nm = _qv_clean_name(c, lang)
+        core_dk = _qv_docket(c, lang)
+        row_label = f"{core_dk} — {nm}" if nm else core_dk
+        row_attrs = f' id="{row_id}" data-toc-label="{e(row_label)}"'
+        if not has:
+            row_attrs += ' class="qv-row-off"'
         parts.append(
-            f"<tr{row_cls}>"
+            f"<tr{row_attrs}>"
             f'<td class="qv-c-docket">{docket_cell}</td>'
             f"<td>{e(c.get('year'))}</td>"
             f'<td class="qv-c-statute">{e(c.get(statute_field) or c.get("statute"))}</td>'
@@ -538,102 +548,6 @@ def _qv_clean_name(case: dict, lang: str) -> str:
     return cand
 
 
-_QV_SECTION_GROUPS = {
-    "he": [
-        ("read_down", "רוקנו מכוחם בלי שבוטלו — פרשנות מצמצמת"),
-        ("struck", "בוטלו / בוטלו חלקית"),
-    ],
-    "en": [
-        ("read_down", "Emptied of force without being struck — reading down"),
-        ("struck", "Struck down / partly struck"),
-    ],
-}
-_QV_SRC_LEAD = {"he": "מקור", "en": "Source"}
-_QV_SRC_LABEL = {"he": "מסמך רשמי", "en": "official document"}
-
-
-def _quiet_veto_sections_md(lang: str) -> str:
-    """Generate the per-case reading sections as one raw-HTML block, straight
-    from quiet-veto-cases.json — the cases grouped into 'read down' vs 'struck'
-    (by `interpretive_evisceration`, the same flag the table uses).
-
-    Built ENTIRELY from the target language's own clean fields — the
-    language-normalised docket (`_qv_docket`) plus `blurb_he`/`blurb_en` — so
-    the Hebrew page carries no English metadata and the English page no Hebrew.
-    This replaces the previously hand-authored prose, whose per-case justice-
-    panel and statute lines were English baked into the Hebrew file (the source
-    of the mixed-language bug): there is no clean single-language source unless
-    it is generated from the per-language data.
-
-    Same source-gate as the table: a case with no `official_sources[lang]`
-    renders 'off' (greyed but still readable, so the reader knows which
-    document is wanted) with a Contribute button (wired to the app.js modal)
-    instead of a source link. Cases render as styled paragraphs, not headings,
-    so the content-map lists the two groups rather than 48 bare dockets."""
-    import html as _html
-    if not LIBRARY_FILE.exists():
-        return ""
-    raw = json.loads(LIBRARY_FILE.read_text(encoding="utf-8"))
-    cases = raw if isinstance(raw, list) else raw.get("cases", [])
-
-    def e(s):
-        return _html.escape(str(s or "").replace("\n", " ").strip())
-
-    blurb_field = "blurb_he" if lang == "he" else "blurb_en"
-    missing_label = "המסמך הרשמי חסר" if lang == "he" else "Official document missing"
-    contribute_label = "תרם מסמך" if lang == "he" else "Contribute the document"
-    src_lead, src_label = _QV_SRC_LEAD[lang], _QV_SRC_LABEL[lang]
-
-    grouped = {"read_down": [], "struck": []}
-    for c in cases:
-        grouped["read_down" if c.get("interpretive_evisceration") is True else "struck"].append(c)
-
-    parts = []
-    for gkey, gtitle in _QV_SECTION_GROUPS[lang]:
-        parts.append(f"<h2>{e(gtitle)}</h2>")
-        for c in grouped[gkey]:
-            ot = _qv_outcome_type(c)
-            src = (c.get("official_sources") or {}).get(lang)
-            has = bool(src and src.get("url"))
-            docket = e(_qv_docket(c, lang))
-            nm = _qv_clean_name(c, lang)
-            head = f"{docket} — {e(nm)}" if nm else docket
-            tag = e(_QV_OUTCOME_LABEL[lang][ot])
-            year = e(c.get("year"))
-            tag_line = f"{tag} · {year}" if year else tag
-            if has:
-                src_html = (
-                    f'<p class="qv-case-src"><strong>{e(src_lead)}:</strong> '
-                    f'<a class="qv-src" href="{e(src["url"])}" target="_blank" '
-                    f'rel="noopener">↗ {e(src_label)}</a></p>'
-                )
-                sec_cls = "qv-case"
-            else:
-                src_html = (
-                    f'<p class="qv-case-src">'
-                    f'<span class="qv-missing-label">⬚ {e(missing_label)}</span> '
-                    f'<button type="button" class="qv-contribute" '
-                    f'data-docket="{e(c.get("docket_core") or c.get("docket"))}" '
-                    f'data-name="{e(c.get("name"))}" data-lang="{lang}">{e(contribute_label)}</button>'
-                    f"</p>"
-                )
-                sec_cls = "qv-case qv-case-off"
-            parts.append(
-                f'<section class="{sec_cls}">'
-                # Docket is an <h3> (not a <p>) so BOTH content-map builders —
-                # build.py's _content_toc and the SPA's content.html script,
-                # which each scan `h2, h3` — list every case in the sidebar,
-                # nested under its group <h2>. Styled compact via CSS so the
-                # under-table look is unchanged.
-                f'<h3 class="qv-case-docket">{head}</h3>'
-                f'<p class="qv-case-tag">{tag_line}</p>'
-                f'<p class="qv-case-blurb">{e(c.get(blurb_field))}</p>'
-                f"{src_html}"
-                f"</section>"
-            )
-    return "".join(parts) + "\n"
-
-
 def build_content(out_dir: Path) -> dict:
     """
     Build the informative content layer: convert each content/*/foo.md to HTML
@@ -701,9 +615,6 @@ def build_content(out_dir: Path) -> dict:
                 qv_marker = "<!-- TABLE:quiet-veto-cases -->"
                 body_he_raw = body_he_raw.replace(qv_marker, _quiet_veto_table_md("he"))
                 body_en_raw = body_en_raw.replace(qv_marker, _quiet_veto_table_md("en"))
-                sec_marker = "<!-- SECTIONS:quiet-veto-cases -->"
-                body_he_raw = body_he_raw.replace(sec_marker, _quiet_veto_sections_md("he"))
-                body_en_raw = body_en_raw.replace(sec_marker, _quiet_veto_sections_md("en"))
 
             title_meta = meta.get("title", "").strip()
             title_he   = meta.get("title_he", title_meta).strip()
@@ -1297,25 +1208,41 @@ def _content_toc(body_html: str, lang: str):
     entries = []
 
     def repl(m):
-        level, attrs, inner = m.group(1), m.group(2), m.group(3)
-        text = re.sub(r"<[^>]+>", "", inner).strip()
-        if not text:
-            return m.group(0)
-        idm = re.search(r'id="([^"]+)"', attrs)
-        if idm:
-            hid, out = idm.group(1), m.group(0)
-        else:
-            base = "h-" + (_toc_slug(text) or f"section-{len(entries)}")
-            hid, n = base, 1
-            while hid in seen:
-                n += 1
-                hid = f"{base}-{n}"
-            out = f'<{level}{attrs} id="{hid}">{inner}</{level}>'
-        seen.add(hid)
-        entries.append((level, hid, text))
-        return out
+        # Two alternatives in the pattern: a heading (groups 1-3) or a table row
+        # carrying data-toc-label (groups 4-5). Rows already have an id, so they
+        # become h3-level bullets pointing at that row; headings get an id
+        # injected if missing. re.sub processes matches in document order, so
+        # entries stay ordered (e.g. table h2, then its rows).
+        if m.group(1):  # heading
+            level, attrs, inner = m.group(1), m.group(2), m.group(3)
+            text = re.sub(r"<[^>]+>", "", inner).strip()
+            if not text:
+                return m.group(0)
+            idm = re.search(r'id="([^"]+)"', attrs)
+            if idm:
+                hid, out = idm.group(1), m.group(0)
+            else:
+                base = "h-" + (_toc_slug(text) or f"section-{len(entries)}")
+                hid, n = base, 1
+                while hid in seen:
+                    n += 1
+                    hid = f"{base}-{n}"
+                out = f'<{level}{attrs} id="{hid}">{inner}</{level}>'
+            seen.add(hid)
+            entries.append((level, hid, text))
+            return out
+        # tagged table row: group(4)=attrs, group(5)=label
+        tr_attrs, label = m.group(4), (m.group(5) or "").strip()
+        idm = re.search(r'id="([^"]+)"', tr_attrs)
+        if idm and label:
+            seen.add(idm.group(1))
+            entries.append(("h3", idm.group(1), label))
+        return m.group(0)
 
-    new_body = re.sub(r"<(h2|h3)([^>]*)>(.*?)</\1>", repl, body_html, flags=re.S)
+    new_body = re.sub(
+        r'<(h2|h3)([^>]*)>(.*?)</\1>|<tr\b([^>]*\bdata-toc-label="([^"]*)"[^>]*)>',
+        repl, body_html, flags=re.S,
+    )
     if len(entries) < 2:
         return body_html, ""
     title = "תוכן העמוד" if lang == "he" else "On this page"

@@ -20,5 +20,3 @@ summary_en: "A verified public library of 48 cases (1964–2025) in which Israel
 ## טבלת עיון מהירה (כל 48 המקרים)
 
 <!-- TABLE:quiet-veto-cases -->
-
-<!-- SECTIONS:quiet-veto-cases -->

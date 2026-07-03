@@ -20,5 +20,3 @@ A law the Court **empties of content** is a law **cancelled in practice**. After
 ## Quick-reference table (all 48 cases)
 
 <!-- TABLE:quiet-veto-cases -->
-
-<!-- SECTIONS:quiet-veto-cases -->

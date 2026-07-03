@@ -1721,3 +1721,23 @@ document.addEventListener("click", (e) => {
   e.preventDefault();
   openQvContribute(btn.dataset.docket || "", btn.dataset.name || "", btn.dataset.lang || lang);
 });
+
+// Delegated: clicking a content-map bullet that targets a Quiet-Veto table row
+// scrolls to that row and highlights it. We scroll explicitly (rather than rely
+// on the native `#id` jump) because in the client-rendered SPA the native jump
+// mis-lands, and `:target` doesn't recompute there — so this drives both the
+// scroll and the highlight consistently on the static and SPA views. The hash
+// is still updated (via replaceState, so it doesn't re-trigger a native jump)
+// to keep the URL deep-linkable.
+document.addEventListener("click", (e) => {
+  const a = e.target.closest && e.target.closest('a.toc-link[href^="#qv-row-"]');
+  if (!a) return;
+  const id = a.getAttribute("href").slice(1);
+  const row = document.getElementById(id);
+  if (!row) return;
+  e.preventDefault();
+  document.querySelectorAll("tr.qv-row-hit").forEach((el) => el.classList.remove("qv-row-hit"));
+  row.classList.add("qv-row-hit");
+  row.scrollIntoView({ block: "start" });
+  try { history.replaceState(null, "", "#" + id); } catch (err) {}
+});
