@@ -1027,7 +1027,10 @@ html[lang="he"] .reading-progress-fill {
   border: 1px solid var(--border);
   border-radius: 10px;
   padding: 36px 42px 32px;
-  max-width: none;
+  /* Clamp the grid item to its track (100% of the column), not its content
+     width. With max-width:none, wide content (e.g. the Quiet-Veto table)
+     ballooned the article past its track and broke mobile reflow. */
+  max-width: 100%;
   min-width: 0;
 }
 

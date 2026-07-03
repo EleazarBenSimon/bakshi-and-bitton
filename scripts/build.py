@@ -423,7 +423,11 @@ def _quiet_veto_table_md(lang: str) -> str:
             f"</tr>"
         )
     parts.append("</tbody></table>")
-    return "".join(parts) + "\n\n" + _QV_CAPTION[lang] + "\n"
+    # Wrap in .table-scroll (overflow-x:auto) so this wide 5-column table
+    # scrolls inside its own box on narrow screens instead of pinning the
+    # whole article wider than the viewport (which, with body overflow-x:
+    # hidden, clipped the page and broke mobile reflow).
+    return '<div class="table-scroll">' + "".join(parts) + "</div>\n\n" + _QV_CAPTION[lang] + "\n"
 
 
 def build_content(out_dir: Path) -> dict:
