@@ -2423,8 +2423,13 @@ html[lang="he"] .content-article .article-body blockquote {
   padding: 14px 0 4px;
   border-top: 1px solid var(--border);
 }
-.qv-case-docket {
-  margin: 0 0 2px; font-weight: 700; font-size: 16px; color: var(--accent);
+/* Docket heading — an <h3> so it registers in the content-map, but kept
+   visually compact (override the article's default h3 size/margin/border via
+   a higher-specificity selector that applies on both the static + SPA views,
+   which share the .content-article .article-body structure). */
+.content-article .article-body h3.qv-case-docket {
+  margin: 0 0 2px; padding: 0; border: 0;
+  font-weight: 700; font-size: 16px; color: var(--accent);
   letter-spacing: .2px;
 }
 .qv-case-tag {

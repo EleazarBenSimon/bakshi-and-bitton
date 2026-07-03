@@ -616,7 +616,12 @@ def _quiet_veto_sections_md(lang: str) -> str:
                 sec_cls = "qv-case qv-case-off"
             parts.append(
                 f'<section class="{sec_cls}">'
-                f'<p class="qv-case-docket">{head}</p>'
+                # Docket is an <h3> (not a <p>) so BOTH content-map builders —
+                # build.py's _content_toc and the SPA's content.html script,
+                # which each scan `h2, h3` — list every case in the sidebar,
+                # nested under its group <h2>. Styled compact via CSS so the
+                # under-table look is unchanged.
+                f'<h3 class="qv-case-docket">{head}</h3>'
                 f'<p class="qv-case-tag">{tag_line}</p>'
                 f'<p class="qv-case-blurb">{e(c.get(blurb_field))}</p>'
                 f"{src_html}"
