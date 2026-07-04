@@ -1,14 +1,32 @@
-@import url('https://fonts.googleapis.com/css2?family=Assistant:wght@400;500;600;700;800&family=Frank+Ruhl+Libre:wght@500;700;900&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&display=swap');
-
-/* Bakshi&Bitton — stylesheet
-   Goals: credible, intelligent, readable; RTL-default with LTR toggle; no framework.
-   Type system: Frank Ruhl Libre (serif display, Hebrew+Latin) for gravitas;
-   Assistant (humanist sans, Hebrew+Latin) for body & UI.
-*/
+/* ─── Self-hosted fonts (no CDN — privacy + consistent rendering everywhere) ──
+   The type system is SEMANTIC, keyed to the SOURCE of the text, not its position:
+     • David Libre (serif) = --font-record : text taken verbatim from the court
+       record — dockets, case & party names, dates, panel, vote, statutes, quotes.
+     • Assistant (sans)    = --font-voice  : everything the project itself wrote,
+       plus all headings and UI.
+   So serif Hebrew ALWAYS means "this is the court's own"; sans means "our words".
+   Each family is split HE/Latin by unicode-range so mixed strings pick the right
+   subset. OFL licenses live in assets/fonts/. */
+@font-face{font-family:'David Libre';font-style:normal;font-weight:400;font-display:swap;src:url('fonts/david-libre-hebrew-400.woff2') format('woff2');unicode-range:U+0590-05FF,U+FB1D-FB4F,U+20AA;}
+@font-face{font-family:'David Libre';font-style:normal;font-weight:400;font-display:swap;src:url('fonts/david-libre-latin-400.woff2') format('woff2');unicode-range:U+0-00FF,U+0100-024F,U+2000-206F,U+2070-209F,U+20A0-20BF,U+2100-214F,U+2212,U+2190-21FF,U+25CC;}
+@font-face{font-family:'David Libre';font-style:normal;font-weight:700;font-display:swap;src:url('fonts/david-libre-hebrew-700.woff2') format('woff2');unicode-range:U+0590-05FF,U+FB1D-FB4F,U+20AA;}
+@font-face{font-family:'David Libre';font-style:normal;font-weight:700;font-display:swap;src:url('fonts/david-libre-latin-700.woff2') format('woff2');unicode-range:U+0-00FF,U+0100-024F,U+2000-206F,U+2070-209F,U+20A0-20BF,U+2100-214F,U+2212,U+2190-21FF,U+25CC;}
+@font-face{font-family:'Assistant';font-style:normal;font-weight:400;font-display:swap;src:url('fonts/assistant-hebrew-400.woff2') format('woff2');unicode-range:U+0590-05FF,U+FB1D-FB4F,U+20AA;}
+@font-face{font-family:'Assistant';font-style:normal;font-weight:400;font-display:swap;src:url('fonts/assistant-latin-400.woff2') format('woff2');unicode-range:U+0-00FF,U+0100-024F,U+2000-206F,U+2070-209F,U+20A0-20BF,U+2100-214F,U+2212,U+2190-21FF,U+25CC;}
+@font-face{font-family:'Assistant';font-style:normal;font-weight:600;font-display:swap;src:url('fonts/assistant-hebrew-600.woff2') format('woff2');unicode-range:U+0590-05FF,U+FB1D-FB4F,U+20AA;}
+@font-face{font-family:'Assistant';font-style:normal;font-weight:600;font-display:swap;src:url('fonts/assistant-latin-600.woff2') format('woff2');unicode-range:U+0-00FF,U+0100-024F,U+2000-206F,U+2070-209F,U+20A0-20BF,U+2100-214F,U+2212,U+2190-21FF,U+25CC;}
+@font-face{font-family:'Assistant';font-style:normal;font-weight:700;font-display:swap;src:url('fonts/assistant-hebrew-700.woff2') format('woff2');unicode-range:U+0590-05FF,U+FB1D-FB4F,U+20AA;}
+@font-face{font-family:'Assistant';font-style:normal;font-weight:700;font-display:swap;src:url('fonts/assistant-latin-700.woff2') format('woff2');unicode-range:U+0-00FF,U+0100-024F,U+2000-206F,U+2070-209F,U+20A0-20BF,U+2100-214F,U+2212,U+2190-21FF,U+25CC;}
 
 :root {
-  --font-sans: 'Assistant', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  --font-serif: 'Frank Ruhl Libre', Georgia, "Times New Roman", "David", serif;
+  /* Semantic type tokens (see the @font-face banner above). */
+  --font-voice: 'Assistant', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-record: 'David Libre', 'Frank Ruhl Libre', Georgia, "Times New Roman", serif;
+  /* Legacy aliases now BOTH resolve to the voice sans, so every existing
+     heading/body usage becomes the loaded sans and the serif is reserved
+     exclusively for court-record text (opt-in via --font-record / .rec). */
+  --font-sans: var(--font-voice);
+  --font-serif: var(--font-voice);
 
   --bg: #faf9f7;              /* warm paper */
   --surface: #ffffff;
@@ -45,6 +63,26 @@ body {
 
 html[lang="he"] body { direction: rtl; }
 html[lang="en"] body { direction: ltr; }
+
+/* ─── The court record wears the serif ──────────────────────────────────────
+   `.rec` (and the field-specific selectors below) render text that is taken
+   verbatim from the court record in David Libre. Everything else stays in the
+   voice sans. Slightly up-sized because David Libre runs visually smaller than
+   Assistant at the same px, so the two read as deliberate peers. */
+.rec, .co-record {
+  font-family: var(--font-record);
+  font-size: 1.04em;
+}
+/* Quiet-Veto quick-reference table: docket (col 1), year (col 2) and statute
+   (col 3) are the record; Holding (col 4) and Outcome (col 5) are the project's
+   own words → they stay in the voice sans. The content-map bullets that jump to
+   a table row show the docket+case name (record), so they match. */
+.qv-c-docket,
+.qv-c-statute,
+.qv-table tbody td:nth-child(2),
+.toc-link[href^="#qv-row-"] {
+  font-family: var(--font-record);
+}
 
 header {
   background: var(--surface);
@@ -2016,8 +2054,9 @@ main a:not(.source-link):hover { text-decoration-color: var(--accent); }
   --radius-lg:  12px;
   --radius-sm:  8px;
   --radius-pill:20px;
-  /* third voice: Newsreader reading serif (Frank Ruhl Libre for Hebrew) */
-  --font-read:  'Newsreader','Frank Ruhl Libre',Georgia,serif;
+  /* Article reading body is the project's VOICE → the sans (was a reading serif,
+     which now conflicts with serif=court-record). */
+  --font-read:  var(--font-voice);
 }
 
 body { background: var(--paper); }
