@@ -77,7 +77,8 @@ html[lang="en"] body { direction: ltr; }
 .rec, .co-record,
 .qv-c-docket, .qv-c-statute, .qv-table tbody td:nth-child(2),
 .toc-link[href^="#qv-row-"],
-.panel-list, .ruling-detail-grid dd.rec, .tl-docket {
+.panel-list, .ruling-detail-grid dd.rec, .tl-docket,
+.trl-case, .trl-name {   /* ruling-list items (timeline / tag browser): docket + case name */
   font-family: var(--font-record);
   font-weight: var(--rec-weight);
   font-size: var(--rec-size);
