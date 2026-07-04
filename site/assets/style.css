@@ -10,6 +10,8 @@
 @font-face{font-family:'David Libre';font-style:normal;font-weight:400;font-display:swap;src:url('fonts/david-libre-hebrew-400.woff2') format('woff2');unicode-range:U+0590-05FF,U+FB1D-FB4F,U+20AA;}
 @font-face{font-family:'David Libre';font-style:normal;font-weight:400;font-display:swap;src:url('fonts/david-libre-latin-400.woff2') format('woff2');unicode-range:U+0-00FF,U+0100-024F,U+2000-206F,U+2070-209F,U+20A0-20BF,U+2100-214F,U+2212,U+2190-21FF,U+25CC;}
 @font-face{font-family:'David Libre';font-style:normal;font-weight:700;font-display:swap;src:url('fonts/david-libre-hebrew-700.woff2') format('woff2');unicode-range:U+0590-05FF,U+FB1D-FB4F,U+20AA;}
+@font-face{font-family:'David Libre';font-style:normal;font-weight:500;font-display:swap;src:url('fonts/david-libre-hebrew-500.woff2') format('woff2');unicode-range:U+0590-05FF,U+FB1D-FB4F,U+20AA;}
+@font-face{font-family:'David Libre';font-style:normal;font-weight:500;font-display:swap;src:url('fonts/david-libre-latin-500.woff2') format('woff2');unicode-range:U+0-00FF,U+0100-024F,U+2000-206F,U+2070-209F,U+20A0-20BF,U+2100-214F,U+2212,U+2190-21FF,U+25CC;}
 @font-face{font-family:'David Libre';font-style:normal;font-weight:700;font-display:swap;src:url('fonts/david-libre-latin-700.woff2') format('woff2');unicode-range:U+0-00FF,U+0100-024F,U+2000-206F,U+2070-209F,U+20A0-20BF,U+2100-214F,U+2212,U+2190-21FF,U+25CC;}
 @font-face{font-family:'Assistant';font-style:normal;font-weight:400;font-display:swap;src:url('fonts/assistant-hebrew-400.woff2') format('woff2');unicode-range:U+0590-05FF,U+FB1D-FB4F,U+20AA;}
 @font-face{font-family:'Assistant';font-style:normal;font-weight:400;font-display:swap;src:url('fonts/assistant-latin-400.woff2') format('woff2');unicode-range:U+0-00FF,U+0100-024F,U+2000-206F,U+2070-209F,U+20A0-20BF,U+2100-214F,U+2212,U+2190-21FF,U+25CC;}
@@ -65,32 +67,24 @@ html[lang="he"] body { direction: rtl; }
 html[lang="en"] body { direction: ltr; }
 
 /* ─── The court record wears the serif ──────────────────────────────────────
-   `.rec` (and the field-specific selectors below) render text that is taken
-   verbatim from the court record in David Libre. Everything else stays in the
-   voice sans. Slightly up-sized because David Libre runs visually smaller than
-   Assistant at the same px, so the two read as deliberate peers. */
-.rec, .co-record {
+   Record text (verbatim from the court record) renders in David Libre; the
+   voice sans is everything else. To make the split instinctive at a glance the
+   record is set MEDIUM (500) and a touch larger — David Libre runs visually
+   smaller/lighter than Assistant at the same px, so this gives it the extra
+   ink/presence that makes the two read as deliberate, sharply-different peers.
+   The `--rec` custom props let per-context selectors reuse the same recipe. */
+:root { --rec-weight: 500; --rec-size: 1.06em; }
+.rec, .co-record,
+.qv-c-docket, .qv-c-statute, .qv-table tbody td:nth-child(2),
+.toc-link[href^="#qv-row-"],
+.panel-list, .ruling-detail-grid dd.rec, .tl-docket {
   font-family: var(--font-record);
-  font-size: 1.04em;
+  font-weight: var(--rec-weight);
+  font-size: var(--rec-size);
 }
-/* Quiet-Veto quick-reference table: docket (col 1), year (col 2) and statute
-   (col 3) are the record; Holding (col 4) and Outcome (col 5) are the project's
-   own words → they stay in the voice sans. The content-map bullets that jump to
-   a table row show the docket+case name (record), so they match. */
-.qv-c-docket,
-.qv-c-statute,
-.qv-table tbody td:nth-child(2),
-.toc-link[href^="#qv-row-"] {
-  font-family: var(--font-record);
-}
-/* Ruling pages + timeline: the docket, case name, and the bold panel/vote/
-   lead-author values in the hero are the court record. (Same classes in the
-   prerendered page and the SPA, so this covers both.) */
-.rh-case, .rh-name, .rh-stat b, .tl-docket,
-.panel-list,                              /* justice names = record */
-.ruling-detail-grid dd.rec {              /* record values in the detail grid */
-  font-family: var(--font-record);
-}
+/* Hero docket/name/stat values are already large + bold — keep their own
+   weight/size, just swap in the record serif. */
+.rh-case, .rh-name, .rh-stat b { font-family: var(--font-record); }
 
 header {
   background: var(--surface);
