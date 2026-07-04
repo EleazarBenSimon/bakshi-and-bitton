@@ -83,6 +83,14 @@ html[lang="en"] body { direction: ltr; }
 .toc-link[href^="#qv-row-"] {
   font-family: var(--font-record);
 }
+/* Ruling pages + timeline: the docket, case name, and the bold panel/vote/
+   lead-author values in the hero are the court record. (Same classes in the
+   prerendered page and the SPA, so this covers both.) */
+.rh-case, .rh-name, .rh-stat b, .tl-docket,
+.panel-list,                              /* justice names = record */
+.ruling-detail-grid dd.rec {              /* record values in the detail grid */
+  font-family: var(--font-record);
+}
 
 header {
   background: var(--surface);
@@ -1376,10 +1384,10 @@ html[lang="he"] .reading-progress-fill {
   border-radius: 7px;
 }
 .rh-case {
-  font-family: var(--font-serif);
+  font-family: var(--font-record);   /* docket = court record */
   font-size: 32px;
   line-height: 1.15;
-  font-weight: 800;
+  font-weight: 700;
   color: var(--accent-deep);
   margin: 12px 0 2px;
 }

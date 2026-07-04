@@ -1081,28 +1081,33 @@ def render_ruling_page(r: dict) -> str:
 
     # Detail grid (humanized Hebrew labels)
     rows = []
-    def row(label, value):
+    # `rec=True` marks a value taken verbatim from the court record (dates,
+    # party names, doctrine, vote) → rendered in the record serif via .rec. The
+    # project's own classifications (petitioner type, outcome label, compliance,
+    # our description of the appealed decision, tags) stay in the voice sans.
+    def row(label, value, rec=False):
         if value in (None, "", []):
             return
-        rows.append(f"<dt>{_esc(label)}</dt><dd>{value}</dd>")
-    row("תאריך הפסיקה", _esc(r.get("ruling_date")))
+        cls = ' class="rec"' if rec else ''
+        rows.append(f"<dt>{_esc(label)}</dt><dd{cls}>{value}</dd>")
+    row("תאריך הפסיקה", _esc(r.get("ruling_date")), rec=True)
     if r.get("filing_date"):
-        row("תאריך הגשה", _esc(r["filing_date"]))
+        row("תאריך הגשה", _esc(r["filing_date"]), rec=True)
     row("סוג עותר", _esc(PETITIONER_TYPE_HE.get(r.get("petitioner_type"), r.get("petitioner_type"))))
-    row("עותר", _esc(r.get("petitioner_name_he")))
+    row("עותר", _esc(r.get("petitioner_name_he")), rec=True)
     resp = RESPONDENT_HE.get(r.get("respondent"), r.get("respondent"))
-    row("משיב", _esc(resp))
+    row("משיב", _esc(resp), rec=True)
     if r.get("respondent_body_he") or r.get("respondent_body"):
-        row("גוף נושא ההחלטה", _esc(r.get("respondent_body_he") or r.get("respondent_body")))
+        row("גוף נושא ההחלטה", _esc(r.get("respondent_body_he") or r.get("respondent_body")), rec=True)
     if r.get("respondent_decision_he"):
         row("ההחלטה המעורערת", _esc(r["respondent_decision_he"]))
     doctrines = ", ".join(DOCTRINE_LABELS_HE.get(d, d) for d in (r.get("doctrine_invoked") or []))
-    row("עילות שנטענו", _esc(doctrines))
+    row("עילות שנטענו", _esc(doctrines), rec=True)
     outcome = r.get("outcome", "")
     row("תוצאה", f'<span class="outcome-pill outcome-{_esc(outcome)}">'
                  f'{_esc(OUTCOME_LABELS_HE.get(outcome, outcome))}</span>')
     if r.get("vote_majority") is not None:
-        row("הצבעה", f'{_esc(r.get("vote_majority"))}–{_esc(r.get("vote_minority") or 0)}')
+        row("הצבעה", f'{_esc(r.get("vote_majority"))}–{_esc(r.get("vote_minority") or 0)}', rec=True)
     if r.get("predicate_ag_opinion_he") or r.get("predicate_ag_opinion"):
         row("חוות-דעת היועמ\"ש שקדמה", _esc(r.get("predicate_ag_opinion_he") or r.get("predicate_ag_opinion")))
     if r.get("compliance_state"):
