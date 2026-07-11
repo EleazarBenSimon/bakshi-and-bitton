@@ -1669,7 +1669,7 @@ function renderTimeline(rulings, events) {
   return main;
 }
 
-window.CO = { lang, t, el, fetchJSON, ruling_name, justice_name, role_label, renderHeader, renderFooter, renderCurve, renderCurveSection, outcome_label, doctrine_label, doctrines_label, petitioner_type_label, compliance_label, respondent_label, tag_label, renderTagBrowser, renderTimeline, SEVERITY_BY_OUTCOME, decorateMQG, renderRulingHero };
+window.CO = { lang, t, el, fetchJSON, ruling_name, justice_name, role_label, renderHeader, renderFooter, renderCurve, renderCurveSection, outcome_label, doctrine_label, doctrines_label, petitioner_type_label, compliance_label, respondent_label, tag_label, renderTagBrowser, renderTimeline, SEVERITY_BY_OUTCOME, decorateMQG, renderRulingHero, initPowerTabs };
 
 // ─── "Contribute the document" modal (Quiet-Veto missing-source rows) ──────
 // Delegated: any `.qv-contribute` button (emitted by build.py into the
@@ -1741,3 +1741,94 @@ document.addEventListener("click", (e) => {
   row.scrollIntoView({ block: "start" });
   try { history.replaceState(null, "", "#" + id); } catch (err) {}
 });
+
+// ─── Power-Structure tabbed panels ────────────────────────────────────────
+// The Power-Structure page emits a `.ps-tabs-block` (overview + 7 mechanisms)
+// as a stack of `[data-ps-panel]` sections with a real-link tab strip. JS
+// upgrades the stack into a single-panel tabbed view. Everything is stateless:
+// activation is a pure function of the target index, driven from the URL hash
+// and from any in-page `#m-N` link (tab strip, TOC sidebar, .ps-card, in-prose
+// `[§3](#m-3)`). Works identically on the static reading-power-structure.html
+// and inside the client-rendered content SPA.
+
+// Stateless: show panel `n`, mark its tab active, sync the hash.
+function pmActivate(block, n, opts) {
+  opts = opts || {};
+  const key = String(n);
+  block.querySelectorAll("[data-ps-panel]").forEach((panel) => {
+    panel.hidden = panel.dataset.psPanel !== key;
+  });
+  block.querySelectorAll("[data-ps-tab]").forEach((tab) => {
+    if (tab.dataset.psTab === key) {
+      tab.classList.add("is-active");
+      tab.setAttribute("aria-current", "true");
+    } else {
+      tab.classList.remove("is-active");
+      tab.removeAttribute("aria-current");
+    }
+  });
+  if (opts.scroll) {
+    const active = block.querySelector('[data-ps-panel="' + key + '"]');
+    const h2 = active && active.querySelector("h2");
+    if (h2) h2.scrollIntoView({ block: "start" });
+  }
+  try { history.replaceState(null, "", "#m-" + n); } catch (e) {}
+}
+
+// Resolve the panel index a hash points at (or -1 if it targets nothing here).
+function pmIndexForHash(block, hash) {
+  if (!hash || hash.charAt(0) !== "#") return -1;
+  let elh = null;
+  try { elh = document.getElementById(decodeURIComponent(hash.slice(1))); } catch (e) { return -1; }
+  if (!elh) return -1;
+  const panel = elh.closest("[data-ps-panel]");
+  if (!panel || !block.contains(panel)) return -1;
+  return parseInt(panel.dataset.psPanel, 10);
+}
+
+let pmHashBound = false;
+
+function initPowerTabs(scope) {
+  const block = (scope || document).querySelector(".ps-tabs-block");
+  if (!block || block.classList.contains("ps-tabs-block--tabbed")) return;
+  block.classList.add("ps-tabs-block--tabbed");
+
+  const fromHash = pmIndexForHash(block, location.hash);
+  const n = fromHash >= 0 ? fromHash : 0;
+  pmActivate(block, n, { scroll: fromHash >= 0 });
+
+  if (!pmHashBound) {
+    pmHashBound = true;
+    window.addEventListener("hashchange", () => {
+      const b = document.querySelector(".ps-tabs-block--tabbed");
+      if (!b) return;
+      const idx = pmIndexForHash(b, location.hash);
+      if (idx >= 0) pmActivate(b, idx, { scroll: true });
+    });
+  }
+}
+
+// One delegated click listener catches every `#m-N` link — tab strip, TOC
+// sidebar, .ps-card, in-prose section links — on both the static page and the
+// SPA. Registered at app.js top level (before content.html's generic
+// smooth-scroll handler), so stopImmediatePropagation suppresses the native
+// double-jump for these anchors only.
+document.addEventListener("click", (e) => {
+  const a = e.target.closest && e.target.closest('a[href^="#"]');
+  if (!a) return;
+  const href = a.getAttribute("href");
+  if (!href || href === "#") return;
+  let target = null;
+  try { target = document.getElementById(decodeURIComponent(href.slice(1))); } catch (err) { return; }
+  if (!target) return;
+  const block = target.closest(".ps-tabs-block--tabbed");
+  if (!block) return;
+  const panel = target.closest("[data-ps-panel]");
+  if (!panel || !block.contains(panel)) return;
+  e.preventDefault();
+  e.stopImmediatePropagation();
+  pmActivate(block, parseInt(panel.dataset.psPanel, 10), { scroll: true });
+});
+
+// Self-init for the static reading-power-structure.html (no-op when absent).
+initPowerTabs(document);

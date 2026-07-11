@@ -20,6 +20,7 @@ Dependencies:
 import csv
 import html
 import json
+import math
 import re
 import sys
 from collections import defaultdict
@@ -39,6 +40,7 @@ REPO_ROOT = Path(__file__).resolve().parent.parent
 RULINGS_DIR = REPO_ROOT / "data" / "rulings"
 LIBRARY_FILE = REPO_ROOT / "data" / "library" / "quiet-veto-cases.json"
 STATEMENTS_FILE = REPO_ROOT / "data" / "library" / "statements.json"
+POWER_MECHANISMS_FILE = REPO_ROOT / "data" / "library" / "power-mechanisms.json"
 JUSTICES_DIR = REPO_ROOT / "data" / "justices"
 CONTENT_DIR = REPO_ROOT / "content"
 SITE_DIR = REPO_ROOT / "site"
@@ -700,6 +702,673 @@ def _statement_table_md(lang: str) -> str:
     return '<div class="table-scroll">' + "".join(parts) + "</div>\n\n" + _STMT_CAPTION[lang] + "\n"
 
 
+# ─── Power-Structure tabs (data/library/power-mechanisms.json) ────────────
+#
+# The Power-Structure long-form (content/structure/power-structure.md + .en.md)
+# carries only a lede, a <!-- TABS:power-mechanisms --> marker, and the method
+# note. The interactive tabbed apparatus — overview + 7 mechanism panels, each
+# with a bespoke inline SVG diagram, a computed exits-meter, and a fairness
+# aside — is generated HERE, per language, straight from the JSON, so the
+# published record can never hand-drift from the audited data. Every display
+# string is read ONLY from its `field_{lang}` variant (never cross-language);
+# a missing optional field omits its block. All KPI numbers are COMPUTED by
+# counting the exits cells at build time, never stored.
+#
+# The whole apparatus is emitted as a SINGLE top-level raw-HTML line (no
+# internal newlines) so python-markdown passes it through untouched — the same
+# discipline as _quiet_veto_table_md's emission. SVGs are string-assembled,
+# parametric, CSS-var-coloured, role="img" + <title>, with shape-redundant
+# status encoding (colour is never the sole carrier). defs ids are prefixed
+# pm{num}- (per-mechanism) / pmx- (exit-map); the small portal glyphs carry no
+# ids at all (they repeat ~56× on the page).
+
+_PM_CHANNEL_ORDER = ["appeal", "statute", "basic_law", "ballot"]
+
+
+def _pm_load() -> dict:
+    """Load the power-mechanisms data source (or {} if absent)."""
+    if not POWER_MECHANISMS_FILE.exists():
+        return {}
+    return json.loads(POWER_MECHANISMS_FILE.read_text(encoding="utf-8"))
+
+
+def _pm_prose(md_text: str, lang: str) -> str:
+    """Render a markdown fragment to HTML via the shared converter, then
+    collapse all newlines so it can live inside the single-line raw-HTML
+    block. Internal anchor links (#m-N) and cross-refs survive."""
+    if not md_text:
+        return ""
+    out = relativize_internal_links(markdown_to_html(md_text))
+    return re.sub(r"\s*\n\s*", " ", out).strip()
+
+
+def _pm_t(x, y, s, lang, size=15, anchor="middle", fill="var(--text)", weight=None):
+    """One SVG <text> node — RTL direction added for Hebrew, content escaped."""
+    attrs = [f'x="{x}"', f'y="{y}"', f'text-anchor="{anchor}"',
+             f'font-size="{size}"', f'fill="{fill}"']
+    if lang == "he":
+        attrs.append('direction="rtl"')
+    if weight:
+        attrs.append(f'font-weight="{weight}"')
+    return f'<text {" ".join(attrs)}>{_esc(s)}</text>'
+
+
+def _pm_arrow(x1, y1, x2, y2, color="var(--accent)", dashed=False, w=2):
+    """A directed line with an inline (id-free) triangular arrowhead at (x2,y2),
+    oriented along the segment — safe to repeat many times on one page."""
+    ang = math.atan2(y2 - y1, x2 - x1)
+    L = 9
+    a1, a2 = ang + math.radians(150), ang - math.radians(150)
+    p1 = (x2 + L * math.cos(a1), y2 + L * math.sin(a1))
+    p2 = (x2 + L * math.cos(a2), y2 + L * math.sin(a2))
+    dash = ' stroke-dasharray="6 4"' if dashed else ''
+    return (f'<line x1="{x1}" y1="{y1}" x2="{x2}" y2="{y2}" stroke="{color}" '
+            f'stroke-width="{w}" stroke-linecap="round"{dash}/>'
+            f'<polygon points="{x2:.1f},{y2:.1f} {p1[0]:.1f},{p1[1]:.1f} '
+            f'{p2[0]:.1f},{p2[1]:.1f}" fill="{color}"/>')
+
+
+def _pm_xbar(cx, cy, r=14, color="var(--outcome-struck)"):
+    """Blocked marker: a horizontal bar PLUS an × — shape-redundant, so the
+    'closed' meaning does not rest on colour alone."""
+    return (f'<line x1="{cx - r}" y1="{cy}" x2="{cx + r}" y2="{cy}" stroke="{color}" stroke-width="3"/>'
+            f'<line x1="{cx - r}" y1="{cy - r}" x2="{cx + r}" y2="{cy + r}" stroke="{color}" stroke-width="3"/>'
+            f'<line x1="{cx + r}" y1="{cy - r}" x2="{cx - r}" y2="{cy + r}" stroke="{color}" stroke-width="3"/>')
+
+
+def _pm_loop(cx, cy, r=12, color="var(--outcome-remanded)"):
+    """Contingent/return marker: a loop-arc that curls back on itself — the
+    topology (a closed return) carries the meaning, not the colour."""
+    return (f'<path d="M {cx - r} {cy} A {r} {r} 0 1 1 {cx + r} {cy}" fill="none" '
+            f'stroke="{color}" stroke-width="2.5"/>'
+            + _pm_arrow(cx + r, cy, cx + r - 0.5, cy + 7, color, w=2))
+
+
+def _pm_box(x, y, w, h, label, lang, ghost=False, fill="var(--surface)",
+            stroke="var(--accent)", rx=6, size=15, weight="600"):
+    """A labelled node box; `ghost` = dashed + muted (the counterfactual tiers)."""
+    st = "var(--text-muted)" if ghost else stroke
+    dash = ' stroke-dasharray="5 4"' if ghost else ''
+    tfill = "var(--text-muted)" if ghost else "var(--text)"
+    return (f'<rect x="{x}" y="{y}" width="{w}" height="{h}" rx="{rx}" fill="{fill}" '
+            f'stroke="{st}" stroke-width="2"{dash}/>'
+            + _pm_t(x + w / 2, y + h / 2 + size / 3, label, lang, size=size,
+                    fill=tfill, weight=weight))
+
+
+def _pm_svg(h, title, lang, body):
+    """Wrap an assembled SVG body: viewBox 0 0 680 H, role=img + localized title."""
+    return (f'<svg class="ps-svg" viewBox="0 0 680 {h}" role="img" '
+            f'xmlns="http://www.w3.org/2000/svg"><title>{_esc(title)}</title>{body}</svg>')
+
+
+def _pm_portal_svg(status, id_prefix=""):
+    """Status → portal glyph (used in the overview matrix and per-panel meter).
+    open = outlined portal + outward arrow; open_untested = dashed outline;
+    contingent = portal + loop-arc into a mini court box (amber); closed =
+    filled portal + ×-bar (struck-red). Colour is never the sole carrier."""
+    arch = "M6 48 L6 24 A16 16 0 0 1 38 24 L38 48 Z"
+    acc, red, amb = "var(--accent)", "var(--outcome-struck)", "var(--outcome-remanded)"
+    if status == "open":
+        body = (f'<path d="{arch}" fill="none" stroke="{acc}" stroke-width="2.5"/>'
+                + _pm_arrow(22, 42, 22, 4, acc, w=2.5))
+    elif status == "open_untested":
+        body = (f'<path d="{arch}" fill="none" stroke="{acc}" stroke-width="2.5" '
+                f'stroke-dasharray="4 3"/>'
+                f'<circle cx="22" cy="34" r="2.4" fill="{acc}"/>')
+    elif status == "contingent":
+        court = (f'<rect x="14" y="0" width="16" height="12" fill="none" stroke="{amb}" '
+                 f'stroke-width="2"/><polygon points="11,0 33,0 22,-8" fill="{amb}"/>')
+        body = (f'<path d="{arch}" fill="none" stroke="{acc}" stroke-width="2.5"/>'
+                f'<path d="M22 26 A11 11 0 1 1 31 17" fill="none" stroke="{amb}" '
+                f'stroke-width="2.5"/>' + court)
+    else:  # closed
+        body = (f'<path d="{arch}" fill="{red}" fill-opacity="0.16" stroke="{red}" '
+                f'stroke-width="2.5"/>' + _pm_xbar(22, 32, 12, red))
+    return (f'<svg class="ps-portal ps-portal--{status}" viewBox="-2 -11 48 65" '
+            f'aria-hidden="true" xmlns="http://www.w3.org/2000/svg">{body}</svg>')
+
+
+# ---- the seven bespoke mechanism topologies ------------------------------
+
+def _pm_diagram_svg(mech, lang):
+    """Dispatch to the mechanism-specific topology builder, keyed by id."""
+    builder = {
+        "first-and-last": _pm_diag_first_last,
+        "direct-access": _pm_diag_direct,
+        "ag-chain": _pm_diag_ag,
+        "panel-composition": _pm_diag_panel,
+        "no-standing": _pm_diag_standing,
+        "judges-select-judges": _pm_diag_selfselect,
+        "everything-justiciable": _pm_diag_justiciable,
+    }.get(mech.get("id"))
+    if not builder:
+        return ""
+    lb = (mech.get("diagram") or {}).get("labels", {}).get(lang, {})
+    nodes = _PM_NODES.get(lang, {})
+    title = mech.get(f"oneliner_{lang}", "")
+    return builder(lb, nodes, lang, mech.get("num"), title)
+
+
+_PM_NODES = {}  # populated at call time from data; set by _power_tabs_md
+
+
+def _pm_diag_first_last(lb, nodes, lang, num, title):
+    """Ghost 3-tier stack (~35% width, left) vs. one tall Court box (right);
+    a petition enters the Court, an appeal stub rises out of it and is ×-barred."""
+    acc = "var(--accent)"
+    b = []
+    # left: the usual three tiers, ghosted, with upward arrows between them
+    tiers = [nodes.get("first_instance", ""), nodes.get("appeal_court", ""), nodes.get("supreme", "")]
+    ys = [250, 165, 80]
+    for label, y in zip(tiers, ys):
+        b.append(_pm_box(55, y, 175, 52, label, lang, ghost=True, size=13))
+    b.append(_pm_arrow(142, 250, 142, 219, "var(--text-muted)", dashed=True))
+    b.append(_pm_arrow(142, 165, 142, 134, "var(--text-muted)", dashed=True))
+    b.append(_pm_t(142, 42, lb.get("ghost_caption", ""), lang, size=12, fill="var(--text-muted)"))
+    # right: the single, tall apex box
+    b.append(_pm_box(420, 80, 195, 222, nodes.get("court", ""), lang,
+                     fill="var(--accent-soft)", size=18))
+    b.append(_pm_t(517, 320, lb.get("actual_caption", ""), lang, size=12, fill="var(--text-muted)"))
+    # petition enters from the bottom
+    b.append(_pm_arrow(517, 340, 517, 304, acc))
+    b.append(_pm_t(517, 356, lb.get("entry_label", ""), lang, size=12, fill=acc))
+    # appeal stub rises out of the top and is blocked
+    b.append(_pm_arrow(517, 80, 517, 52, acc))
+    b.append(_pm_xbar(517, 40, 13))
+    b.append(_pm_t(430, 30, lb.get("blocked_label", ""), lang, size=13,
+                   anchor="end" if lang == "en" else "start", fill="var(--outcome-struck)", weight="600"))
+    return _pm_svg(370, title, lang, "".join(b))
+
+
+def _pm_diag_direct(lb, nodes, lang, num, title):
+    """Horizontal: petitioner → one big arc vaulting two ghost tiers → apex.
+    Mirrored across x for Hebrew so the flow reads with the language."""
+    acc = "var(--accent)"
+    W = 680
+    fx = (lambda v: W - v) if lang == "he" else (lambda v: v)
+    # petitioner (left in LTR), court (right in LTR); ghosts skipped in the middle
+    b = []
+    b.append(_pm_box(fx(135) - 55, 150, 110, 52, nodes.get("petitioner", ""), lang, size=14))
+    b.append(_pm_box(fx(310) - 60, 150, 120, 52, nodes.get("first_instance", ""), lang, ghost=True, size=12))
+    b.append(_pm_box(fx(455) - 60, 150, 120, 52, nodes.get("appeal_court", ""), lang, ghost=True, size=12))
+    b.append(_pm_box(fx(610) - 50, 150, 100, 52, nodes.get("court", ""), lang, fill="var(--accent-soft)", size=15))
+    b.append(_pm_t(fx(382), 232, lb.get("ghost_caption", ""), lang, size=12, fill="var(--text-muted)"))
+    # the vaulting arc from petitioner over the ghosts to the apex
+    x0, x1 = fx(135), fx(610)
+    b.append(f'<path d="M {x0} 148 C {x0} 34, {x1} 34, {x1} 148" fill="none" '
+             f'stroke="{acc}" stroke-width="2.5"/>')
+    # arrowhead landing on the apex box
+    b.append(_pm_arrow((x1 + fx(560)) / 2, 60, x1, 146, acc))
+    b.append(_pm_t(fx(372), 40, lb.get("actual_caption", ""), lang, size=13, fill=acc, weight="600"))
+    b.append(_pm_t(fx(372), 120, lb.get("time_label", ""), lang, size=12, fill="var(--outcome-remanded)", weight="600"))
+    return _pm_svg(260, title, lang, "".join(b))
+
+
+def _pm_diag_ag(lb, nodes, lang, num, title):
+    """Vertical: government → valve-gate (AG) → court. A dashed authority arrow
+    runs FROM the court down to the gate (the gate's power derives from the
+    Court's own doctrine); a thin dashed bypass skirts the gate (private counsel)."""
+    acc = "var(--accent)"
+    amb = "var(--outcome-remanded)"
+    b = []
+    b.append(_pm_box(270, 285, 140, 52, nodes.get("government", ""), lang, size=15))
+    b.append(_pm_box(270, 70, 140, 52, nodes.get("court", ""), lang, fill="var(--accent-soft)", size=15))
+    # the valve gate: an hourglass/bowtie the government's position must pass
+    b.append(f'<polygon points="306,160 374,160 340,192" fill="var(--surface)" '
+             f'stroke="{acc}" stroke-width="2"/>')
+    b.append(f'<polygon points="306,224 374,224 340,192" fill="var(--surface)" '
+             f'stroke="{acc}" stroke-width="2"/>')
+    b.append(_pm_t(340, 148, nodes.get("ag", ""), lang, size=14, fill=acc, weight="600"))
+    b.append(_pm_t(340, 246, lb.get("gate_label", ""), lang, size=12, fill="var(--text-muted)"))
+    # solid upward flow through the gate
+    b.append(_pm_arrow(340, 285, 340, 226, acc))
+    b.append(_pm_arrow(340, 158, 340, 124, acc))
+    # dashed authority arrow FROM the court down to the gate
+    b.append(_pm_arrow(412, 100, 384, 178, amb, dashed=True))
+    b.append(_pm_t(548, 150, lb.get("authority_label", ""), lang, size=11, fill=amb, anchor="end"))
+    # thin dashed bypass skirting the gate on the left
+    b.append(f'<path d="M 268 300 C 150 280, 150 120, 268 100" fill="none" '
+             f'stroke="var(--text-muted)" stroke-width="1.5" stroke-dasharray="4 4"/>')
+    b.append(_pm_t(140, 200, lb.get("bypass_label", ""), lang, size=11, fill="var(--text-muted)", anchor="start"))
+    # ministry advisors feeding into the gate from the side
+    b.append(_pm_box(470, 250, 175, 40, lb.get("ministry_label", ""), lang, ghost=True, size=11, weight="400"))
+    b.append(_pm_arrow(470, 256, 378, 210, "var(--text-muted)", dashed=True))
+    return _pm_svg(360, title, lang, "".join(b))
+
+
+def _pm_diag_panel(lb, nodes, lang, num, title):
+    """President node fanning to 3 / 9 / 15 dot-arcs; then a 15-segment vote bar,
+    8 accent + 7 muted, labelled from the vote_label (8–7)."""
+    acc = "var(--accent)"
+    muted = "var(--text-muted)"
+    cx, cy = 340, 78
+    b = [_pm_box(cx - 80, 44, 160, 40, nodes.get("president", ""), lang, fill="var(--accent-soft)", size=14)]
+    fans = [(3, 78, lb.get("fan_3", "3")), (9, 128, lb.get("fan_9", "9")), (15, 182, lb.get("fan_15", "15"))]
+    for count, r, flabel in fans:
+        # spread the dots along a downward fan (200°..340°)
+        a0, a1 = math.radians(202), math.radians(338)
+        for i in range(count):
+            t = a0 + (a1 - a0) * (i / (count - 1))
+            dx, dy = cx + r * math.cos(t), cy + 12 + r * math.sin(t)
+            b.append(f'<circle cx="{dx:.1f}" cy="{dy:.1f}" r="4.5" fill="{acc}"/>')
+        b.append(_pm_t(cx - r - 14, cy + 16, flabel, lang, size=13, fill=muted, weight="600"))
+    # the 15-segment vote bar — panel size that settled the outcome
+    bx, bw, by, bh = 120, 440, 344, 30
+    seg = bw / 15
+    for i in range(15):
+        fill = acc if i < 8 else muted
+        b.append(f'<rect x="{bx + i * seg:.1f}" y="{by}" width="{seg - 2:.1f}" height="{bh}" '
+                 f'rx="2" fill="{fill}"/>')
+    b.append(_pm_t(cx, by - 8, lb.get("vote_label", ""), lang, size=16, fill=acc, weight="700"))
+    b.append(_pm_t(cx, by + bh + 24, lb.get("default_note", ""), lang, size=11, fill=muted))
+    return _pm_svg(410, title, lang, "".join(b))
+
+
+def _pm_diag_standing(lb, nodes, lang, num, title):
+    """Funnel: a cloud of petitioner dots → two filter walls swung OPEN (the
+    standing gate) → court. A dashed arrow runs from the court back to the
+    hinges (the Court itself opened the gate)."""
+    acc = "var(--accent)"
+    amb = "var(--outcome-remanded)"
+    b = []
+    # petitioner dots on the left
+    pts = [(50, 90), (95, 70), (75, 120), (110, 150), (55, 165), (100, 200),
+           (72, 225), (120, 105), (45, 130), (92, 245)]
+    for (px, py) in pts:
+        b.append(f'<circle cx="{px}" cy="{py}" r="6" fill="{acc}"/>')
+    b.append(_pm_t(85, 275, lb.get("petitioners_label", ""), lang, size=13, fill="var(--text-muted)"))
+    # two filter walls, hinged and swung open (doors rotated outward)
+    b.append(f'<line x1="330" y1="150" x2="250" y2="70" stroke="{acc}" stroke-width="4" stroke-linecap="round"/>')
+    b.append(f'<line x1="330" y1="150" x2="250" y2="230" stroke="{acc}" stroke-width="4" stroke-linecap="round"/>')
+    b.append(f'<circle cx="330" cy="150" r="5" fill="none" stroke="{acc}" stroke-width="2"/>')
+    b.append(_pm_t(300, 300, lb.get("gate_label", ""), lang, size=12, fill="var(--text-muted)"))
+    b.append(_pm_t(300, 48, lb.get("open_label", ""), lang, size=12, fill=amb, weight="600"))
+    # court on the right
+    b.append(_pm_box(555, 120, 100, 60, nodes.get("court", ""), lang, fill="var(--accent-soft)", size=15))
+    # straight admission arrow through the opened gap
+    b.append(_pm_arrow(140, 150, 553, 150, acc))
+    # dashed arrow: the court reaches back to the hinge that opened the gate
+    b.append(f'<path d="M 605 120 C 560 60, 400 60, 336 146" fill="none" '
+             f'stroke="{amb}" stroke-width="1.8" stroke-dasharray="5 4"/>')
+    b.append(_pm_arrow(360, 120, 335, 146, amb))
+    return _pm_svg(320, title, lang, "".join(b))
+
+
+def _pm_diag_selfselect(lb, nodes, lang, num, title):
+    """Nine committee seats (3 filled justices / 2 mid bar / 4 outlined elected);
+    an appoint-7 bracket under all nine, a block-3 bracket over the three
+    justices; a loop-arc court ↔ the three justice seats; three dashed vacant
+    seats (the deadlock outcome)."""
+    acc = "var(--accent)"
+    amb = "var(--outcome-remanded)"
+    b = [_pm_box(280, 40, 120, 40, nodes.get("court", ""), lang, fill="var(--accent-soft)", size=14)]
+    sx, sy, sw, gap = 70, 165, 42, 20
+    seats = []
+    for i in range(9):
+        x = sx + i * (sw + gap)
+        seats.append(x)
+        if i < 3:
+            fill, st = acc, acc          # justices
+        elif i < 5:
+            fill, st = "var(--accent-soft)", acc   # bar
+        else:
+            fill, st = "var(--surface)", "var(--text-muted)"  # elected
+        b.append(f'<rect x="{x}" y="{sy}" width="{sw}" height="{sw + 4}" rx="5" '
+                 f'fill="{fill}" stroke="{st}" stroke-width="2"/>')
+    # group labels
+    b.append(_pm_t(seats[1] + sw / 2, sy + sw + 26, lb.get("seats_justices", ""), lang, size=11, fill=acc, weight="600"))
+    b.append(_pm_t((seats[3] + seats[4]) / 2 + sw / 2, sy + sw + 26, lb.get("seats_bar", ""), lang, size=11, fill="var(--text-muted)"))
+    b.append(_pm_t((seats[5] + seats[8]) / 2 + sw / 2, sy + sw + 26, lb.get("seats_elected", ""), lang, size=11, fill="var(--text-muted)"))
+    # block-3 bracket over the three justice seats
+    bl, br = seats[0], seats[2] + sw
+    b.append(f'<path d="M {bl} 150 L {bl} 142 L {br} 142 L {br} 150" fill="none" '
+             f'stroke="{amb}" stroke-width="2"/>')
+    b.append(_pm_t((bl + br) / 2, 134, lb.get("block_label", ""), lang, size=12, fill=amb, weight="600"))
+    # appoint-7 bracket under seven seats
+    al, ar = seats[0], seats[6] + sw
+    ay = sy + sw + 40
+    b.append(f'<path d="M {al} {ay} L {al} {ay + 8} L {ar} {ay + 8} L {ar} {ay}" fill="none" '
+             f'stroke="{acc}" stroke-width="2"/>')
+    b.append(_pm_t((al + ar) / 2, ay + 24, lb.get("appoint_label", ""), lang, size=12, fill=acc, weight="600"))
+    # loop-arc: court ↔ the three justice seats (self-selection)
+    b.append(f'<path d="M 340 80 C 250 110, 150 120, {seats[0] + sw / 2:.0f} 160" fill="none" '
+             f'stroke="{acc}" stroke-width="2" stroke-dasharray="1 0"/>')
+    b.append(_pm_arrow(300, 96, 340, 82, acc))
+    # three dashed vacant seats (the deadlock)
+    vx = 500
+    for i in range(3):
+        x = vx + i * (sw + gap)
+        b.append(f'<rect x="{x}" y="70" width="{sw}" height="{sw + 4}" rx="5" fill="none" '
+                 f'stroke="var(--outcome-struck)" stroke-width="2" stroke-dasharray="5 4"/>')
+    b.append(_pm_t(vx + (3 * sw + 2 * gap) / 2, 130, lb.get("vacant_label", ""), lang, size=11, fill="var(--outcome-struck)", weight="600"))
+    return _pm_svg(300, title, lang, "".join(b))
+
+
+def _pm_diag_justiciable(lb, nodes, lang, num, title):
+    """Court box at centre; a dashed self-drawn boundary circle enclosing the
+    domain chips; an incoming redraw segment from the Knesset is ×-barred at
+    the boundary; the votes are noted."""
+    acc = "var(--accent)"
+    cx, cy, R = 340, 185, 150
+    b = [f'<circle cx="{cx}" cy="{cy}" r="{R}" fill="none" stroke="{acc}" '
+         f'stroke-width="2" stroke-dasharray="7 5"/>']
+    b.append(_pm_t(cx, cy - R - 12, lb.get("boundary_label", ""), lang, size=12, fill=acc, weight="600"))
+    b.append(_pm_box(cx - 55, cy - 25, 110, 50, nodes.get("court", ""), lang, fill="var(--accent-soft)", size=15))
+    # domain chips arranged around the court, inside the circle
+    domains = [d.strip() for d in (lb.get("domains", "") or "").split("·") if d.strip()]
+    n = len(domains)
+    for i, dom in enumerate(domains):
+        t = math.radians(-90 + (360 / max(n, 1)) * i)
+        dx, dy = cx + 95 * math.cos(t), cy + 95 * math.sin(t)
+        w = 8 * len(dom) + 16
+        b.append(f'<rect x="{dx - w / 2:.1f}" y="{dy - 13:.1f}" width="{w:.1f}" height="24" rx="12" '
+                 f'fill="var(--surface)" stroke="var(--text-muted)" stroke-width="1.5"/>')
+        b.append(_pm_t(dx, dy + 4, dom, lang, size=11, fill="var(--text)"))
+    # incoming redraw segment from the Knesset, ×-barred at the boundary
+    b.append(_pm_box(cx - 70, 385, 140, 44, nodes.get("knesset", ""), lang, size=14))
+    b.append(_pm_arrow(cx, 385, cx, cy + R + 18, acc))
+    b.append(_pm_xbar(cx, cy + R, 14))
+    b.append(_pm_t(cx + 110, cy + R + 6, lb.get("redraw_label", ""), lang, size=12, fill="var(--outcome-struck)", weight="600"))
+    b.append(_pm_t(624, 24, lb.get("votes", ""), lang, size=12, fill="var(--text-muted)", anchor="end"))
+    return _pm_svg(440, title, lang, "".join(b))
+
+
+def _pm_exitmap_svg(mechs, nodes, lang, title):
+    """The full exit map. Right side: the accountability ladder — hatched public
+    base, Knesset, Government (AG side-node), the Court on top — with solid
+    upward authority arrows. Left side: seven RETURN PATHS fanning down from
+    the Court, one per mechanism (numbered chip riding each path, linked to its
+    tab). Each path terminates per that mechanism's audited dominant state:
+    an exercised-open channel reaches the public band (only mechanism 2 —
+    the honest exception); ≥2 closed channels → the path dies at an ×-bar;
+    otherwise it loops back into the Court itself. An inert ballot glyph on
+    the public band records the 0-of-7 ballot row. All states are computed
+    from the exits cells — nothing hardcoded."""
+    acc = "var(--accent)"
+    b = ['<defs><pattern id="pmx-hatch" width="10" height="10" patternUnits="userSpaceOnUse" '
+         'patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="10" '
+         'stroke="var(--text-muted)" stroke-width="1.4"/></pattern></defs>']
+    # ladder (shifted right to make room for the return fan)
+    b.append(f'<rect x="230" y="610" width="330" height="70" rx="6" fill="url(#pmx-hatch)" '
+             f'stroke="{acc}" stroke-width="2"/>')
+    b.append(f'<rect x="230" y="610" width="330" height="70" rx="6" fill="var(--surface)" opacity="0.55"/>')
+    b.append(_pm_t(395, 651, nodes.get("public", ""), lang, size=16, fill="var(--text)", weight="600"))
+    b.append(_pm_box(245, 470, 300, 60, nodes.get("knesset", ""), lang, size=16))
+    b.append(_pm_box(245, 330, 300, 60, nodes.get("government", ""), lang, size=16))
+    b.append(_pm_box(245, 120, 300, 72, nodes.get("court", ""), lang, fill="var(--accent-soft)", size=18))
+    b.append(_pm_box(560, 212, 108, 48, nodes.get("ag", ""), lang, size=13))
+    b.append(_pm_arrow(590, 260, 530, 348, "var(--text-muted)", dashed=True))  # AG → government
+    # solid upward authority arrows (the public's delegation)
+    b.append(_pm_arrow(395, 610, 395, 532, acc, w=2.5))
+    b.append(_pm_arrow(395, 470, 395, 392, acc, w=2.5))
+    b.append(_pm_arrow(395, 330, 395, 194, acc, w=2.5))
+    # inert ballot on the public band: the voter's only direct channel — 0/7 open
+    b.append(f'<g opacity="0.75"><rect x="585" y="628" width="42" height="30" rx="3" '
+             f'fill="var(--surface)" stroke="var(--text-muted)" stroke-width="2"/>'
+             f'<line x1="595" y1="636" x2="617" y2="636" stroke="var(--text-muted)" stroke-width="3"/>'
+             + _pm_xbar(606, 673, 8) + '</g>')
+    b.append(_pm_t(606, 622, nodes.get("ballot", ""), lang, size=12, fill="var(--text-muted)"))
+    # ── the return fan: one path per mechanism, state computed from its audit ──
+    origin_x, origin_y = 245, 165          # court box, lower-left edge
+    chip_x = 78
+    ys = [210, 272, 334, 396, 458, 520, 574]
+    for mech, y in zip(mechs, ys):
+        n = mech.get("num")
+        exits = mech.get("exits", {})
+        sts = [(exits.get(k) or {}).get("status") for k in _PM_CHANNEL_ORDER]
+        closed_n = sts.count("closed")
+        if "open" in sts:
+            state = "open"          # exercised successfully — the path arrives
+        elif closed_n >= 2:
+            state = "blocked"
+        else:
+            state = "loop"
+        muted = "var(--text-muted)"
+        red = "var(--outcome-struck)"
+        amb = "var(--outcome-remanded)"
+        if state == "open":
+            # solid path: court → chip → down to the public band (it lands)
+            b.append(f'<path d="M {origin_x} {origin_y} Q 130 {y - 34} {chip_x + 16} {y}" '
+                     f'fill="none" stroke="{acc}" stroke-width="2.2"/>')
+            b.append(f'<path d="M {chip_x} {y + 16} Q 90 {(y + 640) / 2} 224 640" '
+                     f'fill="none" stroke="{acc}" stroke-width="2.2"/>')
+            b.append(_pm_arrow(210, 638, 228, 640, acc, w=2.2))
+        elif state == "loop":
+            # path leaves the court, dips to the chip, and curls straight back in
+            b.append(f'<path d="M {origin_x} {origin_y} Q 120 {y - 30} {chip_x + 16} {y}" '
+                     f'fill="none" stroke="{amb}" stroke-width="2.2" stroke-dasharray="7 4"/>')
+            b.append(f'<path d="M {chip_x + 16} {y} Q 190 {y + 6} {origin_x + 22} 192" '
+                     f'fill="none" stroke="{amb}" stroke-width="2.2" stroke-dasharray="7 4"/>')
+            b.append(_pm_arrow(origin_x + 14, 196, origin_x + 24, 192, amb, w=2.2))
+        else:
+            # the path dies: dashed descent that terminates at an ×-bar
+            b.append(f'<path d="M {origin_x} {origin_y} Q 120 {y - 30} {chip_x + 16} {y}" '
+                     f'fill="none" stroke="{red}" stroke-width="2.2" stroke-dasharray="7 4"/>')
+            b.append(f'<line x1="{chip_x - 16}" y1="{y}" x2="{chip_x - 34}" y2="{y}" '
+                     f'stroke="{red}" stroke-width="2.2"/>')
+            b.append(_pm_xbar(chip_x - 46, y, 11))
+        chip_fill = {"open": acc, "loop": amb, "blocked": red}[state]
+        b.append(f'<a href="#m-{n}"><circle cx="{chip_x}" cy="{y}" r="16" fill="var(--surface)" '
+                 f'stroke="{chip_fill}" stroke-width="2.5"/>'
+                 + _pm_t(chip_x, y + 5, str(n), lang, size=15, fill=chip_fill, weight="700")
+                 + '</a>')
+    return _pm_svg(700, title, lang, "".join(b))
+
+
+# ---- meter, panels, overview, assembly -----------------------------------
+
+def _pm_meter_html(mech, statuses, channels, lang):
+    """The per-mechanism exits meter: four portal glyphs (one per correction
+    channel) with the channel label, its audited status, and the cited source
+    (record serif). Counts drive an aggregate line; role=img label mirrors it."""
+    exits = mech.get("exits", {})
+    counts = {"open": 0, "open_untested": 0, "contingent": 0, "closed": 0}
+    cells = []
+    for key in _PM_CHANNEL_ORDER:
+        cell = exits.get(key) or {}
+        status = cell.get("status", "")
+        counts[status] = counts.get(status, 0) + 1
+        chan_label = channels.get(key, "")
+        status_label = statuses.get(status, {}).get(f"label_{lang}", "")
+        cite = cell.get(f"cite_{lang}", "")
+        cells.append(
+            f'<div class="ps-meter-cell ps-meter-cell--{status}">'
+            f'{_pm_portal_svg(status)}'
+            f'<span class="ps-meter-chan">{_esc(chan_label)}</span>'
+            f'<span class="ps-meter-status">{_esc(status_label)}</span>'
+            f'<span class="ps-meter-cite rec">{_esc(cite)}</span>'
+            f'</div>'
+        )
+    opn = counts["open"] + counts["open_untested"]
+    if lang == "he":
+        line = f'מתוך 4 ערוצי תיקון: {counts["closed"]} סגורים · {counts["contingent"]} מותנים · {opn} פתוחים'
+    else:
+        line = f'Of 4 correction channels: {counts["closed"]} closed · {counts["contingent"]} contingent · {opn} open'
+    return (f'<div class="ps-meter" role="img" aria-label="{_esc(line)}">'
+            + "".join(cells)
+            + f'<p class="ps-meter-line">{_esc(line)}</p></div>')
+
+
+def _pm_panel_html(mech, statuses, channels, lang):
+    """One mechanism panel: numbered heading (preset id m-N), severity-ramped
+    hero (outcome), bespoke diagram, exits meter, mechanism prose, optional
+    comparative block, fairness aside, and the cited case links."""
+    num = mech.get("num")
+    title = mech.get(f"title_{lang}", "")
+    title = re.sub(r"^\s*\d+\.\s*", "", title)   # ps-num already prints the number
+    outcome = _pm_prose(mech.get(f"outcome_{lang}", ""), lang)
+    mechanism = _pm_prose(mech.get(f"mechanism_{lang}", ""), lang)
+    oneliner = mech.get(f"oneliner_{lang}", "")
+    closed_n = sum(1 for k in _PM_CHANNEL_ORDER
+                   if (mech.get("exits", {}).get(k) or {}).get("status") == "closed")
+    parts = [
+        f'<section class="ps-panel" data-ps-panel="{num}" aria-labelledby="m-{num}">',
+        f'<h2 id="m-{num}"><span class="ps-num" aria-hidden="true">{num}</span> {_esc(title)}</h2>',
+        f'<div class="ps-hero ps-sev-{closed_n}">{outcome}</div>',
+        f'<figure class="ps-diagram">{_pm_diagram_svg(mech, lang)}'
+        f'<figcaption>{_esc(oneliner)}</figcaption></figure>',
+        _pm_meter_html(mech, statuses, channels, lang),
+        f'<div class="ps-mech-prose">{mechanism}</div>',
+    ]
+    comparative = mech.get(f"comparative_{lang}")
+    if comparative:
+        parts.append(f'<div class="ps-compare">{_pm_prose(comparative, lang)}</div>')
+    counter_label = "הצד השני של הטיעון" if lang == "he" else "The other side of the argument"
+    fairness = mech.get(f"fairness_{lang}", "")
+    # the JSON fairness text opens with that same label — strip it so the
+    # dedicated label span does not double-print it.
+    fairness = re.sub(r"^\s*" + re.escape(counter_label) + r"\s*[:：]\s*", "", fairness)
+    if fairness:
+        parts.append(
+            f'<aside class="ps-counter"><span class="ps-counter-label">{_esc(counter_label)}</span>'
+            f'{_pm_prose(fairness, lang)}</aside>'
+        )
+    cases = mech.get("cases") or []
+    if cases:
+        links = "".join(
+            f'<a class="ps-case-link rec" href="ruling-{_esc(c.get("slug"))}.html">'
+            f'{_esc(c.get("docket") if lang == "he" else c.get("docket_en"))}</a>'
+            for c in cases if c.get("slug")
+        )
+        if links:
+            parts.append(f'<p class="ps-cases">{links}</p>')
+    parts.append('</section>')
+    return "".join(parts)
+
+
+def _pm_overview_html(data, lang):
+    """The overview panel (data-ps-panel=0): intro, the full exit-map figure,
+    three computed KPI stats + a 4th 'open' line, the 7×4 exits matrix, a card
+    grid, the labelled assessment, and the awareness line. Every KPI is COUNTED
+    from the exits cells here — nothing is read from a stored total."""
+    ov = data.get("overview", {})
+    mechs = data.get("mechanisms", [])
+    statuses = data.get("statuses", {})
+    channels = {c["key"]: c.get(f"label_{lang}", "") for c in data.get("channels", [])}
+    nodes = _PM_NODES.get(lang, {})
+
+    # COUNT every exits cell across all mechanisms
+    total = closed = contingent = opn = ballot_open = 0
+    for m in mechs:
+        for k in _PM_CHANNEL_ORDER:
+            st = (m.get("exits", {}).get(k) or {}).get("status")
+            if st is None:
+                continue
+            total += 1
+            if st == "closed":
+                closed += 1
+            elif st == "contingent":
+                contingent += 1
+            elif st in ("open", "open_untested"):
+                opn += 1
+                if k == "ballot":
+                    ballot_open += 1
+
+    def stat(mod, num, label):
+        return (f'<div class="ps-stat ps-stat--{mod}"><span class="ps-stat-num rec">{num}</span>'
+                f'<span class="ps-stat-label">{_esc(label)}</span></div>')
+
+    # ballot KPI shows "open-of-7" — the voter's only direct channel (0/7 today,
+    # but counted, never assumed)
+    ballot_num = f"{ballot_open}/7"
+    stats = (
+        '<div class="ps-stats">'
+        + stat("audited", total, ov.get(f"kpi_audited_{lang}", ""))
+        + stat("closed", closed, ov.get(f"kpi_closed_{lang}", ""))
+        + stat("ballot", ballot_num, ov.get(f"kpi_ballot_{lang}", ""))
+        + stat("contingent", contingent, ov.get(f"kpi_contingent_{lang}", ""))
+        + f'<p class="ps-stat-open"><span class="ps-stat-num rec">{opn}</span> '
+        + f'{_esc(ov.get(f"kpi_open_{lang}", ""))}</p>'
+        + '</div>'
+    )
+
+    # 7×4 matrix — row label links to #m-N, each cell titled with status + cite
+    mx = [f'<div class="ps-matrix"><h3 class="ps-matrix-title">{_esc(ov.get(f"matrix_title_{lang}", ""))}</h3>',
+          '<div class="ps-matrix-grid" role="table">', '<div class="ps-matrix-corner"></div>']
+    for key in _PM_CHANNEL_ORDER:
+        mx.append(f'<div class="ps-matrix-head">{_esc(channels.get(key, ""))}</div>')
+    for m in mechs:
+        n = m.get("num")
+        mx.append(f'<a class="ps-matrix-rowlabel" href="#m-{n}">{_esc(m.get(f"tab_{lang}", ""))}</a>')
+        for key in _PM_CHANNEL_ORDER:
+            cell = m.get("exits", {}).get(key) or {}
+            st = cell.get("status", "")
+            st_label = statuses.get(st, {}).get(f"label_{lang}", "")
+            cite = cell.get(f"cite_{lang}", "")
+            mx.append(
+                f'<div class="ps-matrix-cell ps-matrix-cell--{st}" title="{_esc(st_label + " — " + cite)}">'
+                f'{_pm_portal_svg(st)}</div>'
+            )
+    mx.append('</div></div>')
+
+    # card grid
+    grid = ['<div class="ps-grid">']
+    for m in mechs:
+        n = m.get("num")
+        grid.append(
+            f'<a class="ps-card" href="#m-{n}"><span class="ps-card-num">{n}</span>'
+            f'<strong>{_esc(m.get(f"tab_{lang}", ""))}</strong>'
+            f'<span>{_esc(m.get(f"summary_{lang}", ""))}</span></a>'
+        )
+    grid.append('</div>')
+
+    exitmap = _pm_exitmap_svg(mechs, nodes, lang, ov.get(f"map_title_{lang}", ""))
+
+    return (
+        f'<section class="ps-panel" data-ps-panel="0" aria-labelledby="m-0">'
+        f'<h2 id="m-0">{_esc(ov.get(f"title_{lang}", ""))}</h2>'
+        f'<p class="ps-intro">{_esc(ov.get(f"intro_{lang}", ""))}</p>'
+        f'<figure class="ps-exitmap">{exitmap}'
+        f'<figcaption>{_esc(ov.get(f"exitmap_oneliner_{lang}", ""))}</figcaption></figure>'
+        f'{stats}'
+        + "".join(mx)
+        + "".join(grid)
+        + f'<aside class="ps-assessment">{_pm_prose(ov.get(f"assessment_{lang}", ""), lang)}</aside>'
+        + f'<p class="ps-awareness">{_esc(ov.get(f"awareness_{lang}", ""))}</p>'
+        + '</section>'
+    )
+
+
+def _power_tabs_md(lang: str) -> str:
+    """Assemble the whole Power-Structure apparatus (tab strip + overview panel
+    + seven mechanism panels) as ONE top-level raw-HTML line + trailing newline,
+    so python-markdown passes it through untouched. Strictly per-language."""
+    data = _pm_load()
+    if not data:
+        return ""
+    # publish the diagram-node vocabulary for the SVG builders (per language)
+    global _PM_NODES
+    _PM_NODES = data.get("diagram_nodes", {})
+    mechs = data.get("mechanisms", [])
+    statuses = data.get("statuses", {})
+    channels = {c["key"]: c.get(f"label_{lang}", "") for c in data.get("channels", [])}
+    ov = data.get("overview", {})
+    nav_label = "מנגנוני מבנה הכוח" if lang == "he" else "Power-structure mechanisms"
+
+    nav = [f'<nav class="ps-tabs" aria-label="{_esc(nav_label)}">',
+           f'<a class="ps-tab is-active" href="#m-0" data-ps-tab="0" aria-current="true">'
+           f'{_esc(ov.get(f"tab_{lang}", ""))}</a>']
+    for m in mechs:
+        n = m.get("num")
+        nav.append(
+            f'<a class="ps-tab" href="#m-{n}" data-ps-tab="{n}">'
+            f'<span class="ps-tab-num">{n}</span> '
+            f'<span class="ps-tab-label">{_esc(m.get(f"tab_{lang}", ""))}</span></a>'
+        )
+    nav.append('</nav>')
+
+    panels = [_pm_overview_html(data, lang)]
+    for m in mechs:
+        panels.append(_pm_panel_html(m, statuses, channels, lang))
+
+    block = ('<div class="ps-tabs-block">' + "".join(nav)
+             + '<div class="ps-panels">' + "".join(panels) + '</div></div>')
+    # guarantee the single-line invariant (no stray newline can split the block)
+    block = block.replace("\n", "")
+    return block + "\n"
+
+
 def build_content(out_dir: Path) -> dict:
     """
     Build the informative content layer: convert each content/*/foo.md to HTML
@@ -771,6 +1440,10 @@ def build_content(out_dir: Path) -> dict:
                 st_marker = "<!-- TABLE:statements -->"
                 body_he_raw = body_he_raw.replace(st_marker, _statement_table_md("he"))
                 body_en_raw = body_en_raw.replace(st_marker, _statement_table_md("en"))
+            elif f.stem == "power-structure":
+                ps_marker = "<!-- TABS:power-mechanisms -->"
+                body_he_raw = body_he_raw.replace(ps_marker, _power_tabs_md("he"))
+                body_en_raw = body_en_raw.replace(ps_marker, _power_tabs_md("en"))
 
             title_meta = meta.get("title", "").strip()
             title_he   = meta.get("title_he", title_meta).strip()
@@ -1438,7 +2111,8 @@ def render_content_static_page(piece: dict, category: str) -> str:
     summary_he = piece.get("summary_he") or piece.get("summary") or ""
     body_html = piece.get("body_html_he") or piece.get("body_html") or ""
     spa_url = f"content.html?slug={slug}"
-    badge = {"essays": "מאמר", "explainers": "הסבר", "patterns": "תיעוד דפוס"}.get(category, category)
+    badge = {"essays": "מאמר", "explainers": "הסבר", "patterns": "תיעוד דפוס",
+             "structure": "מבנה הכוח"}.get(category, category)
 
     jsonld = {
         "@context": "https://schema.org",
@@ -1476,7 +2150,7 @@ def render_content_static_page(piece: dict, category: str) -> str:
     )
     inner = f'<div class="content-layout">{article}{toc_html}</div>' if toc_html else article
     body = (
-        f'<div id="root">{_static_header("reading")}<main>'
+        f'<div id="root">{_static_header("structure" if category == "structure" else "reading")}<main>'
         f'<p class="breadcrumb"><a href="reading.html">קריאה</a> / {_esc(badge)}</p>'
         f'{inner}</main>{_STATIC_FOOTER}</div>'
     )

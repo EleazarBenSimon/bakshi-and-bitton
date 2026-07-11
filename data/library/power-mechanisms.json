@@ -1,0 +1,558 @@
+{
+  "_doc": "Data source for the Power Structure page (content/structure/power-structure.md + .en.md carry only the lede + <!-- TABS:power-mechanisms --> marker + methodological note). Each mechanism: prose migrated letter-exact from the previously-published .md pair (outcome_* = the 'מה כבר קרה' beat, mechanism_* = the 'המנגנון' beat, markdown), plus the Exits Audit (exits.*): for each of 4 formal correction channels a documented status — open (exercised successfully), open_untested (formal path exists, never exercised), contingent (terminates in the Court's own review — documented), closed (no formal path) — each with a citation. Aggregate numbers are ALWAYS computed from these cells at build time, never stored. Per METHODOLOGY §6: facts cited inline; assessment text explicitly labeled; no motive/character claims. Display strings are strictly per-language (field_he / field_en) — the build must never fall back across languages.",
+  "channels": [
+    {
+      "key": "appeal",
+      "label_he": "ערעור שיפוטי",
+      "label_en": "Judicial appeal"
+    },
+    {
+      "key": "statute",
+      "label_he": "חקיקה רגילה",
+      "label_en": "Ordinary statute"
+    },
+    {
+      "key": "basic_law",
+      "label_he": "חוק-יסוד",
+      "label_en": "Basic Law"
+    },
+    {
+      "key": "ballot",
+      "label_he": "הקלפי",
+      "label_en": "The ballot"
+    }
+  ],
+  "statuses": {
+    "open": {
+      "label_he": "פתוח",
+      "label_en": "Open"
+    },
+    "open_untested": {
+      "label_he": "פתוח — לא נוסה",
+      "label_en": "Open — never exercised"
+    },
+    "contingent": {
+      "label_he": "מותנה — עובר דרך בית המשפט עצמו",
+      "label_en": "Contingent — passes through the Court itself"
+    },
+    "closed": {
+      "label_he": "סגור",
+      "label_en": "Closed"
+    }
+  },
+  "overview": {
+    "tab_he": "סקירה",
+    "tab_en": "Overview",
+    "title_he": "סקירה: מפת המוצאים",
+    "title_en": "Overview: The Exit Map",
+    "intro_he": "שבעה מנגנונים, מפה אחת. הציבור מאציל סמכות דרך הקלפי; המפה בודקת כמה מן הערוצים שאמורים להחזיר אותה עוד פתוחים באמת. כל מנגנון נבדק מול ארבעה ערוצי תיקון פורמליים — ערעור, חקיקה רגילה, חוק-יסוד, והקלפי — וכל סטטוס מלווה במקורו. לחצו על מנגנון בתפריט, או על מספר במפה, לצלילה.",
+    "intro_en": "Seven mechanisms, one map. The public delegates authority through the ballot; this map audits how many of the channels that are supposed to bring it back are still truly open. Each mechanism is audited against four formal correction channels — appeal, ordinary statute, Basic Law, and the ballot — and every status carries its citation. Click a mechanism in the menu, or a number on the map, to dive in.",
+    "exitmap_oneliner_he": "הסמכות זורמת מעלה — אל גוף ששופטיו המכהנים מחזיקים וטו על זהות יורשיהם; מרבית מסלולי התיקון חזרה סגורים, או עוברים דרך אותו גוף עצמו.",
+    "exitmap_oneliner_en": "Authority flows up — to a body whose sitting justices hold a veto over their own successors; most correction paths back down are closed, or pass through that same body itself.",
+    "assessment_he": "**הערכת הפרויקט.** המתואר כאן איננו המתח הרגיל, הבריא, שבין רשויות בדמוקרטיה מתפקדת — ואל לו להיקרא כך. במערכת שבה כמעט כל ערוצי התיקון הפורמליים סגורים או מסתיימים בגוף המבוקר עצמו, אין שסתום שחרור מוסדי. לחץ ציבורי שאינו מוצא מוצא פרוצדורלי אינו נעלם — הוא מצטבר. מבנים כאלה אינם נוטים להיפתר מעצמם, בשקט. אין כאן כל טענה על כוונתו של איש; זוהי אזהרה על תכונותיו של מבנה. והמוצא היחיד שאינו משורטט במפה הוא מודעות ציבורית רחבה — מכל חלקי החברה — שתצמיח, בהסכמה, אלטרנטיבה מוסדית בטרם התנגשות חוקתית.",
+    "assessment_en": "**The project's assessment.** What is described here is not the ordinary, healthy tension between branches of a functioning democracy — and it should not be read as such. In a system where nearly every formal correction channel is closed or terminates in the very body under review, there is no institutional release valve. Public pressure that finds no procedural outlet does not disappear — it accumulates. Structures like this do not tend to resolve themselves quietly. Nothing here is a claim about anyone's intentions; it is a warning about the properties of a structure. And the one exit not drawn on this map is broad public awareness — from every part of society — capable of growing, by consent, an institutional alternative before a constitutional collision.",
+    "awareness_he": "אם המפה הזו הבהירה לך משהו — העבר אותה הלאה. המודעות היא הערוץ היחיד שאינו זקוק לאישורו של איש.",
+    "awareness_en": "If this map made something clear — pass it on. Awareness is the one channel that needs no one's permission.",
+    "kpi_audited_he": "ערוצי תיקון נבדקו",
+    "kpi_audited_en": "correction channels audited",
+    "kpi_closed_he": "סגורים",
+    "kpi_closed_en": "closed",
+    "kpi_contingent_he": "מותנים — עוברים דרך בית המשפט עצמו",
+    "kpi_contingent_en": "contingent — pass through the Court itself",
+    "kpi_open_he": "פתוחים — 4 שלא נוסו מעולם, אחד שהופעל בהצלחה",
+    "kpi_open_en": "open — 4 never exercised, one successfully used",
+    "matrix_title_he": "מטריצת המוצאים: 7 מנגנונים × 4 ערוצים",
+    "matrix_title_en": "The Exits Matrix: 7 mechanisms × 4 channels",
+    "map_title_he": "מפת המוצאים המלאה",
+    "map_title_en": "The full Exit Map",
+    "kpi_ballot_he": "מתאי הקלפי פתוחים — הערוץ הישיר היחיד של הבוחר",
+    "kpi_ballot_en": "ballot channels open — the voter's only direct channel"
+  },
+  "diagram_nodes": {
+    "he": {
+      "public": "הציבור",
+      "knesset": "הכנסת",
+      "government": "הממשלה",
+      "court": "בג\"ץ",
+      "ag": "היועמ\"ש",
+      "president": "נשיא/ת ביהמ\"ש",
+      "first_instance": "ערכאה ראשונה",
+      "appeal_court": "ערכאת ערעור",
+      "supreme": "עליון",
+      "petitioner": "עותר",
+      "ballot": "קלפי"
+    },
+    "en": {
+      "public": "The public",
+      "knesset": "Knesset",
+      "government": "Government",
+      "court": "HCJ",
+      "ag": "AG",
+      "president": "Court President",
+      "first_instance": "First instance",
+      "appeal_court": "Appellate court",
+      "supreme": "Supreme",
+      "petitioner": "Petitioner",
+      "ballot": "Ballot"
+    }
+  },
+  "mechanisms": [
+    {
+      "num": 1,
+      "id": "first-and-last",
+      "tab_he": "ערכאה ראשונה ואחרונה",
+      "tab_en": "First & last instance",
+      "title_he": "1. הערכאה העליונה כערכאה ראשונה — ואחרונה",
+      "title_en": "1. The apex court as the court of first instance — and last",
+      "summary_he": "הכרעה אחת, סופית, ללא ערעור — גם נגד שר מכהן.",
+      "summary_en": "One adjudication, final, no appeal — even against a sitting minister.",
+      "oneliner_he": "אין קומה מעליה: אותה הכרעה היא גם הראשונה וגם הסופית.",
+      "oneliner_en": "There is no floor above it: the same decision is both the first and the final one.",
+      "outcome_he": "ב-18 בינואר 2023 ביטל בג\"ץ ברוב 10–1 את מינויו של אריה דרעי לשר הפנים והבריאות. בית המשפט קבע כי המינוי \"בלתי-סביר בעליל\". ראש הממשלה נתניהו הודיע כי הוא \"נאלץ, בלב כבד\" לפטר אותו, ועשה זאת בהצבעת ממשלה ימים אחדים לאחר מכן. לא היה לממשלה נתיב ערעור: בג\"ץ הוא גם המילה הראשונה וגם המילה האחרונה. *(הפסיקה במאגר זה: בג\"ץ 8948/22 דרעי.)*",
+      "outcome_en": "On 18 January 2023 the High Court of Justice voided, 10–1, the appointment of Aryeh Deri as Minister of the Interior and of Health, holding it \"unreasonable in the extreme.\" Prime Minister Netanyahu said he was \"compelled, with a heavy heart\" to dismiss him, and did so by cabinet vote days later. The government had no avenue of appeal: the HCJ is both the first and the last judicial word. *(The ruling, in this database: HCJ 8948/22 Deri.)*",
+      "mechanism_he": "סעיף 15 לחוק-יסוד: השפיטה קובע שבית המשפט העליון יושב גם **כבית משפט גבוה לצדק** ודן ישירות בעתירות נגד רשויות המדינה. משמעות הדבר: אותו גוף עצמו הוא גם ערכאת הערעור הסופית של המדינה וגם הערכאה הראשונה שבפניה אזרח תוקף החלטת שר או ממשלה — ואין ערעור על החלטתו. במרבית הדמוקרטיות שבהן קיימת ביקורת שיפוטית על פעולה שלטונית, הכרעת הערכאה הראשונה ניתנת לערעור לערכאה גבוהה יותר, המתקנת טעויות וממתנת את תוצאת העדפותיו של מותב יחיד. בישראל, בג\"ץ **הוא** בית המשפט העליון: הממשלה ניצבת מול הכרעה אחת, בפני המותב הבכיר במדינה, ללא כל מוצא משפטי נוסף. כך עשה בית המשפט גם ב-1 בינואר 2024, כשהרכב מלא של 15 שופטים בחן וביטל תיקון לחוק-יסוד (ראו [§7](#m-7)) — אף הוא בערכאה ראשונה ואחרונה.",
+      "mechanism_en": "Section 15 of Basic Law: The Judiciary provides that the Supreme Court also sits as the **High Court of Justice**, hearing petitions against state authorities directly. The same body is thus both the state's final court of appeal and the first-instance forum where a citizen challenges a minister's or government's decision — with no appeal from its decision. In most democracies with judicial review of executive action, the first-instance ruling can be appealed to a higher court that corrects error and moderates a single bench's preferences. In Israel the HCJ **is** the Supreme Court: the government faces a single adjudication, before the most senior bench in the country, with no further legal recourse. The Court did the same on 1 January 2024, when a full bench of 15 justices reviewed and struck down an amendment to a Basic Law (see [§7](#m-7)) — also at first and last instance.",
+      "cases": [
+        {
+          "docket": "בג\"ץ 8948/22",
+          "docket_en": "HCJ 8948/22",
+          "slug": "8948-22-deri"
+        },
+        {
+          "docket": "בג\"ץ 5658/23",
+          "docket_en": "HCJ 5658/23",
+          "slug": "5658-23"
+        }
+      ],
+      "exits": {
+        "appeal": {
+          "status": "closed",
+          "cite_he": "פסק דין של בית המשפט העליון אינו ניתן לערעור (חוק-יסוד: השפיטה, ס' 17); הנתיב היחיד — דיון נוסף בהרכב מורחב (ס' 18) — מתקיים בפני אותו בית משפט עצמו",
+          "cite_en": "A Supreme Court judgment is not appealable (Basic Law: The Judiciary, s. 17); the only route — a further hearing before an expanded panel (s. 18) — takes place before the same court itself"
+        },
+        "statute": {
+          "status": "open_untested",
+          "cite_he": "חוק בתי משפט לעניינים מינהליים, התש\"ס-2000 מוכיח שחוק רגיל יכול להעביר עתירות לביקורת ראשונה בערכאה נמוכה עם ערעור; לגבי החלטות הממשלה והשרים עצמם — הנתיב מעולם לא הופעל",
+          "cite_en": "The Administrative Courts Law, 5760-2000 shows an ordinary statute can route petitions to lower-court first-instance review with appeal; for decisions of the government and ministers themselves, the route has never been exercised"
+        },
+        "basic_law": {
+          "status": "contingent",
+          "cite_he": "בג\"ץ 5658/23 — תיקון לחוק-יסוד נבחן ובוטל בידי בית המשפט עצמו",
+          "cite_en": "HCJ 5658/23 — a Basic Law amendment was reviewed and voided by the Court itself"
+        },
+        "ballot": {
+          "status": "closed",
+          "cite_he": "השופטים אינם נבחרים ואינם ניתנים להחלפה בקלפי (חוק-יסוד: השפיטה: ס' 4 — מינוי; ס' 7 — כהונה)",
+          "cite_en": "Justices are not elected and cannot be replaced at the ballot (Basic Law: The Judiciary: s. 4 — appointment; s. 7 — tenure)"
+        }
+      },
+      "comparative_he": "במרבית הדמוקרטיות שבהן קיימת ביקורת שיפוטית על פעולה שלטונית, הכרעת הערכאה הראשונה ניתנת לערעור לערכאה גבוהה יותר.",
+      "comparative_en": "In most democracies with judicial review of executive action, the first-instance ruling can be appealed to a higher court.",
+      "fairness_he": "הצד השני של הטיעון: ריכוז הביקורת בערכאה עליונה אחת מקנה הכרעה מהירה, אחידה ומחייבת, ומנגנון הדיון הנוסף (ס' 18) מאפשר תיקון פנימי; שיטות מרובות-ערכאות משלמות בהליכים ממושכים ובפסיקות סותרות.",
+      "fairness_en": "The other side of the argument: concentrating review in a single apex court yields fast, uniform, binding resolution, and the further-hearing mechanism (s. 18) allows internal correction; multi-tier systems pay in prolonged proceedings and conflicting rulings.",
+      "diagram": {
+        "labels": {
+          "he": {
+            "ghost_caption": "המבנה המקובל: שלוש קומות",
+            "actual_caption": "בעתירות נגד השלטון: קומה אחת",
+            "blocked_label": "אין ערעור",
+            "entry_label": "עתירה"
+          },
+          "en": {
+            "ghost_caption": "The usual structure: three tiers",
+            "actual_caption": "For petitions against the government: one tier",
+            "blocked_label": "No appeal",
+            "entry_label": "Petition"
+          }
+        }
+      }
+    },
+    {
+      "num": 2,
+      "id": "direct-access",
+      "tab_he": "גישה ישירה לפסגה",
+      "tab_en": "Direct access to the apex",
+      "title_he": "2. גישה ישירה לפסגה — דילוג על הערכאות הנמוכות",
+      "title_en": "2. Direct access to the apex — bypassing the lower courts",
+      "summary_he": "מהעתירה לצו ביניים בתוך ימים — בלי אף ערכאה בדרך.",
+      "summary_en": "From petition to interim order within days — no court in between.",
+      "oneliner_he": "מהעתירה אל הפסגה — בלי אף תחנת ביניים.",
+      "oneliner_en": "From the petition to the apex — with no intermediate stop.",
+      "outcome_he": "באוגוסט 2019, לאחר ששר המשפטים דאז פיטר את מנכ\"לית משרד המשפטים וביקש למנות מחליף במקומה, הוגשה עתירה **ישירות לבג\"ץ**, ובתוך ימים אחדים הוקפא המינוי בצו זמני. לא קדם לכך כל הליך בערכאה מינהלית או מחוזית, ולא היה ערעור — בג\"ץ היה הפורום היחיד מן הרגע הראשון. *(מקור: דיווחי Jerusalem Post ו-Haaretz, אוגוסט 2019.)*",
+      "outcome_en": "In August 2019, after the justice minister fired the ministry's director-general and moved to install a replacement, a petition was filed **directly with the HCJ**, and within days the appointment was frozen by interim order. No administrative tribunal or district-court step preceded it, and no appeal was possible — the HCJ was the only forum from the first moment. *(Source: Jerusalem Post and Haaretz reporting, August 2019.)*",
+      "mechanism_he": "עתירות בג\"ץ בעניינים הלאומיים המשמעותיים — החלטות ממשלה, תקנות, מינויים, חקיקה — מגיעות ישירות לבית המשפט העליון. חוק בתי משפט לעניינים מינהליים, תש\"ס-2000, העביר קטגוריות מנויות לבתי משפט מחוזיים, אך כל מה שלא נמנה במפורש נותר בבג\"ץ מכוח סעיף-סל. במרבית שיטות המשפט, מי שתוקף פעולה שלטונית חייב למצות הליכים, לעבור טריבונל ייעודי, ערכאה כללית ושלב ערעור — והממשלה פועלת בכל אותו זמן. בישראל, לקטגוריות שנותרו, אין דרישת מיצוי ואין סינון מלמטה: מינוי שהוכרז ביום שני יכול להיות מוקפא בידי בג\"ץ עד יום שישי. הממשלה אינה יכולה להשתמש בזמן ההליך כמשאב פוליטי — וגם זה מגביר את כוחו של היועץ המשפטי ([§3](#m-3)), שכן איום ההתערבות המהירה הופך את חוות-דעתו לכזו שיקר להתעלם ממנה.",
+      "mechanism_en": "Petitions on the most significant national matters — government decisions, regulations, appointments, legislation — go straight to the Supreme Court. The 2000 Administrative Courts Law moved enumerated categories to district courts, but everything not expressly listed stays with the HCJ via a catch-all clause. In most legal systems a challenger must exhaust remedies, pass a specialist tribunal, a general court, and an appellate tier — and the government governs throughout. In Israel, for the retained categories, there is no exhaustion requirement and no lower-court filter: an appointment announced Monday can be frozen by the HCJ by Friday. The government cannot use procedural time as a political resource — which also amplifies the Attorney General's power ([§3](#m-3)), since the threat of rapid intervention makes the AG's opinion costly to ignore.",
+      "cases": [],
+      "exits": {
+        "appeal": {
+          "status": "closed",
+          "cite_he": "פסק דין של בית המשפט העליון אינו ניתן לערעור (חוק-יסוד: השפיטה, ס' 17); הנתיב היחיד — דיון נוסף בהרכב מורחב (ס' 18) — מתקיים בפני אותו בית משפט עצמו",
+          "cite_en": "A Supreme Court judgment is not appealable (Basic Law: The Judiciary, s. 17); the only route — a further hearing before an expanded panel (s. 18) — takes place before the same court itself"
+        },
+        "statute": {
+          "status": "open",
+          "cite_he": "חוק בתי משפט לעניינים מינהליים, תש\"ס-2000 — קטגוריות הועברו בפועל לערכאות נמוכות; הנתיב הופעל בהצלחה",
+          "cite_en": "Administrative Courts Law, 5760-2000 — categories were in fact transferred to lower courts; the path was exercised successfully"
+        },
+        "basic_law": {
+          "status": "contingent",
+          "cite_he": "בג\"ץ 5658/23 — תיקון לחוק-יסוד נבחן ובוטל בידי בית המשפט עצמו",
+          "cite_en": "HCJ 5658/23 — a Basic Law amendment was reviewed and voided by the Court itself"
+        },
+        "ballot": {
+          "status": "closed",
+          "cite_he": "השופטים אינם נבחרים ואינם ניתנים להחלפה בקלפי (חוק-יסוד: השפיטה: ס' 4 — מינוי; ס' 7 — כהונה)",
+          "cite_en": "Justices are not elected and cannot be replaced at the ballot (Basic Law: The Judiciary: s. 4 — appointment; s. 7 — tenure)"
+        }
+      },
+      "comparative_he": "במרבית שיטות המשפט, מי שתוקף פעולה שלטונית חייב למצות הליכים, לעבור טריבונל ייעודי, ערכאה כללית ושלב ערעור — והממשלה פועלת בכל אותו זמן.",
+      "comparative_en": "In most legal systems a challenger must exhaust remedies, pass a specialist tribunal, a general court, and an appellate tier — and the government governs throughout.",
+      "fairness_he": "הצד השני של הטיעון: גישה ישירה ומהירה לבג\"ץ היא גם כלי הגנה מהיר לאזרח מול שרירות שלטונית, ולבית המשפט מסנני-כניסה משלו — סעד חלופי, שיהוי וכלליות; במקרים דחופים, יעילות הנתיב חיונית.",
+      "fairness_en": "The other side of the argument: direct, rapid access to the HCJ is also the citizen's fast shield against arbitrary state action, and the Court applies its own admission filters — alternative remedy, delay, and generality; in urgent cases the route's efficiency is vital.",
+      "diagram": {
+        "labels": {
+          "he": {
+            "ghost_caption": "המסלול המקובל: מיצוי הליכים",
+            "actual_caption": "בישראל: קשת אחת אל הפסגה",
+            "time_label": "ימים, לא שנים"
+          },
+          "en": {
+            "ghost_caption": "The usual route: exhaustion of remedies",
+            "actual_caption": "In Israel: one arc to the apex",
+            "time_label": "Days, not years"
+          }
+        }
+      }
+    },
+    {
+      "num": 3,
+      "id": "ag-chain",
+      "tab_he": "שרשרת היועצים",
+      "tab_en": "The advisors' chain",
+      "title_he": "3. שרשרת היועצים המשפטיים — חוות-דעת מחייבת, לא מייעצת",
+      "title_en": "3. The chain of legal advisors — binding opinions, not advice",
+      "summary_he": "חוות-דעת שהפכה מחייבת — בלא חוק שקבע זאת.",
+      "summary_en": "An opinion that became binding — with no statute making it so.",
+      "oneliner_he": "עמדת הממשלה מגיעה לבית המשפט רק דרך שער אחד — והשער איננו שלה.",
+      "oneliner_en": "The government's position reaches the court through one gate only — and the gate is not its own.",
+      "outcome_he": "ב-2025 הודיעה היועצת המשפטית לממשלה כי לא תייצג את הממשלה בעתירות הנוגעות לסירובו של ראש הממשלה להקים ועדת חקירה ממלכתית לאירועי 7 באוקטובר, וכי על הממשלה לבקש ייצוג פרטי משלה. כלומר: זרועה המשפטית של הממשלה התנגדה לעמדתה, וראש הממשלה נדרש לחפש עורכי-דין פרטיים שיופיעו בערכאה הגבוהה במדינה — מול היועצת המשפטית שלו עצמו. *(מקור: דיווחי Times of Israel ו-Ynet, 2025.)*",
+      "outcome_en": "In 2025 the Attorney General announced she would not represent the government in petitions concerning the Prime Minister's refusal to establish a state commission of inquiry into the events of 7 October, and that the government would have to seek its own private counsel. The government's own legal arm opposed its position, and the Prime Minister had to find private lawyers to appear in the country's highest court — against his own Attorney General. *(Source: Times of Israel and Ynet reporting, 2025.)*",
+      "mechanism_he": "לסמכותו המחייבת של היועץ המשפטי לממשלה **אין בסיס סטטוטורי מפורש** — היא נבנתה מהכרזתו-העצמית של היועמ\"ש שמגר (1968) שתפקידו \"מעין-שיפוטי\", התגבשה בפסיקת השופט ברק בפרשת דרעי–פנחסי (1993) שלפיה חוות-דעת היועמ\"ש \"משקפת את הדין המצוי\", והופעלה דרך החלטות ממשלה. לכך נוסף **מונופול הייצוג**: היועמ\"ש קובע אילו טיעונים תציג מדינת ישראל בבית המשפט. אם הוא אומר שעמדת הממשלה \"אינה ראויה להגנה\", לממשלה שתי אפשרויות בלבד — לנטוש את עמדתה, או להופיע בשמה-שלה עם עורך-דין פרטי, ללא מערך משפטי, מול היועמ\"ש שלה. בנוסף, יועצים משפטיים במשרדי הממשלה — הכפופים מקצועית ליועמ\"ש ולא לשר — יכולים לסרב לנסח חוות-דעת התומכת בהחלטת שר שהם רואים כבלתי-חוקית, והשר אינו יכול לפטרם. המבנה כולו — המעניק לגורם ממונה כוח וטו על אסטרטגיית הממשלה — נשען על פרשנות שיפוטית והחלטות ממשלה, לא על חוק שהכנסת חוקקה.",
+      "mechanism_en": "The Attorney General's binding authority has **no explicit statutory basis** — it was built from AG Shamgar's 1968 self-declaration that the role is \"of a judicial nature,\" crystallized in Justice Barak's 1993 Deri-Pinhasi ruling that the AG's opinion \"reflects the positive law,\" and operationalized through government resolutions. To this is added a **monopoly on representation**: the AG decides what arguments the State of Israel presents in court. If the AG deems the government's position \"indefensible,\" the government's only options are to abandon it, or to appear in its own name with private counsel — with no legal apparatus, against its own AG. Ministry legal advisors — professionally subordinate to the AG, not to the minister — can refuse to draft an opinion supporting a decision they deem unlawful, and the minister cannot dismiss them. The entire structure — granting an appointed official a veto over the government's legal strategy — rests on judicial interpretation and government resolutions, not on a statute the Knesset enacted.",
+      "cases": [
+        {
+          "docket": "בג\"ץ 18225-06-25",
+          "docket_en": "HCJ 18225-06-25",
+          "slug": "18225-06-25-baharav-miara"
+        }
+      ],
+      "exits": {
+        "appeal": {
+          "status": "closed",
+          "cite_he": "הדוקטרינה המחייבת היא הלכת בית המשפט עצמו (דרעי–פנחסי, 1993) — אין פורום ערעור עליה",
+          "cite_en": "The binding doctrine is the Court's own case law (Deri–Pinhasi, 1993) — there is no appellate forum above it"
+        },
+        "statute": {
+          "status": "open_untested",
+          "cite_he": "אין בסיס סטטוטורי מפורש לסמכות המחייבת; הכנסת מעולם לא חוקקה בעניין — נתיב פורמלי קיים ולא נוסה",
+          "cite_en": "The binding authority has no explicit statutory basis; the Knesset has never legislated on it — a formal path exists, never exercised"
+        },
+        "basic_law": {
+          "status": "contingent",
+          "cite_he": "בג\"ץ 5658/23 — תיקון לחוק-יסוד נבחן ובוטל בידי בית המשפט עצמו",
+          "cite_en": "HCJ 5658/23 — a Basic Law amendment was reviewed and voided by the Court itself"
+        },
+        "ballot": {
+          "status": "contingent",
+          "cite_he": "ניסיון הדרג הנבחר להעביר את היועמ\"שית מתפקידה בוטל בבג\"ץ פה אחד (בג\"ץ 18225-06-25)",
+          "cite_en": "The elected branch's attempt to remove the Attorney General was annulled unanimously by the HCJ (HCJ 18225-06-25)"
+        }
+      },
+      "fairness_he": "הצד השני של הטיעון: ייעוץ משפטי עצמאי נועד למנוע מן השלטון לפעול בניגוד לדין; במבנה שבו היועץ כפוף לשר, הבלם הזה עלול להישחק עד כדי איונו.",
+      "fairness_en": "The other side of the argument: independent legal counsel exists to keep government within the law; where the advisor answers to the minister, that brake can erode to nothing.",
+      "diagram": {
+        "labels": {
+          "he": {
+            "gate_label": "שער הייצוג",
+            "bypass_label": "ייצוג פרטי",
+            "authority_label": "מקור הסמכות: הכרזה עצמית (1968) ← הלכת דרעי–פנחסי (1993)",
+            "ministry_label": "יועצי המשרדים"
+          },
+          "en": {
+            "gate_label": "The representation gate",
+            "bypass_label": "Private counsel",
+            "authority_label": "Source of authority: self-declaration (1968) → Deri–Pinhasi doctrine (1993)",
+            "ministry_label": "Ministry advisors"
+          }
+        }
+      }
+    },
+    {
+      "num": 4,
+      "id": "panel-composition",
+      "tab_he": "הרכב המותב",
+      "tab_en": "Panel composition",
+      "title_he": "4. הרכב המותב — מי קובע אילו שופטים ידונו בתיק",
+      "title_en": "4. Panel composition — who decides which justices hear the case",
+      "summary_he": "גורם אחד קובע כמה שופטים יכריעו — וגודל ההרכב קבע תוצאה (8–7).",
+      "summary_en": "One office sets how many justices decide — and panel size settled an outcome (8–7).",
+      "oneliner_he": "לפני שנשמעת מילה אחת — נקבע כבר כמה שופטים ישמעו אותה.",
+      "oneliner_en": "Before a single word is heard — it is already set how many justices will hear it.",
+      "outcome_he": "בג\"ץ 5658/23, שבו בוטל תיקון לחוק-יסוד, נדון בהרכב **מורחב של 15 שופטים** — והוכרע ברוב של 8 מול 7. גודל ההרכב הוא שקבע את התוצאה: בהרכב קטן יותר היה הרוב עשוי להתהפך.",
+      "outcome_en": "HCJ 5658/23, in which an amendment to a Basic Law was struck down, was heard by an **expanded panel of 15 justices** — and decided 8 to 7. The size of the panel determined the outcome: on a smaller panel the majority might have flipped.",
+      "mechanism_he": "ברירת המחדל היא שיבוץ ממוחשב, אך **לנשיא/ה בית המשפט נתון שיקול-דעת בלעדי בקביעת גודל ההרכב** — והרחבתו \"לכל מספר אי-זוגי\" בעניינים בעלי חשיבות מיוחדת. כפי שמציינת ביקורת אקדמית (Federalist Society Review), בחירה בהרכב של שבעה במקום חמישה יכולה להכריע תוצאה בתיק חוקתי טעון. מחקר אמפירי (Givati & Rosenberg, *Journal of Empirical Legal Studies*, 2020) מצא כי שופטים שהנשיא/ה המכהן/ת בחר/ה בעבר יושבים עמו/ה בהרכבים בתדירות גבוהה יותר — ממצא שהמחברים מציינים כעולה בקנה אחד עם הרכבה אסטרטגית. כלומר, שיקול-דעת בעל השפעה על התוצאה בתיקים הרגישים ביותר מרוכז בידי גורם אחד. *(אין מדובר בטענה שהנשיא בורר כל מותב; ברירת המחדל אקראית, וההשפעה היא דרך גודל ההרכב והחריג.)*",
+      "mechanism_en": "Assignment is computerized by default, but the **Court President holds sole discretion over panel size** — expanding it \"to any odd number\" in matters of particular importance. As academic critique notes (Federalist Society Review), choosing seven justices instead of five can decide a charged constitutional case. An empirical study (Givati & Rosenberg, *Journal of Empirical Legal Studies*, 2020) found that justices a sitting President had earlier selected sit on her panels more often — a finding the authors note is consistent with strategic composition. Outcome-affecting discretion in the most sensitive cases is thus concentrated in one office. *(This is not a claim that the President hand-picks every panel; the default is random, and the effect runs through panel size and the exception.)*",
+      "cases": [
+        {
+          "docket": "בג\"ץ 5658/23",
+          "docket_en": "HCJ 5658/23",
+          "slug": "5658-23"
+        }
+      ],
+      "exits": {
+        "appeal": {
+          "status": "closed",
+          "cite_he": "אין ערכאה מעל בית המשפט העליון; החלטות הרכב אינן נתונות לביקורת חיצונית",
+          "cite_en": "There is no court above the Supreme Court; panel decisions are subject to no external review"
+        },
+        "statute": {
+          "status": "open_untested",
+          "cite_he": "סדרי ההרכבים מוסדרים בחוק בתי המשפט [נוסח משולב], התשמ\"ד-1984; ברירת המחדל הממוחשבת היא נוהג מנהלי — תיקון פורמלי אפשרי ולא נוסה",
+          "cite_en": "Panel arrangements are governed by the Courts Law [Consolidated Version], 5744-1984; the computerized default is administrative practice — a formal amendment path exists, never exercised"
+        },
+        "basic_law": {
+          "status": "contingent",
+          "cite_he": "בג\"ץ 5658/23 — תיקון לחוק-יסוד נבחן ובוטל בידי בית המשפט עצמו",
+          "cite_en": "HCJ 5658/23 — a Basic Law amendment was reviewed and voided by the Court itself"
+        },
+        "ballot": {
+          "status": "closed",
+          "cite_he": "נשיא/ת בית המשפט אינו/ה נבחר/ת ואינו/ה ניתן/ת להחלפה בקלפי",
+          "cite_en": "The Court President is not elected and cannot be replaced at the ballot"
+        }
+      },
+      "fairness_he": "הצד השני של הטיעון: הרחבת מותב בעניינים כבדי-משקל נועדה לשקף מנעד דעות רחב ולחזק את מעמד ההכרעה; ברירת המחדל הממוחשבת מגבילה את שיקול הדעת ברוב המוחלט של התיקים.",
+      "fairness_en": "The other side of the argument: expanding the panel in weighty matters is meant to reflect a broader range of views and strengthen the ruling's standing; the computerized default constrains discretion in the vast majority of cases.",
+      "diagram": {
+        "labels": {
+          "he": {
+            "fan_3": "3",
+            "fan_9": "9",
+            "fan_15": "15",
+            "vote_label": "8–7",
+            "default_note": "ברירת המחדל: שיבוץ ממוחשב; החריג: שיקול דעת הנשיא/ה"
+          },
+          "en": {
+            "fan_3": "3",
+            "fan_9": "9",
+            "fan_15": "15",
+            "vote_label": "8–7",
+            "default_note": "Default: computerized assignment; the exception: the President's discretion"
+          }
+        }
+      }
+    },
+    {
+      "num": 5,
+      "id": "no-standing",
+      "tab_he": "היעדר זכות עמידה",
+      "tab_en": "Standing for all",
+      "title_he": "5. היעדר זכות עמידה — כל אחד, על כמעט הכל",
+      "title_en": "5. No standing requirement — anyone, on almost anything",
+      "summary_he": "כל עותר, כמעט על כל נושא — והשער נפתח מבפנים.",
+      "summary_en": "Any petitioner, on almost anything — and the gate was opened from within.",
+      "oneliner_he": "השער שסינן — הוסר; ומי שהסיר אותו הוא בית המשפט עצמו.",
+      "oneliner_en": "The filtering gate was removed — and it was the Court itself that removed it.",
+      "outcome_he": "ב-2006 פסל בג\"ץ את \"חוק טל\" (דחיית שירות לתלמידי ישיבות) בעתירת **התנועה למען איכות השלטון** — ארגון חברה אזרחית שאין לחבריו כל פגיעה אישית מהֶסדר הגיוס. חקיקה שנתמכה בקואליציה שלטת בוטלה בעתירת גוף ללא שום נגיעה אישית לעניין. אותו הסדר נפסל שוב ושוב לאחר מכן (2012, 2017, 2024), בכל פעם בעתירות של ארגונים ללא פגיעה אישית. *(מקור: בג\"ץ 6427/02; VERSA, Cardozo.)*",
+      "outcome_en": "In 2006 the HCJ struck down the \"Tal Law\" (military-service deferment for yeshiva students) on a petition by the **Movement for Quality Government** — a civic NGO whose members suffer no personal injury from the deferment arrangement. Legislation backed by a governing coalition was voided on the petition of a body with no personal stake. The same arrangement was struck down again and again afterward (2012, 2017, 2024), each time on petitions by organizations with no personal injury. *(Source: HCJ 6427/02; VERSA, Cardozo.)*",
+      "mechanism_he": "בבג\"ץ 910/86 רסלר נ' שר הביטחון (1988) צמצם השופט ברק את דרישת זכות-העמידה כמעט עד לאיונה, וברא מסלול מקביל: גם ללא פגיעה אישית, מוקנית עמידה כאשר העניין הוא בעל \"חשיבות ציבורית מיוחדת\" ונוגע לשלטון החוק. כפי שמציין פרויקט VERSA, בית המשפט \"סילק למעשה את [זכות העמידה] כסף כניסה\". התוצאה מבנית: ארגונים מאורגנים יכולים להשתמש בבג\"ץ כמנגנון ביקורת-מדיניות מתמשך נגד כל ממשלה — והרוב הפרלמנטרי אינו מגן, שכן בית המשפט עצמו הוא שמכריע אם מתקיימת עמידה.",
+      "mechanism_en": "In HCJ 910/86 Ressler v. Minister of Defence (1988), Justice Barak reduced the standing requirement almost to nothing and created a parallel track: even without personal injury, standing is granted where the matter is of \"particular public importance\" and touches the rule of law. As VERSA notes, the Court \"effectively removed [standing] as a threshold.\" The result is structural: organized groups can use the HCJ as a continuous policy-review mechanism against any government — and the parliamentary majority provides no shield, because the Court itself decides whether standing is met.",
+      "cases": [
+        {
+          "docket": "בג\"ץ 6298/07",
+          "docket_en": "HCJ 6298/07",
+          "slug": "6298-07-ressler"
+        }
+      ],
+      "exits": {
+        "appeal": {
+          "status": "closed",
+          "cite_he": "בית המשפט עצמו מכריע אם מתקיימת זכות עמידה (בג\"ץ 910/86 רסלר), ופסק דינו אינו ניתן לערעור (חוק-יסוד: השפיטה, ס' 17)",
+          "cite_en": "The Court itself decides whether standing is met (HCJ 910/86 Ressler), and its judgment is not appealable (Basic Law: The Judiciary, s. 17)"
+        },
+        "statute": {
+          "status": "open_untested",
+          "cite_he": "הכנסת לא קבעה דרישת עמידה כללית לעתירות בג\"ץ — נתיב פורמלי קיים ולא נוסה",
+          "cite_en": "The Knesset has never set a general standing requirement for HCJ petitions — a formal path exists, never exercised"
+        },
+        "basic_law": {
+          "status": "contingent",
+          "cite_he": "בג\"ץ 5658/23 — תיקון לחוק-יסוד נבחן ובוטל בידי בית המשפט עצמו",
+          "cite_en": "HCJ 5658/23 — a Basic Law amendment was reviewed and voided by the Court itself"
+        },
+        "ballot": {
+          "status": "closed",
+          "cite_he": "השופטים אינם נבחרים ואינם ניתנים להחלפה בקלפי (חוק-יסוד: השפיטה: ס' 4 — מינוי; ס' 7 — כהונה)",
+          "cite_en": "Justices are not elected and cannot be replaced at the ballot (Basic Law: The Judiciary: s. 4 — appointment; s. 7 — tenure)"
+        }
+      },
+      "comparative_he": "כפי שמציין פרויקט VERSA (אונ' קרדוזו), בית המשפט \"סילק למעשה את [זכות העמידה] כסף כניסה\" — סף שנדרש, למשל, בערכאות הפדרליות בארה\"ב.",
+      "comparative_en": "As the VERSA project (Cardozo) notes, the Court \"effectively removed [standing] as a threshold\" — a threshold required, for example, in the US federal courts.",
+      "fairness_he": "הצד השני של הטיעון: זכות עמידה רחבה מאפשרת חשיפת אי-חוקיות גם כשאין נפגע ישיר מזוהה — כלי מרכזי לשקיפות שלטונית ולהגנה על מי שאינם יכולים לעתור בעצמם.",
+      "fairness_en": "The other side of the argument: broad standing enables exposure of illegality even where no identifiable individual is injured — a central tool of governmental transparency and of protecting those unable to petition for themselves.",
+      "diagram": {
+        "labels": {
+          "he": {
+            "gate_label": "פגיעה אישית",
+            "open_label": "השער נפתח (רסלר, 1988)",
+            "petitioners_label": "כל עותר"
+          },
+          "en": {
+            "gate_label": "Personal injury",
+            "open_label": "The gate opened (Ressler, 1988)",
+            "petitioners_label": "Any petitioner"
+          }
+        }
+      }
+    },
+    {
+      "num": 6,
+      "id": "judges-select-judges",
+      "tab_he": "שופטים בוחרים שופטים",
+      "tab_en": "Judges select judges",
+      "title_he": "6. בחירה-עצמית של השופטים — והמקרה ששמו על הפרויקט",
+      "title_en": "6. Judicial self-selection — and the case the project is named after",
+      "summary_he": "שלושה שופטים מכהנים — וטו על זהות יורשיהם.",
+      "summary_en": "Three sitting justices — a veto over who succeeds them.",
+      "oneliner_he": "כדי למנות דרושים שבעה; כדי לחסום מספיקים שלושה — ושלושה יושבים על הכס.",
+      "oneliner_en": "Appointing takes seven; blocking takes three — and three sit on the bench.",
+      "outcome_he": "שר המשפטים יריב לוין ביקש למנות לבית המשפט העליון את **אביעד בקשי** ואת **רפאל ביטון** — שניים שזוהו בסיקור התקשורתי עם רפורמת 2023. בהיעדר הרוב המיוחס הנדרש (7 מתוך 9) למינוי המבוקש, נוצר **קיפאון**: השר נמנע מלכנס את הוועדה כדי למַנות שופטים אחרים, ושלוש משרות בעליון נותרו ריקות לאורך זמן. התוצאה כללה מחסור חמור בשופטים בכל מערכת בתי המשפט. *(הקיפאון היה דו-צדדי: גם סירוב השר לכנס את הוועדה וגם הצבעת חברי הוועדה נגד המועמדים תרמו לו. מקורות: דיווחי Times of Israel; IDI.)* שמו של פרויקט זה — **בקשי וביטון** — לקוח ממקרה זה.",
+      "outcome_en": "Justice Minister Yariv Levin sought to appoint to the Supreme Court **Aviad Bakshi** and **Raphael Bitton** — two figures identified in press coverage with the 2023 reform. Lacking the required supermajority (7 of 9) for those appointments, a **deadlock** set in: the minister declined to convene the committee to appoint other justices, and three Supreme Court seats stood vacant for an extended period, contributing to a severe judge shortage across the court system. *(The deadlock was two-sided: both the minister's refusal to convene and the committee members' votes against the candidates produced it. Sources: Times of Israel; IDI.)* This project's name — **Bakshi & Bitton** — is taken from this episode.",
+      "mechanism_he": "הוועדה לבחירת שופטים מונה תשעה חברים, ובהם שלושה שופטי עליון. מאז 2008 נדרש **רוב מיוחס של 7 מתוך 9** למינוי שופטי עליון. האסימטריה מבנית: כדי **לחסום** מועמד די בשלושה קולות; כדי **למַנות** דרושים שבעה. לאורך זמן, מבנה זה מושך את הרכב בית המשפט אל מועמדים המקובלים על השופטים היושבים, ולא בהכרח על נבחרי הציבור של אותה עת. כך משכפלת השכבה את עצמה ומקטינה את משקלם של נבחרי הציבור בהרכבתה. *(ב-2025 בוטל מבנה הרוב המיוחס בחקיקה השנויה במחלוקת, המעוכבת ועומדת לביקורת חוקתית בפני בית המשפט עצמו.)*",
+      "mechanism_en": "The Judicial Selection Committee has nine members, three of them sitting Supreme Court justices. Since 2008 a **supermajority of 7 of 9** is required to appoint Supreme Court justices. The asymmetry is structural: **blocking** a candidate takes only three votes; **appointing** one takes seven. Over time this draws the Court's composition toward candidates acceptable to the sitting justices, not necessarily to the elected government of the day — the layer reproducing itself and diminishing elected officials' weight in its composition. *(In 2025 the supermajority structure was changed by contested legislation, now deferred and under constitutional review by the Court itself.)*",
+      "cases": [
+        {
+          "docket": "בג\"ץ 8987/22",
+          "docket_en": "HCJ 8987/22",
+          "slug": "8987-22-levin-jsc"
+        }
+      ],
+      "exits": {
+        "appeal": {
+          "status": "contingent",
+          "cite_he": "בג\"ץ 8987/22 — הנתיב קיים ומסתיים בבית המשפט עצמו: אף שיקול דעתו של השר בכינוס הוועדה הוכפף לצו של בית המשפט",
+          "cite_en": "HCJ 8987/22 — the path exists and terminates in the Court itself: even the minister's discretion over convening the committee was subjected to a court order"
+        },
+        "statute": {
+          "status": "contingent",
+          "cite_he": "כללי 7-מ-9 קבועים בחוק בתי המשפט (תיקון 2008); שינוי הרכב הוועדה מ-2025 — מעוכב ועומד לביקורת חוקתית בפני בית המשפט עצמו",
+          "cite_en": "The 7-of-9 rule sits in the Courts Law (2008 amendment); the 2025 change to the committee's composition — suspended and pending constitutional review before the Court itself"
+        },
+        "basic_law": {
+          "status": "contingent",
+          "cite_he": "בג\"ץ 5658/23 — תיקון לחוק-יסוד נבחן ובוטל בידי בית המשפט עצמו",
+          "cite_en": "HCJ 5658/23 — a Basic Law amendment was reviewed and voided by the Court itself"
+        },
+        "ballot": {
+          "status": "closed",
+          "cite_he": "שלושת השופטים המכהנים בוועדה אינם תלויים בתוצאות בחירות; דרישת 7 מ-9 (מאז 2008) מקנה להם כוח חסימה",
+          "cite_en": "The three sitting justices on the committee do not depend on election results; the 7-of-9 rule (since 2008) gives them blocking power"
+        }
+      },
+      "comparative_he": "ברוב הדמוקרטיות, שופטי הערכאה העליונה ממונים בידי מוסדות נבחרים — בלא וטו של שופטים מכהנים על זהות יורשיהם. *(ראו ההסבר במאגר: הוועדה לבחירת שופטים.)*",
+      "comparative_en": "In most democracies, apex-court judges are appointed by elected institutions — with no sitting-judge veto over their successors. *(See this database's explainer: the Judicial Selection Committee.)*",
+      "fairness_he": "הצד השני של הטיעון: שיתוף שופטים מכהנים בוועדה נועד להבטיח מקצועיות ועצמאות שיפוטית, ולמנוע פוליטיזציה מלאה של המינויים.",
+      "fairness_en": "The other side of the argument: including sitting justices on the committee is meant to safeguard professionalism and judicial independence, and to prevent full politicization of appointments.",
+      "diagram": {
+        "labels": {
+          "he": {
+            "appoint_label": "מינוי — 7",
+            "block_label": "חסימה — 3",
+            "seats_justices": "שופטים",
+            "seats_bar": "לשכה",
+            "seats_elected": "נבחרים",
+            "vacant_label": "3 משרות ריקות"
+          },
+          "en": {
+            "appoint_label": "Appoint — 7",
+            "block_label": "Block — 3",
+            "seats_justices": "Justices",
+            "seats_bar": "Bar",
+            "seats_elected": "Elected",
+            "vacant_label": "3 seats vacant"
+          }
+        }
+      }
+    },
+    {
+      "num": 7,
+      "id": "everything-justiciable",
+      "tab_he": "הכל שפיט",
+      "tab_en": "Everything justiciable",
+      "title_he": "7. בית המשפט קובע את גבולות סמכותו-שלו — \"הכל שפיט\"",
+      "title_en": "7. The Court defines the limits of its own jurisdiction — \"everything is justiciable\"",
+      "summary_he": "הגבול נמתח מבפנים — והניסיון לצייר אותו מבחוץ בוטל.",
+      "summary_en": "The boundary is drawn from within — and the attempt to draw it from outside was voided.",
+      "oneliner_he": "הגבול נמתח מבפנים — והיד שניסתה לצייר אותו מבחוץ נעצרה.",
+      "oneliner_en": "The boundary is drawn from within — and the hand that tried to draw it from outside was stopped.",
+      "outcome_he": "ב-1 בינואר 2024 פסל בית המשפט, בהרכב מלא של 15 שופטים, את תיקון מס' 3 לחוק-יסוד: השפיטה — התיקון שביקש לבטל את עילת הסבירות לגבי החלטות הדרג הנבחר. ברוב 12–3 קבע בית המשפט **עקרונית** את סמכותו לבחון תיקונים לחוקי-יסוד; וברוב 8–7 פסל את התיקון הספציפי. כלומר: ניסיון הכנסת לצמצם את סמכות הביקורת של בית המשפט בוטל בידי בית המשפט עצמו, מכוח תאוריית-סמכות שבית המשפט קבע לעצמו, וללא נתיב ערעור או התגברות. *(הפסיקה במאגר זה: בג\"ץ 5658/23.)*",
+      "outcome_en": "On 1 January 2024 the Court, sitting as a full bench of 15, struck down Amendment No. 3 to Basic Law: The Judiciary — the amendment that sought to remove reasonableness review of elected-branch decisions. By 12–3 it held, **in principle**, that it has authority to review amendments to Basic Laws; by 8–7 it voided this specific amendment. The Knesset's attempt to narrow the Court's review power was thus annulled by the Court itself, under a theory of jurisdiction the Court devised for itself, with no avenue of appeal or override. *(The ruling, in this database: HCJ 5658/23.)*",
+      "mechanism_he": "דוקטרינת \"הכל שפיט\" של השופט ברק, יחד עם היפוך דוקטרינת \"השאלה הפוליטית\" בפרשת רסלר (1988), הרחיבה את תחום הביקורת כך שכמעט כל עניין — לרבות החלטות מדיניות, ביטחון ומינויים שנחשבו בעבר \"פוליטיים\" — ניתן לבירור שיפוטי. המאפיין המבני: **אין גוף חיצוני שיכול לקבוע לבית המשפט שאין לו סמכות.** בית המשפט מכריע מה שפיט, והכרעותיו בעניין השפיטוּת אינן ניתנות לביקורת. זהו מנגנון חד-כיווני: בית המשפט הרחיב את היקף השפיטוּת, וכאשר הכנסת ניסתה לצמצמו בחקיקה — ביטל את הצמצום מכוח סמכותו להעביר תחת שבט ביקורתו אף חוקי-יסוד.",
+      "mechanism_en": "Justice Barak's \"everything is justiciable\" doctrine, together with the reversal of the \"political question\" doctrine in Ressler (1988), expanded review so that almost any matter — including policy, security, and appointment decisions once treated as \"political\" — is open to judicial review. The structural feature: **there is no external body that can tell the Court it lacks jurisdiction.** The Court decides what is justiciable, and its justiciability rulings are not themselves reviewable. It is a one-way ratchet: the Court expanded justiciability, and when the Knesset tried to narrow it by statute, the Court voided the narrowing under its self-declared power to review even Basic Laws.",
+      "cases": [
+        {
+          "docket": "בג\"ץ 5658/23",
+          "docket_en": "HCJ 5658/23",
+          "slug": "5658-23"
+        },
+        {
+          "docket": "בג\"ץ 5969/20",
+          "docket_en": "HCJ 5969/20",
+          "slug": "5969-20-shafir"
+        }
+      ],
+      "exits": {
+        "appeal": {
+          "status": "closed",
+          "cite_he": "פסק דין של בית המשפט העליון אינו ניתן לערעור (חוק-יסוד: השפיטה, ס' 17); הכרעות השפיטוּת אינן נתונות לביקורת חיצונית כלשהי",
+          "cite_en": "A Supreme Court judgment is not appealable (Basic Law: The Judiciary, s. 17); justiciability rulings are subject to no external review whatsoever"
+        },
+        "statute": {
+          "status": "contingent",
+          "cite_he": "מאז ע\"א 6821/93 (בנק מזרחי) כל חוק רגיל נתון לביקורת חוקתית של בית המשפט",
+          "cite_en": "Since CA 6821/93 (Bank Mizrahi) every ordinary statute is subject to the Court's constitutional review"
+        },
+        "basic_law": {
+          "status": "contingent",
+          "cite_he": "הנתיב קיים פורמלית אך הסתיים בביקורת בית המשפט עצמו: תיקון מס' 3 לחוק-יסוד: השפיטה בוטל (בג\"ץ 5658/23, 8–7)",
+          "cite_en": "The path formally exists but terminated in the Court's own review: Amendment No. 3 to Basic Law: The Judiciary was voided (HCJ 5658/23, 8–7)"
+        },
+        "ballot": {
+          "status": "closed",
+          "cite_he": "היקף השפיטוּת נקבע בידי גוף שאינו נבחר ואינו מוחלף בקלפי (חוק-יסוד: השפיטה, ס' 4, ס' 7)",
+          "cite_en": "The scope of justiciability is set by a body that is not elected and is not replaced at the ballot (Basic Law: The Judiciary, ss. 4, 7)"
+        }
+      },
+      "comparative_he": "בארה\"ב, דוקטרינת \"השאלה הפוליטית\" (Baker v. Carr) מותירה סוגיות מסוימות מחוץ לביקורת שיפוטית — הדוקטרינה שבפרשת רסלר (1988) נהפכה בישראל.",
+      "comparative_en": "In the United States, the political-question doctrine (Baker v. Carr) keeps certain matters outside judicial review — the very doctrine that Ressler (1988) reversed in Israel.",
+      "fairness_he": "הצד השני של הטיעון: בהיעדר חוקה שלמה ומגילת זכויות משוריינת, יש הרואים בביקורת שיפוטית רחבה את הבלם היחיד על כוחו של רוב רגעי.",
+      "fairness_en": "The other side of the argument: absent a complete constitution and an entrenched bill of rights, some see broad judicial review as the only brake on the power of a momentary majority.",
+      "diagram": {
+        "labels": {
+          "he": {
+            "boundary_label": "גבול הסמכות — משורטט מבפנים",
+            "redraw_label": "תיקון מס' 3",
+            "domains": "מדיניות · ביטחון · מינויים · חקיקה · חוקי-יסוד",
+            "votes": "12–3 · 8–7"
+          },
+          "en": {
+            "boundary_label": "The jurisdictional boundary — drawn from within",
+            "redraw_label": "Amendment No. 3",
+            "domains": "Policy · Security · Appointments · Legislation · Basic Laws",
+            "votes": "12–3 · 8–7"
+          }
+        }
+      }
+    }
+  ]
+}
