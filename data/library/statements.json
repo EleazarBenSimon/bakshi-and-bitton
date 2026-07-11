@@ -1,0 +1,78 @@
+{
+  "_doc": "Attributed public statements by right-of-center figures re: the July 2026 declared non-compliance with an HCJ ruling. Quote-only, each verified to exact wording + source. `attribution` = how on-record (direct-public / reported-private-single-source). `confidence` = VERIFIED (on-record, multi/primary source) or REPORTED (second-hand or single-source).",
+  "statements": [
+    {
+      "id": "five-ex-presidents-2026-07-06-last-nail",
+      "speaker_he": "אהרן ברק, דורית ביניש, אשר גרוניס, אסתר חיות ועוזי פוגלמן",
+      "speaker_en": "Aharon Barak, Dorit Beinisch, Asher Grunis, Esther Hayut and Uzi Fogelman",
+      "role_he": "חמשת נשיאי בית המשפט העליון לשעבר שבחיים",
+      "role_en": "All five living former Presidents of the Supreme Court",
+      "affiliation_he": "הרשות השופטת (בדימוס)",
+      "affiliation_en": "The judiciary (retired)",
+      "date": "2026-07-06",
+      "quote_he": "אנו מתריעים על חומרתה חסרת התקדים של החלטה זו. אי ציות לצווים והחלטות של בית המשפט הוא המסמר האחרון בארון הקבורה של הדמוקרטיה.",
+      "quote_en": "We warn of the unprecedented gravity of this decision. Non-compliance with the orders and rulings of the court is the last nail in the coffin of democracy.",
+      "context_he": "הצהרה משותפת חתומה של כל חמשת נשיאי בית המשפט העליון לשעבר שבחיים, בתגובה להחלטת הממשלה מ-5 ביולי 2026 שלא לקיים את פסיקת בג\"ץ בעניין מועצת הרשות השנייה. בין החותמים אשר גרוניס, שמונה על רקע ימני.",
+      "context_en": "A signed joint declaration by all five living former Supreme Court Presidents, responding to the government's 5 July 2026 decision not to comply with the HCJ ruling on the Second Authority council. Among the signatories is Asher Grunis, a conservative-aligned appointee.",
+      "attribution": "direct-public",
+      "confidence": "VERIFIED",
+      "sources": [
+        { "url": "https://www.globes.co.il/news/article.aspx?did=1001548064", "publisher": "Globes", "confirms": "verbatim declaration text + signatory list" },
+        { "url": "https://www.ynet.co.il/news/article/rjt811bkmzg", "publisher": "Ynet", "confirms": "verbatim declaration text" },
+        { "url": "https://www.mako.co.il/news-politics/2026_q3/Article-f8b5c6853083f91027.htm", "publisher": "N12 / Mako", "confirms": "direct quote from declaration (explicitly not paraphrase)" }
+      ],
+      "official_sources": {
+        "he": { "url": "https://www.mako.co.il/news-politics/2026_q3/Article-f8b5c6853083f91027.htm", "type": "news report quoting the signed declaration verbatim", "verified": true },
+        "en": { "url": "https://www.timesofisrael.com/all-living-former-supreme-court-presidents-pan-government-for-not-respecting-court-ruling/", "type": "news report", "verified": true }
+      }
+    },
+    {
+      "id": "fux-2026-07-05-not-noncompliance",
+      "speaker_he": "יוסי פוקס",
+      "speaker_en": "Yossi Fux",
+      "role_he": "מזכיר הממשלה",
+      "role_en": "Cabinet Secretary",
+      "affiliation_he": "משרד ראש הממשלה",
+      "affiliation_en": "Prime Minister's Office",
+      "date": "2026-07-05",
+      "quote_he": "בניגוד לדיווחים, אין מילה בהצהרה שקוראת לאי ציות לפסיקת בג\"ץ אלא ביקורת חריפה על פסיקה שנוגדת את לשון החוק המפורשת",
+      "quote_en": "Contrary to the reports, there is not a word in the declaration that calls for non-compliance with the HCJ ruling — only sharp criticism of a ruling that contradicts the explicit language of the law.",
+      "context_he": "פוקס, מזכיר הממשלה, הכחיש בפוסט ב-X שהחלטת הממשלה מ-5 ביולי קראה לאי-ציות — בעוד באותו ערב חגג שר התקשורת שלמה קרעי: \"ממשלת ישראל אמרה לבג\"ץ - לא!\". שתי האמירות מתייחסות לאותה הצבעת ממשלה.",
+      "context_en": "Fux, the Cabinet Secretary, denied in an X post that the government's 5 July decision called for non-compliance — while the same evening Communications Minister Shlomo Karhi celebrated: \"The Government of Israel said to the HCJ — no!\" Both statements refer to the same cabinet vote.",
+      "attribution": "direct-public",
+      "confidence": "VERIFIED",
+      "sources": [
+        { "url": "https://www.ynet.co.il/news/article/bkhgvz007mx", "publisher": "Ynet", "confirms": "both Fux and Karhi verbatim, framed as contradiction" },
+        { "url": "https://www.inn.co.il/news/700715", "publisher": "Arutz 7 / INN", "confirms": "Fux verbatim" },
+        { "url": "https://www.maariv.co.il/news/politics/article-1341004", "publisher": "Maariv", "confirms": "Fux verbatim" }
+      ],
+      "official_sources": {
+        "he": { "url": "https://www.ynet.co.il/news/article/bkhgvz007mx", "type": "news report quoting the X post", "verified": true },
+        "en": null
+      }
+    },
+    {
+      "id": "rabello-2026-07-06-not-without-revote",
+      "speaker_he": "מיכאל ראבילו",
+      "speaker_en": "Michael Rabello",
+      "role_he": "עורך דינו של ראש הממשלה; נבחר למבקר המדינה (בחירתו בוטלה בבג\"ץ)",
+      "role_en": "The Prime Minister's lawyer; elected State Comptroller (election voided by the HCJ)",
+      "affiliation_he": "—",
+      "affiliation_en": "—",
+      "date": "2026-07-06",
+      "quote_he": "לא אכנס לתפקיד בלי לנצח בבחירות חוזרות",
+      "quote_en": "I will not enter the office without winning in a re-vote.",
+      "context_he": "אמירה של ראבילו לבכירי הליכוד כפי שדווחה בערוץ 13, בעוד שר המשפטים יריב לוין קרא לו להיכנס לתפקיד למרות פסיקת בג\"ץ שביטלה את בחירתו. זהו דיווח על אמירה פרטית (מקור יחיד — ערוץ 13), ולא הצהרה פומבית רשמית.",
+      "context_en": "A remark by Rabello to senior Likud figures as reported by Channel 13, while Justice Minister Yariv Levin urged him to take office despite the HCJ ruling voiding his election. This is a reported private remark (single source — Channel 13), not an on-record public statement.",
+      "attribution": "reported-private-single-source",
+      "confidence": "REPORTED",
+      "sources": [
+        { "url": "https://13tv.co.il/item/news/politics/politics/rabelo-905252748/", "publisher": "Channel 13", "confirms": "verbatim wording of the private remark, single source" }
+      ],
+      "official_sources": {
+        "he": { "url": "https://13tv.co.il/item/news/politics/politics/rabelo-905252748/", "type": "political reporting of a private remark (single-source)", "verified": true },
+        "en": null
+      }
+    }
+  ]
+}

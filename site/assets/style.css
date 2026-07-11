@@ -2460,6 +2460,37 @@ html[lang="he"] .content-article .article-body blockquote {
 }
 .qv-contribute:hover { background: var(--accent-deep); }
 
+/* ── Statement tracker ("Where the Right Draws the Line") ──
+   Quote-only rows. The verbatim quote wears the record serif (.rec). The
+   attribution tag makes a Reported / single-source remark visibly distinct
+   from a Verified on-record statement; missing-source rows grey out. */
+.stmt-table .qv-src { text-decoration: none; font-size: 12px; opacity: .55; margin-inline-start: 4px; }
+.stmt-table .qv-src:hover { opacity: 1; }
+.stmt-c-speaker { font-weight: 600; }
+.stmt-c-date { white-space: nowrap; font-variant-numeric: tabular-nums; color: var(--text-muted); }
+.stmt-c-quote { min-width: 300px; }
+.stmt-quote { font-size: 16px; line-height: 1.55; }        /* record serif via .rec */
+.stmt-context { margin: 6px 0 0; font-size: 12.5px; line-height: 1.5; color: var(--text-muted); }
+.stmt-context-lead { font-weight: 700; }
+/* Attribution tag — the documentary-integrity signal. */
+.stmt-c-tag { white-space: nowrap; }
+.stmt-tag {
+  display: inline-block; font-size: 11.5px; font-weight: 700; letter-spacing: .3px;
+  text-transform: uppercase; padding: 2px 9px; border-radius: 999px;
+}
+.stmt-tag-verified { background: #e4efe4; color: var(--outcome-upheld); border: 1px solid #bcd6bc; }
+.stmt-tag-reported { background: #f6e3c2; color: #8a5510; border: 1px solid #e3bd7d; }
+.stmt-attr { display: block; margin-top: 4px; font-size: 11.5px; color: var(--text-muted); }
+/* A Reported / single-source row reads as caution at a glance — the amber
+   tint spans the full row (visible at any horizontal-scroll position, since
+   the Attribution tag itself can scroll off on the narrow LTR layout), plus a
+   caution bar on the row's leading edge (direction-aware). */
+.stmt-row-reported > td { background: #fdf6e9; }
+.stmt-row-reported > td:first-child { box-shadow: inset 4px 0 0 #d99a2b; }
+html[lang="he"] .stmt-row-reported > td:first-child { box-shadow: inset -4px 0 0 #d99a2b; }
+/* Missing-source (per language): grey the row but keep it legible. */
+.stmt-row-off > td { opacity: .5; }
+
 /* Content-map bullets jump straight to a table row: offset it below the
    sticky header, and briefly highlight the row it lands on. */
 .qv-table tbody tr { scroll-margin-top: 84px; }

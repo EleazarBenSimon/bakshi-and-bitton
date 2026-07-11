@@ -38,6 +38,7 @@ except ImportError:
 REPO_ROOT = Path(__file__).resolve().parent.parent
 RULINGS_DIR = REPO_ROOT / "data" / "rulings"
 LIBRARY_FILE = REPO_ROOT / "data" / "library" / "quiet-veto-cases.json"
+STATEMENTS_FILE = REPO_ROOT / "data" / "library" / "statements.json"
 JUSTICES_DIR = REPO_ROOT / "data" / "justices"
 CONTENT_DIR = REPO_ROOT / "content"
 SITE_DIR = REPO_ROOT / "site"
@@ -548,6 +549,157 @@ def _qv_clean_name(case: dict, lang: str) -> str:
     return cand
 
 
+# ─── Statement tracker ("Where the Right Draws the Line") ──────────────────
+# Same source-gated, per-language, no-cross-language-fallback machinery as the
+# quiet-veto table (that is where the HE/EN leak bug lived). Every display
+# field is selected by language up front and passed through a strict script
+# gate; a statement with no source in a language renders greyed, never blanked
+# and never filled from the other language. The `confidence`/`attribution`
+# fields are surfaced as a visible tag so a second-hand private remark can
+# never be mistaken for an on-record public statement.
+_STMT_HEADERS = {
+    "he": ("דובר/ת", "תפקיד / שיוך", "תאריך", "האמירה", "ייחוס"),
+    "en": ("Speaker", "Role / Affiliation", "Date", "Statement", "Attribution"),
+}
+_STMT_CONF = {
+    "he": {"VERIFIED": "מאומת", "REPORTED": "מדווח"},
+    "en": {"VERIFIED": "Verified", "REPORTED": "Reported"},
+}
+_STMT_ATTR = {
+    "he": {
+        "direct-public": "פומבי · על־רקורד",
+        "reported-private-single-source": "דיווח פרטי · מקור יחיד",
+    },
+    "en": {
+        "direct-public": "On-record · public",
+        "reported-private-single-source": "Reported private · single-source",
+    },
+}
+_STMT_CAPTION = {
+    "he": (
+        "**על ייחוס ומקורות:** כל שורה מציגה ציטוט מילולי (בגופן הרשומה) לצד "
+        "מקורו. תג *מאומת* מציין אמירה פומבית על־רקורד ממקור ראשוני או ממספר "
+        "מקורות; תג *מדווח* (המודגש) מציין דיווח ממקור יחיד או אמירה פרטית — "
+        "ואין לראות בו אמירה פומבית רשמית. שורה מאופרת (⬚) פירושה שטרם אותר "
+        "מקור נגיש לאמירה בשפה זו; התוכן לעולם אינו מוחלף בטקסט בשפה האחרת."
+    ),
+    "en": (
+        "**On attribution & sources:** each row shows a verbatim quote (in the "
+        "record typeface) beside its source. A *Verified* tag means an on-record "
+        "public statement from a primary source or several; a *Reported* tag "
+        "(emphasised) means a single-source report or a private remark — it "
+        "should not be read as an on-record public statement. A greyed row (⬚) "
+        "means no accessible source has been located for that statement in this "
+        "language; the text is never swapped for the other language."
+    ),
+}
+
+
+def _stmt_script_ok(s: str, lang: str) -> bool:
+    """Strict script gate (same defense as _qv_clean_name): reject a string
+    only when it is a FULL wrong-language leak — the other script present and
+    the target script absent. A value that is empty, punctuation/number only,
+    or merely cites a foreign proper noun (a quote may name 'X' or 'HCJ')
+    still passes."""
+    s = s or ""
+    heb = bool(re.search(r"[֐-׿]", s))
+    lat = bool(re.search(r"[A-Za-z]", s))
+    return (not (lat and not heb)) if lang == "he" else (not (heb and not lat))
+
+
+def _statement_table_md(lang: str) -> str:
+    """Generate the statement-tracker table as a raw HTML block from
+    data/library/statements.json, per language. Quote-only, source-gated,
+    with the attribution/confidence surfaced visibly on every row."""
+    import html as _html
+    if not STATEMENTS_FILE.exists():
+        return ""
+    raw = json.loads(STATEMENTS_FILE.read_text(encoding="utf-8"))
+    stmts = raw if isinstance(raw, list) else raw.get("statements", [])
+
+    def e(s):
+        return _html.escape(str(s or "").replace("\n", " ").strip())
+
+    def pick(st, base):
+        # per-language field, gated: never return the other language's text
+        v = st.get(f"{base}_{lang}") or ""
+        return v if _stmt_script_ok(v, lang) else ""
+
+    h = _STMT_HEADERS[lang]
+    missing_label = "אין מקור רשום" if lang == "he" else "No source on file"
+    src_title = "מקור" if lang == "he" else "source"
+    ctx_lead = "הקשר" if lang == "he" else "Context"
+    q_open, q_close = "“", "”"
+
+    parts = ['<table class="stmt-table"><thead><tr>']
+    parts += [f"<th>{e(col)}</th>" for col in h]
+    parts.append("</tr></thead><tbody>")
+    for st in stmts:
+        conf = st.get("confidence") or ""
+        attr = st.get("attribution") or ""
+        reported = (conf == "REPORTED") or (attr != "direct-public")
+        # A statement's source is LANGUAGE-AGNOSTIC: the outlet that reported the
+        # quote is its source whether the page renders HE or EN. So the link
+        # comes from the sources[] array (shown identically on both languages) —
+        # NOT official_sources[lang], which is a rulings concept (separate HE/EN
+        # official texts) that does not apply to statements. official_sources is
+        # intentionally ignored for this table. "Is it sourced?" (sources[]) and
+        # "on-record vs. reported-private?" (confidence/attribution) are kept
+        # separate: a Reported single-source remark is still sourced.
+        srcs = st.get("sources") or []
+        src0 = srcs[0] if srcs else None
+        has_src = bool(src0 and src0.get("url"))
+
+        speaker = e(pick(st, "speaker"))
+        role = e(pick(st, "role"))
+        affil = e(pick(st, "affiliation"))
+        quote = e(pick(st, "quote"))
+        context = e(pick(st, "context"))
+        date = e(st.get("date"))
+
+        role_bits = [b for b in (role, affil) if b and b != "—"]
+        role_cell = " · ".join(role_bits) if role_bits else "—"
+
+        # The verbatim quote wears the record serif (.rec) and links to its
+        # source (the reporting outlet, named). It degrades to a ⬚ marker ONLY
+        # if the quote is unavailable in this language or the statement carries
+        # no source at all — never because a source lacks a same-language URL.
+        if quote and has_src:
+            src_pub = e(src0.get("publisher") or src_title)
+            q = (f'<span class="stmt-quote rec">{q_open}{quote}{q_close}</span> '
+                 f'<a class="qv-src" href="{e(src0["url"])}" target="_blank" '
+                 f'rel="noopener" title="{src_pub}">↗ {src_pub}</a>')
+            if context:
+                q += (f'<p class="stmt-context"><span class="stmt-context-lead">'
+                      f'{e(ctx_lead)}:</span> {context}</p>')
+        else:
+            q = f'<span class="qv-missing-label">⬚ {e(missing_label)}</span>'
+
+        conf_lbl = _STMT_CONF[lang].get(conf, conf)
+        attr_lbl = _STMT_ATTR[lang].get(attr, attr)
+        tag_cls = "stmt-tag stmt-tag-reported" if reported else "stmt-tag stmt-tag-verified"
+        tag_cell = (f'<span class="{tag_cls}">{e(conf_lbl)}</span>'
+                    f'<span class="stmt-attr">{e(attr_lbl)}</span>')
+
+        # Reported/private → amber caution styling (kept as-is). The greyed
+        # 'off' state is now ONLY the degenerate no-source-at-all case, decoupled
+        # from confidence — so a Reported-but-sourced row is NOT greyed.
+        row_cls = " stmt-row-reported" if reported else ""
+        if not has_src:
+            row_cls += " stmt-row-off"
+        parts.append(
+            f'<tr class="stmt-row{row_cls}">'
+            f'<td class="stmt-c-speaker">{speaker or "—"}</td>'
+            f'<td class="stmt-c-role">{role_cell}</td>'
+            f'<td class="stmt-c-date">{date}</td>'
+            f'<td class="stmt-c-quote">{q}</td>'
+            f'<td class="stmt-c-tag">{tag_cell}</td>'
+            f"</tr>"
+        )
+    parts.append("</tbody></table>")
+    return '<div class="table-scroll">' + "".join(parts) + "</div>\n\n" + _STMT_CAPTION[lang] + "\n"
+
+
 def build_content(out_dir: Path) -> dict:
     """
     Build the informative content layer: convert each content/*/foo.md to HTML
@@ -615,6 +767,10 @@ def build_content(out_dir: Path) -> dict:
                 qv_marker = "<!-- TABLE:quiet-veto-cases -->"
                 body_he_raw = body_he_raw.replace(qv_marker, _quiet_veto_table_md("he"))
                 body_en_raw = body_en_raw.replace(qv_marker, _quiet_veto_table_md("en"))
+            elif f.stem == "where-the-line":
+                st_marker = "<!-- TABLE:statements -->"
+                body_he_raw = body_he_raw.replace(st_marker, _statement_table_md("he"))
+                body_en_raw = body_en_raw.replace(st_marker, _statement_table_md("en"))
 
             title_meta = meta.get("title", "").strip()
             title_he   = meta.get("title_he", title_meta).strip()
