@@ -4,7 +4,7 @@
 <meta name="google-site-verification" content="xjBO4qp4oVELM3i_R8MDu1IgT9S9u0hNMyDfKPHIWd4">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Bakshi&Bitton · About</title>
+<title>Bakshi&amp;Bitton · אודות</title>
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <meta name="description" content="מאגר תיעודי לשימור והפצת פסיקות בית המשפט העליון בעניין החלטות ממשלה ומינויים — שתי שכבות: ליבה תיעודית ושכבת תוכן מידעי.">
 <link rel="canonical" href="https://eleazarbensimon.github.io/bakshi-and-bitton/about.html">
@@ -24,19 +24,11 @@
 <link rel="alternate" type="application/rss+xml" title="Bakshi&Bitton — new rulings" href="feed.xml">
 </head>
 <body>
-<div id="root"></div>
-<script src="assets/app.js?v=90aa67ed"></script>
-<script>
-(async function () {
-  const { t, el, renderHeader, renderFooter, lang } = window.CO;
-  const root = document.getElementById("root");
-  document.documentElement.lang = lang;
-  root.append(renderHeader("about"));
-
-  const main = el("main", {});
-
-  if (lang === "he") {
-    main.innerHTML = `
+<div id="root"><!-- PRERENDER:HEADER:BEGIN -->
+<header><div class="header-inner"><div><a class="logo" href="index.html">בקשי&amp;ביטון<span class="logo-sub">פסיקות בית המשפט העליון בעניין החלטות ממשלה ומינויים</span></a></div><nav><a href="index.html">פסיקות</a><a href="reading.html">קריאה</a><a href="justices.html">שופטים</a><a href="tags.html">נושאים</a><a href="timeline.html">ציר זמן</a><a href="reading-power-structure.html">מבנה הכוח</a><a href="cite.html">ציטוט והפצה</a><a href="about.html" style="font-weight:600;color:var(--accent)">אודות</a></nav><button class="lang-toggle" data-spa="about.html" onclick="localStorage.setItem('bakshi-and-bitton-lang','en');location.href=this.dataset.spa">EN</button></div></header>
+<!-- PRERENDER:HEADER:END -->
+<main>
+<div id="about-he">
       <h1>אודות הפרויקט</h1>
 
       <p><strong>בקשי וביטון</strong> הוא פרויקט דוקומנטרי לשימור והפצה של התהליך המתמשך שבו בית המשפט העליון בישראל מעוות מתפקידו כשומר החוק לכלי שמגביל את המוסדות הנבחרים של מדינת ישראל בניגוד לרצון הציבור שבחר בהם.</p>
@@ -82,9 +74,8 @@
 
       <h2>פניות תיקון ופניות נושא-מידע</h2>
       <p>אם זיהיתם טעות עובדתית באחת מהרשומות במאגר, או ברצונכם להגיש בקשת תיקון מידע אישי תחת חוק הגנת הפרטיות (תיקון 13), אנא שלחו אימייל לכתובת המופיעה ב-<a href="https://github.com/EleazarBenSimon/bakshi-and-bitton/blob/main/SECURITY.md">SECURITY.md</a>. נשיב לפניות בתוך 7 ימי עבודה.</p>
-    `;
-  } else {
-    main.innerHTML = `
+</div>
+<div id="about-en" hidden lang="en" dir="ltr">
       <h1>About the Project</h1>
 
       <p><strong>Bakshi&Bitton</strong> is a documentary preservation project of the ongoing process by which the Israeli Supreme Court has been transformed from a guardian of law into an instrument that constrains the elected institutions of the State of Israel against the will of the public.</p>
@@ -130,11 +121,21 @@
 
       <h2>Corrections and data-subject requests</h2>
       <p>If you have identified a factual error in any entry, or you wish to file a personal-data correction request under Israeli Privacy Protection Law (Amendment 13), please send an email to the contact listed in <a href="https://github.com/EleazarBenSimon/bakshi-and-bitton/blob/main/SECURITY.md">SECURITY.md</a>. We aim to respond to such requests within 7 business days.</p>
-    `;
-  }
-
-  root.append(main);
-  root.append(renderFooter());
+</div>
+</main>
+<!-- PRERENDER:FOOTER:BEGIN -->
+<footer>Bakshi&Bitton · <a href="https://github.com/EleazarBenSimon/bakshi-and-bitton">github.com/EleazarBenSimon/bakshi-and-bitton</a> · MIT License · <a href="https://github.com/EleazarBenSimon/bakshi-and-bitton/blob/main/METHODOLOGY.md">מתודולוגיה</a></footer>
+<!-- PRERENDER:FOOTER:END --></div>
+<script src="assets/app.js?v=10b10049"></script>
+<script>
+(function () {
+  const { renderHeader, renderFooter, lang } = window.CO;
+  document.documentElement.lang = lang;
+  if (lang !== "en") return;
+  document.getElementById("about-he").hidden = true;
+  document.getElementById("about-en").hidden = false;
+  document.querySelector("#root > header").replaceWith(renderHeader("about"));
+  document.querySelector("#root > footer").replaceWith(renderFooter());
 })();
 </script>
 </body>

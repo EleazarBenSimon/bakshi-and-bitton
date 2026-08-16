@@ -1700,6 +1700,7 @@ def build_labels(out_dir: Path) -> None:
         "petitioner_type": {"he": PETITIONER_TYPE_HE},
         "compliance_state": {"he": COMPLIANCE_HE},
         "respondent": {"he": RESPONDENT_HE},
+        "tags": {"he": TAG_LABELS_HE},
     }
     (out_dir / "labels.json").write_text(
         json.dumps(labels, ensure_ascii=False, indent=2), encoding="utf-8"
@@ -1779,7 +1780,7 @@ def _static_header(active: str) -> str:
         + nav("justices.html", "שופטים", "justices")
         + nav("tags.html", "נושאים", "tags")
         + nav("timeline.html", "ציר זמן", "timeline")
-        + nav("content.html?slug=power-structure", "מבנה הכוח", "structure")
+        + nav("reading-power-structure.html", "מבנה הכוח", "structure")
         + nav("cite.html", "ציטוט והפצה", "cite")
         + nav("about.html", "אודות", "about")
         + '</nav>'
@@ -2018,7 +2019,7 @@ def render_ruling_page(r: dict) -> str:
         f'</main>{_STATIC_FOOTER}</div>'
     )
     # data-spa on the toggle so it routes to this ruling's SPA view
-    body = body.replace('class="lang-toggle"', f'class="lang-toggle" data-spa="{_esc(spa_url)}"')
+    body = _spa_toggle(body, spa_url)
     body = _satirize_mqg(body)
     return head + '\n<body>\n' + body + '\n</body>\n</html>\n'
 
@@ -2154,7 +2155,7 @@ def render_content_static_page(piece: dict, category: str) -> str:
         f'<p class="breadcrumb"><a href="reading.html">קריאה</a> / {_esc(badge)}</p>'
         f'{inner}</main>{_STATIC_FOOTER}</div>'
     )
-    body = body.replace('class="lang-toggle"', f'class="lang-toggle" data-spa="{_esc(spa_url)}"')
+    body = _spa_toggle(body, spa_url)
     body = _satirize_mqg(body)
     # Load the shared script so client-side enhancements work on these
     # otherwise-static pages (the Quiet-Veto "contribute" modal); plus a
@@ -2181,6 +2182,323 @@ def build_static_pages(site_dir: Path, rulings: list, content: dict) -> int:
             (site_dir / f"reading-{slug}.html").write_text(
                 render_content_static_page(piece, category), encoding="utf-8")
             n += 1
+    return n
+
+
+# ─── Prerendered hub shells (index / reading / tags / about) ─────────────
+# The four hub pages stay client-rendered SPAs, but each ships a baked
+# Hebrew body inside its <div id="root"> so crawlers and no-JS readers get
+# real content (and every ruling / reading page is linked from a static
+# href). The shells carry PRERENDER marker pairs; the generators below fill
+# the space between them on every build, idempotently.
+# mirrors the inline scripts of site/index.html / reading.html / tags.html
+# and app.js i18n.he — keep text in sync.
+
+def _inject_block(text: str, name: str, html_block: str, fname: str) -> str:
+    """Replace whatever sits between the BEGIN/END markers for `name` with
+    `html_block` (the markers themselves stay). A function replacement is used
+    (never a template string) because the generated HTML may contain
+    backslashes that re.sub would otherwise read as group references."""
+    pat = re.compile(
+        r'(<!-- PRERENDER:' + re.escape(name) + r':BEGIN -->)'
+        r'.*?'
+        r'(<!-- PRERENDER:' + re.escape(name) + r':END -->)',
+        flags=re.S)
+    if not pat.search(text):
+        raise SystemExit(f"prerender marker {name} missing in {fname}")
+    return pat.sub(lambda m: m.group(1) + "\n" + html_block + "\n" + m.group(2),
+                   text, count=1)
+
+
+def _spa_toggle(header_html: str, spa_url: str) -> str:
+    """Point the header's EN toggle at the interactive SPA route for the page."""
+    return header_html.replace(
+        'class="lang-toggle"', f'class="lang-toggle" data-spa="{_esc(spa_url)}"')
+
+
+# mirrors app.js LABELS.tags.he — keep in sync
+TAG_LABELS_HE = {
+    "knesset-internal-vote": "הצבעה פנימית בכנסת", "secret-ballot": "הצבעה חשאית", "state-comptroller": "מבקר המדינה",
+    "headliner": "תיק דגל", "reasonableness": "עילת הסבירות", "basic-law-strike": "פסילה מכוח חוק-יסוד",
+    "doctrine-anchor": "עוגן דוקטרינרי", "basic-law-amendment": "תיקון לחוק-יסוד", "expanded-panel": "הרכב מורחב",
+    "post-oct7": "אחרי ה-7 באוקטובר", "abuse-of-constituent-power": "שימוש לרעה בסמכות מכוננת",
+    "anti-infiltration": "חוק למניעת הסתננות", "appointment-block": "חסימת מינויים", "asylum-seekers": "מבקשי מקלט",
+    "conflict-of-interest": "ניגוד עניינים", "constituent-authority": "סמכות מכוננת", "constitutional-revolution": "המהפכה החוקתית",
+    "en-banc": "הרכב מלא", "mandatory-order": "צו עשה", "pre-digital": "טרום-העידן הדיגיטלי", "shin-bet": "השב״כ",
+    "administrative-failure": "כשל מינהלי", "administrative-review": "ביקורת מינהלית", "ag-non-defense": "סירוב היועמ״ש להגן על החוק",
+    "appointments-committee": "ועדת המינויים", "attorney-general": "היועץ המשפטי לממשלה", "barak-court": "בית המשפט של ברק",
+    "basic-law-government": "חוק-יסוד: הממשלה", "basic-law-supremacy": "עליונות חוקי-היסוד", "borderline-scope": "תחום גבולי",
+    "cabinet-resolution": "החלטת ממשלה", "civil-wrongs": "עוולות אזרחיות (אחריות המדינה)", "coalition-arrangement": "הסדר קואליציוני",
+    "conscription": "גיוס", "consolidated-petitions": "עתירות מאוחדות", "contempt": "ביזיון בית המשפט",
+    "declaratory": "סעד הצהרתי", "deri": "פרשת דרעי", "detention": "מעצר והחזקה", "doctrinal-foundation": "תשתית דוקטרינרית",
+    "executive-action": "פעולת הרשות המבצעת", "first-of-kind": "תקדים ראשון מסוגו", "gas-framework": "מתווה הגז",
+    "gatekeeper": "שומרי הסף", "haredi-conscription": "גיוס חרדים", "haredi-draft": "גיוס בני ישיבות", "haredi-politics": "פוליטיקה חרדית",
+    "holot": "מתקן חולות", "incapacitation": "נבצרות", "judicial-review": "ביקורת שיפוטית",
+    "judicial-selection-committee": "הוועדה לבחירת שופטים", "local-authority": "רשות מקומית", "minister-appointment": "מינוי שר",
+    "ministerial-appointment": "מינוי שרים", "ministerial-decision": "החלטת שר", "ministerial-duty": "חובת שר",
+    "ngo-petitioner": "עותר מהחברה האזרחית", "personal-legislation": "חקיקה פרסונלית", "prison-conditions": "תנאי מאסר",
+    "privatization": "הפרטה", "property-rights": "זכות הקניין", "qatargate": "פרשת קטארגייט", "reliance-interest": "אינטרס ההסתמכות",
+    "religion-and-state": "דת ומדינה", "religious-services": "שירותי דת", "security-appointment": "מינוי ביטחוני",
+    "security-sector": "מערכת הביטחון", "senior-appointments": "מינויים בכירים", "settlements": "התנחלויות",
+    "sovereign-function": "תפקיד שלטוני", "state-immunity": "חסינות המדינה", "supreme-court-president": "נשיא בית המשפט העליון",
+    "tal-law": "חוק טל", "transition-period": "תקופת מעבר", "ultra-vires": "חריגה מסמכות", "warning-of-voidness": "התראת בטלות",
+    "welfare-policy": "מדיניות רווחה",
+}
+
+
+def _tag_label_he(slug: str) -> str:
+    """HE label for a theme tag; falls back to a humanized slug (mirrors the
+    tag_label() fallback in app.js)."""
+    if slug in TAG_LABELS_HE:
+        return TAG_LABELS_HE[slug]
+    humanized = str(slug).replace("-", " ").replace("_", " ")
+    return re.sub(r'\b\w', lambda m: m.group(0).upper(), humanized)
+
+
+def _tag_label_lint(rulings: list) -> None:
+    """Warn-only: theme tags used in the corpus with no Hebrew label. Never
+    fails the build — the humanized slug is shown meanwhile."""
+    used = {tg for r in rulings for tg in (r.get("tags") or [])}
+    missing = sorted(t for t in used if t not in TAG_LABELS_HE)
+    if not missing:
+        print("✓ tag labels: every corpus tag has a Hebrew label")
+        return
+    print(f"⚠ tag labels: {len(missing)} tag(s) without a TAG_LABELS_HE entry "
+          f"(showing humanized slug)")
+    for t in missing:
+        print(f"    - {t}")
+
+
+def prerender_home(rulings: list, corpus: dict) -> str:
+    """Static Hebrew body for index.html: hero, headline stat, stat band,
+    scale notes, methodology note and the full rulings table (no curve, no
+    filter bar — the SPA re-renders those on top once JS runs)."""
+    L = [_spa_toggle(_static_header("rulings"), "index.html")]
+    L.append('<main class="home">')
+
+    L.append('<div class="home-hero">')
+    L.append('<h1>בקשי&amp;ביטון</h1>')
+    L.append('<p class="home-tagline">פסיקות בית המשפט העליון בעניין החלטות ממשלה ומינויים</p>')
+    L.append('</div>')
+
+    # Headline stat — same guard as the JS: only when the library figures exist.
+    if corpus and corpus.get("library_total") is not None \
+            and corpus.get("library_interpretive_gutted") is not None:
+        L.append('<div class="home-headline">')
+        L.append(
+            '<p class="home-headline-text">'
+            f'<strong class="home-headline-num">{_esc(corpus["library_total"])}</strong>'
+            f' חוקי כנסת שביטל או רוקן בית המשפט העליון מאז {_esc(corpus.get("year_min"))} — '
+            f'<strong class="home-headline-num">{_esc(corpus["library_interpretive_gutted"])}</strong>'
+            ' מהם בלי שבוטלו רשמית אף פעם.'
+            '<a href="reading-quiet-veto.html">המאגר המלא ←</a>'
+            '</p>')
+        L.append('</div>')
+
+    # Stat band — final numbers (the SPA animates them; static shows the result).
+    struck = {"struck_down", "partially_struck"}
+    years = [int((r.get("ruling_date") or "")[:4]) for r in rulings if (r.get("ruling_date") or "")[:4].isdigit()]
+    if corpus:
+        tiles = [
+            (str(corpus.get("total_cases")), "מקרים מתועדים", False),
+            (str(corpus.get("neutralized_total")), "חוקים שבוטלו או רוקנו", True),
+            (f'{corpus.get("year_min")}–{corpus.get("year_max")}', "שנות תיעוד", False),
+            (str(corpus.get("library_hollowed")), "רוקנו בפרשנות — בשקט", False),
+        ]
+    else:
+        tiles = [
+            (str(len(rulings)), "פסיקות במאגר", False),
+            (str(sum(1 for r in rulings if r.get("outcome") in struck)), "בוטלו (מלא/חלקי)", True),
+            (f'{min(years)}–{max(years)}' if years else "—", "שנות תיעוד", False),
+            (str(sum(1 for r in rulings if len(r.get("panel") or []) >= 9)), "הרכבים מורחבים (9+)", False),
+        ]
+    L.append('<div class="stat-band">')
+    for num, label, accent in tiles:
+        cls = "stat-tile stat-tile--accent" if accent else "stat-tile"
+        L.append(f'<div class="{cls}"><div class="stat-num">{_esc(num)}</div>'
+                 f'<div class="stat-label">{_esc(label)}</div></div>')
+    L.append('</div>')
+
+    # Scale note — the deep case files are only the core; point at the rest.
+    if corpus:
+        L.append(
+            '<p class="home-scale-note">'
+            f'{_esc(corpus.get("rulings_total"))} התיקים המלאים שלמטה הם רק הליבה. '
+            '<a href="reading-quiet-veto.html">'
+            f'המאגר המלא: {_esc(corpus.get("total_cases"))} מקרים מתועדים ←</a>'
+            ' כל אחד מהם — חוק או החלטה של נבחרי הציבור שבית המשפט ביטל או רוקן מתוכן.'
+            '</p>')
+    L.append(
+        '<p class="home-scale-note">חדש — '
+        '<a href="reading-where-the-line.html">היכן הימין מסמן את הקו: '
+        'אמירות מיוחסות בנוגע לאי-הציות של הממשלה</a></p>')
+
+    L.append('<p class="home-method">השכבה התיעודית של הפרויקט מתעדת עובדות הליכיות בלבד מתוך '
+             'פרסומי בית המשפט העליון. שכבת התוכן המידעי (קריאה) מציעה חומר פרשני בסקירת מתאמים, '
+             'עם סעיפי \'הוגנות אדברסרית\' בכל פריט.</p>')
+
+    # Rulings table — every row links to its prerendered ruling page.
+    L.append('<div class="table-scroll">')
+    L.append('<table class="rulings-table">')
+    L.append('<thead><tr>'
+             '<th>תאריך</th>'
+             '<th>תיק</th>'
+             '<th>תוצאה</th>'
+             '<th class="col-num">תוצאת הצבעה</th>'
+             '<th class="col-soft">עילה</th>'
+             '<th class="col-soft">עותר</th>'
+             '</tr></thead>')
+    L.append('<tbody>')
+    for r in sorted(rulings, key=lambda x: x.get("ruling_date") or "", reverse=True):
+        outcome = r.get("outcome") or ""
+        vote = (f'{r.get("vote_majority")}–{r.get("vote_minority") or 0}'
+                if r.get("vote_majority") is not None else "—")
+        doctrines = ", ".join(DOCTRINE_LABELS_HE.get(d, d)
+                              for d in (r.get("doctrine_invoked") or []))
+        L.append(
+            '<tr class="rrow">'
+            f'<td class="col-date">{_esc(r.get("ruling_date"))}</td>'
+            f'<td><a href="ruling-{_esc(r.get("case_id_slug"))}.html" class="rrow-case">{_esc(r.get("case_id"))}</a>'
+            f'<div class="rrow-name">{_esc(r.get("case_name_he"))}</div></td>'
+            f'<td><span class="outcome-pill outcome-{_esc(outcome)}">'
+            f'{_esc(OUTCOME_LABELS_HE.get(outcome, outcome))}</span></td>'
+            f'<td class="col-num vote">{_esc(vote)}</td>'
+            f'<td class="col-soft">{_esc(doctrines)}</td>'
+            f'<td class="col-soft">{_esc(r.get("petitioner_name_he"))}</td>'
+            '</tr>')
+    L.append('</tbody>')
+    L.append('</table>')
+    L.append('</div>')
+
+    L.append('</main>')
+    L.append(_STATIC_FOOTER)
+    return _satirize_mqg("\n".join(L))
+
+
+_READING_BADGE_HE = {"essays": "מאמר", "explainers": "הסבר", "patterns": "תיעוד דפוס"}
+
+
+def prerender_reading(content: dict) -> str:
+    """Static Hebrew body for reading.html: hero, featured comic card and the
+    card grid. Cards link to the prerendered reading-*.html pages (deliberate:
+    it de-orphans them for crawlers); the SPA swaps in its own hrefs."""
+    L = [_spa_toggle(_static_header("reading"), "reading.html")]
+    L.append('<main class="reading-page">')
+
+    L.append('<header class="reading-hero">')
+    L.append('<h1 class="reading-hero-title">קריאה</h1>')
+    L.append('<p class="reading-hero-intro">מאמרים, הסברים ומסמכי דפוסים. השכבה המידעית של הפרויקט: '
+             'חומרים שמחברים את הפסיקות בליבה התיעודית לתמונה הגדולה. כל פריט נסקר על-ידי מתאמים '
+             'וכולל סעיף \'הוגנות אדברסרית\' המביא את העמדה הנגדית בכתבי בעליה שלה.</p>')
+    L.append('</header>')
+
+    # Featured visual story — above-the-fold entry point (HE branch).
+    L.append('<a class="featured-card" href="comic-6821-93.html">')
+    L.append('<div class="featured-card-art">'
+             '<img src="assets/comics/mizrahi-arc/page-he.png" '
+             'alt="סיפור מצויר: פרדוקס מקור הסמכות" class="featured-card-img" '
+             'style="object-position:top" loading="lazy"></div>')
+    L.append('<div class="featured-card-text">')
+    L.append('<span class="featured-card-eyebrow">סיפור מצויר · חדש</span>')
+    L.append('<h2 class="featured-card-title">פרדוקס מקור הסמכות</h2>')
+    L.append('<p class="featured-card-body">סיפור מצויר ב-12 לוחות: כיצד סכסוך חוב קטן בקיבוץ הפך '
+             'לכלי שבאמצעותו שאב בית משפט בלתי-נבחר את סמכותו מתוך חוקי-היסוד של הכנסת עצמה — '
+             'ולאחר מכן השתמש באותה סמכות כדי לחסן את עצמו מפני ניסיון הכנסת היחיד לרסן אותה. '
+             'גרסה ידידותית, מצוירת, של מאמר היסוד של הפרויקט.</p>')
+    L.append('<span class="featured-card-cta">התחל לקרוא →</span>')
+    L.append('</div>')
+    L.append('</a>')
+
+    L.append('<div class="reading-grid">')
+    for cat in ("essays", "explainers", "patterns"):  # "structure" is deliberately skipped
+        for item in (content.get(cat) or []):
+            slug = item.get("slug") or ""
+            title = item.get("title_he") or item.get("title") or slug
+            summary = item.get("summary_he") or item.get("summary") or ""
+            minutes = item.get("reading_minutes_he") or item.get("reading_minutes")
+            L.append(f'<a class="reading-card reading-card--{_esc(cat)}" href="reading-{_esc(slug)}.html">')
+            L.append(f'<span class="card-badge card-badge--{_esc(cat)}">'
+                     f'<span>{_esc(_READING_BADGE_HE.get(cat, cat))}</span></span>')
+            L.append(f'<h3 class="card-title" dir="auto">{_esc(title)}</h3>')
+            if summary:
+                L.append(f'<p class="card-summary" dir="auto">{_esc(summary)}</p>')
+            meta = []
+            if minutes:
+                meta.append(f'<span>{_esc(minutes)} דק׳ קריאה</span>')
+            if item.get("date"):
+                if meta:
+                    meta.append('<span class="card-meta-sep">·</span>')
+                meta.append(f'<span>{_esc(item.get("date"))}</span>')
+            if meta:
+                L.append('<div class="card-meta">' + "".join(meta) + '</div>')
+            L.append('</a>')
+    L.append('</div>')
+
+    L.append('</main>')
+    L.append(_STATIC_FOOTER)
+    return _satirize_mqg("\n".join(L))
+
+
+def prerender_tags(rulings: list) -> str:
+    """Static Hebrew body for tags.html: every theme tag with its rulings
+    listed (the SPA replaces this with the interactive cloud + browser).
+    Mirrors the list markup of renderTagBrowser() in app.js."""
+    L = [_spa_toggle(_static_header("tags"), "tags.html")]
+    L.append('<main class="tags-page">')
+    L.append('<h1>נושאים — עיון לפי תחום</h1>')
+    L.append('<p class="tags-intro">כל פסיקה במאגר מתויגת לפי הנושאים המשפטיים והמדיניותיים שבהם '
+             'היא נוגעת. בחרו נושא כדי לראות את הפסיקות המקושרות אליו — גודל התגית משקף את מספר '
+             'הפסיקות.</p>')
+
+    by_tag: dict = {}
+    for r in rulings:
+        for tg in (r.get("tags") or []):
+            by_tag.setdefault(tg, []).append(r)
+    for slug, rs in sorted(by_tag.items(), key=lambda kv: (-len(kv[1]), _tag_label_he(kv[0]))):
+        L.append(f'<section class="tag-results" id="tag-{_esc(slug)}">')
+        L.append('<div class="tag-results-head">'
+                 f'<span class="tag-results-title">{_esc(_tag_label_he(slug))}</span>'
+                 f'<span class="tag-results-count">{len(rs)} פסיקות</span></div>')
+        L.append('<ul class="tag-result-list">')
+        for r in sorted(rs, key=lambda x: x.get("ruling_date") or "", reverse=True):
+            outcome = r.get("outcome") or ""
+            L.append(
+                '<li>'
+                f'<a href="ruling-{_esc(r.get("case_id_slug"))}.html">'
+                f'<span class="trl-case">{_esc(r.get("case_id"))}</span>'
+                f'<span class="trl-name">{_esc(r.get("case_name_he"))}</span></a>'
+                f'<span class="outcome-pill outcome-{_esc(outcome)}">'
+                f'{_esc(OUTCOME_LABELS_HE.get(outcome, outcome))}</span>'
+                '</li>')
+        L.append('</ul>')
+        L.append('</section>')
+
+    L.append('</main>')
+    L.append(_STATIC_FOOTER)
+    return _satirize_mqg("\n".join(L))
+
+
+def prerender_shells(site_dir: Path, rulings: list, content: dict, corpus: dict) -> int:
+    """Inject the generated Hebrew blocks into the four hub shells. Idempotent:
+    the markers stay put and only the space between them is rewritten."""
+    _tag_label_lint(rulings)
+    jobs = {
+        "index.html": {"MAIN": prerender_home(rulings, corpus)},
+        "reading.html": {"MAIN": prerender_reading(content)},
+        "tags.html": {"MAIN": prerender_tags(rulings)},
+        "about.html": {"HEADER": _spa_toggle(_static_header("about"), "about.html"),
+                       "FOOTER": _STATIC_FOOTER},
+    }
+    n = 0
+    for fname, blocks in jobs.items():
+        path = site_dir / fname
+        text = path.read_text(encoding="utf-8")
+        new = text
+        for name, block in blocks.items():
+            new = _inject_block(new, name, block, fname)
+        if new != text:
+            path.write_text(new, encoding="utf-8")
+        n += 1
     return n
 
 
@@ -2433,6 +2751,9 @@ def main() -> int:
 
     n_static = build_static_pages(SITE_DIR, rulings, content_out)
     print(f"✓ wrote {n_static} prerendered static pages (ruling-*.html, reading-*.html)")
+
+    n_pre = prerender_shells(SITE_DIR, rulings, content_out, cs)
+    print(f"✓ injected prerendered content into {n_pre} shell pages")
 
     sitemap_path = build_sitemap(SITE_DIR, rulings, content_out, justices_list)
     print(f"✓ wrote {sitemap_path}")

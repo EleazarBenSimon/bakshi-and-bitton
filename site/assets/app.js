@@ -409,6 +409,7 @@ const LABELS = {
   // back to a humanized slug except where the humanized form reads poorly.
   tags: {
     he: {
+      "knesset-internal-vote": "הצבעה פנימית בכנסת", "secret-ballot": "הצבעה חשאית", "state-comptroller": "מבקר המדינה",
       "headliner": "תיק דגל", "reasonableness": "עילת הסבירות", "basic-law-strike": "פסילה מכוח חוק-יסוד",
       "doctrine-anchor": "עוגן דוקטרינרי", "basic-law-amendment": "תיקון לחוק-יסוד", "expanded-panel": "הרכב מורחב",
       "post-oct7": "אחרי ה-7 באוקטובר", "abuse-of-constituent-power": "שימוש לרעה בסמכות מכוננת",
@@ -477,7 +478,7 @@ function renderHeader(active) {
         el("a", { href: "justices.html", style: active === "justices" ? "font-weight:600;color:var(--accent)" : "" }, t.nav_justices),
         el("a", { href: "tags.html", style: active === "tags" ? "font-weight:600;color:var(--accent)" : "" }, t.nav_tags),
         el("a", { href: "timeline.html", style: active === "timeline" ? "font-weight:600;color:var(--accent)" : "" }, t.nav_timeline),
-        el("a", { href: "content.html?slug=power-structure", style: active === "structure" ? "font-weight:600;color:var(--accent)" : "" }, t.nav_structure),
+        el("a", { href: lang === "he" ? "reading-power-structure.html" : "content.html?slug=power-structure", style: active === "structure" ? "font-weight:600;color:var(--accent)" : "" }, t.nav_structure),
         el("a", { href: "cite.html", style: active === "cite" ? "font-weight:600;color:var(--accent)" : "" }, t.nav_cite),
         el("a", { href: "about.html", style: active === "about" ? "font-weight:600;color:var(--accent)" : "" }, t.nav_about),
       ),
