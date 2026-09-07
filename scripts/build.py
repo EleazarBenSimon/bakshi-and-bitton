@@ -26,7 +26,7 @@ import sys
 from collections import defaultdict
 from datetime import datetime, timezone
 from pathlib import Path
-from urllib.parse import quote
+from urllib.parse import quote, urlparse
 from xml.sax.saxutils import escape as xml_escape
 
 try:
@@ -98,6 +98,26 @@ def markdown_to_html(body: str) -> str:
         ],
         output_format="html5",
     )
+
+
+def is_official_host(url: str) -> bool:
+    """True iff `url` sits on an Israeli government host (….gov.il) — the only
+    place an official ruling text is published. Anything else (a newspaper, a
+    university archive) is a secondary source and is labeled as one, rather
+    than being passed off as "the official ruling"."""
+    try:
+        host = (urlparse(url or "").hostname or "").lower()
+    except ValueError:
+        return False
+    return host.endswith(".gov.il")
+
+
+def _official_label_he(url: str) -> str:
+    """Hebrew link text for a ruling's `official_url` — honest about what sits
+    at the other end. Two rulings in the corpus have no official text online at
+    all, and their link points at a newspaper / a university archive."""
+    return ("פסק הדין הרשמי" if is_official_host(url)
+            else "מקור (אין טקסט רשמי זמין באינטרנט)")
 
 
 def relativize_internal_links(html: str) -> str:
@@ -1578,7 +1598,8 @@ def build_rss(site_dir: Path, rulings: list) -> Path:
         desc_html = (
             f"<p><strong>תוצאה:</strong> {xml_escape(outcome_he)}</p>"
             f"<p>{xml_escape(summary_he)}</p>"
-            f'<p><a href="{xml_escape(r.get("official_url",""))}">פסק הדין הרשמי</a></p>'
+            f'<p><a href="{xml_escape(r.get("official_url",""))}">'
+            f'{xml_escape(_official_label_he(r.get("official_url","")))}</a></p>'
         )
 
         items_xml.append(
@@ -1707,6 +1728,361 @@ def build_labels(out_dir: Path) -> None:
     )
 
 
+# ─── Ruling-day kit (share cards + post text) ────────────────────────────
+# One shareable kit per ruling, under site/assets/kits/<slug>/:
+#   card-he.png / card-en.png — 1200×675 social cards, drawn with PIL
+#   post-he.txt / post-en.txt — ready-to-paste post text
+# Everything on a card comes from the ruling record; nothing is characterized
+# or invented. A field the record does not carry is printed as "—" and named
+# in the build summary.
+#
+# Typography follows the site's semantic split: David Libre (serif) for text
+# taken from the court record — case id, case name, panel/vote, date — and
+# Assistant (sans) for the project's own words and UI (brand, page URL, and
+# the outcome chip, which prints our canonical OUTCOME_LABELS_* label rather
+# than the court's own wording).
+# The site self-hosts those faces as woff2, which PIL/FreeType cannot read, and
+# neither family exists as TTF/OTF on this machine; scripts/fonts/ therefore
+# holds the *same* Google-Fonts faces losslessly decompressed from the site's
+# own woff2 subsets (fontTools), never a substitute typeface. The subsets are
+# split hebrew/latin, so each line is drawn as a sequence of script runs.
+
+KITS_DIR = SITE_DIR / "assets" / "kits"
+KIT_FONTS_DIR = REPO_ROOT / "scripts" / "fonts"
+CARD_W, CARD_H = 1200, 675
+
+# Palette mirrors site/assets/style.css (:root)
+C_BG = (250, 249, 247)          # --bg      warm paper
+C_INK = (31, 35, 40)            # --text
+C_MUTED = (91, 97, 107)         # --text-muted
+C_BORDER = (232, 228, 221)      # --border
+C_ACCENT = (35, 63, 102)        # --accent  deep navy
+C_ACCENT_DEEP = (22, 38, 63)    # --accent-deep
+C_ACCENT_SOFT = (233, 238, 246)  # --accent-soft
+
+_HEB_RANGE = ((0x0590, 0x05FF), (0xFB1D, 0xFB4F))
+
+try:
+    from PIL import Image, ImageDraw, ImageFont
+    from bidi.algorithm import get_display
+    _KIT_DEPS_ERR = None
+except ImportError as _e:  # pragma: no cover - environment guard
+    _KIT_DEPS_ERR = str(_e)
+
+
+def kit_dir_url(slug: str) -> str:
+    return f"{SITE_BASE_URL}/assets/kits/{slug}"
+
+
+def kit_card_url(slug: str, lang: str = "he") -> str:
+    return f"{kit_dir_url(slug)}/card-{lang}.png"
+
+
+_font_cache: dict = {}
+
+
+def _font(family: str, weight: int, script: str, size: int):
+    """Load one subset face (family/weight/script) at `size`. BASIC layout is
+    forced: bidi reordering is done explicitly with python-bidi, and a Raqm
+    layout engine would reorder a second time."""
+    key = (family, weight, script, size)
+    f = _font_cache.get(key)
+    if f is None:
+        path = KIT_FONTS_DIR / f"{family}-{script}-{weight}.ttf"
+        if not path.exists():
+            raise SystemExit(f"kit: missing build font {path}")
+        f = ImageFont.truetype(str(path), size,
+                               layout_engine=ImageFont.Layout.BASIC)
+        _font_cache[key] = f
+    return f
+
+
+def _is_heb(ch: str) -> bool:
+    o = ord(ch)
+    return any(lo <= o <= hi for lo, hi in _HEB_RANGE)
+
+
+def _script_runs(text: str):
+    """Split a visual-order string into (run_text, script) pairs, so each run
+    is drawn with the subset that actually carries its glyphs."""
+    runs, cur, cur_s = [], "", None
+    for ch in text:
+        s = "hebrew" if _is_heb(ch) else "latin"
+        if cur_s is None or s == cur_s:
+            cur, cur_s = cur + ch, s
+        else:
+            runs.append((cur, cur_s))
+            cur, cur_s = ch, s
+    if cur:
+        runs.append((cur, cur_s))
+    return runs
+
+
+# LRM markers keep a self-contained LTR token (the vote pair) from being
+# re-ordered by the bidi pass — "2–1" must not surface as "1–2", since the
+# first number is the majority. They are stripped again before drawing: they
+# are zero-width formatting characters with no glyph in the subsets.
+_LRM = "\u200e"
+
+
+def _visual(text: str, rtl: bool) -> str:
+    return get_display(text or "", base_dir="R" if rtl else "L").replace(
+        _LRM, "").replace("\u200f", "")
+
+
+def _line_w(text: str, family: str, weight: int, size: int, rtl: bool) -> float:
+    return sum(_font(family, weight, s, size).getlength(t)
+               for t, s in _script_runs(_visual(text, rtl)))
+
+
+def _draw_line(draw, text: str, x_edge: int, baseline: int, family: str,
+               weight: int, size: int, fill, rtl: bool,
+               align_right: bool | None = None) -> float:
+    """Draw one line on `baseline`, anchored at `x_edge` — the right edge when
+    the line is right-aligned (RTL by default), the left edge otherwise.
+    `rtl` sets the bidi base direction; `align_right` overrides alignment only
+    (an LTR-shaped line, e.g. a URL, flushed right on a Hebrew card). Returns
+    the drawn width."""
+    if align_right is None:
+        align_right = rtl
+    runs = _script_runs(_visual(text, rtl))
+    widths = [_font(family, weight, s, size).getlength(t) for t, s in runs]
+    total = sum(widths)
+    x = (x_edge - total) if align_right else x_edge
+    for (t, s), w in zip(runs, widths):
+        draw.text((x, baseline), t, font=_font(family, weight, s, size),
+                  fill=fill, anchor="ls")
+        x += w
+    return total
+
+
+def _fit_size(text: str, family: str, weight: int, size: int, max_w: int,
+              rtl: bool, floor: int = 20) -> int:
+    """Largest size ≤ `size` (stepping down by 2) whose line fits `max_w`."""
+    while size > floor and _line_w(text, family, weight, size, rtl) > max_w:
+        size -= 2
+    return size
+
+
+def _wrap2(text: str, family: str, weight: int, size: int, max_w: int,
+           rtl: bool) -> list:
+    """Greedy word wrap to at most 2 lines; the 2nd is ellipsized when the text
+    does not fit. Wrapping happens in logical order; bidi runs at draw time."""
+    words = (text or "").split()
+    if not words:
+        return [""]
+    rem = list(words)
+    lines = []
+    while rem and len(lines) < 2:
+        cur = [rem.pop(0)]
+        while rem and _line_w(" ".join(cur + [rem[0]]), family, weight, size,
+                              rtl) <= max_w:
+            cur.append(rem.pop(0))
+        lines.append(" ".join(cur))
+    if rem:  # more text than two lines hold → ellipsize the last one
+        last = lines[-1].split()
+        while last and _line_w(" ".join(last) + "…", family, weight, size,
+                               rtl) > max_w:
+            last.pop()
+        lines[-1] = (" ".join(last) + "…") if last else "…"
+    return lines
+
+
+def _kit_fields(r: dict, lang: str) -> tuple[dict, list]:
+    """Card/post fields for one ruling, straight from the record. Returns
+    (fields, missing_field_names). Missing values are rendered as '—'."""
+    dash = "—"
+    missing = []
+
+    def take(value, name):
+        if value in (None, "", []):
+            missing.append(name)
+            return dash
+        return str(value)
+
+    case_id = take(r.get("case_id"), "case_id")
+    name_key = "case_name_he" if lang == "he" else "case_name_en"
+    case_name = take(r.get(name_key), name_key)
+    outcome = r.get("outcome")
+    labels = OUTCOME_LABELS_HE if lang == "he" else OUTCOME_LABELS_EN
+    outcome_txt = (labels.get(outcome, outcome) if outcome
+                   else take(outcome, "outcome"))
+    date = take(r.get("ruling_date"), "ruling_date")
+
+    panel = r.get("panel") or []
+    if not panel:
+        missing.append("panel")
+        panel_names = dash
+        panel_count = dash
+    else:
+        key = "name_he" if lang == "he" else "name_en"
+        panel_names = ", ".join(j.get(key) or j.get("name_he") or "" for j in panel)
+        panel_count = (f"{len(panel)} שופטים" if lang == "he"
+                       else f"{len(panel)} justices")
+    if r.get("vote_majority") in (None, ""):
+        missing.append("vote_majority")
+        vote = dash
+    else:
+        vote = f'{r.get("vote_majority")}–{r.get("vote_minority") or 0}'
+
+    lbl_panel, lbl_vote = ("הרכב", "הצבעה") if lang == "he" else ("Panel", "Vote")
+    return ({
+        "case_id": case_id,
+        "case_name": case_name,
+        "outcome": outcome_txt,
+        "date": date,
+        "panel_names": panel_names,
+        "panel_count": panel_count,
+        "vote": vote,
+        # plain (logical order) for the post files; LRM-fenced vote for the
+        # cards, which are rendered here rather than by a bidi-aware client
+        "panel_line": f"{lbl_panel}: {panel_names} · {lbl_vote}: {vote}",
+        "panel_line_card":
+            f"{lbl_panel}: {panel_names} · {lbl_vote}: {_LRM}{vote}{_LRM}",
+        "panel_line_short_card":
+            f"{lbl_panel}: {panel_count} · {lbl_vote}: {_LRM}{vote}{_LRM}",
+        "page_url": f"{SITE_BASE_URL}/ruling-{r.get('case_id_slug', '')}.html",
+        "official_url": r.get("official_url") or "",
+    }, missing)
+
+
+def render_kit_card(r: dict, lang: str):
+    """Draw one 1200×675 RGB share card. Deterministic: no timestamps, no
+    randomness — same record in, same bytes out."""
+    rtl = (lang == "he")
+    f, _ = _kit_fields(r, lang)
+    img = Image.new("RGB", (CARD_W, CARD_H), C_BG)
+    d = ImageDraw.Draw(img)
+    m = 64                      # page margin
+    edge = (CARD_W - m) if rtl else m
+    max_w = CARD_W - 2 * m
+
+    # Top band — brand (project voice, sans)
+    band_h = 96
+    d.rectangle([0, 0, CARD_W, band_h], fill=C_ACCENT)
+    brand = "בקשי&ביטון" if rtl else "Bakshi&Bitton"
+    _draw_line(d, brand, edge, 62, "assistant", 700, 36, C_BG, rtl)
+
+    # Ruling date (record, serif)
+    _draw_line(d, f["date"], edge, 172, "david-libre", 400, 26, C_MUTED, rtl)
+
+    # Case id (record, serif, large)
+    cid_size = _fit_size(f["case_id"], "david-libre", 700, 56, max_w, rtl, 28)
+    _draw_line(d, f["case_id"], edge, 252, "david-libre", 700, cid_size, C_INK, rtl)
+
+    # Case name (record, serif, ≤ 2 lines)
+    for i, line in enumerate(_wrap2(f["case_name"], "david-libre", 500, 34,
+                                    max_w, rtl)):
+        _draw_line(d, line, edge, 316 + i * 46, "david-libre", 500, 34,
+                   C_INK, rtl)
+
+    # Outcome chip — the project's own canonical label (OUTCOME_LABELS_HE/_EN),
+    # not the court's wording, so it is set in the voice sans (Assistant 700).
+    chip_font_size, pad_x, chip_h, chip_top = 32, 26, 64, 412
+    chip_w = _line_w(f["outcome"], "assistant", 700, chip_font_size, rtl) + 2 * pad_x
+    x0 = (CARD_W - m - chip_w) if rtl else m
+    d.rounded_rectangle([x0, chip_top, x0 + chip_w, chip_top + chip_h],
+                        radius=chip_h // 2, fill=C_ACCENT_SOFT,
+                        outline=C_ACCENT, width=2)
+    asc, desc = _font("assistant", 700, "latin", chip_font_size).getmetrics()
+    chip_base = chip_top + (chip_h - (asc + desc)) // 2 + asc
+    _draw_line(d, f["outcome"], (x0 + chip_w - pad_x) if rtl else (x0 + pad_x),
+               chip_base, "assistant", 700, chip_font_size, C_ACCENT_DEEP, rtl)
+
+    # Panel · vote (record, serif) — names when they fit, else the panel size
+    pv, pv_size = f["panel_line_card"], 26
+    if _line_w(pv, "david-libre", 400, pv_size, rtl) > max_w:
+        pv_size = _fit_size(pv, "david-libre", 400, pv_size, max_w, rtl, 22)
+        if _line_w(pv, "david-libre", 400, pv_size, rtl) > max_w:
+            pv, pv_size = f["panel_line_short_card"], 26
+    _draw_line(d, pv, edge, 540, "david-libre", 400, pv_size, C_INK, rtl)
+
+    # Bottom band — page URL (project voice, sans). Legibility floor is 26px,
+    # so the scheme is dropped (browser-style display of the same URL) and the
+    # band runs to a tighter margin; the full URL stays in the post text and in
+    # the page's own meta. The longest slug in the corpus fits at 26px.
+    foot_h, foot_m = 84, 44
+    d.rectangle([0, CARD_H - foot_h, CARD_W, CARD_H], fill=C_ACCENT_DEEP)
+    url_txt = f["page_url"].split("://", 1)[-1]
+    url_size = _fit_size(url_txt, "assistant", 600, 28, CARD_W - 2 * foot_m,
+                         False, 26)
+    _draw_line(d, url_txt, (CARD_W - foot_m) if rtl else foot_m,
+               CARD_H - foot_h + 54, "assistant", 600, url_size, C_BG, False,
+               align_right=rtl)
+    return img
+
+
+def render_kit_posts(r: dict) -> dict:
+    """post-he.txt (5 lines) and post-en.txt (3 lines), record fields only.
+    An English field the record does not carry becomes NOT AVAILABLE."""
+    he, _ = _kit_fields(r, "he")
+    en, _ = _kit_fields(r, "en")
+    na = "NOT AVAILABLE"
+
+    def en_or_na(v, dash_ok=("—", "")):
+        return na if (v in dash_ok or not v) else v
+
+    # A source line that is NOT on a .gov.il host is prefixed, so a pasted post
+    # never presents a newspaper or an archive as the official ruling text.
+    src_he = he["official_url"]
+    if src_he and not is_official_host(src_he):
+        src_he = f"מקור משני: {src_he}"
+    post_he = "\n".join([
+        f'{he["case_id"]} — {he["outcome"]}',
+        he["case_name"],
+        he["panel_line"],
+        src_he or "—",
+        he["page_url"],
+    ]) + "\n"
+    en_id = en_or_na(en["case_id"])
+    en_outcome = en_or_na(en["outcome"])
+    src_en = en["official_url"]
+    if src_en and not is_official_host(src_en):
+        src_en = f"Secondary source: {src_en}"
+    post_en = "\n".join([
+        f'{en_id} — {en_outcome}',
+        en_or_na(en["case_name"]),
+        f'{src_en or na} · {en["page_url"]}',
+    ]) + "\n"
+    return {"post-he.txt": post_he, "post-en.txt": post_en}
+
+
+def build_kits(site_dir: Path, rulings: list) -> dict:
+    """Write site/assets/kits/<slug>/ for every ruling. Deterministic output:
+    re-running the build rewrites byte-identical PNGs."""
+    if _KIT_DEPS_ERR:
+        print(f"ERROR: kit step needs Pillow + python-bidi ({_KIT_DEPS_ERR}).",
+              file=sys.stderr)
+        print("Install with: pip3 install --user Pillow python-bidi",
+              file=sys.stderr)
+        raise SystemExit(2)
+    out_root = site_dir / "assets" / "kits"
+    out_root.mkdir(parents=True, exist_ok=True)
+    cards = posts = 0
+    gaps = []
+    for r in rulings:
+        slug = r.get("case_id_slug")
+        if not slug:
+            continue
+        d = out_root / slug
+        d.mkdir(parents=True, exist_ok=True)
+        miss = set()
+        for lang in ("he", "en"):
+            _, m = _kit_fields(r, lang)
+            miss |= set(m)
+            render_kit_card(r, lang).save(d / f"card-{lang}.png", format="PNG")
+            cards += 1
+        if not (r.get("official_url") or "").strip():
+            miss.add("official_url")
+        for fname, text in render_kit_posts(r).items():
+            (d / fname).write_text(text, encoding="utf-8")
+            posts += 1
+        if miss:
+            gaps.append((slug, sorted(miss)))
+    return {"rulings": len(rulings), "cards": cards, "posts": posts,
+            "gaps": gaps}
+
+
 # ─── Prerendered static pages (SEO / social previews / no-JS) ─────────────
 # The site is a client-rendered SPA: search crawlers and social-card scrapers
 # that don't execute JS see an empty shell. These generators emit one static,
@@ -1724,9 +2100,12 @@ def _esc(s) -> str:
 
 def _page_head(title_he: str, description: str, canonical_path: str,
                og_type: str = "website", jsonld: dict | None = None,
-               og_image: str = OG_IMAGE) -> str:
+               og_image: str = OG_IMAGE,
+               og_image_size: tuple | None = None) -> str:
     """Full <head> with localized title, description, OG, Twitter, canonical,
-    favicon, and optional JSON-LD."""
+    favicon, and optional JSON-LD. `og_image_size` is the (w, h) of `og_image`
+    — declared only when known, since the default card and the per-ruling kit
+    cards are different sizes."""
     canonical = f"{SITE_BASE_URL}/{canonical_path}"
     desc = " ".join((description or "").split())[:300]
     parts = [
@@ -1737,6 +2116,8 @@ def _page_head(title_he: str, description: str, canonical_path: str,
         '<meta name="viewport" content="width=device-width, initial-scale=1">',
         f'<title>{_esc(title_he)} · בקשי&amp;ביטון</title>',
         f'<meta name="description" content="{_esc(desc)}">',
+        # Let search engines show a large image preview (Discover eligibility)
+        '<meta name="robots" content="max-image-preview:large">',
         f'<link rel="canonical" href="{_esc(canonical)}">',
         '<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">',
         '<link rel="stylesheet" href="assets/style.css">',
@@ -1747,6 +2128,13 @@ def _page_head(title_he: str, description: str, canonical_path: str,
         f'<meta property="og:description" content="{_esc(desc)}">',
         f'<meta property="og:url" content="{_esc(canonical)}">',
         f'<meta property="og:image" content="{_esc(og_image)}">',
+    ]
+    if og_image_size:
+        parts += [
+            f'<meta property="og:image:width" content="{int(og_image_size[0])}">',
+            f'<meta property="og:image:height" content="{int(og_image_size[1])}">',
+        ]
+    parts += [
         '<meta property="og:locale" content="he_IL">',
         '<meta property="og:locale:alternate" content="en_US">',
         '<meta name="twitter:card" content="summary_large_image">',
@@ -1848,6 +2236,18 @@ def _satirize_mqg(html: str) -> str:
     return html
 
 
+# Hidden 1×1 visitor pixel (no account, no cookie): a third counter key for the
+# content pages — the four hub shells keep their own keys, untouched. The
+# clip-based hiding is load-bearing: an off-screen `left:-9999px` would break
+# the RTL layout.
+_VISITOR_PIXEL_CONTENT = (
+    '<img src="https://visitor-badge.laobi.icu/badge?page_id='
+    'eleazarbensimon.bakshi-content" alt="" aria-hidden="true" width="1" '
+    'height="1" style="position:absolute;width:1px;height:1px;overflow:hidden;'
+    'clip:rect(0,0,0,0);opacity:0;pointer-events:none" />'
+)
+
+
 def _ruling_hero(r: dict) -> str:
     """Bold public-facing hero atop each ruling page: the verdict in large type,
     the case, the sharp summary, and a stat strip foregrounding WHO acted —
@@ -1862,7 +2262,12 @@ def _ruling_hero(r: dict) -> str:
     if n:
         stats.append(f'<span class="rh-stat"><b>{n}</b> שופטים</span>')
     if r.get("vote_majority") is not None:
-        stats.append(f'<span class="rh-stat">הצבעה <b>{_esc(r.get("vote_majority"))}–{_esc(r.get("vote_minority") or 0)}</b></span>')
+        # <bdi dir="ltr">: inside RTL text the en dash between two digits makes
+        # bidi resolve the pair right-to-left, so "2–1" would display as "1–2"
+        # — inverting majority and minority. The isolate pins majority-first.
+        stats.append(f'<span class="rh-stat">הצבעה <b><bdi dir="ltr">'
+                     f'{_esc(r.get("vote_majority"))}–{_esc(r.get("vote_minority") or 0)}'
+                     f'</bdi></b></span>')
     if leads:
         stats.append(f'<span class="rh-stat">חוות-הדעת המובילה: <b>{_esc(", ".join(leads))}</b></span>')
     stat_html = ('<div class="rh-stats">' + "".join(stats) + '</div>') if stats else ''
@@ -1883,6 +2288,8 @@ def render_ruling_page(r: dict) -> str:
     name_he = r.get("case_name_he", "")
     summary_he = r.get("summary_he", "")
     spa_url = f"ruling.html?id={slug}"
+    # The ruling's own share card is this page's social preview.
+    card_url = kit_card_url(slug, "he")
 
     # JSON-LD: model each ruling as an Article about a legal decision, with the
     # official ruling as isBasedOn (provenance).
@@ -1893,7 +2300,7 @@ def render_ruling_page(r: dict) -> str:
         "inLanguage": "he",
         "datePublished": r.get("ruling_date", ""),
         "url": f"{SITE_BASE_URL}/ruling-{slug}.html",
-        "image": OG_IMAGE,
+        "image": card_url,
         "isPartOf": {"@type": "Dataset", "name": "Bakshi&Bitton",
                      "url": f"{SITE_BASE_URL}/"},
         "author": {"@type": "Person", "name": "Eleazar Ben Simon"},
@@ -1907,6 +2314,7 @@ def render_ruling_page(r: dict) -> str:
         title_he=f"{case_id} — {name_he}" if name_he else case_id,
         description=summary_he, canonical_path=f"ruling-{slug}.html",
         og_type="article", jsonld=jsonld,
+        og_image=card_url, og_image_size=(CARD_W, CARD_H),
     )
 
     # Detail grid (humanized Hebrew labels)
@@ -1937,7 +2345,9 @@ def render_ruling_page(r: dict) -> str:
     row("תוצאה", f'<span class="outcome-pill outcome-{_esc(outcome)}">'
                  f'{_esc(OUTCOME_LABELS_HE.get(outcome, outcome))}</span>')
     if r.get("vote_majority") is not None:
-        row("הצבעה", f'{_esc(r.get("vote_majority"))}–{_esc(r.get("vote_minority") or 0)}', rec=True)
+        # bdi isolate: majority first, not bidi-reversed (see _ruling_hero)
+        row("הצבעה", f'<bdi dir="ltr">{_esc(r.get("vote_majority"))}–'
+                     f'{_esc(r.get("vote_minority") or 0)}</bdi>', rec=True)
     if r.get("predicate_ag_opinion_he") or r.get("predicate_ag_opinion"):
         row("חוות-דעת היועמ\"ש שקדמה", _esc(r.get("predicate_ag_opinion_he") or r.get("predicate_ag_opinion")))
     if r.get("compliance_state"):
@@ -1979,10 +2389,10 @@ def render_ruling_page(r: dict) -> str:
                       f'<strong>{_esc(r["print_citation"])}</strong></p>')
     official = ""
     if r.get("official_url"):
-        # Only court.gov.il is the authoritative ruling; anything else (Versa,
-        # encyclopedia) is a secondary description and must not be mislabeled.
-        is_court = "court.gov.il" in r["official_url"]
-        label = "→ פסק הדין הרשמי" if is_court else "→ מקור מקוון (משני — אינו נוסח פסק הדין)"
+        # Only a .gov.il host carries the authoritative ruling; anything else
+        # (a newspaper, Versa) is a stand-in for a text that is not online, and
+        # the link must say so rather than promise "the official ruling".
+        label = "→ " + _official_label_he(r["official_url"])
         official = (f'<p><a class="source-link" href="{_esc(r["official_url"])}" '
                     f'target="_blank" rel="noopener">{label}</a></p>')
 
@@ -2021,7 +2431,8 @@ def render_ruling_page(r: dict) -> str:
     # data-spa on the toggle so it routes to this ruling's SPA view
     body = _spa_toggle(body, spa_url)
     body = _satirize_mqg(body)
-    return head + '\n<body>\n' + body + '\n</body>\n</html>\n'
+    return (head + '\n<body>\n' + _VISITOR_PIXEL_CONTENT + '\n' + body
+            + '\n</body>\n</html>\n')
 
 
 def _toc_slug(text: str) -> str:
@@ -2162,7 +2573,7 @@ def render_content_static_page(piece: dict, category: str) -> str:
     # small self-contained script for the content-map (mobile toggle +
     # scroll-spy). Neither re-renders the already-baked content.
     toc_script = _TOC_SCRIPT if toc_html else ""
-    return (head + '\n<body>\n' + body
+    return (head + '\n<body>\n' + _VISITOR_PIXEL_CONTENT + '\n' + body
             + '\n<script src="assets/app.js"></script>\n' + toc_script + '\n</body>\n</html>\n')
 
 
@@ -2362,7 +2773,7 @@ def prerender_home(rulings: list, corpus: dict) -> str:
             f'<div class="rrow-name">{_esc(r.get("case_name_he"))}</div></td>'
             f'<td><span class="outcome-pill outcome-{_esc(outcome)}">'
             f'{_esc(OUTCOME_LABELS_HE.get(outcome, outcome))}</span></td>'
-            f'<td class="col-num vote">{_esc(vote)}</td>'
+            f'<td class="col-num vote"><bdi dir="ltr">{_esc(vote)}</bdi></td>'
             f'<td class="col-soft">{_esc(doctrines)}</td>'
             f'<td class="col-soft">{_esc(r.get("petitioner_name_he"))}</td>'
             '</tr>')
@@ -2749,6 +3160,18 @@ def main() -> int:
     build_labels(OUT_DIR)
     print(f"✓ wrote {OUT_DIR/'labels.json'} (enum → human labels)")
 
+    kit = build_kits(SITE_DIR, rulings)
+    print(f"✓ wrote ruling-day kits for {kit['rulings']} rulings "
+          f"({kit['cards']} cards, {kit['posts']} post files) → "
+          f"{KITS_DIR.relative_to(REPO_ROOT)}/")
+    if kit["gaps"]:
+        print(f"  ⚠ {len(kit['gaps'])} ruling(s) with fields the record does "
+              f"not carry (rendered as “—”):")
+        for slug, fields in kit["gaps"]:
+            print(f"    · {slug}: {', '.join(fields)}")
+    else:
+        print("  · no missing card fields")
+
     n_static = build_static_pages(SITE_DIR, rulings, content_out)
     print(f"✓ wrote {n_static} prerendered static pages (ruling-*.html, reading-*.html)")
 
@@ -2768,4 +3191,15 @@ def main() -> int:
 
 
 if __name__ == "__main__":
+    # `--kit-only` regenerates just site/assets/kits/ (fast iteration on the
+    # cards); the plain build always runs the kit step too.
+    if "--kit-only" in sys.argv[1:]:
+        OUT_DIR.mkdir(parents=True, exist_ok=True)
+        _rulings = build_rulings(OUT_DIR)
+        _kit = build_kits(SITE_DIR, _rulings)
+        print(f"✓ wrote ruling-day kits for {_kit['rulings']} rulings "
+              f"({_kit['cards']} cards, {_kit['posts']} post files)")
+        for _slug, _fields in _kit["gaps"]:
+            print(f"    · {_slug}: {', '.join(_fields)}")
+        sys.exit(0)
     sys.exit(main())

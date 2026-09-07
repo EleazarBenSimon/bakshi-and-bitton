@@ -14,6 +14,7 @@ Exit code: 0 always (informational). Prints a summary of unreachable URLs.
 import json
 import sys
 import urllib.request
+import urllib.parse
 import urllib.error
 from pathlib import Path
 
@@ -26,7 +27,9 @@ UA = "Mozilla/5.0 (compatible; BakshiBitton-linkcheck/1.0; +https://eleazarbensi
 def reachable(url: str) -> tuple[bool, str]:
     for method in ("HEAD", "GET"):
         try:
-            req = urllib.request.Request(url, method=method, headers={"User-Agent": UA})
+            # IRIs (Hebrew paths, e.g. he.wikipedia) must be percent-encoded for http.client
+            safe_url = urllib.parse.quote(url, safe=":/?#[]@!$&'()*+,;=%")
+            req = urllib.request.Request(safe_url, method=method, headers={"User-Agent": UA})
             with urllib.request.urlopen(req, timeout=TIMEOUT) as resp:
                 if 200 <= resp.status < 400:
                     return True, str(resp.status)

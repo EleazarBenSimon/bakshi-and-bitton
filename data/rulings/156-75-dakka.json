@@ -41,7 +41,7 @@
     "shamgar"
   ],
   "minority_authors": [],
-  "official_url": "https://versa.cardozo.yu.edu/topics/judicial-reasonableness",
+  "official_url": "https://versa.cardozo.yu.edu/topics/constitutional-law",
   "secondary_urls": [
     "https://he.wikipedia.org/wiki/%D7%A2%D7%99%D7%9C%D7%AA_%D7%94%D7%A1%D7%91%D7%99%D7%A8%D7%95%D7%AA",
     "https://www.hamichlol.org.il/%D7%A2%D7%99%D7%9C%D7%AA_%D7%94%D7%A1%D7%91%D7%99%D7%A8%D7%95%D7%AA"
@@ -65,7 +65,7 @@
   "domain": "administrative-review-general",
   "competence_class": "acquisition",
   "adversarial_view": null,
-  "notes": "Pre-digital ruling: the 1976 judgment was published in the official law reports (פ\"ד ל(2) 94) and predates the Supreme Court's free online corpus (which begins ~1986). Its full Hebrew text is digitized in the commercial Nevo database (paywalled) but is NOT on the free court.gov.il corpus. The verbatim Hebrew passage in notes_he is transcribed from the official report (vol. 30(2), p. 101) and is public domain under the Israeli Copyright Act 2007 §6 (no copyright in judicial decisions). In Justice Shamgar's words: statutory powers — especially those bearing on individual rights — ought to be exercised reasonably, and an authority that fails this duty acts outside the scope of its authority; a regulation whose unreasonableness goes to the root of the matter is deemed to exceed its maker's authority and is null and void. (Transcribed from print; pending verification against the official report.)",
+  "notes": "Pre-digital ruling: the 1976 judgment was published in the official law reports (פ\"ד ל(2) 94) and predates the Supreme Court's free online corpus (which begins ~1986). Its full Hebrew text is digitized in the commercial Nevo database (paywalled) but is NOT on the free court.gov.il corpus. The verbatim Hebrew passage in notes_he is transcribed from the official report (vol. 30(2), p. 101) and is public domain under the Israeli Copyright Act 2007 §6 (no copyright in judicial decisions). In Justice Shamgar's words: statutory powers — especially those bearing on individual rights — ought to be exercised reasonably, and an authority that fails this duty acts outside the scope of its authority; a regulation whose unreasonableness goes to the root of the matter is deemed to exceed its maker's authority and is null and void. (Transcribed from print; pending verification against the official report.) [2026-09-07] official_url re-pointed from the dead Versa 'judicial-reasonableness' topic page (404) to Versa's live constitutional-law topic page, which cites Dakka; still NOT an official text — none exists online for free.",
   "notes_he": "פסק הדין משנת 1976 פורסם בפסקי-הדין הרשמיים (פ\"ד ל(2) 94) וקדם למאגר הפסיקה המקוון החופשי של בית המשפט העליון (המתחיל בסביבות 1986). הנוסח העברי המלא קיים במאגר נבו המסחרי (בתשלום) ואינו זמין במאגר החופשי court.gov.il. הקטע הבא הועתק מן הפסק הרשמי (כרך ל(2), עמ' 101) ומצוי בנחלת הכלל לפי סעיף 6 לחוק זכות יוצרים, התשס\"ז-2007 (אין זכות יוצרים בהחלטות שיפוטיות). לשון השופט שמגר: \"כללית יש להקדים ולקבוע כי סמכויות סטטוטוריות — ובעיקר אלה אשר להן נגיעה או זיקה לזכויות הפרט — מן הראוי שיופעלו באופן סביר. רשות הנמנעת מקיום חובה זו פועלת מחוץ לגדר סמכותה. מן הכלל לפרט: תקנה אשר דבקה בה האי־סבירות היורדת לשרשו של ענין, רואים אותה כחורגת מסמכותו של מי שהתקינה ובשל כך תיחשב כבטלה ומבוטלת.\"",
   "print_citation": "פ\"ד ל(2) 94 (1976)"
 }
