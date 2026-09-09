@@ -1705,6 +1705,105 @@ DOCTRINE_LABELS_EN = {
     "basic_law_government": "Basic Law: The Government",
     "basic_law_human_dignity_and_liberty": "Basic Law: Human Dignity and Liberty",
 }
+# English label maps. OUTCOME_LABELS_EN and DOCTRINE_LABELS_EN already
+# existed (the SPA needed them); these three close the remaining gaps so a
+# static English page carries no Hebrew chrome. RESPONDENT_* keys are already
+# English, so only the hyphenated ones need a display form.
+# Docket prefixes in English. The record's case_id is Hebrew ("בג\"ץ 5658/23");
+# an English page must not open its <title> with Hebrew, and these are the
+# standard English abbreviations used in Israeli legal writing.
+DOCKET_PREFIX_EN = {
+    'בג"ץ': "HCJ",      # High Court of Justice
+    'עע"ם': "AAA",      # Administrative Appeal
+    'ע"א': "CA",        # Civil Appeal
+}
+
+
+def _case_id_en(case_id: str) -> str:
+    """Render a Hebrew docket in its English abbreviation, leaving the number
+    untouched. Falls back to the original if the prefix is unrecognised —
+    a wrong-but-Hebrew docket is better than a silently mangled one."""
+    cid = (case_id or "").strip()
+    for he, en in DOCKET_PREFIX_EN.items():
+        if cid.startswith(he):
+            return (en + cid[len(he):]).strip()
+    return cid
+
+
+PETITIONER_TYPE_EN = {
+    "NGO": "Civil-society organization",
+    "individual": "Individual",
+    "political": "Political actor",
+    "local_authority": "Local authority",
+    "corporation": "Corporation",
+    "party": "Knesset faction",
+}
+COMPLIANCE_EN = {
+    "complied": "Complied",
+    "defied": "Not complied",
+    "partial": "Partially complied",
+    "pending": "Pending",
+    "moot": "Moot",
+}
+RESPONDENT_EN = {
+    "Local-Authority": "Local authority",
+    "Prime Minister": "Prime Minister",
+}
+
+# UI strings for the static pages, per language. The English side is copied
+# from app.js `i18n.en` wherever a key already exists there — the SPA has
+# rendered English for a long time and its wording is the established one;
+# duplicating it here (rather than inventing new phrasing) keeps the static
+# page and the interactive view saying the same thing. Keys marked NEW had no
+# equivalent in app.js. Keep in sync with app.js i18n.
+UI = {
+    "he": {
+        "ruling_date": "תאריך הפסיקה", "filing_date": "תאריך הגשה",
+        "petitioner_type": "סוג עותר", "petitioner": "עותר",
+        "respondent": "משיב", "respondent_body": "גוף נושא ההחלטה",
+        "appealed_decision": "ההחלטה המעורערת", "doctrine_invoked": "עילות שנטענו",
+        "outcome": "תוצאה", "vote": "הצבעה", "ag_opinion": "חוות-דעת היועמ\"ש שקדמה",
+        "compliance": "מצב יישום", "defiance": "סימני התנגדות", "tags": "תיוגים",
+        "panel": "הרכב", "secondary_sources": "מקורות משניים", "notes": "הערות",
+        "further_reading": "קריאה נוספת", "why_matters": "למה זה חשוב",
+        "quick_answer": "תשובה מהירה", "back_to_rulings": "← פסיקות",
+        "reading": "קריאה", "page_contents": "תוכן העמוד ▾",
+        "print_source": "מקור רשמי (בדפוס בלבד): ",
+        "justices": "שופטים", "vote_label": "הצבעה",
+        "lead_opinion": "חוות-הדעת המובילה:", "share": "שיתוף",
+        "share_colon": "שיתוף:", "email": "מייל",
+        "copy_link": "העתק קישור", "copied": "הועתק ✓",
+        "print_pdf": "הדפסה / PDF",
+        "full_interactive": "גרסה אינטראקטיבית מלאה / English →",
+    },
+    "en": {
+        # from app.js i18n.en
+        "ruling_date": "Ruling date", "filing_date": "Filing date",
+        "petitioner_type": "Petitioner type", "petitioner": "Petitioner",
+        "respondent": "Respondent", "respondent_body": "Decision-making body",
+        "doctrine_invoked": "Doctrine invoked", "outcome": "Outcome",
+        "vote": "Vote", "compliance": "Compliance status",
+        "defiance": "Defiance signals", "tags": "Tags", "panel": "Panel",
+        "notes": "Notes", "quick_answer": "Quick answer",
+        # NEW — no app.js equivalent
+        "appealed_decision": "Decision under review",
+        "ag_opinion": "Preceding Attorney-General opinion",
+        "secondary_sources": "Secondary sources",
+        "further_reading": "Further reading",
+        "why_matters": "Why this matters",
+        "back_to_rulings": "← Rulings",
+        "reading": "Reading", "page_contents": "On this page ▾",
+        "print_source": "Official source (print only): ",
+        "justices": "justices", "vote_label": "Vote",
+        "lead_opinion": "Lead opinion:", "share": "Share",
+        "share_colon": "Share:", "email": "Email",
+        "copy_link": "Copy link", "copied": "Copied ✓",
+        "print_pdf": "Print / PDF",
+        "full_interactive": "Full interactive version / עברית →",
+    },
+}
+
+
 PETITIONER_TYPE_HE = {
     "NGO": "ארגון חברה אזרחית",
     "individual": "יחיד/ה",
@@ -2120,27 +2219,35 @@ def _esc(s) -> str:
 def _page_head(title_he: str, description: str, canonical_path: str,
                og_type: str = "website", jsonld: dict | None = None,
                og_image: str = OG_IMAGE,
-               og_image_size: tuple | None = None) -> str:
+               og_image_size: tuple | None = None,
+               lang: str = "he",
+               alternate_path: str | None = None) -> str:
     """Full <head> with localized title, description, OG, Twitter, canonical,
     favicon, and optional JSON-LD. `og_image_size` is the (w, h) of `og_image`
     — declared only when known, since the default card and the per-ruling kit
     cards are different sizes."""
     canonical = f"{SITE_BASE_URL}/{canonical_path}"
     desc = " ".join((description or "").split())[:300]
+    # English pages live one directory down (/en/...), so every relative
+    # reference in the head needs to climb back out. Hebrew keeps the bare
+    # relative paths it has always used, so its output is unchanged.
+    rp = "../" if canonical_path.startswith("en/") else ""
+    is_en = lang == "en"
     parts = [
         '<!DOCTYPE html>',
-        '<html lang="he" dir="rtl">',
+        '<html lang="en" dir="ltr">' if is_en else '<html lang="he" dir="rtl">',
         '<head>',
         '<meta charset="UTF-8">',
         '<meta name="viewport" content="width=device-width, initial-scale=1">',
-        f'<title>{_esc(title_he)} · בקשי&amp;ביטון</title>',
+        (f'<title>{_esc(title_he)} · Bakshi&amp;Bitton</title>' if is_en
+         else f'<title>{_esc(title_he)} · בקשי&amp;ביטון</title>'),
         f'<meta name="description" content="{_esc(desc)}">',
         # Let search engines show a large image preview (Discover eligibility)
         '<meta name="robots" content="max-image-preview:large">',
         f'<link rel="canonical" href="{_esc(canonical)}">',
-        '<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">',
-        '<link rel="stylesheet" href="assets/style.css">',
-        '<link rel="alternate" type="application/rss+xml" title="Bakshi&Bitton — new rulings" href="feed.xml">',
+        f'<link rel="icon" href="{rp}assets/favicon.svg" type="image/svg+xml">',
+        f'<link rel="stylesheet" href="{rp}assets/style.css">',
+        f'<link rel="alternate" type="application/rss+xml" title="Bakshi&Bitton — new rulings" href="{rp}feed.xml">',
         f'<meta property="og:type" content="{og_type}">',
         f'<meta property="og:site_name" content="Bakshi&amp;Bitton · בקשי&amp;ביטון">',
         f'<meta property="og:title" content="{_esc(title_he)}">',
@@ -2148,14 +2255,27 @@ def _page_head(title_he: str, description: str, canonical_path: str,
         f'<meta property="og:url" content="{_esc(canonical)}">',
         f'<meta property="og:image" content="{_esc(og_image)}">',
     ]
+    # Reciprocal hreflang. Google ignores one-way or non-self-referencing
+    # annotations, so each page names BOTH itself and its sibling, and
+    # x-default points at Hebrew — the primary edition.
+    if alternate_path is not None:
+        he_path = f"{canonical_path}" if not is_en else alternate_path
+        en_path = f"{alternate_path}" if not is_en else canonical_path
+        parts += [
+            f'<link rel="alternate" hreflang="he" href="{SITE_BASE_URL}/{_esc(he_path)}">',
+            f'<link rel="alternate" hreflang="en" href="{SITE_BASE_URL}/{_esc(en_path)}">',
+            f'<link rel="alternate" hreflang="x-default" href="{SITE_BASE_URL}/{_esc(he_path)}">',
+        ]
     if og_image_size:
         parts += [
             f'<meta property="og:image:width" content="{int(og_image_size[0])}">',
             f'<meta property="og:image:height" content="{int(og_image_size[1])}">',
         ]
     parts += [
-        '<meta property="og:locale" content="he_IL">',
-        '<meta property="og:locale:alternate" content="en_US">',
+        ('<meta property="og:locale" content="en_US">' if is_en
+         else '<meta property="og:locale" content="he_IL">'),
+        ('<meta property="og:locale:alternate" content="he_IL">' if is_en
+         else '<meta property="og:locale:alternate" content="en_US">'),
         '<meta name="twitter:card" content="summary_large_image">',
         # Attribution handles: these are what make a shared card say "via
         # @EleazarBenSimon" instead of showing an unattributed box. Both point
@@ -2175,43 +2295,70 @@ def _page_head(title_he: str, description: str, canonical_path: str,
     return "\n".join(parts)
 
 
-def _static_header(active: str) -> str:
-    """Static Hebrew header matching app.js renderHeader markup. The EN toggle
-    routes to the interactive SPA (which holds the bilingual rendering)."""
+def _static_header(active: str, lang: str = "he") -> str:
+    """Static header matching app.js renderHeader markup. In Hebrew the
+    language button routes to the interactive SPA (which holds the bilingual
+    rendering); in English it is a plain link back to the Hebrew edition of the
+    same page, because /en/ pages are real documents, not an SPA state."""
+    en = lang == "en"
+    rp = "../" if en else ""
     def nav(href, label, key):
         style = ' style="font-weight:600;color:var(--accent)"' if key == active else ''
-        return f'<a href="{href}"{style}>{label}</a>'
+        return f'<a href="{rp}{href}"{style}>{label}</a>'
+    nav_items = ([("index.html", "Rulings", "rulings"),
+                  ("reading.html", "Reading", "reading"),
+                  ("justices.html", "Justices", "justices"),
+                  ("tags.html", "Topics", "tags"),
+                  ("timeline.html", "Timeline", "timeline"),
+                  ("reading-power-structure.html", "Power structure", "structure"),
+                  ("cite.html", "Cite & share", "cite"),
+                  ("about.html", "About", "about")]
+                 if en else
+                 [("index.html", "פסיקות", "rulings"),
+                  ("reading.html", "קריאה", "reading"),
+                  ("justices.html", "שופטים", "justices"),
+                  ("tags.html", "נושאים", "tags"),
+                  ("timeline.html", "ציר זמן", "timeline"),
+                  ("reading-power-structure.html", "מבנה הכוח", "structure"),
+                  ("cite.html", "ציטוט והפצה", "cite"),
+                  ("about.html", "אודות", "about")])
+    logo_sub = ("Israeli Supreme Court rulings on government decisions and appointments"
+                if en else "פסיקות בית המשפט העליון בעניין החלטות ממשלה ומינויים")
+    logo_txt = "Bakshi&amp;Bitton" if en else "בקשי&amp;ביטון"
+    # The language control: a real <a> in English (crawlable, and the
+    # counterpart of the hreflang pair); the existing SPA button in Hebrew.
+    lang_ctl = ('<a class="lang-toggle" href="" data-he="1">עברית</a>' if en else
+                '<button class="lang-toggle" onclick="localStorage.setItem(\'bakshi-and-bitton-lang\',\'en\');'
+                'location.href=this.dataset.spa">EN</button>')
     return (
         '<header><div class="header-inner">'
-        '<div><a class="logo" href="index.html">בקשי&amp;ביטון'
-        '<span class="logo-sub">פסיקות בית המשפט העליון בעניין החלטות ממשלה ומינויים</span>'
+        f'<div><a class="logo" href="{rp}index.html">{logo_txt}'
+        f'<span class="logo-sub">{logo_sub}</span>'
         '</a></div>'
         '<nav>'
-        + nav("index.html", "פסיקות", "rulings")
-        + nav("reading.html", "קריאה", "reading")
-        + nav("justices.html", "שופטים", "justices")
-        + nav("tags.html", "נושאים", "tags")
-        + nav("timeline.html", "ציר זמן", "timeline")
-        + nav("reading-power-structure.html", "מבנה הכוח", "structure")
-        + nav("cite.html", "ציטוט והפצה", "cite")
-        + nav("about.html", "אודות", "about")
+        + "".join(nav(h, l, k) for h, l, k in nav_items)
         + '</nav>'
-        '<button class="lang-toggle" onclick="localStorage.setItem(\'bakshi-and-bitton-lang\',\'en\');'
-        'location.href=this.dataset.spa">EN</button>'
-        '</div></header>'
+        + lang_ctl
+        + '</div></header>'
     )
 
 
-_STATIC_FOOTER = (
-    '<footer>Bakshi&Bitton · '
-    '<a href="https://github.com/EleazarBenSimon/bakshi-and-bitton">github.com/EleazarBenSimon/bakshi-and-bitton</a>'
-    ' · MIT License · '
-    '<a href="https://github.com/EleazarBenSimon/bakshi-and-bitton/blob/main/METHODOLOGY.md">מתודולוגיה</a>'
-    '</footer>'
-)
+def _static_footer(lang: str = "he") -> str:
+    label = "Methodology" if lang == "en" else "מתודולוגיה"
+    return (
+        '<footer>Bakshi&Bitton · '
+        '<a href="https://github.com/EleazarBenSimon/bakshi-and-bitton">github.com/EleazarBenSimon/bakshi-and-bitton</a>'
+        ' · MIT License · '
+        f'<a href="https://github.com/EleazarBenSimon/bakshi-and-bitton/blob/main/METHODOLOGY.md">{label}</a>'
+        '</footer>'
+    )
 
 
-def _share_bar(canonical: str, share_title: str) -> str:
+_STATIC_FOOTER = _static_footer("he")
+
+
+def _share_bar(canonical: str, share_title: str, lang: str = "he") -> str:
+    L = UI[lang]
     """Static, tracker-free share bar for the canonical landing pages: intent
     URLs only (no third-party widgets or scripts); copy + print use tiny inline
     handlers. Hebrew labels match the prerendered (he) pages and reuse the
@@ -2221,24 +2368,24 @@ def _share_bar(canonical: str, share_title: str) -> str:
     ttl_u = quote(share_title + " — " + canonical, safe="")
     copy_js = (
         "var b=this;navigator.clipboard&&navigator.clipboard.writeText(b.dataset.url);"
-        "b.classList.add('copied');b.textContent='הועתק ✓';"
+        "b.classList.add('copied');b.textContent='"+L["copied"]+"';"
         "setTimeout(function(){b.classList.remove('copied');"
-        "b.textContent='העתק קישור';},2000);return false;"
+        "b.textContent='"+L["copy_link"]+"';},2000);return false;"
     )
     return (
-        '<div class="share-bar" aria-label="שיתוף">'
-        '<span class="share-label">שיתוף:</span>'
+        f'<div class="share-bar" aria-label="{L["share"]}">'
+        f'<span class="share-label">{L["share_colon"]}</span>'
         '<a class="share-btn" target="_blank" rel="noopener" '
         f'href="https://x.com/intent/post?text={ttl}&amp;url={u}">X</a>'
         '<a class="share-btn" target="_blank" rel="noopener" '
         f'href="https://bsky.app/intent/compose?text={ttl_u}">Bluesky</a>'
         '<a class="share-btn" target="_blank" rel="noopener" '
         f'href="https://wa.me/?text={ttl_u}">WhatsApp</a>'
-        f'<a class="share-btn" href="mailto:?subject={ttl}&amp;body={ttl_u}">מייל</a>'
+        f'<a class="share-btn" href="mailto:?subject={ttl}&amp;body={ttl_u}">{L["email"]}</a>'
         f'<button type="button" class="share-btn" data-url="{_esc(canonical)}" '
-        f'onclick="{copy_js}">העתק קישור</button>'
+        f'onclick="{copy_js}">{L["copy_link"]}</button>'
         '<button type="button" class="share-btn" '
-        'onclick="window.print();return false;">הדפסה / PDF</button>'
+        f'onclick="window.print();return false;">{L["print_pdf"]}</button>'
         '</div>'
     )
 
@@ -2272,48 +2419,61 @@ _VISITOR_PIXEL_CONTENT = (
 )
 
 
-def _ruling_hero(r: dict) -> str:
+def _ruling_hero(r: dict, lang: str = "he") -> str:
     """Bold public-facing hero atop each ruling page: the verdict in large type,
     the case, the sharp summary, and a stat strip foregrounding WHO acted —
     panel size, vote, and the justices who authored the lead opinion."""
+    L = UI[lang]
+    en = lang == "en"
     outcome = r.get("outcome", "")
-    label = OUTCOME_LABELS_HE.get(outcome, outcome)
+    label = (OUTCOME_LABELS_EN if en else OUTCOME_LABELS_HE).get(outcome, outcome)
     panel = r.get("panel") or []
     n = len(panel)
-    slug2name = {j.get("slug"): j.get("name_he") for j in panel}
+    slug2name = {j.get("slug"): ((j.get("name_en") or j.get("name_he")) if en else j.get("name_he")) for j in panel}
     leads = [slug2name.get(s, s) for s in (r.get("majority_authors") or []) if slug2name.get(s, s)]
     stats = []
     if n:
-        stats.append(f'<span class="rh-stat"><b>{n}</b> שופטים</span>')
+        stats.append(f'<span class="rh-stat"><b>{n}</b> {L["justices"]}</span>')
     if r.get("vote_majority") is not None:
         # <bdi dir="ltr">: inside RTL text the en dash between two digits makes
         # bidi resolve the pair right-to-left, so "2–1" would display as "1–2"
         # — inverting majority and minority. The isolate pins majority-first.
-        stats.append(f'<span class="rh-stat">הצבעה <b><bdi dir="ltr">'
+        stats.append(f'<span class="rh-stat">{L["vote_label"]} <b><bdi dir="ltr">'
                      f'{_esc(r.get("vote_majority"))}–{_esc(r.get("vote_minority") or 0)}'
                      f'</bdi></b></span>')
     if leads:
-        stats.append(f'<span class="rh-stat">חוות-הדעת המובילה: <b>{_esc(", ".join(leads))}</b></span>')
+        stats.append(f'<span class="rh-stat">{L["lead_opinion"]} <b>{_esc(", ".join(leads))}</b></span>')
     stat_html = ('<div class="rh-stats">' + "".join(stats) + '</div>') if stats else ''
     return (
         '<div class="ruling-hero">'
         f'<span class="rh-verdict outcome-pill outcome-{_esc(outcome)}">{_esc(label)}</span>'
-        f'<h1 class="rh-case">{_esc(r.get("case_id", ""))}</h1>'
-        f'<p class="rh-name">{_esc(r.get("case_name_he", ""))}</p>'
-        f'<p class="rh-summary">{_esc(r.get("summary_he", ""))}</p>'
+        f'<h1 class="rh-case">{_esc(_case_id_en(r.get("case_id", "")) if en else r.get("case_id", ""))}</h1>'
+        f'<p class="rh-name">{_esc((r.get("case_name_en") or r.get("case_name_he", "")) if en else r.get("case_name_he", ""))}</p>'
+        f'<p class="rh-summary">{_esc((r.get("summary_en") or r.get("summary_he", "")) if en else r.get("summary_he", ""))}</p>'
         f'{stat_html}'
         '</div>'
     )
 
 
-def render_ruling_page(r: dict) -> str:
+def render_ruling_page(r: dict, lang: str = "he") -> str:
+    """Static ruling page. `lang` selects the edition: Hebrew keeps the
+    long-standing top-level URL (those URLs are already indexed and GitHub
+    Pages has no redirects, so they are effectively permanent); English is
+    emitted alongside it under /en/ from the summary_en / *_en fields the
+    build has always computed and, until now, discarded at render time."""
+    L = UI[lang]
+    en = lang == "en"
     slug = r.get("case_id_slug", "")
     case_id = r.get("case_id", "")
-    name_he = r.get("case_name_he", "")
-    summary_he = r.get("summary_he", "")
-    spa_url = f"ruling.html?id={slug}"
+    if lang == "en":
+        case_id = _case_id_en(case_id)
+    name_he = (r.get("case_name_en") or r.get("case_name_he", "")) if en else r.get("case_name_he", "")
+    summary_he = (r.get("summary_en") or r.get("summary_he", "")) if en else r.get("summary_he", "")
+    prefix = "en/" if en else ""
+    rp = "../" if en else ""
+    spa_url = f"{rp}ruling.html?id={slug}"
     # The ruling's own share card is this page's social preview.
-    card_url = kit_card_url(slug, "he")
+    card_url = kit_card_url(slug, lang)
 
     # JSON-LD: model each ruling as an Article about a legal decision, with the
     # official ruling as isBasedOn (provenance).
@@ -2321,9 +2481,9 @@ def render_ruling_page(r: dict) -> str:
         "@context": "https://schema.org",
         "@type": "Article",
         "headline": f"{case_id} — {name_he}",
-        "inLanguage": "he",
+        "inLanguage": lang,
         "datePublished": r.get("ruling_date", ""),
-        "url": f"{SITE_BASE_URL}/ruling-{slug}.html",
+        "url": f"{SITE_BASE_URL}/{prefix}ruling-{slug}.html",
         "image": card_url,
         "isPartOf": {"@type": "Dataset", "name": "Bakshi&Bitton",
                      "url": f"{SITE_BASE_URL}/"},
@@ -2338,7 +2498,8 @@ def render_ruling_page(r: dict) -> str:
 
     head = _page_head(
         title_he=f"{case_id} — {name_he}" if name_he else case_id,
-        description=summary_he, canonical_path=f"ruling-{slug}.html",
+        description=summary_he, canonical_path=f"{prefix}ruling-{slug}.html", lang=lang,
+        alternate_path=(f"ruling-{slug}.html" if en else f"en/ruling-{slug}.html"),
         og_type="article", jsonld=jsonld,
         og_image=card_url, og_image_size=(CARD_W, CARD_H),
     )
@@ -2354,34 +2515,35 @@ def render_ruling_page(r: dict) -> str:
             return
         cls = ' class="rec"' if rec else ''
         rows.append(f"<dt>{_esc(label)}</dt><dd{cls}>{value}</dd>")
-    row("תאריך הפסיקה", _esc(r.get("ruling_date")), rec=True)
+    row(L["ruling_date"], _esc(r.get("ruling_date")), rec=True)
     if r.get("filing_date"):
-        row("תאריך הגשה", _esc(r["filing_date"]), rec=True)
-    row("סוג עותר", _esc(PETITIONER_TYPE_HE.get(r.get("petitioner_type"), r.get("petitioner_type"))))
-    row("עותר", _esc(r.get("petitioner_name_he")), rec=True)
-    resp = RESPONDENT_HE.get(r.get("respondent"), r.get("respondent"))
-    row("משיב", _esc(resp), rec=True)
-    if r.get("respondent_body_he") or r.get("respondent_body"):
-        row("גוף נושא ההחלטה", _esc(r.get("respondent_body_he") or r.get("respondent_body")), rec=True)
-    if r.get("respondent_decision_he"):
-        row("ההחלטה המעורערת", _esc(r["respondent_decision_he"]))
-    doctrines = ", ".join(DOCTRINE_LABELS_HE.get(d, d) for d in (r.get("doctrine_invoked") or []))
-    row("עילות שנטענו", _esc(doctrines), rec=True)
+        row(L["filing_date"], _esc(r["filing_date"]), rec=True)
+    row(L["petitioner_type"], _esc((PETITIONER_TYPE_EN if en else PETITIONER_TYPE_HE).get(r.get("petitioner_type"), r.get("petitioner_type"))))
+    row(L["petitioner"], _esc((r.get("petitioner_name_en") or r.get("petitioner_name_he")) if en else r.get("petitioner_name_he")), rec=True)
+    resp = (RESPONDENT_EN.get(r.get("respondent"), r.get("respondent")) if en
+            else RESPONDENT_HE.get(r.get("respondent"), r.get("respondent")))
+    row(L["respondent"], _esc(resp), rec=True)
+    if (r.get("respondent_body") if en else (r.get("respondent_body_he") or r.get("respondent_body"))):
+        row(L["respondent_body"], _esc((r.get("respondent_body") if en else (r.get("respondent_body_he") or r.get("respondent_body")))), rec=True)
+    if (r.get("respondent_decision_en") if en else r.get("respondent_decision_he")):
+        row(L["appealed_decision"], _esc((r.get("respondent_decision_en") or r["respondent_decision_he"]) if en else r["respondent_decision_he"]))
+    doctrines = ", ".join((DOCTRINE_LABELS_EN if en else DOCTRINE_LABELS_HE).get(d, d) for d in (r.get("doctrine_invoked") or []))
+    row(L["doctrine_invoked"], _esc(doctrines), rec=True)
     outcome = r.get("outcome", "")
-    row("תוצאה", f'<span class="outcome-pill outcome-{_esc(outcome)}">'
-                 f'{_esc(OUTCOME_LABELS_HE.get(outcome, outcome))}</span>')
+    row(L["outcome"], f'<span class="outcome-pill outcome-{_esc(outcome)}">'
+                 f'{_esc((OUTCOME_LABELS_EN if en else OUTCOME_LABELS_HE).get(outcome, outcome))}</span>')
     if r.get("vote_majority") is not None:
         # bdi isolate: majority first, not bidi-reversed (see _ruling_hero)
-        row("הצבעה", f'<bdi dir="ltr">{_esc(r.get("vote_majority"))}–'
+        row(L["vote"], f'<bdi dir="ltr">{_esc(r.get("vote_majority"))}–'
                      f'{_esc(r.get("vote_minority") or 0)}</bdi>', rec=True)
-    if r.get("predicate_ag_opinion_he") or r.get("predicate_ag_opinion"):
-        row("חוות-דעת היועמ\"ש שקדמה", _esc(r.get("predicate_ag_opinion_he") or r.get("predicate_ag_opinion")))
+    if (r.get("predicate_ag_opinion") if en else (r.get("predicate_ag_opinion_he") or r.get("predicate_ag_opinion"))):
+        row(L["ag_opinion"], _esc((r.get("predicate_ag_opinion") if en else (r.get("predicate_ag_opinion_he") or r.get("predicate_ag_opinion")))))
     if r.get("compliance_state"):
-        row("מצב יישום", _esc(COMPLIANCE_HE.get(r["compliance_state"], r["compliance_state"])))
-    if r.get("defiance_signals_he") or r.get("defiance_signals"):
-        row("סימני התנגדות", _esc(r.get("defiance_signals_he") or r.get("defiance_signals")))
+        row(L["compliance"], _esc((COMPLIANCE_EN if en else COMPLIANCE_HE).get(r["compliance_state"], r["compliance_state"])))
+    if (r.get("defiance_signals") if en else (r.get("defiance_signals_he") or r.get("defiance_signals"))):
+        row(L["defiance"], _esc((r.get("defiance_signals") if en else (r.get("defiance_signals_he") or r.get("defiance_signals")))))
     if r.get("tags"):
-        row("תיוגים", _esc(", ".join(r["tags"])))
+        row(L["tags"], _esc(", ".join(r["tags"])))
     grid = '<dl class="ruling-detail-grid">' + "".join(rows) + '</dl>'
 
     # Panel
@@ -2391,67 +2553,68 @@ def render_ruling_page(r: dict) -> str:
     for j in r.get("panel", []):
         sl = j.get("slug")
         klass = "author-majority" if sl in maj else ("author-minority" if sl in minset else "")
-        nm = _esc(j.get("name_he"))
+        nm = _esc((j.get("name_en") or j.get("name_he")) if en else j.get("name_he"))
         linkable = sl and not sl.startswith("unverified")
-        link = f'<a href="justice.html?slug={_esc(sl)}">{nm}</a>' if linkable else nm
+        link = f'<a href="{rp}justice.html?slug={_esc(sl)}">{nm}</a>' if linkable else nm
         panel_items.append(f'<li class="{klass}">{link}</li>')
-    panel = ('<h2>הרכב</h2><ul class="panel-list">' + "".join(panel_items) + '</ul>')
+    panel = (f'<h2>{L["panel"]}</h2><ul class="panel-list">' + "".join(panel_items) + '</ul>')
 
     secondary = ""
     if r.get("secondary_urls"):
         lis = "".join(f'<li><a href="{_esc(u)}" target="_blank" rel="noopener">{_esc(u)}</a></li>'
                       for u in r["secondary_urls"])
-        secondary = f'<h2>מקורות משניים</h2><ul>{lis}</ul>'
+        secondary = f'<h2>{L["secondary_sources"]}</h2><ul>{lis}</ul>'
 
     notes = ""
-    notes_txt = r.get("notes_he") or r.get("notes")
+    notes_txt = r.get("notes") if en else (r.get("notes_he") or r.get("notes"))
     if notes_txt:
-        notes = f'<h2>הערות</h2><div class="notes-box">{_esc(notes_txt)}</div>'
+        notes = f'<h2>{L["notes"]}</h2><div class="notes-box">{_esc(notes_txt)}</div>'
 
 
     print_cite = ""
     if r.get("print_citation"):
-        print_cite = (f'<p class="print-citation">מקור רשמי (בדפוס בלבד): '
+        print_cite = (f'<p class="print-citation">{L["print_source"]}'
                       f'<strong>{_esc(r["print_citation"])}</strong></p>')
     official = ""
     if r.get("official_url"):
         # Only a .gov.il host carries the authoritative ruling; anything else
         # (a newspaper, Versa) is a stand-in for a text that is not online, and
         # the link must say so rather than promise "the official ruling".
-        label = "→ " + _official_label_he(r["official_url"])
+        label = ("→ Official ruling" if en else "→ " + _official_label_he(r["official_url"]))
         official = (f'<p><a class="source-link" href="{_esc(r["official_url"])}" '
                     f'target="_blank" rel="noopener">{label}</a></p>')
 
     comic = ""
     if r.get("comic"):
-        comic = (f'<p class="ruling-comic-link"><a href="{_esc(r["comic"]["url"])}">'
-                 f'🖼 {_esc(r["comic"]["title_he"])} →</a></p>')
+        comic = (f'<p class="ruling-comic-link"><a href="{rp}{_esc(r["comic"]["url"])}">'
+                 f'🖼 {_esc(r["comic"]["title_en"] if en else r["comic"]["title_he"])} →</a></p>')
 
     related = ""
     if r.get("related_content"):
-        cats = {"essays": "מאמר", "explainers": "הסבר", "patterns": "תיעוד דפוס"}
+        cats = ({"essays": "Essay", "explainers": "Explainer", "patterns": "Pattern"} if en
+                else {"essays": "מאמר", "explainers": "הסבר", "patterns": "תיעוד דפוס"})
         items = "".join(
-            f'<li><a href="reading-{_esc(p["slug"])}.html">{_esc(p["title_he"])}</a>'
+            f'<li><a href="{rp}{prefix}reading-{_esc(p["slug"])}.html">{_esc(p["title_en"] if en else p["title_he"])}</a>'
             f' <span style="color:var(--text-muted);font-size:12px">· {_esc(cats.get(p["category"], p["category"]))}</span></li>'
             for p in r["related_content"])
-        related = f'<h2>קריאה נוספת</h2><ul class="related-reading">{items}</ul>'
+        related = f'<h2>{L["further_reading"]}</h2><ul class="related-reading">{items}</ul>'
 
     why = ""
-    wm_he = r.get("why_matters_he")
+    wm_he = (r.get("why_matters_en") or r.get("why_matters_he")) if en else r.get("why_matters_he")
     if wm_he:
         why = ('<details class="why-matters" open>'
-               '<summary>למה זה חשוב</summary>'
+               f'<summary>{L["why_matters"]}</summary>'
                f'<div class="why-matters-body">{_esc(wm_he)}</div></details>')
 
     body = (
-        f'<div id="root">{_static_header("rulings")}<main>'
-        f'<p><a href="index.html">← פסיקות</a></p>'
-        f'{_ruling_hero(r)}'
+        f'<div id="root">{_static_header("rulings", lang)}<main>'
+        f'<p><a href="{rp}index.html">{L["back_to_rulings"]}</a></p>'
+        f'{_ruling_hero(r, lang)}'
         f'{why}'
         f'{comic}{print_cite}{official}{grid}{panel}{secondary}{notes}{related}'
         f'<p style="margin-top:24px;font-size:14px"><a href="{_esc(spa_url)}">'
-        f'גרסה אינטראקטיבית מלאה / English →</a></p>'
-        f'{_share_bar(f"{SITE_BASE_URL}/ruling-{slug}.html", (case_id + " — " + name_he) if name_he else case_id)}'
+        f'{L["full_interactive"]}</a></p>'
+        f'{_share_bar(f"{SITE_BASE_URL}/{prefix}ruling-{slug}.html", (case_id + " — " + name_he) if name_he else case_id, lang)}'
         f'</main>{_STATIC_FOOTER}</div>'
     )
     # data-spa on the toggle so it routes to this ruling's SPA view
@@ -2543,22 +2706,31 @@ _TOC_SCRIPT = (
 )
 
 
-def render_content_static_page(piece: dict, category: str) -> str:
+def render_content_static_page(piece: dict, category: str, lang: str = "he") -> str:
+    L = UI[lang]
+    en = lang == "en"
+    prefix = "en/" if en else ""
+    rp = "../" if en else ""
     slug = piece.get("slug", "")
-    title_he = piece.get("title_he") or piece.get("title") or slug
-    summary_he = piece.get("summary_he") or piece.get("summary") or ""
-    body_html = piece.get("body_html_he") or piece.get("body_html") or ""
-    spa_url = f"content.html?slug={slug}"
-    badge = {"essays": "מאמר", "explainers": "הסבר", "patterns": "תיעוד דפוס",
-             "structure": "מבנה הכוח"}.get(category, category)
+    title_he = ((piece.get("title_en") or piece.get("title")) if en
+                else (piece.get("title_he") or piece.get("title"))) or slug
+    summary_he = ((piece.get("summary_en") or piece.get("summary")) if en
+                  else (piece.get("summary_he") or piece.get("summary"))) or ""
+    body_html = ((piece.get("body_html_en") or piece.get("body_html")) if en
+                 else (piece.get("body_html_he") or piece.get("body_html"))) or ""
+    spa_url = f"{rp}content.html?slug={slug}"
+    badge = ({"essays": "Essay", "explainers": "Explainer", "patterns": "Pattern",
+              "structure": "Power structure"} if en else
+             {"essays": "מאמר", "explainers": "הסבר", "patterns": "תיעוד דפוס",
+              "structure": "מבנה הכוח"}).get(category, category)
 
     jsonld = {
         "@context": "https://schema.org",
         "@type": "Article",
         "headline": title_he,
-        "inLanguage": "he",
+        "inLanguage": lang,
         "datePublished": piece.get("date", ""),
-        "url": f"{SITE_BASE_URL}/reading-{slug}.html",
+        "url": f"{SITE_BASE_URL}/{prefix}reading-{slug}.html",
         "image": OG_IMAGE,
         "author": AUTHOR_NODE,
         "publisher": {"@type": "Organization", "name": "Bakshi&Bitton",
@@ -2567,14 +2739,15 @@ def render_content_static_page(piece: dict, category: str) -> str:
         "abstract": summary_he,
     }
     head = _page_head(title_he=title_he, description=summary_he,
-                      canonical_path=f"reading-{slug}.html",
+                      canonical_path=f"{prefix}reading-{slug}.html", lang=lang,
+                      alternate_path=(f"reading-{slug}.html" if en else f"en/reading-{slug}.html"),
                       og_type="article", jsonld=jsonld)
-    qa = (f'<aside class="quick-answer"><div class="quick-answer-label">תשובה מהירה</div>'
+    qa = (f'<aside class="quick-answer"><div class="quick-answer-label">{L["quick_answer"]}</div>'
           f'<p class="quick-answer-body" dir="auto">{_esc(summary_he)}</p></aside>') if summary_he else ""
     # Content-map: inject heading ids + build the same sidebar the SPA shows,
     # so the static SEO page and the interactive view match.
     body_html, toc_html = _content_toc(body_html, "he")
-    toc_btn = ('<button type="button" class="toc-mobile-toggle">תוכן העמוד ▾</button>'
+    toc_btn = (f'<button type="button" class="toc-mobile-toggle">{L["page_contents"]}</button>'
                if toc_html else "")
     article = (
         f'<article class="content-article" dir="auto">'
@@ -2591,8 +2764,8 @@ def render_content_static_page(piece: dict, category: str) -> str:
     inner = f'<div class="content-layout">{article}{toc_html}</div>' if toc_html else article
     body = (
         f'<div id="root">{_static_header("structure" if category == "structure" else "reading")}<main>'
-        f'<p class="breadcrumb"><a href="reading.html">קריאה</a> / {_esc(badge)}</p>'
-        f'{inner}</main>{_STATIC_FOOTER}</div>'
+        f'<p class="breadcrumb"><a href="{rp}reading.html">{L["reading"]}</a> / {_esc(badge)}</p>'
+        f'{inner}</main>{_static_footer(lang)}</div>'
     )
     body = _spa_toggle(body, spa_url)
     body = _satirize_mqg(body)
@@ -2606,21 +2779,41 @@ def render_content_static_page(piece: dict, category: str) -> str:
 
 
 def build_static_pages(site_dir: Path, rulings: list, content: dict) -> int:
+    """Emit both editions. Hebrew keeps its existing top-level URLs untouched —
+    they are indexed, and GitHub Pages has no server redirects, so a URL once
+    published is permanent. English is additive, under /en/.
+
+    The English bodies are not new content: build_content() has always produced
+    body_html_en, and every ruling carries summary_en / case_name_en. Until now
+    the renderers computed them and threw them away, so ~248k characters of
+    finished English reached no crawler that doesn't run JavaScript — which is
+    all of them except Googlebot and Applebot."""
     n = 0
+    en_dir = site_dir / "en"
+    en_dir.mkdir(parents=True, exist_ok=True)
     for r in rulings:
         slug = r.get("case_id_slug")
         if not slug:
             continue
-        (site_dir / f"ruling-{slug}.html").write_text(render_ruling_page(r), encoding="utf-8")
+        (site_dir / f"ruling-{slug}.html").write_text(
+            render_ruling_page(r, "he"), encoding="utf-8")
         n += 1
+        if (r.get("summary_en") or "").strip():
+            (en_dir / f"ruling-{slug}.html").write_text(
+                render_ruling_page(r, "en"), encoding="utf-8")
+            n += 1
     for category, pieces in content.items():
         for piece in pieces:
             slug = piece.get("slug")
             if not slug:
                 continue
             (site_dir / f"reading-{slug}.html").write_text(
-                render_content_static_page(piece, category), encoding="utf-8")
+                render_content_static_page(piece, category, "he"), encoding="utf-8")
             n += 1
+            if (piece.get("body_html_en") or "").strip():
+                (en_dir / f"reading-{slug}.html").write_text(
+                    render_content_static_page(piece, category, "en"), encoding="utf-8")
+                n += 1
     return n
 
 
@@ -3020,6 +3213,23 @@ def build_sitemap(site_dir: Path, rulings: list, content: dict, justices: list) 
                 if src:
                     lastmods[f"reading-{slug}.html"] = _git_lastmod(src)
 
+    # The English edition. Additive only — every Hebrew URL above keeps its
+    # place, and each English URL carries the same lastmod as its Hebrew
+    # sibling because both are generated from the same source record.
+    en_urls = []
+    for r in rulings:
+        slug = r.get("case_id_slug")
+        if slug and (r.get("summary_en") or "").strip():
+            en_urls.append(f"en/ruling-{slug}.html")
+            lastmods[f"en/ruling-{slug}.html"] = lastmods.get(f"ruling-{slug}.html")
+    for pieces in content.values():
+        for pc in pieces:
+            slug = pc.get("slug")
+            if slug and (pc.get("body_html_en") or "").strip():
+                en_urls.append(f"en/reading-{slug}.html")
+                lastmods[f"en/reading-{slug}.html"] = lastmods.get(f"reading-{slug}.html")
+    urls = urls + en_urls
+
     rows = []
     for u in urls:
         lm = lastmods.get(u)
@@ -3303,7 +3513,9 @@ def version_assets(site_dir: Path) -> dict:
     handle_tags = (f'<meta name="twitter:site" content="{X_HANDLE}">\n'
                    f'<meta name="twitter:creator" content="{X_HANDLE}">')
     n = 0
-    for html_file in site_dir.glob("*.html"):
+    # rglob, not glob: the English edition lives in site/en/ and needs the
+    # same verification tag and cache-busting stamps as the Hebrew pages.
+    for html_file in sorted(site_dir.rglob("*.html")):
         text = html_file.read_text(encoding="utf-8")
         new = text
         for asset, ver in versions.items():
