@@ -3052,6 +3052,7 @@ def build_root_site(repo_root: Path) -> Path:
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="google-site-verification" content="{GOOGLE_SITE_VERIFICATION}">
 <title>בקשי&amp;ביטון · Bakshi&amp;Bitton</title>
 <meta name="description" content="מאגר תיעודי מובנה של פסיקות בית המשפט העליון בעניין החלטות ממשלה ומינויים.">
 <link rel="canonical" href="https://eleazarbensimon.github.io/">
