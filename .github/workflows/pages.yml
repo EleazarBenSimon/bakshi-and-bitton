@@ -35,8 +35,12 @@ jobs:
         with:
           python-version: '3.x'
 
+      # Pillow + python-bidi are required by the ruling-day kit step,
+      # which renders the per-ruling share cards used as each page's
+      # og:image. Without them build.py exits 2 before writing the
+      # sitemap, robots.txt and llms.txt, and the deploy fails.
       - name: Install build dependencies
-        run: pip install markdown
+        run: pip install markdown Pillow python-bidi
 
       - name: Build site data (rulings, justices, content)
         run: python3 scripts/build.py

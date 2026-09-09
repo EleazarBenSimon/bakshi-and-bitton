@@ -37,7 +37,7 @@ jobs:
         run: python3 scripts/validate.py
 
       - name: Install build deps
-        run: pip install markdown
+        run: pip install markdown Pillow python-bidi
 
       # Blocking: the build must succeed end-to-end (data, content, static
       # pages, sitemap) so a broken ruling/content piece can't reach deploy.
