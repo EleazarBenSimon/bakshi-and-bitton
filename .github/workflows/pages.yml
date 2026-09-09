@@ -27,8 +27,13 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
+      # fetch-depth: 0 — build_sitemap derives each page's <lastmod>
+      # from the git history of its source file. A shallow clone would
+      # collapse every date onto the tip commit.
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v5

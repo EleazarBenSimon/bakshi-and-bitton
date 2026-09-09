@@ -22,6 +22,7 @@ import html
 import json
 import math
 import re
+import subprocess
 import sys
 from collections import defaultdict
 from datetime import datetime, timezone
@@ -2940,6 +2941,50 @@ def prerender_shells(site_dir: Path, rulings: list, content: dict, corpus: dict)
     return n
 
 
+# <lastmod> is the one optional sitemap element Google actually consumes: Gary
+# Illyes, 2023 — "we're using it as a signal for scheduling crawls to URLs that
+# we previously discovered" — with the caveat that it must be TRUE, because
+# "if your page changed 7 years ago, but you're telling us … it changed
+# yesterday, eventually we're not going to believe you anymore".
+#
+# So the date must NOT be the build time. Every page is rewritten on every
+# build (the asset cache-buster alone guarantees it), so a build-time stamp
+# would claim the whole site changed daily — precisely the lie Illyes
+# describes. Instead each page's date comes from the git history of the SOURCE
+# it is generated from: the ruling's JSON record, or the content piece's
+# markdown. That is the date the page's substance actually last changed.
+#
+# NOTE: this needs real git history. actions/checkout defaults to a depth-1
+# shallow clone, which would collapse every date onto the tip commit — the
+# workflow sets fetch-depth: 0 for this reason.
+_LASTMOD_CACHE: dict = {}
+
+
+def _git_lastmod(rel_path: str) -> str | None:
+    """Committer date (YYYY-MM-DD) of the last commit touching rel_path."""
+    if rel_path in _LASTMOD_CACHE:
+        return _LASTMOD_CACHE[rel_path]
+    out = None
+    try:
+        r = subprocess.run(
+            ["git", "log", "-1", "--format=%cs", "--", rel_path],
+            cwd=REPO_ROOT, capture_output=True, text=True, timeout=15)
+        if r.returncode == 0 and r.stdout.strip():
+            out = r.stdout.strip()
+    except Exception:
+        out = None
+    _LASTMOD_CACHE[rel_path] = out
+    return out
+
+
+def _content_source(slug: str) -> str | None:
+    for cat in ("essays", "explainers", "patterns", "structure"):
+        cand = REPO_ROOT / "content" / cat / f"{slug}.md"
+        if cand.exists():
+            return str(cand.relative_to(REPO_ROOT))
+    return None
+
+
 def build_sitemap(site_dir: Path, rulings: list, content: dict, justices: list) -> Path:
     urls = ["", "reading.html", "justices.html", "tags.html", "timeline.html", "cite.html",
             "about.html", "content.html", "power-curve.html", "comic-6821-93.html"]
@@ -2957,9 +3002,31 @@ def build_sitemap(site_dir: Path, rulings: list, content: dict, justices: list) 
     # or ruling.html listed: without a query they render an empty shell. If
     # per-justice pages are wanted in the index they need to be generated as
     # real static files, the way ruling-*.html already are.
-    body = "\n".join(
-        f"  <url><loc>{SITE_BASE_URL}/{xml_escape(u)}</loc></url>" for u in urls
-    )
+    # Per-URL lastmod, from the source each page is generated from (see
+    # _git_lastmod). Pages with no identifiable source — the hand-authored
+    # hubs — get no lastmod at all rather than a guessed one: omitting the
+    # element is honest, inventing a date is not.
+    lastmods = {}
+    for r in rulings:
+        slug = r.get("case_id_slug")
+        if slug:
+            lastmods[f"ruling-{slug}.html"] = _git_lastmod(
+                f"data/rulings/{slug}.json")
+    for pieces in content.values():
+        for pc in pieces:
+            slug = pc.get("slug")
+            if slug:
+                src = _content_source(slug)
+                if src:
+                    lastmods[f"reading-{slug}.html"] = _git_lastmod(src)
+
+    rows = []
+    for u in urls:
+        lm = lastmods.get(u)
+        tail = f"<lastmod>{lm}</lastmod>" if lm else ""
+        rows.append(f"  <url><loc>{SITE_BASE_URL}/{xml_escape(u)}</loc>"
+                    f"{tail}</url>")
+    body = "\n".join(rows)
     xml = ('<?xml version="1.0" encoding="UTF-8"?>\n'
            '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
            + body + "\n</urlset>\n")
@@ -3017,7 +3084,8 @@ def build_root_site(repo_root: Path) -> Path:
              ""]
     for ua in AI_CRAWLERS:
         lines += [f"User-agent: {ua}", "Allow: /", ""]
-    lines += [f"Sitemap: {SITE_BASE_URL}/sitemap.xml",
+    lines += ["Sitemap: https://eleazarbensimon.github.io/sitemap.xml",
+              f"Sitemap: {SITE_BASE_URL}/sitemap.xml",
               f"# Machine-readable site guide: {SITE_BASE_URL}/llms.txt",
               ""]
     (out_dir / "robots.txt").write_text("\n".join(lines), encoding="utf-8")
@@ -3046,6 +3114,21 @@ def build_root_site(repo_root: Path) -> Path:
         f"- Source repository: {GITHUB_PROFILE}/bakshi-and-bitton",
         "",
     ]), encoding="utf-8")
+
+    # A sitemap index at the ORIGIN ROOT. Two reasons, both load-bearing:
+    # (1) Google's own guidance — "a sitemap posted at the site root can affect
+    #     all files on the site, which is where we recommend posting your
+    #     sitemaps"; the project-path sitemap only has authority over its own
+    #     subtree.
+    # (2) It is a URL Google has never failed to fetch. Google retries a failing
+    #     sitemap "for a few days, and then stop[s]" — a give-up state that is
+    #     recorded per URL and is NOT cleared by resubmitting the same URL. A
+    #     new URL carries no such history.
+    (out_dir / "sitemap.xml").write_text(
+        '<?xml version="1.0" encoding="UTF-8"?>\n'
+        '<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+        f'  <sitemap><loc>{SITE_BASE_URL}/sitemap.xml</loc></sitemap>\n'
+        '</sitemapindex>\n', encoding="utf-8")
 
     (out_dir / "index.html").write_text(f"""<!DOCTYPE html>
 <html lang="he" dir="rtl">
