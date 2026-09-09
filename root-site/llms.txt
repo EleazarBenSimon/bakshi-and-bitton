@@ -1,0 +1,15 @@
+# eleazarbensimon.github.io
+
+> This origin hosts Bakshi&Bitton — a structured, source-linked documentary record of Israeli Supreme Court rulings on elected-branch decisions and appointments. Every case in the record is a real, docketed case and links to the official court file.
+
+## Start here
+
+- [Full machine-readable site guide](https://eleazarbensimon.github.io/bakshi-and-bitton/llms.txt): the complete index of cases, explainers and datasets, with citation rules.
+- [Site](https://eleazarbensimon.github.io/bakshi-and-bitton/): the record itself, Hebrew-primary.
+- [Sitemap](https://eleazarbensimon.github.io/bakshi-and-bitton/sitemap.xml)
+
+## Provenance
+
+- Licence: MIT. Reuse and quotation are welcome, with attribution.
+- Maintainer: Eleazar Ben Simon (eleazarbensimon@gmail.com)
+- Source repository: https://github.com/EleazarBenSimon/bakshi-and-bitton

@@ -1,5 +1,6 @@
-# Bakshi&Bitton — a public documentary record of Israeli Supreme
-# Court rulings. Crawling and citation are welcome, by anyone.
+# eleazarbensimon.github.io — origin root.
+# The substantive site is Bakshi&Bitton, at /bakshi-and-bitton/.
+# Crawling and citation are welcome, by anyone.
 
 User-agent: *
 Allow: /

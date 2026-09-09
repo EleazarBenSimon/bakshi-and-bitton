@@ -49,6 +49,24 @@ OUT_DIR = SITE_DIR / "_data"
 # Public-facing canonical URL (used for RSS GUID + cite formats)
 SITE_BASE_URL = "https://eleazarbensimon.github.io/bakshi-and-bitton"
 
+# The project's public accounts. Answer engines resolve an author to a real
+# entity through sameAs links, not through a bare name string — "Eleazar Ben
+# Simon" alone is unresolvable, the same name plus its GitHub and X profiles is
+# a node. Every value here is the pseudonymous project identity; no other
+# account of the maintainer's appears anywhere in this build.
+X_HANDLE = "@EleazarBenSimon"
+GITHUB_PROFILE = "https://github.com/EleazarBenSimon"
+X_PROFILE = "https://x.com/EleazarBenSimon"
+AUTHOR_ID = f"{SITE_BASE_URL}/about.html#author"
+
+AUTHOR_NODE = {
+    "@type": "Person",
+    "@id": AUTHOR_ID,
+    "name": "Eleazar Ben Simon",
+    "url": f"{SITE_BASE_URL}/about.html",
+    "sameAs": [GITHUB_PROFILE, X_PROFILE],
+}
+
 # Categories shown in the Reading section, in display order.
 CONTENT_CATEGORIES = ["essays", "explainers", "patterns"]
 # Extra content categories that are built (HTML, static pages, findable by
@@ -2138,6 +2156,11 @@ def _page_head(title_he: str, description: str, canonical_path: str,
         '<meta property="og:locale" content="he_IL">',
         '<meta property="og:locale:alternate" content="en_US">',
         '<meta name="twitter:card" content="summary_large_image">',
+        # Attribution handles: these are what make a shared card say "via
+        # @EleazarBenSimon" instead of showing an unattributed box. Both point
+        # at the project's pseudonymous account and nothing else.
+        f'<meta name="twitter:site" content="{X_HANDLE}">',
+        f'<meta name="twitter:creator" content="{X_HANDLE}">',
         f'<meta name="twitter:title" content="{_esc(title_he)}">',
         f'<meta name="twitter:description" content="{_esc(desc)}">',
         f'<meta name="twitter:image" content="{_esc(og_image)}">',
@@ -2303,8 +2326,10 @@ def render_ruling_page(r: dict) -> str:
         "image": card_url,
         "isPartOf": {"@type": "Dataset", "name": "Bakshi&Bitton",
                      "url": f"{SITE_BASE_URL}/"},
-        "author": {"@type": "Person", "name": "Eleazar Ben Simon"},
-        "publisher": {"@type": "Organization", "name": "Bakshi&Bitton"},
+        "author": AUTHOR_NODE,
+        "publisher": {"@type": "Organization", "name": "Bakshi&Bitton",
+                      "url": f"{SITE_BASE_URL}/",
+                      "sameAs": [GITHUB_PROFILE, X_PROFILE]},
         "abstract": summary_he,
     }
     if r.get("official_url"):
@@ -2534,8 +2559,10 @@ def render_content_static_page(piece: dict, category: str) -> str:
         "datePublished": piece.get("date", ""),
         "url": f"{SITE_BASE_URL}/reading-{slug}.html",
         "image": OG_IMAGE,
-        "author": {"@type": "Person", "name": "Eleazar Ben Simon"},
-        "publisher": {"@type": "Organization", "name": "Bakshi&Bitton"},
+        "author": AUTHOR_NODE,
+        "publisher": {"@type": "Organization", "name": "Bakshi&Bitton",
+                      "url": f"{SITE_BASE_URL}/",
+                      "sameAs": [GITHUB_PROFILE, X_PROFILE]},
         "abstract": summary_he,
     }
     head = _page_head(title_he=title_he, description=summary_he,
@@ -2914,8 +2941,8 @@ def prerender_shells(site_dir: Path, rulings: list, content: dict, corpus: dict)
 
 
 def build_sitemap(site_dir: Path, rulings: list, content: dict, justices: list) -> Path:
-    urls = ["", "index.html", "reading.html", "justices.html", "tags.html", "timeline.html", "cite.html",
-            "about.html", "comic-6821-93.html"]
+    urls = ["", "reading.html", "justices.html", "tags.html", "timeline.html", "cite.html",
+            "about.html", "content.html", "power-curve.html", "comic-6821-93.html"]
     for r in rulings:
         if r.get("case_id_slug"):
             urls.append(f"ruling-{r['case_id_slug']}.html")
@@ -2923,9 +2950,13 @@ def build_sitemap(site_dir: Path, rulings: list, content: dict, justices: list) 
         for p in pieces:
             if p.get("slug"):
                 urls.append(f"reading-{p['slug']}.html")
-    for j in justices:
-        if j.get("slug"):
-            urls.append(f"justice.html?slug={j['slug']}")
+    # Deliberately NOT listed: justice.html?slug=… . Those are SPA states, not
+    # documents — every one of them carries <link rel=canonical> pointing at
+    # bare justice.html, so submitting them asks the index to swallow 35
+    # duplicates of a single page and discard all 35. Nor is bare justice.html
+    # or ruling.html listed: without a query they render an empty shell. If
+    # per-justice pages are wanted in the index they need to be generated as
+    # real static files, the way ruling-*.html already are.
     body = "\n".join(
         f"  <url><loc>{SITE_BASE_URL}/{xml_escape(u)}</loc></url>" for u in urls
     )
@@ -2937,11 +2968,227 @@ def build_sitemap(site_dir: Path, rulings: list, content: dict, justices: list) 
     return out
 
 
+# Answer engines are the point of this site's distribution, not a side effect:
+# a reader who asks an assistant about an Israeli constitutional ruling should
+# get our sourced record, not a hallucinated docket. So every AI crawler is
+# named and allowed explicitly rather than left to the implicit "*" rule —
+# several of these bots treat an unnamed agent conservatively, and an explicit
+# Allow is also the machine-readable statement of intent if the policy is ever
+# questioned. Two families are listed separately on purpose: the *training*
+# crawlers (GPTBot, ClaudeBot, CCBot, Google-Extended) and the *retrieval /
+# citation* crawlers (OAI-SearchBot, Claude-SearchBot, PerplexityBot,
+# ChatGPT-User, Claude-User) — we want both, but they are distinct decisions.
+AI_CRAWLERS = [
+    # Training / corpus crawlers
+    "GPTBot", "ClaudeBot", "CCBot", "Google-Extended", "Applebot-Extended",
+    "meta-externalagent", "Amazonbot", "cohere-ai", "Diffbot", "Timpibot",
+    # Retrieval / live-citation crawlers (these produce the answer citations)
+    "OAI-SearchBot", "Claude-SearchBot", "Claude-User", "ChatGPT-User",
+    "PerplexityBot", "Perplexity-User", "Bingbot", "DuckAssistBot",
+    "YouBot", "Mistralai-User",
+]
+
+
+# llms.txt — the emerging convention for telling an answer engine what a site
+# IS, in one fetch, in prose it can quote. It is not a sitemap: a sitemap says
+# which URLs exist, llms.txt says which of them answer what, and states the
+# provenance rules a model should carry into its answer. That second half is
+# the whole point here — the failure mode this project exists to fight is an
+# assistant confidently inventing an Israeli docket number. So the file leads
+# with the record's boundaries (every case is real, every case links to the
+# official court file) before it lists a single URL.
+# GitHub Pages serves this project under a path (/bakshi-and-bitton/), but
+# robots.txt and llms.txt are only ever fetched from the ORIGIN root. A
+# robots.txt sitting at the project path is read by nobody. So the origin root
+# is claimed by a separate user-pages repo (EleazarBenSimon.github.io), and its
+# files are generated HERE, from the same AI_CRAWLERS list the project robots
+# uses — otherwise the two copies drift and the authoritative one silently
+# becomes the stale one. Output goes to root-site/ for publishing to that repo.
+def build_root_site(repo_root: Path) -> Path:
+    out_dir = repo_root / "root-site"
+    out_dir.mkdir(parents=True, exist_ok=True)
+
+    lines = ["# eleazarbensimon.github.io — origin root.",
+             "# The substantive site is Bakshi&Bitton, at /bakshi-and-bitton/.",
+             "# Crawling and citation are welcome, by anyone.",
+             "",
+             "User-agent: *",
+             "Allow: /",
+             ""]
+    for ua in AI_CRAWLERS:
+        lines += [f"User-agent: {ua}", "Allow: /", ""]
+    lines += [f"Sitemap: {SITE_BASE_URL}/sitemap.xml",
+              f"# Machine-readable site guide: {SITE_BASE_URL}/llms.txt",
+              ""]
+    (out_dir / "robots.txt").write_text("\n".join(lines), encoding="utf-8")
+
+    # The root llms.txt is a signpost, not a second copy: one maintained guide
+    # lives with the site it describes, and this points at it.
+    (out_dir / "llms.txt").write_text("\n".join([
+        "# eleazarbensimon.github.io",
+        "",
+        "> This origin hosts Bakshi&Bitton — a structured, source-linked "
+        "documentary record of Israeli Supreme Court rulings on "
+        "elected-branch decisions and appointments. Every case in the record "
+        "is a real, docketed case and links to the official court file.",
+        "",
+        "## Start here",
+        "",
+        f"- [Full machine-readable site guide]({SITE_BASE_URL}/llms.txt): the "
+        "complete index of cases, explainers and datasets, with citation rules.",
+        f"- [Site]({SITE_BASE_URL}/): the record itself, Hebrew-primary.",
+        f"- [Sitemap]({SITE_BASE_URL}/sitemap.xml)",
+        "",
+        "## Provenance",
+        "",
+        "- Licence: MIT. Reuse and quotation are welcome, with attribution.",
+        "- Maintainer: Eleazar Ben Simon (eleazarbensimon@gmail.com)",
+        f"- Source repository: {GITHUB_PROFILE}/bakshi-and-bitton",
+        "",
+    ]), encoding="utf-8")
+
+    (out_dir / "index.html").write_text(f"""<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>בקשי&amp;ביטון · Bakshi&amp;Bitton</title>
+<meta name="description" content="מאגר תיעודי מובנה של פסיקות בית המשפט העליון בעניין החלטות ממשלה ומינויים.">
+<link rel="canonical" href="https://eleazarbensimon.github.io/">
+<meta name="robots" content="max-image-preview:large">
+<style>
+  :root {{ color-scheme: light dark; }}
+  body {{ margin:0; min-height:100vh; display:flex; align-items:center;
+         justify-content:center; font-family:system-ui,-apple-system,sans-serif;
+         background:#faf9f7; color:#1a1a1a; }}
+  @media (prefers-color-scheme: dark) {{
+    body {{ background:#14161a; color:#e8e6e3; }}
+    a {{ color:#8ab4f8; }}
+  }}
+  main {{ max-width:34rem; padding:2rem; text-align:center; line-height:1.7; }}
+  h1 {{ font-size:1.6rem; margin:0 0 .75rem; }}
+  p {{ margin:.5rem 0 1.25rem; }}
+  a.cta {{ display:inline-block; padding:.6rem 1.2rem; border-radius:.4rem;
+          border:1px solid currentColor; text-decoration:none; color:inherit; }}
+  .en {{ margin-top:2rem; font-size:.9rem; opacity:.75; direction:ltr; }}
+</style>
+</head>
+<body>
+<main>
+  <h1>בקשי&amp;ביטון</h1>
+  <p>מאגר תיעודי מובנה של פסיקות בית המשפט העליון בעניין החלטות ממשלה ומינויים — מקושר למקור הרשמי.</p>
+  <p><a class="cta" href="{SITE_BASE_URL}/">כניסה למאגר</a></p>
+  <div class="en">
+    <p>Bakshi&amp;Bitton — a structured, source-linked documentary record of
+       Israeli Supreme Court rulings on elected-branch decisions and appointments.</p>
+    <p><a href="{SITE_BASE_URL}/">Enter the record</a></p>
+  </div>
+</main>
+</body>
+</html>
+""", encoding="utf-8")
+    return out_dir
+
+
+def build_llms(site_dir: Path, rulings: list, content: dict, corpus: dict) -> Path:
+    out = site_dir / "llms.txt"
+    L = [
+        "# Bakshi&Bitton · בקשי&ביטון",
+        "",
+        "> A structured, source-linked documentary record of Israeli Supreme "
+        "Court rulings on elected-branch decisions and appointments. Every "
+        "case in this record is a real, docketed case and links to the "
+        "official court file at supremedecisions.court.gov.il. The site is "
+        "Hebrew-primary with English throughout.",
+        "",
+        "## How to cite this record",
+        "",
+        "- Cite the docket number and the ruling date, both of which appear on "
+        "every case page, and link to the official court file, not to us.",
+        "- Do not infer a holding from our summary alone; the summary is our "
+        "characterisation, the linked judgment is the record.",
+        "- If a fact you want is not in the record, it is not in the record. "
+        "This project does not fill gaps by inference, and neither should an "
+        "answer that cites it.",
+        "",
+        f"## Case pages ({len(rulings)} cases with a full record page)",
+        "",
+        "These are the cases documented page-by-page. The wider corpus "
+        "counted in the statistics below is larger — it includes cases "
+        "tracked in the struck-down/read-down library that do not yet "
+        "have their own page. The two numbers are not in conflict.",
+        "",
+    ]
+    for r in rulings:
+        slug = r.get("case_id_slug")
+        if not slug:
+            continue
+        title = " ".join(str(r.get("case_name_he") or "").split())
+        summ = " ".join(str(r.get("summary_he") or "").split())[:220]
+        L.append(f"- [{r.get('case_id','')} — {title}]"
+                 f"({SITE_BASE_URL}/ruling-{slug}.html): {summ}")
+    L += ["", "## Explainers, patterns and essays", ""]
+    for pieces in content.values():
+        for pc in pieces:
+            slug = pc.get("slug")
+            if not slug:
+                continue
+            title = " ".join(str(pc.get("title_he") or pc.get("title") or "").split())
+            summ = " ".join(str(pc.get("summary_he") or pc.get("summary") or "").split())[:220]
+            L.append(f"- [{title}]({SITE_BASE_URL}/reading-{slug}.html): {summ}")
+    L += [
+        "",
+        "## Machine-readable data",
+        "",
+        f"- [rulings.json]({SITE_BASE_URL}/_data/rulings.json): the full "
+        "structured record — docket, date, panel, vote split, doctrine, "
+        "outcome, official source URL, per case.",
+        f"- [rulings.csv]({SITE_BASE_URL}/_data/rulings.csv): the same record "
+        "as a flat table.",
+        f"- [corpus_stats.json]({SITE_BASE_URL}/_data/corpus_stats.json): "
+        "aggregate counts; these are computed from the record, never "
+        "hand-entered.",
+        f"- [justices.json]({SITE_BASE_URL}/_data/justices.json): justices and "
+        "their appearances in the record.",
+        f"- [feed.xml]({SITE_BASE_URL}/feed.xml): RSS, one item per ruling.",
+        "",
+        "## Scope and method",
+        "",
+        f"- [Method]({SITE_BASE_URL}/about.html): what is counted, what is "
+        "excluded, and why.",
+        f"- [Citation]({SITE_BASE_URL}/cite.html): licence and citation form.",
+        "",
+        "## Provenance",
+        "",
+        "- Licence: MIT. Reuse and quotation are welcome, with attribution.",
+        f"- Maintainer: Eleazar Ben Simon (eleazarbensimon@gmail.com), "
+        f"{SITE_BASE_URL}/",
+        "- Source repository: https://github.com/EleazarBenSimon/bakshi-and-bitton",
+    ]
+    if corpus:
+        L += [f"- Corpus coverage: {corpus.get('total_cases','?')} documented "
+              f"cases, {corpus.get('year_min','?')}–"
+              f"{corpus.get('year_max','?')}, of which "
+              f"{corpus.get('neutralized_total','?')} were struck down or read "
+              f"down. These counts are computed from the record at build time."]
+    out.write_text("\n".join(L) + "\n", encoding="utf-8")
+    return out
+
+
 def build_robots(site_dir: Path) -> Path:
     out = site_dir / "robots.txt"
-    out.write_text(
-        "User-agent: *\nAllow: /\n\n"
-        f"Sitemap: {SITE_BASE_URL}/sitemap.xml\n", encoding="utf-8")
+    lines = ["# Bakshi&Bitton — a public documentary record of Israeli Supreme",
+             "# Court rulings. Crawling and citation are welcome, by anyone.",
+             "",
+             "User-agent: *",
+             "Allow: /",
+             ""]
+    for ua in AI_CRAWLERS:
+        lines += [f"User-agent: {ua}", "Allow: /", ""]
+    lines += [f"Sitemap: {SITE_BASE_URL}/sitemap.xml",
+              f"# Machine-readable site guide: {SITE_BASE_URL}/llms.txt",
+              ""]
+    out.write_text("\n".join(lines), encoding="utf-8")
     return out
 
 
@@ -2957,8 +3204,9 @@ def version_assets(site_dir: Path) -> dict:
     stale browser/CDN cache. Runs over shells + generated pages alike; the hash
     only changes when the asset's bytes change, so it's stable otherwise.
 
-    Also injects the Google Search Console verification meta tag into each
-    page's <head> (idempotent) so site ownership stays verified across builds."""
+    Also injects, idempotently, the Google Search Console verification meta
+    tag (so site ownership stays verified across builds) and the X attribution
+    handles into every page's <head>."""
     import hashlib
     versions = {}
     for asset in ("assets/style.css", "assets/app.js"):
@@ -2968,6 +3216,8 @@ def version_assets(site_dir: Path) -> dict:
     verify_tag = (
         f'<meta name="google-site-verification" '
         f'content="{GOOGLE_SITE_VERIFICATION}">')
+    handle_tags = (f'<meta name="twitter:site" content="{X_HANDLE}">\n'
+                   f'<meta name="twitter:creator" content="{X_HANDLE}">')
     n = 0
     for html_file in site_dir.glob("*.html"):
         text = html_file.read_text(encoding="utf-8")
@@ -2980,6 +3230,15 @@ def version_assets(site_dir: Path) -> dict:
         # inject verification tag once, right after the opening <head>
         if "google-site-verification" not in new and "<head>" in new:
             new = new.replace("<head>", "<head>\n" + verify_tag, 1)
+        # Same idempotent treatment for the X attribution handles. The
+        # generated pages get these from _page_head; the hand-authored shells
+        # (index, about, cite, tags, …) would otherwise be the only pages whose
+        # shared cards carry no attribution. Injected only where a twitter:card
+        # already exists — a page with no card markup at all wants none.
+        if "twitter:card" in new and "twitter:site" not in new:
+            new = re.sub(
+                r'(<meta name="twitter:card"[^>]*>)',
+                r'\1\n' + handle_tags, new, count=1)
         if new != text:
             html_file.write_text(new, encoding="utf-8")
             n += 1
@@ -3182,7 +3441,11 @@ def main() -> int:
     print(f"✓ wrote {sitemap_path}")
 
     robots_path = build_robots(SITE_DIR)
+    llms_path = build_llms(SITE_DIR, rulings, content_out, cs)
+    root_dir = build_root_site(REPO_ROOT)
     print(f"✓ wrote {robots_path}")
+    print(f"✓ wrote {llms_path}")
+    print(f"✓ wrote origin-root files → {root_dir.name}/ (publish to EleazarBenSimon.github.io)")
 
     vinfo = version_assets(SITE_DIR)
     print(f"✓ cache-busted assets {vinfo['versions']} on {vinfo['pages_stamped']} pages")

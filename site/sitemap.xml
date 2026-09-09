@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://eleazarbensimon.github.io/bakshi-and-bitton/</loc></url>
-  <url><loc>https://eleazarbensimon.github.io/bakshi-and-bitton/index.html</loc></url>
   <url><loc>https://eleazarbensimon.github.io/bakshi-and-bitton/reading.html</loc></url>
   <url><loc>https://eleazarbensimon.github.io/bakshi-and-bitton/justices.html</loc></url>
   <url><loc>https://eleazarbensimon.github.io/bakshi-and-bitton/tags.html</loc></url>
   <url><loc>https://eleazarbensimon.github.io/bakshi-and-bitton/timeline.html</loc></url>
   <url><loc>https://eleazarbensimon.github.io/bakshi-and-bitton/cite.html</loc></url>
   <url><loc>https://eleazarbensimon.github.io/bakshi-and-bitton/about.html</loc></url>
+  <url><loc>https://eleazarbensimon.github.io/bakshi-and-bitton/content.html</loc></url>
+  <url><loc>https://eleazarbensimon.github.io/bakshi-and-bitton/power-curve.html</loc></url>
   <url><loc>https://eleazarbensimon.github.io/bakshi-and-bitton/comic-6821-93.html</loc></url>
   <url><loc>https://eleazarbensimon.github.io/bakshi-and-bitton/ruling-12634-06-26-rabello-state-comptroller.html</loc></url>
   <url><loc>https://eleazarbensimon.github.io/bakshi-and-bitton/ruling-427-10-25-zini.html</loc></url>
@@ -41,39 +42,4 @@
   <url><loc>https://eleazarbensimon.github.io/bakshi-and-bitton/reading-quiet-veto.html</loc></url>
   <url><loc>https://eleazarbensimon.github.io/bakshi-and-bitton/reading-where-the-line.html</loc></url>
   <url><loc>https://eleazarbensimon.github.io/bakshi-and-bitton/reading-power-structure.html</loc></url>
-  <url><loc>https://eleazarbensimon.github.io/bakshi-and-bitton/justice.html?slug=sohlberg</loc></url>
-  <url><loc>https://eleazarbensimon.github.io/bakshi-and-bitton/justice.html?slug=amit</loc></url>
-  <url><loc>https://eleazarbensimon.github.io/bakshi-and-bitton/justice.html?slug=barak-erez</loc></url>
-  <url><loc>https://eleazarbensimon.github.io/bakshi-and-bitton/justice.html?slug=grosskopf</loc></url>
-  <url><loc>https://eleazarbensimon.github.io/bakshi-and-bitton/justice.html?slug=hayut</loc></url>
-  <url><loc>https://eleazarbensimon.github.io/bakshi-and-bitton/justice.html?slug=mintz</loc></url>
-  <url><loc>https://eleazarbensimon.github.io/bakshi-and-bitton/justice.html?slug=stein</loc></url>
-  <url><loc>https://eleazarbensimon.github.io/bakshi-and-bitton/justice.html?slug=naor</loc></url>
-  <url><loc>https://eleazarbensimon.github.io/bakshi-and-bitton/justice.html?slug=vogelman</loc></url>
-  <url><loc>https://eleazarbensimon.github.io/bakshi-and-bitton/justice.html?slug=baron</loc></url>
-  <url><loc>https://eleazarbensimon.github.io/bakshi-and-bitton/justice.html?slug=canfy-steinitz</loc></url>
-  <url><loc>https://eleazarbensimon.github.io/bakshi-and-bitton/justice.html?slug=elron</loc></url>
-  <url><loc>https://eleazarbensimon.github.io/bakshi-and-bitton/justice.html?slug=hendel</loc></url>
-  <url><loc>https://eleazarbensimon.github.io/bakshi-and-bitton/justice.html?slug=kabub</loc></url>
-  <url><loc>https://eleazarbensimon.github.io/bakshi-and-bitton/justice.html?slug=ronen</loc></url>
-  <url><loc>https://eleazarbensimon.github.io/bakshi-and-bitton/justice.html?slug=willner</loc></url>
-  <url><loc>https://eleazarbensimon.github.io/bakshi-and-bitton/justice.html?slug=barak</loc></url>
-  <url><loc>https://eleazarbensimon.github.io/bakshi-and-bitton/justice.html?slug=beinisch</loc></url>
-  <url><loc>https://eleazarbensimon.github.io/bakshi-and-bitton/justice.html?slug=grunis</loc></url>
-  <url><loc>https://eleazarbensimon.github.io/bakshi-and-bitton/justice.html?slug=kasher</loc></url>
-  <url><loc>https://eleazarbensimon.github.io/bakshi-and-bitton/justice.html?slug=melcer</loc></url>
-  <url><loc>https://eleazarbensimon.github.io/bakshi-and-bitton/justice.html?slug=rubinstein</loc></url>
-  <url><loc>https://eleazarbensimon.github.io/bakshi-and-bitton/justice.html?slug=bach</loc></url>
-  <url><loc>https://eleazarbensimon.github.io/bakshi-and-bitton/justice.html?slug=cheshin</loc></url>
-  <url><loc>https://eleazarbensimon.github.io/bakshi-and-bitton/justice.html?slug=dorner</loc></url>
-  <url><loc>https://eleazarbensimon.github.io/bakshi-and-bitton/justice.html?slug=goldberg</loc></url>
-  <url><loc>https://eleazarbensimon.github.io/bakshi-and-bitton/justice.html?slug=joubran</loc></url>
-  <url><loc>https://eleazarbensimon.github.io/bakshi-and-bitton/justice.html?slug=karra</loc></url>
-  <url><loc>https://eleazarbensimon.github.io/bakshi-and-bitton/justice.html?slug=levin</loc></url>
-  <url><loc>https://eleazarbensimon.github.io/bakshi-and-bitton/justice.html?slug=levy</loc></url>
-  <url><loc>https://eleazarbensimon.github.io/bakshi-and-bitton/justice.html?slug=maltz</loc></url>
-  <url><loc>https://eleazarbensimon.github.io/bakshi-and-bitton/justice.html?slug=or</loc></url>
-  <url><loc>https://eleazarbensimon.github.io/bakshi-and-bitton/justice.html?slug=shamgar</loc></url>
-  <url><loc>https://eleazarbensimon.github.io/bakshi-and-bitton/justice.html?slug=shoham</loc></url>
-  <url><loc>https://eleazarbensimon.github.io/bakshi-and-bitton/justice.html?slug=tal</loc></url>
 </urlset>
