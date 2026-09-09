@@ -2827,3 +2827,24 @@ html[lang="he"] .stmt-row-reported > td:first-child { box-shadow: inset -4px 0 0
   .ps-tabs { display: none !important; }
   .ps-diagram, .ps-meter, .ps-exitmap { break-inside: avoid; }
 }
+
+/* Definitional lede on ruling pages: a self-contained statement of what the
+   case is, drawn only from the record. Set in the voice sans (it is our
+   sentence, not the court's) but visually quieter than the hero summary. */
+.ruling-definition {
+  margin: 0 0 18px;
+  padding: 10px 14px;
+  border-inline-start: 3px solid var(--border, #d8d4cc);
+  background: var(--surface-2, rgba(0,0,0,.02));
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--text-muted, #4a4a4a);
+}
+.ruling-definition strong { color: var(--text, #1a1a1a); }
+
+/* Statistics tables: figures computed from the record, so they read as data,
+   not decoration. Numerals stay LTR inside the RTL page. */
+.stats-table { width: 100%; border-collapse: collapse; margin: 8px 0 22px; font-size: 15px; }
+.stats-table th, .stats-table td { padding: 8px 12px; border-bottom: 1px solid var(--border, #e2ded6); text-align: start; }
+.stats-table thead th { font-weight: 600; color: var(--text-muted, #4a4a4a); border-bottom-width: 2px; }
+.stats-table td:nth-child(n+2) { font-variant-numeric: tabular-nums; }

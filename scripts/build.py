@@ -2311,6 +2311,7 @@ def _static_header(active: str, lang: str = "he") -> str:
                   ("tags.html", "Topics", "tags"),
                   ("timeline.html", "Timeline", "timeline"),
                   ("reading-power-structure.html", "Power structure", "structure"),
+                  ("stats.html", "Statistics", "stats"),
                   ("cite.html", "Cite & share", "cite"),
                   ("about.html", "About", "about")]
                  if en else
@@ -2320,6 +2321,7 @@ def _static_header(active: str, lang: str = "he") -> str:
                   ("tags.html", "נושאים", "tags"),
                   ("timeline.html", "ציר זמן", "timeline"),
                   ("reading-power-structure.html", "מבנה הכוח", "structure"),
+                  ("stats.html", "נתונים", "stats"),
                   ("cite.html", "ציטוט והפצה", "cite"),
                   ("about.html", "אודות", "about")])
     logo_sub = ("Israeli Supreme Court rulings on government decisions and appointments"
@@ -2417,6 +2419,53 @@ _VISITOR_PIXEL_CONTENT = (
     'height="1" style="position:absolute;width:1px;height:1px;overflow:hidden;'
     'clip:rect(0,0,0,0);opacity:0;pointer-events:none" />'
 )
+
+
+# A self-contained definitional opening, generated from the record. Two
+# measured reasons for it: 44.2% of ChatGPT citations come from the first 30%
+# of a page, and passages phrased as a definition ("X is …") are about twice as
+# likely to be cited as equivalent prose. It also raises proper-noun density,
+# which cited passages carry at ~20% versus 5–8% typical.
+#
+# It is deliberately NOT the editorial summary (that is the hero's job, and it
+# argues a case). This states only what the record says: what the case is, when
+# it was decided, by how many justices, with what outcome and vote. Every value
+# comes from a field; nothing is asserted that the data does not carry.
+def _definition_block(r: dict, lang: str = "he") -> str:
+    en = lang == "en"
+    cid = _case_id_en(r.get("case_id", "")) if en else r.get("case_id", "")
+    if not cid:
+        return ""
+    date = (r.get("ruling_date") or "").strip()
+    n = len(r.get("panel") or [])
+    outcome = r.get("outcome", "")
+    olabel = (OUTCOME_LABELS_EN if en else OUTCOME_LABELS_HE).get(outcome, outcome)
+    vm, vmin = r.get("vote_majority"), r.get("vote_minority")
+    if en:
+        bits = [f"<strong>{_esc(cid)}</strong> is a ruling of the Supreme Court of Israel"]
+        if date:
+            bits.append(f", decided {_esc(date)}")
+        if n:
+            bits.append(f", by a panel of {n} justice{'s' if n != 1 else ''}")
+        sent = "".join(bits) + "."
+        tail = []
+        if olabel:
+            tail.append(f"Outcome: {_esc(olabel)}.")
+        if vm is not None:
+            tail.append(f'Vote: <bdi dir="ltr">{_esc(vm)}–{_esc(vmin or 0)}</bdi>.')
+    else:
+        bits = [f"<strong>{_esc(cid)}</strong> הוא פסק דין של בית המשפט העליון בישראל"]
+        if date:
+            bits.append(f", מיום {_esc(date)}")
+        if n:
+            bits.append(f", בהרכב של {n} שופטים")
+        sent = "".join(bits) + "."
+        tail = []
+        if olabel:
+            tail.append(f"התוצאה: {_esc(olabel)}.")
+        if vm is not None:
+            tail.append(f'ההצבעה: <bdi dir="ltr">{_esc(vm)}–{_esc(vmin or 0)}</bdi>.')
+    return (f'<p class="ruling-definition" dir="auto">{sent} ' + " ".join(tail) + "</p>")
 
 
 def _ruling_hero(r: dict, lang: str = "he") -> str:
@@ -2610,6 +2659,7 @@ def render_ruling_page(r: dict, lang: str = "he") -> str:
         f'<div id="root">{_static_header("rulings", lang)}<main>'
         f'<p><a href="{rp}index.html">{L["back_to_rulings"]}</a></p>'
         f'{_ruling_hero(r, lang)}'
+        f'{_definition_block(r, lang)}'
         f'{why}'
         f'{comic}{print_cite}{official}{grid}{panel}{secondary}{notes}{related}'
         f'<p style="margin-top:24px;font-size:14px"><a href="{_esc(spa_url)}">'
@@ -3178,6 +3228,179 @@ def _content_source(slug: str) -> str | None:
     return None
 
 
+# ── Statistics page ───────────────────────────────────────────────────────
+# The GEO literature's clearest domain-specific finding: for Law & Government,
+# the two tactics that move generative-engine visibility most are adding
+# STATISTICS and CITING SOURCES (+33% and +28% in the KDD 2024 study). This
+# page is both — original figures computed from our own record, each one
+# traceable to the JSON the site publishes.
+#
+# Every number here is computed at build time from rulings.json. None is
+# stored, none is hand-entered: a hand-typed statistic in a project whose whole
+# claim is "check the record" would be the one number nobody could check.
+def _stats_rows(rulings: list, lang: str):
+    from collections import Counter
+    en = lang == "en"
+    olab = OUTCOME_LABELS_EN if en else OUTCOME_LABELS_HE
+    dlab = DOCTRINE_LABELS_EN if en else DOCTRINE_LABELS_HE
+    clab = COMPLIANCE_EN if en else COMPLIANCE_HE
+    n = len(rulings)
+    out = Counter(r.get("outcome") for r in rulings)
+    panels = Counter(len(r.get("panel") or []) for r in rulings)
+    comp = Counter(r.get("compliance_state") for r in rulings if r.get("compliance_state"))
+    doc = Counter(d for r in rulings for d in (r.get("doctrine_invoked") or []))
+    votes = [(r.get("vote_majority"), r.get("vote_minority") or 0)
+             for r in rulings if r.get("vote_majority") is not None]
+    unanimous = sum(1 for a, b in votes if b == 0)
+    onevote = sum(1 for a, b in votes if a - b == 1)
+    decades = Counter((r.get("ruling_date") or "")[:3] + "0" for r in rulings
+                      if (r.get("ruling_date") or "")[:4].isdigit())
+    return dict(n=n, out=out, olab=olab, panels=panels, comp=comp, clab=clab,
+                doc=doc, dlab=dlab, votes=votes, unanimous=unanimous,
+                onevote=onevote, decades=decades)
+
+
+def _stats_table(headers, rows, total=None):
+    th = "".join(f"<th>{_esc(h)}</th>" for h in headers)
+    trs = []
+    for r in rows:
+        tds = "".join(f"<td>{c}</td>" for c in r)
+        trs.append(f"<tr>{tds}</tr>")
+    return ('<div class="table-scroll"><table class="stats-table">'
+            f'<thead><tr>{th}</tr></thead><tbody>{"".join(trs)}</tbody></table></div>')
+
+
+def render_stats_page(rulings: list, corpus: dict, lang: str = "he") -> str:
+    en = lang == "en"
+    d = _stats_rows(rulings, lang)
+    n = d["n"]
+    prefix = "en/" if en else ""
+    rp = "../" if en else ""
+    pct = lambda k: f"{k / n * 100:.0f}%" if n else "—"
+
+    if en:
+        title = "How often does Israel's Supreme Court overturn elected-branch decisions?"
+        desc = (f"Original statistics computed from a documented record of {n} Israeli "
+                f"Supreme Court rulings on government decisions and appointments — "
+                f"outcomes, panel sizes, vote splits, doctrines invoked and compliance.")
+        lede = (f"<strong>This page reports figures computed from {n} documented rulings</strong> "
+                f"of the Supreme Court of Israel on decisions and appointments of the elected "
+                f"branches, spanning {corpus.get('year_min','?')}–{corpus.get('year_max','?')}. "
+                f"Every figure is recomputed from the underlying records on each build.")
+        H = {"scope": "What is counted here?", "out": "How do the cases end?",
+             "panel": "How large are the panels?", "vote": "How close are the votes?",
+             "doc": "Which doctrines are invoked?", "comp": "Are the rulings complied with?",
+             "method": "How are these figures produced?"}
+        C = {"outcome": "Outcome", "cases": "Cases", "share": "Share",
+             "panel": "Panel size", "doctrine": "Doctrine", "status": "Compliance status",
+             "measure": "Measure", "value": "Value"}
+    else:
+        title = "באיזו תדירות מבטל בית המשפט העליון החלטות של הרשויות הנבחרות?"
+        desc = (f"נתונים מקוריים המחושבים מתוך מאגר מתועד של {n} פסיקות בית המשפט העליון "
+                f"בעניין החלטות ממשלה ומינויים — תוצאות, גודל הרכב, פילוג הצבעה, עילות ויישום.")
+        lede = (f"<strong>עמוד זה מציג נתונים המחושבים מתוך {n} פסיקות מתועדות</strong> "
+                f"של בית המשפט העליון בישראל בעניין החלטות ומינויים של הרשויות הנבחרות, "
+                f"בשנים {corpus.get('year_min','?')}–{corpus.get('year_max','?')}. "
+                f"כל נתון מחושב מחדש מתוך הרשומות בכל בנייה של האתר.")
+        H = {"scope": "מה נספר כאן?", "out": "כיצד מסתיימים התיקים?",
+             "panel": "מה גודל ההרכבים?", "vote": "עד כמה ההכרעות צמודות?",
+             "doc": "אילו עילות נטענות?", "comp": "האם הפסיקות מיושמות?",
+             "method": "כיצד מופקים הנתונים?"}
+        C = {"outcome": "תוצאה", "cases": "תיקים", "share": "שיעור",
+             "panel": "גודל הרכב", "doctrine": "עילה", "status": "מצב יישום",
+             "measure": "מדד", "value": "ערך"}
+
+    secs = []
+    secs.append(f'<h2>{_esc(H["scope"])}</h2>' + _stats_table(
+        [C["measure"], C["value"]],
+        [[_esc("Rulings with a full record page" if en else "פסיקות עם עמוד תיעוד מלא"), str(n)],
+         [_esc("Cases in the wider struck/read-down library" if en else "מקרים בספריית הפסילה/הצמצום"),
+          str(corpus.get("library_total", "—"))],
+         [_esc("Total documented cases" if en else "סך המקרים המתועדים"),
+          str(corpus.get("total_cases", "—"))],
+         [_esc("Years covered" if en else "טווח שנים"),
+          f'<bdi dir="ltr">{corpus.get("year_min","?")}–{corpus.get("year_max","?")}</bdi>']]))
+
+    secs.append(f'<h2>{_esc(H["out"])}</h2>' + _stats_table(
+        [C["outcome"], C["cases"], C["share"]],
+        [[_esc(d["olab"].get(k, k)), str(v), pct(v)]
+         for k, v in d["out"].most_common()]))
+
+    secs.append(f'<h2>{_esc(H["panel"])}</h2>' + _stats_table(
+        [C["panel"], C["cases"], C["share"]],
+        [[f'<bdi dir="ltr">{k}</bdi>', str(v), pct(v)]
+         for k, v in sorted(d["panels"].items())]))
+
+    if d["votes"]:
+        tv = len(d["votes"])
+        secs.append(f'<h2>{_esc(H["vote"])}</h2>' + _stats_table(
+            [C["measure"], C["value"]],
+            [[_esc("Rulings with a recorded vote" if en else "פסיקות עם הצבעה מתועדת"), str(tv)],
+             [_esc("Unanimous" if en else "פה אחד"), f'{d["unanimous"]} ({d["unanimous"]/tv*100:.0f}%)'],
+             [_esc("Decided by a single vote" if en else "הוכרעו בקול אחד"),
+              f'{d["onevote"]} ({d["onevote"]/tv*100:.0f}%)']]))
+
+    secs.append(f'<h2>{_esc(H["doc"])}</h2>' + _stats_table(
+        [C["doctrine"], C["cases"]],
+        [[_esc(d["dlab"].get(k, k)), str(v)] for k, v in d["doc"].most_common()]))
+
+    if d["comp"]:
+        secs.append(f'<h2>{_esc(H["comp"])}</h2>' + _stats_table(
+            [C["status"], C["cases"]],
+            [[_esc(d["clab"].get(k, k)), str(v)] for k, v in d["comp"].most_common()]))
+
+    method = (
+        "<p>Every figure on this page is computed at build time from "
+        f'<a href="{rp}_data/rulings.json">rulings.json</a> and '
+        f'<a href="{rp}_data/corpus_stats.json">corpus_stats.json</a>, the same '
+        "records the site publishes. No figure is stored or typed by hand, so "
+        "any number here can be recomputed from the published data. Each case "
+        "links to the official court file. Percentages are rounded to whole "
+        "numbers and may not sum to 100.</p>"
+        if en else
+        "<p>כל נתון בעמוד זה מחושב בזמן בניית האתר מתוך "
+        f'<a href="{rp}_data/rulings.json">rulings.json</a> ו-'
+        f'<a href="{rp}_data/corpus_stats.json">corpus_stats.json</a> — אותן רשומות '
+        "שהאתר מפרסם. אף נתון אינו מאוחסן או מוקלד ידנית, ולכן כל מספר כאן ניתן "
+        "לחישוב מחדש מתוך הנתונים הפומביים. כל תיק מקושר לתיק בית המשפט הרשמי. "
+        "אחוזים מעוגלים למספר שלם ולכן ייתכן שסכומם אינו 100.</p>")
+    secs.append(f'<h2>{_esc(H["method"])}</h2><div class="notes-box">{method}</div>')
+
+    jsonld = {
+        "@context": "https://schema.org", "@type": "Article",
+        "headline": title, "inLanguage": lang,
+        "url": f"{SITE_BASE_URL}/{prefix}stats.html",
+        "image": OG_IMAGE, "author": AUTHOR_NODE,
+        "publisher": {"@type": "Organization", "name": "Bakshi&Bitton",
+                      "url": f"{SITE_BASE_URL}/",
+                      "sameAs": [GITHUB_PROFILE, X_PROFILE]},
+        "abstract": desc,
+        "isPartOf": {"@type": "Dataset", "name": "Bakshi&Bitton",
+                     "url": f"{SITE_BASE_URL}/"},
+    }
+    head = _page_head(title_he=title, description=desc,
+                      canonical_path=f"{prefix}stats.html", og_type="article",
+                      jsonld=jsonld, lang=lang,
+                      alternate_path=("stats.html" if en else "en/stats.html"))
+    body = (f'<div id="root">{_static_header("stats", lang)}<main>'
+            f'<h1>{_esc(title)}</h1>'
+            f'<p class="ruling-definition" dir="auto">{lede}</p>'
+            + "".join(secs)
+            + _share_bar(f"{SITE_BASE_URL}/{prefix}stats.html", title, lang)
+            + f'</main>{_static_footer(lang)}</div>')
+    return (head + '\n<body>\n' + _VISITOR_PIXEL_CONTENT + '\n' + body
+            + f'\n<script src="{rp}assets/app.js"></script>\n</body>\n</html>\n')
+
+
+def build_stats_pages(site_dir: Path, rulings: list, corpus: dict) -> int:
+    (site_dir / "stats.html").write_text(
+        render_stats_page(rulings, corpus, "he"), encoding="utf-8")
+    (site_dir / "en").mkdir(parents=True, exist_ok=True)
+    (site_dir / "en" / "stats.html").write_text(
+        render_stats_page(rulings, corpus, "en"), encoding="utf-8")
+    return 2
+
+
 def build_sitemap(site_dir: Path, rulings: list, content: dict, justices: list) -> Path:
     urls = ["", "reading.html", "justices.html", "tags.html", "timeline.html", "cite.html",
             "about.html", "content.html", "power-curve.html", "comic-6821-93.html"]
@@ -3228,7 +3451,7 @@ def build_sitemap(site_dir: Path, rulings: list, content: dict, justices: list) 
             if slug and (pc.get("body_html_en") or "").strip():
                 en_urls.append(f"en/reading-{slug}.html")
                 lastmods[f"en/reading-{slug}.html"] = lastmods.get(f"reading-{slug}.html")
-    urls = urls + en_urls
+    urls = urls + ["stats.html"] + en_urls + ["en/stats.html"]
 
     rows = []
     for u in urls:
@@ -3737,9 +3960,11 @@ def main() -> int:
     print(f"✓ wrote {sitemap_path}")
 
     robots_path = build_robots(SITE_DIR)
+    n_stats = build_stats_pages(SITE_DIR, rulings, cs)
     llms_path = build_llms(SITE_DIR, rulings, content_out, cs)
     root_dir = build_root_site(REPO_ROOT)
     print(f"✓ wrote {robots_path}")
+    print(f"✓ wrote {n_stats} statistics pages (he + en)")
     print(f"✓ wrote {llms_path}")
     print(f"✓ wrote origin-root files → {root_dir.name}/ (publish to EleazarBenSimon.github.io)")
 
