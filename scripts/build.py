@@ -3160,7 +3160,104 @@ def prerender_tags(rulings: list) -> str:
     return _satirize_mqg("\n".join(L))
 
 
-def prerender_shells(site_dir: Path, rulings: list, content: dict, corpus: dict) -> int:
+def prerender_justices(justices: list) -> str:
+    """Static Hebrew body for justices.html. Was shipping an empty <div id=root>
+    to every crawler that doesn't run JS while sitting in the sitemap."""
+    L = [_spa_toggle(_static_header("justices"), "justices.html"), '<main>']
+    L.append('<h1>שופטים</h1>')
+    L.append('<p class="ruling-definition" dir="auto">'
+             f'<strong>{len(justices)} שופטות ושופטים</strong> מופיעים בהרכבים המתועדים במאגר. '
+             'לכל אחד: מספר ההרכבים שבהם ישב, וכמה פעמים חתם על דעת הרוב או על דעת המיעוט.</p>')
+    rows = []
+    for j in sorted(justices, key=lambda x: -(x.get("panel_count") or 0)):
+        sl = _esc(j.get("slug") or "")
+        nm = _esc(j.get("name_he") or j.get("name_en") or sl)
+        linkable = sl and not sl.startswith("unverified")
+        name_cell = f'<a href="justice.html?slug={sl}">{nm}</a>' if linkable else nm
+        rows.append([name_cell, str(j.get("panel_count") or 0),
+                     str(j.get("majority_authored") or 0),
+                     str(j.get("minority_authored") or 0)])
+    L.append(_stats_table(["שופט/ת", "הרכבים", "דעת רוב", "דעת מיעוט"], rows))
+    L.append(f'</main>{_STATIC_FOOTER}')
+    return "".join(L)
+
+
+def prerender_timeline(rulings: list) -> str:
+    """Static Hebrew body for timeline.html — the record in date order, with a
+    real <a> per ruling so the timeline also de-orphans the ruling pages."""
+    L = [_spa_toggle(_static_header("timeline"), "timeline.html"), '<main>']
+    L.append('<h1>ציר זמן</h1>')
+    ordered = sorted([r for r in rulings if r.get("ruling_date")],
+                     key=lambda r: r["ruling_date"], reverse=True)
+    yrs = [r["ruling_date"][:4] for r in ordered if r["ruling_date"][:4].isdigit()]
+    span = f"{min(yrs)}–{max(yrs)}" if yrs else ""
+    L.append('<p class="ruling-definition" dir="auto">'
+             f'<strong>{len(ordered)} פסיקות מתועדות</strong>'
+             + (f', בשנים <bdi dir="ltr">{span}</bdi>' if span else "")
+             + ', מהחדשה לישנה. כל שורה מקשרת לעמוד התיעוד המלא של הפסיקה.</p>')
+    rows = []
+    for r in ordered:
+        slug = _esc(r.get("case_id_slug") or "")
+        cid = _esc(r.get("case_id") or "")
+        nm = _esc(r.get("case_name_he") or "")
+        oc = r.get("outcome", "")
+        olab = _esc(OUTCOME_LABELS_HE.get(oc, oc))
+        rows.append([f'<bdi dir="ltr">{_esc(r["ruling_date"])}</bdi>',
+                     f'<a href="ruling-{slug}.html">{cid}</a>',
+                     nm,
+                     f'<span class="outcome-pill outcome-{_esc(oc)}">{olab}</span>'])
+    L.append(_stats_table(["תאריך", "תיק", "עניין", "תוצאה"], rows))
+    L.append(f'</main>{_STATIC_FOOTER}')
+    return "".join(L)
+
+
+def prerender_cite(corpus: dict) -> str:
+    """Static Hebrew body for cite.html — how to cite and reuse the record."""
+    L = [_spa_toggle(_static_header("cite"), "cite.html"), '<main>']
+    L.append('<h1>ציטוט והפצה</h1>')
+    L.append('<p class="ruling-definition" dir="auto">'
+             '<strong>המאגר פתוח לשימוש חוזר תחת רישיון MIT.</strong> '
+             'ציטוט, הפצה ושימוש מסחרי מותרים, בתנאי מתן קרדיט. '
+             'הנתונים מתפרסמים גם בפורמט מכונה.</p>')
+    L.append('<h2>כיצד לצטט</h2>')
+    yr = corpus.get("year_max", "")
+    L.append('<div class="notes-box"><p dir="auto">'
+             f'Ben Simon, Eleazar. <em>Bakshi&amp;Bitton: A Documentary Database of '
+             f'Israeli Supreme Court Interventions in Elected-Branch Decisions and '
+             f'Appointments</em>. {_esc(yr)}. '
+             f'{SITE_BASE_URL}/</p></div>')
+    L.append('<h2>נתונים בפורמט מכונה</h2><ul>'
+             '<li><a href="_data/rulings.json">rulings.json</a> — הרשומה המלאה</li>'
+             '<li><a href="_data/rulings.csv">rulings.csv</a> — טבלה שטוחה</li>'
+             '<li><a href="_data/corpus_stats.json">corpus_stats.json</a> — נתונים מצרפיים</li>'
+             '<li><a href="feed.xml">feed.xml</a> — RSS</li></ul>')
+    L.append('<h2>מה מותר</h2><div class="notes-box"><p dir="auto">'
+             'רישיון MIT. אין צורך בבקשת רשות. בשימוש מוסדי או מסחרי נשמח לעדכון '
+             'ל-eleazarbensimon@gmail.com — לא כתנאי, אלא כדי לדעת לאן הרשומה מגיעה. '
+             'כל תיק מקושר למקור הרשמי; צטטו את פסק הדין עצמו, לא אותנו.</p></div>')
+    L.append(f'</main>{_STATIC_FOOTER}')
+    return "".join(L)
+
+
+def prerender_comic() -> str:
+    """Static Hebrew body for comic-6821-93.html — the illustrated story."""
+    L = [_spa_toggle(_static_header("reading"), "comic-6821-93.html"), '<main>']
+    L.append('<h1>פרדוקס מקור הסמכות — סיפור מצויר</h1>')
+    L.append('<p class="ruling-definition" dir="auto">'
+             '<strong>סיפור מצויר על בג"ץ 6821/93, בנק המזרחי נ\' מגדל.</strong> '
+             'כיצד סכסוך חוב בקיבוץ הפך לפסק הדין שבו נטל בית המשפט העליון '
+             'את הסמכות לפסול חוקים של הכנסת.</p>')
+    L.append('<p><a href="ruling-6821-93-bank-mizrahi.html">'
+             '← לעמוד התיעוד המלא של בג"ץ 6821/93</a></p>')
+    L.append('<img src="assets/comics/mizrahi-arc/page-he.png" '
+             'alt="סיפור מצויר: פרדוקס מקור הסמכות — בג\"ץ 6821/93 בנק המזרחי נ\' מגדל" '
+             'style="max-width:100%;height:auto" loading="lazy">')
+    L.append(f'</main>{_STATIC_FOOTER}')
+    return "".join(L)
+
+
+def prerender_shells(site_dir: Path, rulings: list, content: dict, corpus: dict,
+                     justices: list) -> int:
     """Inject the generated Hebrew blocks into the four hub shells. Idempotent:
     the markers stay put and only the space between them is rewritten."""
     _tag_label_lint(rulings)
@@ -3170,6 +3267,12 @@ def prerender_shells(site_dir: Path, rulings: list, content: dict, corpus: dict)
         "tags.html": {"MAIN": prerender_tags(rulings)},
         "about.html": {"HEADER": _spa_toggle(_static_header("about"), "about.html"),
                        "FOOTER": _STATIC_FOOTER},
+        # These four were shipping an empty <div id="root"> to every crawler
+        # that does not execute JavaScript — while sitting in the sitemap.
+        "justices.html": {"MAIN": prerender_justices(justices)},
+        "timeline.html": {"MAIN": prerender_timeline(rulings)},
+        "cite.html": {"MAIN": prerender_cite(corpus)},
+        "comic-6821-93.html": {"MAIN": prerender_comic()},
     }
     n = 0
     for fname, blocks in jobs.items():
@@ -3403,7 +3506,7 @@ def build_stats_pages(site_dir: Path, rulings: list, corpus: dict) -> int:
 
 def build_sitemap(site_dir: Path, rulings: list, content: dict, justices: list) -> Path:
     urls = ["", "reading.html", "justices.html", "tags.html", "timeline.html", "cite.html",
-            "about.html", "content.html", "power-curve.html", "comic-6821-93.html"]
+            "about.html", "power-curve.html", "comic-6821-93.html"]
     for r in rulings:
         if r.get("case_id_slug"):
             urls.append(f"ruling-{r['case_id_slug']}.html")
@@ -3953,7 +4056,7 @@ def main() -> int:
     n_static = build_static_pages(SITE_DIR, rulings, content_out)
     print(f"✓ wrote {n_static} prerendered static pages (ruling-*.html, reading-*.html)")
 
-    n_pre = prerender_shells(SITE_DIR, rulings, content_out, cs)
+    n_pre = prerender_shells(SITE_DIR, rulings, content_out, cs, justices_list)
     print(f"✓ injected prerendered content into {n_pre} shell pages")
 
     sitemap_path = build_sitemap(SITE_DIR, rulings, content_out, justices_list)
